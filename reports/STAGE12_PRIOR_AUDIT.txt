@@ -1,0 +1,85 @@
+Stage12：旧三指拒绝与静态中指接触面审计
+基准：f7d943ecf11bbc8b523697a9af6f606ec63ef789；2026-11-21。
+
+旧楔形记录不是“三指抓取后失败”。其公开日志在 step=0/frame=0
+结束，ctx.step 下发数为 0，实际抓取次数为 0。完整旧候选、源函数快照、
+静态网格检查在：
+outputs/rax_dexbin_tinyobj/stage12_20261121/prior_audit/
+  prior_three_wedge_and_middle_pad.json
+原轨迹：outputs/rax_dexbin_tinyobj/stage11_20261121/finger_pairs/
+  finger_three_wedge/episode
+agent trace SHA256：
+d19a00a1be98d34335343495d6f0853b577a7061447418db00bd2a7810640209
+
+实际调用链
+run.py -> run_stage9.main/build -> stage9_episode -> stage4_episode
+-> run_round14_episode/Isaac 后端 -> 沙箱 worker -> stage9_control.main
+-> stage5_control.policy_main -> s5_init -> s5_plan
+-> s11_contact_candidates -> visual_controller._s3_candidates_on_axes
+-> optimize -> checker.check -> 候选接近/闭合/抬升检查。
+只有候选被接受后，s5_approach/s5_move/s5_step 才经 ctx.step 下发。
+旧记录在候选端点已拒绝，后续接近、闭合、预载和试抬均未执行。
+
+旧模板如何产生数据
+f7d943ecf11 的 visual_controller._s3_candidates_on_axes 从两指包络模板
+构造 [-axis,+axis,+axis] 三个接触点；食指/中指使用相同的对侧法向，
+仅沿 tangent 分别加减 min(4mm,0.35*half[1])，三点同高。
+每个高度只调用一次 optimize(seed_index=0)，腕姿围绕原先验限于
+各 Euler 分量 ±0.55rad。中指只有两个屈伸关节，没有独立展指自由度。
+因此给同侧两指任意指定狭小间距，不保证能由共同腕姿实现。
+
+第一组 h=0.4，目标高度 z=9.5312265mm：
+手指       位置误差 mm       法向误差 rad       原门槛
+拇指        0.0623295         0.6813709          位置<0.8mm，法向<0.5rad
+食指       10.3504359         0.8055948          同上
+中指       11.6519250         0.5094782          同上
+三个法向均未通过；食指、中指位置也未通过。表面最小高度
+0.9478563mm，端点 passed=false。
+端点自碰包括：index_camera_component3 与 middle_camera_component1，
+index_camera_component3 与 middle_link2，index_link1 与 palm。
+物体包络交叠包括 index_camera_component3、middle_camera_component1、
+middle_link2。这是规划几何的预估交叠，不是已经发生的物理接触。
+第二组 h=0.6 也未通过，最大位置误差 10.3952788mm。
+
+中指静态坐标核验
+visual_controller.MIDDLE_CONTACT：middle_link2 中的
+[11.75,0,47]mm，法向 +X；component3 与该连杆为 identity 固定变换。
+该点到 component3 网格距离约 4.0e-10m，最近面法向 +X。
+component3 范围：x=10.950..11.750mm，y约±4mm，
+z=36.556..57.446mm。坐标落在实际 component3 前平面，不能把上述
+10mm 级联合 IK 误差归因于把中指坐标写到了另一根连杆。
+离线中心射线 y=0,z=47mm 没被其他中指表面遮住；但 component1
+在其他 y/z 处达到 x=14.668mm，比该平面前伸约 2.918mm。
+有限宽度物体仍可能先碰壳体。单条可见射线不能证明整个承力指垫
+可接触；没有以移动接触锚点到壳体的方式绕过原碰撞守卫。
+这些是静态资产几何核验，不是材料、驱动、压力或接触力标定。
+
+本轮诊断与运行输入的界限
+运行时候选来自普通 RGB 凸包、曝光对应的实测关节和静态机器人参数。
+初始俯视 top_z 由轮廓宽度先验估计且有 30mm 上限，不是直接测高。
+新的 _s12_rgb_contact_regions 明确把侧面法向/高度标为几何假设，
+并以 _s12_region_ik/_s12_three_candidates 搜索独立高度、间距和腕姿；
+完整三角网格端点、连接路径、关节与速度检查继续裁决可执行性。
+
+离线正对照及搜索原件：
+outputs/rax_dexbin_tinyobj/stage12_20261121/geometry_audit/
+  README.txt、search_summary.json、s12_fk_positive_control.json 及对应脚本。
+330 个合成几何搜索起点中不少能通过点/法向门槛，但 exact endpoint
+通过数为 0；这些不是 330 次真实抓取或独立成功率样本。
+生产搜索的 30mm 方块离线对照为 18 个起点：13 个有限接触区域拒绝，
+5 个通过逐指几何后由原端点碰撞拒绝。FK 正对照从同一合法手姿的
+真实 FK 生成三目标，可得到零位置误差、无自碰的远离物体端点。
+它只排除了静态坐标/联合 IK 接线失效，不能证明共同物体上可抓。
+
+评分解释限制
+general_grasp_contacts.task_wrench_margin 始终以同一公开几何中心为
+假设质心，并固定重力后放大任务扰动。质量、摩擦、法向力、接触面积
+均为声明范围；有限指垫使用共享总法向力约束的四个摩擦锥边缘点。
+不能把 LP 力当作实测预载，不能把该分数当作严格成功证书。
+R1工程版曾使用0.25mm LP位置sigma，与RGB区域1.5mm声明不一致。
+独立审阅后、frozen物理复跑之前已统一为1.5mm/.15rad。LP仍仅测试单接触
+逐轴±2sigma场景，不能称为全部接触同时误差的联合鲁棒证明。
+自动选指在几何/整路门槛后排序。只有实际日志同时保留两指、三指
+可行候选时，才能说“评分选择了其中一个”；否则只能说“唯一可行组”。
+重抓时配置与预载数组已按参与指组重建，但没有实际可执行三指路径，
+就不能声称物理验证过两指到三指切换。

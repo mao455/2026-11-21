@@ -1,18 +1,18 @@
 {
-  "source_revision": "f7d943ecf11bbc8b523697a9af6f606ec63ef789",
-  "snapshot_id": "34aa67c5bde519fc89e785309b09c3430488aceedf6a4f17a1d1caeb35b7d240",
+  "source_revision": "cae50aae51e6a8655b8fb7cc824ac4187aab367e",
+  "snapshot_id": "18e904f0a8d9440c6df06e170d3fccc3952f1ed8fae278c2afda966df5dea3c6",
   "complete_code_repository": "https://github.com/ztr583/grasp_small_obj.git",
   "complete_code_branch": "mao0629",
   "files": {
     "algorithms/evaluator.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/evaluator.py",
-      "bytes": 2619,
-      "sha256": "14f532c6646322c2d8c1610bdf01f59f3632869c3cc62fa041ced3592c8ffdc9"
+      "bytes": 8806,
+      "sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b"
     },
     "algorithms/general_grasp_contacts.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/general_grasp_contacts.py",
-      "bytes": 47011,
-      "sha256": "4bb79e2f2e393aa2654d6c9e3904fead201ccbd6a8879a168f32de1a1b338d6a"
+      "bytes": 61816,
+      "sha256": "872a5421603d0c60b9a296adccff8f15d30f3e87dccdc7bf54b86606b79b7c0a"
     },
     "algorithms/general_grasp_integration.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/general_grasp_integration.py",
@@ -21,13 +21,13 @@
     },
     "algorithms/stage5_control.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage5_control.py",
-      "bytes": 38795,
-      "sha256": "fda2476a4975facad2d13eacd2b060021db4e767e9ffafe6fe4fe936776a5ab8"
+      "bytes": 44953,
+      "sha256": "167b6aa354f6faead734b2ccb94042e3f51814319a7ddd396700c065fb28504a"
     },
     "algorithms/stage9_config.json": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_config.json",
-      "bytes": 605,
-      "sha256": "fc5abf677ebeb5df8a1a2141892d14ce116b34794a2ae7a36c957e5083496940"
+      "bytes": 908,
+      "sha256": "ea8f7b81a8d3e2e66a1d0f18fdc4c46258efa07d680427048d4176cfdb7ca376"
     },
     "algorithms/stage9_control.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_control.py",
@@ -51,8 +51,28 @@
     },
     "algorithms/visual_controller.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/visual_controller.py",
-      "bytes": 187948,
-      "sha256": "d7a34068038cb03157178dd29c07f9976666f930b9a7e9f90030da004faf220b"
+      "bytes": 200313,
+      "sha256": "0d0a19a6df7a178dead4a8b91271b9c7e538a6b81759c25b1085e7c10555669a"
+    },
+    "configurations/stage12/cube.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage12_cases/cube.json",
+      "bytes": 110,
+      "sha256": "dfbf2e791f9107cac55023acf9b4f9e3347a6ffae009fa1ce564e75a5f0e2ce3"
+    },
+    "configurations/stage12/cylinder.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage12_cases/cylinder.json",
+      "bytes": 114,
+      "sha256": "c86328065277754977a7ee17d2b6f15ecbb725965439c9ec9de4bc50bc96bf2b"
+    },
+    "configurations/stage12/cylinder_new.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage12_cases/cylinder_new.json",
+      "bytes": 112,
+      "sha256": "4844b070959ebd8ded31de1805f8317ccf89611e06750b67b812e509d4a255ea"
+    },
+    "configurations/stage12/pyramid_diagnostic.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage12_cases/pyramid_diagnostic.json",
+      "bytes": 171,
+      "sha256": "c7c67d1ff681f1f4ace0257eefa327bc04b6d9cc6082d25876c04435187ba522"
     },
     "data/stage11/algorithm_trajectories.json": {
       "source": "FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/algorithm_trajectories.json",
@@ -123,6 +143,11 @@
       "source": "FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/v9_compute_audit.json",
       "bytes": 2580,
       "sha256": "1ff71fa19455f83cc4bec726b57ec3ead03c3292d0c4d455888662ade52226a0"
+    },
+    "data/stage12/success30_evidence.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/SUCCESS30_EVIDENCE.json",
+      "bytes": 28146,
+      "sha256": "be7ae12bda18d38b1a2397811476a0511c5eb4317c722ac5795af242771ecd5f"
     },
     "reports/STAGE10_ALGORITHM.txt": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE10_ALGORITHM.txt",
@@ -239,6 +264,41 @@
       "bytes": 5595,
       "sha256": "87f069100c3c311b4f75c3a298528b568af511628c472ee0b1de8d8d9b2a281d"
     },
+    "reports/STAGE12_ALGORITHM.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE12_ALGORITHM.txt",
+      "bytes": 13920,
+      "sha256": "752603710c22ab2b9d203f22ec829d219dad69636ca34dbf7b7833f12f1a0dd4"
+    },
+    "reports/STAGE12_EVIDENCE.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE12_EVIDENCE.json",
+      "bytes": 1062758,
+      "sha256": "d0e706c5a090744d4b1bed81d09fe87a7842e514ae3a6a13896237b98df288fa"
+    },
+    "reports/STAGE12_EXECUTION.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE12_EXECUTION.txt",
+      "bytes": 5082,
+      "sha256": "1adde44b232bd34ee2fdc4e5d642381a645abcf19fdcafba34276349dffed81f"
+    },
+    "reports/STAGE12_FREEZE.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE12_FREEZE.json",
+      "bytes": 4903,
+      "sha256": "b652c52c750571e66baa3e98998fa07a0d4c8bf25c23ad18c02455a03f0633ef"
+    },
+    "reports/STAGE12_PLAN.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE12_PLAN.json",
+      "bytes": 2291,
+      "sha256": "dd96cf41b26e7d71bf90540568eb2df8e28b089115fb3d4631b838f9e6257fb0"
+    },
+    "reports/STAGE12_PRIOR_AUDIT.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE12_PRIOR_AUDIT.txt",
+      "bytes": 5481,
+      "sha256": "233df88fa53f1e55c6b277fbac03b803e22a01c5f0a46390c42e011336fb36cf"
+    },
+    "reports/STAGE12_RESULTS.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE12_RESULTS.txt",
+      "bytes": 18158,
+      "sha256": "75bab973dd9bcfdb8a26e3162eecccfa1adfec73b017a62f9347168153b9e06e"
+    },
     "reports/STAGE9_ALGORITHM.txt": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE9_ALGORITHM.txt",
       "bytes": 13717,
@@ -273,6 +333,11 @@
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE9_RESULTS.txt",
       "bytes": 32762,
       "sha256": "35c698649f4339ed08a1f427fb0afb162236aa0ed9087e0406da4e60008eae22"
+    },
+    "reports/SUCCESS30_RESULTS.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/SUCCESS30_RESULTS.txt",
+      "bytes": 7812,
+      "sha256": "54430355cb070a47199c71254d32998c85e9597c137e04bab0aff059ee789d8a"
     }
   }
 }

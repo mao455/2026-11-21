@@ -91,41 +91,128 @@ def s11_contact_quality(robot, candidate, initial):
     time_s = sum(n for _,n,_ in candidate['prefix'])/120
     clearance = float(meta['endpoint']['table_clearance_m'])
     terms = dict(mean_position= float(np.mean(errors/.0008)), mean_normal=float(np.mean(normals/.5)),
-                 uncertainty_m=.001, tangent_span_m=span, min_table_clearance_m=clearance,
+                 uncertainty_m=.0015, tangent_span_m=span, min_table_clearance_m=clearance,
                  planned_motion_s=time_s, per_finger_error_m=errors.tolist(), all_fingers_passed=bool(np.all(errors<.0008) and np.all(normals<.5)),
                  support_scope='geometric spread only; friction and forces not measured')
     score = terms['mean_position'] + terms['mean_normal'] + .02*time_s + .001/max(clearance,.00065) - min(span/.01,1.)*.2
     return score, terms
 
+def s12_task_quality(robot, candidate, info):
+    """Same world-frame tasks/COM assumption for both groups, no private inputs."""
+    from general_grasp_contacts import task_wrench_margin
+    q = candidate['q']; count = len(candidate['points'])
+    indices = robot.active_finger_indices
+    jacobian = np.zeros((3*count,len(indices)))
+    for column,index in enumerate(indices):
+        plus=q.copy();minus=q.copy();plus[index]+=1e-6;minus[index]-=1e-6
+        jacobian[:,column]=((robot.tips(plus)[0]-robot.tips(minus)[0])/(2e-6)).ravel()
+    limits={joint.get('name'):float(joint.find('limit').get('effort','inf'))
+            for joint in ET.parse(URDF).getroot().findall('joint') if joint.find('limit') is not None}
+    effort=np.array([limits.get(NAMES[i],np.inf) for i in indices])
+    # Geometric targets are the public surface hypotheses. FK residual is kept
+    # separately; no hypothetical LP force is interpreted as measured preload.
+    points=np.asarray(candidate['meta']['targets'])
+    parameters=dict(globals().get('S11_CONFIG',{}).get('task_wrench',{}))
+    sigma=parameters.pop('position_sigma_m',.00025)
+    parameters.pop('margin_tolerance',None)
+    common=dict(reference=np.asarray(info['center']),torque_map=jacobian.T,effort_limits=effort,**parameters)
+    nominal=task_wrench_margin(points,-np.asarray(candidate['inward']),**common)
+    robust=task_wrench_margin(points,-np.asarray(candidate['inward']),
+        covariances=np.tile(np.eye(3)*(sigma**2),(count,1,1)),**common)
+    return dict(nominal=nominal,robust=robust,position_sigma_m=sigma,
+        classification='conditional_load_model_not_physical_certificate',
+        measured_force_available=False)
+
+def s12_select_contacts(s, candidate):
+    count=len(candidate['points'])
+    s['robot'].configure_contacts(count)
+    s['hand']=xhand_from_runtime(s['ctx'].robot_description,PRIMITIVE,count)
+    s['squeeze']=np.full(count,.0005)
+    s5_note(s['ctx'],'s12_candidate_command_binding',dict(attempt=s['attempt'],
+        step=s['obs']['step'],frame_id=s9_frame(s['obs']),contact_count=count,
+        candidate_id=candidate['meta'].get('candidate_id'),
+        actual_q=s['obs']['actual_q'],planned_q=candidate['q'].tolist(),
+        task_quality=candidate['meta'].get('task_quality'),
+        approach_first_command=candidate['prefix'][0][0] if candidate['prefix'] else None))
+
+def s12_order_candidates(candidates, tolerance=.1):
+    """Compare conditional margins; overlapping error intervals use motion.
+
+    Nominal versus sampled-uncertainty margins are not confidence intervals.
+    Relative tolerance prevents insignificant alpha differences determining
+    finger count. Unsupported grasps remain an explicit empirical fallback.
+    """
+    remaining=list(candidates);ordered=[]
+    while remaining:
+        supported=[c for c in remaining if c['meta']['task_quality']['nominal']['gravity_feasible']]
+        pool=supported or remaining
+        best=max(pool,key=lambda c:c['meta']['task_quality']['robust']['minimum_task_margin'])
+        bt=best['meta']['task_quality'];br=bt['robust']['minimum_task_margin'];bn=bt['nominal']['minimum_task_margin']
+        tied=[]
+        for c in pool:
+            t=c['meta']['task_quality'];r=t['robust']['minimum_task_margin'];n=t['nominal']['minimum_task_margin']
+            threshold=max(abs(n-r),abs(bn-br),tolerance*max(1.,abs(br),abs(r)))
+            if br-r<=threshold:
+                tied.append(c)
+        def motion(c):
+            terms=c['meta']['quality_terms']
+            return (terms['planned_motion_s'],-terms['min_table_clearance_m'],terms['uncertainty_m'],c['meta']['quality_score'])
+        chosen=min(tied,key=motion)
+        chosen['meta']['rank_reason']=dict(best_robust_margin=br,relative_tolerance=tolerance,
+            tied_candidate_ids=[c['meta']['candidate_id'] for c in tied],
+            rule='uncertainty-overlap or relative margin tie: shortest motion, clearance, observation, normalized error',
+            load_gate='nominal_gravity_supported' if supported else 'uncertified_empirical_fallback')
+        ordered.append(chosen)
+        remaining=[c for c in remaining if c is not chosen]
+    return ordered
+
 def s11_contact_candidates(s, robot, info, prior, checker, initial, axes, heights, shift, geometry_source, **kwargs):
-    mode = globals().get('S11_CONFIG',{}).get('fingers','two')
-    if mode == 'two':
+    settings=globals().get('S11_CONFIG',{})
+    mode=settings.get('fingers','two')
+    if mode=='two' and not settings.get('task_ranking',False):
         robot.configure_contacts(2)
-        return _s3_candidates_on_axes(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, **kwargs)
-    modes = (2,3) if mode == 'auto' else (3,)
+        return _s3_candidates_on_axes(robot,info,prior,checker,initial,axes,heights,shift,geometry_source,**kwargs)
+    modes=(2,3) if mode=='auto' else (3,) if mode=='three' else (2,)
     if kwargs.get('refinement') and s.get('c') is not None:
-        modes=(len(s['c']['points']),)  # preserve the active physical grasp during near refinement
-    accepted=[]; rejected=[]; qualities=[]
+        modes=(len(s['c']['points']),)
+    accepted=[];rejected=[];qualities=[]
     for count in modes:
         robot.configure_contacts(count)
-        choices, failures = _s3_candidates_on_axes(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, **kwargs)
-        for failure in failures:
-            failure['contact_count']=count
-        rejected += failures
-        for candidate in choices:
-            score, terms = s11_contact_quality(robot,candidate,initial)
-            candidate['meta'].update(contact_count=count,quality_score=score,quality_terms=terms)
-            accepted.append(candidate);qualities.append(dict(contact_count=count,score=score,terms=terms))
-    accepted.sort(key=lambda c:c['meta']['quality_score'])
-    count=accepted[0]['meta']['contact_count'] if accepted else modes[0]
-    robot.configure_contacts(count)
-    s['hand']=xhand_from_runtime(s['ctx'].robot_description,PRIMITIVE,count)
-    s5_note(s['ctx'],'s11_finger_selection',dict(step=s['obs']['step'],frame_id=s9_frame(s['obs']),mode=mode,selected=count if accepted else None,candidates=qualities,rejected=rejected,
-        middle_calibration='static asset exposed component3 frame; no measured material, optical or actuator response'))
+        choices,failures=_s3_candidates_on_axes(robot,info,prior,checker,initial,axes,heights,shift,geometry_source,**kwargs)
+        for failure in failures:failure['contact_count']=count
+        rejected+=failures
+        for index,candidate in enumerate(choices):
+            repeated=any(len(old['points'])==len(candidate['points']) and
+                np.mean(np.linalg.norm(np.asarray(old['points'])-candidate['points'],axis=1))<.001
+                for old in s.get('tried_contacts',[]))
+            if repeated:
+                rejected.append(dict(contact_count=count,reason='already_physically_tried_placement',
+                    targets=candidate['points'].tolist()))
+                continue
+            score,terms=s11_contact_quality(robot,candidate,initial)
+            task=s12_task_quality(robot,candidate,info)
+            candidate['meta'].update(contact_count=count,quality_score=score,quality_terms=terms,
+                task_quality=task,candidate_id=str(s['attempt'])+'-'+str(count)+'-'+str(index))
+            # Unknown force/COM/patch friction stays explicit. Geometry-safe
+            # empirical attempts are retained even without a load certificate.
+            accepted.append(candidate)
+            qualities.append(dict(candidate_id=candidate['meta']['candidate_id'],contact_count=count,
+                score=score,terms=terms,task_quality=task))
+    accepted=s12_order_candidates(accepted,settings.get('task_wrench',{}).get('margin_tolerance',.1))
+    robot.configure_contacts(len(accepted[0]['points']) if accepted else modes[0])
+    s5_note(s['ctx'],'s11_finger_selection',dict(step=s['obs']['step'],frame_id=s9_frame(s['obs']),
+        mode=mode,selected=len(accepted[0]['points']) if accepted else None,
+        selection_scope='both_groups_geometry_and_path_feasible' if {len(c['points']) for c in accepted}=={2,3} else 'only_one_group_feasible' if accepted else 'no_feasible_group',
+        ordered_candidate_ids=[c['meta']['candidate_id'] for c in accepted],
+        candidates=qualities,rejected=rejected,actual_attempts=s['attempt']-1,
+        candidate_rejections=len(rejected),
+        selection_reason='nominal gravity; robust task reserve; overlapping uncertainty or relative tolerance uses motion/clearance',
+        rank_reasons=[dict(candidate_id=c['meta']['candidate_id'],**c['meta']['rank_reason']) for c in accepted],
+        middle_calibration=MIDDLE_CONTACT))
     return accepted,rejected
 
 def s5_plan(s, axis='short', height=None, shift=0.0):
-    if s['attempt'] >= 3:
+    if s['attempt'] >= 3 and globals().get('S11_CONFIG',{}).get('fingers','two')=='two':
         previous = np.asarray(s['c']['inward'][0])
         choices = []
         for angle in (np.pi / 4, -np.pi / 4):
@@ -152,7 +239,7 @@ def s5_plan(s, axis='short', height=None, shift=0.0):
     if isinstance(axis, (list, tuple)):
         direction = np.asarray(axis)
     heights = (0.4, 0.6) if height is None else (float(height),)
-    initial = s['last'] if s['attempt'] > 1 else np.asarray(s['obs']['actual_q'])
+    initial = np.asarray(s['obs']['actual_q']) if globals().get('S11_CONFIG',{}).get('task_ranking') else s['last'] if s['attempt'] > 1 else np.asarray(s['obs']['actual_q'])
     if s['attempt'] > 1:
         ticket = STAGE3_RELEASE_TICKET
         if not ticket or not ticket.get('ready') or ticket.get('source_attempt') != s['attempt'] - 1:
@@ -175,6 +262,7 @@ def s5_plan(s, axis='short', height=None, shift=0.0):
     if not candidates:
         return False
     s['c'] = candidates[0]
+    s12_select_contacts(s,s['c'])
     s['axis'] = direction
     s['lift_reports'] = []
     s['hold_reports'] = []
@@ -290,6 +378,7 @@ def s5_refine(s):
     s['checker'] = checker
     s5_move(s, opened, n, 's5_rgb_realign', True)
     s['c'] = c
+    s12_select_contacts(s,c)
     s['info'] = refined
     s['refined'] = True
     return True
@@ -568,7 +657,7 @@ def s5_recover(s):
     STAGE3_ATTEMPT = s['attempt']
     state = dict(s, info=s['info'], newinfo=s['info'], refined=False)
     state.pop('ctx', None)
-    local = globals().get('S11_CONFIG', {}).get('local_retry', False) and s.get('s8_previous_decision', {}).get('grounded_evidence', False)
+    local = globals().get('S11_CONFIG', {}).get('fingers','two')=='two' and globals().get('S11_CONFIG', {}).get('local_retry', False) and s.get('s8_previous_decision', {}).get('grounded_evidence', False)
     recovered = stage3_recover(s['ctx'], state, s11_local_probe if local else None)
     if recovered is None:
         for key in ('obs', 'last'):
@@ -578,7 +667,7 @@ def s5_recover(s):
         s[key] = recovered[key]
     s['local_retry_ready'] = recovered.get('local_retry_ready', False)
     s['attempt'] += 1
-    s['squeeze'] = np.full(2, 0.0005)
+    s['squeeze'] = np.full(len(s['c']['points']), 0.0005)
     return True
 
 def early_proof(s, height=0.03, hold=360):
@@ -625,13 +714,16 @@ def policy_main(ctx):
     s = s5_init(ctx)
     for attempt in range(S5_ATTEMPTS):
         if not s.pop('local_retry_ready', False):
-            placed = attempt > 0 and globals().get('S11_CONFIG', {}).get('local_retry', False) and s11_post_release_plan(s)
-            if not placed and not s5_plan(s, S5_AXIS if attempt == 0 else 'previous_orthogonal'):
+            placed = attempt > 0 and globals().get('S11_CONFIG', {}).get('fingers','two')=='two' and globals().get('S11_CONFIG', {}).get('local_retry', False) and s11_post_release_plan(s)
+            next_axis=S5_AXIS if attempt==0 else 'previous_orthogonal'
+            if globals().get('S11_CONFIG',{}).get('fingers')=='auto': next_axis=S5_AXIS
+            if not placed and not s5_plan(s,next_axis):
                 return
             s5_approach(s)
             if not s.get('refined'):
                 s5_refine(s)
         s.setdefault('tried_points', []).append(s['c']['points'].copy())
+        s.setdefault('tried_contacts',[]).append(dict(fingers=list(s['robot'].finger_names),points=s['c']['points'].tolist(),candidate_id=s['c']['meta'].get('candidate_id')))
         s5_close(s, S5_CLOSURE, S5_CAP)
         decision = None
         for phase, height, hold in (('proof', 0.003, 48), ('middle', 0.0165, 0), ('final', 0.03, 360)):

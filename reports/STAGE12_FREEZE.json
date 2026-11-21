@@ -1,0 +1,105 @@
+{
+  "sha256": {
+    "experiments/rax_dexbin_tinyobj/run.py": "cfece41f3b7283381f73e3c617b96a101df354f999b209afd8715f9a03f7bd94",
+    "experiments/rax_dexbin_tinyobj/run_stage9.py": "977163ebf4b4d457f88048b2ca696a376ff569c0b1524a7c4b2bc1496f79623f",
+    "experiments/rax_dexbin_tinyobj/visual_controller.py": "0d0a19a6df7a178dead4a8b91271b9c7e538a6b81759c25b1085e7c10555669a",
+    "experiments/rax_dexbin_tinyobj/stage5_control.py": "167b6aa354f6faead734b2ccb94042e3f51814319a7ddd396700c065fb28504a",
+    "experiments/rax_dexbin_tinyobj/stage9_control.py": "b575eeee3a324e3c04407a6230adf7ec72b4c491b6ee107399da9c13e1152ea9",
+    "experiments/rax_dexbin_tinyobj/stage9_frames.py": "ba486a68ca3ed589cf07b39c2ef87d970c6634fb5ba98e515d7c636128956d51",
+    "experiments/rax_dexbin_tinyobj/general_grasp_contacts.py": "872a5421603d0c60b9a296adccff8f15d30f3e87dccdc7bf54b86606b79b7c0a",
+    "experiments/rax_dexbin_tinyobj/stage9_config.json": "ea8f7b81a8d3e2e66a1d0f18fdc4c46258efa07d680427048d4176cfdb7ca376",
+    "experiments/rax_dexbin_tinyobj/stage9_episode.py": "e3ebd2efb378ac30ff1c77d29593211e54fea1ce487f394669f68ba8d76c2597",
+    "experiments/rax_dexbin_tinyobj/stage9_backend.py": "992633b93e2e24e9ab903265f846748003288b2037fd3fb8ac3ea3788857db3c",
+    "experiments/rax_dexbin_tinyobj/stage9_observation.py": "33f3ddc59ec7b0d05ceae6a38168aa8b822fa1c3f277ddd06752e5d9643fd581",
+    "experiments/rax_dexbin_tinyobj/stage9_recording.py": "5cd847bb0bea09473f7af374223124927d3311c98fef2c2507e8d8bf23c8eeff",
+    "experiments/rax_dexbin_tinyobj/round14_objects.py": "7bc3a9da1839f96963db7b1390ffc176cd4aca42743ccf347fec8c9c3e392720"
+  },
+  "base_commit": "f7d943ecf11bbc8b523697a9af6f606ec63ef789",
+  "recommended_profile": "v9 two max_attempts3",
+  "research_profile": "fast two/three/auto with conditional task ranking",
+  "physical_runs": {
+    "cylinder_two": {
+      "controller_sha256": "5c8f54d394f4a416f67133e5b079310de2428b8f562a6aeba7aa51a9f9a6d4b7",
+      "case_file": "stage12_cases/cylinder.json"
+    },
+    "cylinder_three": {
+      "controller_sha256": "cf8dea30f432156624b45d2395e1183e522bf37b5ff8335d4e7397c1991fc428",
+      "case_file": "stage12_cases/cylinder.json"
+    },
+    "cylinder_auto": {
+      "controller_sha256": "50f586a9d07daa1fbc802f5ad733c2e63794d5d33edf5d213e919aa3df80835b",
+      "case_file": "stage12_cases/cylinder.json"
+    },
+    "cube_two": {
+      "controller_sha256": "5c8f54d394f4a416f67133e5b079310de2428b8f562a6aeba7aa51a9f9a6d4b7",
+      "case_file": "stage12_cases/cube.json"
+    },
+    "cube_three": {
+      "controller_sha256": "cf8dea30f432156624b45d2395e1183e522bf37b5ff8335d4e7397c1991fc428",
+      "case_file": "stage12_cases/cube.json"
+    },
+    "cube_auto": {
+      "controller_sha256": "50f586a9d07daa1fbc802f5ad733c2e63794d5d33edf5d213e919aa3df80835b",
+      "case_file": "stage12_cases/cube.json"
+    },
+    "pyramid_auto3": {
+      "controller_sha256": "2051888ae8a734099da85a645627232136e71fc66ccbc6f7589e518cfa721f7c",
+      "case_file": "stage12_cases/pyramid_diagnostic.json"
+    },
+    "v9_wedge": {
+      "controller_sha256": "843fa56821615f6339fc8f230c4f0cb0787a3f8b6af87b9bcc3574025edfc15b",
+      "case_file": "stage6_cases/dev_wedge.json"
+    }
+  },
+  "config": {
+    "physics_hz": 120,
+    "control_hz": 20,
+    "camera_fps": 30,
+    "video_fps": 30,
+    "control_steps": 6,
+    "camera_steps": 4,
+    "max_frame_age_s": 0.1,
+    "recording_mode": "minimal",
+    "early_settle": true,
+    "default_profile": "v9",
+    "max_attempts": 3,
+    "profiles": {
+      "v9": {
+        "fast_close": false,
+        "local_retry": false
+      },
+      "fast": {
+        "fast_close": true,
+        "local_retry": false
+      },
+      "retry": {
+        "fast_close": true,
+        "local_retry": true,
+        "local_translation_m": 0.008
+      }
+    },
+    "position_preload_cap_m": 0.0045,
+    "force_estimate_available": false,
+    "task_wrench": {
+      "mass_range_kg": [
+        0.005,
+        0.015
+      ],
+      "friction": 0.3,
+      "normal_uncertainty": 0.15,
+      "max_normal_force": 1.0,
+      "lateral_force_n": 0.02,
+      "torque_nm": 0.0001,
+      "position_sigma_m": 0.0015,
+      "margin_tolerance": 0.1,
+      "pad_radius_m": 0.0012
+    }
+  },
+  "scope": "all primary source fingerprints unchanged across physical rollout; original evaluator remains",
+  "case_sha256": {
+    "experiments/rax_dexbin_tinyobj/stage12_cases/cube.json": "dfbf2e791f9107cac55023acf9b4f9e3347a6ffae009fa1ce564e75a5f0e2ce3",
+    "experiments/rax_dexbin_tinyobj/stage12_cases/cylinder.json": "c86328065277754977a7ee17d2b6f15ecbb725965439c9ec9de4bc50bc96bf2b",
+    "experiments/rax_dexbin_tinyobj/stage12_cases/cylinder_new.json": "4844b070959ebd8ded31de1805f8317ccf89611e06750b67b812e509d4a255ea",
+    "experiments/rax_dexbin_tinyobj/stage12_cases/pyramid_diagnostic.json": "c7c67d1ff681f1f4ace0257eefa327bc04b6d9cc6082d25876c04435187ba522"
+  }
+}

@@ -1940,7 +1940,198 @@ class Stage3LiveVolume(_geometry_Stage3LiveVolume):
 
 
 
+def _s12_rgb_contact_regions(info, axis, height_fractions, tangent_angles):
+    """Ray/facet intersections of the public RGB envelope, not object truth.
+
+    The initial overhead height is a hypothesis; only live FingerEye geometry
+    warrants a visibility claim. Surface normals are piecewise hull normals.
+    """
+    cloud = np.asarray(info['collision_points'], dtype=float)
+    hull = ConvexHull(cloud)
+    planes = hull.equations
+    center = np.asarray(info['center'], dtype=float).copy()
+    axis = np.asarray(axis, dtype=float)
+    tangent = np.cross([0., 0., 1.], axis)
+    table = float(info['table_z'])
+    top = float(cloud[:, 2].max())
+    regions = []
+    for finger, h, angle in zip(('thumb', 'index', 'middle'), height_fractions, tangent_angles):
+        sign = -1. if finger == 'thumb' else 1.
+        direction = sign * np.cos(angle) * axis + np.sin(angle) * tangent
+        origin = center.copy()
+        origin[2] = table + max(.004, h * (top-table))
+        denom = planes[:, :3] @ direction
+        distance = -(planes[:, :3] @ origin + planes[:, 3]) / np.where(abs(denom) > 1.e-12, denom, np.nan)
+        eligible = np.flatnonzero((denom > 1.e-8) & (distance >= 0))
+        if not len(eligible):
+            return []
+        facet = int(eligible[np.argmin(distance[eligible])])
+        normal = planes[facet, :3]
+        point = origin + direction * distance[facet] + normal * .0003
+        regions.append(dict(finger=finger, point_world_m=point.tolist(), outward_normal_world=normal.tolist(),
+                            visibility='RGB envelope hypothesis; side visibility not certified',
+                            position_uncertainty_m=.0015, normal_uncertainty_rad=.15,
+                            height_fraction=float(h), angular_offset_rad=float(angle), facet=facet,
+                            height_source='public RGB envelope; initial overhead height may be footprint prior'))
+    return regions
+
+
+def _s12_region_ik(robot, seed, regions, info):
+    """Joint IK over finite RGB facet patches, then fixed-point IK confirmation.
+
+    Tangential coordinates and height can change within each declared patch;
+    residuals are against those public surface constraints, never against FK
+    points selected without a surface check.
+    """
+    selected=np.r_[np.arange(6),robot.active_finger_indices]
+    q=np.asarray(seed,dtype=float).copy()
+    lower=robot.lo[selected]+1.e-6;upper=robot.hi[selected]-1.e-6
+    lower[9]=max(lower[9],0.)
+    lower[:3]=q[:3]-.075;upper[:3]=q[:3]+.075
+    lower[3:6]=np.maximum(lower[3:6],q[3:6]-1.)
+    upper[3:6]=np.minimum(upper[3:6],q[3:6]+1.)
+    q[selected]=np.clip(q[selected],lower+1.e-7,upper-1.e-7)
+    centers=np.asarray([region['point_world_m'] for region in regions])
+    outward=np.asarray([region['outward_normal_world'] for region in regions])
+    hull=ConvexHull(np.asarray(info['collision_points'],dtype=float));planes=hull.equations
+    table=float(info['table_z']);top=float(np.asarray(info['collision_points'])[:,2].max())
+    samples=[]
+    # Deterministic static assembly samples penalize housing penetration during
+    # search. The original full triangle checker remains the acceptance gate.
+    for name,surface in robot.surfaces.items():
+        if any(finger in name for finger in ('thumb','index','middle')):
+            vertices=np.asarray(surface.vertices)
+            samples.append((name,vertices[np.linspace(0,len(vertices)-1,min(64,len(vertices)),dtype=int)]))
+    def residual(x):
+        cur=q.copy();cur[selected]=x
+        points,normals,_,poses=robot.tips(cur)
+        offset=points-centers
+        plane_error=np.sum(offset*outward,axis=1)
+        tangential=offset-plane_error[:,None]*outward
+        violations=np.maximum(points@planes[:,:3].T+planes[:,3]-.00035,0.)
+        patch=np.maximum(abs(tangential)-[.012,.012,.012],0.)
+        verts=robot.vertices(poses)
+        assembly=np.concatenate([values@poses[name][:3,:3].T+poses[name][:3,3] for name,values in samples])
+        inside=np.minimum(np.max(assembly@planes[:,:3].T+planes[:,3]+.00065,axis=1),0.)
+        return np.r_[plane_error*2000,violations.ravel()*2000,patch.ravel()*1000,
+                     np.maximum(table+.004-points[:,2],0)*2000,np.maximum(points[:,2]-top+.003,0)*2000,
+                     (normals+outward).ravel()*8,np.minimum(verts[:,2]-table-.001,0)*3000,inside*3000,
+                     (x[3:6]-seed[3:6])*.08]
+    started=time.perf_counter()
+    fit=least_squares(residual,q[selected],bounds=(lower,upper),x_scale=np.r_[[.03]*3,[.5]*(len(selected)-3)],
+                      max_nfev=100,ftol=1.e-6,xtol=1.e-6,gtol=1.e-6)
+    q[selected]=fit.x
+    points,_,_,_=robot.tips(q)
+    goals=points-np.sum((points-centers)*outward,axis=1)[:,None]*outward
+    # Keep the projection on each public finite face and inside declared patch.
+    valid=bool(np.max(goals@planes[:,:3].T+planes[:,3])<.0004 and
+               np.all(abs(goals-centers)<.0125) and np.all(goals[:,2]>=table+.003) and np.all(goals[:,2]<=top-.002))
+    refined_regions=[]
+    for region,point in zip(regions,goals):
+        item=dict(region,point_world_m=point.tolist(),patch_center_world_m=region['point_world_m'],patch_half_extent_m=.012)
+        refined_regions.append(item)
+    return q,goals,refined_regions,dict(region_ik_success=bool(fit.success),region_patch_valid=valid,
+                    region_ik_nfev=int(fit.nfev),region_ik_cost=float(fit.cost),region_ik_wall_s=time.perf_counter()-started)
+
+
+def _s12_three_candidates(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, retime=False, refinement=False):
+    """Bounded independent contact regions, wrist/joint starts, original guards.
+
+    Three fingertips are not copies of a two-pad template. All returned plans
+    pass the unchanged endpoint, approach, close, lift, joint and speed checks.
+    Rejected candidates retain the first gate and per-finger errors.
+    """
+    results, rejected = [], []
+    started = time.perf_counter()
+    budget_s = 42.
+    maximum_solutions = 2
+    layouts = [((.50,.20,.80),(0.,-.55,.55)),
+               ((.50,.80,.20),(0.,-.55,.55)),
+               ((.65,.25,.75),(0.,-.90,.90)),
+               ((.40,.70,.25),(0.,-.90,.90)),
+               ((.35,.30,.85),(0.,-.25,.70)),
+               ((.65,.80,.20),(0.,-.70,.25))]
+    if refinement:
+        layouts = layouts[:2]
+    for axis_index, axis in enumerate(axes):
+        axis = np.asarray(axis, dtype=float)
+        if axis[0] < 0:
+            axis = -axis
+        yaw = np.arctan2(axis[1], axis[0])
+        rotation = Rotation.from_euler('z', yaw).as_matrix()
+        seed = np.asarray(prior).copy()
+        seed[:3] = rotation @ seed[:3] + np.r_[np.asarray(info['center'])[:2], 0.]
+        seed[3:6] = Rotation.from_matrix(rotation @ Rotation.from_euler('ZYX', seed[3:6]).as_matrix()).as_euler('ZYX')
+        seed[12:14] = [1.1,.15]
+        seed[14:] = np.asarray(initial)[14:]
+        for layout_index, (fractions, angles) in enumerate(layouts):
+            regions = _s12_rgb_contact_regions(info, axis, fractions, angles)
+            if not regions:
+                rejected.append(dict(stage3_reject='RGB_contact_region_unavailable', first_rejection='contact_regions', layout=layout_index))
+                continue
+            goals = np.asarray([x['point_world_m'] for x in regions])
+            inward = -np.asarray([x['outward_normal_world'] for x in regions])
+            for start_index in range(3 if not refinement else 1):
+                if time.perf_counter()-started > budget_s:
+                    rejected.append(dict(stage3_reject='bounded_search_wall_budget', first_rejection='search_budget', searched=len(rejected)+len(results), wall_s=time.perf_counter()-started))
+                    return results, rejected
+                start = seed.copy()
+                if start_index == 1:
+                    start[3:6] += [.50,-.45,.35]
+                    start[6:14] = [1.4,.1,.65,.06,1.25,.35,1.0,.45]
+                elif start_index == 2:
+                    start[3:6] += [-.50,-.65,-.45]
+                    start[6:14] = [1.3,.6,.15,.02,.9,.25,1.3,.1]
+                start = np.clip(start,robot.lo+1.e-5,robot.hi-1.e-5)
+                region_q,region_goals,chosen_regions,region_meta=_s12_region_ik(robot,start,regions,info)
+                q, meta = optimize(robot,region_q,region_goals,inward,normal_weight=7.,seed_index=0)
+                meta.update(region_meta)
+                goals=region_goals
+                meta.update(search='RGB_independent_regions_multistart_v12', layout=layout_index, wrist_joint_start=start_index,
+                            axis_index=axis_index, contact_regions=chosen_regions, height_fraction=float(fractions[0]),
+                            per_finger_height_fraction=list(fractions), along_fraction=0., stage3_shift_m=float(shift),
+                            stage3_axis_world=axis.tolist(), geometry_source=geometry_source,
+                            bounded_search=dict(layouts=len(layouts),starts_per_layout=3,maximum_wall_s=budget_s),
+                            contact_frame_source='static thumb/index calibration; middle component3 front face at x11.75,z47mm')
+                errors=np.asarray(meta['per_finger_error_m']);normal_errors=np.asarray(meta['normal_error_rad'])
+                check=checker.check(q);meta['endpoint']=check
+                reason = None
+                if not meta['region_patch_valid']: reason='public_contact_patch_bounds'
+                elif np.any(errors >= .0008): reason='per_finger_position'
+                elif np.any(normal_errors >= .5): reason='per_finger_normal'
+                elif not (np.all(q>=robot.lo) and np.all(q<=robot.hi)): reason='joint_limits'
+                elif not check['passed']: reason='endpoint_clearance_collision'
+                if refinement:
+                    angle=_s3_attitude_delta(np.asarray(initial)[3:6],q[3:6]);meta['refinement_attitude_delta_rad']=angle
+                    if angle>STAGE3_REFINEMENT_ATTITUDE_LIMIT_RAD: reason=reason or 'large_near_object_refinement_attitude_change'
+                if reason:
+                    meta.update(stage3_reject=reason,first_rejection=reason);rejected.append(meta);continue
+                points=robot.tips(q)[0]
+                prefix=stage3_approach(robot,q,points,inward,initial)
+                if retime: prefix=_s3_retime_approach(prefix,initial)
+                checks=[checker.check(np.asarray(x),object_check=p not in ('close','probe_hold')) for x,n,p in prefix]
+                positions=np.asarray([initial]+[x for x,n,p in prefix])
+                rate=abs(np.diff(positions,axis=0))/(np.asarray([n for x,n,p in prefix])[:,None]/120)
+                legal=all(np.all(np.asarray(x)>=robot.lo) and np.all(np.asarray(x)<=robot.hi) for x,n,p in prefix)
+                meta.update(path_passed=bool(all(x['passed'] for x in checks) and legal and rate[:,:3].max()<.15 and rate[:,3:].max()<1.5),
+                            failed_path_nodes=[i for i,x in enumerate(checks) if not x['passed']],
+                            commanded_peak_translation_m_s=float(rate[:,:3].max()),commanded_peak_joint_rad_s=float(rate[:,3:].max()))
+                if not meta['path_passed']:
+                    meta.update(stage3_reject='approach_close_path',first_rejection='approach_close_path');rejected.append(meta);continue
+                modes=[]
+                for mode in MODES:
+                    tail=branch(robot,q,points,inward,prefix,mode)[len(prefix):]
+                    if all(checker.check(np.asarray(x),object_check=False)['passed'] and np.all(np.asarray(x)>=robot.lo) and np.all(np.asarray(x)<=robot.hi) for x,n,p in tail):modes.append(mode)
+                if not modes:
+                    meta.update(stage3_reject='original_lift_tail_modes',first_rejection='original_lift_tail_modes');rejected.append(meta);continue
+                results.append(dict(q=q,points=points,inward=inward,prefix=prefix,meta=meta,modes=modes))
+                if len(results)>=maximum_solutions:return results,rejected
+    return results,rejected
+
+
 def _s3_candidates_on_axes(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, retime=False, refinement=False):
+    if len(robot.contact_points) == 3:
+        return _s12_three_candidates(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, retime, refinement)
     results, rejected = ([], [])
     for axis in axes:
         axis = np.asarray(axis, dtype=float).copy()
@@ -2006,7 +2197,8 @@ def _s3_candidates_on_axes(robot, info, prior, checker, initial, axes, heights, 
                     modes.append(mode)
             if modes:
                 results.append(dict(q=q, points=points, inward=inward, prefix=prefix, meta=meta, modes=modes))
-                return (results, rejected)
+                if len(results) >= (2 if globals().get('S11_CONFIG', {}).get('task_ranking', False) else 1):
+                    return (results, rejected)
             else:
                 meta['stage3_reject'] = 'no_original_tail_mode_feasible'
                 rejected.append(meta)

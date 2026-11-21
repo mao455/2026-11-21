@@ -1,0 +1,114 @@
+30 mm 试抬未掉落：成功判据与双仓库交付
+
+当前源码基于 Stage12 本地提交 9f47412dec185f10e543ea2094f588fafbb5417c。
+本次改的是后端成功口径，不修改规划、闭合、试抬、恢复、RGB输入或动作守卫。
+V9两指三抓仍为推荐基线；fast沿用已验证快速闭合。三指仍没有实际可执行解。
+
+1. 新口径 lift30_no_drop_v1
+
+“30 mm没掉就算成功”实现为：完成30 mm试抬，在最后连续2秒未掉落。
+- 命令抬升至少29.5 mm；保持段实际物体最低抬升至少28 mm。
+  30 mm目标给2 mm跟踪容差。这是显式评测约定，不是真机精度标定。
+- 保持段物体最低桌面净空至少5 mm，排除仍由桌面支撑。
+- 最后240个120 Hz物理步连续，逐步时间与编号完整；不是只数240条日志。
+- 整个episode几何合法；先前不合法步骤不能被后续重抓覆盖。
+- 宿主仍要求controller_completed、error=None、evaluator_and_adapter_unchanged。
+
+不以物体原生线速度、角速度、相对手位移或转动单独否决新主成功。
+接触力、接触位置、速度和相对位姿仍完整记录；旧严格评分原封不动单列。
+现有接触探针只覆盖部分连杆，不能把未记录到接触等同于所有手指无接触，
+因此主口径依赖实测物体高度与桌面净空，不设置不完整接触探针的力阈值。
+不读取FSM阶段名来判成功；方块最后虽然是s5_reobserve，物理上仍在手中保持。
+碰撞、关节限位、路径与机器人动作速度约束继续生效。
+
+2. 实际调用链及输出兼容
+
+run.py -> run_stage9.main -> stage9_episode / stage4_episode
+ -> run_round14_episode -> stage9_backend执行round14_backend
+ -> evaluator.evaluate(records, initial_object_z)
+ -> 后端summary.json -> 宿主result.json。
+
+原evaluate内容保留为evaluate_strict，阈值及返回字段保持原样。
+当前summary.success是新主结果，summary.legacy_strict是完整原严格结果。
+result.success仍叠加原宿主执行/完整性门槛；result.legacy_strict_success为对应旧结果。
+result.success_protocol明确标记协议。stage9_report和stage9_batch也分开success与strict，
+避免把新成功数误写为旧严格成功数。历史summary/result和Stage9–12报告没有覆盖。
+
+3. 原冻结8例真实轨迹的离线重裁决（不是重新物理执行8例）
+
+场景/配置             实际抓次  旧严格  30mm未掉  物理秒  保持最低抬升mm
+cylinder_two             1       成功     成功      24.9     29.861
+cylinder_three           0       失败     失败       0.0       —
+cylinder_auto            1       成功     成功      24.9     29.861
+cube_two                 1       失败     成功      28.7     29.243
+cube_three               0       失败     失败       0.0       —
+cube_auto                1       失败     成功      28.7     29.243
+pyramid_auto3            1       失败     失败      21.8     -0.100
+v9_wedge                 1       成功     成功      28.6     29.835
+
+分母是8个配置episode，不是8个不同物体：旧3/8，新5/8。
+其中6例真正执行抓取：旧3/6，新5/6；2例三指执行前拒绝，另列0/2。
+不能把候选拒绝说成“三指抓了但掉落”，也不能据此声称三指已抓起来。
+两个方块例的动作和初态相同，代表two/auto配置对照，不能当作独立重复测量。
+全部8例的legacy_strict重新计算与原始physics字典逐字段相同。
+
+方块保持段：实际最低抬升29.242720 mm，最低离桌23.056950 mm，
+相对手平移漂移0.493892 mm，相对转动0.028401 rad；原生线速度最大0.065908 m/s，
+角速度最大1.727152 rad/s。后两项分别超过旧0.05 m/s、1 rad/s门槛，故旧失败。
+按本次“抬到约30mm且未掉”的要求，两个方块均成功。
+三棱锥没有离桌，三指没有执行，不因成功口径调整变成成功。
+逐例新旧原值、原始文件SHA256和物理证据定位见SUCCESS30_EVIDENCE.json。
+
+4. 新评分确实进入正常物理入口
+
+本轮另外实际执行cube_smoke，使用同一cube.json、fast、two、单次预算、minimal。
+不是仅用测试或录制回放替代物理复跑。结果：新成功=true，旧严格=false，
+控制器完成、无错误、源码完整性=true；物理28.7秒、3444步、574条20Hz命令。
+最后保持为物理26.7–28.7秒，240步；实际最低抬升29.242720 mm。
+机器人实测峰值平移0.128123 m/s、关节1.347048 rad/s，原动作速度约束通过。
+与原frozen/cube_two的574条动作及全部3444步物理状态逐值一致，旧严格字典一致。
+说明本次变化来自评测口径。这个额外集成例不混入上面的8例分母。
+新旧模式渲染帧及曝光关节状态经stage9_report核验：862组帧，步间隔4，六路RGB。
+
+5. 复跑、重裁决和测试
+
+以下在FingerEyeLab执行，python为Isaac Lab环境；每次session必须为新目录。
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 python experiments/rax_dexbin_tinyobj/run.py \
+ --session outputs/success30_cube_new \
+ --case-file experiments/rax_dexbin_tinyobj/stage12_cases/cube.json \
+ --profile fast --fingers two --max-attempts 1 --mode minimal
+
+离线重裁决沿用同一evaluator，不另复制评分代码；不改写episode原件：
+python experiments/rax_dexbin_tinyobj/evaluator.py /path/to/recorded/episode \
+ --output outputs/success30_reassessment_new.json
+输出路径已存在时拒绝覆盖。可同时传多个episode，自动保留原严格结果和源文件哈希。
+
+cd experiments/rax_dexbin_tinyobj
+python -m unittest test_evaluator test_round14_retry test_general_grasp_contacts \
+ test_stage9_transport test_stage9_timing test_stage11_control test_github_publish -q
+74项通过。包括假抬、低于28mm、抬后掉落、桌面支撑、短保持、时间缺失/重复/跳变、
+危险前缀、旧评分黄金结果、原件不变、宿主完整性失败、规范OBJ精确发布、文本空白检查、
+双仓库部分推送失败与可恢复同步、批量报告中新旧成功数不混淆等。
+
+本轮原始输出：outputs/rax_dexbin_tinyobj/success30_20261121/
+ recorded_reassessment.json：8例离线裁决，不改原始日志
+ cube_smoke/episode/：本轮新物理轨迹、原生评分、RGB与宿主完整性记录
+ cube_smoke_comparison.json：新旧动作、物理轨迹与旧评分逐值比较
+ tests.log：74项测试记录
+ publish_receipt.json：双仓库实际提交、远端校验与共同snapshot_id（发布后生成）
+
+6. 修改与发布清单
+
+原有共享文件修改：evaluator.py、run_round14_episode.py、stage9_report.py、stage9_batch.py；
+修改README.md和test_round14_retry.py的时戳fixture；新增test_evaluator.py及本说明/精简证据。
+更新已有publish_github.py、github_publish.json、test_github_publish.py、
+GITHUB_CODE_README.md与GITHUB_PUBLISHING.txt，补全Stage12必需静态OBJ/case与研究报告。
+没有新增控制器副本，没有删除实验原件，没有将私有评测输入传入策略。
+保留用户原有23项Stage4暂存、既有视频删除和其他未跟踪内容，不混入本轮提交。
+
+代码仓库：https://github.com/ztr583/grasp_small_obj/tree/mao0629 （保持私有）
+分析仓库：https://github.com/mao455/2026-11-21 （保持公开）
+主仓库只放运行代码、测试、配置和必要资产；第二仓库放算法选集、报告及精简汇总。
+RGB、录像、逐步大日志、缓存不上传。历史报告保留其当时的严格定义，
+SUCCESS30_RESULTS/EVIDENCE为新旧协议对照，不能把历史失败文字静默改成成功。
+发布器在两个隔离克隆准备并核验后正常推送，再分别核对远端SHA；不强推、不改用户暂存。

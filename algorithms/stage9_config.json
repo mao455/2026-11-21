@@ -26,5 +26,19 @@
     }
   },
   "position_preload_cap_m": 0.0045,
-  "force_estimate_available": false
+  "force_estimate_available": false,
+  "task_wrench": {
+    "mass_range_kg": [
+      0.005,
+      0.015
+    ],
+    "friction": 0.3,
+    "normal_uncertainty": 0.15,
+    "max_normal_force": 1.0,
+    "lateral_force_n": 0.02,
+    "torque_nm": 0.0001,
+    "position_sigma_m": 0.0015,
+    "margin_tolerance": 0.1,
+    "pad_radius_m": 0.0012
+  }
 }

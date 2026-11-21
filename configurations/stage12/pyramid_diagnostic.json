@@ -1,0 +1,10 @@
+{
+  "name": "natural_pyramid",
+  "object_id": "abc_781914",
+  "dx": 0.0015,
+  "dy": -0.001,
+  "yaw": 0.28,
+  "mass_kg": 0.0052,
+  "friction": 0.82,
+  "noise_seed": 7200
+}

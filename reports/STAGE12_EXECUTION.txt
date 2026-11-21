@@ -1,0 +1,70 @@
+Stage12 复跑与版本定位
+根目录：grasp_small_obj/FingerEyeLab
+Python：/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python
+基于提交：f7d943ecf11bbc8b523697a9af6f606ec63ef789
+本地提交哈希由 git log -1 --oneline 定位（提交说明 Stage12 public-region task-wrench finger selection）。
+未向 GitHub 推送。本轮只做原入口、共享实现及隔离证据；学长/200物体延期。
+
+正常入口（依次替换 --fingers two / three / auto；每个 session 必须全新）：
+python experiments/rax_dexbin_tinyobj/run.py \
+ --session outputs/rax_dexbin_tinyobj/stage12_reproduce/cylinder_two \
+ --case-file experiments/rax_dexbin_tinyobj/stage12_cases/cylinder.json \
+ --profile fast --fingers two --max-attempts 1 --mode full
+方块用 stage12_cases/cube.json。两个物体各固定同一 case 文件、种子及质量/摩擦；
+这些私有场景构造参数不传入策略。没有在看到成败后剔除样本。
+
+真实三抓预算恢复诊断（预算3不等于实际抓了3次）：
+python experiments/rax_dexbin_tinyobj/run.py \
+ --session outputs/rax_dexbin_tinyobj/stage12_reproduce/pyramid_auto3 \
+ --case-file experiments/rax_dexbin_tinyobj/stage12_cases/pyramid_diagnostic.json \
+ --profile fast --fingers auto --max-attempts 3 --mode full
+本轮实际只闭合1次；第二次规划被路径限位/三指区域门槛挡住，不消耗实际抓次。
+
+V9默认推荐基线回归：
+python experiments/rax_dexbin_tinyobj/run.py \
+ --session outputs/rax_dexbin_tinyobj/stage12_reproduce/v9_wedge \
+ --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json \
+ --profile v9 --fingers two --max-attempts 3 --mode minimal
+
+冻结控制器复跑（读取 submitted.py 最终绑定，不依赖命令行默认 profile）：
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 python experiments/rax_dexbin_tinyobj/run.py \
+ --session outputs/rax_dexbin_tinyobj/stage12_reproduce/frozen_cylinder_auto \
+ --case-file experiments/rax_dexbin_tinyobj/stage12_cases/cylinder.json \
+ --controller outputs/rax_dexbin_tinyobj/stage12_20261121/frozen/cylinder_auto/submitted.py \
+ --mode full
+每例 runtime_manifest.json 校验共享运行源码；STAGE12_FREEZE.json给出本轮源文件/配置/控制器哈希。
+物理120Hz、控制6步=20Hz、六路RGB每4步=30fps、录像30fps，原3/16.5/30mm分段试抬。
+
+测试（在 experiments/rax_dexbin_tinyobj 中）：
+python -m unittest test_general_grasp_contacts test_stage9_transport test_stage9_timing test_stage11_control -q
+43项：固定重力/任务载荷、有限垫总力上限、第三垫移除、奇异力矩/误差拒绝、
+两三指公平归一、配置预算、绑定/数组切换、相对平局、闭合整路预检、拒绝不下发、帧时序。
+物理成功只取原 rollout 评分，不以单元测试、LP 或回放代替。
+
+本轮输出定位
+outputs/rax_dexbin_tinyobj/stage12_20261121/
+ frozen/                 审阅修正后最终物理记录（结果表只用这里）
+ final/                  R1工程配对，位置sigma0.25mm；保留以便核对修改影响，不混入最终分母
+ v9_regression/          开发前正常入口V9回归
+ fast_two_cylinder/      早期调试：运行时修改了受监控工厂，完整性=false，不能计严格成功
+ prior_audit/            旧楔形10mm误差、component3静态面原始审计
+ geometry_audit/         330次离线搜索/正对照/源脚本/门控；不是330次物理抓取
+ lp_audit/               点/有限垫解析对照；录制公开候选CPU回放（仅计算测量）
+ frozen_summary.json     可复核分阶段/接触/计时/选择汇总
+各run/stage12_events.json保存完整候选点/法向/逐载荷LP与决策，stage12_audit.json保存摘要和原件哈希。
+episode中保留 public RGB、image_manifest、public_responses、steps、原评分、原生接触、RPC与后端计时。
+关键录像：frozen/cylinder_auto/episode/{external_30fps,fingereye_30fps}.mp4；
+恢复录像：frozen/pyramid_auto3/episode/ 同名文件；方块为 frozen/cube_auto/episode/。
+
+离线诊断复现
+geometry_audit/README.txt说明逐个脚本。脚本只在输出归档，未引入替代在线runner。
+lp_audit/s12_lp_replay.py从录制公开候选调用原 s12_task_quality；记录10次计算，
+不能据此声称三指物理可行或20Hz全时规划。录制图像与曝光q仍保留。
+geometry_audit/s12_recovery_path_audit.py重建pyramid第二抓被拒路径，零物理下发。
+
+交付/保护
+修改原9个共享/测试文件；新增本轮case/计划、审计/算法/结果/执行/冻结与精简证据文件，
+两个30mm私有几何fixture可由原工厂再生。没有复制新控制器实现，没有新增在线runner。
+本轮没有删除唯一实验原件。用户原有23个暂存Stage4文件、两段旧视频的既有删除、其他未跟踪文件
+保持原状态；本地提交只列明本轮文件，不使用 git add -A，不包含这些已有改动。
+本轮清理释放0字节；R1/失败/拒绝证据均保留，不能把未通过的记录当冗余删除。
