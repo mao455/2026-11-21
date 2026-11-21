@@ -1,0 +1,140 @@
+Stage11：实际共享调用链、状态机与轨迹核对
+
+本文描述当前实际源码及 final_pairs 中已经执行完的物理轨迹。推荐入口仍默认 V9、两指、最多三次物理抓取；fast/retry 和 three/auto 都需显式选择。本文不把通过候选检查、执行开指、实际局部重放置、严格救回混为一件事。实验总体分母与并发结果另见 STAGE11_RESULTS.txt；本文中的帧、q、接触和裁决均可由 outputs/rax_dexbin_tinyobj/stage11_20261121/algorithm_trajectories.json 回查。
+
+一、入口到结束的实际调用关系
+
+run.py::main
+  -> run_stage9.py::main / build
+       拼接 visual_controller.py + stage9_frames.py + stage5_control.py + stage9_control.py
+       在末尾写入显式 S9_EARLY_SETTLE、S5_ATTEMPTS、S11_CONFIG，产出 submitted.py 与 SHA256
+  -> stage9_episode.py：复用 stage4_episode / 原 sandbox 与 evaluator；仅替换 Peer、公开观测护栏和后端选择
+       -> worker.py::main：载入提交的单个模块，调用最后绑定的 main(ctx)
+       -> stage9_control.py::main：policy_main(_S9Context(ctx))
+            -> stage5_control.py::policy_main：唯一当前 FSM
+            -> stage9_control.py::_S9Context.step：任何保持/运动都拆成 6 个物理步一回包
+       -> stage9_backend.py::main：对 round14_backend.py 的替换逐条断言，保存 stage9_backend_executed.py
+            -> 原目标关节设置、物理推进、120 Hz 私有严格记录
+            -> 每 4 物理步 capture_sensor：六路普通 RGB、曝光 q/qvel、帧号、采集/可用时间
+            -> stage9_observation.py：公开 RGB/本体/标定边界
+       -> 原 evaluator.py::evaluate：episode 结束才给严格 verdict
+       -> stage9_recording.py::Recorder：full 模式额外视图及 30 fps 编码；不向策略暴露接触或评分
+
+策略的 FK/几何、SciPy least_squares IK、RGB 处理和 FSM 为 CPU 计算；Isaac/渲染使用 GPU。没有把策略规划长尾自动变成 GPU 运算。20 Hz 是命令的物理调度，不能据此声称本机仿真墙钟或真机控制路径硬实时达标。
+
+当前函数由原有共享文件维护。run_stage9.build 的显式拼接顺序决定最后 main、包装器和配置；新 profile 没有再复制一份 Stage11 控制器。每次 episode 保留 submitted.py、controller_sha256、stage9_configuration.json 和执行后端源码，可定位当时实现，不能用后来修改的源码替代当时的证据。
+
+二、一套实际状态机
+
+状态 | 入口与输入 | 写出/命令 | 转移条件及失败出口
+粗定位 s5_init | 初始俯视普通 RGB、本体、静态 URDF/指垫/相机标定 | _S3_ESTIMATE 得到 center/half/axes/color；创建 Stage3LiveVolume、SelfAwareGeometry、实际 q 与 last | 无有效前景/输入护栏失败则结束；有几何进入规划
+规划 s5_plan | 新几何、实际/最后命令 q、首抓方向规则；重试须 release ticket | s11_contact_candidates -> _s3_candidates_on_axes -> optimize，写 c={q,points,inward,prefix,meta}；保留端点和整段路径检查结果 | 无候选停止；有候选进入接近；原方向重试第 2 抓转正交，第 3 抓选 ±45 度中投影包络较小方向
+接近 s5_approach | c.prefix、当前 q | s5_move/s5_step 执行 raise/orient/translate/descend；下降检查点调用 s5_refine | 仅一处下降检查点，几何实质改变且新 IK/连接路径均通过才能替换；guard 失败终止
+近景校正 s5_refine | 最新曝光配对 RGB 与该帧 q；当前实测 q 单独用于规划起点 | volume.carve，生成 refined collision_points；变化 >=0.8 mm 才重新求解；检查 actual 限位、opened 端点及连接路径 | 不可信/变化小/不可达保留原计划；合格则执行 s5_rgb_realign、替换 c/info/checker
+闭合 s5_close | c、当前 q/qvel、原闭合和速度边界 | V9 做 30 次位移目标；fast 只求一次 +0.5 mm 目标，生成平滑短轨迹并预检每个节点；每 6 物理步下发 | 轨迹/限位/速度不通过则拒绝；fast 同时核对实测速度，超限停止；不以跟踪误差单独宣称有接触力
+位置预载 s5_close 内部 | 曝光配对图像的相对运动证据、实际编码器响应；中间回合可只用本体 | capture_preload_snapshot/compare_preload 或 s11_motor_snapshot/_s2v_motor；逐指 squeeze、close_ik、adjust、hold，日志 target/actual/error/tip/上限 | 视觉/稳定不足保持，物体可见移动保持；空载响应不足只作接触代理；位移上限/增量归零或最多 15 轮结束；无牛顿估力
+3 mm 试抬 s5_lift/early_proof | 新图 + 曝光 q；前后相对手运动和实际手位移 | smooth_segment -> s5_step；每个独立支持区间用新 frame；公开 evidence 写 lift_reports | grounded_evidence 可提前终止并进入 retry/stop_limit；unknown 允许继续较大有界试抬
+16.5/30 mm 分段抬升 s5_lift | 同上 | 两段各 300 物理步；支持区间移动 >=2.2 mm 才比较；最终保持 360 步 | 连续两段新图 grounded 可 veto；公共 carrying 继续；最终支持图像稳定则 stop_supported；仍非私有严格成功认证
+决策 s5_decide | lift_reports、hold_reports、实际尝试预算、剩余物理/墙钟预算 | stage3_support_decision；输出公开 reason/unknown、可选 reobserve | retry -> recovery；reobserve 最多一次 10×24 步；其余完成/预算停止；原生物体角速度不可观测
+恢复 s5_recover | 上次公开 grounded 证据、c、当前 actual/last、当前 RGB 包络 | stage3_recover -> stage3_recover_release；先下放、1..6 mm 分级开指、4/8/12 mm 短退和新图；腕姿先固定 | 实测开指 >=3 mm、退让 >=6 mm、稳定/新图/腕姿界限通过才发 release ticket；新包络仍与手交叠则追加退让；否则具体 reason 停止
+局部重放置 s11_local_probe | 仅 retry profile 且 grounded；已实际开指/短退后的新 RGB、actual/last | 起点净空 -> 候选 IK/新颖性 -> 开指连接全路径 -> 闭合全路径预检 -> mover.move(s11_local_reposition) | 首个失败守卫记录；无局部可行解继续原完整恢复；只有真的 mover.move 成功才 local_retry_ready
+完整恢复后新落点 s11_post_release_plan | release 后新包络、实测 q、previous points、tried_points | 保持方向，枚举高度 .25/.55/.75、横移 ±1.5 mm；候选与已试点平均差 >=1 mm；检查 IK 和 prefix | 成功写 s11_released_placement 并实际接近/闭合；耗尽回退原换向；不冒充未完成释放前的局部重放置
+结束 | 公共策略停止、预算/guard 或异常 | 原运行器 finish；evaluate 对最终连续 2 s、抬升/桌面净空、接触、相对稳定、原生速度和完整几何裁决 | result.json 同时保留控制器是否正常完成、严格分项、完整性；公共 stop_supported 可以严格失败
+
+三、时戳、消费和按状态传感器规则
+
+stage9_backend.capture_sensor 在 step=0,4,8,... 采集，同批六路只有一个 frame_id，image_state 保存曝光实际 q/qvel；当前控制 obs.actual_q 可以比曝光更新。s9_exposure 仅把视觉计算的 q 改成曝光 q，不能把当前实际 q 冒充曝光 q。S9FrameInbox 采用最新有效帧；晚帧/重复/缺帧分别计数，旧于 0.1 s 安全停止。s9_visual 同帧同函数缓存只作状态复用，不增加独立证据；相对支持判断本身还检查帧/时间间隔。
+
+状态 | 本轮真正改变的计算 | 仍存在的开销/范围
+粗定位 | 初始 overhead 普通 RGB；HSV/连通域，不读语义标签 | 不是通用开放类别分割网络
+接近 | 检查点/几何变化才近景 carve 与 IK | 采集能力始终 30 fps
+闭合 | fast 一次闭合目标和完整轨迹预检；命令间以本体跟踪反馈继续 | 当前仿真仍在后端每 4 步采集并保存六路 RGB；没有关闭采集/读回/传输，不能把跳过处理说成省掉相机开销
+短预载 | 偶数轮、可见运动、未稳定/无已有证据时处理新视觉；其余 _s2v_motor | 此规则会在异常时连续处理，实际省略数必须数 visual_processed，而不能按“每两轮”假定减半
+试抬/重定位 | 强制曝光配对新图；实际可见性/注册证据决定是否可信 | 需要视觉的规划/支持判断没有复用旧曝光 q
+
+本轮直接核查 origin/master=a9a1747ae92 的 image_based_scripted_grasping 子树：fingereye_object_mask.py 的 configure_object_mask_cameras/capture_object_masks 使用仿真 semantic_segmentation 与 idToLabels；本地 master 仍是旧3cbb5062452。具体入口、配置、源码行与SHA见 STAGE11_MASK_AUDIT.txt；该通道不进入当前运行策略。当前 initial_hue、Stage3LiveVolume、RGB mask/支持估计仍从普通 RGB 和静态机器人遮挡模型推导。目标真值 mesh/pose/contact/native omega/strict score 均属于离线评测。
+
+四、两指/三指共享规划路径与边界
+
+run_stage9 --fingers two/three/auto -> S11_CONFIG -> s5_init / Robot.configure_contacts -> s11_contact_candidates -> 同一个 _s3_candidates_on_axes、optimize、Robot.tips、SelfAwareGeometry、close_ik、s5_move/s5_step。two 为原 thumb/index；three 加 middle，来自资产中 middle camera component3 暴露面静态锚点与法向，不是实测材料/驱动响应或额外 RGB。auto 分别求 count=2 与 3、按相同质量排序；近景 refine 固定已经选中的 count，避免抓取中偷偷换指。
+
+s11_contact_quality 按参与指平均归一化位置误差(error/.8 mm)及法向误差(error/.5 rad)，逐指仍都要达标；加计划运动时间、桌面间隙和切向跨度项。公开质量只反映几何支撑分布，不能代替摩擦/真实受力或试抬。运行时 three/auto 目前入口限制为一次物理尝试；因此不能把两指三抓与三指一抓的成功率当无条件公平比较。配对三组必须统一 --max-attempts 1。未进入物理执行的三指候选按首个 IK/路径/间隙守卫报告，不能称三指物理失败。
+
+generic ContactPlanner 的 contact_counts/finger_groups 与逐指平均排序也已改进，但 normal FSM 不调用 generic_local_proposal；该模块单元测试不等于实际手上三指增量。实际三指证据以 finger_pairs 的 s11_finger_selection、实际 command/contacts/strict 为准。
+
+五、严格成功轨迹：final_pairs/final_fast_wedge
+
+该物理 episode 首抓严格成功，3108 步 / 25.900 s。V9 同初态严格成功为 3432 步 / 28.600 s；等结局省 2.700 s，恰好闭合 3.000 -> .300 s；最终 30 mm 抬升与保持没有缩短。
+
+调用/阶段 | 实际 step / 秒 | 帧与 q | 中间结果和转移
+s5_init -> s5_plan | 0 / 0.000 | 初始 RGB 与 step0 q | aspect=1.7974，选择 orthogonal；两指抓点(mm)=[-5.010,-9.948,9.528]、[2.375,13.719,9.535]；height_fraction=.4；c.meta endpoint/path 均 passed
+s5_approach -> s5_refine | raise/orient/translate/descend 共11.800 s | 每次 carve 由曝光 q 重投影；检查点更改不足阈值时保持 c | 两个 near_map 的完整报告保留在证据 JSON，未凭私有物体 pose 纠正落点
+s5_close | 1416 /11.800 开始；1452 /12.100 结束 | frame354，capture_step1416；actual_base=[.003044860,-.053021695,.174917966,-2.764895439,.976453066,2.337678432] | last_command_base=[.003044850,-.053021708,.174911612,-2.764893352,.976452607,2.337689391]；一次 .5 mm 闭合目标，完整预检后 6 节点下发
+close_observe/预载 | 1476 /12.300 起，最终1860 /15.500 | 第一视觉 frame369/capture1476；before/after 用各自曝光 q；每个 command 都有实际本体 qvel | squeeze 每指(mm)=.75,1.10,1.45,1.80,2.15,2.50,2.85,2.85；第8轮不再增量，servo 结束；完整 target/actual/error 在 JSON
+proof -> s5_decide | 2100 /17.500 试抬末，2148 /17.900 判定 | frame525/capture2100 -> frame537/capture2148，曝光q配对 | 3 mm 判为 unknown、bounded_larger_proof_needed，不自称成功
+middle -> s5_decide | 2448 /20.400 | frame612/capture2448，独立新帧支持区间 | carrying_evidence，继续原抬升
+final -> s5_decide | 2748 /22.900 抬升末；3108 /25.900 保持末 | frame687/capture2748 -> frame777/capture3108，hold_consistent | stop_supported，明确 private_success_certified=false
+finish -> evaluate | 3108 /25.900 | 私有120 Hz物理记录，仅事后 | strict success=true，最终2 s达原裁决；接触诊断在thumb/index camera_component3 assembly记录到非零法向力，link名本身不能唯一证明落在标定指垫而非组件侧面
+
+完整 18 维 actual_q、last command、每轮 target_q 与 measured_tip、每次视觉消费的 capture_q/current_q 都保留在 algorithm_trajectories.json；原日志还在该 episode/agent_trace.jsonl、consumers.jsonl、cycles.jsonl、steps.jsonl，数值没有用计划值替代实际值。
+
+六、真实失败恢复轨迹：final_pairs/final_retry_pyramid
+
+此 episode 实际连续执行了三次 s11_close_begin，不是一次；最终 7152 步 /59.600 s 严格失败。本例没有 s11_local_reposition 命令，也没有局部重抓救回。第2、3抓是完整释放后同方向新落点的真实执行，不能误称原地局部路径已经可用。
+
+抓次 | 计划抓点(mm)、高度/方向 | 闭合开始 step/帧/曝光 | 公开失败和下一抓改变
+1 | [-15.315,-1.381,11.997],[18.043,-1.392,12.003]；h=.4，±X夹取 | step1296 /10.800 s，frame324，capture1296 | step2136/17.800 s，frame534，3 mm段出现 grounded_evidence；重试原因 observed_failure，接触力与失效表面未知；第2抓改为7.5 mm高度和新鲜包络宽度，保留大体方向
+2 | [-24.439,-.881,7.497],[25.168,-.892,7.503]；h=.25，shift=-1.5 mm；平均新颖性9.314 mm | step3792 /31.600 s，frame948，capture3792 | step4662/38.850 s，frame1165，capture4660，grounded；曝光 q 与当前 q相差2步，未混用；再次新图扩大包络/改落点，保留原因unknown
+3 | [-29.387,-2.363,7.497],[29.215,-2.373,7.503]；h=.25，shift=-1.5 mm；相对第2抓新颖性4.738 mm | step6318 /52.650 s，frame1579，capture6316 | step7152 /59.600 s，frame1788，grounded；stop_limit/physical_attempt_limit，三次预算结束，无真值辅助第四抓
+
+三次预载均从 .5 mm 开始，每指目标(mm)=.75,1.10,1.45,1.80,2.15,2.50,2.85,3.20,3.55,3.90,4.25,4.50,4.50，因到达现有4.5 mm位置上限且增量归零退出。并未每次失败无界增大预载，也没有把驱动跟踪亏量换算成牛顿。每抓闭合/预载 actual_q/目标q/实测tip在证据中按轮记录。
+
+第1抓失败后的首个局部拒绝：
+- s5_decide(grounded) -> s5_recover -> stage3_recover_release 真的下发分级 s3_open；不是拒绝后才假设已开指。
+- step2232 /18.600 s，frame558/capture2232，s11_local_probe 首先做 fresh RGB geometry，然后 checker.check(actual) 与 checker.check(last_command)。二者 table_clearance约14.285/14.287 mm、self_collisions=[]，但 object-envelope overlap 包含 index camera_component1/component3/index_link2、thumb component2/component3/thumb_link3，因此 start_clearance 拒绝。候选 IK、开指连接和速度检查尚未运行。
+- 日志同时保存18维实际q与最后命令q，opening_already_executed=true。该守卫检查的是新 RGB 包络与机器人几何重叠，不能等价解释为这些连杆已经发生物理接触。
+- step2280..2424仍被起点包络拒绝；step2520剩4个连杆，step2616仅两个component3壳组件仍交叠。原释放和更高净空流程继续，直到合法完整恢复。
+- step2424实测开指投影5.858/5.804 mm，step2616实测短退7.999 mm、稳定，release ticket.ready=true；额外净空后step2712 /22.600 s，frame678，以新图与实际q选第2抓，写 s11_released_placement，随后真实接近、闭合。
+
+第2抓后的局部拒绝：
+- step4758..4950 先拒绝 fresh_map，未进入IK；真实6 mm开指投影5.858/5.809 mm。
+- step5238 /43.650 s，frame1309/capture5236 取得新图且实测退让11.999 mm，局部候选终于进入求解；6个高度/横移组合的逐指位置误差3.401..8.503 mm，均超过.8 mm门槛，reason=candidate_IK_or_novelty。法向误差尚合格，但不能用法向合格放行位置不达标。
+- 没有任何局部连接路径和闭合命令被接受；完整释放后 s11_post_release_plan 得到第3抓，计划和实际执行均有记录。
+
+新帧提前决策只省去了旧等待：三抓 proof 触发step=2136/4662/7152，旧相同等待决策点=2268/4758/7278，分别省1.10/.80/1.05物理秒。提前是公共grounded证据触发，不依赖接触真值。总动作59.6 s与原V9该三抓85.7 s、fast换向77.6 s对比含不同恢复路径，不能把26.1/18.0 s总差归因为一条从未执行的局部重放置；此处真正省的是闭合与完整恢复后保持方向的接近。
+
+事后核验与策略证据严格分开：
+- 公共：三次新 RGB 的支持注册均支持物体仍在桌上；它不能定位究竟是指垫、侧面、壳的接触失配，也不能观测目标原生角速度；保留unknown_failure_cause。
+- 私有：本 episode 每6物理步采样一次的 all_hand_object_contacts.jsonl 三段均没有报告任何手-目标接触条目；短于采样间隔的瞬态接触不能由此排除；不能据此说已经接触指垫再滑脱。steps.jsonl 的物体pose/velocity/clearance以及严格结果仍由评测读取，未回流策略。没有最终成功保持窗口。
+- 包络逐渐变宽属于新图保守重建结果；更宽不等于私有目标mesh真实变宽。下一抓的落点确实变化，然而反馈尚未充分定位可抓表面，这是本例仍失败的原因范围。
+- final_v9_cylinder 在同初态能公开 stop_supported 但私有strict_angular_speed失败；公共native_object_omega_observable=false。不能声称当时公共信号知道需要再次重抓；物体相对手图像转动、目标原生角速度和手指关节速度是三个不同量。
+
+七、关键参数定义与来源
+
+参数 | 当前定义 | 单位 | V9 -> 本轮 | 修改依据/影响 | 来源
+physics/control/camera/video | stage9_config.json / run_stage9断言 / stage9_backend | Hz | 120/20/30/30 ->相同 |6步命令、4步采集；原保持24步请求仍由_S9Context拆4个控制周期 | 真机时序要求
+max_frame_age | run_stage9.build / stage9_frames.S9FrameInbox | s | .1 ->相同 |过旧安全停止，缺帧不重复加证据 |现有经验
+S5_ATTEMPTS | visual_controller + run_stage9末尾配置 | 实际抓次 |3 ->1..3，默认3 |候选拒绝不占实际抓次；three/auto本轮仅1次 |有限预算
+S6_UPDATE_MM | visual_controller | m | .0008 ->相同 |近景几何无实质变化不重做IK/连接 |现有经验
+fast_close | stage9_config.profiles / s5_close | bool |false ->fast/retry=true |30个逐次闭合目标改1个+0.5mm目标；全路径预检与速度/限位保留 |本轮有界对照
+close速度 | s5_move / s5_step | m/s,rad/s |.06/.8规划，.14/1.4命令 ->相同 |平滑峰值按1.875因子retime；实测fast上限.15/1.5 |原约束
+squeeze起点/增量 | s5_close | m |.0005；首轮.00025后.00035 ->相同 |位置预载，逐指反馈/保持 |现有经验
+S5_CAP | visual_controller；config同名说明 | m |.0045 ->相同 |run配置目前实际由S5_CAP下发；不称力 |现有有界对照，未实测驱动力
+servo受阻余量 | s5_close | m |接触代理后.00105 ->相同 |可见/稳定/空载亏量配合才接受；原信号不保证真接触 |经验代理
+close_observe / preload_hold | s5_move | 物理步 |最多120/60，至少24 ->相同 |按实际速度稳定可提前；24步=.2s；6步=.05s，不能按轮次比较秒数 |现有稳定规则
+proof/middle/final | policy_main / s5_lift | m |.003/.0165/.03 ->相同 |原分段试抬；proof新帧可提前grounded退出 |原V9
+proof/middle/final轨迹 | s5_lift / early_proof | 步 |240/300/300 ->相同 |2/2.5/2.5s；proof可提前，最终hold360=3s |原V9
+local_translation | stage9_config.retry / s11_local_fit | m |无 ->垂直下方最多.008，上方.002，XY各±.002 |实测起点局部平移；腕姿固定；不放宽碰撞 |本轮有界研究
+local候选 | s11_local_probe | m,次,s |无 ->dz±.002/shift±.0015，最多6候选、8次probe、单轮10s |新颖性>=1mm，误差<=.8mm、法向<=.5rad；不通过即完整恢复 |本轮有界研究
+post_release候选 | s11_post_release_plan | 比例,m,s |原换向 ->h=.25/.55/.75、shift±.0015、12s |新图/实际q/已试点，允许保方向换落点 |本轮研究
+release实测门槛 | stage3_recover_release | m,rad |开指>=.003，短退>=.006，腕姿界限 ->相同 |真实执行并稳定后才可转腕；RGB包络仍交叠继续退 |原恢复约束
+contact_count | run_stage9 / Robot.configure_contacts | 指 |2 ->2/3/auto |同一候选/IK/路径/质量；third static anchor有.0012m不确定性 |现有两指标定；第三指资产静态暴露面
+quality position/normal | s11_contact_quality / _s3_candidates_on_axes | m,rad |同类逐指门槛 ->.0008/.5并按指平均 |每指均达标，不因三指残差数量直接输赢 |本轮统一质量口径
+
+八、计时解释及本轮边界
+
+cycles.jsonl::compute_between_dispatch_s 包含从上次回包后到这次命令前的策略CPU工作；components_s为vision/ik/path/fsm的互斥计时，剩余为调度/未打点。dispatch_rpc_s包含后端物理、RGB、严格裁决与传输，不能再将其与后端分项相加。wall_profile_backend中的idle是等待策略/宿主，host_rpc减backend_handler是通信/序列化/调度残差。
+
+fast闭合的主要收益是删除重复IK/插值片段和物理小停顿，不能直接声称 mask/state估计400ms已变成实时20Hz。新命令在物理轨迹上50ms一条，但初始候选、近景重规划、恢复搜索仍会出现>50ms计算尾部；仿真RPC另有渲染/严格诊断瓶颈。没有真机驱动/通信/曝光回调的本轮实测，旧报告的约0.5–1Hz与本轮物理调度/CPU回放必须分别标注。
+
+快速闭合/重试/选指的因果证据应依次检查：是否产生新候选、是否通过IK/端点/整段路径、是否真的下发并移动、是否公开试抬改变后续动作、是否原strict通过。上文金字塔的局部路径停在起点净空/候选IK；同方向新落点进入了物理执行但三抓均未救回。不得把搜索通过、开指执行或总时间缩短写成局部救回成功。

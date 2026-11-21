@@ -1,0 +1,71 @@
+Stage11 复跑与验证命令
+
+以下从 FingerEyeLab/ 执行，使用已安装 Isaac Sim 5.1 / Isaac Lab 的 Python。本机解释器为 /home/CNS2025331827/miniconda3/envs/isaaclab/bin/python；策略依赖 requirements-research.txt、editable source/fingereye、python-fcl、bubblewrap。GPU 为 RTX 4090D。策略 CPU 计算；GPU 用于仿真/渲染。不要覆盖现有 session。退出 0 仅表示控制器完成，严格成功读 episode/result.json。
+
+1. 正常入口与推荐配置
+
+python experiments/rax_dexbin_tinyobj/run.py --session outputs/v9_wedge_rerun --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json --profile v9 --max-attempts 3 --fingers two --mode minimal
+
+另两个代表初态分别换为 stage6_cases/dev_cylinder.json、stage7_cases/natural_pyramid.json，并更换 session。相同 case 包括初始位移、yaw、质量、摩擦和 noise_seed；不得重采初态冒充配对。120 Hz 物理、20 Hz 命令、30 fps 采集/录像由 stage9_config.json 固定。STAGE11_FREEZE.json 记录运行依赖与生成程序 SHA256；默认始终 V9，两指，三次实际尝试。
+
+2. 研究配置
+
+python experiments/rax_dexbin_tinyobj/run.py --session outputs/fast_wedge_rerun --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json --profile fast --max-attempts 3 --mode minimal
+python experiments/rax_dexbin_tinyobj/run.py --session outputs/fast_wedge_full_rerun --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json --profile fast --max-attempts 3 --mode full
+python experiments/rax_dexbin_tinyobj/run.py --session outputs/retry_pyramid_rerun --case-file experiments/rax_dexbin_tinyobj/stage7_cases/natural_pyramid.json --profile retry --max-attempts 3 --mode full
+python experiments/rax_dexbin_tinyobj/run.py --session outputs/three_wedge_rerun --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json --profile fast --fingers three --max-attempts 1 --mode full
+
+两指/三指/自动配对分别使用 --fingers two/three/auto，均 --max-attempts 1，统一首抓初态。three/auto 多抓入口明确拒绝，不能称该分支已验证。STAGE11_FINAL_PAIR_PLAN.json、STAGE11_FINGER_PAIR_PLAN.json 保留本次实际配对计划和当时生成程序位置；其 controller 路径属于本机证据，不保证在另一台机器存在。
+
+3. 原冻结 V9 与当前整理后的 V9
+
+历史 V9 提交 3eb15ebdb52；V10 提交 a29df0ae52b。历史源码通过 git show / 独立 worktree 只读定位，不重置当前工作树。
+
+git show 3eb15ebdb52:FingerEyeLab/experiments/rax_dexbin_tinyobj/versions/visual_stage9_early_v9/controller.py > /tmp/stage11_original_v9.py
+python experiments/rax_dexbin_tinyobj/run.py --session outputs/original_v9_rerun --controller /tmp/stage11_original_v9.py --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json --mode minimal
+
+该命令用原冻结控制器配当前后端，临时文件避免原目录的旧 runtime_manifest 拒绝本轮刻意修改的共享源码；它不等同于整套历史环境回退。本轮实际原冻结控制器 SHA256=fa00074a81e44afa1971dbc2eeca46bbfbc66365c39d7f9d5de792e9a60bd72a。post_cleanup_original_frozen_v9 严格成功，28.6 物理秒 / 83.576 墙钟秒，572 条命令及全部 120 Hz 状态与 final_v9_wedge 相同。当前普通入口 post_cleanup_v9 同样一致。两次对比记录在 post_cleanup_original_frozen_identity.json、post_cleanup_identity.json；像素非位级确定。
+
+4. 录制输入回放与报告
+
+cd experiments/rax_dexbin_tinyobj
+python -m unittest test_general_grasp_contacts test_stage9_transport test_stage9_timing test_stage11_control -q
+python stage9_replay.py ../../outputs/rax_dexbin_tinyobj/stage11_20261121/final_pairs/final_fast_wedge/episode --output /tmp/stage11_replay.json
+python stage9_report.py ../../outputs/rax_dexbin_tinyobj/stage11_20261121 --study
+cd ../..
+
+34 项测试通过，包括全路径预检先于命令、局部起点交叠拒绝、曝光配对、局部平移预算、逐指质量归一化及独立 session 后端超时清理。回放直接从无损 ZIP 内存读取已记录 RGB 并核 SHA，无需先恢复全部数组；只测计算，不生成物理成功率。study_results.json / stage_timing.csv 是可再生汇总，原 episode 日志和评分是证据。
+
+5. 并发复跑
+
+STAGE11_SCALE_FINAL_PLAN.json 预定同 8 物体、种子、单次 fast/two、minimal；STAGE11_PRESSURE_FINAL_PLAN.json 预定 24 物体。原计划含当时输出目录内 controller 快照的绝对路径，保留不改。精确重播本次实验需保留该快照及其 SHA256=2f110aad462c5339341af353a2d4b0ac5f314db9eb4989bc78622f9332634232。
+
+新检出的共享源码可生成可移植复跑计划（这是当前源码复跑，不能宣称历史 controller 字节相同）：
+
+python - <<'PLAN'
+import json
+from pathlib import Path
+here=Path('experiments/rax_dexbin_tinyobj')
+for source,dest in [('STAGE11_SCALE_FINAL_PLAN.json','/tmp/stage11_scale_rerun.json'),('STAGE11_PRESSURE_FINAL_PLAN.json','/tmp/stage11_pressure_rerun.json')]:
+    plan=json.loads((here/source).read_text())
+    plan['rerun_source']='current shared source, fast/two, one attempt; historical declaration unchanged'
+    plan.pop('controller_sha256',None)
+    for row in plan['runs']:
+        row.pop('controller',None)
+        row.update(profile='fast',fingers='two',max_attempts=1)
+    Path(dest).write_text(json.dumps(plan,indent=2))
+PLAN
+python experiments/rax_dexbin_tinyobj/stage9_batch.py --root outputs/scale_c1_rerun --plan /tmp/stage11_scale_rerun.json --concurrency 1 --timeout-s 900 --archive
+python experiments/rax_dexbin_tinyobj/stage9_batch.py --root outputs/scale_c2_rerun --plan /tmp/stage11_scale_rerun.json --concurrency 2 --timeout-s 900 --archive
+python experiments/rax_dexbin_tinyobj/stage9_batch.py --root outputs/scale_c4_rerun --plan /tmp/stage11_scale_rerun.json --concurrency 4 --timeout-s 900 --archive
+python experiments/rax_dexbin_tinyobj/stage9_batch.py --root outputs/pressure24_c2_rerun --plan /tmp/stage11_pressure_rerun.json --concurrency 2 --timeout-s 900 --archive
+
+并发 1/2/4 已在同 8 物体上验证隔离与动作/状态/裁决一致。8 并发因实测资源预算被预检拒绝，没有执行，也没有 OOM 试验。24 物体实测使用 4 并发，21 例完成、3 例 900 秒超时；24 物体的 2 并发尚未实测，上面仅为建议复跑命令。不得写成本机最大稳定并发 8 或 24/24 稳定。修复超时后代清理后做过真实 6 秒启动超时探针；没有重跑整批 24。详情见 STAGE11_RESULTS.txt。
+
+6. 证据与录像定位
+
+原始结果根目录 outputs/rax_dexbin_tinyobj/stage11_20261121/。
+final_pairs/*/episode/：result.json、agent_trace.jsonl、cycles.jsonl、consumers.jsonl、image_manifest.jsonl、steps.jsonl、program/controller.py。
+final_pressure_c1/c2/c4/ 与 final_pressure24_c4/：throughput.json、resources.json、逐例 batch_result.json 与 episode；3 例截断记录仍保留。
+关键录像见该根目录 videos.html；成功楔形与失败三棱锥 full episode 的 external_30fps.mp4 / fingereye_30fps.mp4。
+RGB 无损恢复及已删除源码恢复见 STAGE11_CLEANUP.txt。输出不上传，现有正式报告及历史唯一证据留在本地。

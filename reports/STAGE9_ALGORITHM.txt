@@ -1,0 +1,92 @@
+Stage9 跨文件算法与两条真实轨迹
+
+本文路径均相对 FingerEyeLab；E=experiments/rax_dexbin_tinyobj，O=outputs/rax_dexbin_tinyobj/stage9_20261121。
+冻结代码以 E/versions/visual_stage9_early_v9/controller.py 为准，源码同名函数多次覆盖，必须读最终绑定或保存的 _S*_ 别名，不能只看第一次 def。
+配套参数表：E/STAGE9_CONTROL_AUDIT.txt；运行命令：E/STAGE9_EXECUTION.txt。
+本文两条轨迹来自runtime v1；最终runtime v2的同一冻结控制器另以verified_*复验，接口/录像修正没有调整策略。本文数据由两条实际 rollout 的 agent_trace.jsonl/public_responses.jsonl/result.json 提取。O/trajectory_excerpt.json 保存每个关键事件完整18维曝光q、当前q、曝光qvel、六路文件路径、原始note、下一条命令及原始行号；不是手工推测的示意轨迹。
+
+从入口到结束
+run_stage9.py::main
+ -> 读取 stage9_config.json，校验120/20/30/30；选择冻结controller，复制到episode/program
+ -> stage9_episode.py::runtime.main（stage4_episode.runtime -> run_round14_episode.main）
+    -> Peer启动 stage9_backend.py::main -> 对round14_backend.py断言替换 -> 保存stage9_backend_executed.py
+    -> sandbox_command -> worker.py::main -> 冻结controller.py::main
+       -> _S9_MAIN(_S9Context(ctx)) -> _s6_policy_main(_S6Context(...)) -> V7主FSM
+       -> s5_init -> s5_plan -> s5_approach -> s5_refine -> s5_close
+       -> s5_lift(.003,48) -> s5_decide('proof')
+          retry -> s5_recover -> 下一次s5_plan
+          continue_lift -> s5_lift(.0165,0) -> s5_decide('middle')
+            continue_lift -> s5_lift(.03,360) -> s5_decide('final')
+            reobserve -> s5_reobserve -> s5_decide('final',reobservations=1)
+    -> controller返回 -> 后端finish -> evaluator.py::evaluate(records, initial_object_z)
+    -> result.json/summary.json；完整记录模式Recorder.close等待编码线程结束。
+
+命令与图像是两条时钟。动作统一从 s5_step 做原几何/关节/速率守卫，再经 _S6Context.step -> _S9Context.step -> worker.Context.step 序列化为op=step。host的validate_step验证合法请求，Peer.call送给后端请求循环；后端调用_set_q_state_and_target_batch下发目标，每次推进6个120Hz物理步。没有把关节实际值直接重置为目标。
+后端每4步独立调用capture_sensor，capture_cameras渲染和读回六路160x120 RGB，同时保存该曝光的实际q/qvel。image_manifest.jsonl写帧号、物理时间、曝光状态和像素SHA；public_responses中actual_q是回包当时状态，image_state.actual_q是曝光状态。
+ObservationGuard只放行RGB、当前/曝光本体状态和静态标定。私有对象姿态、接触、严格分数不进入策略。S9FrameInbox.select立即取最近有效曝光；迟到旧帧不回滚，重复帧不刷新时间，缺帧保留旧估计，仿真帧龄>.1秒停止。单元测试覆盖这些情况，正常物理轨迹并没有刻意注入真实驱动丢帧。
+
+具体消费与中间状态
+1. s5_init由主FSM调用，_S3_ESTIMATE读取step0的initial_overhead.npy和标定；Robot载入URDF，初始体素体积、中心/半长轴/方向写入s['info']/s['volume']，SelfAwareGeometry保存完整机器人碰撞模型。
+2. s5_plan读取当前RGB估计包络和当前实际关节，_s3_candidates_on_axes -> optimize / close_ik求指垫点/法向IK，checker.check检查端点与整段路径。接受候选存s['c']，保存合法末命令s['last']。第2抓正交；第3抓由V7规则选±45度中当前包络投影较窄方向。
+3. s5_approach遍历候选prefix，raise/orient/translate/descend由smooth_segment生成6步命令；下降90%处调用s5_refine。Stage3LiveVolume.carve -> frames -> _s9_volume_frames -> s9_exposure用曝光q做相机FK，避免用回包q错配像素；包络变化<.8mm时保留原轨迹，>=.8mm才重求IK并完整检查连接。此处并非每个tick重建地图。
+4. s5_close最后绑定到Stage9包装，继承V7闭合/预载。30个闭合IK目标、初始至少.2s稳定等待，再由capture_preload_snapshot读取新帧，compare_preload比较轮廓/运动与本体响应；squeeze、features、闭合动作及响应写入note。闭合稳定判据用实际手指qvel<.06rad/s，早采样本身不能称为RGB收益。
+5. s5_lift(.003,48)由主FSM调用。stage3_support_snapshot把六路分割特征与曝光q封装；stage3_support_pair用前后相机运动和轮廓变化区分carrying/grounded/unknown。Stage9只在曝光腕部实际上移>=2.2mm后提前调用原grounded/proof决策；只有retry或stop_limit才截断剩余微抬和等待。成功轨迹不会因为帧多就提前宣布抓稳。
+6. stage3_support_decision还要求原稳定窗口：10份独立报告、跨度>=240物理步。缓存同帧特征不会增加独立证据；保留段虽然拆成6步回包，报告仍按24步产生。s5_decide输出公开证据层状态，明确private_success_certified=false。
+7. s5_recover -> stage3_recover -> _Stage3Mover先张开再竖直退让；stage3_live_geometry从新的曝光RGB重建包络，检查实测和命令姿态的完整手部间隙。若仍重叠，按4mm档额外退让、稳定后重新观察；只有fresh_envelope_and_hand_clear才允许下一次规划。
+8. 后端每个物理步保存严格几何和原生接触/速度，evaluator.evaluate在最终连续2秒窗口裁决。公开stop_supported不能替代strict success。录像完整模式在capture_sensor后把同次RGB交给Recorder.capture，外部视图与六路拼图入队；最终runtime v2复用既有third_view顶视图，不增加相机render product；Recorder.encode后台编码30fps，逐帧对应recording_frames.jsonl。最少日志模式保留全部六路策略RGB，禁用这条额外录像链。
+
+时间与数组约定
+control_tick=step/6，首次观测为tick0；物理秒=step/120；曝光frame_id=capture_step/4。下表“帧/曝光step/曝光秒”明确指出视觉读哪个时刻。q数组按episode.json/scene标定的18关节顺序：前三项平移米，其余转动弧度。完整数组不做截断，存trajectory_excerpt.json的capture_q/current_q；每行原始数据也可按public_responses.jsonl行号直查。
+例如成功轨迹control tick1在step6/.05s收到frame1/step4/.033333s，视觉读取q[step4]，命令继续使用q[step6]，帧龄1/60秒；tick2在step12/.1s取得frame3/step12/.1s。frame2确实在step8采集，但20Hz消费者按最新帧规则跳过，不能把“未消费”误称为没有采集。
+
+严格成功轨迹：final_wedge_minimal
+V9 frozen SHA fa00074a81e44afa1971dbc2eeca46bbfbc66365c39d7f9d5de792e9a60bd72a。
+总计3432物理步/572控制周期/28.6秒，首抓严格成功。初始候选IK位置误差0.011867mm，端点桌面间隙8.673mm，完整路径检查通过。初始抓取方向为[-.297463,-.954733,0]。
+0..1416步依次抬高1.0s、转向5.2s、平移2.6s、下降3.0s。step1380帧345近景包络变化.668892mm<.8mm，剩余下降不替换；step1416帧354再次检查也低于阈值。随后闭合3.0s，step1800达到最短.2s稳定，qvel=.002381rad/s。8轮预载共3.2s，step2184帧546进入微抬。
+step2424帧606实际上移2.95636mm，但视觉仍unknown；step2472/.4s证明等待结束仍需bounded_larger_proof_needed，继续中抬。step2772帧693的相对13.4969mm上移产生carrying_evidence，继续终抬；step3072帧768到达30mm命令高度，再保持3.0s。step3432帧858支持图像稳定，公开stop_supported。额外帧已被读取，但这条成功轨迹未节省物理时间：早期证据不够明确，后续仍须原激励/稳定窗口。
+最终私有严格裁决：最小实际抬升29.8351mm，最小桌面间隙29.8912mm，最大原生角速度.717790rad/s，最小接触力.466672N，geometry_passed=true，success=true。
+
+控制tick | step | 物理秒 | 帧/曝光step/曝光秒 | trace行/response行 | 事件与转移
+0 | 0 | 0.000000 | 0 / 0 / 0.000000 | 3 / 1 | s5_plan attempt=1; axis=[-0.2974628094275892, -0.9547334062488051, 0.0]
+230 | 1380 | 11.500000 | 345 / 1380 / 11.500000 | 236 / 231 | s5_approach_observation remaining_prefix_replaced=False
+300 | 1800 | 15.000000 | 450 / 1800 / 15.000000 | 310 / 301 | s7_close_settle settled=True; qvel=0.002381rad/s
+412 | 2472 | 20.600000 | 618 / 2472 / 20.600000 | 456 / 413 | s5_proof_decision continue_lift: bounded_larger_proof_needed
+462 | 2772 | 23.100000 | 693 / 2772 / 23.100000 | 513 / 463 | s5_middle_decision continue_lift: continue_original_lift
+572 | 3432 | 28.600000 | 858 / 3432 / 28.600000 | 631 / 573 | s5_final_decision stop_supported: carrying_and_stationary_image_evidence_uncertified
+
+真实重试轨迹：early_pyramid
+同一V9冻结代码。抓点与三个方向沿用V7；以下每次提前结束都以当前实际曝光为触发，不用私有ground truth。
+第一抓step2304/19.2s开始微抬；step2460/20.5s的frame615显示grounded_evidence，实际腕上移2.223849mm。原V7同一分段的决策时点step2592/21.6s；本次取消84步剩余微抬(.7s)+48步等待(.4s)，实际省1.1s，转s3_open。
+张开step2460..2748耗2.4s，再退让/稳定到step2940/24.5s。此时新的RGB包络仍与两侧后相机壳相交，ready=false，不能仅因手指已打开就下一抓。再额外退让4mm及稳定到step3036/25.3s，frame759地图证实完整手部间隙通过，才触发正交第二抓。
+第二抓的末端物理状态已因提前释放不同，后续候选数值不要求与对齐版逐点相同；这是更早动作造成的闭环结果，不是暗改候选算法。局部取消的1.1s与整条轨迹时间差需分开报告。
+
+控制tick | step | 物理秒 | 帧/曝光step/曝光秒 | trace行/response行 | 事件与转移
+0 | 0 | 0.000000 | 0 / 0 / 0.000000 | 3 / 1 | s5_plan attempt=1; axis=[1.0, 0.0, 0.0]
+210 | 1260 | 10.500000 | 315 / 1260 / 10.500000 | 216 / 211 | s5_approach_observation remaining_prefix_replaced=False
+280 | 1680 | 14.000000 | 420 / 1680 / 14.000000 | 290 / 281 | s7_close_settle settled=True; qvel=0.002338rad/s
+410 | 2460 | 20.500000 | 615 / 2460 / 20.500000 | 473 / 412 | s9_early_proof old_step=2592; saved=1.1s
+410 | 2460 | 20.500000 | 615 / 2460 / 20.500000 | 474 / 412 | s5_proof_decision retry: observed_failure
+490 | 2940 | 24.500000 | 735 / 2940 / 24.500000 | 572 / 493 | s7_release_clearance extra=0.0m; ready=False
+506 | 3036 | 25.300000 | 759 / 3036 / 25.300000 | 591 / 509 | s7_release_clearance extra=0.004m; ready=True
+506 | 3036 | 25.300000 | 759 / 3036 / 25.300000 | 592 / 509 | s5_plan attempt=2; axis=[0.0, 1.0, 0.0]
+848 | 5088 | 42.400000 | 1272 / 5088 / 42.400000 | 936 / 851 | s5_approach_observation remaining_prefix_replaced=False
+918 | 5508 | 45.900000 | 1377 / 5508 / 45.900000 | 1009 / 921 | s7_close_settle settled=True; qvel=0.002348rad/s
+1048 | 6288 | 52.400000 | 1572 / 6288 / 52.400000 | 1192 / 1052 | s9_early_proof old_step=6420; saved=1.1s
+1048 | 6288 | 52.400000 | 1572 / 6288 / 52.400000 | 1193 / 1052 | s5_proof_decision retry: observed_failure
+1128 | 6768 | 56.400000 | 1692 / 6768 / 56.400000 | 1291 / 1133 | s7_release_clearance extra=0.0m; ready=False
+1144 | 6864 | 57.200000 | 1716 / 6864 / 57.200000 | 1310 / 1149 | s7_release_clearance extra=0.004m; ready=True
+1144 | 6864 | 57.200000 | 1716 / 6864 / 57.200000 | 1312 / 1149 | s5_plan attempt=3; axis=[0.7071067811865476, 0.7071067811865475, 0.0]
+1514 | 9084 | 75.700000 | 2271 / 9084 / 75.700000 | 1684 / 1519 | s5_approach_observation remaining_prefix_replaced=False
+1584 | 9504 | 79.200000 | 2376 / 9504 / 79.200000 | 1757 / 1589 | s7_close_settle settled=True; qvel=0.002293rad/s
+1715 | 10290 | 85.750000 | 2572 / 10288 / 85.733333 | 1941 / 1720 | s9_early_proof old_step=10416; saved=1.05s
+1715 | 10290 | 85.750000 | 2572 / 10288 / 85.733333 | 1942 / 1720 | s5_proof_decision stop_limit: physical_attempt_limit
+
+第三抓在control tick1715/step10290/85.750秒使用frame2572；该图像实际曝光于step10288/85.733333秒，视觉FK读取曝光q，命令/本体状态仍是step10290的q，帧龄16.667ms。这是本条失败轨迹中可直接核验的非同时刻配对例子，完整两组18维数组均保存在trajectory_excerpt.json相应事件。原分段的计划决策时点10416，实际取消126步=1.05秒；达到三次上限，stop_limit结束。
+
+实际完成3抓，总计10290物理步/85.750秒，strict success=False。3次提前事件累计取消局部等待/动作3.250秒。最后公开动作是stop_limit；重试没有新增严格成功，失败分母为本例1、物理尝试分母为3。
+
+复核方法与边界
+读取trajectory_excerpt.json可逐个事件跟踪：payload给出中间结果与决策原因，capture_q给视觉FK输入，current_q给控制器当前本体输入，next_dispatch.command.target_q给实际下一命令，trace_line/public_response_line直达未裁剪原始日志。phase_starts列出所有阶段及秒数；完整分阶段耗时仍以stage9_timing_summary.json为准。示例中的“当前q”是最近实际状态，并非预期轨迹目标，target_q必须从next_dispatch读取。
+本文件描述的成功/失败由物理rollout给出，回放只测计算时延。真机结论限于120/20/30接口时序、曝光状态配对、输入隔离和记录输入上的控制计算；不含真实相机驱动、真实总线延迟或真实接触验证。
+
+帧率与决策调度的归因：V8只提高采集频率，没有动作时间收益。V9第一抓20.5秒的grounded触发在Stage8原记录同一物理时间已经可观察；旧逻辑等到21.6秒才裁决。故3.25秒实测缩短证明提前消费/裁决的价值，不能声称这由30fps独有的新画面造成。未做保持V9决策逻辑的20fps采集独立消融。

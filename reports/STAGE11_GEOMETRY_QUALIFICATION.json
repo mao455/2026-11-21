@@ -1,0 +1,557 @@
+{
+  "criteria": "offline native initial z 8..40 mm, XY 6..50 mm; unchanged evaluator additionally requires watertight convex native solid",
+  "objects": [
+    {
+      "object_id": "abc_120835",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0381000004,
+        0.0381000004,
+        0.00634999992
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_120835_native.obj",
+      "sha256": "00b479cff9a95a37a21446d9f66415bf71fd06a1962a4fc3fec6a3758e1fb284"
+    },
+    {
+      "object_id": "abc_142430",
+      "size_eligible": true,
+      "evaluator_geometry_supported": false,
+      "dims_m": [
+        0.0340359994,
+        0.026390599,
+        0.0182118006
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_142430_native.obj",
+      "sha256": "0cd98490e9d691c101e90b0167a05bed77d1103013b17c3d9cde0103f3703d26"
+    },
+    {
+      "object_id": "abc_152039",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0507999994,
+        0.00952500012,
+        0.00317499996
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_152039_native.obj",
+      "sha256": "6893da3138b3b2cd43c5f824c0c03c2f97d9e956795f6a4ce53aa90339e921ae"
+    },
+    {
+      "object_id": "abc_170411",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.01904407888,
+        0.0190381594,
+        0.0190500002
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_170411_native.obj",
+      "sha256": "6d05ba7b833c41abef90c8f99773e5e2d72a9533a41f17319985b41ea33b5b67"
+    },
+    {
+      "object_id": "abc_181508",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0120000001,
+        0.0120000001,
+        0.0299999993
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_181508_native.obj",
+      "sha256": "5b09970b5cec17c893884b91e38e3628c8e034d926a6d69682eebe1b7208b64c"
+    },
+    {
+      "object_id": "abc_184787",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.01905000024,
+        0.01904407888,
+        0.0253999997
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_184787_native.obj",
+      "sha256": "86f3d03c7a0ea627adc325ec443e4011ea15c0f2adaace1d5973a74381343747"
+    },
+    {
+      "object_id": "abc_189313",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0274934136,
+        0.00634999992,
+        0.0139649101
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_189313_native.obj",
+      "sha256": "acb44239eba0899af3ea94a026410088c0da5ab0804a0687c9d6f29363dd5c16"
+    },
+    {
+      "object_id": "abc_199784",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.042375544,
+        0.0253999996,
+        0.0423887204
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_199784_native.obj",
+      "sha256": "4208374fdf80b3cc4607a747e5747f3aa5326dc629609da5143182501b454bac"
+    },
+    {
+      "object_id": "abc_222121",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0195000004,
+        0.0299999994,
+        0.00999999978
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_222121_native.obj",
+      "sha256": "8aaa5a9c4f4aaa88bb9a35356c7fa397f327ffda307142a46907314b470a89cc"
+    },
+    {
+      "object_id": "abc_244903",
+      "size_eligible": true,
+      "evaluator_geometry_supported": false,
+      "dims_m": [
+        0.029000001,
+        0.01099999994,
+        0.00999999978
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_244903_native.obj",
+      "sha256": "bafeecd82834a9075573f2e0cbcbe55e3de017a9fd5202074822cfecfe04f81e"
+    },
+    {
+      "object_id": "abc_267345",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0190500021,
+        0.01904407888,
+        0.0253999997
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_267345_native.obj",
+      "sha256": "a35239730340ac62ff9b1e753856586130960b402cf39a25bc1c59a45c51dd83"
+    },
+    {
+      "object_id": "abc_311740",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.00634802692,
+        0.00634999574,
+        0.0390538573
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_311740_native.obj",
+      "sha256": "4962daf0fc681987266169729a4a67c925428afe2226530c70be43c3033d4f2e"
+    },
+    {
+      "object_id": "abc_321996",
+      "size_eligible": true,
+      "evaluator_geometry_supported": false,
+      "dims_m": [
+        0.01999999956,
+        0.0289984494,
+        0.0250000004
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_321996_native.obj",
+      "sha256": "6a0e85b3e857c20a8408cfd7d779b2f0c0869b036f73f756dd65b5c068e69993"
+    },
+    {
+      "object_id": "abc_328629",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0310999994,
+        0.0250000004,
+        0.0125000002
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_328629_native.obj",
+      "sha256": "0e1143edda7b8d4b2e7724f740c5a853e5d3818ecd81688af3a77f479f797bf8"
+    },
+    {
+      "object_id": "abc_348949",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0250000004,
+        0.0250000004,
+        0.0250000004
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_348949_native.obj",
+      "sha256": "c3193b7ffa18b7684b4cc327824e476602ee8b338dbe6465501a803840c58b6e"
+    },
+    {
+      "object_id": "abc_382909",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.047300309,
+        0.0253999996,
+        0.0432950426
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_382909_native.obj",
+      "sha256": "af41d4e9b735a8adf2e90b6d9c4e4610108c55dc4364ac93bd2cfa1c53350b93"
+    },
+    {
+      "object_id": "abc_442157",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.01999999956,
+        0.01999999956,
+        0.0199999996
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_442157_native.obj",
+      "sha256": "586fcb8c413121e67b18e84378d6e46432300ef2bf063529b0e0f7d4d66d1cba"
+    },
+    {
+      "object_id": "abc_477230",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.00999844586,
+        0.0415036008,
+        0.00999999978
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_477230_native.obj",
+      "sha256": "79d276ba1b786246a97f35bdb989158014a32cd7897512671a71d3f40fb393ab"
+    },
+    {
+      "object_id": "abc_479808",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.00849867612,
+        0.0209999998,
+        0.00850000046
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_479808_native.obj",
+      "sha256": "7b09f5701cf46dc7285ae65a0c1befc789be184db90bc889204afa1f7172121a"
+    },
+    {
+      "object_id": "abc_53930",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.01269802638,
+        0.01269999984,
+        0.0126999998
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_53930_native.obj",
+      "sha256": "076bb5617d2fc9771e1b43cc4d8b949210681b02a520f246143d23f9212d3bdc"
+    },
+    {
+      "object_id": "abc_544444",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0344886668,
+        0.0181832593,
+        0.0253999997
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_544444_native.obj",
+      "sha256": "ddc6252824bcfc2598cd32f65d2c9bc3e01ea3ded1d59551dff4553d6876feef"
+    },
+    {
+      "object_id": "abc_553219",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.031750001,
+        0.0276132486,
+        0.0326495953
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_553219_native.obj",
+      "sha256": "0f47c42e99cd9f7479e0c163964aa460bec7c7aded441c39ed367fb11d40f842"
+    },
+    {
+      "object_id": "abc_595421",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0507999994,
+        0.0247000008,
+        0.00100000005
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_595421_native.obj",
+      "sha256": "b677f68a27371276a924f008f44f1b4a25f9224e600f97316067bad52f8dbccd"
+    },
+    {
+      "object_id": "abc_639369",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.00999844586,
+        0.0399999992,
+        0.00999999978
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_639369_native.obj",
+      "sha256": "fa901655489123b4c3406119e311bc258b4416ab2a0339b49ad98deefcf6103c"
+    },
+    {
+      "object_id": "abc_673390",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.01300000026,
+        0.0250000004,
+        0.0250000004
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_673390_native.obj",
+      "sha256": "5ae75a0ca148ea63064ec778d3b9a83f319d9afdb28566666d175c1d1662c26c"
+    },
+    {
+      "object_id": "abc_695047",
+      "size_eligible": false,
+      "evaluator_geometry_supported": false,
+      "dims_m": [
+        0.0299999984,
+        0.00499999988,
+        0.0149999997
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_695047_native.obj",
+      "sha256": "f15e91254b5d27d9933b8d67b56c06ac76ad69c19b139229e8a394542a8cc833"
+    },
+    {
+      "object_id": "abc_699849",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0303819404,
+        0.0508590694,
+        0.0303913876
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_699849_native.obj",
+      "sha256": "0fbceadf3d6dd2f432d5ec08904d44987d496facda04c5391c048df4e0809fbc"
+    },
+    {
+      "object_id": "abc_717584",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.01499766856,
+        0.01499999966,
+        0.0149999992
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_717584_native.obj",
+      "sha256": "2c12f534e8695848fc6718ada0107c791e9467da8f9e9d4cb459a47e5e24a1c2"
+    },
+    {
+      "object_id": "abc_750656",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.038082432,
+        0.0261712884,
+        0.0126999998
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_750656_native.obj",
+      "sha256": "e78652bebb87266ffce554d1ff1598ff61cd98f58a604e4d6822e587ecb714da"
+    },
+    {
+      "object_id": "abc_76395",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.01349782804,
+        0.013496764,
+        0.0134991538
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_76395_native.obj",
+      "sha256": "c69aafcc7136ae5672ab9779b4df4d9914cfef3783d2a80aead1d1e2b9cdaf57"
+    },
+    {
+      "object_id": "abc_770180",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.031750001,
+        0.01905000024,
+        0.0177800003
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_770180_native.obj",
+      "sha256": "1c8ef06a43b5423e326f1b9cb037960680ace56cde63aecbb05259f07d88b78a"
+    },
+    {
+      "object_id": "abc_78128",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0354953446,
+        0.0354843102,
+        0.0344394185
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_78128_native.obj",
+      "sha256": "25b3bf5a3de08faa7276bc2e52a9333df4a2858adb84a21fd01b7274964525b8"
+    },
+    {
+      "object_id": "abc_781904",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0270000008,
+        0.0270000008,
+        0.0299999989
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_781904_native.obj",
+      "sha256": "194c7817577a3ada108d09f6a333920bb8c8256a7a13cb932aa7a107aac069e6"
+    },
+    {
+      "object_id": "abc_781914",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0270000008,
+        0.0270000008,
+        0.0299999989
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_781914_native.obj",
+      "sha256": "d2abb4c5f2a40381539a120d764ca4c89a213f9c25758d411c114a75a750f619"
+    },
+    {
+      "object_id": "abc_783667",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.00634999992,
+        0.0253999996,
+        0.0253999997
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_783667_native.obj",
+      "sha256": "b388e8bef962614aba7185dd42727d10dd94f6247a87f0eb5e3e65645408fe93"
+    },
+    {
+      "object_id": "abc_784558",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0381000004,
+        0.0253999996,
+        0.031750001
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_784558_native.obj",
+      "sha256": "24084c676cd22256b3580a2a0b5c8aa990ff3cf43c58b0cd93178c2460bc6c9f"
+    },
+    {
+      "object_id": "abc_793782",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0271434542,
+        0.01897344552,
+        0.0253999997
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_793782_native.obj",
+      "sha256": "ba28d0395f306fa33dfde59817df35d6fa8309d4aae0ec7cb7d7299d707a957f"
+    },
+    {
+      "object_id": "abc_800348",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0399999992,
+        0.0399875678,
+        0.00249999994
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_800348_native.obj",
+      "sha256": "8c0ffaa1e084a76301cf427fbd7fe4a3a8a37947cb10e0016ad498ac6eb4821e"
+    },
+    {
+      "object_id": "abc_804073",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.01805000008,
+        0.01804438978,
+        0.0050499998
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_804073_native.obj",
+      "sha256": "2d71c710415fb533ae2ae0e312e92f0d11e37778ce027041951b6d4767c72158"
+    },
+    {
+      "object_id": "abc_805600",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0229307338,
+        0.0198585987,
+        0.0253999997
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_805600_native.obj",
+      "sha256": "7c1973ad51f940c336ac02e857344a2f8d1e0acf0294b034a7d05e52bbf4ede4"
+    },
+    {
+      "object_id": "abc_816970",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0253999996,
+        0.0253999996,
+        0.0253999997
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_816970_native.obj",
+      "sha256": "0aba4d1e7a88e75124fc8d0edd1ad8c7b64502f3e25c863fbb9244de7aec6253"
+    },
+    {
+      "object_id": "abc_826913",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0150000006,
+        0.01499999966,
+        0.0125000002
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_826913_native.obj",
+      "sha256": "7ebf3142c90b2871117d989c05de2a4b18e382ba9b90007fd6668b3b95cab1e9"
+    },
+    {
+      "object_id": "abc_83992",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.025117062,
+        0.0253999996,
+        0.0309290681
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_83992_native.obj",
+      "sha256": "0c2aabf9dcaa7406971a5962666df8b3dc387fef2c5e039334c7993ec7652850"
+    },
+    {
+      "object_id": "abc_928668",
+      "size_eligible": false,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0391742532,
+        0.040372476,
+        0.00499999989
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_928668_native.obj",
+      "sha256": "b13ddefd16c127046e4b4f87b0a83f40896d712433f70756b1c3716ff4a6043e"
+    },
+    {
+      "object_id": "abc_939116",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0270379502,
+        0.027029546,
+        0.0158750005
+      ],
+      "asset": "experiments/rax_dexbin_tinyobj/assets/general_stage1/abc_939116_native.obj",
+      "sha256": "bbcf77487b364f2322ee0a14a507e3705cab998cb73e0bc88b7f5537c1bcd904"
+    },
+    {
+      "object_id": "abc_993288",
+      "size_eligible": true,
+      "evaluator_geometry_supported": true,
+      "dims_m": [
+        0.0399999992,
+        0.0300000012,
+        0.0199999996
+      ],
+      "asset": "assets/objects/manifest_native_obj/abc_993288_native.obj",
+      "sha256": "3c5dee975cbbdfc010e2515a4462a6f64aa3c111a7dce9c1d77e9d9f13b5aad4"
+    }
+  ]
+}

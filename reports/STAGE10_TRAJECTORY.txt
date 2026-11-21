@@ -1,0 +1,57 @@
+Stage10 真实组合失败轨迹（逐抓连续物理执行）
+来源 /home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage10_20261121/pyramid_combined6/episode
+controller SHA256 b63d72ba057b90d2c836495ef8af5a92348e8e478364762a847ce025addf44e1
+读图使用 image_state.actual_q；动作跟踪使用 observation.actual_q。完整18维关节、曝光配对、原日志行号在 STAGE10_TRAJECTORY.json。
+本轮没有自然失败后成功救回，本文件解释证据最完整的失败轨迹；不能将未执行捷径计为收益。
+
+抓1 initial：step0..2460，0.000..20.500s；本抓20.500s，自上次失败到本抓结束Nones。
+计划点mm=[[-15.314914, -1.381417, 11.996641], [18.042571, -1.392011, 12.003371]]；高度mm=[11.996641, 12.003371]。
+计划thumb[6:9]/index[9:12] rad=[1.171931, 0.525644, 1e-06, 0.0, 1.163581, 1e-06]。
+末次闭合加微抬命令指姿rad=[1.165144, 0.563928, 0.0, 0.024489, 1.197784, 0.0]；决策时实际指姿rad=[1.16513, 0.563929, 0.0, 0.024491, 1.19779, -0.0]。
+预载序列mm=[[0.75, 0.75], [1.1, 1.1], [1.45, 1.45], [1.8, 1.8], [2.15, 2.15], [2.5, 2.5], [2.85, 2.85], [3.2, 3.2], [3.55, 3.55], [3.9, 3.9], [4.25, 4.25], [4.5, 4.5], [4.5, 4.5]]。
+公开闭合：classification=contact_geometry_unresolved，confidence=0.0，visible=['index', 'thumb']，lost=[]，moving=[]。
+公开微抬：grounded=True carrying=False hold_consistent=False -> retry:observed_failure；消费frame615，曝光step2460，帧龄0.000ms。
+交接 s9_early_proof trace行474 step2460 frame615 capture2460 age=0.0s；曝光指姿[1.16513, 0.563929, 0.0, 0.024491, 1.19779, -0.0]，当前指姿[1.16513, 0.563929, 0.0, 0.024491, 1.19779, -0.0]。
+事后私有：native接触类别={}；三link接触步数={}；全手20Hz抽样={}；最大root抬升-0.099999mm，最大离桌-0.000003mm，先抬后滑=False；严格=False。
+公开证据不包含上述native接触、物体姿态、omega或严格结果。
+
+抓2 full_release_placement：step3036..5316，25.300..44.300s；本抓19.000s，自上次失败到本抓结束23.8s。
+计划点mm=[[-24.438964, -0.88125, 7.496794], [25.167746, -0.891585, 7.503215]]；高度mm=[7.496794, 7.503215]。
+计划thumb[6:9]/index[9:12] rad=[1.179672, 0.449273, 1e-06, 0.0, 1.097023, 1e-06]。
+末次闭合加微抬命令指姿rad=[1.172692, 0.488162, 0.0, 0.018835, 1.132304, 0.0]；决策时实际指姿rad=[1.172674, 0.488162, 0.0, 0.018837, 1.132304, -0.0]。
+预载序列mm=[[0.75, 0.75], [1.1, 1.1], [1.45, 1.45], [1.8, 1.8], [2.15, 2.15], [2.5, 2.5], [2.85, 2.85], [3.2, 3.2], [3.55, 3.55], [3.9, 3.9], [4.25, 4.25], [4.5, 4.5], [4.5, 4.5]]。
+公开闭合：classification=contact_geometry_unresolved，confidence=0.0，visible=['index', 'thumb']，lost=[]，moving=[]。
+公开微抬：grounded=True carrying=False hold_consistent=False -> retry:observed_failure；消费frame1329，曝光step5316，帧龄0.000ms。
+上一抓grounded证据只支持未随手上行，具体接触原因unknown；新RGB/实际关节生成同方向新高度横向候选，平均点变化9.314mm，不能称估出了摩擦或接触法向。
+交接 s10_placement_selected trace行599 step3036 frame759 capture3036 age=0.0s；曝光指姿[1.174037, 0.447218, 0.120322, 0.0, 1.089633, 0.114561]，当前指姿[1.174037, 0.447218, 0.120322, 0.0, 1.089633, 0.114561]。
+交接 s9_early_proof trace行1036 step5316 frame1329 capture5316 age=0.0s；曝光指姿[1.172674, 0.488162, 0.0, 0.018837, 1.132304, -0.0]，当前指姿[1.172674, 0.488162, 0.0, 0.018837, 1.132304, -0.0]。
+事后私有：native接触类别={}；三link接触步数={}；全手20Hz抽样={}；最大root抬升-0.100000mm，最大离桌-0.000027mm，先抬后滑=False；严格=False。
+公开证据不包含上述native接触、物体姿态、omega或严格结果。
+
+抓3 full_release_placement：step5892..8136，49.100..67.800s；本抓18.700s，自上次失败到本抓结束23.5s。
+计划点mm=[[-29.368585, -2.361802, 7.496885], [29.233473, -2.371996, 7.503132]]；高度mm=[7.496885, 7.503132]。
+计划thumb[6:9]/index[9:12] rad=[1.184857, 0.406585, 1e-06, 0.0, 1.061187, 1e-06]。
+末次闭合加微抬命令指姿rad=[1.177795, 0.445712, 0.0, 0.016648, 1.096916, 0.0]；决策时实际指姿rad=[1.177779, 0.445713, 0.0, 0.01665, 1.096921, -0.0]。
+预载序列mm=[[0.75, 0.75], [1.1, 1.1], [1.45, 1.45], [1.8, 1.8], [2.15, 2.15], [2.5, 2.5], [2.85, 2.85], [3.2, 3.2], [3.55, 3.55], [3.9, 3.9], [4.25, 4.25], [4.5, 4.5], [4.5, 4.5]]。
+公开闭合：classification=contact_geometry_unresolved，confidence=0.0，visible=['index', 'thumb']，lost=[]，moving=[]。
+公开微抬：grounded=True carrying=False hold_consistent=False -> retry:observed_failure；消费frame2034，曝光step8136，帧龄0.000ms。
+上一抓grounded证据只支持未随手上行，具体接触原因unknown；新RGB/实际关节生成同方向新高度横向候选，平均点变化4.737mm，不能称估出了摩擦或接触法向。
+交接 s10_placement_selected trace行1160 step5892 frame1473 capture5892 age=0.0s；曝光指姿[1.181848, 0.389706, 0.085532, 0.0, 1.038336, 0.086064]，当前指姿[1.181848, 0.389706, 0.085532, 0.0, 1.038336, 0.086064]。
+交接 s9_early_proof trace行1591 step8136 frame2034 capture8136 age=0.0s；曝光指姿[1.177779, 0.445713, 0.0, 0.01665, 1.096921, -0.0]，当前指姿[1.177779, 0.445713, 0.0, 0.01665, 1.096921, -0.0]。
+事后私有：native接触类别={}；三link接触步数={}；全手20Hz抽样={}；最大root抬升-0.100000mm，最大离桌-0.000027mm，先抬后滑=False；严格=False。
+公开证据不包含上述native接触、物体姿态、omega或严格结果。
+
+恢复和停止（逐条原记录）：
+trace行477 s10_preload_gate step2460 t=20.5 frame615：{"passed": false, "reasons": ["bounded_feed_exhausted_or_unsupported"], "delta_m": [0.0, 0.0], "squeeze_m": [0.0045, 0.0045]}
+trace行478 s10_local_refused step2460 t=20.5 frame615：{"reason": "current_state_original_full_object_guard"}
+trace行596 s10_full_recovery_completed step3036 t=25.3 frame759：{"duration_s": 4.8}
+trace行1039 s10_preload_gate step5316 t=44.3 frame1329：{"passed": false, "reasons": ["bounded_feed_exhausted_or_unsupported"], "delta_m": [0.0, 0.0], "squeeze_m": [0.0045, 0.0045]}
+trace行1040 s10_local_refused step5316 t=44.3 frame1329：{"reason": "untrusted_fresh_local_map"}
+trace行1157 s10_full_recovery_completed step5892 t=49.1 frame1473：{"duration_s": 4.8}
+trace行1594 s10_preload_gate step8136 t=67.8 frame2034：{"passed": false, "reasons": ["bounded_feed_exhausted_or_unsupported"], "delta_m": [0.0, 0.0], "squeeze_m": [0.0045, 0.0045]}
+trace行1595 s10_local_refused step8136 t=67.8 frame2034：{"reason": "untrusted_fresh_local_map"}
+trace行1709 stage3_recovery_stop stepNone t=None frameNone：{"reason": "no_fresh_released_geometry"}
+trace行1710 s10_active_stop step8712 t=72.6 frame2178：{"reason": "original_full_release_recovery_refused"}
+
+动作下发：s10_policy -> 原s5_approach/s5_close/s5_lift或s10_local_retry -> s5_move/s5_step -> _S6Context.step -> _S9Context.step -> worker.Context.step -> host validate_step -> Peer.call -> Stage9 backend位置目标；每6步回包，RGB独立每4步。
+新候选只在释放后RGB与实际关节上求解；原全路径、速度、几何检查持续生效。局部路径若被拒绝，保存的是拒绝证据，不存在局部重抓的实际动作时长。

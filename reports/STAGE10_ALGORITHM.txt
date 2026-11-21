@@ -1,0 +1,74 @@
+Stage10 实际跨文件调用与反馈边界
+
+主入口 run_stage10.py::main/build 验证冻结V9 SHA，生成完整独立controller，并记录case/variant/配置。stage10_episode.py只扩展总预算，复用Stage9沙箱、ObservationGuard、RPC、原validate_step和裁决。stage10_backend.py只把后端物理总步数上限扩至48000；stage9_backend.py仍每4步真实渲染/读回六路RGB，每6步控制回包，step/时间/q/qvel与曝光配对。stage9_recording.py仍按30fps编码。共享V9与evaluator.py没有改写。
+
+调用图：
+run_stage10.main -> stage10_episode.runtime.main -> worker.Context -> controller.main
+ -> _S9_MAIN(_S9Context) -> _s6_policy_main=s10_policy(_S6Context)
+ -> s5_init -> s10_policy连续FSM
+ -> s5_plan / s10_placement_plan -> s5_approach -> s5_refine -> s5_close
+ -> s5_lift(proof/middle/final) -> s5_decide
+ -> retry: s10_preload_retry 或 s10_local_retry 或 s5_recover -> 新图 -> 下一抓
+命令唯一出口仍为s5_move/s5_step -> 原checker/rate guard -> _S6Context.step -> _S9Context.step(6步) -> worker -> host.validate_step -> backend真实物理。
+
+各分支不读物体ID、真实位姿、mesh、接触力或私有strict。消费帧仍由s9_visual/s9_exposure使用曝光q做FK，当前actual_q用于种子/跟踪，s10_log补充当前tick、frame_id、capture_step、actual_q。重复帧不能增加稳定证据。完整曝光配对在image_manifest/public_responses与s9消费审计，命令在agent_trace与120Hz steps。
+
+s10_policy保留第一抓V9计划/近景修正/闭合与proof、中间、最终抬升顺序。只在公开decision=retry后选择下一动作。stop_supported不查私有omega后反悔；stop_unknown保留可能携带的未知并停止。严格逐抓结果是episode结束后stage10_retrospective.analyze调用原evaluator.evaluate(所有此前物理步前缀, 原初始z)，先前几何失败不能通过切片丢掉。
+
+原地预载：s10_preload_gate读取上一抓closure_response的双侧可见/稳定/实际跟踪、当前grounded失败和剩余行程。只有支持有限探测才允许；少量欠跟踪允许减350um，跟踪充分且有余量允许加350um，上下限仍0.5..4.5mm。每个几何最多一次。回到原高度后再检查新RGB双侧可见，保持落点与方向，下发close_ik目标并记录实际误差；从不把无运动叫作接触证明。原V9三棱锥已用满4.5mm且无接触认证，预载门必须拒绝盲目加压。
+
+落点：s10_placement_plan在失败后的新RGB info/volume和实际关节种子上，保持inward方向，试高度fraction .25/.55/.75及横向+-1.5mm。优先调用V9已有可见高度局部弦s5_local_candidates，不足时以完整RGB包络生成有界候选；每个候选仍由原_s3_candidates_on_axes检查IK、法向、端点、整段路径和tail。与上一抓接触点平均变化至少1mm，并排除已试落点。失败证据只表明grounded时，真实原因标unknown；高度/横向是有限候选多样性，不冒称估出了摩擦或失败面法向。
+
+局部捷径：s10_local_retry必须有当前grounded证据、新图地图有效、当前实际手与命令手都通过原object_check=True。候选选择、2mm小开指、连接目标及整个smoothing路径在运动前全部检查原碰撞/限位/速度。拒绝路径不写入已执行候选历史，不伪造完整释放票据。通过才在同episode执行，省略完整退开/转腕。若当前RGB保守包络覆盖闭合手，直接拒绝，仍走s5_recover原释放、固定腕退开、稳定、新图与清障票据。
+
+完整回退：s5_recover / stage3_recover和V7清障扩展仍原样。下一抓实际使用释放后RGB包络与当前关节。direction6前三方向保持V9，第4..6从预登记角度集合挑未试方向，最小夹角10度，按当前包络宽度排序；这仍是未知原因下的多样性，不是接触诊断。
+
+V9真实三棱锥逐抓审计见STAGE10_V9_AUDIT.txt/JSON；新组合真实逐抓交接见STAGE10_TRAJECTORY.txt/JSON，均由实际agent_trace、public_responses和120Hz物理轨迹生成。公开证据与事后native接触分别存储，后者不回流策略。
+
+参数核对（配置 stage10_config.json；执行值在独立冻结controller的Stage10 overlay）
+物理/control/RGB/video：120Hz/20Hz/30fps/30fps，与冻结V9完全相同；采集4步、动作6步；源于真机时序约束。
+抓次上限：V9=3；四项六抓实验与组合=6。来自本轮实验预算，不是机器人标定。
+总物理预算：V9原200s；Stage10宿主、后端、策略统一400s，保留每次guard。墙钟2400->4800s、policy2300->4700s，仅增加有限实验预算。
+预载上限：4.5mm不变；新一次调整350um；仍使用0.5..4.5mm区间，不改变关节目标限位/速度/桌面与自碰撞门。350um沿用V9经验增量，不能等同于力。
+局部候选：V9常规height_fraction .4/.6、shift0；反馈候选.25/.55/.75、shift+-1.5mm，来自小范围探索，非物体真值标定。可达性由原RGB包络与IK/path/tail判断。
+候选新颖性：接触点平均移动>=1mm，已试点最大差<1mm则跳过；与1mm视觉体素分辨率一致的经验阈值，不声称亚毫米定位。
+局部开指：2mm；完整释放保留V9每1mm累计6mm、实测张开至少3mm和4/8/12mm退让及额外清障。局部2mm同样必须整段object_check=True，不借用完整释放的许可。
+原位预载：每个几何最多一次；公开grounded、双侧可见、电机稳定、无公开运动/丢失且剩余行程支持才尝试。drive_deficit .45沿用V9，不能解释成实测接触力。
+第四至第六方向：有限0/90/+-45/+-22.5/+-67.5度集合，方向差至少10度；按当前RGB投影宽度排序。仅为未知原因下的有限多样性。
+
+
+Stage10 文件与函数交接表（冻结源 versions/visual_stage10_feedback_v10/controller.py 包含V9与overlay）
+入口 run_stage10.main -> build：验证V9 SHA；仅放宽有限实验上限并拼接显式variant，保存case/config/controller SHA。提供 --controller 时验证variant及123项运行依赖SHA，禁止标签和实际控制器不一致。
+宿主 stage10_episode：沿用Stage9 sandbox、ObservationGuard、validate_step、Peer.call和原evaluate；只把400s物理与4800s墙钟上限同后端对齐。
+后端 stage10_backend：执行原Stage9实现，只扩展总物理步预算；六路RGB实际每4步、动作每6步、录像30fps和严格物理裁决原样。
+策略 s10_policy -> s5_init：初始RGB静态包络与robot，actual_q/last、attempt1；首次plan/approach/refine/close/proof/decide沿用V9。新增s10事件只记录公开状态。
+s5_note包装：截获最后一次s5_closure_response/s5_closure_action，存入s供下一次门控；没有接触力、真值位姿或私有裁决。
+s10_preload_gate -> s10_preload_retry：读取上一抓grounded和闭合双侧可见、实际关节跟踪/速度；门通过才生成有界进给与目标指姿。目标和实际误差写s10_preload_response，重新走s5_lift/s5_decide。门拒绝立即转落点/原恢复，不增加执行抓次。
+s10_local_retry -> stage3_live_geometry -> s10_placement_plan -> s10_validate_path：读取失败后的新曝光与当前actual_q；检查当前实际/命令手和新RGB包络，整条2mm开指+重放路径。通过才增加attempt并s5_step逐段下发；拒绝恢复候选/历史，不伪造release ticket。
+s5_recover -> stage3_recover：完整释放、固定腕退让、稳定、新图清障，成功才attempt+1并更新info/volume/checker。新抓s10_placement_plan用同方向、高度/横向候选及实际关节种子；s5_refine包装保留已选height/shift，避免原shift0规则抹掉干预。
+s10_new_direction：局部候选不足时，前三方向仍V9；之后有限未试方向多样性。无法通过原守卫则active_stop，六抓上限不等于必须执行六抓。
+原s5_move/s5_step -> _S6Context/_S9Context -> worker.Context -> validate_step/Peer -> backend：真正发送位置目标。每个命令仍通过原关节、几何、速度检查。s10_validate_path是局部动作的额外运动前全路径检查。
+结束：宿主关闭episode后，stage10_retrospective.analyze调用原evaluator.evaluate对每次结束的完整episode前缀评分；stage10_contacts只在此读取native点与authored mesh，绝不由策略导入。stage10_report汇总分母；stage10_document生成真实帧/关节交接；stage10_batch做可恢复RGB归档。
+
+参数表（实际定义处 | 单位 | V9 -> Stage10 | 依据/影响）
+V9/S9Context与stage9_backend | Hz |120/20/30/30 -> 相同 | 真机时序要求；物理/控制/RGB/录像，6/4步。
+stage10_feedback.S5_ATTEMPTS | 抓 |3 -> v9=3,其他=6 | 本轮有限实验预算；不改变首抓。
+stage10_feedback.STAGE3_TOTAL_STEPS 与stage10_backend/episode | 物理步 |24000 ->48000 | 200->400s，额外三抓预算；未将tick等同秒。
+run_stage10.build/宿主 | 墙钟秒 |2400/2300 ->4800/4700 | 宿主/策略总预算，无单段加速。
+V9.S5_CAP | m |.0045 -> 相同 | 原经验上限；不是力标定。
+stage10_feedback.s10_preload_gate | m |无 -> +/- .00035 | 原V9进给量级，有界一次；.0005..0045上下限。
+同上 | 无量纲 |drive_deficit .45 -> 相同 | 本体伺服跟踪代理；非接触/力证明。
+stage10_feedback.s10_placement_plan | 高度比例 |.4/.6 -> .25/.55/.75候选 | 小范围经验搜索；30mm包络对应7.5/16.5/22.5mm，实际由可达性选择。
+同上 | m |shift0 -> +/- .0015 | 公开失败原因未知时的有限横向多样性。
+同上 | m |无 -> .001最小点变化 | 与1mm视觉体素同量级；防止只是重套同一落点。
+stage10_feedback.s10_local_retry | m |完整开指.006 -> 可选局部.002 | 缩短恢复的实验；必须新图/当前与全路径原守卫全过。
+V9.stage3_recover | m |.001递增到.006，实际开指至少.003，退让.004/.008/.012及原额外清障 -> 相同 | 原经验恢复规则；失败时不得绕过。
+s10_new_direction | rad |前三原方向 -> 最多6抓有限集合，间隔>=10deg | 当前RGB包络宽度排序，仅代表多样性。
+本轮未增加独立的指姿扰动先验；姿态变化来自同方向新落点的IK解。不能把高度/横向单项描述成已隔离验证了独立指姿变量。
+
+新增/修改/删除与可核验实验
+新增 run_stage10、stage10_episode/backend/config/feedback：五个variant实际同episode物理对照和冻结回归；每例submitted SHA/config/case保留。
+新增 retrospective/contacts/report/document：120Hz原评测前缀、原生接触点几何分类、实际帧关节交接与逐抓分母。几何归类不等于指垫材料或接触质量证明。
+新增batch/finish_batch、测试、预登记case与PLAN、冻结V10：顺序运行避免计时干扰；冻结后新初态不再调参。
+未删除或修改冻结V9及其共享依赖；本轮仅把已验证的动态RGB无损ZIP归档，保留唯一原始证据的可恢复入口。清理量见归档清单。
+剩余限制：公开grounded只知道没有随手，无法定位空抓/指侧/壳体接触；局部运动被保守包络拒绝时不能声称验证了省时。原位预载门没有通过时不能估其成功率。本轮计算和物理均为同一仿真平台，未声称真机或硬实时验证。

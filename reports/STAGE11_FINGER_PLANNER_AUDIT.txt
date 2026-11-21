@@ -1,0 +1,16 @@
+Stage11 shared contact-planner component audit
+
+Changed existing files only: general_grasp_contacts.py, general_grasp_integration.py, test_general_grasp_contacts.py. No frozen controller, evaluator, robot mesh, runtime or Stage5/9 action code changed by this component work.
+
+ContactPlanner.plan accepts contact_counts=(2,), (3,) or (2,3), plus explicit finger_groups of discovered distal names. This is a planning input: it restricts the same bounded beam search, IK, individual position/normal error thresholds, caller safety callback and wrench/uncertainty tests. Unselected joint values remain equal to measured actual_q. Invalid groups and incompatible counts fail before the search. generic_local_proposal forwards these optional arguments.
+
+Ranking now uses mean normalized position error, mean normalized normal error and mean geometry uncertainty per participating finger, plus URDF minimum command-travel time and support load scale. Every participating finger must pass its own error gate. The prior arbitrary cardinality penalty and summed residual/uncertainty terms no longer decide between counts. candidate_qualities exposes the score terms, fingers, requested groups/counts and final selected quality. Command travel is a lower bound under URDF velocity limits; it excludes acceleration and actuator settling. Generic wrench feasibility remains conditional on stated friction and effort assumptions, not measured forces.
+
+Audit of the actual V9 action route:
+- versions/visual_stage9_early_v9/controller.py uses TIPS=(thumb_link3,index_link2), active Robot.tips at line423, optimize at1365 and close_ik at1379. Later wrappers retain the same two pad and 6:12 finger-joint semantics.
+- stage3_recovery.py::_s3_candidates_on_axes explicitly generates two opposed goals, zeroes unused joints and validates original approach and tail. stage5_control.py uses two-element squeeze and thumb/index feedback.
+- stage8_hand_description.py::xhand_from_runtime registers only two calibrated pads from PRIMITIVE. Its stable_joint_response reads semantic groups but does not add a third pad.
+- general_grasp_integration.py::generic_local_proposal currently returns physical_execution=False; the normal V9 control path does not import ContactPlanner. Therefore the tests below validate reusable planning support, not physical two/three/auto grasp results.
+- URDFHand._discover_fingers samples collision-surface anchors, explicitly labeled as not validated pad/exposed assembly surfaces. It must not silently relabel generic mesh triangles as third-finger calibration. Caller still owns full-hand object/table/camera-shell swept-path validation and final motor command dispatch.
+
+Verification: /home/CNS2025331827/miniconda3/envs/isaaclab/bin/python -m unittest test_general_grasp_contacts -q from this directory. 18 tests passed, including explicit opposed two-finger and three-finger groups on one synthetic hand, unselected-joint equality, invalid group/count rejection and count-independent quality for identical per-finger errors. Existing real XHand URDF topology/Jacobian tests remain passing. No physical rollout was run by this component subtask; no strict success increment is claimed.

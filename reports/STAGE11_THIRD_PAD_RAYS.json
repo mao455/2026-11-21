@@ -1,0 +1,290 @@
+{
+  "scope": "static hand asset geometry only",
+  "correction": "Prior direct cross-link comparison of middle_link1 and middle_link2 was invalid. This audit transforms the identity-fixed distal assembly into middle_link2 coordinates; full FK collision guards still cover other links.",
+  "links": [
+    "left_hand_middle_link2",
+    "left_hand_middle_camera_component1_link",
+    "left_hand_middle_camera_component2_link",
+    "left_hand_middle_camera_component3_link"
+  ],
+  "origins": [
+    [
+      0.03,
+      0.0,
+      0.047
+    ],
+    [
+      0.03,
+      0.0012,
+      0.047
+    ],
+    [
+      0.03,
+      0.0010392304845413263,
+      0.0476
+    ],
+    [
+      0.03,
+      0.0006000000000000001,
+      0.048039230484541326
+    ],
+    [
+      0.03,
+      7.347880794884118e-20,
+      0.0482
+    ],
+    [
+      0.03,
+      -0.0005999999999999997,
+      0.048039230484541326
+    ],
+    [
+      0.03,
+      -0.0010392304845413263,
+      0.0476
+    ],
+    [
+      0.03,
+      -0.0012,
+      0.047
+    ],
+    [
+      0.03,
+      -0.0010392304845413265,
+      0.046400000000000004
+    ],
+    [
+      0.03,
+      -0.0006000000000000005,
+      0.045960769515458674
+    ],
+    [
+      0.03,
+      -2.2043642384652355e-19,
+      0.0458
+    ],
+    [
+      0.03,
+      0.0006000000000000001,
+      0.045960769515458674
+    ],
+    [
+      0.03,
+      0.001039230484541326,
+      0.0464
+    ]
+  ],
+  "first_hits": [
+    {
+      "ray": 0,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        0.0,
+        0.047
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 1,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        0.0012,
+        0.047
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 2,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        0.0010392304845413263,
+        0.0476
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 3,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        0.0006000000000000001,
+        0.048039230484541326
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 4,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        7.347880794884118e-20,
+        0.0482
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 5,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        -0.0005999999999999997,
+        0.048039230484541326
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 6,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        -0.0010392304845413263,
+        0.0476
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 7,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        -0.0012,
+        0.047
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 8,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        -0.0010392304845413265,
+        0.046400000000000004
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 9,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        -0.0006000000000000005,
+        0.045960769515458674
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 10,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        -2.2043642384652355e-19,
+        0.0458
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 11,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        0.0006000000000000001,
+        0.045960769515458674
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    },
+    {
+      "ray": 12,
+      "link": "left_hand_middle_camera_component3_link",
+      "point": [
+        0.011749999597668648,
+        0.001039230484541326,
+        0.0464
+      ],
+      "normal": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "distance": 0.01825000040233135
+    }
+  ],
+  "contact_frame": {
+    "link": "left_hand_middle_link2",
+    "point": [
+      0.01175,
+      0.0,
+      0.047
+    ],
+    "normal": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "source": "static identity-fixed component3 front face; no measured material or drive calibration"
+  },
+  "verified_radius_m": 0.0012,
+  "material_optical_actuator_measured": false
+}

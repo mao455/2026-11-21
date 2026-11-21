@@ -1,0 +1,48 @@
+Stage9 复跑；所有session须为新的空目录，不覆盖已有证据。
+cd /home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab
+PY=/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python
+
+冻结V9（120Hz物理/20Hz动作/六路30fps真实采集/30fps导出）
+$PY experiments/rax_dexbin_tinyobj/run_stage9.py --session outputs/rax_dexbin_tinyobj/stage9_replay_wedge --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json --controller experiments/rax_dexbin_tinyobj/versions/visual_stage9_early_v9/controller.py --mode full
+
+保留V7决策语义的V8时序对齐版
+$PY experiments/rax_dexbin_tinyobj/run_stage9.py --session outputs/rax_dexbin_tinyobj/stage9_replay_aligned --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json --controller experiments/rax_dexbin_tinyobj/versions/visual_stage9_timing_v8/controller.py --mode minimal
+
+圆柱/三棱锥分别替换case文件为stage6_cases/dev_cylinder.json、stage7_cases/natural_pyramid.json。
+录像开关只改--mode minimal/full；策略六路采集不变。计时对照必须串行且停止其他仿真/回放/压缩。
+配置入口stage9_config.json，冻结副本versions/visual_stage9_early_v9/timing.json。频率固定合同，参数变动须重建/重新冻结，不允许静默读成另一频率。
+
+冻结后预登记初态：stage9_cases/heldout_wedge.json、heldout_cylinder.json、heldout_pyramid.json
+$PY experiments/rax_dexbin_tinyobj/run_stage9.py --session outputs/rax_dexbin_tinyobj/stage9_replay_heldout_wedge --case-file experiments/rax_dexbin_tinyobj/stage9_cases/heldout_wedge.json --controller experiments/rax_dexbin_tinyobj/versions/visual_stage9_early_v9/controller.py --phase heldout
+heldout校验freeze.json程序SHA及case内容。不可调参后复用同一留出分母。
+
+批量固定计划（使用新root）：
+$PY experiments/rax_dexbin_tinyobj/stage9_batch.py --root outputs/rax_dexbin_tinyobj/stage9_replay_batch --plan experiments/rax_dexbin_tinyobj/STAGE9_FINAL_PLAN.json
+
+CPU公共录制输入回放（仅测计算，不提供严格抓取结果）：
+$PY experiments/rax_dexbin_tinyobj/stage9_replay.py outputs/rax_dexbin_tinyobj/stage9_20261121/verified_wedge_minimal/episode
+
+测试/只读数据核验/派生报告：
+$PY -m unittest experiments/rax_dexbin_tinyobj/test_stage9_timing.py experiments/rax_dexbin_tinyobj/test_stage8_closure.py experiments/rax_dexbin_tinyobj/test_stage8_contract.py
+$PY experiments/rax_dexbin_tinyobj/stage9_report.py outputs/rax_dexbin_tinyobj/stage9_20261121
+$PY experiments/rax_dexbin_tinyobj/stage9_document.py
+$PY experiments/rax_dexbin_tinyobj/stage9_finish.py
+
+历史RGB恢复见STAGE9_CLEANUP.txt；Stage8冻结程序/入口保持原样，原STAGE8_EXECUTION.txt命令仍有效。
+
+最终runtime v2在显式冻结启动前校验118项代码/配置/裁决/资产SHA：versions/visual_stage9_early_v9/runtime_manifest.json。
+同一控制器的开发/初次留出所用runtime_v1源码快照在冻结目录/runtime_v1；仅保留历史复核，不覆盖当前代码。
+最终相机集合不因录像开关改变：full复用已有third_view顶视相机，额外相机帧不对策略公开；六路录像使用策略加噪后的原始像素。
+最终复核批次（录像配对和原锁定留出重跑，复跑不增加留出独立分母）：
+$PY experiments/rax_dexbin_tinyobj/stage9_batch.py --root outputs/rax_dexbin_tinyobj/stage9_replay_verified --plan experiments/rax_dexbin_tinyobj/STAGE9_VERIFICATION_PLAN.json
+端到端公共输入校验→冻结inbox故障测试：
+$PY -m unittest experiments/rax_dexbin_tinyobj/test_stage9_transport.py
+清理后原V7物理复跑（新session名）：
+$PY experiments/rax_dexbin_tinyobj/run_stage8.py --session outputs/rax_dexbin_tinyobj/stage9_legacy_v7_after_cleanup --case-file experiments/rax_dexbin_tinyobj/stage6_cases/dev_wedge.json --controller experiments/rax_dexbin_tinyobj/versions/visual_stage8_three_attempts_v7/controller.py
+
+逐像素差异量化（在物理rollout/控制回放完成后执行，不与配对计时竞争IO）：
+$PY experiments/rax_dexbin_tinyobj/stage9_pixel_compare.py outputs/rax_dexbin_tinyobj/stage9_20261121/verified_wedge_minimal/episode outputs/rax_dexbin_tinyobj/stage9_20261121/verified_wedge_full/episode --output outputs/rax_dexbin_tinyobj/stage9_20261121/modes_pixel_comparison.json
+
+最终证据汇总（report/document/finish和全部串行回放/测试完成后）：
+$PY experiments/rax_dexbin_tinyobj/stage9_evidence.py
+STAGE9_EVIDENCE.json保留小体积结果/计时/清理/环境/哈希；原始GB级RGB、物理轨迹和录像位于outputs。源码提交仅包含Stage9新增文件，不纳入工作区预先暂存的Stage4等改动；共享依赖的准确版本用runtime_manifest校验。

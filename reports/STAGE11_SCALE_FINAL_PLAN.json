@@ -1,0 +1,67 @@
+{
+  "declared_time": "2026-11-21 19:27:13 +0800",
+  "scope": "fixed distinct offline eligible objects; no success selection",
+  "surveyed": 46,
+  "height_size_eligible": 36,
+  "evaluator_supported_eligible": 33,
+  "selected_objects": 8,
+  "controller_sha256": "2f110aad462c5339341af353a2d4b0ac5f314db9eb4989bc78622f9332634232",
+  "runs": [
+    {
+      "name": "abc_170411",
+      "case": "stage11_cases/pressure_final_abc_170411.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/pressure_final_controller.py",
+      "mode": "minimal",
+      "max_attempts": 1
+    },
+    {
+      "name": "abc_181508",
+      "case": "stage11_cases/pressure_final_abc_181508.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/pressure_final_controller.py",
+      "mode": "minimal",
+      "max_attempts": 1
+    },
+    {
+      "name": "abc_184787",
+      "case": "stage11_cases/pressure_final_abc_184787.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/pressure_final_controller.py",
+      "mode": "minimal",
+      "max_attempts": 1
+    },
+    {
+      "name": "abc_189313",
+      "case": "stage11_cases/pressure_final_abc_189313.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/pressure_final_controller.py",
+      "mode": "minimal",
+      "max_attempts": 1
+    },
+    {
+      "name": "abc_222121",
+      "case": "stage11_cases/pressure_final_abc_222121.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/pressure_final_controller.py",
+      "mode": "minimal",
+      "max_attempts": 1
+    },
+    {
+      "name": "abc_267345",
+      "case": "stage11_cases/pressure_final_abc_267345.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/pressure_final_controller.py",
+      "mode": "minimal",
+      "max_attempts": 1
+    },
+    {
+      "name": "abc_311740",
+      "case": "stage11_cases/pressure_final_abc_311740.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/pressure_final_controller.py",
+      "mode": "minimal",
+      "max_attempts": 1
+    },
+    {
+      "name": "abc_328629",
+      "case": "stage11_cases/pressure_final_abc_328629.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/pressure_final_controller.py",
+      "mode": "minimal",
+      "max_attempts": 1
+    }
+  ]
+}

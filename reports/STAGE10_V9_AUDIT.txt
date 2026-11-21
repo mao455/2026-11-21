@@ -1,0 +1,62 @@
+Stage10 开发前：冻结 V9 三棱锥逐抓审计
+数据来源：outputs/rax_dexbin_tinyobj/stage9_20261121/early_pyramid/episode。
+这是历史 V9 的真实连续物理轨迹，不是 Stage10 新实验结果。
+完整计划点、18维目标/实际关节、39轮预载、曝光帧/曝光关节/消费时点、失败报告与原日志行号见同目录 STAGE10_V9_AUDIT.json。
+控制器 SHA256 fa00074a81e44afa1971dbc2eeca46bbfbc66365c39d7f9d5de792e9a60bd72a。
+
+实际调用链（以下行号均指 versions/visual_stage9_early_v9/controller.py）
+run_stage9.py -> stage9_episode.py -> Stage4原episode运行器/worker -> main:4633。
+main -> _S9_MAIN(_S9Context) -> Stage6计时main:4102 -> _s6_policy_main(_S6Context) -> FSM main:3865。
+FSM每抓依次 s5_plan -> s5_approach -> 必要时s5_refine -> s5_close -> s5_lift(.003,48) -> s5_decide(proof)。
+retry调用s5_recover后继续下一抓；continue_lift才进入16.5mm与30mm阶段，再进行完整保持与final判断。本三棱锥三次都在微抬阶段判定grounded，未进入完整抬升。
+
+s5_plan：最终绑定4414，其_S8_PLAN别名保留Stage6计时包装，最终进入3641。
+第一抓auto根据RGB包络长宽比选择方向；第二抓采用前一次inward正交方向；第三抓从前方向±45度中选当前包络投影宽度较小者。不是根据接触法线或力诊断选择。
+3641的候选从当前info与PRIMITIVE['grasp_q']出发，用_s3_candidates_on_axes做IK、姿态/端点/整条路径检查。默认高度候选(.4,.6)，本轨迹每次第一可行解均为.4。重试initial用last合法命令；之后的近景refine才明确用projected_actual_joints。
+重试方向规划必须有上一抓完成释放退让的STAGE3_RELEASE_TICKET。
+
+s5_refine：最终核心3980。volume.carve当前曝光；包络变化>=0.8mm才重新生成候选。以实际关节（仅允许<=1e-5限位数值投影）做IK种子，检查当前实际姿态和命令连续路径，再s5_move下发。
+本轨迹第一抓step1260/1296近景有效，但变化0.270933/0.339330mm低于0.8mm，无修改。
+第二抓step5088/5124与第三抓9084/9120的近景无有效有界多视角表面，reason=no_bounded_opposing_digit_hull，因此继续先前释放后获得的合法计划；并没有借这些失败近景生成新的高度或指姿。
+
+s5_close：最终4584 -> _S9_CLOSE(4444) -> _S7_V4_CLOSE（计时后的3758）。
+核心闭合30个目标，从点外6mm到内0.5mm。V7/V8包装修改运动和稳定等待时间；V9每6物理步核对初次稳定，最少24步、最多120步。预载每轮s5_move(adjust)，随后24..60步等待实际指关节速度稳定。
+本轨迹mode=servo，cap实际为4.5mm（不能误读函数默认2.5mm）。首次增量0.25mm，后续默认0.35mm；仅当指可见且稳定才继续；drive_deficit>=.45可设置contact_at，之后额外进给最多1.05mm；足够可信的注册物体运动可暂停。这个contact_at是伺服代理，非接触力。
+每次闭合的局部evidence/contact_at重新初始化，上一抓的完整闭合响应没有作为下一抓闭合参数传入。
+
+s5_lift：最终4607处理3mm微抬；大抬升走3797。before曝光/实际关节与当前曝光构成stage3_support_pair；实际手掌上行>=2.2mm才检查grounded。V9在原240步微抬+48步等待结束前允许使用相同失败判据提前返回。
+s5_decide：4409保存s8_previous_decision，调用3822，再到stage3_support_decision:2586。grounded即可retry；原上限三抓时第三次返回stop_limit。未知并不等于失败，更不能用私有omega裁决主动重抓。
+s5_recover：3837 -> stage3_recover:4152包装 -> 原3259。固定腕姿，必要时下放；从当前实际指点往外每次1mm累计6mm，实际投影张开至少3mm；4/8/12mm垂直退让并稳定，使用新RGB重建图；4152再检查新包络与整个手的当前实际/命令姿态，必要时额外4..16mm退让。通过后更新obs/last/info/volume/checker，attempt+1，squeeze重置0.5mm。
+所有最终动作经s5_step:3621（原关节/几何/速度限制）-> _S6Context.step -> _S9Context.step（每6步）-> worker.Context.step -> host validate_step -> Peer.call -> 原后端位置目标。公开图像每4步实际采集，图像几何使用s9_exposure的曝光关节，控制使用当前actual_q，二者不混同。
+
+逐抓实际计划与动作（坐标mm；指关节顺序thumb[6:9],index[9:12]，rad）
+抓1：step0计划，axis=(1,0,0)，height_fraction=.4，目标高度12。
+计划目标=(-15.307261,-1.386715,12),(18.034906,-1.386715,12)。
+step2304/19.2s闭合结束实际指姿=(1.165166,.563917,.000000104),(.024488,1.197762,.000000086)。
+step2460/20.5s消费frame615/曝光2460。before曝光2304；实际手掌上行2.223849mm。index_front2与thumb_front2都grounded，其余四视角unknown。决策observed_failure -> retry。
+step2748释放完成，实际张开5.857871/5.804371mm。2940新图后手与包络仍重叠；额外4mm退让，3036/25.3s通过，下一抓得到新图/关节/包络与释放ticket。
+
+抓2：step3036计划，axis=(0,1,0)，height_fraction=.4，目标高度12。
+计划目标=(.364387,-15.186418,12),(.364387,16.413582,12)。
+step6132/51.1s闭合结束实际指姿=(1.164495,.571968,.000000104),(.025286,1.204911,.000000086)。
+step6288/52.4s消费frame1572/曝光6288；before6132，手掌上行2.223879mm。仍为两front2视角grounded，其余unknown。observed_failure -> retry。
+6576释放完成，实际张开5.857912/5.803657mm；6768仍重叠，额外4mm退让后6864/57.2s通过。
+
+抓3：step6864计划，axis=(.707107,.707107,0)，height_fraction=.4，目标高度12。
+计划目标=(-14.279698,-16.079032,12),(15.144566,13.345232,12)。
+step10128/84.4s闭合结束实际指姿=(1.168722,.525522,.000000104),(.021269,1.164185,.000000085)。
+step10290/85.75s消费frame2572，曝光10288/85.733333s，帧龄16.666667ms；before10128，手掌上行2.312481mm。index_front2/index_back/thumb_front2为grounded，thumb_back为relative_motion_risk，其余unknown。最终physical_attempt_limit -> stop_limit；剩余13710物理步，未触发总预算。
+
+三抓预载序列完全相同，单位mm：
+0.75,1.10,1.45,1.80,2.15,2.50,2.85,3.20,3.55,3.90,4.25,4.50,4.50。
+对应抓1每轮起点1680+48*i，抓2为5508+48*i，抓3为9504+48*i，i=0..12。每轮0.4s，13轮共5.2s；末轮没有新进给，之后break。
+39轮contact_proxy_at全部[null,null]，没有达到.45 deficit阈值的接触起点。三次最终公开分类均contact_geometry_unresolved、confidence0、两指可见、moving_fingers为空；纹理/深度不确定性阻止注册运动符号。最后零增量轮的drive_deficit约.166..182，不能被当成真正接触证据。
+
+真正变化的是方向、释放后RGB包络、由该包络与方向求解的IK姿态与落点。没有变化的是高度比例.4、横向shift0、预载上限4.5mm和整条预载序列；所有失败都只说明未跟随手掌，并不能定位指垫/指侧/相机壳或空抓原因。s8_previous_decision在第三抓被记录，但不据此修正接触高度和预载。
+
+仅供事后核验的私有证据
+all_hand_object_contacts.jsonl全episode1715个每6步采样均空；原评测三link接触在全部10290个物理步count均为0。当前证据没有任何指垫、指侧或相机壳接触可供分类，不能写成“相机壳顶住”。全手采样不能排除未采到的瞬时触碰，但物体root_z始终约[-9.78e-9,1.40e-9]m，没有离桌后滑脱；是未抬起。
+严格结果三抓均失败。episode最终hold_min_contact_force_n0，hold_min_lift_m约-0.100010mm，hold_min_table_clearance_m约-0.000040mm；几何全程通过。私有轨迹不参与上面的任何决策。
+
+开发启示（不是新实验结论）
+同手势直接增加预载在该三棱锥上没有公开接触希望：上限已达且无接触起点，不能把“可见且电机跟踪好”当成已夹住。此例优先测试可达且实质不同的高度/横向点，或在观察不足时有限多样性完整重抓。新的局部恢复必须完整检查当前姿态和张开/连接/重放路径，不能仅给STAGE3_RELEASE_TICKET伪造ready来绕过原换向前退让要求。

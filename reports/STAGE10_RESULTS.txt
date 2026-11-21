@@ -1,0 +1,150 @@
+Stage10 反馈式连续重抓结果（从冻结V9出发）
+范围：三棱锥单项对照五例 + 楔形/圆柱配对四例 + 预登记新三棱锥初态配对四例，共13次独立episode。首抓与后续抓在各自episode中连续物理执行；不是重置重跑累加。
+120Hz物理、20Hz控制、六路FingerEye RGB30fps、录像30fps，原公开输入边界、速度/碰撞守卫与严格评测保留。学长版与200物体比较延期。
+
+冻结实验组合：versions/visual_stage10_feedback_v10/controller.py，SHA256 b63d72ba057b90d2c836495ef8af5a92348e8e478364762a847ce025addf44e1。
+组合先在开发三棱锥实际执行并冻结，再运行PLAN中预登记的pyramid_new/pyramid_new2；之后未修改策略。V9对照为原三抓语义加统一有限400s实验总上限的独立构建，首抓逐条命令核验见下。
+
+逐例配对（首抓严格/重试新增严格/动作物理秒/完成抓数/最终严格）：
+cylinder_combined6 | 0/1 | 0/1 | 30.800s | 1 | False；首次严格成功t=None；stop=stop_supported；active_stop=[]
+cylinder_v9 | 0/1 | 0/1 | 30.800s | 1 | False；首次严格成功t=None；stop=stop_supported；active_stop=[]
+pyramid_combined6 | 0/1 | 0/1 | 72.600s | 3 | False；首次严格成功t=None；stop=retry；active_stop=['original_full_release_recovery_refused']
+pyramid_direction6 | 0/1 | 0/1 | 162.900s | 6 | False；首次严格成功t=None；stop=stop_limit；active_stop=[]
+pyramid_new2_combined6 | 0/1 | 0/1 | 50.500s | 2 | False；首次严格成功t=None；stop=retry；active_stop=['original_full_release_recovery_refused']
+pyramid_new2_v9 | 0/1 | 0/1 | 84.450s | 3 | False；首次严格成功t=None；stop=stop_limit；active_stop=[]
+pyramid_new_combined6 | 0/1 | 0/1 | 72.500s | 3 | False；首次严格成功t=None；stop=retry；active_stop=['original_full_release_recovery_refused']
+pyramid_new_v9 | 0/1 | 0/1 | 82.750s | 3 | False；首次严格成功t=None；stop=stop_limit；active_stop=[]
+pyramid_placement6 | 0/1 | 0/1 | 72.600s | 3 | False；首次严格成功t=None；stop=retry；active_stop=['original_full_release_recovery_refused']
+pyramid_preload6 | 0/1 | 0/1 | 162.200s | 6 | False；首次严格成功t=None；stop=stop_limit；active_stop=[]
+pyramid_v9 | 0/1 | 0/1 | 85.700s | 3 | False；首次严格成功t=None；stop=stop_limit；active_stop=[]
+wedge_combined6 | 1/1 | 0/1 | 28.600s | 1 | True；首次严格成功t=28.6；stop=stop_supported；active_stop=[]
+wedge_v9 | 1/1 | 0/1 | 28.600s | 1 | True；首次严格成功t=28.6；stop=stop_supported；active_stop=[]
+
+逐次新增严格成功与分母（eligible=仍未成功的首抓严格失败episode；completed=实际完成该抓，不含被守卫阻止的抓）：
+v9: 首抓严格1/5；重试救回0/4首抓严格失败；首抓公开允许retry=3。
+  第2抓 新增严格0/3次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第3抓 新增严格0/3次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第4抓 新增严格0/0次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第5抓 新增严格0/0次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第6抓 新增严格0/0次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+direction6: 首抓严格0/1；重试救回0/1首抓严格失败；首抓公开允许retry=1。
+  第2抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第3抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第4抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第5抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第6抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+preload6: 首抓严格0/1；重试救回0/1首抓严格失败；首抓公开允许retry=1。
+  第2抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第3抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第4抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第5抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第6抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+placement6: 首抓严格0/1；重试救回0/1首抓严格失败；首抓公开允许retry=1。
+  第2抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第3抓 新增严格0/1次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第4抓 新增严格0/0次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第5抓 新增严格0/0次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第6抓 新增严格0/0次实际完成；尚未成功初败分母1。执行分母为0表示未测试该抓，不能解释成0%成功率。
+combined6: 首抓严格1/5；重试救回0/4首抓严格失败；首抓公开允许retry=3。
+  第2抓 新增严格0/3次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第3抓 新增严格0/2次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第4抓 新增严格0/0次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第5抓 新增严格0/0次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+  第6抓 新增严格0/0次实际完成；尚未成功初败分母4。执行分母为0表示未测试该抓，不能解释成0%成功率。
+
+预登记新初态回归单独分母（pyramid_new与pyramid_new2；同一物体的两个初态，不计作两个新物体）：
+v9: 首抓严格0/2；重试新增严格0/2首抓严格失败；首抓公开允许retry=2/2。
+  第2抓：新增0/2实际完成，尚未成功初败分母2。
+  第3抓：新增0/2实际完成，尚未成功初败分母2。
+  第4抓：新增0/0实际完成，尚未成功初败分母2。
+  第5抓：新增0/0实际完成，尚未成功初败分母2。
+  第6抓：新增0/0实际完成，尚未成功初败分母2。
+combined6: 首抓严格0/2；重试新增严格0/2首抓严格失败；首抓公开允许retry=2/2。
+  第2抓：新增0/2实际完成，尚未成功初败分母2。
+  第3抓：新增0/1实际完成，尚未成功初败分母2。
+  第4抓：新增0/0实际完成，尚未成功初败分母2。
+  第5抓：新增0/0实际完成，尚未成功初败分母2。
+  第6抓：新增0/0实际完成，尚未成功初败分母2。
+开发单项/旧物体分组单独保存在STAGE10_EVIDENCE.json的results.cohorts.development；上面的总分组同时包含开发和回归，不作为独立泛化样本推断。
+
+固定首抓核验：
+cylinder_combined6 vs cylinder_v9：前616条/物理3696步，目标q/phase/steps精确一致=True，首个差异命令=None。
+pyramid_combined6 vs pyramid_v9：前410条/物理2460步，目标q/phase/steps精确一致=True，首个差异命令=None。
+pyramid_direction6 vs pyramid_v9：前410条/物理2460步，目标q/phase/steps精确一致=True，首个差异命令=None。
+pyramid_new2_combined6 vs pyramid_new2_v9：前444条/物理2664步，目标q/phase/steps精确一致=True，首个差异命令=None。
+pyramid_new_combined6 vs pyramid_new_v9：前410条/物理2460步，目标q/phase/steps精确一致=True，首个差异命令=None。
+pyramid_placement6 vs pyramid_v9：前410条/物理2460步，目标q/phase/steps精确一致=True，首个差异命令=None。
+pyramid_preload6 vs pyramid_v9：前410条/物理2460步，目标q/phase/steps精确一致=True，首个差异命令=None。
+wedge_combined6 vs wedge_v9：前572条/物理3432步，目标q/phase/steps精确一致=True，首个差异命令=None。
+跨进程RGB像素存在渲染不确定性，未声称RGB逐字节相同；首抓归因以实际公开观察、命令和物理结果核验。
+
+单项对照的实际干预与收益：
+pyramid_preload6: preload门检查5，通过0；局部捷径实际执行0，拒绝0，原因=[]；成功完整恢复秒=[4.8, 4.8, 4.0, 4.8, 4.8]。
+pyramid_placement6: preload门检查0，通过0；局部捷径实际执行0，拒绝3，原因=['current_state_original_full_object_guard', 'untrusted_fresh_local_map', 'untrusted_fresh_local_map']；成功完整恢复秒=[4.8, 4.8]。
+pyramid_combined6: preload门检查3，通过0；局部捷径实际执行0，拒绝3，原因=['current_state_original_full_object_guard', 'untrusted_fresh_local_map', 'untrusted_fresh_local_map']；成功完整恢复秒=[4.8, 4.8]。
+原位调预载：三棱锥闭合已到4.5mm原上限，公开信息又未给出可信接触起点，门拒绝盲目再加压。因此本例没有实际获准的原位预载重抓，不能据此声称此类动作有效或无效。
+新落点：实际保持x方向，把第二/三抓高度12mm降至7.5mm，并根据释放后新RGB与实际关节改变横向点与IK指姿；并非仅换方向重套原规则。独立指姿扰动未作为单项测试。三次仍无native监测接触且未离桌；具体接触原因在策略内始终unknown。
+局部小开指：旧组合第一抓后当前手姿未通过新RGB保守包络的原全物体守卫，第二、三抓后新图未生成可信几何，因此三次均未执行捷径。已验证的局部恢复节省为0s；通过时能省多少尚无实测分母。落点版本较V9更早结束episode不等于成功抓取加速。
+
+第4..6抓的动作代价：
+开发三棱锥direction6：162.900s vs V9 85.700s，增加77.200s；第4..6每次实际严格结果及重试耗时见逐抓表。
+本轮13例没有重试新增严格成功，保留冻结V9三抓为推荐基线，冻结V10组合为反馈实验版；不把六抓设为默认。此结论覆盖本轮开发对照和两个预登记新初态，不证明六抓在所有物体上无效。
+
+失败后末段恢复耗时（已计入总动作时间；不计作一抓，更不计作局部捷径收益）：
+pyramid_combined6: 最后一次公开决策后仍执行恢复4.800s，然后停止；完成抓数仍为3。
+pyramid_new2_combined6: 最后一次公开决策后仍执行恢复4.800s，然后停止；完成抓数仍为2。
+pyramid_new_combined6: 最后一次公开决策后仍执行恢复4.800s，然后停止；完成抓数仍为3。
+pyramid_placement6: 最后一次公开决策后仍执行恢复4.800s，然后停止；完成抓数仍为3。
+
+圆柱私有角速度失败：
+cylinder_v9: public=stop_supported carrying=True hold_consistent=True risk=False，strict=False，omega=3.575028rad/s，最小lift=30.494mm，clearance=28.865mm。
+cylinder_combined6: public=stop_supported carrying=True hold_consistent=True risk=False，strict=False，omega=3.575028rad/s，最小lift=30.494mm，clearance=28.865mm。
+公开信号未提供native物体omega，且支持随手/保持一致时，策略不能从事后严格失败倒推出需要重试；没有偷偷把私有结果反馈给决策。
+
+逐抓实测（本抓时间不含上次结束到新抓开始的完整恢复；retry_since_previous_end包含恢复与本抓）：
+逐抓明细：name | 抓次 | 类型 | 本抓秒 | 自上一抓失败秒 | 严格 | 公开转移 | 最大离桌mm | 接触类别
+cylinder_combined6 | 1 | initial | 30.800 | None | False | stop_supported:carrying_and_stationary_image_evidence_uncertified | 28.866 | {'camera_housing_outside_pad_patch': 3258}
+cylinder_v9 | 1 | initial | 30.800 | None | False | stop_supported:carrying_and_stationary_image_evidence_uncertified | 28.866 | {'camera_housing_outside_pad_patch': 3258}
+pyramid_combined6 | 1 | initial | 20.500 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_combined6 | 2 | full_release_placement | 19.000 | 23.8 | False | retry:observed_failure | -0.000 | {}
+pyramid_combined6 | 3 | full_release_placement | 18.700 | 23.5 | False | retry:observed_failure | -0.000 | {}
+pyramid_direction6 | 1 | initial | 20.500 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_direction6 | 2 | full_reorientation | 27.100 | 31.9 | False | retry:observed_failure | -0.000 | {}
+pyramid_direction6 | 3 | full_reorientation | 28.550 | 33.35 | False | retry:observed_failure | -0.000 | {}
+pyramid_direction6 | 4 | full_reorientation | 21.150 | 25.95 | False | retry:observed_failure | -0.000 | {}
+pyramid_direction6 | 5 | full_reorientation | 20.500 | 25.3 | False | retry:observed_failure | -0.000 | {}
+pyramid_direction6 | 6 | full_reorientation | 21.100 | 25.9 | False | stop_limit:physical_attempt_limit | -0.000 | {}
+pyramid_new2_combined6 | 1 | initial | 22.200 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_new2_combined6 | 2 | full_release_placement | 18.700 | 23.5 | False | retry:observed_failure | -0.000 | {}
+pyramid_new2_v9 | 1 | initial | 22.200 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_new2_v9 | 2 | full_reorientation | 27.100 | 31.9 | False | retry:observed_failure | -0.000 | {}
+pyramid_new2_v9 | 3 | full_reorientation | 25.550 | 30.35 | False | stop_limit:physical_attempt_limit | -0.000 | {}
+pyramid_new_combined6 | 1 | initial | 20.500 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_new_combined6 | 2 | full_release_placement | 18.900 | 23.7 | False | retry:observed_failure | -0.000 | {}
+pyramid_new_combined6 | 3 | full_release_placement | 18.700 | 23.5 | False | retry:observed_failure | -0.000 | {}
+pyramid_new_v9 | 1 | initial | 20.500 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_new_v9 | 2 | full_reorientation | 27.100 | 31.9 | False | retry:observed_failure | -0.000 | {}
+pyramid_new_v9 | 3 | full_reorientation | 25.550 | 30.35 | False | stop_limit:physical_attempt_limit | -0.000 | {}
+pyramid_placement6 | 1 | initial | 20.500 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_placement6 | 2 | full_release_placement | 19.000 | 23.8 | False | retry:observed_failure | -0.000 | {}
+pyramid_placement6 | 3 | full_release_placement | 18.700 | 23.5 | False | retry:observed_failure | -0.000 | {}
+pyramid_preload6 | 1 | initial | 20.500 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_preload6 | 2 | full_reorientation | 27.100 | 31.9 | False | retry:observed_failure | -0.000 | {}
+pyramid_preload6 | 3 | full_reorientation | 28.500 | 33.3 | False | retry:observed_failure | -0.000 | {}
+pyramid_preload6 | 4 | full_reorientation | 21.300 | 25.3 | False | retry:observed_failure | -0.000 | {}
+pyramid_preload6 | 5 | full_reorientation | 20.500 | 25.3 | False | retry:observed_failure | -0.000 | {}
+pyramid_preload6 | 6 | full_reorientation | 21.100 | 25.9 | False | stop_limit:physical_attempt_limit | -0.000 | {}
+pyramid_v9 | 1 | initial | 20.500 | None | False | retry:observed_failure | -0.000 | {}
+pyramid_v9 | 2 | full_reorientation | 27.100 | 31.9 | False | retry:observed_failure | -0.000 | {}
+pyramid_v9 | 3 | full_reorientation | 28.500 | 33.3 | False | stop_limit:physical_attempt_limit | -0.000 | {}
+wedge_combined6 | 1 | initial | 28.600 | None | True | stop_supported:carrying_and_stationary_image_evidence_uncertified | 29.891 | {'camera_housing_outside_pad_patch': 3127}
+wedge_v9 | 1 | initial | 28.600 | None | True | stop_supported:carrying_and_stationary_image_evidence_uncertified | 29.891 | {'camera_housing_outside_pad_patch': 3127}
+
+严格判据：原evaluator，最终连续2s、实际抬升>=10mm、离桌>=5mm、相对姿态/速度/接触，并要求全episode几何合法。逐抓用原初始z和完整episode前缀，早期违规不会被新抓重置。
+证据解释：native点相对authored mesh最近连通指垫平面片<=1mm作几何归类，片外camera component3归壳体，其他手指link归侧面；全手20Hz诊断仅有link时不伪造点级归类。没有接触记录时不写成壳体顶住；未离桌不写成滑脱。
+旧楔形与圆柱的监测native点均被几何归类为camera_housing_outside_pad_patch（楔形3127、圆柱3258个点记录；两版本相同）。旧楔形严格成功来自原判据，不能据此称作指垫抓取成功；未修改严格裁决来掩盖该差异。全手诊断仅full模式保存，minimal仍有原正式裁决三link native接触。
+真实调用链、参数/代码变更见STAGE10_ALGORITHM.txt；原V9逐抓审计见STAGE10_V9_AUDIT.txt/JSON；新组合逐帧/18维关节交接见STAGE10_TRAJECTORY.txt/JSON。
+
+验证：15项反馈/时序/传输测试通过；13例物理rollout、冻结源/123项运行依赖SHA、6/4步采集控制、曝光关节配对、30fps编码帧数和物理时长逐例核对见STAGE10_EVIDENCE.json。冻结版本已从主入口执行旧状态与预登记新状态。
+录像索引：outputs/rax_dexbin_tinyobj/stage10_20261121/videos.html。原始RGB为可恢复ZIP；恢复方式见STAGE10_EXECUTION.txt；归档量见STAGE10_CLEANUP.txt。
+仅完成仿真范围验证；不声明真机执行、硬实时能力或未知自然失败总体成功率。

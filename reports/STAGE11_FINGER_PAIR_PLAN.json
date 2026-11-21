@@ -1,0 +1,59 @@
+{
+  "scope": "same initial states, public RGB, common candidate/IK/full path/velocity guards, one physical attempt; third contact frame is static asset geometry, not measured calibration",
+  "runs": [
+    {
+      "name": "finger_two_wedge",
+      "case": "stage6_cases/dev_wedge.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_two_controller.py",
+      "mode": "minimal"
+    },
+    {
+      "name": "finger_two_cylinder",
+      "case": "stage6_cases/dev_cylinder.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_two_controller.py",
+      "mode": "minimal"
+    },
+    {
+      "name": "finger_two_pyramid",
+      "case": "stage7_cases/natural_pyramid.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_two_controller.py",
+      "mode": "minimal"
+    },
+    {
+      "name": "finger_three_wedge",
+      "case": "stage6_cases/dev_wedge.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_three_controller.py",
+      "mode": "full"
+    },
+    {
+      "name": "finger_three_cylinder",
+      "case": "stage6_cases/dev_cylinder.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_three_controller.py",
+      "mode": "full"
+    },
+    {
+      "name": "finger_three_pyramid",
+      "case": "stage7_cases/natural_pyramid.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_three_controller.py",
+      "mode": "full"
+    },
+    {
+      "name": "finger_auto_wedge",
+      "case": "stage6_cases/dev_wedge.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_auto_controller.py",
+      "mode": "minimal"
+    },
+    {
+      "name": "finger_auto_cylinder",
+      "case": "stage6_cases/dev_cylinder.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_auto_controller.py",
+      "mode": "minimal"
+    },
+    {
+      "name": "finger_auto_pyramid",
+      "case": "stage7_cases/natural_pyramid.json",
+      "controller": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/outputs/rax_dexbin_tinyobj/stage11_20261121/finger_auto_controller.py",
+      "mode": "minimal"
+    }
+  ]
+}
