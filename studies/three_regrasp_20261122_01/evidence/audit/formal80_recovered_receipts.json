@@ -1,0 +1,27 @@
+{
+  "recovered_unix": 1795320102.3294306,
+  "scheduler_pid": 1382686,
+  "scheduler_action": "SIGKILL after both children exited; no physical child terminated",
+  "runs": [
+    {
+      "name": "00_abc_53930_clean",
+      "returncode": 0,
+      "success": false,
+      "actual_grasps": 3,
+      "physical_s": 80.8,
+      "wall_s_censored": true,
+      "wall_s_lower_bound": 291.005355917383,
+      "wall_s_file_timestamp_estimate": 291.51656675338745
+    },
+    {
+      "name": "01_abc_311740_clean",
+      "returncode": 0,
+      "success": true,
+      "actual_grasps": 1,
+      "physical_s": 26.9,
+      "wall_s_censored": true,
+      "wall_s_lower_bound": 140.63123044604436,
+      "wall_s_file_timestamp_estimate": 141.0947048664093
+    }
+  ]
+}

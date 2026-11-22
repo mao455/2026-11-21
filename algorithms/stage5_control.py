@@ -35,7 +35,7 @@ def s5_step(s, q, n, phase, object_check=False):
         count = min(24, n)
         s['obs'] = s['ctx'].step(q, steps=count, phase=phase)
         n -= count
-        if globals().get('S11_CONFIG', {}).get('fast_close',False) and phase in ('s5_close','s5_preload_adjust','s5_preload_hold'):
+        if globals().get('S11_CONFIG', {}).get('fast_close',False) and phase in ('s5_close','s5_preload_adjust','s5_preload_hold','s13_preload_recovery'):
             tracking=q-np.asarray(s['obs']['actual_q']);speed=np.asarray(s['obs']['actual_qvel'])
             s.setdefault('servo_samples',[]).append(dict(step=s['obs']['step'],phase=phase,frame_id=s9_frame(s['obs']),target_q=q.tolist(),actual_q=s['obs']['actual_q'],actual_qvel=s['obs']['actual_qvel'],tracking_error=tracking.tolist()))
             if abs(speed[:3]).max()>.15 or abs(speed[3:]).max()>1.5:
@@ -239,7 +239,8 @@ def s5_plan(s, axis='short', height=None, shift=0.0):
     if isinstance(axis, (list, tuple)):
         direction = np.asarray(axis)
     heights = (0.4, 0.6) if height is None else (float(height),)
-    initial = np.asarray(s['obs']['actual_q']) if globals().get('S11_CONFIG',{}).get('task_ranking') else s['last'] if s['attempt'] > 1 else np.asarray(s['obs']['actual_q'])
+    initial = s13_legal_start(s) if globals().get('S11_CONFIG',{}).get('evidence_recovery') else np.asarray(s['obs']['actual_q']) if globals().get('S11_CONFIG',{}).get('task_ranking') else s['last'] if s['attempt'] > 1 else np.asarray(s['obs']['actual_q'])
+    if initial is None:return False
     if s['attempt'] > 1:
         ticket = STAGE3_RELEASE_TICKET
         if not ticket or not ticket.get('ready') or ticket.get('source_attempt') != s['attempt'] - 1:
@@ -477,6 +478,9 @@ def s5_close(s, mode='fixed', cap=0.0025):
         if mode == 'servo' and np.all(last_increment < 1e-07):
             break
     s['squeeze'] = squeeze
+    s['closure_evidence']=evidence or {}
+    s['closure_evidence_step']=(evidence or {}).get('step_after')
+    s['last_closure_cap']=cap
     if fast:
         s5_note(ctx,'s11_servo_audit',dict(attempt=s['attempt'],samples=s.pop('servo_samples',[]),rules=SENSOR_RULES,position_preload_cap_m=cap,force_estimate_available=False))
 

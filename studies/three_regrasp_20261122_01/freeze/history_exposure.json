@@ -1,0 +1,589 @@
+{
+  "scope": "Prior source experiments reports/configurations only; a mention is exposure, not evidence of completed physics or success. Output raw physics not scanned.",
+  "scanned_files": 559,
+  "objects": {
+    "abc_53930": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_53930.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_53930.json"
+      ],
+      "exposed": true
+    },
+    "abc_311740": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_A.md",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_311740.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_311740.json"
+      ],
+      "exposed": true
+    },
+    "abc_76395": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_76395.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_76395.json"
+      ],
+      "exposed": true
+    },
+    "abc_145502": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_699849": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/github_publish.json"
+      ],
+      "exposed": true
+    },
+    "abc_783667": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE2_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE2_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_A.md",
+        "experiments/rax_dexbin_tinyobj/STAGE2_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/github_publish.json"
+      ],
+      "exposed": true
+    },
+    "abc_78128": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/RESEARCH_DECISIONS.md",
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_78128.json"
+      ],
+      "exposed": true
+    },
+    "abc_544444": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE3_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE2_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE2_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE2_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_544444.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_544444.json"
+      ],
+      "exposed": true
+    },
+    "abc_176242": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_770180": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/RESEARCH_DECISIONS.md",
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_770180.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_770180.json"
+      ],
+      "exposed": true
+    },
+    "abc_189313": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/RESEARCH_DECISIONS.md",
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_189313.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_189313.json"
+      ],
+      "exposed": true
+    },
+    "abc_520454": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_272068": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_479808": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_479808.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_479808.json"
+      ],
+      "exposed": true
+    },
+    "abc_673390": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE6_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE6_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage6_cases/supplement_plan.json",
+        "experiments/rax_dexbin_tinyobj/stage6_cases/dev_faceted_prism.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_673390.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_673390.json"
+      ],
+      "exposed": true
+    },
+    "abc_805600": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE2_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE2_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE2_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/github_publish.json"
+      ],
+      "exposed": true
+    },
+    "abc_181508": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE3_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE3_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE3_CHALLENGES.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_A.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_181508.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_181508.json"
+      ],
+      "exposed": true
+    },
+    "abc_199784": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE4_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_A.md",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/github_publish.json"
+      ],
+      "exposed": true
+    },
+    "abc_328629": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/RESEARCH_DECISIONS.md",
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_328629.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_328629.json"
+      ],
+      "exposed": true
+    },
+    "abc_750656": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_750656.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_750656.json"
+      ],
+      "exposed": true
+    },
+    "abc_461505": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_152578": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_529040": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_784558": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE4_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/github_publish.json"
+      ],
+      "exposed": true
+    },
+    "abc_553219": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_553219.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_553219.json"
+      ],
+      "exposed": true
+    },
+    "abc_184787": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE3_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_A.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_184787.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_184787.json"
+      ],
+      "exposed": true
+    },
+    "abc_993288": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE4_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_A.md",
+        "experiments/rax_dexbin_tinyobj/STAGE4_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/github_publish.json"
+      ],
+      "exposed": true
+    },
+    "abc_222121": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE3_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE3_CHALLENGES.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_A.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_AGENT_B.md",
+        "experiments/rax_dexbin_tinyobj/STAGE3_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_FINAL_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/batch_plan.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/abc_222121.json",
+        "experiments/rax_dexbin_tinyobj/stage11_cases/pressure_final_abc_222121.json"
+      ],
+      "exposed": true
+    },
+    "abc_939116": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json"
+      ],
+      "exposed": true
+    },
+    "abc_90621": {
+      "reports": [],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/stage8_baselines/senior_a9a1747/COPY_MANIFEST.json",
+        "experiments/rax_dexbin_tinyobj/research_notes/heldout_contact_analysis.json",
+        "experiments/rax_dexbin_tinyobj/research_notes/round9_backend_equivalence.json",
+        "experiments/rax_tinyobj_round1/TASK.md",
+        "experiments/rax_tinyobj_round1/evidence/manifest.json"
+      ],
+      "exposed": true
+    },
+    "abc_18078": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_49687": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_793782": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE2_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/general_object_split.json",
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/GENERAL_STAGE1_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/general_object_categories.json"
+      ],
+      "exposed": true
+    },
+    "abc_108554": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_382909": {
+      "reports": [
+        "experiments/rax_dexbin_tinyobj/STAGE4_OBJECTS.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_FREEZE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_AGENT_A.md",
+        "experiments/rax_dexbin_tinyobj/STAGE6_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_SCALE_PLAN.json",
+        "experiments/rax_dexbin_tinyobj/STAGE4_RESULTS.txt",
+        "experiments/rax_dexbin_tinyobj/STAGE11_GEOMETRY_QUALIFICATION.json",
+        "experiments/rax_dexbin_tinyobj/STAGE9_EVIDENCE.json",
+        "experiments/rax_dexbin_tinyobj/STAGE11_PRESSURE_PLAN.json"
+      ],
+      "configurations": [
+        "experiments/rax_dexbin_tinyobj/github_publish.json",
+        "experiments/rax_dexbin_tinyobj/stage6_cases/dev_slanted_block.json",
+        "experiments/rax_dexbin_tinyobj/stage7_cases/natural_slanted.json"
+      ],
+      "exposed": true
+    },
+    "abc_551365": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_403242": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_983078": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_602823": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    },
+    "abc_54906": {
+      "reports": [],
+      "configurations": [],
+      "exposed": false
+    }
+  },
+  "source_audit": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/history_exposure.json",
+  "source_audit_sha256": "34dcec29adc10e9033da6e95d9aa3dfc8e64c7050070dc68d714b05de81c8ba7",
+  "registration_sha256": "11f8c9326d498d21187b50fb7369e03ec822889c70a902275566a3a34ad01bb6",
+  "source_lab": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab",
+  "input_scope": "CurrentV4 exact40objectIDs; originalsourceexperimentdeclarations/reports only; no inferential unseenclaim."
+}

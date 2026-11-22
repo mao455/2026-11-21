@@ -1,0 +1,3 @@
+object_id,condition,source_commit,attempt_from,attempt_to,from_count,to_count,wrist_attitude_delta_rad,common_finger_mean_landing_delta_m,common_finger_count,large_gesture,hand_switch,evidence_complete,rescued_on_next_attempt
+,,882486475ae25462ced8ac11d3da1aa45ea3d367,1,2,2,2,1.5695344631841008,0.0313170030640893,2,True,False,True,False
+,,882486475ae25462ced8ac11d3da1aa45ea3d367,2,3,2,2,1.5700705733994758,0.031665409274570164,2,True,False,True,False

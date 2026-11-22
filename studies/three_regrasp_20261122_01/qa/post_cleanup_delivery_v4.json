@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "created_unix_s": 1795345251.3430057,
+  "elapsed_s": 348.5603494644165,
+  "scope": "Post-cleanup read-only verification; pre-cleanup full pixel validation preserved, not rerun after authorized frame deletion",
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "controller_sha256": "a01b97ab2e9ddd083ec852978945a7ec77ebcbc484b469aa060231bb781a7c1e",
+  "pre_cleanup_qa_sha256": "ccbe9e61c7e123a8f75bc1e30631d5eecf47615a197fdb1768381eaa9131a97c",
+  "ledger_sha256": "0c6ceace2eedd1dc1b02999fc635be161e9474d6a8357d2604202a9f707046b4",
+  "applied_receipt_sha256": "2c1248cf5a8fb874c5d308dd0bb169c358734bbf845ed2bd5a5297360357ecb0",
+  "actions": {
+    "deleted_redundant_frame": 1019178,
+    "lossless_gzip_copy_source_retained_publication_reference": 1
+  },
+  "deleted_bytes": {
+    "study": 45093996288,
+    "legacy": 13741111296
+  },
+  "retained_qa_artifacts_verified": 3912,
+  "retained_keyframes_verified": 74964,
+  "all_publication_reference_sources_unchanged": true,
+  "report_links_checked": 67,
+  "report_sha256": "2641e33d7bdbb77f408a8d9ee49171321601d24506f2d6336f9fe8e3915521a0",
+  "archives": [
+    {
+      "original_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/geometry_duplicate_audit.json",
+      "archive_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/geometry_duplicate_audit.json.gz",
+      "uncompressed_sha256": "b291ba9ebdb595847ee78b758a810f6f7a85b75511feba6821502f3f4cbdd77e",
+      "archive_sha256": "f890efb5c3568ffa798497dd921d7f1295729f91eb2aa3222fa33f78ba9206b7"
+    }
+  ],
+  "script_sha256": "12d9ade30fb5cc98681b5b0121100a1d55f4499ea9bf7a4f76ec7b58c5b69d37"
+}

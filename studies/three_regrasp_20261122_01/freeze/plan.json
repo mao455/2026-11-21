@@ -1,0 +1,2834 @@
+{
+  "schema": 1,
+  "source_manifest": "/home/CNS2025331827/docs/grasp_small_obj/manifest.csv",
+  "source_manifest_sha256": "00008dd4bb1ab34d23345c57caf4e3adbffa76d0f1f886b5c82f9b9247178784",
+  "selection_uses_results": false,
+  "minimum_initial_height_m": 0.008,
+  "maximum_initial_height_m": 0.05,
+  "xy_extents_m": [
+    0.006,
+    0.06
+  ],
+  "max_faces": 16000,
+  "watertight_convex_only": true,
+  "minimum_side_area_fraction": 0.25,
+  "diagnostic_pyramid_ids_excluded": [
+    "abc_781904",
+    "abc_781914"
+  ],
+  "distinct_shape_test": "Cross-tessellation analyticprimitive identity + normalizedconvexhullspectrum1e-5; practicalnear-sphere1.01axisratio and1%continuousshell, cylinderaspect5%, boxnormalizeddimensions5%; transitivefamilycomponents retain earliestoriginalregistrationrank; arbitrarysurfaces remain unresolvedbeyond documented screening.",
+  "selection": "35 originalranks and cases unchanged; five practically nearprimitive duplicates replaced by geometry-only surveycandidates, uniform maximumextent30mm, no graspoutcomeselection; allpriorcohorts excluded in full.",
+  "eligible_distinct_shapes": null,
+  "object_count": 40,
+  "episode_count": 80,
+  "physics_hz": 120,
+  "control_hz": 20,
+  "rgb_video_fps": 30,
+  "noise": {
+    "std_0_255": 3.0,
+    "six_fingereye_only": true,
+    "initial_overhead": false
+  },
+  "success": "unchanged evaluator: commanded >=29.5mm, actual lift>=28mm, object clearance>=5mm for continuous2s, no drop after qualifying window; nominal lift30mm",
+  "history_scope": "may include historically seen objects; candidate80 frozen after development; no unseen-generalization claim",
+  "objects": [
+    {
+      "id": "53930",
+      "object_id": "abc_53930",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_53930_native.obj",
+      "sha256": "076bb5617d2fc9771e1b43cc4d8b949210681b02a520f246143d23f9212d3bdc",
+      "dims_m": [
+        0.01269802638,
+        0.01269999984,
+        0.0126999998
+      ],
+      "faces": 508,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.9998446094468612,
+        0.9999999968503936,
+        1.0,
+        0.78519667177801,
+        0.4960629988631293,
+        0.5555100498319185,
+        2.54
+      ],
+      "side_area_fraction": 0.5555100498319185,
+      "shape_signature_sha256": "4367e8fe097a4df94413658933faaa35ff4bed54b8a0bfe4ae9d98fc064192f8",
+      "selection_rank": 0,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_53930_native.obj",
+      "case_base": {
+        "object_id": "abc_53930",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13000,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_53930.npy",
+          "rgb_sha256": "ce50f1e1769281469c47f9a9a8a507b088ce1f978959a8d724accdbe5bbf41c9",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_53930.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "311740",
+      "object_id": "abc_311740",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_311740_native.obj",
+      "sha256": "4962daf0fc681987266169729a4a67c925428afe2226530c70be43c3033d4f2e",
+      "dims_m": [
+        0.00634802692,
+        0.00634999574,
+        0.0390538573
+      ],
+      "faces": 756,
+      "volume_ratio": 0.9999999963227668,
+      "descriptor": [
+        0.1625454528405828,
+        0.1625958657866044,
+        1.0,
+        0.777325240610614,
+        0.011425546839059388,
+        0.9186818139943008,
+        3.78
+      ],
+      "side_area_fraction": 0.9186818139943008,
+      "shape_signature_sha256": "088f2ec49a01d727b75dcf2c9491befab04ead1c315080fee15e7bd0b67f2102",
+      "selection_rank": 1,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_311740_native.obj",
+      "case_base": {
+        "object_id": "abc_311740",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13001,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_311740.npy",
+          "rgb_sha256": "a30b959d4d9aa9eee285e4ad19497be83200769d074a7434428f3ab88cd35dec",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_311740.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "76395",
+      "object_id": "abc_76395",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_76395_native.obj",
+      "sha256": "c69aafcc7136ae5672ab9779b4df4d9914cfef3783d2a80aead1d1e2b9cdaf57",
+      "dims_m": [
+        0.01349782804,
+        0.013496764,
+        0.0134991538
+      ],
+      "faces": 15624,
+      "volume_ratio": 0.9999999639410551,
+      "descriptor": [
+        0.9998229666810671,
+        0.9999017893995696,
+        1.0,
+        0.5232989104758368,
+        0.5161248351212182,
+        0.49965907905262297,
+        78.14
+      ],
+      "side_area_fraction": 0.49965907905262297,
+      "shape_signature_sha256": "0c2efaf2f88a125a30a1168d53ba46dca8cc40b24c20d26ffd0bd095686cb642",
+      "selection_rank": 2,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_76395_native.obj",
+      "case_base": {
+        "object_id": "abc_76395",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13002,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_76395.npy",
+          "rgb_sha256": "ec3915fde5d9d74230a7743ac90a0ff6a46c095c7076e74db1d102f8b2641991",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_76395.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "145502",
+      "object_id": "abc_145502",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_145502_native.obj",
+      "sha256": "bad51c0adec519001e71b09e35ec5218eff585d873eb869ca60310560f253bc7",
+      "dims_m": [
+        0.01799999922,
+        0.0430000014,
+        0.00800000038
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.1860465144077879,
+        0.4186046193942682,
+        1.0,
+        1.0,
+        0.03461330552328723,
+        0.38668781337843255,
+        0.08
+      ],
+      "side_area_fraction": 0.38668781337843255,
+      "shape_signature_sha256": "8e3f55a8ee99d3b140cebe0457617cab02bba9071067a1f888eeaa6339586b94",
+      "selection_rank": 3,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_145502_native.obj",
+      "case_base": {
+        "object_id": "abc_145502",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13003,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_145502.npy",
+          "rgb_sha256": "ee7e895b81a436220809f9c2458f109c9f398fa5470a9bbdf076e36afa5220e0",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_145502.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "699849",
+      "object_id": "abc_699849",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_699849_native.obj",
+      "sha256": "0fbceadf3d6dd2f432d5ec08904d44987d496facda04c5391c048df4e0809fbc",
+      "dims_m": [
+        0.0303819404,
+        0.0508590694,
+        0.0303913876
+      ],
+      "faces": 252,
+      "volume_ratio": 1.0000000000000002,
+      "descriptor": [
+        0.5973750750539687,
+        0.5975608275679539,
+        1.0,
+        0.2617722724278517,
+        0.1764095206991458,
+        0.5063570086750875,
+        1.27
+      ],
+      "side_area_fraction": 0.5063570086750875,
+      "shape_signature_sha256": "c35180d0e6f3fa0f5d228c5614bc365555ad81e378c5284e049fd152c8459ed3",
+      "selection_rank": 4,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_699849_native.obj",
+      "case_base": {
+        "object_id": "abc_699849",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13004,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_699849.npy",
+          "rgb_sha256": "c8761bec31df852bc41824d0aee0241cfbbc1feaab31b4a7b1142458667ca9f7",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_699849.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "783667",
+      "object_id": "abc_783667",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_783667_native.obj",
+      "sha256": "b388e8bef962614aba7185dd42727d10dd94f6247a87f0eb5e3e65645408fe93",
+      "dims_m": [
+        0.00634999992,
+        0.0253999996,
+        0.0253999997
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.24999999980314963,
+        0.9999999960629922,
+        1.0,
+        0.9999999999999998,
+        0.06249999990157481,
+        0.8333333335301836,
+        0.08
+      ],
+      "side_area_fraction": 0.8333333335301836,
+      "shape_signature_sha256": "120a05e45734f71d43eb0b3b2a0f82d26cc49099d1d8a56f426a7dd60daae767",
+      "selection_rank": 5,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_783667_native.obj",
+      "case_base": {
+        "object_id": "abc_783667",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13005,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_783667.npy",
+          "rgb_sha256": "32e580e0f4d77853fca8c447e5891935e11a7a9562ff24c00a7fcd528eb41727",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_783667.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "78128",
+      "object_id": "abc_78128",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_78128_native.obj",
+      "sha256": "25b3bf5a3de08faa7276bc2e52a9333df4a2858adb84a21fd01b7274964525b8",
+      "dims_m": [
+        0.0354953446,
+        0.0354843102,
+        0.0344394185
+      ],
+      "faces": 8820,
+      "volume_ratio": 0.9999999944385548,
+      "descriptor": [
+        0.9702517016837189,
+        0.9996891310642467,
+        1.0,
+        0.6860133398927175,
+        0.2596497115999136,
+        0.6661677828508505,
+        44.1
+      ],
+      "side_area_fraction": 0.6661677828508505,
+      "shape_signature_sha256": "16a5f0816716cfe87108a76323ebb6e5a60332d1a8be06d135b0b64791bce618",
+      "selection_rank": 6,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_78128_native.obj",
+      "case_base": {
+        "object_id": "abc_78128",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13006,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_78128.npy",
+          "rgb_sha256": "6ec8d34d7a2e3716a24109fd66a34a53e6ebf6b73db7ccb80f391ec65193f99e",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_78128.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "544444",
+      "object_id": "abc_544444",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_544444_native.obj",
+      "sha256": "ddc6252824bcfc2598cd32f65d2c9bc3e01ea3ded1d59551dff4553d6876feef",
+      "dims_m": [
+        0.0344886668,
+        0.0181832593,
+        0.0253999997
+      ],
+      "faces": 184,
+      "volume_ratio": 1.0000000000000002,
+      "descriptor": [
+        0.5272241865840984,
+        0.7364738059402168,
+        1.0,
+        0.6909716802972449,
+        0.0895528713301137,
+        0.7202514736919324,
+        0.94
+      ],
+      "side_area_fraction": 0.7202514736919324,
+      "shape_signature_sha256": "9c5c1d4d0964e333dc8fb1fd1470431eaa7d886f75c8bbf2166210f2447239a9",
+      "selection_rank": 7,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_544444_native.obj",
+      "case_base": {
+        "object_id": "abc_544444",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13007,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_544444.npy",
+          "rgb_sha256": "909ddc024abf7c31da6d2534c71115ef37bd0b75ac8d8378739ef8235bb139a9",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_544444.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "176242",
+      "object_id": "abc_176242",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_176242_native.obj",
+      "sha256": "4fecb44ede4f5becb731bea9a6aa86d29ef52fd9c633c8acf6839e072a5e47d8",
+      "dims_m": [
+        0.0350000002,
+        0.0350000002,
+        0.0350000001
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.9999999971428571,
+        1.0,
+        1.0,
+        1.0000000000000002,
+        0.9999999942857144,
+        0.6666666660317458,
+        0.08
+      ],
+      "side_area_fraction": 0.6666666660317458,
+      "shape_signature_sha256": "c2a50644979b0ab641511920841e532b7d223d08ae967bb84d60c14c4b35249e",
+      "selection_rank": 8,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_176242_native.obj",
+      "case_base": {
+        "object_id": "abc_176242",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13008,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_176242.npy",
+          "rgb_sha256": "cc1670c80abd13c5b40cfe020c4a301502fab0b17a2c373355bd58ac11ad5792",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_176242.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "770180",
+      "object_id": "abc_770180",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_770180_native.obj",
+      "sha256": "1c8ef06a43b5423e326f1b9cb037960680ace56cde63aecbb05259f07d88b78a",
+      "dims_m": [
+        0.031750001,
+        0.01905000024,
+        0.0177800003
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.5599999918110239,
+        0.5999999886614177,
+        1.0,
+        1.0000000000000002,
+        0.31359999082834694,
+        0.5989304806079085,
+        0.08
+      ],
+      "side_area_fraction": 0.5989304806079085,
+      "shape_signature_sha256": "2954c201f5cd068a73e4b42f2dad15d48badd58dd5459b1b0628e84a7e0bd7ef",
+      "selection_rank": 9,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_770180_native.obj",
+      "case_base": {
+        "object_id": "abc_770180",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13009,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_770180.npy",
+          "rgb_sha256": "7dddd219d5549b754639566d35a735ae333603669011e6bb6647c36ce9a61402",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_770180.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "189313",
+      "object_id": "abc_189313",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_189313_native.obj",
+      "sha256": "acb44239eba0899af3ea94a026410088c0da5ab0804a0687c9d6f29363dd5c16",
+      "dims_m": [
+        0.0274934136,
+        0.00634999992,
+        0.0139649101
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.23096440523485962,
+        0.507936566305466,
+        1.0,
+        1.0,
+        0.05334455648549243,
+        0.7302499125145417,
+        0.08
+      ],
+      "side_area_fraction": 0.7302499125145417,
+      "shape_signature_sha256": "1f4fc076f270a6ba5f3160fb089fa10a470aecaf345de766cfabbfd4c8cb404d",
+      "selection_rank": 10,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_189313_native.obj",
+      "case_base": {
+        "object_id": "abc_189313",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13010,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_189313.npy",
+          "rgb_sha256": "3b8f851df91ae8c62e6397c09922ab30c1803ee031a9b6328439fdd0498a3e1c",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_189313.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "520454",
+      "object_id": "abc_520454",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_520454_native.obj",
+      "sha256": "afff4cd47eb7ef7ea59a7d73f6adae90ef3f4c2072a28cd4bf010429f62d2dda",
+      "dims_m": [
+        0.0253999996,
+        0.036479082,
+        0.0364904255
+      ],
+      "faces": 504,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.696072990434162,
+        0.9996891376341995,
+        1.0,
+        0.7853167812794435,
+        0.9690352566051735,
+        0.6119727112969858,
+        2.52
+      ],
+      "side_area_fraction": 0.6119727112969858,
+      "shape_signature_sha256": "46dfc537fda762c40963361b652c73f97988ce0b43f8141cd0df86bf15cd6652",
+      "selection_rank": 11,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_520454_native.obj",
+      "case_base": {
+        "object_id": "abc_520454",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13011,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_520454.npy",
+          "rgb_sha256": "d766988295dbbf556da444e7bbddc993c09a972a868ad3366981b06fa9e43c2a",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_520454.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "272068",
+      "object_id": "abc_272068",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_272068_native.obj",
+      "sha256": "c258ac35dc2e8d09ae35d9d431a81190221f509ed904920fc3ee946943f09c36",
+      "dims_m": [
+        0.049019318,
+        0.0507999994,
+        0.0390441529
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.7685856960856579,
+        0.9649472161214239,
+        1.0,
+        0.9999999999999999,
+        0.5907239722274752,
+        0.6101503021382836,
+        0.08
+      ],
+      "side_area_fraction": 0.6101503021382836,
+      "shape_signature_sha256": "902bf824f028a95a01bc3b9796e7e0228f938743d99daf04527bdf7545408e85",
+      "selection_rank": 12,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_272068_native.obj",
+      "case_base": {
+        "object_id": "abc_272068",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13012,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_272068.npy",
+          "rgb_sha256": "0c501e7388f60e9957dbb0883f2920b7c1c1f251593883d1f519a51736ea931f",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_272068.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "479808",
+      "object_id": "abc_479808",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_479808_native.obj",
+      "sha256": "7b09f5701cf46dc7285ae65a0c1befc789be184db90bc889204afa1f7172121a",
+      "dims_m": [
+        0.00849867612,
+        0.0209999998,
+        0.00850000046
+      ],
+      "faces": 508,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.4046988667114178,
+        0.40476193052154225,
+        1.0,
+        0.7851967451274953,
+        0.08127109236838323,
+        0.4455159536434101,
+        2.54
+      ],
+      "side_area_fraction": 0.4455159536434101,
+      "shape_signature_sha256": "17e03a0669f18da8eeeee625736442207fdbfd96586c44325ba0a520dcdebbd3",
+      "selection_rank": 13,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_479808_native.obj",
+      "case_base": {
+        "object_id": "abc_479808",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13013,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_479808.npy",
+          "rgb_sha256": "1cc44c662e4ce78dc5cc9b1d3a869aeb0272623a2011815942f59021c65a1c5c",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_479808.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "673390",
+      "object_id": "abc_673390",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_673390_native.obj",
+      "sha256": "5ae75a0ca148ea63064ec778d3b9a83f319d9afdb28566666d175c1d1662c26c",
+      "dims_m": [
+        0.01300000026,
+        0.0250000004,
+        0.0250000004
+      ],
+      "faces": 16,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.52000000208,
+        1.0,
+        1.0,
+        0.86999999808,
+        0.21632000173055999,
+        0.6551304471869301,
+        0.1
+      ],
+      "side_area_fraction": 0.6551304471869301,
+      "shape_signature_sha256": "6781465a15a005fc0396d8ff4bde769091d0a03ddf0ab38b24e84dfcf99203e1",
+      "selection_rank": 14,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_673390_native.obj",
+      "case_base": {
+        "object_id": "abc_673390",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13014,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_673390.npy",
+          "rgb_sha256": "0b8c14b365a6b381682fe9beead767e5a7b5e9b7e225d514fab06dbcec4bcd56",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_673390.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "805600",
+      "object_id": "abc_805600",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_805600_native.obj",
+      "sha256": "7c1973ad51f940c336ac02e857344a2f8d1e0acf0294b034a7d05e52bbf4ede4",
+      "dims_m": [
+        0.0229307338,
+        0.0198585987,
+        0.0253999997
+      ],
+      "faces": 20,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.7818346037224561,
+        0.9027848059384033,
+        1.0,
+        0.750000000436096,
+        0.40751020339052296,
+        0.7189500077007906,
+        0.12
+      ],
+      "side_area_fraction": 0.7189500077007906,
+      "shape_signature_sha256": "3a421bb0ce9e2cee7a4a59a535371f887ee1f626d82ede5a4c787ae4c84ed709",
+      "selection_rank": 15,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_805600_native.obj",
+      "case_base": {
+        "object_id": "abc_805600",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13015,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_805600.npy",
+          "rgb_sha256": "6ece023657bd8d63182ad99d2112f368ca1fc4561e808485519055c2f2ac6ab4",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_805600.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "181508",
+      "object_id": "abc_181508",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_181508_native.obj",
+      "sha256": "5b09970b5cec17c893884b91e38e3628c8e034d926a6d69682eebe1b7208b64c",
+      "dims_m": [
+        0.0120000001,
+        0.0120000001,
+        0.0299999993
+      ],
+      "faces": 764,
+      "volume_ratio": 0.9999999997432756,
+      "descriptor": [
+        0.40000001266666696,
+        0.40000001266666696,
+        1.0,
+        0.7760861492693135,
+        0.08025028556792309,
+        0.8133107002508568,
+        3.84
+      ],
+      "side_area_fraction": 0.8133107002508568,
+      "shape_signature_sha256": "bd85f3e2e4f39a4b3b62d3d08a2c4ad150bd8ec9ad8a1efb8a31aef75ffb6066",
+      "selection_rank": 16,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_181508_native.obj",
+      "case_base": {
+        "object_id": "abc_181508",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13016,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_181508.npy",
+          "rgb_sha256": "1f5d4e12d745992854e0ba7e2fc044c33d7e29d65f0deccdc4e5c8abda5103c1",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_181508.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "199784",
+      "object_id": "abc_199784",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_199784_native.obj",
+      "sha256": "4208374fdf80b3cc4607a747e5747f3aa5326dc629609da5143182501b454bac",
+      "dims_m": [
+        0.042375544,
+        0.0253999996,
+        0.0423887204
+      ],
+      "faces": 1008,
+      "volume_ratio": 0.9999999960759767,
+      "descriptor": [
+        0.599216002755299,
+        0.9996891531549982,
+        1.0,
+        0.7160403971350964,
+        0.6188816162129913,
+        0.5868053025449504,
+        5.04
+      ],
+      "side_area_fraction": 0.5868053025449504,
+      "shape_signature_sha256": "1ef15a9b8fab125478f151553b259001c495aae8bb969a0d81cd1e78c548cae9",
+      "selection_rank": 17,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_199784_native.obj",
+      "case_base": {
+        "object_id": "abc_199784",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13017,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_199784.npy",
+          "rgb_sha256": "ebcd051e244ef75266803785860c24ffc97f20b774347c774656f02089529549",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_199784.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "328629",
+      "object_id": "abc_328629",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_328629_native.obj",
+      "sha256": "0e1143edda7b8d4b2e7724f740c5a853e5d3818ecd81688af3a77f479f797bf8",
+      "dims_m": [
+        0.0310999994,
+        0.0250000004,
+        0.0125000002
+      ],
+      "faces": 20,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.40192927463529143,
+        0.8038585492705829,
+        1.0,
+        0.5980662276132798,
+        0.14539408958988395,
+        0.566420169504473,
+        0.12
+      ],
+      "side_area_fraction": 0.566420169504473,
+      "shape_signature_sha256": "5ccc1927f13a439ec6c2cbd79ab7d96377f7fbfc8e5f1f6c44deb7ed6b620810",
+      "selection_rank": 18,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_328629_native.obj",
+      "case_base": {
+        "object_id": "abc_328629",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13018,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_328629.npy",
+          "rgb_sha256": "545643fcd106bb1dd5949963eee078077dc9ad49640b0629411cd15a55646fbe",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_328629.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "750656",
+      "object_id": "abc_750656",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_750656_native.obj",
+      "sha256": "e78652bebb87266ffce554d1ff1598ff61cd98f58a604e4d6822e587ecb714da",
+      "dims_m": [
+        0.038082432,
+        0.0261712884,
+        0.0126999998
+      ],
+      "faces": 16,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.33348709977345986,
+        0.6872273388422252,
+        1.0,
+        0.8896517689245002,
+        0.13457266662231532,
+        0.4607026088725798,
+        0.1
+      ],
+      "side_area_fraction": 0.4607026088725798,
+      "shape_signature_sha256": "32c1e9a0ea9b321365e0601d0e70fb7fe25936de21b906b3a5abfd605ab1edf9",
+      "selection_rank": 19,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_750656_native.obj",
+      "case_base": {
+        "object_id": "abc_750656",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13019,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_750656.npy",
+          "rgb_sha256": "77111fe5a85f8bd21389721ba02ddcac1186cb09d3c7309e181dd1ee41386616",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_750656.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "461505",
+      "object_id": "abc_461505",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_461505_native.obj",
+      "sha256": "295c5c3b2f82485a2ee6badfdaf92f84d191190f0a00dc2ebafdd59c5f5040d5",
+      "dims_m": [
+        0.0396833942,
+        0.0250000004,
+        0.0443156436
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.5641348826083618,
+        0.8954714628131903,
+        1.0,
+        1.0000000000000002,
+        0.3182481657755501,
+        0.7428880181995953,
+        0.08
+      ],
+      "side_area_fraction": 0.7428880181995953,
+      "shape_signature_sha256": "966d171640929c5b26054f179c5c135f7187e1ed7cf54ead5763b94be66b3581",
+      "selection_rank": 20,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_461505_native.obj",
+      "case_base": {
+        "object_id": "abc_461505",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13020,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_461505.npy",
+          "rgb_sha256": "afda2c03f2315a4baac6bae0c2f6a4806617e5467769d8cb6f50c204e7b9c2b6",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_461505.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "152578",
+      "object_id": "abc_152578",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_152578_native.obj",
+      "sha256": "30db79acf69174c0bf72a7cb518ba8d44faad831bcc0657a34b1505e90c36d89",
+      "dims_m": [
+        0.00999844586,
+        0.0415036008,
+        0.00999999978
+      ],
+      "faces": 508,
+      "volume_ratio": 1.0000000000000002,
+      "descriptor": [
+        0.24090550379426356,
+        0.24094294440110361,
+        1.0,
+        0.7851966871814352,
+        0.028798195252008205,
+        0.404992965308252,
+        2.54
+      ],
+      "side_area_fraction": 0.404992965308252,
+      "shape_signature_sha256": "d5cf5edf46833f0047359ac799d11def65708e2862fb5c9bec46c5b3f6de5168",
+      "selection_rank": 21,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_152578_native.obj",
+      "case_base": {
+        "object_id": "abc_152578",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13021,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_152578.npy",
+          "rgb_sha256": "43d08ea2b4ed9cf353c390c7fbdf90386f2502b746bdbe1301d468472f2d5ba8",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_152578.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "529040",
+      "object_id": "abc_529040",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_529040_native.obj",
+      "sha256": "301d0f8d715822412ee8562d6c2e9f57dc33f3b1942defa0ff058a6e0f9d80f2",
+      "dims_m": [
+        0.059375137,
+        0.035012696,
+        0.0253999997
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.4277884815659457,
+        0.5896861509557444,
+        1.0,
+        0.9999999999999999,
+        0.1830029849604974,
+        0.5355835007940585,
+        0.08
+      ],
+      "side_area_fraction": 0.5355835007940585,
+      "shape_signature_sha256": "2f3da34ded0eb7e0897dbd87f5d507b36b4302bcd9459100b5105bf8910b6a4f",
+      "selection_rank": 22,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_529040_native.obj",
+      "case_base": {
+        "object_id": "abc_529040",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13022,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_529040.npy",
+          "rgb_sha256": "9d8fcb06a263d3b096f5401959b078e95b44f99e27cce75a96d63082075151cc",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_529040.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "784558",
+      "object_id": "abc_784558",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_784558_native.obj",
+      "sha256": "24084c676cd22256b3580a2a0b5c8aa990ff3cf43c58b0cd93178c2460bc6c9f",
+      "dims_m": [
+        0.0381000004,
+        0.0253999996,
+        0.031750001
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.6666666491688541,
+        0.8333333508311459,
+        1.0,
+        0.9999999999999998,
+        0.44444442111402793,
+        0.6756756837279927,
+        0.08
+      ],
+      "side_area_fraction": 0.6756756837279927,
+      "shape_signature_sha256": "d05b8574c8905b143e2e3cd44cde38cb5669be25d5b4e9247fd5a1e8bbb0e90f",
+      "selection_rank": 23,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_784558_native.obj",
+      "case_base": {
+        "object_id": "abc_784558",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13023,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_784558.npy",
+          "rgb_sha256": "48e4b6dfe58346f743f18cb813a5372863067f741a49be1b88f315c24db7493c",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_784558.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "553219",
+      "object_id": "abc_553219",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_553219_native.obj",
+      "sha256": "0f47c42e99cd9f7479e0c163964aa460bec7c7aded441c39ed367fb11d40f842",
+      "dims_m": [
+        0.031750001,
+        0.0276132486,
+        0.0326495953
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.8457455091334624,
+        0.9724469999785877,
+        1.0,
+        1.0,
+        0.7152854662194194,
+        0.6885436180176949,
+        0.08
+      ],
+      "side_area_fraction": 0.6885436180176949,
+      "shape_signature_sha256": "2dc6866599db642f5827dabc4d2a948fdb3559296b3f6f5916346f6548e3e3df",
+      "selection_rank": 24,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_553219_native.obj",
+      "case_base": {
+        "object_id": "abc_553219",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13024,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_553219.npy",
+          "rgb_sha256": "d17ff56082075f6d736a562013ebd7f0c7f85cedad69d3bdfe22fb7104348c62",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_553219.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "184787",
+      "object_id": "abc_184787",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_184787_native.obj",
+      "sha256": "86f3d03c7a0ea627adc325ec443e4011ea15c0f2adaace1d5973a74381343747",
+      "dims_m": [
+        0.01905000024,
+        0.01904407888,
+        0.0253999997
+      ],
+      "faces": 504,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.7497668938948846,
+        0.7500000183070868,
+        1.0,
+        0.7853167712678835,
+        0.28125000241410236,
+        0.7273343812855151,
+        2.52
+      ],
+      "side_area_fraction": 0.7273343812855151,
+      "shape_signature_sha256": "ddd38fbae1e77a79c518dc55c89590a760de54d7a7a4f46289d71fee64b8621a",
+      "selection_rank": 25,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_184787_native.obj",
+      "case_base": {
+        "object_id": "abc_184787",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13025,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_184787.npy",
+          "rgb_sha256": "7c70a7d733d1218f62fb3407110d8092e0e07955463845c62ca908585b56a9de",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_184787.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "993288",
+      "object_id": "abc_993288",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_993288_native.obj",
+      "sha256": "3c5dee975cbbdfc010e2515a4462a6f64aa3c111a7dce9c1d77e9d9f13b5aad4",
+      "dims_m": [
+        0.0399999992,
+        0.0300000012,
+        0.0199999996
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.5,
+        0.750000045000001,
+        1.0,
+        1.0000000000000002,
+        0.25,
+        0.5384615299408285,
+        0.08
+      ],
+      "side_area_fraction": 0.5384615299408285,
+      "shape_signature_sha256": "289c282077c4f34fda548539b722d251d3b9760cae3e585a9177dd8ed4daeb11",
+      "selection_rank": 26,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_993288_native.obj",
+      "case_base": {
+        "object_id": "abc_993288",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13026,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_993288.npy",
+          "rgb_sha256": "27b808616b5ac808d97b6678572cff2baf64c750f2741c1141d2614f8a48d6ae",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_993288.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "222121",
+      "object_id": "abc_222121",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_222121_native.obj",
+      "sha256": "8aaa5a9c4f4aaa88bb9a35356c7fa397f327ffda307142a46907314b470a89cc",
+      "dims_m": [
+        0.0195000004,
+        0.0299999994,
+        0.00999999978
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.3333333326666666,
+        0.6500000263333338,
+        1.0,
+        0.9999999999999999,
+        0.11111111066666664,
+        0.45833332674112653,
+        0.08
+      ],
+      "side_area_fraction": 0.45833332674112653,
+      "shape_signature_sha256": "f2507a744022ac9091821ef42fcb2d9ee39f64b43b83b6c7d9584b32bbbffdb9",
+      "selection_rank": 27,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_222121_native.obj",
+      "case_base": {
+        "object_id": "abc_222121",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13027,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_222121.npy",
+          "rgb_sha256": "b7fb68500315bf21a878be2201ce1ca02a4ebc04990961522d0172816f477044",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_222121.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "939116",
+      "object_id": "abc_939116",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_939116_native.obj",
+      "sha256": "bbcf77487b364f2322ee0a14a507e3705cab998cb73e0bc88b7f5537c1bcd904",
+      "dims_m": [
+        0.0270379502,
+        0.027029546,
+        0.0158750005
+      ],
+      "faces": 504,
+      "volume_ratio": 1.0000000000000002,
+      "descriptor": [
+        0.5871377224446548,
+        0.999689170224154,
+        1.0,
+        0.7853168836118796,
+        0.6894613346222725,
+        0.5401538742977822,
+        2.52
+      ],
+      "side_area_fraction": 0.5401538742977822,
+      "shape_signature_sha256": "29f385a4d13d4e8772a73776f5856aa7e4f5b3b43b58bcbd7ef5ff60c51b3b05",
+      "selection_rank": 28,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_939116_native.obj",
+      "case_base": {
+        "object_id": "abc_939116",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13028,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_939116.npy",
+          "rgb_sha256": "7dbe3071b363b6038c9333c11c85d9ed2b42a0adb410f26534c1ee3173e7a9db",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_939116.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "90621",
+      "object_id": "abc_90621",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_90621_native.obj",
+      "sha256": "87f60a007a634abac8d05e1bdcb9586137c6abd56f2f85eeaa55aefdd81b2eab",
+      "dims_m": [
+        0.01000000164,
+        0.01999999956,
+        0.0199999996
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.500000092000002,
+        0.999999998,
+        1.0,
+        1.0,
+        0.25000009200001033,
+        0.7499999771250017,
+        0.08
+      ],
+      "side_area_fraction": 0.7499999771250017,
+      "shape_signature_sha256": "8666167c646d22de936b81caaccbbf68be782bc34ef9413c2a540d605a634733",
+      "selection_rank": 29,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_90621_native.obj",
+      "case_base": {
+        "object_id": "abc_90621",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13029,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_90621.npy",
+          "rgb_sha256": "8e1f816b7f577b77e531f5779e64f78f8f56f76336268468233b54f26fdd5f69",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_90621.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "18078",
+      "object_id": "abc_18078",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_18078_native.obj",
+      "source_sha256": "da364d770aef6b8fc4d0677190f5fac26763dad3831e64bd51213f055cde9d85",
+      "sha256": "08521bc0229b52456323a7865637a1dae4b6b80ec30e866acd058f3047b6e62b",
+      "source_transform": {
+        "uniform_scale": 0.41713628100925065,
+        "z_translation_m": -0.0,
+        "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+      },
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_18078_scaled30mm.obj",
+      "dims_m": [
+        0.026515613092,
+        0.03,
+        0.018713082334
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "side_area_fraction": 0.5707247426359434,
+      "descriptor": [
+        0.6237694111333334,
+        0.8838537697333333,
+        1.0,
+        1.0000000000000002,
+        0.3890882782656255,
+        0.5707247426359434,
+        0.08
+      ],
+      "primitive_identity": {
+        "kind": "box",
+        "dimensions_sorted_m": [
+          0.018713082334,
+          0.026515613092,
+          0.03
+        ],
+        "normalized_dimensions": [
+          0.6237694111333334,
+          0.8838537697333333,
+          1.0
+        ],
+        "max_plane_error_m": 0.0,
+        "fit_tolerance_m": 1e-07
+      },
+      "shape_signature_sha256": "9a2020039d65b95553d8cada4ee26169d907c50654e7d82b148eb2d1cc7552e0",
+      "selection_rank": 30,
+      "case_base": {
+        "object_id": "abc_18078",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13030,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_18078.npy",
+          "rgb_sha256": "8b9edde98b038df15cf61ec36b2faecedb94614c8ca640c7b767de67b04369ed",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_18078.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "49687",
+      "object_id": "abc_49687",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_49687_native.obj",
+      "source_sha256": "081295a9528584c82c9a12f40647202fcc53933d33dd955d8468c6b4741df0d7",
+      "sha256": "daf6124dcf593324cc3a4ac45523d70347af5d5e0296c76266ccfd0bce3aa24f",
+      "source_transform": {
+        "uniform_scale": 0.45653484108489367,
+        "z_translation_m": -0.0,
+        "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+      },
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_49687_scaled30mm.obj",
+      "dims_m": [
+        0.03,
+        0.01159598478,
+        0.019729006518
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "side_area_fraction": 0.7022922500534369,
+      "descriptor": [
+        0.38653282600000005,
+        0.6576335506000001,
+        1.0,
+        1.0000000000000002,
+        0.1494076255755463,
+        0.7022922500534369,
+        0.08
+      ],
+      "primitive_identity": {
+        "kind": "box",
+        "dimensions_sorted_m": [
+          0.01159598478,
+          0.019729006518,
+          0.03
+        ],
+        "normalized_dimensions": [
+          0.38653282600000005,
+          0.6576335506000001,
+          1.0
+        ],
+        "max_plane_error_m": 0.0,
+        "fit_tolerance_m": 1e-07
+      },
+      "shape_signature_sha256": "9317a606eaddc96046bceed658a845e9fb86d9ce7d7b9f20323a0e293d0c3c70",
+      "selection_rank": 31,
+      "case_base": {
+        "object_id": "abc_49687",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13031,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_49687.npy",
+          "rgb_sha256": "cd9a7717809d57b5672f4931d3c1c2332d6eb8f47d89a122d4b468941f45db62",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_49687.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "793782",
+      "object_id": "abc_793782",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_793782_native.obj",
+      "sha256": "ba28d0395f306fa33dfde59817df35d6fa8309d4aae0ec7cb7d7299d707a957f",
+      "dims_m": [
+        0.0271434542,
+        0.01897344552,
+        0.0253999997
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.6990063011213952,
+        0.9357688786713078,
+        1.0,
+        1.0,
+        0.48860980900741463,
+        0.6946081815489663,
+        0.08
+      ],
+      "side_area_fraction": 0.6946081815489663,
+      "shape_signature_sha256": "c1ee853affda0dcb57531005266f1ae084b5ada01bd38015930fefd5a7c8c702",
+      "selection_rank": 32,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_793782_native.obj",
+      "case_base": {
+        "object_id": "abc_793782",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13032,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_793782.npy",
+          "rgb_sha256": "462cf0818fecd8e43e5eddb874f862dc220a498b885ba8b1ee7c7281175bd09d",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_793782.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "108554",
+      "object_id": "abc_108554",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_108554_native.obj",
+      "sha256": "6e5694d1d89101b005a311b8ae5011b9f1a7732de8d81420739db9eaede10e14",
+      "dims_m": [
+        0.01269999984,
+        0.04445,
+        0.0126960529
+      ],
+      "faces": 504,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.28562548706411695,
+        0.28571428211473565,
+        1.0,
+        0.7853167845675422,
+        0.04081632618050886,
+        0.40275457339005416,
+        2.52
+      ],
+      "side_area_fraction": 0.40275457339005416,
+      "shape_signature_sha256": "1ad847e0c18a605e7c2ddd46210af29db90fe66f830df3a04c7008e1b70247e8",
+      "selection_rank": 33,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_108554_native.obj",
+      "case_base": {
+        "object_id": "abc_108554",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13033,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_108554.npy",
+          "rgb_sha256": "e95603e9c871dbd5a1e7a4fa0b938226a7a832f0d42eb844fb83572f6f9a92d9",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_108554.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "382909",
+      "object_id": "abc_382909",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_382909_native.obj",
+      "sha256": "af41d4e9b735a8adf2e90b6d9c4e4610108c55dc4364ac93bd2cfa1c53350b93",
+      "dims_m": [
+        0.047300309,
+        0.0253999996,
+        0.0432950426
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.536994369317968,
+        0.9153226166027795,
+        1.0,
+        0.9911894323901187,
+        0.2882571080172545,
+        0.7219596776357596,
+        0.08
+      ],
+      "side_area_fraction": 0.7219596776357596,
+      "shape_signature_sha256": "a50053af84dd2d69a1bc5a22db1d1a5bfd10c04e7f357caadb272dfb770801ad",
+      "selection_rank": 34,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_382909_native.obj",
+      "case_base": {
+        "object_id": "abc_382909",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13034,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_382909.npy",
+          "rgb_sha256": "598161c46e87a41b3b9f55609d2cc83c533a05e3d57cb426d2f2541e73547459",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_382909.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "551365",
+      "object_id": "abc_551365",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_551365_native.obj",
+      "sha256": "e00ea4183f0a35afd6989b8742dc7f43fa92833916cff73e816e9eba058e91e9",
+      "dims_m": [
+        0.0250000004,
+        0.0450000018,
+        0.0199999996
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "descriptor": [
+        0.4444444177777788,
+        0.5555555422222227,
+        1.0,
+        1.0000000000000002,
+        0.19753084049382874,
+        0.5544554345338693,
+        0.08
+      ],
+      "side_area_fraction": 0.5544554345338693,
+      "shape_signature_sha256": "24d4f7807c2709733a1f49089a8fd43fd1d4a1e5f904209bcdb1cc02d7d986bb",
+      "selection_rank": 35,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_551365_native.obj",
+      "case_base": {
+        "object_id": "abc_551365",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13035,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_551365.npy",
+          "rgb_sha256": "a887daca751a7b483c8466c6f759af24b3d6847a8ccfc6de26da0c873ea3e54c",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_551365.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "403242",
+      "object_id": "abc_403242",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_403242_native.obj",
+      "source_sha256": "18c17a94c30f49c8e8c980de19fabe65f18bc86696b4c664b352472e59d71196",
+      "sha256": "7fcd4fca238edcd2686c537ba8d89fa1a1732237882df1d1c70688491bee0950",
+      "source_transform": {
+        "uniform_scale": 0.4055768251909563,
+        "z_translation_m": -0.0,
+        "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+      },
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_403242_scaled30mm.obj",
+      "dims_m": [
+        0.03,
+        0.020603302476,
+        0.017689244709
+      ],
+      "faces": 20,
+      "volume_ratio": 1.0,
+      "side_area_fraction": 0.5629346025396577,
+      "descriptor": [
+        0.5896414903,
+        0.6867767492,
+        1.0,
+        0.9883526402269073,
+        0.2772431160888358,
+        0.5629346025396577,
+        0.12
+      ],
+      "primitive_identity": null,
+      "shape_signature_sha256": "dfaa262abbc2708c40d85ea002696b9041681c7148da3943ac7207234e4b10fd",
+      "selection_rank": 36,
+      "case_base": {
+        "object_id": "abc_403242",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13036,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_403242.npy",
+          "rgb_sha256": "22fc0f661057f35069c8122b79c3aef36df03d78cb8654064afb5e357b94171f",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_403242.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "983078",
+      "object_id": "abc_983078",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_983078_native.obj",
+      "source_sha256": "d445efb0541b1592eee392fd12f6f1aa0f8538d982c1cea4786b589c1d223087",
+      "sha256": "23ea359abd0dcf2a849f1612acf9c81256f199f5b5a9fa7d3ad33ce5c7dff5be",
+      "source_transform": {
+        "uniform_scale": 0.34309930980015624,
+        "z_translation_m": -0.0,
+        "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+      },
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_983078_scaled30mm.obj",
+      "dims_m": [
+        0.016415102844,
+        0.03,
+        0.013382914557
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "side_area_fraction": 0.5905766050297606,
+      "descriptor": [
+        0.4460971519,
+        0.5471700948,
+        1.0,
+        0.8191577523579203,
+        0.2021362318160887,
+        0.5905766050297606,
+        0.08
+      ],
+      "primitive_identity": null,
+      "shape_signature_sha256": "ab5186fe76177a903a4f613acd01a5535ce29098118a4123a7424b44ac93ab9b",
+      "selection_rank": 37,
+      "case_base": {
+        "object_id": "abc_983078",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13037,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_983078.npy",
+          "rgb_sha256": "e64dfe82270b4ef25b4611f016fd797db3200ec5a9f31494769a72bd00410abd",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_983078.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "602823",
+      "object_id": "abc_602823",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_602823_native.obj",
+      "source_sha256": "480e4cef86e38e81492b152d98c9ec92ac875f3ec27fd0d578eedd33a25733d7",
+      "sha256": "bbf1a304fb7aab608100476e1048add09b40c1c771d39b4a88687db209b176a1",
+      "source_transform": {
+        "uniform_scale": 0.39370078223489785,
+        "z_translation_m": -0.0,
+        "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+      },
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_602823_scaled30mm.obj",
+      "dims_m": [
+        0.021613991764,
+        0.03,
+        0.017765394413
+      ],
+      "faces": 12,
+      "volume_ratio": 1.0,
+      "side_area_fraction": 0.5857702730762795,
+      "descriptor": [
+        0.5921798137666666,
+        0.7204663921333334,
+        1.0,
+        0.9999999999999999,
+        0.350676931832724,
+        0.5857702730762795,
+        0.08
+      ],
+      "primitive_identity": {
+        "kind": "box",
+        "dimensions_sorted_m": [
+          0.017765394413,
+          0.021613991764,
+          0.03
+        ],
+        "normalized_dimensions": [
+          0.5921798137666666,
+          0.7204663921333334,
+          1.0
+        ],
+        "max_plane_error_m": 0.0,
+        "fit_tolerance_m": 1e-07
+      },
+      "shape_signature_sha256": "9b684a5f44c6d823e56f1123c7dcecec6934bfb1e754cfe225427fcb6fd98ae3",
+      "selection_rank": 38,
+      "case_base": {
+        "object_id": "abc_602823",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13038,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_602823.npy",
+          "rgb_sha256": "14da96e571397bf54fd9dddc5de0547df1f802b3a9443afb469007d53c9593a3",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_602823.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      }
+    },
+    {
+      "id": "54906",
+      "object_id": "abc_54906",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_54906_native.obj",
+      "sha256": "30f6890f0c6a3b95a070e7a1b78f67fb7bb48dcf91b0a6f958ed190a8d12c4fd",
+      "dims_m": [
+        0.009895046554486722,
+        0.03,
+        0.015137656216136811
+      ],
+      "faces": 16,
+      "volume_ratio": 0.999999999508684,
+      "side_area_fraction": 0.5256494105152674,
+      "selection_rank": 39,
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_54906_scaled30mm.obj",
+      "case_base": {
+        "object_id": "abc_54906",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13039,
+        "initial_overhead_reference": {
+          "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_54906.npy",
+          "rgb_sha256": "d3864ee156e37aa63d24d5b6ee30b1322d1405ed174dcf39a705f5ff5bddd12e",
+          "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_54906.json",
+          "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+        }
+      },
+      "source_sha256": "5b8a3e733c7ed6c5fe4323101b70a31a6a9dc0cd3a15acb5fea28ce142ab48bb",
+      "source_transform": {
+        "uniform_scale": 0.3149606200012403,
+        "z_translation_m": -0.0,
+        "rule": "geometry-only native_dimensions rejects; max extent fixed30mm; first numeric-ID non-box/non-cylinder ordinary side candidate"
+      }
+    }
+  ],
+  "runs": [
+    {
+      "name": "00_abc_53930_clean",
+      "object_id": "abc_53930",
+      "condition": "clean",
+      "case": "stage13_cases/00_abc_53930_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "00_abc_53930_noise",
+      "object_id": "abc_53930",
+      "condition": "noise",
+      "case": "stage13_cases/00_abc_53930_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "01_abc_311740_clean",
+      "object_id": "abc_311740",
+      "condition": "clean",
+      "case": "stage13_cases/01_abc_311740_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "01_abc_311740_noise",
+      "object_id": "abc_311740",
+      "condition": "noise",
+      "case": "stage13_cases/01_abc_311740_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "02_abc_76395_clean",
+      "object_id": "abc_76395",
+      "condition": "clean",
+      "case": "stage13_cases/02_abc_76395_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "02_abc_76395_noise",
+      "object_id": "abc_76395",
+      "condition": "noise",
+      "case": "stage13_cases/02_abc_76395_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "03_abc_145502_clean",
+      "object_id": "abc_145502",
+      "condition": "clean",
+      "case": "stage13_cases/03_abc_145502_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "03_abc_145502_noise",
+      "object_id": "abc_145502",
+      "condition": "noise",
+      "case": "stage13_cases/03_abc_145502_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "04_abc_699849_clean",
+      "object_id": "abc_699849",
+      "condition": "clean",
+      "case": "stage13_cases/04_abc_699849_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "04_abc_699849_noise",
+      "object_id": "abc_699849",
+      "condition": "noise",
+      "case": "stage13_cases/04_abc_699849_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "05_abc_783667_clean",
+      "object_id": "abc_783667",
+      "condition": "clean",
+      "case": "stage13_cases/05_abc_783667_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "05_abc_783667_noise",
+      "object_id": "abc_783667",
+      "condition": "noise",
+      "case": "stage13_cases/05_abc_783667_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "06_abc_78128_clean",
+      "object_id": "abc_78128",
+      "condition": "clean",
+      "case": "stage13_cases/06_abc_78128_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "06_abc_78128_noise",
+      "object_id": "abc_78128",
+      "condition": "noise",
+      "case": "stage13_cases/06_abc_78128_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "07_abc_544444_clean",
+      "object_id": "abc_544444",
+      "condition": "clean",
+      "case": "stage13_cases/07_abc_544444_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "07_abc_544444_noise",
+      "object_id": "abc_544444",
+      "condition": "noise",
+      "case": "stage13_cases/07_abc_544444_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "08_abc_176242_clean",
+      "object_id": "abc_176242",
+      "condition": "clean",
+      "case": "stage13_cases/08_abc_176242_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "08_abc_176242_noise",
+      "object_id": "abc_176242",
+      "condition": "noise",
+      "case": "stage13_cases/08_abc_176242_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "09_abc_770180_clean",
+      "object_id": "abc_770180",
+      "condition": "clean",
+      "case": "stage13_cases/09_abc_770180_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "09_abc_770180_noise",
+      "object_id": "abc_770180",
+      "condition": "noise",
+      "case": "stage13_cases/09_abc_770180_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "10_abc_189313_clean",
+      "object_id": "abc_189313",
+      "condition": "clean",
+      "case": "stage13_cases/10_abc_189313_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "10_abc_189313_noise",
+      "object_id": "abc_189313",
+      "condition": "noise",
+      "case": "stage13_cases/10_abc_189313_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "11_abc_520454_clean",
+      "object_id": "abc_520454",
+      "condition": "clean",
+      "case": "stage13_cases/11_abc_520454_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "11_abc_520454_noise",
+      "object_id": "abc_520454",
+      "condition": "noise",
+      "case": "stage13_cases/11_abc_520454_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "12_abc_272068_clean",
+      "object_id": "abc_272068",
+      "condition": "clean",
+      "case": "stage13_cases/12_abc_272068_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "12_abc_272068_noise",
+      "object_id": "abc_272068",
+      "condition": "noise",
+      "case": "stage13_cases/12_abc_272068_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "13_abc_479808_clean",
+      "object_id": "abc_479808",
+      "condition": "clean",
+      "case": "stage13_cases/13_abc_479808_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "13_abc_479808_noise",
+      "object_id": "abc_479808",
+      "condition": "noise",
+      "case": "stage13_cases/13_abc_479808_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "14_abc_673390_clean",
+      "object_id": "abc_673390",
+      "condition": "clean",
+      "case": "stage13_cases/14_abc_673390_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "14_abc_673390_noise",
+      "object_id": "abc_673390",
+      "condition": "noise",
+      "case": "stage13_cases/14_abc_673390_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "15_abc_805600_clean",
+      "object_id": "abc_805600",
+      "condition": "clean",
+      "case": "stage13_cases/15_abc_805600_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "15_abc_805600_noise",
+      "object_id": "abc_805600",
+      "condition": "noise",
+      "case": "stage13_cases/15_abc_805600_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "16_abc_181508_clean",
+      "object_id": "abc_181508",
+      "condition": "clean",
+      "case": "stage13_cases/16_abc_181508_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "16_abc_181508_noise",
+      "object_id": "abc_181508",
+      "condition": "noise",
+      "case": "stage13_cases/16_abc_181508_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "17_abc_199784_clean",
+      "object_id": "abc_199784",
+      "condition": "clean",
+      "case": "stage13_cases/17_abc_199784_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "17_abc_199784_noise",
+      "object_id": "abc_199784",
+      "condition": "noise",
+      "case": "stage13_cases/17_abc_199784_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "18_abc_328629_clean",
+      "object_id": "abc_328629",
+      "condition": "clean",
+      "case": "stage13_cases/18_abc_328629_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "18_abc_328629_noise",
+      "object_id": "abc_328629",
+      "condition": "noise",
+      "case": "stage13_cases/18_abc_328629_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "19_abc_750656_clean",
+      "object_id": "abc_750656",
+      "condition": "clean",
+      "case": "stage13_cases/19_abc_750656_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "19_abc_750656_noise",
+      "object_id": "abc_750656",
+      "condition": "noise",
+      "case": "stage13_cases/19_abc_750656_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "20_abc_461505_clean",
+      "object_id": "abc_461505",
+      "condition": "clean",
+      "case": "stage13_cases/20_abc_461505_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "20_abc_461505_noise",
+      "object_id": "abc_461505",
+      "condition": "noise",
+      "case": "stage13_cases/20_abc_461505_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "21_abc_152578_clean",
+      "object_id": "abc_152578",
+      "condition": "clean",
+      "case": "stage13_cases/21_abc_152578_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "21_abc_152578_noise",
+      "object_id": "abc_152578",
+      "condition": "noise",
+      "case": "stage13_cases/21_abc_152578_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "22_abc_529040_clean",
+      "object_id": "abc_529040",
+      "condition": "clean",
+      "case": "stage13_cases/22_abc_529040_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "22_abc_529040_noise",
+      "object_id": "abc_529040",
+      "condition": "noise",
+      "case": "stage13_cases/22_abc_529040_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "23_abc_784558_clean",
+      "object_id": "abc_784558",
+      "condition": "clean",
+      "case": "stage13_cases/23_abc_784558_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "23_abc_784558_noise",
+      "object_id": "abc_784558",
+      "condition": "noise",
+      "case": "stage13_cases/23_abc_784558_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "24_abc_553219_clean",
+      "object_id": "abc_553219",
+      "condition": "clean",
+      "case": "stage13_cases/24_abc_553219_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "24_abc_553219_noise",
+      "object_id": "abc_553219",
+      "condition": "noise",
+      "case": "stage13_cases/24_abc_553219_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "25_abc_184787_clean",
+      "object_id": "abc_184787",
+      "condition": "clean",
+      "case": "stage13_cases/25_abc_184787_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "25_abc_184787_noise",
+      "object_id": "abc_184787",
+      "condition": "noise",
+      "case": "stage13_cases/25_abc_184787_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "26_abc_993288_clean",
+      "object_id": "abc_993288",
+      "condition": "clean",
+      "case": "stage13_cases/26_abc_993288_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "26_abc_993288_noise",
+      "object_id": "abc_993288",
+      "condition": "noise",
+      "case": "stage13_cases/26_abc_993288_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "27_abc_222121_clean",
+      "object_id": "abc_222121",
+      "condition": "clean",
+      "case": "stage13_cases/27_abc_222121_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "27_abc_222121_noise",
+      "object_id": "abc_222121",
+      "condition": "noise",
+      "case": "stage13_cases/27_abc_222121_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "28_abc_939116_clean",
+      "object_id": "abc_939116",
+      "condition": "clean",
+      "case": "stage13_cases/28_abc_939116_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "28_abc_939116_noise",
+      "object_id": "abc_939116",
+      "condition": "noise",
+      "case": "stage13_cases/28_abc_939116_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "29_abc_90621_clean",
+      "object_id": "abc_90621",
+      "condition": "clean",
+      "case": "stage13_cases/29_abc_90621_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "29_abc_90621_noise",
+      "object_id": "abc_90621",
+      "condition": "noise",
+      "case": "stage13_cases/29_abc_90621_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "30_abc_18078_clean",
+      "object_id": "abc_18078",
+      "condition": "clean",
+      "case": "stage13_cases/30_abc_18078_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "30_abc_18078_noise",
+      "object_id": "abc_18078",
+      "condition": "noise",
+      "case": "stage13_cases/30_abc_18078_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "31_abc_49687_clean",
+      "object_id": "abc_49687",
+      "condition": "clean",
+      "case": "stage13_cases/31_abc_49687_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "31_abc_49687_noise",
+      "object_id": "abc_49687",
+      "condition": "noise",
+      "case": "stage13_cases/31_abc_49687_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "32_abc_793782_clean",
+      "object_id": "abc_793782",
+      "condition": "clean",
+      "case": "stage13_cases/32_abc_793782_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "32_abc_793782_noise",
+      "object_id": "abc_793782",
+      "condition": "noise",
+      "case": "stage13_cases/32_abc_793782_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "33_abc_108554_clean",
+      "object_id": "abc_108554",
+      "condition": "clean",
+      "case": "stage13_cases/33_abc_108554_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "33_abc_108554_noise",
+      "object_id": "abc_108554",
+      "condition": "noise",
+      "case": "stage13_cases/33_abc_108554_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "34_abc_382909_clean",
+      "object_id": "abc_382909",
+      "condition": "clean",
+      "case": "stage13_cases/34_abc_382909_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "34_abc_382909_noise",
+      "object_id": "abc_382909",
+      "condition": "noise",
+      "case": "stage13_cases/34_abc_382909_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "35_abc_551365_clean",
+      "object_id": "abc_551365",
+      "condition": "clean",
+      "case": "stage13_cases/35_abc_551365_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "35_abc_551365_noise",
+      "object_id": "abc_551365",
+      "condition": "noise",
+      "case": "stage13_cases/35_abc_551365_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "36_abc_403242_clean",
+      "object_id": "abc_403242",
+      "condition": "clean",
+      "case": "stage13_cases/36_abc_403242_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "36_abc_403242_noise",
+      "object_id": "abc_403242",
+      "condition": "noise",
+      "case": "stage13_cases/36_abc_403242_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "37_abc_983078_clean",
+      "object_id": "abc_983078",
+      "condition": "clean",
+      "case": "stage13_cases/37_abc_983078_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "37_abc_983078_noise",
+      "object_id": "abc_983078",
+      "condition": "noise",
+      "case": "stage13_cases/37_abc_983078_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "38_abc_602823_clean",
+      "object_id": "abc_602823",
+      "condition": "clean",
+      "case": "stage13_cases/38_abc_602823_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "38_abc_602823_noise",
+      "object_id": "abc_602823",
+      "condition": "noise",
+      "case": "stage13_cases/38_abc_602823_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "39_abc_54906_clean",
+      "object_id": "abc_54906",
+      "condition": "clean",
+      "case": "stage13_cases/39_abc_54906_clean.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    },
+    {
+      "name": "39_abc_54906_noise",
+      "object_id": "abc_54906",
+      "condition": "noise",
+      "case": "stage13_cases/39_abc_54906_noise.json",
+      "profile": "fast",
+      "fingers": "auto",
+      "max_attempts": 3,
+      "mode": "minimal",
+      "phase": "heldout"
+    }
+  ],
+  "recording_policy": "minimal for all80 formal episodes; selected video replays full, outside denominator",
+  "registration_amendment_pre_formal": {
+    "prior_sha256": "bf74b1ac6f422370aec7576370a723db362374821189789c738f4f80c8d29de7",
+    "formal_episodes_started": 0,
+    "unchanged_object_ids_and_initial_states": true,
+    "qualification": "audit/settled_qualification.json; parked hand2s; final0.5s; physical grasp count0",
+    "minimum_settled_height_m": 0.008,
+    "pad_support_radius_m": 0.0012,
+    "maximum_tangent_sag_m": 0.0003,
+    "side_footprint_table_clearance_m": 0.002,
+    "tail_translation_max_m": 0.0005,
+    "tail_rotation_max_rad": 0.03,
+    "curved_support_interpretation": "Native point or line support is not itself a failure; assess actual postsettle pose stability. Pad footprint is a geometric proxy, not calibrated compliant-contact capacity."
+  },
+  "initial_overhead_pairing": {
+    "mode": "preacquired ordinary qualification RGB",
+    "manifest": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/manifest.json",
+    "source_selection": "all40 pre-grasp geometry qualification images; no outcome selection",
+    "per_episode_live_capture_retained": true,
+    "static_calibration_tolerance": 1e-06,
+    "protocol_amendment": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/protocol_amendment.json"
+  },
+  "geometry_amendment": {
+    "excluded": "abc_702588",
+    "retained_same_geometry": "abc_152578",
+    "replacement": "abc_54906",
+    "source_transform": {
+      "uniform_scale": 0.3149606200012403,
+      "z_translation_m": -0.0,
+      "rule": "geometry-only native_dimensions rejects; max extent fixed30mm; first numeric-ID non-box/non-cylinder ordinary side candidate"
+    },
+    "audit": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/protocol_geometry_amendment.json",
+    "prior_whole_cohort_excluded": true,
+    "selection_uses_grasp_outcomes": false
+  },
+  "geometry_diversity_audit": {
+    "path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/final_geometry_diversity_v4.json",
+    "sha256": "6ddcd4559b7403e51edb6d83f434cced9df89d1970504d5b08131396400b750a"
+  },
+  "geometry_diversity_amendment": {
+    "previous_registry_sha256": "c5c1324afff6c806d2e75eb8dcb778ecebc6e4ec19950604cc3fb61a3d1aec91",
+    "previous_frozen_cohort": "frozen_v3",
+    "whole_cohort_archived": true,
+    "selection_uses_grasp_outcomes": false,
+    "near_duplicate_rules": {
+      "near_sphere_axis_ratio_max": 1.01,
+      "near_sphere_continuous_shell_fraction_max": 0.01,
+      "primitive_relative_difference_max": 0.05,
+      "normalization": "Ignore translation, rotation and uniform scale.",
+      "transitive_graph": true,
+      "retention": "Earliest frozen preregistration rank, independent of grasp outcomes."
+    },
+    "replacements": [
+      {
+        "rank": 30,
+        "excluded": "abc_826913",
+        "replacement": "abc_18078",
+        "source_transform": {
+          "uniform_scale": 0.41713628100925065,
+          "z_translation_m": -0.0,
+          "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+        },
+        "source_sha256": "da364d770aef6b8fc4d0677190f5fac26763dad3831e64bd51213f055cde9d85",
+        "asset_sha256": "08521bc0229b52456323a7865637a1dae4b6b80ec30e866acd058f3047b6e62b",
+        "source_check": {
+          "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_18078_native.obj",
+          "expected_source_sha256": "da364d770aef6b8fc4d0677190f5fac26763dad3831e64bd51213f055cde9d85",
+          "actual_source_sha256": "da364d770aef6b8fc4d0677190f5fac26763dad3831e64bd51213f055cde9d85",
+          "transform": {
+            "uniform_scale": 0.41713628100925065,
+            "z_translation_m": -0.0,
+            "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+          },
+          "vertex_tolerance_m": 1e-08,
+          "source_hash_passed": true,
+          "transformed_vertices_passed": true,
+          "source_processed_vertex_count": 8,
+          "installed_processed_vertex_count": 8,
+          "maximum_bidirectional_vertex_difference_m": 4.911116860985049e-13,
+          "verification": "source vertices times uniform_scale plus world-Z translation, bidirectional vertex-set check"
+        }
+      },
+      {
+        "rank": 31,
+        "excluded": "abc_814805",
+        "replacement": "abc_49687",
+        "source_transform": {
+          "uniform_scale": 0.45653484108489367,
+          "z_translation_m": -0.0,
+          "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+        },
+        "source_sha256": "081295a9528584c82c9a12f40647202fcc53933d33dd955d8468c6b4741df0d7",
+        "asset_sha256": "daf6124dcf593324cc3a4ac45523d70347af5d5e0296c76266ccfd0bce3aa24f",
+        "source_check": {
+          "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_49687_native.obj",
+          "expected_source_sha256": "081295a9528584c82c9a12f40647202fcc53933d33dd955d8468c6b4741df0d7",
+          "actual_source_sha256": "081295a9528584c82c9a12f40647202fcc53933d33dd955d8468c6b4741df0d7",
+          "transform": {
+            "uniform_scale": 0.45653484108489367,
+            "z_translation_m": -0.0,
+            "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+          },
+          "vertex_tolerance_m": 1e-08,
+          "source_hash_passed": true,
+          "transformed_vertices_passed": true,
+          "source_processed_vertex_count": 8,
+          "installed_processed_vertex_count": 8,
+          "maximum_bidirectional_vertex_difference_m": 6.817540850449555e-13,
+          "verification": "source vertices times uniform_scale plus world-Z translation, bidirectional vertex-set check"
+        }
+      },
+      {
+        "rank": 36,
+        "excluded": "abc_111783",
+        "replacement": "abc_403242",
+        "source_transform": {
+          "uniform_scale": 0.4055768251909563,
+          "z_translation_m": -0.0,
+          "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+        },
+        "source_sha256": "18c17a94c30f49c8e8c980de19fabe65f18bc86696b4c664b352472e59d71196",
+        "asset_sha256": "7fcd4fca238edcd2686c537ba8d89fa1a1732237882df1d1c70688491bee0950",
+        "source_check": {
+          "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_403242_native.obj",
+          "expected_source_sha256": "18c17a94c30f49c8e8c980de19fabe65f18bc86696b4c664b352472e59d71196",
+          "actual_source_sha256": "18c17a94c30f49c8e8c980de19fabe65f18bc86696b4c664b352472e59d71196",
+          "transform": {
+            "uniform_scale": 0.4055768251909563,
+            "z_translation_m": -0.0,
+            "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+          },
+          "vertex_tolerance_m": 1e-08,
+          "source_hash_passed": true,
+          "transformed_vertices_passed": true,
+          "source_processed_vertex_count": 12,
+          "installed_processed_vertex_count": 12,
+          "maximum_bidirectional_vertex_difference_m": 6.440717152368063e-13,
+          "verification": "source vertices times uniform_scale plus world-Z translation, bidirectional vertex-set check"
+        }
+      },
+      {
+        "rank": 37,
+        "excluded": "abc_639369",
+        "replacement": "abc_983078",
+        "source_transform": {
+          "uniform_scale": 0.34309930980015624,
+          "z_translation_m": -0.0,
+          "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+        },
+        "source_sha256": "d445efb0541b1592eee392fd12f6f1aa0f8538d982c1cea4786b589c1d223087",
+        "asset_sha256": "23ea359abd0dcf2a849f1612acf9c81256f199f5b5a9fa7d3ad33ce5c7dff5be",
+        "source_check": {
+          "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_983078_native.obj",
+          "expected_source_sha256": "d445efb0541b1592eee392fd12f6f1aa0f8538d982c1cea4786b589c1d223087",
+          "actual_source_sha256": "d445efb0541b1592eee392fd12f6f1aa0f8538d982c1cea4786b589c1d223087",
+          "transform": {
+            "uniform_scale": 0.34309930980015624,
+            "z_translation_m": -0.0,
+            "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+          },
+          "vertex_tolerance_m": 1e-08,
+          "source_hash_passed": true,
+          "transformed_vertices_passed": true,
+          "source_processed_vertex_count": 8,
+          "installed_processed_vertex_count": 8,
+          "maximum_bidirectional_vertex_difference_m": 5.946959250980688e-13,
+          "verification": "source vertices times uniform_scale plus world-Z translation, bidirectional vertex-set check"
+        }
+      },
+      {
+        "rank": 38,
+        "excluded": "abc_166839",
+        "replacement": "abc_602823",
+        "source_transform": {
+          "uniform_scale": 0.39370078223489785,
+          "z_translation_m": -0.0,
+          "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+        },
+        "source_sha256": "480e4cef86e38e81492b152d98c9ec92ac875f3ec27fd0d578eedd33a25733d7",
+        "asset_sha256": "bbf1a304fb7aab608100476e1048add09b40c1c771d39b4a88687db209b176a1",
+        "source_check": {
+          "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_602823_native.obj",
+          "expected_source_sha256": "480e4cef86e38e81492b152d98c9ec92ac875f3ec27fd0d578eedd33a25733d7",
+          "actual_source_sha256": "480e4cef86e38e81492b152d98c9ec92ac875f3ec27fd0d578eedd33a25733d7",
+          "transform": {
+            "uniform_scale": 0.39370078223489785,
+            "z_translation_m": -0.0,
+            "rule": "geometry-only rescaled-source candidate survey, maximum extent30mm, family-separation audit and zero-grasp qualification required"
+          },
+          "vertex_tolerance_m": 1e-08,
+          "source_hash_passed": true,
+          "transformed_vertices_passed": true,
+          "source_processed_vertex_count": 8,
+          "installed_processed_vertex_count": 8,
+          "maximum_bidirectional_vertex_difference_m": 5.1376554609606e-13,
+          "verification": "source vertices times uniform_scale plus world-Z translation, bidirectional vertex-set check"
+        }
+      }
+    ],
+    "qualification_status": "all40 passed, including five replacements, zero grasps; audit/settled_qualification.json",
+    "initial_overhead_status": "all40 common RGB registered; overhead_inputs_v4/manifest.json",
+    "qualification_sha256": "7f4615bbcc7d4eab38448a72a84ed60ecd0df3715605d26b1351a44b4eb576b1"
+  }
+}

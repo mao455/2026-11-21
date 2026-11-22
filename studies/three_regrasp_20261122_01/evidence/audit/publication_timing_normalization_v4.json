@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "scope": "Offline readout only. No episodes, receipts, runtime, HEAD or aggregate statistics changed.",
+  "input_readout": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_readout",
+  "output_readout": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/publication_readout",
+  "inplace": false,
+  "snapshot_directory": null,
+  "episode_count": 80,
+  "incomplete_episode_names": [
+    "02_abc_76395_clean",
+    "02_abc_76395_noise",
+    "10_abc_189313_clean"
+  ],
+  "changed_episode_names": [
+    "02_abc_76395_clean",
+    "02_abc_76395_noise",
+    "10_abc_189313_clean"
+  ],
+  "allowed_changed_fields": [
+    "incomplete_recorded_between_dispatch_accumulator_s",
+    "policy_compute_s",
+    "policy_compute_time_scope",
+    "policy_timing_audit.incomplete_recorded_between_dispatch_accumulator_s",
+    "policy_timing_audit.policy_compute_time_scope",
+    "policy_timing_audit.recorded_between_dispatch_compute_s"
+  ],
+  "accumulator_field": "incomplete_recorded_between_dispatch_accumulator_s",
+  "accumulator_scope": "unavailable_complete_episode_timing; preserved accumulator contains only recorded between-dispatch intervals, may be empty, and is neither complete computation time nor process CPU time",
+  "source_sha256": {
+    "SUMMARY.json": "dc8e49c923d3274d426767a300056017918b47305d5f7d146048139439a7c350",
+    "episodes.csv": "a90f0bd492b0b87b95859628f83c9661237cfc968f5d880cdd4bce0574d32a45",
+    "02_abc_76395_clean.json": "c90b9828ea4c185685ad2b235d11ba8d06dfc36787290fe534ac0de5e1414cc0",
+    "02_abc_76395_noise.json": "f572c86a8f0b09bba417a8c86220656785f418c232038d4d0a769eef9be80f73",
+    "10_abc_189313_clean.json": "ddff03122ccae31e0f599654b0676d66dd4931ad6a6889d02bf258a325115ce1"
+  },
+  "normalized_sha256": {
+    "SUMMARY.json": "f09e5a46291d14b961286f69eb9af3aef321de07795d18c8c9325d7d9eabc200",
+    "episodes.csv": "ccdcd937fb4bcc3adef65fe1fda9b039d79faf774ce8f60399dd710822bdd3d4",
+    "02_abc_76395_clean.json": "878535fac7e75d4b4a86bafa16685d40706afa2ccae6dd68c90840c7bf416b0d",
+    "02_abc_76395_noise.json": "6d26b8a5716081d9f26038d90005bd5f55e739856e51a7ad617e01f7bbdc34ce",
+    "10_abc_189313_clean.json": "9252025d7cc810d6f7eee768ec667bdbefec982750ac8cc0e7daf1f3c2b981b1"
+  },
+  "script_sha256": "7cd4b024958f7bd803ddb3a57b04d005b27ef6545c425be024b1dc1ae00e593d",
+  "checks": {
+    "outcomes_attempts_recovery_integrity_physical_and_other_fields_unchanged": true,
+    "completed_episode_json_unchanged": true,
+    "summary_statistics_and_all_non_result_fields_unchanged": true,
+    "incomplete_policy_time_is_null": true,
+    "csv_incomplete_policy_time_is_empty": true,
+    "original_partial_accumulator_preserved": true,
+    "all_csv_non_timing_cells_unchanged": true,
+    "json_and_csv_sets_match": true
+  },
+  "all_checks_passed": true
+}

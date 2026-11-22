@@ -1,0 +1,289 @@
+{
+  "freeze_directory": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/frozen_v4",
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "plan_sha256": "11f8c9326d498d21187b50fb7369e03ec822889c70a902275566a3a34ad01bb6",
+  "qualification_sha256": "7f4615bbcc7d4eab38448a72a84ed60ecd0df3715605d26b1351a44b4eb576b1",
+  "scope": "all40 preregistered meshes, common view, settled orientation, independent uniform scale per panel; heights from geometry-only qualification",
+  "sources": [
+    {
+      "object_id": "abc_53930",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_53930_native.obj",
+      "sha256": "076bb5617d2fc9771e1b43cc4d8b949210681b02a520f246143d23f9212d3bdc",
+      "settled_height_m": 0.012971872783030844,
+      "display_diameter_m": 0.01564083997695943
+    },
+    {
+      "object_id": "abc_311740",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_311740_native.obj",
+      "sha256": "4962daf0fc681987266169729a4a67c925428afe2226530c70be43c3033d4f2e",
+      "settled_height_m": 0.039054082065400106,
+      "display_diameter_m": 0.03905546426302897
+    },
+    {
+      "object_id": "abc_76395",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_76395_native.obj",
+      "sha256": "c69aafcc7136ae5672ab9779b4df4d9914cfef3783d2a80aead1d1e2b9cdaf57",
+      "settled_height_m": 0.01349765365442569,
+      "display_diameter_m": 0.01349765365442569
+    },
+    {
+      "object_id": "abc_145502",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_145502_native.obj",
+      "sha256": "bad51c0adec519001e71b09e35ec5218eff585d873eb869ca60310560f253bc7",
+      "settled_height_m": 0.008000001511110053,
+      "display_diameter_m": 0.046441400293409804
+    },
+    {
+      "object_id": "abc_699849",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_699849_native.obj",
+      "sha256": "0fbceadf3d6dd2f432d5ec08904d44987d496facda04c5391c048df4e0809fbc",
+      "settled_height_m": 0.02916642612722561,
+      "display_diameter_m": 0.05269729421156101
+    },
+    {
+      "object_id": "abc_783667",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_783667_native.obj",
+      "sha256": "b388e8bef962614aba7185dd42727d10dd94f6247a87f0eb5e3e65645408fe93",
+      "settled_height_m": 0.02540013812309702,
+      "display_diameter_m": 0.026126583352958997
+    },
+    {
+      "object_id": "abc_78128",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_78128_native.obj",
+      "sha256": "25b3bf5a3de08faa7276bc2e52a9333df4a2858adb84a21fd01b7274964525b8",
+      "settled_height_m": 0.034439432559675555,
+      "display_diameter_m": 0.03549502168074867
+    },
+    {
+      "object_id": "abc_544444",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_544444_native.obj",
+      "sha256": "ddc6252824bcfc2598cd32f65d2c9bc3e01ea3ded1d59551dff4553d6876feef",
+      "settled_height_m": 0.02540000501972951,
+      "display_diameter_m": 0.03284473105300417
+    },
+    {
+      "object_id": "abc_176242",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_176242_native.obj",
+      "sha256": "4fecb44ede4f5becb731bea9a6aa86d29ef52fd9c633c8acf6839e072a5e47d8",
+      "settled_height_m": 0.03500003760848797,
+      "display_diameter_m": 0.04306761295893076
+    },
+    {
+      "object_id": "abc_770180",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_770180_native.obj",
+      "sha256": "1c8ef06a43b5423e326f1b9cb037960680ace56cde63aecbb05259f07d88b78a",
+      "settled_height_m": 0.017780004229884912,
+      "display_diameter_m": 0.03604796087711055
+    },
+    {
+      "object_id": "abc_189313",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_189313_native.obj",
+      "sha256": "acb44239eba0899af3ea94a026410088c0da5ab0804a0687c9d6f29363dd5c16",
+      "settled_height_m": 0.01396505905543317,
+      "display_diameter_m": 0.028191118110161242
+    },
+    {
+      "object_id": "abc_520454",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_520454_native.obj",
+      "sha256": "afff4cd47eb7ef7ea59a7d73f6adae90ef3f4c2072a28cd4bf010429f62d2dda",
+      "settled_height_m": 0.036490465141333264,
+      "display_diameter_m": 0.04248471605036328
+    },
+    {
+      "object_id": "abc_272068",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_272068_native.obj",
+      "sha256": "c258ac35dc2e8d09ae35d9d431a81190221f509ed904920fc3ee946943f09c36",
+      "settled_height_m": 0.03904418480504614,
+      "display_diameter_m": 0.06203454681275125
+    },
+    {
+      "object_id": "abc_479808",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_479808_native.obj",
+      "sha256": "7b09f5701cf46dc7285ae65a0c1befc789be184db90bc889204afa1f7172121a",
+      "settled_height_m": 0.009108716220677117,
+      "display_diameter_m": 0.02259911983307117
+    },
+    {
+      "object_id": "abc_673390",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_673390_native.obj",
+      "sha256": "5ae75a0ca148ea63064ec778d3b9a83f319d9afdb28566666d175c1d1662c26c",
+      "settled_height_m": 0.025000049417036332,
+      "display_diameter_m": 0.027561799934936577
+    },
+    {
+      "object_id": "abc_805600",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_805600_native.obj",
+      "sha256": "7c1973ad51f940c336ac02e857344a2f8d1e0acf0294b034a7d05e52bbf4ede4",
+      "settled_height_m": 0.02540001688572876,
+      "display_diameter_m": 0.025400019505862726
+    },
+    {
+      "object_id": "abc_181508",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_181508_native.obj",
+      "sha256": "5b09970b5cec17c893884b91e38e3628c8e034d926a6d69682eebe1b7208b64c",
+      "settled_height_m": 0.03000002330812328,
+      "display_diameter_m": 0.03000013872531203
+    },
+    {
+      "object_id": "abc_199784",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_199784_native.obj",
+      "sha256": "4208374fdf80b3cc4607a747e5747f3aa5326dc629609da5143182501b454bac",
+      "settled_height_m": 0.04377452225396274,
+      "display_diameter_m": 0.04502560204024441
+    },
+    {
+      "object_id": "abc_328629",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_328629_native.obj",
+      "sha256": "0e1143edda7b8d4b2e7724f740c5a853e5d3818ecd81688af3a77f479f797bf8",
+      "settled_height_m": 0.012500045360085874,
+      "display_diameter_m": 0.03238958879153998
+    },
+    {
+      "object_id": "abc_750656",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_750656_native.obj",
+      "sha256": "e78652bebb87266ffce554d1ff1598ff61cd98f58a604e4d6822e587ecb714da",
+      "settled_height_m": 0.012700039078268497,
+      "display_diameter_m": 0.04366272905995967
+    },
+    {
+      "object_id": "abc_461505",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_461505_native.obj",
+      "sha256": "295c5c3b2f82485a2ee6badfdaf92f84d191190f0a00dc2ebafdd59c5f5040d5",
+      "settled_height_m": 0.04431567993013555,
+      "display_diameter_m": 0.044914005919799105
+    },
+    {
+      "object_id": "abc_152578",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_152578_native.obj",
+      "sha256": "30db79acf69174c0bf72a7cb518ba8d44faad831bcc0657a34b1505e90c36d89",
+      "settled_height_m": 0.01000002823037036,
+      "display_diameter_m": 0.04257471199952628
+    },
+    {
+      "object_id": "abc_529040",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_529040_native.obj",
+      "sha256": "301d0f8d715822412ee8562d6c2e9f57dc33f3b1942defa0ff058a6e0f9d80f2",
+      "settled_height_m": 0.025400051994337442,
+      "display_diameter_m": 0.06656300972650493
+    },
+    {
+      "object_id": "abc_784558",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_784558_native.obj",
+      "sha256": "24084c676cd22256b3580a2a0b5c8aa990ff3cf43c58b0cd93178c2460bc6c9f",
+      "settled_height_m": 0.031750002119319026,
+      "display_diameter_m": 0.04403240399277636
+    },
+    {
+      "object_id": "abc_553219",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_553219_native.obj",
+      "sha256": "0f47c42e99cd9f7479e0c163964aa460bec7c7aded441c39ed367fb11d40f842",
+      "settled_height_m": 0.03264961548184749,
+      "display_diameter_m": 0.037965054549898306
+    },
+    {
+      "object_id": "abc_184787",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_184787_native.obj",
+      "sha256": "86f3d03c7a0ea627adc325ec443e4011ea15c0f2adaace1d5973a74381343747",
+      "settled_height_m": 0.025400007176921507,
+      "display_diameter_m": 0.025400042171112712
+    },
+    {
+      "object_id": "abc_993288",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_993288_native.obj",
+      "sha256": "3c5dee975cbbdfc010e2515a4462a6f64aa3c111a7dce9c1d77e9d9f13b5aad4",
+      "settled_height_m": 0.020000044650044485,
+      "display_diameter_m": 0.0465527699954085
+    },
+    {
+      "object_id": "abc_222121",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_222121_native.obj",
+      "sha256": "8aaa5a9c4f4aaa88bb9a35356c7fa397f327ffda307142a46907314b470a89cc",
+      "settled_height_m": 0.01000000467377343,
+      "display_diameter_m": 0.03451865076803166
+    },
+    {
+      "object_id": "abc_939116",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_939116_native.obj",
+      "sha256": "bbcf77487b364f2322ee0a14a507e3705cab998cb73e0bc88b7f5537c1bcd904",
+      "settled_height_m": 0.01587501773607229,
+      "display_diameter_m": 0.02703771615889177
+    },
+    {
+      "object_id": "abc_90621",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_90621_native.obj",
+      "sha256": "87f60a007a634abac8d05e1bdcb9586137c6abd56f2f85eeaa55aefdd81b2eab",
+      "settled_height_m": 0.020000023010484022,
+      "display_diameter_m": 0.022097271666538854
+    },
+    {
+      "object_id": "abc_18078",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_18078_scaled30mm.obj",
+      "sha256": "08521bc0229b52456323a7865637a1dae4b6b80ec30e866acd058f3047b6e62b",
+      "settled_height_m": 0.018713111294361266,
+      "display_diameter_m": 0.03598566410739027
+    },
+    {
+      "object_id": "abc_49687",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_49687_scaled30mm.obj",
+      "sha256": "daf6124dcf593324cc3a4ac45523d70347af5d5e0296c76266ccfd0bce3aa24f",
+      "settled_height_m": 0.019729055319520745,
+      "display_diameter_m": 0.03210746618671617
+    },
+    {
+      "object_id": "abc_793782",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_793782_native.obj",
+      "sha256": "ba28d0395f306fa33dfde59817df35d6fa8309d4aae0ec7cb7d7299d707a957f",
+      "settled_height_m": 0.02540000131677572,
+      "display_diameter_m": 0.031220892716984264
+    },
+    {
+      "object_id": "abc_108554",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_108554_native.obj",
+      "sha256": "6e5694d1d89101b005a311b8ae5011b9f1a7732de8d81420739db9eaede10e14",
+      "settled_height_m": 0.012818986823811131,
+      "display_diameter_m": 0.046205348863591636
+    },
+    {
+      "object_id": "abc_382909",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_382909_native.obj",
+      "sha256": "af41d4e9b735a8adf2e90b6d9c4e4610108c55dc4364ac93bd2cfa1c53350b93",
+      "settled_height_m": 0.04329507129093351,
+      "display_diameter_m": 0.05236164250925377
+    },
+    {
+      "object_id": "abc_551365",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_551365_native.obj",
+      "sha256": "e00ea4183f0a35afd6989b8742dc7f43fa92833916cff73e816e9eba058e91e9",
+      "settled_height_m": 0.020000013347087765,
+      "display_diameter_m": 0.050481481400469916
+    },
+    {
+      "object_id": "abc_403242",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_403242_scaled30mm.obj",
+      "sha256": "7fcd4fca238edcd2686c537ba8d89fa1a1732237882df1d1c70688491bee0950",
+      "settled_height_m": 0.01768928955201879,
+      "display_diameter_m": 0.034408674654159824
+    },
+    {
+      "object_id": "abc_983078",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_983078_scaled30mm.obj",
+      "sha256": "23ea359abd0dcf2a849f1612acf9c81256f199f5b5a9fa7d3ad33ce5c7dff5be",
+      "settled_height_m": 0.013382916232665468,
+      "display_diameter_m": 0.031850828729003515
+    },
+    {
+      "object_id": "abc_602823",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_602823_scaled30mm.obj",
+      "sha256": "bbf1a304fb7aab608100476e1048add09b40c1c771d39b4a88687db209b176a1",
+      "settled_height_m": 0.017765441993933963,
+      "display_diameter_m": 0.03467825629498664
+    },
+    {
+      "object_id": "abc_54906",
+      "mesh": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/stage13/abc_54906_scaled30mm.obj",
+      "sha256": "30f6890f0c6a3b95a070e7a1b78f67fb7bb48dcf91b0a6f958ed190a8d12c4fd",
+      "settled_height_m": 0.015137667551664727,
+      "display_diameter_m": 0.03158858252979452
+    }
+  ]
+}

@@ -1315,7 +1315,10 @@ def _S6_BASE_CHECK(self, q, object_check=True):
                 object_hits.append(self.names[i])
     self.nodes_checked += 1
     clearance = float(np.min(bounds[:, 0, 2]) - self.table_z)
-    return {'table_clearance_m': clearance, 'self_collisions': self_hits, 'object_collisions': object_hits, 'passed': bool(clearance >= 0.00065 and (not self_hits) and (not object_hits))}
+    return {'table_clearance_m': clearance, 'table_clearance_link': self.names[int(np.argmin(bounds[:, 0, 2]))],
+            'thresholds': {'table_clearance_m': .00065, 'self_overlap_m': 0., 'object_overlap_m': 0.},
+            'self_collisions': self_hits, 'object_collisions': object_hits,
+            'passed': bool(clearance >= 0.00065 and (not self_hits) and (not object_hits))}
 
 def _s9_geometry(volume, obs, previous_info):
     live = volume if isinstance(volume, Stage3LiveVolume) else Stage3LiveVolume(volume.robot, volume.calibration, previous_info, volume.resolution)
@@ -1861,6 +1864,38 @@ class SelfAwareGeometry(_R13_CHECKER):
             cache[key] = _S6_BASE_CHECK(self, q, object_check)
         return cache[key]
 
+    def diagnose(self, q, object_check=True):
+        """Metric witnesses for the original triangle/clearance guard.
+
+        This is called at candidate endpoints and the first refused path node,
+        never used as an approximate replacement for ``check``. Intersecting
+        triangle meshes can report zero penetration depth: the exact overlap
+        boolean, rather than that depth, remains the rejection criterion.
+        """
+        report = dict(self.check(q, object_check))
+        fcl, poses = self.fcl, self.robot.fk(q)
+        objects = {name: fcl.CollisionObject(self.models[name],
+                   fcl.Transform(poses[name][:3, :3], poses[name][:3, 3])) for name in self.names}
+        witnesses = [dict(kind='table', links=[report['table_clearance_link'], 'table'],
+                          clearance_m=report['table_clearance_m'], threshold_m=.00065,
+                          passed=report['table_clearance_m'] >= .00065,
+                          measurement='transformed full collision-mesh minimum z')]
+        pairs = [('self_collision', pair) for pair in report['self_collisions']]
+        pairs += [('object_collision', [name, 'RGB_envelope']) for name in report['object_collisions']]
+        for kind, pair in pairs:
+            other = self.object if kind == 'object_collision' else objects[pair[1]]
+            result = fcl.CollisionResult()
+            fcl.collide(objects[pair[0]], other,
+                        fcl.CollisionRequest(enable_contact=True, num_max_contacts=32), result)
+            depths = [float(contact.penetration_depth) for contact in result.contacts]
+            witnesses.append(dict(kind=kind, links=list(pair),
+                clearance_m=-max([0.] + depths), threshold_m=0., passed=False,
+                exact_mesh_overlap=True, contacts_returned=len(depths),
+                measurement='FCL triangle contact penetration; zero depth can still overlap'))
+        report['clearance_witnesses'] = witnesses
+        report['first_failed_guard'] = next((item for item in witnesses if not item['passed']), None)
+        return report
+
 class Stage3LiveVolume(_geometry_Stage3LiveVolume):
 
     def carve(self, obs, fuse=False):
@@ -1940,6 +1975,147 @@ class Stage3LiveVolume(_geometry_Stage3LiveVolume):
 
 
 
+def _s12_geometry_detail(checker, q, check=None, object_check=True):
+    check = checker.check(q, object_check=object_check) if check is None else check
+    if hasattr(checker, 'diagnose'):
+        return checker.diagnose(q, object_check=object_check)
+    # Lightweight checker adapters used in tests and external integrations may
+    # not provide metric mesh witnesses. Never invent a penetration depth.
+    detail = dict(check)
+    detail.setdefault('thresholds', dict(table_clearance_m=.00065, self_overlap_m=0., object_overlap_m=0.))
+    return detail
+
+
+def _s12_endpoint_gate(robot, q, meta, checker, initial, refinement=False):
+    """One ordered feasibility audit for two and three contacts."""
+    checks = []
+    def gate(name, passed, detail):
+        checks.append(dict(gate=name, passed=bool(passed), **detail))
+    gate('public_contact_patch_bounds', meta.get('region_patch_valid', True),
+         dict(source='RGB convex-envelope surface hypothesis',
+              regions=meta.get('contact_regions'), measurements=meta.get('region_patch_measurements')))
+    fingers = list(robot.finger_names)
+    errors = np.asarray(meta.get('per_finger_error_m', [meta['error_m']] * len(fingers)))
+    normals = np.asarray(meta['normal_error_rad'])
+    gate('per_finger_position', np.all(errors < .0008),
+         dict(unit='m', threshold=.0008, comparison='<',
+              per_finger=[dict(finger=finger, link=robot.contact_links[i], value=float(value))
+                          for i, (finger, value) in enumerate(zip(fingers, errors))]))
+    gate('per_finger_normal', np.all(normals < .5),
+         dict(unit='rad', threshold=.5, comparison='<',
+              per_finger=[dict(finger=finger, link=robot.contact_links[i], value=float(value))
+                          for i, (finger, value) in enumerate(zip(fingers, normals))]))
+    bad = np.flatnonzero((q < robot.lo) | (q > robot.hi))
+    gate('joint_limits', not len(bad), dict(joints=[dict(index=int(i), name=NAMES[i],
+         value=float(q[i]), lower=float(robot.lo[i]), upper=float(robot.hi[i])) for i in bad]))
+    endpoint = checker.check(q)
+    meta['endpoint'] = _s12_geometry_detail(checker, q, endpoint)
+    gate('endpoint_clearance_collision', endpoint['passed'], dict(geometry=meta['endpoint']))
+    if refinement:
+        angle = _s3_attitude_delta(np.asarray(initial)[3:6], q[3:6])
+        meta['refinement_attitude_delta_rad'] = angle
+        gate('large_near_object_refinement_attitude_change', angle <= STAGE3_REFINEMENT_ATTITUDE_LIMIT_RAD,
+             dict(value=angle, threshold=STAGE3_REFINEMENT_ATTITUDE_LIMIT_RAD, unit='rad'))
+    meta['feasibility_gates'] = checks
+    failure = next((check for check in checks if not check['passed']), None)
+    if failure is not None:
+        meta.update(stage3_reject=failure['gate'], first_rejection=failure['gate'],
+                    first_rejection_detail=failure, feasibility_passed=False)
+    return failure is None
+
+
+def _s12_path_gate(robot, checker, initial, acts, *, object_check=True, rate_gate=True):
+    """Audit each existing command-path node in temporal order, with witnesses.
+
+    The interpolation schedule and native 120Hz denominator are unchanged.
+    A close/probe intentionally retains the original object-overlap exemption;
+    self, table, joint and velocity guards still apply there.
+    """
+    checks, failures, previous = [], [], np.asarray(initial)
+    peak_translation, peak_joint = 0., 0.
+    for index, (target, steps, phase) in enumerate(acts):
+        q = np.asarray(target)
+        inspect_object = bool(object_check and phase not in ('close', 'probe_hold'))
+        geometry = checker.check(q, object_check=inspect_object)
+        rate = abs(q - previous) / (steps / 120.)
+        peak_translation = max(peak_translation, float(rate[:3].max()))
+        peak_joint = max(peak_joint, float(rate[3:].max()))
+        bad = np.flatnonzero((q < robot.lo) | (q > robot.hi))
+        failure = None
+        if not geometry['passed']:
+            failure = dict(gate='clearance_collision', geometry=(geometry if failures else
+                _s12_geometry_detail(checker, q, geometry, object_check=inspect_object)))
+        elif len(bad):
+            failure = dict(gate='joint_limits', joints=[dict(index=int(i), name=NAMES[i],
+                value=float(q[i]), lower=float(robot.lo[i]), upper=float(robot.hi[i])) for i in bad])
+        elif rate_gate and (rate[:3].max() >= .15 or rate[3:].max() >= 1.5):
+            failure = dict(gate='commanded_velocity', peak_translation_m_s=float(rate[:3].max()),
+                peak_joint_rad_s=float(rate[3:].max()), translation_threshold_m_s=.15,
+                joint_threshold_rad_s=1.5, comparison='<')
+        if failure is not None:
+            failures.append(dict(node=index, phase=phase, steps=int(steps),
+                object_guard_enabled=inspect_object, commanded_q=q.tolist(), **failure))
+        checks.append(geometry)
+        previous = q
+    return dict(passed=not failures, checked_nodes=len(checks),
+        first_rejection=failures[0] if failures else None,
+        failed_path_nodes=[failure['node'] for failure in failures],
+        min_table_clearance_m=min((check['table_clearance_m'] for check in checks), default=float('inf')),
+        commanded_peak_translation_m_s=peak_translation, commanded_peak_joint_rad_s=peak_joint,
+        native_rate_hz=120, object_guard_scope='original close/probe exemption retained')
+
+
+def _s12_complete_candidate(robot, checker, initial, q, inward, meta, retime):
+    points = robot.tips(q)[0]
+    prefix = stage3_approach(robot, q, points, inward, initial)
+    if retime:
+        prefix = _s3_retime_approach(prefix, initial)
+    path = _s12_path_gate(robot, checker, initial, prefix)
+    meta.update(path_passed=path['passed'], path_audit=path,
+        failed_path_nodes=path['failed_path_nodes'],
+        commanded_peak_translation_m_s=path['commanded_peak_translation_m_s'],
+        commanded_peak_joint_rad_s=path['commanded_peak_joint_rad_s'],
+        first_wrist_change_phase=next((phase for target, _, phase in prefix
+            if _s3_attitude_delta(np.asarray(initial)[3:6], np.asarray(target)[3:6]) > .02), None))
+    if not path['passed']:
+        meta.update(stage3_reject='approach_close_path', first_rejection='approach_close_path',
+                    first_rejection_detail=path['first_rejection'], feasibility_passed=False)
+        return None
+    modes, audits = [], {}
+    for mode in MODES:
+        tail = branch(robot, q, points, inward, prefix, mode)[len(prefix):]
+        audit = _s12_path_gate(robot, checker, prefix[-1][0] if prefix else initial,
+                               tail, object_check=False, rate_gate=False)
+        audits[mode] = audit
+        if audit['passed']:
+            modes.append(mode)
+    meta['lift_tail_audits'] = audits
+    if not modes:
+        meta.update(stage3_reject='original_lift_tail_modes', first_rejection='original_lift_tail_modes',
+                    first_rejection_detail=dict(gate='original_lift_tail_modes', modes=audits), feasibility_passed=False)
+        return None
+    meta.update(feasibility_passed=True,
+        verified_min_table_clearance_m=min([path['min_table_clearance_m']] +
+            [audits[mode]['min_table_clearance_m'] for mode in modes]),
+        feasibility_scope='public surface; individual IK; exact mesh endpoint; all original approach/close and lift nodes')
+    candidate = dict(q=q, points=points, inward=inward, prefix=prefix, meta=meta, modes=modes)
+    _s12_candidate_identity(candidate)
+    return candidate
+
+
+def _s12_candidate_identity(candidate):
+    """Bind a plan to its geometry and commands, independent of ranking index."""
+    import hashlib
+    payload = dict(q=np.asarray(candidate['q']).tolist(), points=np.asarray(candidate['points']).tolist(),
+        inward=np.asarray(candidate['inward']).tolist(), targets=candidate['meta'].get('targets'),
+        prefix=[[np.asarray(q).tolist(), int(steps), phase] for q, steps, phase in candidate['prefix']],
+        modes=list(candidate.get('modes', ())))
+    digest = hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    candidate['meta'].update(planner_candidate_id='contacts' + str(len(candidate['points'])) + '-' + digest[:20],
+                             command_plan_sha256=digest)
+    return digest
+
+
 def _s12_rgb_contact_regions(info, axis, height_fractions, tangent_angles):
     """Ray/facet intersections of the public RGB envelope, not object truth.
 
@@ -1974,6 +2150,31 @@ def _s12_rgb_contact_regions(info, axis, height_fractions, tangent_angles):
                             height_fraction=float(h), angular_offset_rad=float(angle), facet=facet,
                             height_source='public RGB envelope; initial overhead height may be footprint prior'))
     return regions
+
+
+def _s12_project_region(point, center, outward, planes, table, top):
+    """Closest point on the declared finite RGB face, including height bounds.
+
+    Joint IK can leave its soft region residual. Project onto the *finite face*
+    before fixed-target IK rather than accepting an infinite-plane projection.
+    This changes the search proposal, never the surface/IK/collision thresholds.
+    """
+    from scipy.optimize import minimize
+    lower, upper = center - .012, center + .012
+    lower[2], upper[2] = max(lower[2], table + .003), min(upper[2], top - .002)
+    if np.any(lower > upper):
+        return center.copy(), dict(success=False, reason='empty_finite_contact_patch')
+    objective = lambda x: .5 * np.sum(((x - point) / .01) ** 2)
+    gradient = lambda x: (x - point) / .0001
+    fit = minimize(objective, np.clip(center, lower, upper), jac=gradient,
+        bounds=list(zip(lower, upper)), method='SLSQP',
+        constraints=[dict(type='eq', fun=lambda x: np.dot(x-center, outward), jac=lambda x: outward),
+                     dict(type='ineq', fun=lambda x: .00035-(planes[:, :3]@x+planes[:, 3]),
+                          jac=lambda x: -planes[:, :3])],
+        options=dict(maxiter=50, ftol=1.e-10))
+    return fit.x, dict(success=bool(fit.success), projection_distance_m=float(np.linalg.norm(fit.x-point)),
+                       nfev=int(fit.nfev), surface_halfspace_limit_m=.00035,
+                       patch_half_extent_m=.012, height_bounds_m=[float(lower[2]), float(upper[2])])
 
 
 def _s12_region_ik(robot, seed, regions, info):
@@ -2022,189 +2223,171 @@ def _s12_region_ik(robot, seed, regions, info):
                       max_nfev=100,ftol=1.e-6,xtol=1.e-6,gtol=1.e-6)
     q[selected]=fit.x
     points,_,_,_=robot.tips(q)
-    goals=points-np.sum((points-centers)*outward,axis=1)[:,None]*outward
-    # Keep the projection on each public finite face and inside declared patch.
-    valid=bool(np.max(goals@planes[:,:3].T+planes[:,3])<.0004 and
+    projected = [_s12_project_region(point, center, normal, planes, table, top)
+                 for point, center, normal in zip(points, centers, outward)]
+    goals = np.asarray([point for point, _ in projected])
+    projection = [details for _, details in projected]
+    # The fixed-point IK must still realize these actual finite surface targets.
+    measurements=dict(max_surface_halfspace_m=float(np.max(goals@planes[:,:3].T+planes[:,3])),
+        surface_halfspace_threshold_m=.0004, max_patch_offset_m=float(np.max(abs(goals-centers))),
+        patch_offset_threshold_m=.0125, per_finger_height_m=goals[:,2].tolist(),
+        lower_height_m=table+.003, upper_height_m=top-.002,
+        per_finger=[dict(finger=region['finger'], link=robot.contact_links[i],
+            max_surface_halfspace_m=float(np.max(planes[:,:3]@point+planes[:,3])),
+            max_patch_offset_m=float(np.max(abs(point-center))), height_m=float(point[2]),
+            finite_projection_success=projection[i]['success'])
+            for i, (region, point, center) in enumerate(zip(regions, goals, centers))])
+    valid=bool(all(item['success'] for item in projection) and
+               np.max(goals@planes[:,:3].T+planes[:,3])<.0004 and
                np.all(abs(goals-centers)<.0125) and np.all(goals[:,2]>=table+.003) and np.all(goals[:,2]<=top-.002))
     refined_regions=[]
     for region,point in zip(regions,goals):
         item=dict(region,point_world_m=point.tolist(),patch_center_world_m=region['point_world_m'],patch_half_extent_m=.012)
         refined_regions.append(item)
     return q,goals,refined_regions,dict(region_ik_success=bool(fit.success),region_patch_valid=valid,
+                    region_patch_measurements=measurements, finite_patch_projection=projection,
                     region_ik_nfev=int(fit.nfev),region_ik_cost=float(fit.cost),region_ik_wall_s=time.perf_counter()-started)
 
 
-def _s12_three_candidates(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, retime=False, refinement=False):
-    """Bounded independent contact regions, wrist/joint starts, original guards.
+def _s12_three_layouts(heights):
+    # Preserve the original independent-height layouts, interleaved with wider
+    # wrap and thumb-offset alternatives. Every point is ray-projected onto the
+    # current public hull; no contact anchor or collision exclusion is changed.
+    original = [((.50,.20,.80),(0.,-.55,.55)),
+                ((.50,.80,.20),(0.,-.55,.55)),
+                ((.65,.25,.75),(0.,-.90,.90)),
+                ((.40,.70,.25),(0.,-.90,.90)),
+                ((.35,.30,.85),(0.,-.25,.70)),
+                ((.65,.80,.20),(0.,-.70,.25))]
+    middle = float(np.clip(np.mean(tuple(heights) or (.5,)), .25, .75))
+    alternatives = [((middle,middle,middle),(0.,-1.15,1.15)),
+                    ((middle,.30,.70),(.30,-.80,.95)),
+                    ((middle,.70,.30),(-.30,-.95,.80)),
+                    ((.65,.35,.65),(0.,-1.25,.50)),
+                    ((.35,.65,.35),(0.,-.50,1.25)),
+                    ((middle,.50,.50),(0.,-.35,.35))]
+    return [layout for pair in zip(original, alternatives) for layout in pair]
 
-    Three fingertips are not copies of a two-pad template. All returned plans
-    pass the unchanged endpoint, approach, close, lift, joint and speed checks.
-    Rejected candidates retain the first gate and per-finger errors.
-    """
+
+def _s12_three_start(robot, seed, goals, inward, start_index):
+    start = seed.copy()
+    if start_index == 1:
+        start[3:6] += [.50,-.45,.35]
+        start[6:14] = [1.4,.1,.65,.06,1.25,.35,1.0,.45]
+    elif start_index == 2:
+        start[6:14] = [1.3,.6,.15,.02,.9,.25,1.3,.1]
+        # Fit a rigid wrist rotation to this static joint stance and the RGB
+        # normals, then translate the three pad centers together. The following
+        # joint IK and exact guards still decide whether it can actually grasp.
+        _, normals, _, _ = robot.tips(start)
+        alignment, _ = Rotation.align_vectors(inward, normals)
+        wrist = alignment.as_matrix() @ Rotation.from_euler('ZYX', start[3:6]).as_matrix()
+        start[3:6] = Rotation.from_matrix(wrist).as_euler('ZYX')
+        start[:3] += np.mean(goals - robot.tips(start)[0], axis=0)
+    return np.clip(start, robot.lo + 1.e-5, robot.hi - 1.e-5)
+
+
+def _s12_three_candidates(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, retime=False, refinement=False):
+    """Bounded surface/stance search under the shared two/three-finger guards."""
     results, rejected = [], []
     started = time.perf_counter()
-    budget_s = 42.
-    maximum_solutions = 2
-    layouts = [((.50,.20,.80),(0.,-.55,.55)),
-               ((.50,.80,.20),(0.,-.55,.55)),
-               ((.65,.25,.75),(0.,-.90,.90)),
-               ((.40,.70,.25),(0.,-.90,.90)),
-               ((.35,.30,.85),(0.,-.25,.70)),
-               ((.65,.80,.20),(0.,-.70,.25))]
+    budget_s, maximum_solutions = 42., 2
+    layouts = _s12_three_layouts(heights)
     if refinement:
         layouts = layouts[:2]
+    starts = 1 if refinement else 3
     for axis_index, axis in enumerate(axes):
         axis = np.asarray(axis, dtype=float)
         if axis[0] < 0:
             axis = -axis
-        yaw = np.arctan2(axis[1], axis[0])
-        rotation = Rotation.from_euler('z', yaw).as_matrix()
+        rotation = Rotation.from_euler('z', np.arctan2(axis[1], axis[0])).as_matrix()
         seed = np.asarray(prior).copy()
         seed[:3] = rotation @ seed[:3] + np.r_[np.asarray(info['center'])[:2], 0.]
         seed[3:6] = Rotation.from_matrix(rotation @ Rotation.from_euler('ZYX', seed[3:6]).as_matrix()).as_euler('ZYX')
         seed[12:14] = [1.1,.15]
         seed[14:] = np.asarray(initial)[14:]
-        for layout_index, (fractions, angles) in enumerate(layouts):
-            regions = _s12_rgb_contact_regions(info, axis, fractions, angles)
-            if not regions:
-                rejected.append(dict(stage3_reject='RGB_contact_region_unavailable', first_rejection='contact_regions', layout=layout_index))
-                continue
-            goals = np.asarray([x['point_world_m'] for x in regions])
-            inward = -np.asarray([x['outward_normal_world'] for x in regions])
-            for start_index in range(3 if not refinement else 1):
-                if time.perf_counter()-started > budget_s:
-                    rejected.append(dict(stage3_reject='bounded_search_wall_budget', first_rejection='search_budget', searched=len(rejected)+len(results), wall_s=time.perf_counter()-started))
+        # Visit different RGB surface layouts before spending all starts on one
+        # failed placement. This makes the fixed wall budget cover more faces.
+        for start_index in range(starts):
+            for layout_index, (fractions, angles) in enumerate(layouts):
+                if time.perf_counter() - started > budget_s:
+                    rejected.append(dict(stage3_reject='bounded_search_wall_budget', first_rejection='search_budget',
+                        first_rejection_detail=dict(value_s=time.perf_counter()-started, threshold_s=budget_s),
+                        searched=len(rejected)+len(results), wall_s=time.perf_counter()-started))
                     return results, rejected
-                start = seed.copy()
-                if start_index == 1:
-                    start[3:6] += [.50,-.45,.35]
-                    start[6:14] = [1.4,.1,.65,.06,1.25,.35,1.0,.45]
-                elif start_index == 2:
-                    start[3:6] += [-.50,-.65,-.45]
-                    start[6:14] = [1.3,.6,.15,.02,.9,.25,1.3,.1]
-                start = np.clip(start,robot.lo+1.e-5,robot.hi-1.e-5)
-                region_q,region_goals,chosen_regions,region_meta=_s12_region_ik(robot,start,regions,info)
-                q, meta = optimize(robot,region_q,region_goals,inward,normal_weight=7.,seed_index=0)
+                regions = _s12_rgb_contact_regions(info, axis, fractions, angles)
+                if not regions:
+                    rejected.append(dict(stage3_reject='RGB_contact_region_unavailable', first_rejection='contact_regions',
+                        first_rejection_detail=dict(gate='surface_ray_intersection', source=geometry_source),
+                        layout=layout_index, axis_index=axis_index))
+                    continue
+                goals = np.asarray([region['point_world_m'] for region in regions])
+                inward = -np.asarray([region['outward_normal_world'] for region in regions])
+                start = _s12_three_start(robot, seed, goals, inward, start_index)
+                region_q, goals, chosen_regions, region_meta = _s12_region_ik(robot, start, regions, info)
+                q, meta = optimize(robot, region_q, goals, inward, normal_weight=7., seed_index=0)
                 meta.update(region_meta)
-                goals=region_goals
-                meta.update(search='RGB_independent_regions_multistart_v12', layout=layout_index, wrist_joint_start=start_index,
-                            axis_index=axis_index, contact_regions=chosen_regions, height_fraction=float(fractions[0]),
-                            per_finger_height_fraction=list(fractions), along_fraction=0., stage3_shift_m=float(shift),
-                            stage3_axis_world=axis.tolist(), geometry_source=geometry_source,
-                            bounded_search=dict(layouts=len(layouts),starts_per_layout=3,maximum_wall_s=budget_s),
-                            contact_frame_source='static thumb/index calibration; middle component3 front face at x11.75,z47mm')
-                errors=np.asarray(meta['per_finger_error_m']);normal_errors=np.asarray(meta['normal_error_rad'])
-                check=checker.check(q);meta['endpoint']=check
-                reason = None
-                if not meta['region_patch_valid']: reason='public_contact_patch_bounds'
-                elif np.any(errors >= .0008): reason='per_finger_position'
-                elif np.any(normal_errors >= .5): reason='per_finger_normal'
-                elif not (np.all(q>=robot.lo) and np.all(q<=robot.hi)): reason='joint_limits'
-                elif not check['passed']: reason='endpoint_clearance_collision'
-                if refinement:
-                    angle=_s3_attitude_delta(np.asarray(initial)[3:6],q[3:6]);meta['refinement_attitude_delta_rad']=angle
-                    if angle>STAGE3_REFINEMENT_ATTITUDE_LIMIT_RAD: reason=reason or 'large_near_object_refinement_attitude_change'
-                if reason:
-                    meta.update(stage3_reject=reason,first_rejection=reason);rejected.append(meta);continue
-                points=robot.tips(q)[0]
-                prefix=stage3_approach(robot,q,points,inward,initial)
-                if retime: prefix=_s3_retime_approach(prefix,initial)
-                checks=[checker.check(np.asarray(x),object_check=p not in ('close','probe_hold')) for x,n,p in prefix]
-                positions=np.asarray([initial]+[x for x,n,p in prefix])
-                rate=abs(np.diff(positions,axis=0))/(np.asarray([n for x,n,p in prefix])[:,None]/120)
-                legal=all(np.all(np.asarray(x)>=robot.lo) and np.all(np.asarray(x)<=robot.hi) for x,n,p in prefix)
-                meta.update(path_passed=bool(all(x['passed'] for x in checks) and legal and rate[:,:3].max()<.15 and rate[:,3:].max()<1.5),
-                            failed_path_nodes=[i for i,x in enumerate(checks) if not x['passed']],
-                            commanded_peak_translation_m_s=float(rate[:,:3].max()),commanded_peak_joint_rad_s=float(rate[:,3:].max()))
-                if not meta['path_passed']:
-                    meta.update(stage3_reject='approach_close_path',first_rejection='approach_close_path');rejected.append(meta);continue
-                modes=[]
-                for mode in MODES:
-                    tail=branch(robot,q,points,inward,prefix,mode)[len(prefix):]
-                    if all(checker.check(np.asarray(x),object_check=False)['passed'] and np.all(np.asarray(x)>=robot.lo) and np.all(np.asarray(x)<=robot.hi) for x,n,p in tail):modes.append(mode)
-                if not modes:
-                    meta.update(stage3_reject='original_lift_tail_modes',first_rejection='original_lift_tail_modes');rejected.append(meta);continue
-                results.append(dict(q=q,points=points,inward=inward,prefix=prefix,meta=meta,modes=modes))
-                if len(results)>=maximum_solutions:return results,rejected
-    return results,rejected
+                meta.update(search='RGB_surface_layout_and_static_stance_v13', layout=layout_index,
+                    wrist_joint_start=start_index, axis_index=axis_index, contact_regions=chosen_regions,
+                    height_fraction=float(fractions[0]), per_finger_height_fraction=list(fractions),
+                    along_fraction=0., stage3_shift_m=float(shift), stage3_axis_world=axis.tolist(),
+                    geometry_source=geometry_source, bounded_search=dict(layouts=len(layouts), starts_per_layout=starts,
+                    maximum_wall_s=budget_s, iteration_order='surface_layout_before_repeated_stance'),
+                    contact_frame_source='unchanged static thumb/index; middle component3 x11.75,z47mm')
+                _s12_candidate_identity(dict(q=q, points=robot.tips(q)[0], inward=inward, prefix=[], meta=meta))
+                if not _s12_endpoint_gate(robot, q, meta, checker, initial, refinement):
+                    rejected.append(meta)
+                    continue
+                candidate = _s12_complete_candidate(robot, checker, initial, q, inward, meta, retime)
+                if candidate is None:
+                    rejected.append(meta)
+                    continue
+                results.append(candidate)
+                if len(results) >= maximum_solutions:
+                    return results, rejected
+    return results, rejected
 
 
 def _s3_candidates_on_axes(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, retime=False, refinement=False):
     if len(robot.contact_points) == 3:
         return _s12_three_candidates(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, retime, refinement)
-    results, rejected = ([], [])
-    for axis in axes:
+    results, rejected = [], []
+    for axis_index, axis in enumerate(axes):
         axis = np.asarray(axis, dtype=float).copy()
         if axis[0] < 0:
             axis = -axis
-        tangent = np.cross([0.0, 0.0, 1.0], axis)
+        tangent = np.cross([0., 0., 1.], axis)
         pts = np.asarray(info['collision_points'])
         projections = pts[:, :2] @ np.array([axis[:2], tangent[:2]]).T
-        lo, hi = (projections.min(0), projections.max(0))
+        lo, hi = projections.min(0), projections.max(0)
         center = axis * ((lo[0] + hi[0]) / 2) + tangent * ((lo[1] + hi[1]) / 2)
         half = (hi - lo) / 2
-        yaw = np.arctan2(axis[1], axis[0])
-        rotation = Rotation.from_euler('z', yaw).as_matrix()
+        rotation = Rotation.from_euler('z', np.arctan2(axis[1], axis[0])).as_matrix()
         seed = np.asarray(prior).copy()
-        seed[:3] = rotation @ seed[:3] + np.r_[np.asarray(info['center'])[:2], 0.0]
+        seed[:3] = rotation @ seed[:3] + np.r_[np.asarray(info['center'])[:2], 0.]
         seed[3:6] = Rotation.from_matrix(rotation @ Rotation.from_euler('ZYX', seed[3:6]).as_matrix()).as_euler('ZYX')
-        seed[12:] = 0.0
-        count = len(robot.contact_points)
-        if count == 3:
-            seed[12:14] = [.7, .7]
-            seed[14:] = np.asarray(initial)[14:]
+        seed[12:] = 0.
         for h in heights:
-            goals = center + np.array([-axis, axis]) * (half[0] + 0.0003) + tangent * shift
-            if count == 3:
-                spread = min(.004, .35 * half[1])
-                goals = center + np.array([-axis, axis, axis]) * (half[0] + .0003) + tangent * shift
-                goals += np.array([0., -spread, spread])[:, None] * tangent
-            goals[:, 2] = float(info['table_z']) + max(0.004, h * 2 * info['half'][2])
-            inward = np.array([axis] + [-axis] * (count - 1))
+            goals = center + np.array([-axis, axis]) * (half[0] + .0003) + tangent * shift
+            goals[:, 2] = float(info['table_z']) + max(.004, h * 2 * info['half'][2])
+            inward = np.array([axis, -axis])
             q, meta = optimize(robot, seed, goals, inward)
-            meta.update(height_fraction=h, along_fraction=shift / max(2 * half[1], 1e-06), stage3_axis_world=axis.tolist(), stage3_shift_m=shift, geometry_source=geometry_source)
-            check = checker.check(q)
-            meta['endpoint'] = check
-            if refinement:
-                angle = _s3_attitude_delta(np.asarray(initial)[3:6], q[3:6])
-                meta['refinement_attitude_delta_rad'] = angle
-                if angle > STAGE3_REFINEMENT_ATTITUDE_LIMIT_RAD:
-                    meta['stage3_reject'] = 'large_near_object_refinement_attitude_change'
-                    rejected.append(meta)
-                    continue
-            if not (check['passed'] and meta['error_m'] < 0.0008 and (max(meta['normal_error_rad']) < 0.5) and np.all(q >= robot.lo) and np.all(q <= robot.hi)):
+            meta.update(height_fraction=h, along_fraction=shift / max(2 * half[1], 1.e-6),
+                stage3_axis_world=axis.tolist(), axis_index=axis_index, stage3_shift_m=shift, geometry_source=geometry_source)
+            _s12_candidate_identity(dict(q=q, points=robot.tips(q)[0], inward=inward, prefix=[], meta=meta))
+            if not _s12_endpoint_gate(robot, q, meta, checker, initial, refinement):
                 rejected.append(meta)
                 continue
-            points = robot.tips(q)[0]
-            prefix = stage3_approach(robot, q, points, inward, initial)
-            if retime:
-                prefix = _s3_retime_approach(prefix, initial)
-            checks = [checker.check(np.asarray(x), object_check=p not in ('close', 'probe_hold')) for x, n, p in prefix]
-            positions = np.asarray([initial] + [x for x, n, p in prefix])
-            rate = abs(np.diff(positions, axis=0)) / (np.asarray([n for x, n, p in prefix])[:, None] / 120)
-            meta['path_passed'] = bool(all((x['passed'] for x in checks)) and all((np.all(np.asarray(x) >= robot.lo) and np.all(np.asarray(x) <= robot.hi) for x, n, p in prefix)) and (rate[:, :3].max() < 0.15) and (rate[:, 3:].max() < 1.5))
-            meta['failed_path_nodes'] = [i for i, x in enumerate(checks) if not x['passed']]
-            meta['commanded_peak_translation_m_s'] = float(rate[:, :3].max())
-            meta['commanded_peak_joint_rad_s'] = float(rate[:, 3:].max())
-            meta['first_wrist_change_phase'] = next((p for x, n, p in prefix if _s3_attitude_delta(np.asarray(initial)[3:6], np.asarray(x)[3:6]) > 0.02), None)
-            if not meta['path_passed']:
-                rejected.append(meta)
-                continue
-            modes = []
-            for mode in MODES:
-                tail = branch(robot, q, points, inward, prefix, mode)[len(prefix):]
-                if all((checker.check(np.asarray(x), object_check=False)['passed'] and np.all(np.asarray(x) >= robot.lo) and np.all(np.asarray(x) <= robot.hi) for x, n, p in tail)):
-                    modes.append(mode)
-            if modes:
-                results.append(dict(q=q, points=points, inward=inward, prefix=prefix, meta=meta, modes=modes))
+            candidate = _s12_complete_candidate(robot, checker, initial, q, inward, meta, retime)
+            if candidate is not None:
+                results.append(candidate)
                 if len(results) >= (2 if globals().get('S11_CONFIG', {}).get('task_ranking', False) else 1):
-                    return (results, rejected)
+                    return results, rejected
             else:
-                meta['stage3_reject'] = 'no_original_tail_mode_feasible'
                 rejected.append(meta)
         if results:
             break
-    return (results, rejected)
+    return results, rejected
 def _s3_retime_approach(acts, initial):
     if not S6_FAST:
         return _S6_V3_RETIME(acts, initial)

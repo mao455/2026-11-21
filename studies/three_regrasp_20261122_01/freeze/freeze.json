@@ -1,0 +1,1340 @@
+{
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "sha256": "a01b97ab2e9ddd083ec852978945a7ec77ebcbc484b469aa060231bb781a7c1e",
+  "plan_sha256": "11f8c9326d498d21187b50fb7369e03ec822889c70a902275566a3a34ad01bb6",
+  "runtime_manifest_sha256": "b898fd62deff8890420b7c6921a3ea92c6985588303303f779be48ad3a6e231c",
+  "validation_cases": {
+    "00_abc_53930_clean": {
+      "object_id": "abc_53930",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13000,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_53930.npy",
+        "rgb_sha256": "ce50f1e1769281469c47f9a9a8a507b088ce1f978959a8d724accdbe5bbf41c9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_53930.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "00_abc_53930_noise": {
+      "object_id": "abc_53930",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13000,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_53930.npy",
+        "rgb_sha256": "ce50f1e1769281469c47f9a9a8a507b088ce1f978959a8d724accdbe5bbf41c9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_53930.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "01_abc_311740_clean": {
+      "object_id": "abc_311740",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13001,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_311740.npy",
+        "rgb_sha256": "a30b959d4d9aa9eee285e4ad19497be83200769d074a7434428f3ab88cd35dec",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_311740.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "01_abc_311740_noise": {
+      "object_id": "abc_311740",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13001,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_311740.npy",
+        "rgb_sha256": "a30b959d4d9aa9eee285e4ad19497be83200769d074a7434428f3ab88cd35dec",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_311740.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "02_abc_76395_clean": {
+      "object_id": "abc_76395",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13002,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_76395.npy",
+        "rgb_sha256": "ec3915fde5d9d74230a7743ac90a0ff6a46c095c7076e74db1d102f8b2641991",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_76395.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "02_abc_76395_noise": {
+      "object_id": "abc_76395",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13002,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_76395.npy",
+        "rgb_sha256": "ec3915fde5d9d74230a7743ac90a0ff6a46c095c7076e74db1d102f8b2641991",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_76395.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "03_abc_145502_clean": {
+      "object_id": "abc_145502",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13003,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_145502.npy",
+        "rgb_sha256": "ee7e895b81a436220809f9c2458f109c9f398fa5470a9bbdf076e36afa5220e0",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_145502.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "03_abc_145502_noise": {
+      "object_id": "abc_145502",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13003,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_145502.npy",
+        "rgb_sha256": "ee7e895b81a436220809f9c2458f109c9f398fa5470a9bbdf076e36afa5220e0",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_145502.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "04_abc_699849_clean": {
+      "object_id": "abc_699849",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13004,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_699849.npy",
+        "rgb_sha256": "c8761bec31df852bc41824d0aee0241cfbbc1feaab31b4a7b1142458667ca9f7",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_699849.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "04_abc_699849_noise": {
+      "object_id": "abc_699849",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13004,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_699849.npy",
+        "rgb_sha256": "c8761bec31df852bc41824d0aee0241cfbbc1feaab31b4a7b1142458667ca9f7",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_699849.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "05_abc_783667_clean": {
+      "object_id": "abc_783667",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13005,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_783667.npy",
+        "rgb_sha256": "32e580e0f4d77853fca8c447e5891935e11a7a9562ff24c00a7fcd528eb41727",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_783667.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "05_abc_783667_noise": {
+      "object_id": "abc_783667",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13005,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_783667.npy",
+        "rgb_sha256": "32e580e0f4d77853fca8c447e5891935e11a7a9562ff24c00a7fcd528eb41727",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_783667.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "06_abc_78128_clean": {
+      "object_id": "abc_78128",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13006,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_78128.npy",
+        "rgb_sha256": "6ec8d34d7a2e3716a24109fd66a34a53e6ebf6b73db7ccb80f391ec65193f99e",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_78128.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "06_abc_78128_noise": {
+      "object_id": "abc_78128",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13006,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_78128.npy",
+        "rgb_sha256": "6ec8d34d7a2e3716a24109fd66a34a53e6ebf6b73db7ccb80f391ec65193f99e",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_78128.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "07_abc_544444_clean": {
+      "object_id": "abc_544444",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13007,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_544444.npy",
+        "rgb_sha256": "909ddc024abf7c31da6d2534c71115ef37bd0b75ac8d8378739ef8235bb139a9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_544444.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "07_abc_544444_noise": {
+      "object_id": "abc_544444",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13007,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_544444.npy",
+        "rgb_sha256": "909ddc024abf7c31da6d2534c71115ef37bd0b75ac8d8378739ef8235bb139a9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_544444.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "08_abc_176242_clean": {
+      "object_id": "abc_176242",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13008,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_176242.npy",
+        "rgb_sha256": "cc1670c80abd13c5b40cfe020c4a301502fab0b17a2c373355bd58ac11ad5792",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_176242.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "08_abc_176242_noise": {
+      "object_id": "abc_176242",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13008,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_176242.npy",
+        "rgb_sha256": "cc1670c80abd13c5b40cfe020c4a301502fab0b17a2c373355bd58ac11ad5792",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_176242.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "09_abc_770180_clean": {
+      "object_id": "abc_770180",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13009,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_770180.npy",
+        "rgb_sha256": "7dddd219d5549b754639566d35a735ae333603669011e6bb6647c36ce9a61402",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_770180.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "09_abc_770180_noise": {
+      "object_id": "abc_770180",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13009,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_770180.npy",
+        "rgb_sha256": "7dddd219d5549b754639566d35a735ae333603669011e6bb6647c36ce9a61402",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_770180.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "10_abc_189313_clean": {
+      "object_id": "abc_189313",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13010,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_189313.npy",
+        "rgb_sha256": "3b8f851df91ae8c62e6397c09922ab30c1803ee031a9b6328439fdd0498a3e1c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_189313.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "10_abc_189313_noise": {
+      "object_id": "abc_189313",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13010,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_189313.npy",
+        "rgb_sha256": "3b8f851df91ae8c62e6397c09922ab30c1803ee031a9b6328439fdd0498a3e1c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_189313.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "11_abc_520454_clean": {
+      "object_id": "abc_520454",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13011,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_520454.npy",
+        "rgb_sha256": "d766988295dbbf556da444e7bbddc993c09a972a868ad3366981b06fa9e43c2a",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_520454.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "11_abc_520454_noise": {
+      "object_id": "abc_520454",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13011,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_520454.npy",
+        "rgb_sha256": "d766988295dbbf556da444e7bbddc993c09a972a868ad3366981b06fa9e43c2a",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_520454.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "12_abc_272068_clean": {
+      "object_id": "abc_272068",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13012,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_272068.npy",
+        "rgb_sha256": "0c501e7388f60e9957dbb0883f2920b7c1c1f251593883d1f519a51736ea931f",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_272068.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "12_abc_272068_noise": {
+      "object_id": "abc_272068",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13012,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_272068.npy",
+        "rgb_sha256": "0c501e7388f60e9957dbb0883f2920b7c1c1f251593883d1f519a51736ea931f",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_272068.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "13_abc_479808_clean": {
+      "object_id": "abc_479808",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13013,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_479808.npy",
+        "rgb_sha256": "1cc44c662e4ce78dc5cc9b1d3a869aeb0272623a2011815942f59021c65a1c5c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_479808.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "13_abc_479808_noise": {
+      "object_id": "abc_479808",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13013,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_479808.npy",
+        "rgb_sha256": "1cc44c662e4ce78dc5cc9b1d3a869aeb0272623a2011815942f59021c65a1c5c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_479808.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "14_abc_673390_clean": {
+      "object_id": "abc_673390",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13014,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_673390.npy",
+        "rgb_sha256": "0b8c14b365a6b381682fe9beead767e5a7b5e9b7e225d514fab06dbcec4bcd56",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_673390.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "14_abc_673390_noise": {
+      "object_id": "abc_673390",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13014,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_673390.npy",
+        "rgb_sha256": "0b8c14b365a6b381682fe9beead767e5a7b5e9b7e225d514fab06dbcec4bcd56",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_673390.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "15_abc_805600_clean": {
+      "object_id": "abc_805600",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13015,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_805600.npy",
+        "rgb_sha256": "6ece023657bd8d63182ad99d2112f368ca1fc4561e808485519055c2f2ac6ab4",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_805600.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "15_abc_805600_noise": {
+      "object_id": "abc_805600",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13015,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_805600.npy",
+        "rgb_sha256": "6ece023657bd8d63182ad99d2112f368ca1fc4561e808485519055c2f2ac6ab4",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_805600.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "16_abc_181508_clean": {
+      "object_id": "abc_181508",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13016,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_181508.npy",
+        "rgb_sha256": "1f5d4e12d745992854e0ba7e2fc044c33d7e29d65f0deccdc4e5c8abda5103c1",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_181508.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "16_abc_181508_noise": {
+      "object_id": "abc_181508",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13016,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_181508.npy",
+        "rgb_sha256": "1f5d4e12d745992854e0ba7e2fc044c33d7e29d65f0deccdc4e5c8abda5103c1",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_181508.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "17_abc_199784_clean": {
+      "object_id": "abc_199784",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13017,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_199784.npy",
+        "rgb_sha256": "ebcd051e244ef75266803785860c24ffc97f20b774347c774656f02089529549",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_199784.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "17_abc_199784_noise": {
+      "object_id": "abc_199784",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13017,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_199784.npy",
+        "rgb_sha256": "ebcd051e244ef75266803785860c24ffc97f20b774347c774656f02089529549",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_199784.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "18_abc_328629_clean": {
+      "object_id": "abc_328629",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13018,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_328629.npy",
+        "rgb_sha256": "545643fcd106bb1dd5949963eee078077dc9ad49640b0629411cd15a55646fbe",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_328629.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "18_abc_328629_noise": {
+      "object_id": "abc_328629",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13018,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_328629.npy",
+        "rgb_sha256": "545643fcd106bb1dd5949963eee078077dc9ad49640b0629411cd15a55646fbe",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_328629.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "19_abc_750656_clean": {
+      "object_id": "abc_750656",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13019,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_750656.npy",
+        "rgb_sha256": "77111fe5a85f8bd21389721ba02ddcac1186cb09d3c7309e181dd1ee41386616",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_750656.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "19_abc_750656_noise": {
+      "object_id": "abc_750656",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13019,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_750656.npy",
+        "rgb_sha256": "77111fe5a85f8bd21389721ba02ddcac1186cb09d3c7309e181dd1ee41386616",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_750656.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "20_abc_461505_clean": {
+      "object_id": "abc_461505",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13020,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_461505.npy",
+        "rgb_sha256": "afda2c03f2315a4baac6bae0c2f6a4806617e5467769d8cb6f50c204e7b9c2b6",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_461505.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "20_abc_461505_noise": {
+      "object_id": "abc_461505",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13020,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_461505.npy",
+        "rgb_sha256": "afda2c03f2315a4baac6bae0c2f6a4806617e5467769d8cb6f50c204e7b9c2b6",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_461505.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "21_abc_152578_clean": {
+      "object_id": "abc_152578",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13021,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_152578.npy",
+        "rgb_sha256": "43d08ea2b4ed9cf353c390c7fbdf90386f2502b746bdbe1301d468472f2d5ba8",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_152578.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "21_abc_152578_noise": {
+      "object_id": "abc_152578",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13021,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_152578.npy",
+        "rgb_sha256": "43d08ea2b4ed9cf353c390c7fbdf90386f2502b746bdbe1301d468472f2d5ba8",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_152578.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "22_abc_529040_clean": {
+      "object_id": "abc_529040",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13022,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_529040.npy",
+        "rgb_sha256": "9d8fcb06a263d3b096f5401959b078e95b44f99e27cce75a96d63082075151cc",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_529040.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "22_abc_529040_noise": {
+      "object_id": "abc_529040",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13022,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_529040.npy",
+        "rgb_sha256": "9d8fcb06a263d3b096f5401959b078e95b44f99e27cce75a96d63082075151cc",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_529040.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "23_abc_784558_clean": {
+      "object_id": "abc_784558",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13023,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_784558.npy",
+        "rgb_sha256": "48e4b6dfe58346f743f18cb813a5372863067f741a49be1b88f315c24db7493c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_784558.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "23_abc_784558_noise": {
+      "object_id": "abc_784558",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13023,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_784558.npy",
+        "rgb_sha256": "48e4b6dfe58346f743f18cb813a5372863067f741a49be1b88f315c24db7493c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_784558.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "24_abc_553219_clean": {
+      "object_id": "abc_553219",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13024,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_553219.npy",
+        "rgb_sha256": "d17ff56082075f6d736a562013ebd7f0c7f85cedad69d3bdfe22fb7104348c62",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_553219.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "24_abc_553219_noise": {
+      "object_id": "abc_553219",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13024,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_553219.npy",
+        "rgb_sha256": "d17ff56082075f6d736a562013ebd7f0c7f85cedad69d3bdfe22fb7104348c62",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_553219.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "25_abc_184787_clean": {
+      "object_id": "abc_184787",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13025,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_184787.npy",
+        "rgb_sha256": "7c70a7d733d1218f62fb3407110d8092e0e07955463845c62ca908585b56a9de",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_184787.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "25_abc_184787_noise": {
+      "object_id": "abc_184787",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13025,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_184787.npy",
+        "rgb_sha256": "7c70a7d733d1218f62fb3407110d8092e0e07955463845c62ca908585b56a9de",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_184787.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "26_abc_993288_clean": {
+      "object_id": "abc_993288",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13026,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_993288.npy",
+        "rgb_sha256": "27b808616b5ac808d97b6678572cff2baf64c750f2741c1141d2614f8a48d6ae",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_993288.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "26_abc_993288_noise": {
+      "object_id": "abc_993288",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13026,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_993288.npy",
+        "rgb_sha256": "27b808616b5ac808d97b6678572cff2baf64c750f2741c1141d2614f8a48d6ae",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_993288.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "27_abc_222121_clean": {
+      "object_id": "abc_222121",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13027,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_222121.npy",
+        "rgb_sha256": "b7fb68500315bf21a878be2201ce1ca02a4ebc04990961522d0172816f477044",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_222121.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "27_abc_222121_noise": {
+      "object_id": "abc_222121",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13027,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_222121.npy",
+        "rgb_sha256": "b7fb68500315bf21a878be2201ce1ca02a4ebc04990961522d0172816f477044",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_222121.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "28_abc_939116_clean": {
+      "object_id": "abc_939116",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13028,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_939116.npy",
+        "rgb_sha256": "7dbe3071b363b6038c9333c11c85d9ed2b42a0adb410f26534c1ee3173e7a9db",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_939116.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "28_abc_939116_noise": {
+      "object_id": "abc_939116",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13028,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_939116.npy",
+        "rgb_sha256": "7dbe3071b363b6038c9333c11c85d9ed2b42a0adb410f26534c1ee3173e7a9db",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_939116.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "29_abc_90621_clean": {
+      "object_id": "abc_90621",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13029,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_90621.npy",
+        "rgb_sha256": "8e1f816b7f577b77e531f5779e64f78f8f56f76336268468233b54f26fdd5f69",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_90621.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "29_abc_90621_noise": {
+      "object_id": "abc_90621",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13029,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_90621.npy",
+        "rgb_sha256": "8e1f816b7f577b77e531f5779e64f78f8f56f76336268468233b54f26fdd5f69",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_90621.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "30_abc_18078_clean": {
+      "object_id": "abc_18078",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13030,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_18078.npy",
+        "rgb_sha256": "8b9edde98b038df15cf61ec36b2faecedb94614c8ca640c7b767de67b04369ed",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_18078.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "30_abc_18078_noise": {
+      "object_id": "abc_18078",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13030,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_18078.npy",
+        "rgb_sha256": "8b9edde98b038df15cf61ec36b2faecedb94614c8ca640c7b767de67b04369ed",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_18078.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "31_abc_49687_clean": {
+      "object_id": "abc_49687",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13031,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_49687.npy",
+        "rgb_sha256": "cd9a7717809d57b5672f4931d3c1c2332d6eb8f47d89a122d4b468941f45db62",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_49687.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "31_abc_49687_noise": {
+      "object_id": "abc_49687",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13031,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_49687.npy",
+        "rgb_sha256": "cd9a7717809d57b5672f4931d3c1c2332d6eb8f47d89a122d4b468941f45db62",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_49687.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "32_abc_793782_clean": {
+      "object_id": "abc_793782",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13032,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_793782.npy",
+        "rgb_sha256": "462cf0818fecd8e43e5eddb874f862dc220a498b885ba8b1ee7c7281175bd09d",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_793782.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "32_abc_793782_noise": {
+      "object_id": "abc_793782",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13032,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_793782.npy",
+        "rgb_sha256": "462cf0818fecd8e43e5eddb874f862dc220a498b885ba8b1ee7c7281175bd09d",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_793782.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "33_abc_108554_clean": {
+      "object_id": "abc_108554",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13033,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_108554.npy",
+        "rgb_sha256": "e95603e9c871dbd5a1e7a4fa0b938226a7a832f0d42eb844fb83572f6f9a92d9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_108554.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "33_abc_108554_noise": {
+      "object_id": "abc_108554",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13033,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_108554.npy",
+        "rgb_sha256": "e95603e9c871dbd5a1e7a4fa0b938226a7a832f0d42eb844fb83572f6f9a92d9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_108554.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "34_abc_382909_clean": {
+      "object_id": "abc_382909",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13034,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_382909.npy",
+        "rgb_sha256": "598161c46e87a41b3b9f55609d2cc83c533a05e3d57cb426d2f2541e73547459",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_382909.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "34_abc_382909_noise": {
+      "object_id": "abc_382909",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13034,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_382909.npy",
+        "rgb_sha256": "598161c46e87a41b3b9f55609d2cc83c533a05e3d57cb426d2f2541e73547459",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_382909.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "35_abc_551365_clean": {
+      "object_id": "abc_551365",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13035,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_551365.npy",
+        "rgb_sha256": "a887daca751a7b483c8466c6f759af24b3d6847a8ccfc6de26da0c873ea3e54c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_551365.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "35_abc_551365_noise": {
+      "object_id": "abc_551365",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13035,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_551365.npy",
+        "rgb_sha256": "a887daca751a7b483c8466c6f759af24b3d6847a8ccfc6de26da0c873ea3e54c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_551365.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "36_abc_403242_clean": {
+      "object_id": "abc_403242",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13036,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_403242.npy",
+        "rgb_sha256": "22fc0f661057f35069c8122b79c3aef36df03d78cb8654064afb5e357b94171f",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_403242.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "36_abc_403242_noise": {
+      "object_id": "abc_403242",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13036,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_403242.npy",
+        "rgb_sha256": "22fc0f661057f35069c8122b79c3aef36df03d78cb8654064afb5e357b94171f",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_403242.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "37_abc_983078_clean": {
+      "object_id": "abc_983078",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13037,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_983078.npy",
+        "rgb_sha256": "e64dfe82270b4ef25b4611f016fd797db3200ec5a9f31494769a72bd00410abd",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_983078.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "37_abc_983078_noise": {
+      "object_id": "abc_983078",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13037,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_983078.npy",
+        "rgb_sha256": "e64dfe82270b4ef25b4611f016fd797db3200ec5a9f31494769a72bd00410abd",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_983078.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "38_abc_602823_clean": {
+      "object_id": "abc_602823",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13038,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_602823.npy",
+        "rgb_sha256": "14da96e571397bf54fd9dddc5de0547df1f802b3a9443afb469007d53c9593a3",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_602823.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "38_abc_602823_noise": {
+      "object_id": "abc_602823",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": 0.27,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13038,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_602823.npy",
+        "rgb_sha256": "14da96e571397bf54fd9dddc5de0547df1f802b3a9443afb469007d53c9593a3",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_602823.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "39_abc_54906_clean": {
+      "object_id": "abc_54906",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13039,
+      "rgb_noise_std": 0.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_54906.npy",
+        "rgb_sha256": "d3864ee156e37aa63d24d5b6ee30b1322d1405ed174dcf39a705f5ff5bddd12e",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_54906.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    "39_abc_54906_noise": {
+      "object_id": "abc_54906",
+      "dx": -0.0012,
+      "dy": 0.0018,
+      "yaw": -0.31,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 13039,
+      "rgb_noise_std": 3.0,
+      "initial_overhead_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_54906.npy",
+        "rgb_sha256": "d3864ee156e37aa63d24d5b6ee30b1322d1405ed174dcf39a705f5ff5bddd12e",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_54906.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    }
+  },
+  "geometry_qualification_sha256": "7f4615bbcc7d4eab38448a72a84ed60ecd0df3715605d26b1351a44b4eb576b1",
+  "geometry_rules": {
+    "minimum_settled_height_m": 0.008,
+    "maximum_settled_height_m": 0.05,
+    "tail_duration_s": 0.5,
+    "maximum_tail_translation_m": 0.0005,
+    "maximum_tail_rotation_rad": 0.03,
+    "maximum_tail_linear_speed_m_s": 0.01,
+    "maximum_tail_angular_speed_rad_s": 0.3,
+    "velocity_scope": "diagnostic only; rest is defined by actual tail pose stability, not instantaneous solver velocity",
+    "pad_support_radius_m": 0.0012,
+    "maximum_tangent_sag_m": 0.0003,
+    "minimum_side_footprint_clearance_m": 0.002,
+    "maximum_side_normal_vertical_component": 0.5,
+    "opposed_side_normals_dot_below": -0.5
+  },
+  "episode_denominator": 80,
+  "object_denominator": 40,
+  "max_actual_grasps": 3,
+  "large_gesture_thresholds": {
+    "common_finger_mean_landing_delta_m": 0.005,
+    "wrist_attitude_rad": 0.5235987755982988
+  },
+  "selected_after": "Development regression and physical smoke including preload measured-speed guard; three entire early cohorts excluded for unequal initial RGB, tessellation duplication, and near-primitive family duplication; five V4 replacements qualified without grasping; final corrected formal80 unopened",
+  "success_protocol": "lift30_no_drop_v1",
+  "no_outcome_dependent_case_replacement": true,
+  "geometry_diversity_audit": {
+    "path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/final_geometry_diversity_v4.json",
+    "sha256": "6ddcd4559b7403e51edb6d83f434cced9df89d1970504d5b08131396400b750a"
+  },
+  "initial_overhead_manifest_sha256": "72562bbd2df65aa091ae120344a7a1e8dcef016c2c5640bf5ae37c90f1dcbc2e",
+  "initial_overhead_pairing": {
+    "mode": "preacquired ordinary qualification RGB",
+    "manifest": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/manifest.json",
+    "source_selection": "all40 pre-grasp geometry qualification images; no outcome selection",
+    "per_episode_live_capture_retained": true,
+    "static_calibration_tolerance": 1e-06,
+    "protocol_amendment": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/protocol_amendment.json"
+  },
+  "protocol_geometry_amendment": {
+    "excluded": "abc_702588",
+    "retained_same_geometry": "abc_152578",
+    "replacement": "abc_54906",
+    "source_transform": {
+      "uniform_scale": 0.3149606200012403,
+      "z_translation_m": -0.0,
+      "rule": "geometry-only native_dimensions rejects; max extent fixed30mm; first numeric-ID non-box/non-cylinder ordinary side candidate"
+    },
+    "audit": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/audit/protocol_geometry_amendment.json",
+    "prior_whole_cohort_excluded": true,
+    "selection_uses_grasp_outcomes": false
+  }
+}

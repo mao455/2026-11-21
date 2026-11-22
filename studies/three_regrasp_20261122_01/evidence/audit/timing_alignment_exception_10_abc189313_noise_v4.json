@@ -1,0 +1,53 @@
+{
+  "scope": "Offline timing-only exception; no threshold, runtime, outcome or raw readout altered",
+  "episode": "10_abc_189313_noise",
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "completed_success": true,
+  "segmented_timing_valid": false,
+  "exclusion_count": 4,
+  "excluded": [
+    {
+      "name": "02_abc_76395_clean",
+      "error": "missing completed compact or full backend/RPC timing"
+    },
+    {
+      "name": "02_abc_76395_noise",
+      "error": "missing completed compact or full backend/RPC timing"
+    },
+    {
+      "name": "10_abc_189313_clean",
+      "error": "missing completed compact or full backend/RPC timing"
+    },
+    {
+      "name": "10_abc_189313_noise"
+    }
+  ],
+  "alignment_error": {
+    "index": 185,
+    "operation": "step",
+    "request": [
+      2391573.24629454,
+      2391573.323513856
+    ],
+    "backend": [
+      2391573.246369233,
+      2391573.326704627
+    ]
+  },
+  "end_stamp_excess_s": 0.003190770745277405,
+  "fixed_alignment_tolerance_s": 0.002,
+  "physical_steps": 3480,
+  "physical_s": 29.0,
+  "all_stage_sums_match": true,
+  "stamp_code": "backend appends end timestamp after protocol.flush; client records elapsed after response read. Scheduling delay is possible; exact cause not established.",
+  "source_sha256": {
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/10_abc_189313_noise/episode/agent_trace.jsonl": "d8d7ba84a08d3e9ea020cbe23570899c3660646a03a68511d51753a103ee66d6",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/10_abc_189313_noise/episode/steps.jsonl": "c1678646469870a0c4d70f0eecb1f23ee186b811b7d78a6aeec619ae4cc4db82",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/10_abc_189313_noise/episode/rpc_timing.json": "8ac0e53d49f200d4725defaeb7241314cc3d042bf9c01153262053c19c5b64a8",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/10_abc_189313_noise/episode/wall_profile_backend.json": "ac80cdbd947fc54d795585d5bfe8ceca1c92b7d1db2e251cc600e059e30849f5",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/timing_readout/timing.json": "20f3a39cee0e5da78c1aaedb866e6f4f27fa0358a3b027097511cdaa90fa8f1b",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_backend.py": "bc5fdc591c8bf88fa7afc5af7aa72f1e5423e2153aaf80d3f3a7fae8f6e6703a",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_episode.py": "db68d196865768bb7834c67dc0c458f02d25fa8ba35bb289d21c9a60a50a33d9",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/reproduction/timing_readout.py": "aa53c135da28d315912b5bac9d34666cb58efe8feb01f868425f594e9d9c328d"
+  }
+}

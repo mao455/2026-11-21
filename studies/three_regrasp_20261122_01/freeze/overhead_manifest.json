@@ -1,0 +1,3767 @@
+{
+  "source_audit_sha256": "01c3cfa9870d79f77228d02c1b367aa3983b980402313b08912f004ade1fa083",
+  "object_count": 40,
+  "ordinary_rgb_only": true,
+  "objects": [
+    {
+      "object_id": "abc_53930",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/00_abc_53930_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/00_abc_53930_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "ce50f1e1769281469c47f9a9a8a507b088ce1f978959a8d724accdbe5bbf41c9",
+      "source_rgb_pixels_sha256": "c8f2b565d39e347f12c302b286c91e15aa8360217577c8a0f12bb27bc2080087",
+      "source_responses_sha256": "8914788bdb537146d2a174eac6e12d1e6ccb200e9bb36559c5cef527c6fb999e",
+      "source_scene_sha256": "9cc1ed8b664c97b9be50e67f16cdd917dd6fce52b0b5404e4de0c0dc495fa746",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_53930",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13000,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "076bb5617d2fc9771e1b43cc4d8b949210681b02a520f246143d23f9212d3bdc",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_53930.npy",
+        "rgb_sha256": "ce50f1e1769281469c47f9a9a8a507b088ce1f978959a8d724accdbe5bbf41c9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_53930.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_311740",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/01_abc_311740_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/01_abc_311740_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "a30b959d4d9aa9eee285e4ad19497be83200769d074a7434428f3ab88cd35dec",
+      "source_rgb_pixels_sha256": "4fdeff7be2984edea75f4066232af67c7f90cdeb907d915aea09fdd8475153bc",
+      "source_responses_sha256": "277d1cfcdb633553367f0e4a980fe2c0cf042f6f9340cfb32b717ddc8d613149",
+      "source_scene_sha256": "13ce0b5440a1e0260e4c3e103c1e586463b0dfd7a29bbe520027d8f360394f3b",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_311740",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13001,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "4962daf0fc681987266169729a4a67c925428afe2226530c70be43c3033d4f2e",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_311740.npy",
+        "rgb_sha256": "a30b959d4d9aa9eee285e4ad19497be83200769d074a7434428f3ab88cd35dec",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_311740.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_76395",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/02_abc_76395_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/02_abc_76395_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "ec3915fde5d9d74230a7743ac90a0ff6a46c095c7076e74db1d102f8b2641991",
+      "source_rgb_pixels_sha256": "e82e1d1ef9597ac53f03a8644fabcd918ae78f1d495e2178a9fdda05f6f13655",
+      "source_responses_sha256": "cc360c03190a89ec7e28eae860142ba81ebdc936da58eb0b612fb4657c78a28e",
+      "source_scene_sha256": "49774322beaafda937cc13756918ef8f93e9168baa9d660d12cab66919bdacaa",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_76395",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13002,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "c69aafcc7136ae5672ab9779b4df4d9914cfef3783d2a80aead1d1e2b9cdaf57",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_76395.npy",
+        "rgb_sha256": "ec3915fde5d9d74230a7743ac90a0ff6a46c095c7076e74db1d102f8b2641991",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_76395.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_145502",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/03_abc_145502_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/03_abc_145502_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "ee7e895b81a436220809f9c2458f109c9f398fa5470a9bbdf076e36afa5220e0",
+      "source_rgb_pixels_sha256": "f4e5ac42e7984cf3c90da0dc68cf59205a378025567583a3faf6c70b9b855498",
+      "source_responses_sha256": "8eb14c7aa106967eb46db7964bebad9be2ac3e9da569c35dff9aff4e5956c825",
+      "source_scene_sha256": "f02e7d494c23de7904aa04d622b7a068f2f68f9237ec8bd794d9651b1c743b62",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_145502",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13003,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "bad51c0adec519001e71b09e35ec5218eff585d873eb869ca60310560f253bc7",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_145502.npy",
+        "rgb_sha256": "ee7e895b81a436220809f9c2458f109c9f398fa5470a9bbdf076e36afa5220e0",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_145502.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_699849",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/04_abc_699849_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/04_abc_699849_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "c8761bec31df852bc41824d0aee0241cfbbc1feaab31b4a7b1142458667ca9f7",
+      "source_rgb_pixels_sha256": "4257e10c04e402644349a932119d9d9fd34cee6c79f0926a747b1f40952bbb04",
+      "source_responses_sha256": "ee81d70fb08348ede8cd786cb690080c48aa87731ada47fa2263ab8807ba5707",
+      "source_scene_sha256": "64dbf142ea807b50ba5faf603a00f37af26cb89832cf1280922b82ab6bccb8dc",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_699849",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13004,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "0fbceadf3d6dd2f432d5ec08904d44987d496facda04c5391c048df4e0809fbc",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_699849.npy",
+        "rgb_sha256": "c8761bec31df852bc41824d0aee0241cfbbc1feaab31b4a7b1142458667ca9f7",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_699849.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_783667",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/05_abc_783667_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/05_abc_783667_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "32e580e0f4d77853fca8c447e5891935e11a7a9562ff24c00a7fcd528eb41727",
+      "source_rgb_pixels_sha256": "7821adab826ba4ab312ab1fd4f3858338c1804ab74cea8b0d18b97eb1256f820",
+      "source_responses_sha256": "7b2f71b930515193160e611eab4152142dc1dfb4f19d0fee9421865531865687",
+      "source_scene_sha256": "3e3bf501e35c0dbadfe67ae72c160d8c3b6c606b4df4fa83792852879c57906f",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_783667",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13005,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "b388e8bef962614aba7185dd42727d10dd94f6247a87f0eb5e3e65645408fe93",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_783667.npy",
+        "rgb_sha256": "32e580e0f4d77853fca8c447e5891935e11a7a9562ff24c00a7fcd528eb41727",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_783667.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_78128",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/06_abc_78128_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/06_abc_78128_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "6ec8d34d7a2e3716a24109fd66a34a53e6ebf6b73db7ccb80f391ec65193f99e",
+      "source_rgb_pixels_sha256": "43585c3783468c229979af219b3991d1af4683dc9495ee42f89bfc408f63a9e0",
+      "source_responses_sha256": "ad020f99db7fbef2432a061ca9ab097c4b33aeed1dd277f1ad2befa1d1ab2713",
+      "source_scene_sha256": "a1434d5c01c8299eb36b43dafc92de398d13875d9f64cbc488e7216a29f2fa88",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_78128",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13006,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "25b3bf5a3de08faa7276bc2e52a9333df4a2858adb84a21fd01b7274964525b8",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_78128.npy",
+        "rgb_sha256": "6ec8d34d7a2e3716a24109fd66a34a53e6ebf6b73db7ccb80f391ec65193f99e",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_78128.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_544444",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/07_abc_544444_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/07_abc_544444_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "909ddc024abf7c31da6d2534c71115ef37bd0b75ac8d8378739ef8235bb139a9",
+      "source_rgb_pixels_sha256": "05c29f032b682228a1760187001c51760545bc26a6d187891d28e0806bff51a9",
+      "source_responses_sha256": "bf6c1de153ce96640bb09844a80048b002e1117af3ef4f93a154b890cde264ea",
+      "source_scene_sha256": "05b5fe3a32a05045fa4fe0719432d3ca743dc92a11a7ca94b4208bb53a5fde70",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_544444",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13007,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "ddc6252824bcfc2598cd32f65d2c9bc3e01ea3ded1d59551dff4553d6876feef",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_544444.npy",
+        "rgb_sha256": "909ddc024abf7c31da6d2534c71115ef37bd0b75ac8d8378739ef8235bb139a9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_544444.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_176242",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/08_abc_176242_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/08_abc_176242_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "cc1670c80abd13c5b40cfe020c4a301502fab0b17a2c373355bd58ac11ad5792",
+      "source_rgb_pixels_sha256": "bf7c1e3791ef0c5b389225541017347da0ebc5599e3397ca862b8b22cb6e42a6",
+      "source_responses_sha256": "18dd9e04db3cf2aee3df2198beb51c7348a9e0bab69dd15d07e6201610f24630",
+      "source_scene_sha256": "0625bb640ae74665b2127942fc9e43a8e4048437162a4050dc26b148bbd84143",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_176242",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13008,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "4fecb44ede4f5becb731bea9a6aa86d29ef52fd9c633c8acf6839e072a5e47d8",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_176242.npy",
+        "rgb_sha256": "cc1670c80abd13c5b40cfe020c4a301502fab0b17a2c373355bd58ac11ad5792",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_176242.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_770180",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/09_abc_770180_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/09_abc_770180_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "7dddd219d5549b754639566d35a735ae333603669011e6bb6647c36ce9a61402",
+      "source_rgb_pixels_sha256": "d7a5271c6685e334ff884f0e89e63a9359c40d2d8ac77baefba69e594f4d71d6",
+      "source_responses_sha256": "ee6dffcf422d9259583983cb3c1c931cbd6cd0c17a785c1223096bf62ec24bc9",
+      "source_scene_sha256": "a36531cb21ecb7aedb2b221ca4d144daa7515840834e93aca7c0d8da7cf875d9",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_770180",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13009,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "1c8ef06a43b5423e326f1b9cb037960680ace56cde63aecbb05259f07d88b78a",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_770180.npy",
+        "rgb_sha256": "7dddd219d5549b754639566d35a735ae333603669011e6bb6647c36ce9a61402",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_770180.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_189313",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/10_abc_189313_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/10_abc_189313_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "3b8f851df91ae8c62e6397c09922ab30c1803ee031a9b6328439fdd0498a3e1c",
+      "source_rgb_pixels_sha256": "f5b16837a560f31e344281e813a49034fdb576d088357862b15f12c891d6d3e3",
+      "source_responses_sha256": "5dd375017025aa9e63008fb83c1b88c15af1084257a540284ac12b559119713c",
+      "source_scene_sha256": "3103a88c20f873d7e3c0c3344eb8d626465e088b0577872979301e9f3f612786",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_189313",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13010,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "acb44239eba0899af3ea94a026410088c0da5ab0804a0687c9d6f29363dd5c16",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_189313.npy",
+        "rgb_sha256": "3b8f851df91ae8c62e6397c09922ab30c1803ee031a9b6328439fdd0498a3e1c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_189313.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_520454",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/11_abc_520454_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/11_abc_520454_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "d766988295dbbf556da444e7bbddc993c09a972a868ad3366981b06fa9e43c2a",
+      "source_rgb_pixels_sha256": "c083ed12c6a2d02aeb108d51aafa79c55414c5f6bd4ae6969e007dc2129e1b93",
+      "source_responses_sha256": "c91cf1253cc32464c93ac3abf954f68c1de87a118cdf6641fb2ff1ed8bd00fc6",
+      "source_scene_sha256": "0aca761e5d10c2568d839eb245a92d1aba42b4e033c2242487b130ea48b73607",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_520454",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13011,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "afff4cd47eb7ef7ea59a7d73f6adae90ef3f4c2072a28cd4bf010429f62d2dda",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_520454.npy",
+        "rgb_sha256": "d766988295dbbf556da444e7bbddc993c09a972a868ad3366981b06fa9e43c2a",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_520454.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_272068",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/12_abc_272068_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/12_abc_272068_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "0c501e7388f60e9957dbb0883f2920b7c1c1f251593883d1f519a51736ea931f",
+      "source_rgb_pixels_sha256": "aa8e49570c62c956e7cb8a7e87222d6a43862bd25d04fbbe760cecaf984285f8",
+      "source_responses_sha256": "c2f76f3e50d2b75d8f8f528b2cb3d621bc820b752293b2dff25f79e6888e62bc",
+      "source_scene_sha256": "d31e58cb7bc694392f55a85931f541da8d350ac25fee4c7ca6ccb1f77dca03df",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_272068",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13012,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "c258ac35dc2e8d09ae35d9d431a81190221f509ed904920fc3ee946943f09c36",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_272068.npy",
+        "rgb_sha256": "0c501e7388f60e9957dbb0883f2920b7c1c1f251593883d1f519a51736ea931f",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_272068.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_479808",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/13_abc_479808_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/13_abc_479808_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "1cc44c662e4ce78dc5cc9b1d3a869aeb0272623a2011815942f59021c65a1c5c",
+      "source_rgb_pixels_sha256": "2114d349067251dfb00284eb7debdad62cda871e4b135f773d91f091ff433a4a",
+      "source_responses_sha256": "9e0c236e3e36388c6556a502c34ea241d5b198958dbd807e1bcefb7f4f39bfb2",
+      "source_scene_sha256": "f18d87ffb2469842abdd7321d52ab51963338e6b76dd5c15fc38abda34f1db8a",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_479808",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13013,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "7b09f5701cf46dc7285ae65a0c1befc789be184db90bc889204afa1f7172121a",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_479808.npy",
+        "rgb_sha256": "1cc44c662e4ce78dc5cc9b1d3a869aeb0272623a2011815942f59021c65a1c5c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_479808.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_673390",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/14_abc_673390_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/14_abc_673390_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "0b8c14b365a6b381682fe9beead767e5a7b5e9b7e225d514fab06dbcec4bcd56",
+      "source_rgb_pixels_sha256": "0f3e48a292c65905c1ca47a33adddad983ed002d6bbffeda549232fa8f8b871f",
+      "source_responses_sha256": "a7e2fea3a61bcab18e8ce860501bab9fcab4133748afabb72bcdcc2653a036a4",
+      "source_scene_sha256": "2320a02afa70ba5fed2381b86a7979c9974cdcb786d4b6c9db7845317f92e3be",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_673390",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13014,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "5ae75a0ca148ea63064ec778d3b9a83f319d9afdb28566666d175c1d1662c26c",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_673390.npy",
+        "rgb_sha256": "0b8c14b365a6b381682fe9beead767e5a7b5e9b7e225d514fab06dbcec4bcd56",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_673390.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_805600",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/15_abc_805600_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/15_abc_805600_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "6ece023657bd8d63182ad99d2112f368ca1fc4561e808485519055c2f2ac6ab4",
+      "source_rgb_pixels_sha256": "465684c3b54d981fca79187208126dbb9b21b78ae7f770d0cf2f94a639b351b4",
+      "source_responses_sha256": "afe33e6467b8ef86e2ff1aea22ed126efb89fd40fff4506b13c2c23685443d79",
+      "source_scene_sha256": "6fae8f646635c03aaad14d3a30b8669a5ddffbca6611121c94569a9842e3b8bd",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_805600",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13015,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "7c1973ad51f940c336ac02e857344a2f8d1e0acf0294b034a7d05e52bbf4ede4",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_805600.npy",
+        "rgb_sha256": "6ece023657bd8d63182ad99d2112f368ca1fc4561e808485519055c2f2ac6ab4",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_805600.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_181508",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/16_abc_181508_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/16_abc_181508_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "1f5d4e12d745992854e0ba7e2fc044c33d7e29d65f0deccdc4e5c8abda5103c1",
+      "source_rgb_pixels_sha256": "679eb6e78911fbf7270a1fe5d6bad8c918c880bd683c1410ccc1262173c6116e",
+      "source_responses_sha256": "d8222bf645fba450311612fb1fef7c95d7bd2e5252139cab762bd3a9f55406a4",
+      "source_scene_sha256": "8f2fe3177ea838f7d2989614e0c68f550b50b59273a10d5a20e247258a72b9af",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_181508",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13016,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "5b09970b5cec17c893884b91e38e3628c8e034d926a6d69682eebe1b7208b64c",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_181508.npy",
+        "rgb_sha256": "1f5d4e12d745992854e0ba7e2fc044c33d7e29d65f0deccdc4e5c8abda5103c1",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_181508.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_199784",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/17_abc_199784_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/17_abc_199784_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "ebcd051e244ef75266803785860c24ffc97f20b774347c774656f02089529549",
+      "source_rgb_pixels_sha256": "dca76f6b9cbad4c61bd6e7afa50df53d431071ce9ce4bfb3ca3f5f67d782b4b0",
+      "source_responses_sha256": "f0e7576fd7e0658f81991381cd79493ae92875f1abd59e514c2e08fbd454794e",
+      "source_scene_sha256": "d0b6e034b1a70b4b5618e43951c06443f66eb5c37327f53ef51f1881e77b563e",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_199784",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13017,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "4208374fdf80b3cc4607a747e5747f3aa5326dc629609da5143182501b454bac",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_199784.npy",
+        "rgb_sha256": "ebcd051e244ef75266803785860c24ffc97f20b774347c774656f02089529549",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_199784.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_328629",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/18_abc_328629_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/18_abc_328629_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "545643fcd106bb1dd5949963eee078077dc9ad49640b0629411cd15a55646fbe",
+      "source_rgb_pixels_sha256": "04494338370591c2f7eaf0ef44dbaac72ee0c8dc837dddf35bc3c52895fdfa6d",
+      "source_responses_sha256": "fd9ee80751a1f22f3ad93f610d0afec3f40848670d429b1c28b51a990a3e3f50",
+      "source_scene_sha256": "15bf101b4e3f4f0c4b6949d93cce890979a1ca0be2fb42ddce4f30e069c23f23",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_328629",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13018,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "0e1143edda7b8d4b2e7724f740c5a853e5d3818ecd81688af3a77f479f797bf8",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_328629.npy",
+        "rgb_sha256": "545643fcd106bb1dd5949963eee078077dc9ad49640b0629411cd15a55646fbe",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_328629.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_750656",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/19_abc_750656_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/19_abc_750656_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "77111fe5a85f8bd21389721ba02ddcac1186cb09d3c7309e181dd1ee41386616",
+      "source_rgb_pixels_sha256": "1a2628b747e54055dd5b8e48b9797ca85d707a56ce18cca3443065bdd7954719",
+      "source_responses_sha256": "5c5d70acd2557b43ff3f8e945c975e221ceb0757ccb0e57577436bf93a850d7a",
+      "source_scene_sha256": "03d34e6d2667e25a9cad055a5e8862e300192a6e14d0ea5e888a7fa9eb109066",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_750656",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13019,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "e78652bebb87266ffce554d1ff1598ff61cd98f58a604e4d6822e587ecb714da",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_750656.npy",
+        "rgb_sha256": "77111fe5a85f8bd21389721ba02ddcac1186cb09d3c7309e181dd1ee41386616",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_750656.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_461505",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/20_abc_461505_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/20_abc_461505_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "afda2c03f2315a4baac6bae0c2f6a4806617e5467769d8cb6f50c204e7b9c2b6",
+      "source_rgb_pixels_sha256": "00a12898062d0e27cf2588e29edfd9ad5622feebdb203e43d91b84acb7f8e830",
+      "source_responses_sha256": "52c5d517988280b11728bb4e134c6b77cc62cf8f3838343ff1c84379c1855570",
+      "source_scene_sha256": "ed2cd2f2e1905f279871dc86f1e48ff80f71ad64df15642048218294e7f6e2ab",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_461505",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13020,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "295c5c3b2f82485a2ee6badfdaf92f84d191190f0a00dc2ebafdd59c5f5040d5",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_461505.npy",
+        "rgb_sha256": "afda2c03f2315a4baac6bae0c2f6a4806617e5467769d8cb6f50c204e7b9c2b6",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_461505.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_152578",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/21_abc_152578_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/21_abc_152578_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "43d08ea2b4ed9cf353c390c7fbdf90386f2502b746bdbe1301d468472f2d5ba8",
+      "source_rgb_pixels_sha256": "9d7c6c2acc46d82527427f26dc0c7e0ab874c7388daa1d7053278fa87147f696",
+      "source_responses_sha256": "6861f4cd0b06828588261f1f43640afac7d94e8692d2f97aa2c27585ef742591",
+      "source_scene_sha256": "25e624e422fced34fe42185b8e4d974cd52260e0b5ccdb8659ae761ddbf02199",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_152578",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13021,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "30db79acf69174c0bf72a7cb518ba8d44faad831bcc0657a34b1505e90c36d89",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_152578.npy",
+        "rgb_sha256": "43d08ea2b4ed9cf353c390c7fbdf90386f2502b746bdbe1301d468472f2d5ba8",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_152578.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_529040",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/22_abc_529040_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/22_abc_529040_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "9d8fcb06a263d3b096f5401959b078e95b44f99e27cce75a96d63082075151cc",
+      "source_rgb_pixels_sha256": "74b56ac064b3a94f0d797588466a12c4aaef8088100d8b6a1891377c3d76a04a",
+      "source_responses_sha256": "b5ac129d8dc6acd8fd8550d50c2e4afcd50ae1784b9b1d39569d368840722d07",
+      "source_scene_sha256": "17de36d47d9d20628b559b02fc3c755f4a041aded9c2feca281c1af48cfa8352",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_529040",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13022,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "301d0f8d715822412ee8562d6c2e9f57dc33f3b1942defa0ff058a6e0f9d80f2",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_529040.npy",
+        "rgb_sha256": "9d8fcb06a263d3b096f5401959b078e95b44f99e27cce75a96d63082075151cc",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_529040.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_784558",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/23_abc_784558_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/23_abc_784558_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "48e4b6dfe58346f743f18cb813a5372863067f741a49be1b88f315c24db7493c",
+      "source_rgb_pixels_sha256": "7703adddcac68cefa06167ad58d844e705bb5d5c471a9f1a181cabccfbddbf44",
+      "source_responses_sha256": "ca0eb2e558b644c70723913a4f4bc4f100aa4c0f063523471d938bbf367b7f5a",
+      "source_scene_sha256": "46897933d1c7a0a5edb6a71e01f2e4af353b57de0da75325d6eace28dbc80c2c",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_784558",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13023,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "24084c676cd22256b3580a2a0b5c8aa990ff3cf43c58b0cd93178c2460bc6c9f",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_784558.npy",
+        "rgb_sha256": "48e4b6dfe58346f743f18cb813a5372863067f741a49be1b88f315c24db7493c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_784558.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_553219",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/24_abc_553219_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/24_abc_553219_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "d17ff56082075f6d736a562013ebd7f0c7f85cedad69d3bdfe22fb7104348c62",
+      "source_rgb_pixels_sha256": "813f76bc65480f0d67f5173aa4bf019ea94f1f576270aac5263ec41f636a3ebb",
+      "source_responses_sha256": "f268eaa20b52491579dab97de2407088f09e4a9523f947b53b9ba85c7b21dd9c",
+      "source_scene_sha256": "b3ddceaba2826967207d0581a289e9b152ce1353438eb6c9556ebd01d344cfb0",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_553219",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13024,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "0f47c42e99cd9f7479e0c163964aa460bec7c7aded441c39ed367fb11d40f842",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_553219.npy",
+        "rgb_sha256": "d17ff56082075f6d736a562013ebd7f0c7f85cedad69d3bdfe22fb7104348c62",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_553219.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_184787",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/25_abc_184787_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/25_abc_184787_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "7c70a7d733d1218f62fb3407110d8092e0e07955463845c62ca908585b56a9de",
+      "source_rgb_pixels_sha256": "de0964bbd66774d9b316fc5a68eb98b4fca05957257eb0c7d3a78f2564aad95c",
+      "source_responses_sha256": "839d4355941a8574efde72d2ea35a1059219c8d40d90045fd40279659680e714",
+      "source_scene_sha256": "22e027c0fdd8d720bbf2816d6655111521c7405854ae3091caf21ff75d2a2464",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_184787",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13025,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "86f3d03c7a0ea627adc325ec443e4011ea15c0f2adaace1d5973a74381343747",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_184787.npy",
+        "rgb_sha256": "7c70a7d733d1218f62fb3407110d8092e0e07955463845c62ca908585b56a9de",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_184787.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_993288",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/26_abc_993288_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/26_abc_993288_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "27b808616b5ac808d97b6678572cff2baf64c750f2741c1141d2614f8a48d6ae",
+      "source_rgb_pixels_sha256": "beeddc89c6a4062fb31700fd597b3f1e7e4ccb4cf2dec1cc0cc5b227e8eb5d30",
+      "source_responses_sha256": "0b2d07b4c4aeafc73b4311bb29e5fffd3989e1bf0c847914134495a207c010b8",
+      "source_scene_sha256": "7709c242958ee8a29b1259bf19c44059f96014c136b3eb590c37ad5e86e13d00",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_993288",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13026,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "3c5dee975cbbdfc010e2515a4462a6f64aa3c111a7dce9c1d77e9d9f13b5aad4",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_993288.npy",
+        "rgb_sha256": "27b808616b5ac808d97b6678572cff2baf64c750f2741c1141d2614f8a48d6ae",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_993288.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_222121",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/27_abc_222121_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/27_abc_222121_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "b7fb68500315bf21a878be2201ce1ca02a4ebc04990961522d0172816f477044",
+      "source_rgb_pixels_sha256": "c36f39e88962f1a6cb8cc3e8e9798dcedc0b540ebd6977acd97c27b3f7688b22",
+      "source_responses_sha256": "f7d6346f6abef56b2cac3d038c63ed7d023676fa1fc55f9e2263bd43250cd9d4",
+      "source_scene_sha256": "773df4567614d2e8342945ed114f31fa05df1675415a208747ca34fe8451e7d9",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_222121",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13027,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "8aaa5a9c4f4aaa88bb9a35356c7fa397f327ffda307142a46907314b470a89cc",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_222121.npy",
+        "rgb_sha256": "b7fb68500315bf21a878be2201ce1ca02a4ebc04990961522d0172816f477044",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_222121.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_939116",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_integrity_replay/28_abc_939116_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_integrity_replay/28_abc_939116_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "7dbe3071b363b6038c9333c11c85d9ed2b42a0adb410f26534c1ee3173e7a9db",
+      "source_rgb_pixels_sha256": "c840cdc718a025b4ec1483d52e8425607ef040dc3ff8d7907746104e4ad11982",
+      "source_responses_sha256": "f384e7513daffdd20229e1700c52de528371c8659d8c5ed0f81e19c9fddaa636",
+      "source_scene_sha256": "58f642013aabf2b0e97bc23bcf489f6eb541834cfbcda62a82f62f4bf19e971a",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_939116",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13028,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "bbcf77487b364f2322ee0a14a507e3705cab998cb73e0bc88b7f5537c1bcd904",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_939116.npy",
+        "rgb_sha256": "7dbe3071b363b6038c9333c11c85d9ed2b42a0adb410f26534c1ee3173e7a9db",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_939116.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_90621",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_integrity_replay/29_abc_90621_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_integrity_replay/29_abc_90621_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "8e1f816b7f577b77e531f5779e64f78f8f56f76336268468233b54f26fdd5f69",
+      "source_rgb_pixels_sha256": "dec1ebcbefd009b2494d823ee1f9956839efbe8730058964dfaf2f907d0b516f",
+      "source_responses_sha256": "dc83df424f0a505136afbba5054810b81652f48c0063928a769d673e07eba721",
+      "source_scene_sha256": "1a18d8c6523c3286137bd020f293bdf0a22277c4bf7fa3a74256be6fd2a702d2",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_90621",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13029,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "87f60a007a634abac8d05e1bdcb9586137c6abd56f2f85eeaa55aefdd81b2eab",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_90621.npy",
+        "rgb_sha256": "8e1f816b7f577b77e531f5779e64f78f8f56f76336268468233b54f26fdd5f69",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_90621.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_18078",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4_startup_replay/30_abc_18078_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4_startup_replay/30_abc_18078_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "8b9edde98b038df15cf61ec36b2faecedb94614c8ca640c7b767de67b04369ed",
+      "source_rgb_pixels_sha256": "0a4b6c120812de19f8dadfeb78f79216106b8215d5cd5dcc8c00cb0ddbb1efc1",
+      "source_responses_sha256": "e836d12422805b999d1fe5a08a8f831ffd108bf3fc16856c18fd0764efa8b4b4",
+      "source_scene_sha256": "e16d7ef9e5c76d595afe3299181108c56b3315d11ca783b8b07630f9dacf4fad",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_18078",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13030,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "08521bc0229b52456323a7865637a1dae4b6b80ec30e866acd058f3047b6e62b",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_18078.npy",
+        "rgb_sha256": "8b9edde98b038df15cf61ec36b2faecedb94614c8ca640c7b767de67b04369ed",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_18078.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_49687",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4/31_abc_49687_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4/31_abc_49687_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "cd9a7717809d57b5672f4931d3c1c2332d6eb8f47d89a122d4b468941f45db62",
+      "source_rgb_pixels_sha256": "542d72f6486b68b266d11ea5d03b2a55ab68adca6b6b5af752ce81e7d58001c6",
+      "source_responses_sha256": "b2d316af3de440d8e50add502ed105195e3c35a537e8f88328518770742f0665",
+      "source_scene_sha256": "93d99bfd102f53d1ff128f1130246853044748c889d5786e2e95e41278ecd4ef",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_49687",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13031,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "daf6124dcf593324cc3a4ac45523d70347af5d5e0296c76266ccfd0bce3aa24f",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_49687.npy",
+        "rgb_sha256": "cd9a7717809d57b5672f4931d3c1c2332d6eb8f47d89a122d4b468941f45db62",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_49687.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_793782",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/32_abc_793782_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/32_abc_793782_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "462cf0818fecd8e43e5eddb874f862dc220a498b885ba8b1ee7c7281175bd09d",
+      "source_rgb_pixels_sha256": "244fc4729b62a3e18284d64c322a8274b9cff4a7323fed2b3696f8bc80977208",
+      "source_responses_sha256": "36b7243905f048599a5d35d6fe5c05e90bdcf49cb1491552e230449edc69b271",
+      "source_scene_sha256": "fa166e6dfd000907b14c4cd0222649ac2d0e3ecafa1a86ada704235464ddca9c",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_793782",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13032,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "ba28d0395f306fa33dfde59817df35d6fa8309d4aae0ec7cb7d7299d707a957f",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_793782.npy",
+        "rgb_sha256": "462cf0818fecd8e43e5eddb874f862dc220a498b885ba8b1ee7c7281175bd09d",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_793782.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_108554",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/33_abc_108554_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/33_abc_108554_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "e95603e9c871dbd5a1e7a4fa0b938226a7a832f0d42eb844fb83572f6f9a92d9",
+      "source_rgb_pixels_sha256": "66791511601f8ea0267c1468c00fa5c844a24b5a17dd11599bfff29795ca54bc",
+      "source_responses_sha256": "9608bb877225d4a886fa3d660b058b13477939312de39b54001ae3b5b9dee139",
+      "source_scene_sha256": "0d6c700822facb93d4213ca71a9256634fa7d57daa066658ddcbb958c7123607",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_108554",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13033,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "6e5694d1d89101b005a311b8ae5011b9f1a7732de8d81420739db9eaede10e14",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_108554.npy",
+        "rgb_sha256": "e95603e9c871dbd5a1e7a4fa0b938226a7a832f0d42eb844fb83572f6f9a92d9",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_108554.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_382909",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/34_abc_382909_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/34_abc_382909_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "598161c46e87a41b3b9f55609d2cc83c533a05e3d57cb426d2f2541e73547459",
+      "source_rgb_pixels_sha256": "4723512298f56bdd62d924aab8d037c9a16620b0fdf5833ca7ea78615919f15e",
+      "source_responses_sha256": "fbd93cb9facfcbf57d74725cc429fedaee3908895d03711b08471c5dc639fbdb",
+      "source_scene_sha256": "39ff0bbc56b80bd0fd9e27aebcf3a7a86df245e815a00f1afb0edeb2ebc0ed83",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_382909",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13034,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "af41d4e9b735a8adf2e90b6d9c4e4610108c55dc4364ac93bd2cfa1c53350b93",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_382909.npy",
+        "rgb_sha256": "598161c46e87a41b3b9f55609d2cc83c533a05e3d57cb426d2f2541e73547459",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_382909.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_551365",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/35_abc_551365_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_v3/35_abc_551365_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "a887daca751a7b483c8466c6f759af24b3d6847a8ccfc6de26da0c873ea3e54c",
+      "source_rgb_pixels_sha256": "309cf01a3113abbe6bd225c26ea7eedf76d469360aba289eec54153eac010236",
+      "source_responses_sha256": "0be63ac20786a6b1baa6336ff7b45fa061d1de51892e7dac10f0a5f7422b15bf",
+      "source_scene_sha256": "b981fea2d7232c2c89a571fdfaeada7a5e57d1e516126e04c610cf494750a8ab",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_551365",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13035,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "e00ea4183f0a35afd6989b8742dc7f43fa92833916cff73e816e9eba058e91e9",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_551365.npy",
+        "rgb_sha256": "a887daca751a7b483c8466c6f759af24b3d6847a8ccfc6de26da0c873ea3e54c",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_551365.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_403242",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4/36_abc_403242_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4/36_abc_403242_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "22fc0f661057f35069c8122b79c3aef36df03d78cb8654064afb5e357b94171f",
+      "source_rgb_pixels_sha256": "84b552444de69a2d4453104d5e4eee92f91bd3fed73e67a6ded8492ca5b8bfe8",
+      "source_responses_sha256": "3d49c0ab16b121adf32f96f73faaaaf909fe5c3be571a532a7bfee65473b5d35",
+      "source_scene_sha256": "880fd3c1faa0bc822976899f6db19f889b0a6f33f703781ef38c913015376dab",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_403242",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13036,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "7fcd4fca238edcd2686c537ba8d89fa1a1732237882df1d1c70688491bee0950",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_403242.npy",
+        "rgb_sha256": "22fc0f661057f35069c8122b79c3aef36df03d78cb8654064afb5e357b94171f",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_403242.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_983078",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4/37_abc_983078_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4/37_abc_983078_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "e64dfe82270b4ef25b4611f016fd797db3200ec5a9f31494769a72bd00410abd",
+      "source_rgb_pixels_sha256": "8737ecb896391409f2b43885e402ac04c7a56acb060aeb1f0e7e188740f182ed",
+      "source_responses_sha256": "a183e36e412170e677fe46a9325afd9235aabed1b6dcfb9a95a8cbe3e73a27e4",
+      "source_scene_sha256": "b0e8f9bb918072aa0fe84decd2deb55546484387d171c80920a3a5f2089fe6f7",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_983078",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13037,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "23ea359abd0dcf2a849f1612acf9c81256f199f5b5a9fa7d3ad33ce5c7dff5be",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_983078.npy",
+        "rgb_sha256": "e64dfe82270b4ef25b4611f016fd797db3200ec5a9f31494769a72bd00410abd",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_983078.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_602823",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4/38_abc_602823_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_diversity_v4/38_abc_602823_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "14da96e571397bf54fd9dddc5de0547df1f802b3a9443afb469007d53c9593a3",
+      "source_rgb_pixels_sha256": "a1d52c141b50f3e03e36cf03996168834655b4a13f67b285bfe220ea2784568f",
+      "source_responses_sha256": "6d57f79909344c1d38212d2d16cd51a723cefef3bde33d1f35f1ed886895b7b2",
+      "source_scene_sha256": "0da1b745698a9bf241ebcee7a64296a15ba64d5f31f04c42f0e3fb63953c1943",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_602823",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": 0.27,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13038,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9909013509750366,
+        0.0,
+        0.0,
+        0.13459031283855438
+      ],
+      "mesh_sha256": "bbf1a304fb7aab608100476e1048add09b40c1c771d39b4a88687db209b176a1",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_602823.npy",
+        "rgb_sha256": "14da96e571397bf54fd9dddc5de0547df1f802b3a9443afb469007d53c9593a3",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_602823.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    },
+    {
+      "object_id": "abc_54906",
+      "source_episode": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_replacement/39_abc_54906_clean/episode",
+      "source_rgb": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/qualification_replacement/39_abc_54906_clean/episode/public/overhead_initial.npy",
+      "source_rgb_sha256": "d3864ee156e37aa63d24d5b6ee30b1322d1405ed174dcf39a705f5ff5bddd12e",
+      "source_rgb_pixels_sha256": "ea80a7facd3e21eb9d476c3584730af2bfaf3315ccf37f485976ce66a43b0a17",
+      "source_responses_sha256": "d0b3bc74106af9462892cf5f6b6f41c8d4f3ba7dcfbbd8bb59a9364faffe539c",
+      "source_scene_sha256": "3415fb39af80197f64a39351a655a1c8126fbc498729aa58874e1ac70055d96a",
+      "rgb_shape": [
+        240,
+        320,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "initial_observation_step": 0,
+      "capture_step": 0,
+      "initial_actual_q": [
+        -0.18000000715255737,
+        0.0,
+        0.30000001192092896,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "calibration": {
+        "intrinsics": [
+          [
+            366.4996337890625,
+            0.0,
+            160.0
+          ],
+          [
+            0.0,
+            366.4996337890625,
+            120.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "camera_pose_world": [
+          0.0,
+          -0.0010000000474974513,
+          0.5,
+          -0.0009765778668224812,
+          0.9999995231628418,
+          -2.187702818901016e-08,
+          2.1834340557802534e-08
+        ],
+        "width": 320,
+        "height": 240
+      },
+      "case": {
+        "object_id": "abc_54906",
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "yaw": -0.31,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 13039,
+        "rgb_noise_std": 0.0
+      },
+      "initial_object_pose": [
+        -0.0012000000569969416,
+        0.0017999999690800905,
+        9.999999747378752e-05,
+        0.9880115389823914,
+        0.0,
+        0.0,
+        -0.15438009798526764
+      ],
+      "mesh_sha256": "30f6890f0c6a3b95a070e7a1b78f67fb7bb48dcf91b0a6f958ed190a8d12c4fd",
+      "result_integrity": null,
+      "frozen_reference": {
+        "rgb_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_54906.npy",
+        "rgb_sha256": "d3864ee156e37aa63d24d5b6ee30b1322d1405ed174dcf39a705f5ff5bddd12e",
+        "metadata_path": "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/overhead_inputs_v4/abc_54906.json",
+        "metadata_sha256": "4c854d4099d74a8f3eac44cf9bc04570ef7efe1303321999f8c8255154e6ff2e"
+      }
+    }
+  ]
+}

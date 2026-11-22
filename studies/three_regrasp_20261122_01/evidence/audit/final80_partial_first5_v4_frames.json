@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "controller_sha256": "a01b97ab2e9ddd083ec852978945a7ec77ebcbc484b469aa060231bb781a7c1e",
+  "episodes_audited": 5,
+  "final_complete": false,
+  "all80_physical_input_pairing_verified": false,
+  "frame_files_checked": 41226,
+  "public_camera_reads_checked": 27540,
+  "same_exposure_repeat_reads": 42,
+  "noise_implementation_checks": {
+    "six_fingereye_only": true,
+    "float_gaussian_clip_uint8": true,
+    "same_exposure_capture_cache": true,
+    "seeded_rng": true
+  },
+  "noise_distribution_limitation": "Only postnoise policy FingerEye pixels are retained. This verifies frozen float Gaussian+clip+uint8 implementation, seeds, all saved pixel hashes, timestamps, repeated exposure paths and exact initial RGB pairing; it does not empirically recover the unnoised residual distribution. Underlying Gaussian draws are zero mean; clipping/uint8 quantization may change realized residual mean. Ordinary rendering variation remains in live FingerEye RGB.",
+  "episodes": [
+    {
+      "name": "00_abc_53930_clean",
+      "noise_std": 0.0,
+      "noise_seed": 13000,
+      "frame_count": 1511,
+      "frame_files_checked": 9066,
+      "public_camera_reads_checked": 6060,
+      "same_exposure_repeat_reads": 12,
+      "frame_errors": {},
+      "initial_overhead_sha256": "ce50f1e1769281469c47f9a9a8a507b088ce1f978959a8d724accdbe5bbf41c9",
+      "calibration_sha256": "186f4b8594f4fdcbeaf342d28101e9abd33bd8b474ac3bdc5c52e1dd2a0ade29"
+    },
+    {
+      "name": "00_abc_53930_noise",
+      "noise_std": 3.0,
+      "noise_seed": 13000,
+      "frame_count": 2422,
+      "frame_files_checked": 14532,
+      "public_camera_reads_checked": 9708,
+      "same_exposure_repeat_reads": 18,
+      "frame_errors": {},
+      "initial_overhead_sha256": "ce50f1e1769281469c47f9a9a8a507b088ce1f978959a8d724accdbe5bbf41c9",
+      "calibration_sha256": "186f4b8594f4fdcbeaf342d28101e9abd33bd8b474ac3bdc5c52e1dd2a0ade29"
+    },
+    {
+      "name": "01_abc_311740_clean",
+      "noise_std": 0.0,
+      "noise_seed": 13001,
+      "frame_count": 808,
+      "frame_files_checked": 4848,
+      "public_camera_reads_checked": 3234,
+      "same_exposure_repeat_reads": 0,
+      "frame_errors": {},
+      "initial_overhead_sha256": "a30b959d4d9aa9eee285e4ad19497be83200769d074a7434428f3ab88cd35dec",
+      "calibration_sha256": "186f4b8594f4fdcbeaf342d28101e9abd33bd8b474ac3bdc5c52e1dd2a0ade29"
+    },
+    {
+      "name": "01_abc_311740_noise",
+      "noise_std": 3.0,
+      "noise_seed": 13001,
+      "frame_count": 808,
+      "frame_files_checked": 4848,
+      "public_camera_reads_checked": 3234,
+      "same_exposure_repeat_reads": 0,
+      "frame_errors": {},
+      "initial_overhead_sha256": "a30b959d4d9aa9eee285e4ad19497be83200769d074a7434428f3ab88cd35dec",
+      "calibration_sha256": "186f4b8594f4fdcbeaf342d28101e9abd33bd8b474ac3bdc5c52e1dd2a0ade29"
+    },
+    {
+      "name": "02_abc_76395_clean",
+      "noise_std": 0.0,
+      "noise_seed": 13002,
+      "frame_count": 1322,
+      "frame_files_checked": 7932,
+      "public_camera_reads_checked": 5304,
+      "same_exposure_repeat_reads": 12,
+      "frame_errors": {},
+      "initial_overhead_sha256": "ec3915fde5d9d74230a7743ac90a0ff6a46c095c7076e74db1d102f8b2641991",
+      "calibration_sha256": "186f4b8594f4fdcbeaf342d28101e9abd33bd8b474ac3bdc5c52e1dd2a0ade29"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "checked_unix": 1795318877.1616557,
+  "pairs": [
+    {
+      "pair": "00_abc_53930",
+      "shape": [
+        240,
+        320,
+        3
+      ],
+      "exact_pixels": false,
+      "different_values": 894,
+      "mean_abs": 0.003884548611111111,
+      "maximum_abs": 2.0
+    },
+    {
+      "pair": "01_abc_311740",
+      "shape": [
+        240,
+        320,
+        3
+      ],
+      "exact_pixels": false,
+      "different_values": 84,
+      "mean_abs": 0.00036458333333333335,
+      "maximum_abs": 1.0
+    },
+    {
+      "pair": "02_abc_76395",
+      "shape": [
+        240,
+        320,
+        3
+      ],
+      "exact_pixels": false,
+      "different_values": 792,
+      "mean_abs": 0.0034375,
+      "maximum_abs": 1.0
+    }
+  ],
+  "scheduler_parents_paused": [
+    1371525,
+    1372993
+  ],
+  "reason": "Initial overhead pixels were not exactly shared; all early episodes are retained as protocol pilot regardless of outcome. Renderer nondeterminism, no policy tuning. Final80 restart after public input amendment.",
+  "scheduler_parents_terminated_after_children_finished": true,
+  "all_early_cohort_excluded": true
+}

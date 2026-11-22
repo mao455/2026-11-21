@@ -1,0 +1,30 @@
+{
+  "scope": "Read-only issue. No runtime or analysis code modified during formal queue. Top-level compact planned_q and binding carry the initial s12 approach binding across local retries. Authoritative actual local q/candidate/planSHA are preserved in each dispatch_event, with actual motor target in raw steps. All actual grasp counts/timings remain correct. Final explanatory chain must use dispatch_event for local planned_q and candidate identity.",
+  "rows": [
+    {
+      "attempt": 1,
+      "branch": "initial",
+      "start_step": 1548,
+      "compact_planned_q_equals_dispatch_planned_q": true,
+      "binding_candidate_id": "1-2-0",
+      "dispatch_candidate_id": "contacts2-a1e1d0c08d2d151511ec"
+    },
+    {
+      "attempt": 2,
+      "branch": "local_pose",
+      "start_step": 3918,
+      "compact_planned_q_equals_dispatch_planned_q": false,
+      "binding_candidate_id": "1-2-0",
+      "dispatch_candidate_id": "contacts2-05f1b64416800cc1d1c3"
+    },
+    {
+      "attempt": 3,
+      "branch": "local_pose",
+      "start_step": 5064,
+      "compact_planned_q_equals_dispatch_planned_q": false,
+      "binding_candidate_id": "1-2-0",
+      "dispatch_candidate_id": "contacts2-551303232e67f6903d69"
+    }
+  ],
+  "suggested_offline_fix_after_queue": "When matching grasp_dispatched, populate top-level planned_q from acknowledged planned_q; retain original binding as historical approach binding and label its scope. Do not change frozen controller/policy or active guarded files."
+}

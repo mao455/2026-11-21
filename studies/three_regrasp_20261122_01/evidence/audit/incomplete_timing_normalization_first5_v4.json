@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "scope": "Real first-five offline normalization exercise. Temporary batch uses symlinks only; no simulations or protected writes.",
+  "names": [
+    "00_abc_53930_clean",
+    "00_abc_53930_noise",
+    "01_abc_311740_clean",
+    "01_abc_311740_noise",
+    "02_abc_76395_clean"
+  ],
+  "temporary_directory": "/tmp/fingereye_timing_normalization_first5_v4_m3h_gdvq",
+  "normalized_readout": "/tmp/fingereye_timing_normalization_first5_v4_m3h_gdvq/normalized_readout",
+  "manifests": {
+    "copy": "/tmp/fingereye_timing_normalization_first5_v4_m3h_gdvq/copy_mode_audit.json",
+    "idempotence": "/tmp/fingereye_timing_normalization_first5_v4_m3h_gdvq/idempotence_audit.json",
+    "inplace": "/tmp/fingereye_timing_normalization_first5_v4_m3h_gdvq/inplace_audit.json"
+  },
+  "changed_episode": "02_abc_76395_clean",
+  "timeout_policy_compute_before": 0,
+  "timeout_policy_compute_after": null,
+  "preserved_accumulator": 0,
+  "physical_lower_bound_s": 43.5,
+  "group_policy_compute_stats_before": {
+    "clean": {
+      "n": 2,
+      "mean": 37.92127705132589,
+      "median": 37.92127705132589,
+      "p90": 38.18965832507238
+    },
+    "noise": {
+      "n": 2,
+      "mean": 55.26039280812256,
+      "median": 55.26039280812256,
+      "p90": 68.79473495981657
+    }
+  },
+  "group_policy_compute_stats_after": {
+    "clean": {
+      "n": 2,
+      "mean": 37.92127705132589,
+      "median": 37.92127705132589,
+      "p90": 38.18965832507238
+    },
+    "noise": {
+      "n": 2,
+      "mean": 55.26039280812256,
+      "median": 55.26039280812256,
+      "p90": 68.79473495981657
+    }
+  },
+  "checks": {
+    "five_real_receipts_used": true,
+    "copy_mode_internal_checks_passed": true,
+    "exactly_one_timeout_normalized": true,
+    "timeout_complete_policy_time_is_null": true,
+    "original_zero_preserved_and_labelled": true,
+    "physical_lower_bound_and_all_outcome_fields_unchanged": true,
+    "persisted_timeout_lower_bound_remains_43_5": true,
+    "four_completed_json_files_byte_identical": true,
+    "summary_statistics_unchanged": true,
+    "transition_csv_byte_identical": true,
+    "normalization_is_idempotent": true,
+    "inplace_matches_copy_output": true,
+    "inplace_snapshot_preserves_original_changed_files": true,
+    "source_readout_not_changed": true,
+    "formal_episode_receipt_and_compact_files_not_changed": true
+  },
+  "all_checks_passed": true,
+  "script_sha256": "7cd4b024958f7bd803ddb3a57b04d005b27ef6545c425be024b1dc1ae00e593d",
+  "check_builder_sha256": "a8e6543848f90ca93da7b9a5ff3797aa6513ed4dd64a560a1477b59583906dc9",
+  "protected_sha256": {
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_clean/compact.json": "22b0eae2a247b22672e2a8af5dd96bd9fb5d9772d8691d44e573349816a333b7",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_clean/batch_result.json": "53ab5c0876891a56895b3076ac7e123933a9f0f4c858af2121898431b0bc1800",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_clean/episode/steps.jsonl": "173da0e258de9ced7c7d42a515a1a6c4eae55212957535fd6839d01781b0a8d4",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_clean/episode/agent_trace.jsonl": "d806f0f84ff8fa3fe71432b43a12a9081afb6366fc1d9e5c0b7cf0f01e244c71",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_clean/episode/image_manifest.jsonl": "7db38a41932bcf2731196658fe6b8347c6a844153b28e14d9cbdf6f7a0b737da",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_noise/compact.json": "fb1839f615cbf72e12feddb4e85bfe7c8080cba37258d4a1f84f17eeb58f7fd7",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_noise/batch_result.json": "45780fd6f6014880708772338719371ca70a79bec6575caf305b0281746a9276",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_noise/episode/steps.jsonl": "c15476874cc911d7b6e08faf68f3480fbc53e30277508900df01473887ee2a62",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_noise/episode/agent_trace.jsonl": "5fe25567ff7c48230d5d3e3655dd4d1420d3339c6215b2487fa5dc8480fbcfa5",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/00_abc_53930_noise/episode/image_manifest.jsonl": "4a027af70e8b116e05243d53d8f48082c87db1d4a36981105f49889849902931",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_clean/compact.json": "03e4b3b5bfff9c8a8cd324044dd260e2f65d2f5274614776db1b164ab054959c",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_clean/batch_result.json": "79c055195f94bd6885038b257934bd250b289687433569c3f3c91fbeb7519dfb",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_clean/episode/steps.jsonl": "5a3914b6ca83874314674af07364f72f7c97ad8702b2289cd3a1a0e2773156ce",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_clean/episode/agent_trace.jsonl": "5ab05f17522c9715623c8c25c7e15da1746ff021cc2ecc514f738fdb167f22e8",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_clean/episode/image_manifest.jsonl": "40defb89f9dbfca0f7e23a0589a51d959bf39c0d2e3ac5050bd99dd6e5299751",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_noise/compact.json": "21a8f781442aa3feee38f9ab3403677371e3549ecfafd346123de2de04c43896",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_noise/batch_result.json": "be9a7982467dc08f950cf30314dd3948453b428d897e6f6ff44d8a7f2f5f5a56",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_noise/episode/steps.jsonl": "5a3914b6ca83874314674af07364f72f7c97ad8702b2289cd3a1a0e2773156ce",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_noise/episode/agent_trace.jsonl": "dc28a90df6eb2b3b011ddcd4d26b12c7e9b2d174bf0495c99ab4b70f43b1c4a9",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/01_abc_311740_noise/episode/image_manifest.jsonl": "9bd03c575ab7cdd8b7f833a9f199947d7811cf64053c5a0d76e9ad0703d70d88",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/02_abc_76395_clean/compact.json": "1eeb3e5338012d5ffe82894477571d4263af8979e2b2d90eb3283f76ef7862af",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/02_abc_76395_clean/batch_result.json": "5deb82d07240438f75b8fdfc9a3ff4cab4506d0c87f5aaaaa3aacbbe3e295ad0",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/02_abc_76395_clean/episode/steps.jsonl": "2f67e1a14b7472fc4bc066c2630978ba0fb05d0f5a5482212f0d17da2d1fc41d",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/02_abc_76395_clean/episode/agent_trace.jsonl": "f82b4c511432a880577f06778875b749848aa872100815d205d38c37f757c02d",
+    "/tmp/fingereye-success30-push-cae50/code/FingerEyeLab/outputs/three_regrasp_20261122_01/formal_runs/02_abc_76395_clean/episode/image_manifest.jsonl": "7e7531725f945fd01e601fcdf91db6df7cc0a6598172e790f7b235db6bf51516"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "Offline diagnostic evidence binding only; final delivery may enrich its own compact without changing this snapshot. No physics, verdict, receipt or frozen source edit.",
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "all17_chain_checks_passed": true,
+  "sha256": {
+    "audit/timeout_02_abc76395_batch_end_compact_v4.json": "1eeb3e5338012d5ffe82894477571d4263af8979e2b2d90eb3283f76ef7862af",
+    "audit/timeout_chain_builder_v4.py": "140723d2a32ba8de6fda841c3c1eb22d79b408c9503687a4ccef8bfe6b9d1038",
+    "audit/timeout_chain_02_abc76395_v4.json": "a5d7d09dcb0ef28c79a9aba7426446236ba73cca837bce58179239346e8eeb81"
+  }
+}

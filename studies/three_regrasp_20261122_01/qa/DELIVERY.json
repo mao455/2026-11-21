@@ -1,0 +1,94 @@
+{
+  "status": "complete",
+  "created_unix_s": 1795345307.9927595,
+  "scope": "80 preregistered simulator episodes, 40 object pairs; infrastructure failures retained; videos excluded denominator",
+  "baseline_commit": "7fa3bd37752a38d5b2dc65da6735804c78057a09",
+  "candidate_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "controller_sha256": "a01b97ab2e9ddd083ec852978945a7ec77ebcbc484b469aa060231bb781a7c1e",
+  "configuration": "fast + auto + at most 3 actual attempts; lift30_no_drop_v1; 20Hz control; 30fps RGB/video; Gaussian sigma3 in uint8 scale",
+  "episodes": 80,
+  "pairs": 40,
+  "results": {
+    "clean": {
+      "successes": 20,
+      "first_successes": 20,
+      "second_added": 0,
+      "third_added": 0,
+      "attempt_distribution": {
+        "0": 1,
+        "1": 27,
+        "2": 2,
+        "3": 10
+      },
+      "actual_grasps": {
+        "n": 40,
+        "mean": 1.525,
+        "median": 1.0,
+        "p90": 3.0
+      },
+      "attempt_fingers": {
+        "2": 61,
+        "3": 0
+      },
+      "failure_classes": {
+        "physical_failure": 18,
+        "success": 20,
+        "infrastructure_timeout": 1,
+        "infrastructure_error": 1
+      }
+    },
+    "noise": {
+      "successes": 21,
+      "first_successes": 21,
+      "second_added": 0,
+      "third_added": 0,
+      "attempt_distribution": {
+        "0": 0,
+        "1": 28,
+        "2": 2,
+        "3": 10
+      },
+      "actual_grasps": {
+        "n": 40,
+        "mean": 1.55,
+        "median": 1.0,
+        "p90": 3.0
+      },
+      "attempt_fingers": {
+        "2": 62,
+        "3": 0
+      },
+      "failure_classes": {
+        "physical_failure": 18,
+        "success": 21,
+        "infrastructure_timeout": 1
+      }
+    }
+  },
+  "paper_scope": "Two-finger grasping baseline. No executed three-finger attempt or recovery rescue. Sole outcome discordance involves clean startup failure; not evidence of noise improvement.",
+  "raw_evidence_QA_passed": true,
+  "publication_QA_passed": true,
+  "post_cleanup_QA_passed": true,
+  "deleted_bytes": {
+    "study": 45093996288,
+    "legacy": 13741111296
+  },
+  "artifact_sha256": {
+    "EVALUATION.md": "2641e33d7bdbb77f408a8d9ee49171321601d24506f2d6336f9fe8e3915521a0",
+    "publication_readout/episodes.csv": "ccdcd937fb4bcc3adef65fe1fda9b039d79faf774ce8f60399dd710822bdd3d4",
+    "publication_readout/SUMMARY.json": "f09e5a46291d14b961286f69eb9af3aef321de07795d18c8c9325d7d9eabc200",
+    "publication_readout/transitions.csv": "adf7579dd557042bc44080e276e591c6c544da432ae18c227c2d3e19dd76230e",
+    "frozen_v4/freeze.json": "3653901b6df64a06072d9995dfd79f632befb9aa6395e0907c9b6a924afc4e79",
+    "frozen_v4/plan.json": "11f8c9326d498d21187b50fb7369e03ec822889c70a902275566a3a34ad01bb6",
+    "REPRODUCE.md": "bd47d826cdc261b11f817e1697541117adc5900904cfbd2351376170897454b8",
+    "videos/index.html": "d7edae0ca0795f1addf4c527df8bc524e6af358936398feac71ab52b5adedb8d",
+    "videos/manifest.json": "993b9175684222227b3bc656e636ed6fd466d7eb8c26aa313e0bf5a34cfdb549",
+    "FINAL_VERSION_CHAINS.md": "79bd1253cf1d823f91ed06d86d0528244c06b3d4e82ade71ffbe0373b11908c2",
+    "audit/recovery_choices_formal80_v4/recovery_choices.csv": "15963944f11118c54cf6e61586015af7c84be317edc3cbedfd97894dc7d7cfec",
+    "audit/recovery_choices_formal80_v4/PUBLICATION_BINDING.json": "e685877f9d76d8b46dcc06bb90bd0c769b9cf717269c413b436ee3cb891308d5",
+    "audit/final80_validation.json": "0276cd0ddb8e37cfadfc118bc67a43ff105a4dacffd08d3b8461cf4736827008",
+    "audit/final_delivery_qa.json": "ccbe9e61c7e123a8f75bc1e30631d5eecf47615a197fdb1768381eaa9131a97c",
+    "audit/post_cleanup_delivery_v4.json": "82f5e8232b27800f34c587fdfdd263eb7519abe048304d2c03bfd8883d911d55",
+    "cleanup/applied_receipt.jsonl": "2c1248cf5a8fb874c5d308dd0bb169c358734bbf845ed2bd5a5297360357ecb0"
+  }
+}

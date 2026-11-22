@@ -1,0 +1,10 @@
+{
+  "time_unix": 1795319805.5865953,
+  "paused_scheduler_pid": 1382686,
+  "trigger": "00_abc_53930_noise simulator startup crashed before any action: std::system_error native thread creation",
+  "observed_machine_threads": 3953,
+  "action": "Let existing children finish; cap remaining actual worker pool to1 without modifying frozen runtime or retrying failed cases",
+  "failed_case_retained": true,
+  "exact_crash_message": "std::system_error: Invalid argument",
+  "diagnostic_limit": "Backtrace includes native thread creation; underlying cause not established. File watcher errno28 also present despite341GB disk free; do not infer disk full."
+}

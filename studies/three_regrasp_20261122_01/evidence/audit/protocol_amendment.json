@@ -1,0 +1,23 @@
+{
+  "time_unix": 1795319223.5705812,
+  "source_commit": "dc15ee817f8d9fcf1fb83906a9ae986b47d51d08",
+  "reason": "Initial overhead pixels were not exactly shared; all early episodes are retained as protocol pilot regardless of outcome. Renderer nondeterminism, no policy tuning. Final80 restart after public input amendment.",
+  "policy_changes": false,
+  "case_selection_changes": false,
+  "seed_changes": false,
+  "whole_cohort_invalidated": true,
+  "archive_directory_map": {
+    "formal_runs": "protocol_pilot_dc15ee8",
+    "formal_readout": "protocol_pilot_readout_dc15ee8",
+    "video_replays": "protocol_pilot_video_dc15ee8"
+  },
+  "initial_input_fix": "One preacquired ordinary initial RGB and static calibration per registered object, hash checked and shared by both conditions; fresh live capture retained for audit",
+  "host_allowlist_smoke": {
+    "source_commit": "f755717",
+    "episodes": 2,
+    "actual_grasps": 0,
+    "issue": "Private live capture diagnostic was incorrectly placed in public directory; unchanged observation allowlist refused it",
+    "fix_commit": "cecb7fe",
+    "fix": "Keep live capture and input audit outside policy public directory; do not relax allowlist"
+  }
+}

@@ -1,0 +1,642 @@
+{
+  "scope": "Geometry-only proposed replacements; no installed assets, case/freeze or physics changes by this helper.",
+  "proposed_thresholds": {
+    "near_sphere_axis_ratio_max": 1.01,
+    "near_sphere_continuous_shell_fraction_max": 0.01,
+    "primitive_relative_difference_max": 0.05,
+    "normalization": "Ignore translation, rotation and uniform scale.",
+    "transitive_graph": true,
+    "retention": "Earliest frozen preregistration rank, independent of grasp outcomes."
+  },
+  "components": [
+    {
+      "members": [
+        "abc_53930",
+        "abc_111783"
+      ],
+      "retain": "abc_53930",
+      "remove": [
+        "abc_111783"
+      ]
+    },
+    {
+      "members": [
+        "abc_76395",
+        "abc_166839"
+      ],
+      "retain": "abc_76395",
+      "remove": [
+        "abc_166839"
+      ]
+    },
+    {
+      "members": [
+        "abc_152578",
+        "abc_814805",
+        "abc_639369"
+      ],
+      "retain": "abc_152578",
+      "remove": [
+        "abc_814805",
+        "abc_639369"
+      ]
+    },
+    {
+      "members": [
+        "abc_553219",
+        "abc_826913"
+      ],
+      "retain": "abc_553219",
+      "remove": [
+        "abc_826913"
+      ]
+    }
+  ],
+  "retain_count": 35,
+  "removed_ids": [
+    "abc_111783",
+    "abc_166839",
+    "abc_814805",
+    "abc_639369",
+    "abc_826913"
+  ],
+  "selected_candidate_order": [
+    "abc_18078",
+    "abc_49687",
+    "abc_403242",
+    "abc_983078",
+    "abc_602823"
+  ],
+  "candidates": [
+    {
+      "object_id": "abc_18078",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_18078_native.obj",
+      "source_sha256": "da364d770aef6b8fc4d0677190f5fac26763dad3831e64bd51213f055cde9d85",
+      "uniform_scale": 0.41713628100925065,
+      "z_translation_m": -0.0,
+      "scaled_dimensions_m": [
+        0.026515613091193695,
+        0.03,
+        0.018713082333719537
+      ],
+      "vertices": 8,
+      "faces": 12,
+      "watertight": true,
+      "convex": true,
+      "diversity_signature": {
+        "kind": "box",
+        "dimensions_sorted_m": [
+          0.018713082333719537,
+          0.026515613091193695,
+          0.03
+        ],
+        "normalized_dimensions": [
+          0.6237694111239845,
+          0.8838537697064566,
+          1.0
+        ],
+        "max_plane_error_m": 0.0,
+        "fit_tolerance_m": 1e-07
+      },
+      "near_retained": [],
+      "exact_spectrum_matches": [],
+      "closest_equal_hull_vertex_spectrum": {
+        "object_id": "abc_793782",
+        "max_normalized_difference": 0.031188572470615183
+      },
+      "native_orientation_patch": {
+        "passed": true,
+        "tested": 8,
+        "accepted": 8,
+        "opposed_sides": true,
+        "support_radius_m": 0.0012,
+        "maximum_sag_threshold_m": 0.0003,
+        "minimum_footprint_table_clearance_threshold_m": 0.002,
+        "witnesses": [
+          {
+            "face": 0,
+            "point_native_m": [
+              0.004419268848532282,
+              0.015,
+              0.012475388222479691
+            ],
+            "outward_normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.011375388222479691,
+            "passed": true
+          },
+          {
+            "face": 1,
+            "point_native_m": [
+              -0.004419268848532282,
+              0.015,
+              0.006237694111239846
+            ],
+            "outward_normal": [
+              0.0,
+              1.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.005137694111239846,
+            "passed": true
+          },
+          {
+            "face": 2,
+            "point_native_m": [
+              0.004419268848532282,
+              -0.015,
+              0.006237694111239846
+            ],
+            "outward_normal": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.005137694111239846,
+            "passed": true
+          },
+          {
+            "face": 3,
+            "point_native_m": [
+              -0.004419268848532282,
+              -0.015,
+              0.012475388222479691
+            ],
+            "outward_normal": [
+              -0.0,
+              -1.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.011375388222479691,
+            "passed": true
+          }
+        ],
+        "rejected_examples": []
+      }
+    },
+    {
+      "object_id": "abc_49687",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_49687_native.obj",
+      "source_sha256": "081295a9528584c82c9a12f40647202fcc53933d33dd955d8468c6b4741df0d7",
+      "uniform_scale": 0.45653484108489367,
+      "z_translation_m": -0.0,
+      "scaled_dimensions_m": [
+        0.03,
+        0.011595984780942363,
+        0.019729006518492725
+      ],
+      "vertices": 8,
+      "faces": 12,
+      "watertight": true,
+      "convex": true,
+      "diversity_signature": {
+        "kind": "box",
+        "dimensions_sorted_m": [
+          0.011595984780942363,
+          0.019729006518492725,
+          0.03
+        ],
+        "normalized_dimensions": [
+          0.3865328260314121,
+          0.6576335506164241,
+          1.0
+        ],
+        "max_plane_error_m": 0.0,
+        "fit_tolerance_m": 1e-07
+      },
+      "near_retained": [],
+      "exact_spectrum_matches": [],
+      "closest_equal_hull_vertex_spectrum": {
+        "object_id": "abc_222121",
+        "max_normalized_difference": 0.03815872839398071
+      },
+      "native_orientation_patch": {
+        "passed": true,
+        "tested": 8,
+        "accepted": 8,
+        "opposed_sides": true,
+        "support_radius_m": 0.0012,
+        "maximum_sag_threshold_m": 0.0003,
+        "minimum_footprint_table_clearance_threshold_m": 0.002,
+        "witnesses": [
+          {
+            "face": 0,
+            "point_native_m": [
+              0.005,
+              0.0057979923904711815,
+              0.013152671012328483
+            ],
+            "outward_normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.012052671012328483,
+            "passed": true
+          },
+          {
+            "face": 1,
+            "point_native_m": [
+              -0.005,
+              0.0057979923904711815,
+              0.006576335506164242
+            ],
+            "outward_normal": [
+              0.0,
+              1.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.005476335506164242,
+            "passed": true
+          },
+          {
+            "face": 2,
+            "point_native_m": [
+              0.005,
+              -0.0057979923904711815,
+              0.006576335506164242
+            ],
+            "outward_normal": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.005476335506164242,
+            "passed": true
+          },
+          {
+            "face": 3,
+            "point_native_m": [
+              -0.005,
+              -0.0057979923904711815,
+              0.013152671012328483
+            ],
+            "outward_normal": [
+              -0.0,
+              -1.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.012052671012328483,
+            "passed": true
+          }
+        ],
+        "rejected_examples": []
+      }
+    },
+    {
+      "object_id": "abc_403242",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_403242_native.obj",
+      "source_sha256": "18c17a94c30f49c8e8c980de19fabe65f18bc86696b4c664b352472e59d71196",
+      "uniform_scale": 0.4055768251909563,
+      "z_translation_m": -0.0,
+      "scaled_dimensions_m": [
+        0.03,
+        0.020603302476354484,
+        0.01768924470852771
+      ],
+      "vertices": 12,
+      "faces": 20,
+      "watertight": true,
+      "convex": true,
+      "diversity_signature": null,
+      "near_retained": [],
+      "exact_spectrum_matches": [],
+      "closest_equal_hull_vertex_spectrum": {
+        "object_id": "abc_805600",
+        "max_normalized_difference": 0.26148756561696296
+      },
+      "native_orientation_patch": {
+        "passed": true,
+        "tested": 11,
+        "accepted": 9,
+        "opposed_sides": true,
+        "support_radius_m": 0.0012,
+        "maximum_sag_threshold_m": 0.0003,
+        "minimum_footprint_table_clearance_threshold_m": 0.002,
+        "witnesses": [
+          {
+            "face": 5,
+            "point_native_m": [
+              -0.015,
+              0.004120660449305523,
+              0.011106053102438696
+            ],
+            "outward_normal": [
+              -0.9999999999999999,
+              -0.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 0.9999999999999998,
+            "minimum_footprint_table_clearance_m": 0.010006053102438696,
+            "passed": true
+          },
+          {
+            "face": 6,
+            "point_native_m": [
+              -0.015,
+              -0.002747107042812638,
+              0.011106053102438696
+            ],
+            "outward_normal": [
+              -1.0,
+              -0.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 0.9999999999999999,
+            "minimum_footprint_table_clearance_m": 0.010006053102438696,
+            "passed": true
+          },
+          {
+            "face": 7,
+            "point_native_m": [
+              -0.015,
+              -0.003433883746059081,
+              0.005209638199596128
+            ],
+            "outward_normal": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.004109638199596128,
+            "passed": true
+          },
+          {
+            "face": 9,
+            "point_native_m": [
+              0.015,
+              -0.002747107042812638,
+              0.00589641490284257
+            ],
+            "outward_normal": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.00479641490284257,
+            "passed": true
+          }
+        ],
+        "rejected_examples": [
+          {
+            "face": 8,
+            "passed": false,
+            "hits": 6
+          },
+          {
+            "face": 11,
+            "passed": false,
+            "hits": 6
+          }
+        ]
+      }
+    },
+    {
+      "object_id": "abc_983078",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_983078_native.obj",
+      "source_sha256": "d445efb0541b1592eee392fd12f6f1aa0f8538d982c1cea4786b589c1d223087",
+      "uniform_scale": 0.34309930980015624,
+      "z_translation_m": -0.0,
+      "scaled_dimensions_m": [
+        0.01641510284460138,
+        0.03,
+        0.013382914557409335
+      ],
+      "vertices": 8,
+      "faces": 12,
+      "watertight": true,
+      "convex": true,
+      "diversity_signature": null,
+      "near_retained": [],
+      "exact_spectrum_matches": [],
+      "closest_equal_hull_vertex_spectrum": {
+        "object_id": "abc_551365",
+        "max_normalized_difference": 0.1040553574076265
+      },
+      "native_orientation_patch": {
+        "passed": true,
+        "tested": 8,
+        "accepted": 8,
+        "opposed_sides": true,
+        "support_radius_m": 0.0012,
+        "maximum_sag_threshold_m": 0.0003,
+        "minimum_footprint_table_clearance_threshold_m": 0.002,
+        "witnesses": [
+          {
+            "face": 4,
+            "point_native_m": [
+              -0.0010377364088911,
+              -0.015,
+              0.00892194303827289
+            ],
+            "outward_normal": [
+              -0.0,
+              -1.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.00782194303827289,
+            "passed": true
+          },
+          {
+            "face": 5,
+            "point_native_m": [
+              -0.004622643915595894,
+              -0.015,
+              0.004460971519136445
+            ],
+            "outward_normal": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.003360971519136445,
+            "passed": true
+          },
+          {
+            "face": 6,
+            "point_native_m": [
+              -0.00820755142230069,
+              -0.005,
+              0.00892194303827289
+            ],
+            "outward_normal": [
+              -1.0,
+              0.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.00782194303827289,
+            "passed": true
+          },
+          {
+            "face": 7,
+            "point_native_m": [
+              -0.00820755142230069,
+              0.005,
+              0.004460971519136445
+            ],
+            "outward_normal": [
+              -1.0,
+              -0.0,
+              -0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 1.0,
+            "minimum_footprint_table_clearance_m": 0.003360971519136445,
+            "passed": true
+          }
+        ],
+        "rejected_examples": []
+      }
+    },
+    {
+      "object_id": "abc_602823",
+      "source_asset": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/objects/manifest_native_obj/abc_602823_native.obj",
+      "source_sha256": "480e4cef86e38e81492b152d98c9ec92ac875f3ec27fd0d578eedd33a25733d7",
+      "uniform_scale": 0.39370078223489785,
+      "z_translation_m": -0.0,
+      "scaled_dimensions_m": [
+        0.021613991763595908,
+        0.03,
+        0.01776539441252763
+      ],
+      "vertices": 8,
+      "faces": 12,
+      "watertight": true,
+      "convex": true,
+      "diversity_signature": {
+        "kind": "box",
+        "dimensions_sorted_m": [
+          0.01776539441252763,
+          0.021613991763595908,
+          0.03
+        ],
+        "normalized_dimensions": [
+          0.592179813750921,
+          0.7204663921198636,
+          1.0
+        ],
+        "max_plane_error_m": 0.0,
+        "fit_tolerance_m": 1e-07
+      },
+      "near_retained": [],
+      "exact_spectrum_matches": [],
+      "closest_equal_hull_vertex_spectrum": {
+        "object_id": "abc_784558",
+        "max_normalized_difference": 0.04291029159673598
+      },
+      "native_orientation_patch": {
+        "passed": true,
+        "tested": 8,
+        "accepted": 8,
+        "opposed_sides": true,
+        "support_radius_m": 0.0012,
+        "maximum_sag_threshold_m": 0.0003,
+        "minimum_footprint_table_clearance_threshold_m": 0.002,
+        "witnesses": [
+          {
+            "face": 0,
+            "point_native_m": [
+              -0.003602331960599318,
+              0.015,
+              0.0059217981375092104
+            ],
+            "outward_normal": [
+              -0.0,
+              0.9999999999999999,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 0.9999999999999998,
+            "minimum_footprint_table_clearance_m": 0.004821798137509211,
+            "passed": true
+          },
+          {
+            "face": 1,
+            "point_native_m": [
+              0.003602331960599318,
+              0.015,
+              0.011843596275018421
+            ],
+            "outward_normal": [
+              -0.0,
+              0.9999999999999999,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 0.9999999999999998,
+            "minimum_footprint_table_clearance_m": 0.01074359627501842,
+            "passed": true
+          },
+          {
+            "face": 2,
+            "point_native_m": [
+              -0.003602331960599318,
+              -0.015,
+              0.011843596275018421
+            ],
+            "outward_normal": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 0.9999999999999998,
+            "minimum_footprint_table_clearance_m": 0.01074359627501842,
+            "passed": true
+          },
+          {
+            "face": 3,
+            "point_native_m": [
+              0.003602331960599318,
+              -0.015,
+              0.0059217981375092104
+            ],
+            "outward_normal": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "maximum_sag_m": 0.0,
+            "minimum_normal_cosine": 0.9999999999999998,
+            "minimum_footprint_table_clearance_m": 0.004821798137509211,
+            "passed": true
+          }
+        ],
+        "rejected_examples": []
+      }
+    }
+  ],
+  "all_requested_four_pass_static_precheck": true,
+  "selection_note": "5 rather than4 replacements are needed:5%boxgate additionally merges nearcubes553219/826913(2.7553%). Fifth602823 is geometricallyscreenedalternative, notoutcomechosen; rootchoosesregisteredpriority."
+}

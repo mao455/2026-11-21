@@ -1,0 +1,122 @@
+[
+  {
+    "case": "cube_auto",
+    "source_commit": "a1bbe71ae86f79ba5f5f818352a75dc3eeb50460",
+    "contact_report_samples": 578,
+    "nonempty_report_samples": 306,
+    "reported_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "positive_normal_force_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "nonpositive_separation_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "max_normal_force_n": 0.2940610945224762,
+    "minimum_separation_m": -1.8103979527950287e-05,
+    "interpretation": "private offline diagnostic; proximity reports alone are not loaded pad contact"
+  },
+  {
+    "case": "cylinder_two",
+    "source_commit": "a1bbe71ae86f79ba5f5f818352a75dc3eeb50460",
+    "contact_report_samples": 498,
+    "nonempty_report_samples": 273,
+    "reported_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "positive_normal_force_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "nonpositive_separation_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "max_normal_force_n": 0.3198717534542084,
+    "minimum_separation_m": -1.3096667316858657e-05,
+    "interpretation": "private offline diagnostic; proximity reports alone are not loaded pad contact"
+  },
+  {
+    "case": "cylinder_three",
+    "source_commit": "a1bbe71ae86f79ba5f5f818352a75dc3eeb50460",
+    "contact_report_samples": 0,
+    "nonempty_report_samples": 0,
+    "reported_links": [],
+    "positive_normal_force_links": [],
+    "nonpositive_separation_links": [],
+    "max_normal_force_n": 0,
+    "minimum_separation_m": null,
+    "interpretation": "private offline diagnostic; proximity reports alone are not loaded pad contact"
+  },
+  {
+    "case": "cube_three",
+    "source_commit": "a1bbe71ae86f79ba5f5f818352a75dc3eeb50460",
+    "contact_report_samples": 0,
+    "nonempty_report_samples": 0,
+    "reported_links": [],
+    "positive_normal_force_links": [],
+    "nonpositive_separation_links": [],
+    "max_normal_force_n": 0,
+    "minimum_separation_m": null,
+    "interpretation": "private offline diagnostic; proximity reports alone are not loaded pad contact"
+  },
+  {
+    "case": "pyramid_auto3",
+    "source_commit": "a1bbe71ae86f79ba5f5f818352a75dc3eeb50460",
+    "contact_report_samples": 1512,
+    "nonempty_report_samples": 0,
+    "reported_links": [],
+    "positive_normal_force_links": [],
+    "nonpositive_separation_links": [],
+    "max_normal_force_n": 0,
+    "minimum_separation_m": null,
+    "interpretation": "private offline diagnostic; proximity reports alone are not loaded pad contact"
+  },
+  {
+    "case": "cube_two",
+    "source_commit": "a1bbe71ae86f79ba5f5f818352a75dc3eeb50460",
+    "contact_report_samples": 574,
+    "nonempty_report_samples": 306,
+    "reported_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "positive_normal_force_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "nonpositive_separation_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "max_normal_force_n": 0.2940029203891754,
+    "minimum_separation_m": -1.615285873413086e-05,
+    "interpretation": "private offline diagnostic; proximity reports alone are not loaded pad contact"
+  },
+  {
+    "case": "cylinder_auto",
+    "source_commit": "a1bbe71ae86f79ba5f5f818352a75dc3eeb50460",
+    "contact_report_samples": 502,
+    "nonempty_report_samples": 273,
+    "reported_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "positive_normal_force_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "nonpositive_separation_links": [
+      "left_hand_index_camera_component3_link",
+      "left_hand_thumb_camera_component3_link"
+    ],
+    "max_normal_force_n": 0.32028624415397644,
+    "minimum_separation_m": -1.3107659469824284e-05,
+    "interpretation": "private offline diagnostic; proximity reports alone are not loaded pad contact"
+  }
+]

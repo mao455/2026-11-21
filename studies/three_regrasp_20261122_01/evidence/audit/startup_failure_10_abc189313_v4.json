@@ -1,0 +1,27 @@
+{
+  "name": "10_abc_189313_clean",
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "controller_sha256": "a01b97ab2e9ddd083ec852978945a7ec77ebcbc484b469aa060231bb781a7c1e",
+  "formal_denominator_included": true,
+  "retry": false,
+  "actual_grasps": 0,
+  "observed_error": "RuntimeError: process exited without response: None",
+  "returncode": 1,
+  "wall_s": 10.084802545141429,
+  "classification": "infrastructure_backend_startup_failure",
+  "evidence_scope": "Kit crashed before controller physics requests. Earlier logs show failed file change watches errno28; native stack includes libomniclient/std::__throw_system_error. Disk space and inode capacity were available. The exact crash cause and relation to concurrency remain unproven. Both active episodes finished naturally, then scheduler returned to serial.",
+  "source_sha256": {
+    "formal_runs/10_abc_189313_clean/batch_result.json": "752bca9a71b2145956000b22b0f2320e9bc9a0a233513d4cf30c8dc61b47c71b",
+    "formal_runs/10_abc_189313_clean/launch.json": "306d156085c39b6bd7cecbe9d9f14779e41d6542184514e36ffc90a7ddfe4e97",
+    "formal_runs/10_abc_189313_clean/runner.log": "f74ae931c446513dc9762ea978d423805cd249f4742cd72140ef497b1797a488",
+    "formal_runs/10_abc_189313_clean/episode/backend.log": "0301dada5ad1ddeff34d163d2334288340df50a7be3b50041bb4d9112d1cdcd9",
+    "formal_runs/10_abc_189313_clean/episode/result.json": "045e174a96b7b3007c51159b40add99d4b36f93335035f3298cffc1c81f696f4",
+    "formal_runs/10_abc_189313_clean/episode/host_backend_lifecycle.json": "d4c6ed9b5565e2b835de91552f5f70578531fd73ea7bd50e3c06a0f62cafc157",
+    "formal_runs/10_abc_189313_clean/episode/backend_finish_error.json": "3090eff681c0c8641be14d6133a303866569dc97ff8509111d793e84b4c9d87c"
+  },
+  "system_snapshot": {
+    "inotify_max_user_watches": 524288,
+    "disk_available_GiB_approx": 319,
+    "inodes_used_percent": 4
+  }
+}

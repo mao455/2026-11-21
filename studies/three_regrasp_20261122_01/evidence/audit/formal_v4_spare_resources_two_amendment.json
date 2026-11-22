@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "scope": "Scheduling only; frozen policy/cases/seeds/timeout unchanged and no formal outcome retries",
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1",
+  "began_unix": 1795331290.9515364,
+  "state": "serial_resumed_after_startup_failure",
+  "old_concurrency": 1,
+  "requested_max_concurrency": 2,
+  "current_contract_sha256": "c822e0069ed24449fd070454c19b1c3a967ce9e32ab1900d9a0fecdb09ad2fc0",
+  "resource_samples": [
+    {
+      "unix": 1795331290.95162,
+      "ram_available_bytes": 32814469120,
+      "gpu_mib": [
+        4452,
+        19632
+      ],
+      "other_evaluation_processes": []
+    },
+    {
+      "unix": 1795331342.578017,
+      "ram_available_bytes": 32568811520,
+      "gpu_mib": [
+        4452,
+        19632
+      ],
+      "other_evaluation_processes": []
+    },
+    {
+      "unix": 1795331537.02048,
+      "ram_available_bytes": 33460592640,
+      "gpu_mib": [
+        1378,
+        22706
+      ]
+    }
+  ],
+  "scheduler_pid": 1483161,
+  "method": "Drain scheduler by SIGINT to main PID only, let physical episode finish naturally; after exit amend only concurrency and resume already receipted outcomes",
+  "signal_sent_unix": 1795331342.5781229,
+  "drained_receipt": "formal_runs/08_abc_176242_clean/batch_result.json",
+  "drained_receipt_sha256": "66a797a7397c751076ed1d827cab494c39afe50c8e5417500c931b9bf86789e1",
+  "drained_receipt_error": null,
+  "drained_receipt_wall_s": 154.43015411263332,
+  "snapshot_contract": "audit/formal_v4_contract_before_concurrency2.json",
+  "snapshot_contract_sha256": "c822e0069ed24449fd070454c19b1c3a967ce9e32ab1900d9a0fecdb09ad2fc0",
+  "actual_concurrency_changed": true,
+  "amended_unix": 1795331537.0204778,
+  "amended_contract_sha256": "fdfc63eca3e4d47dd41f78e88a97059ee0876bcd9e3f37b37eea0d752d6202c4",
+  "resumed_unix": 1795331610.011439,
+  "resumed_scheduler_pid": 1569167,
+  "first_observed_active": [
+    "08_abc_176242_noise",
+    "09_abc_770180_clean"
+  ],
+  "serial_reversion_reason": "10_abc_189313_clean exited during backend startup with no response and zero physical grasps; resource cause not established; precautionary serial reversion",
+  "serial_reversion_unix": 1795331768.4544923,
+  "serial_reverted_unix": 1795331888.565113,
+  "receipts_at_serial_reversion": 22,
+  "concurrency2_snapshot": "audit/formal_v4_contract_concurrency2_completed.json",
+  "concurrency2_snapshot_sha256": "fdfc63eca3e4d47dd41f78e88a97059ee0876bcd9e3f37b37eea0d752d6202c4",
+  "restored_serial_contract_sha256": "c822e0069ed24449fd070454c19b1c3a967ce9e32ab1900d9a0fecdb09ad2fc0",
+  "no_physical_episode_cancelled": true,
+  "no_formal_outcome_retried": true
+}

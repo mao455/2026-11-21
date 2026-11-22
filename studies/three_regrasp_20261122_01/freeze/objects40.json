@@ -1,0 +1,969 @@
+{
+  "episode_count": 80,
+  "object_count": 40,
+  "objects": [
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_53930_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13000,
+        "object_id": "abc_53930",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.01269802638,
+        0.01269999984,
+        0.0126999998
+      ],
+      "faces": 508,
+      "id": "53930",
+      "object_id": "abc_53930",
+      "selection_rank": 0,
+      "sha256": "076bb5617d2fc9771e1b43cc4d8b949210681b02a520f246143d23f9212d3bdc",
+      "side_area_fraction": 0.5555100498319185
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_311740_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13001,
+        "object_id": "abc_311740",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.00634802692,
+        0.00634999574,
+        0.0390538573
+      ],
+      "faces": 756,
+      "id": "311740",
+      "object_id": "abc_311740",
+      "selection_rank": 1,
+      "sha256": "4962daf0fc681987266169729a4a67c925428afe2226530c70be43c3033d4f2e",
+      "side_area_fraction": 0.9186818139943008
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_76395_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13002,
+        "object_id": "abc_76395",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.01349782804,
+        0.013496764,
+        0.0134991538
+      ],
+      "faces": 15624,
+      "id": "76395",
+      "object_id": "abc_76395",
+      "selection_rank": 2,
+      "sha256": "c69aafcc7136ae5672ab9779b4df4d9914cfef3783d2a80aead1d1e2b9cdaf57",
+      "side_area_fraction": 0.49965907905262297
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_145502_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13003,
+        "object_id": "abc_145502",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.01799999922,
+        0.0430000014,
+        0.00800000038
+      ],
+      "faces": 12,
+      "id": "145502",
+      "object_id": "abc_145502",
+      "selection_rank": 3,
+      "sha256": "bad51c0adec519001e71b09e35ec5218eff585d873eb869ca60310560f253bc7",
+      "side_area_fraction": 0.38668781337843255
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_699849_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13004,
+        "object_id": "abc_699849",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0303819404,
+        0.0508590694,
+        0.0303913876
+      ],
+      "faces": 252,
+      "id": "699849",
+      "object_id": "abc_699849",
+      "selection_rank": 4,
+      "sha256": "0fbceadf3d6dd2f432d5ec08904d44987d496facda04c5391c048df4e0809fbc",
+      "side_area_fraction": 0.5063570086750875
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_783667_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13005,
+        "object_id": "abc_783667",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.00634999992,
+        0.0253999996,
+        0.0253999997
+      ],
+      "faces": 12,
+      "id": "783667",
+      "object_id": "abc_783667",
+      "selection_rank": 5,
+      "sha256": "b388e8bef962614aba7185dd42727d10dd94f6247a87f0eb5e3e65645408fe93",
+      "side_area_fraction": 0.8333333335301836
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_78128_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13006,
+        "object_id": "abc_78128",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0354953446,
+        0.0354843102,
+        0.0344394185
+      ],
+      "faces": 8820,
+      "id": "78128",
+      "object_id": "abc_78128",
+      "selection_rank": 6,
+      "sha256": "25b3bf5a3de08faa7276bc2e52a9333df4a2858adb84a21fd01b7274964525b8",
+      "side_area_fraction": 0.6661677828508505
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_544444_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13007,
+        "object_id": "abc_544444",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.0344886668,
+        0.0181832593,
+        0.0253999997
+      ],
+      "faces": 184,
+      "id": "544444",
+      "object_id": "abc_544444",
+      "selection_rank": 7,
+      "sha256": "ddc6252824bcfc2598cd32f65d2c9bc3e01ea3ded1d59551dff4553d6876feef",
+      "side_area_fraction": 0.7202514736919324
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_176242_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13008,
+        "object_id": "abc_176242",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0350000002,
+        0.0350000002,
+        0.0350000001
+      ],
+      "faces": 12,
+      "id": "176242",
+      "object_id": "abc_176242",
+      "selection_rank": 8,
+      "sha256": "4fecb44ede4f5becb731bea9a6aa86d29ef52fd9c633c8acf6839e072a5e47d8",
+      "side_area_fraction": 0.6666666660317458
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_770180_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13009,
+        "object_id": "abc_770180",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.031750001,
+        0.01905000024,
+        0.0177800003
+      ],
+      "faces": 12,
+      "id": "770180",
+      "object_id": "abc_770180",
+      "selection_rank": 9,
+      "sha256": "1c8ef06a43b5423e326f1b9cb037960680ace56cde63aecbb05259f07d88b78a",
+      "side_area_fraction": 0.5989304806079085
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_189313_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13010,
+        "object_id": "abc_189313",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0274934136,
+        0.00634999992,
+        0.0139649101
+      ],
+      "faces": 12,
+      "id": "189313",
+      "object_id": "abc_189313",
+      "selection_rank": 10,
+      "sha256": "acb44239eba0899af3ea94a026410088c0da5ab0804a0687c9d6f29363dd5c16",
+      "side_area_fraction": 0.7302499125145417
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_520454_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13011,
+        "object_id": "abc_520454",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.0253999996,
+        0.036479082,
+        0.0364904255
+      ],
+      "faces": 504,
+      "id": "520454",
+      "object_id": "abc_520454",
+      "selection_rank": 11,
+      "sha256": "afff4cd47eb7ef7ea59a7d73f6adae90ef3f4c2072a28cd4bf010429f62d2dda",
+      "side_area_fraction": 0.6119727112969858
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_272068_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13012,
+        "object_id": "abc_272068",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.049019318,
+        0.0507999994,
+        0.0390441529
+      ],
+      "faces": 12,
+      "id": "272068",
+      "object_id": "abc_272068",
+      "selection_rank": 12,
+      "sha256": "c258ac35dc2e8d09ae35d9d431a81190221f509ed904920fc3ee946943f09c36",
+      "side_area_fraction": 0.6101503021382836
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_479808_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13013,
+        "object_id": "abc_479808",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.00849867612,
+        0.0209999998,
+        0.00850000046
+      ],
+      "faces": 508,
+      "id": "479808",
+      "object_id": "abc_479808",
+      "selection_rank": 13,
+      "sha256": "7b09f5701cf46dc7285ae65a0c1befc789be184db90bc889204afa1f7172121a",
+      "side_area_fraction": 0.4455159536434101
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_673390_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13014,
+        "object_id": "abc_673390",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.01300000026,
+        0.0250000004,
+        0.0250000004
+      ],
+      "faces": 16,
+      "id": "673390",
+      "object_id": "abc_673390",
+      "selection_rank": 14,
+      "sha256": "5ae75a0ca148ea63064ec778d3b9a83f319d9afdb28566666d175c1d1662c26c",
+      "side_area_fraction": 0.6551304471869301
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_805600_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13015,
+        "object_id": "abc_805600",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.0229307338,
+        0.0198585987,
+        0.0253999997
+      ],
+      "faces": 20,
+      "id": "805600",
+      "object_id": "abc_805600",
+      "selection_rank": 15,
+      "sha256": "7c1973ad51f940c336ac02e857344a2f8d1e0acf0294b034a7d05e52bbf4ede4",
+      "side_area_fraction": 0.7189500077007906
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_181508_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13016,
+        "object_id": "abc_181508",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0120000001,
+        0.0120000001,
+        0.0299999993
+      ],
+      "faces": 764,
+      "id": "181508",
+      "object_id": "abc_181508",
+      "selection_rank": 16,
+      "sha256": "5b09970b5cec17c893884b91e38e3628c8e034d926a6d69682eebe1b7208b64c",
+      "side_area_fraction": 0.8133107002508568
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_199784_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13017,
+        "object_id": "abc_199784",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.042375544,
+        0.0253999996,
+        0.0423887204
+      ],
+      "faces": 1008,
+      "id": "199784",
+      "object_id": "abc_199784",
+      "selection_rank": 17,
+      "sha256": "4208374fdf80b3cc4607a747e5747f3aa5326dc629609da5143182501b454bac",
+      "side_area_fraction": 0.5868053025449504
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_328629_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13018,
+        "object_id": "abc_328629",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0310999994,
+        0.0250000004,
+        0.0125000002
+      ],
+      "faces": 20,
+      "id": "328629",
+      "object_id": "abc_328629",
+      "selection_rank": 18,
+      "sha256": "0e1143edda7b8d4b2e7724f740c5a853e5d3818ecd81688af3a77f479f797bf8",
+      "side_area_fraction": 0.566420169504473
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_750656_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13019,
+        "object_id": "abc_750656",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.038082432,
+        0.0261712884,
+        0.0126999998
+      ],
+      "faces": 16,
+      "id": "750656",
+      "object_id": "abc_750656",
+      "selection_rank": 19,
+      "sha256": "e78652bebb87266ffce554d1ff1598ff61cd98f58a604e4d6822e587ecb714da",
+      "side_area_fraction": 0.4607026088725798
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_461505_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13020,
+        "object_id": "abc_461505",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0396833942,
+        0.0250000004,
+        0.0443156436
+      ],
+      "faces": 12,
+      "id": "461505",
+      "object_id": "abc_461505",
+      "selection_rank": 20,
+      "sha256": "295c5c3b2f82485a2ee6badfdaf92f84d191190f0a00dc2ebafdd59c5f5040d5",
+      "side_area_fraction": 0.7428880181995953
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_152578_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13021,
+        "object_id": "abc_152578",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.00999844586,
+        0.0415036008,
+        0.00999999978
+      ],
+      "faces": 508,
+      "id": "152578",
+      "object_id": "abc_152578",
+      "selection_rank": 21,
+      "sha256": "30db79acf69174c0bf72a7cb518ba8d44faad831bcc0657a34b1505e90c36d89",
+      "side_area_fraction": 0.404992965308252
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_529040_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13022,
+        "object_id": "abc_529040",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.059375137,
+        0.035012696,
+        0.0253999997
+      ],
+      "faces": 12,
+      "id": "529040",
+      "object_id": "abc_529040",
+      "selection_rank": 22,
+      "sha256": "301d0f8d715822412ee8562d6c2e9f57dc33f3b1942defa0ff058a6e0f9d80f2",
+      "side_area_fraction": 0.5355835007940585
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_784558_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13023,
+        "object_id": "abc_784558",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.0381000004,
+        0.0253999996,
+        0.031750001
+      ],
+      "faces": 12,
+      "id": "784558",
+      "object_id": "abc_784558",
+      "selection_rank": 23,
+      "sha256": "24084c676cd22256b3580a2a0b5c8aa990ff3cf43c58b0cd93178c2460bc6c9f",
+      "side_area_fraction": 0.6756756837279927
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_553219_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13024,
+        "object_id": "abc_553219",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.031750001,
+        0.0276132486,
+        0.0326495953
+      ],
+      "faces": 12,
+      "id": "553219",
+      "object_id": "abc_553219",
+      "selection_rank": 24,
+      "sha256": "0f47c42e99cd9f7479e0c163964aa460bec7c7aded441c39ed367fb11d40f842",
+      "side_area_fraction": 0.6885436180176949
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_184787_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13025,
+        "object_id": "abc_184787",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.01905000024,
+        0.01904407888,
+        0.0253999997
+      ],
+      "faces": 504,
+      "id": "184787",
+      "object_id": "abc_184787",
+      "selection_rank": 25,
+      "sha256": "86f3d03c7a0ea627adc325ec443e4011ea15c0f2adaace1d5973a74381343747",
+      "side_area_fraction": 0.7273343812855151
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_993288_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13026,
+        "object_id": "abc_993288",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0399999992,
+        0.0300000012,
+        0.0199999996
+      ],
+      "faces": 12,
+      "id": "993288",
+      "object_id": "abc_993288",
+      "selection_rank": 26,
+      "sha256": "3c5dee975cbbdfc010e2515a4462a6f64aa3c111a7dce9c1d77e9d9f13b5aad4",
+      "side_area_fraction": 0.5384615299408285
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_222121_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13027,
+        "object_id": "abc_222121",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.0195000004,
+        0.0299999994,
+        0.00999999978
+      ],
+      "faces": 12,
+      "id": "222121",
+      "object_id": "abc_222121",
+      "selection_rank": 27,
+      "sha256": "8aaa5a9c4f4aaa88bb9a35356c7fa397f327ffda307142a46907314b470a89cc",
+      "side_area_fraction": 0.45833332674112653
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_939116_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13028,
+        "object_id": "abc_939116",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0270379502,
+        0.027029546,
+        0.0158750005
+      ],
+      "faces": 504,
+      "id": "939116",
+      "object_id": "abc_939116",
+      "selection_rank": 28,
+      "sha256": "bbcf77487b364f2322ee0a14a507e3705cab998cb73e0bc88b7f5537c1bcd904",
+      "side_area_fraction": 0.5401538742977822
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_90621_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13029,
+        "object_id": "abc_90621",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.01000000164,
+        0.01999999956,
+        0.0199999996
+      ],
+      "faces": 12,
+      "id": "90621",
+      "object_id": "abc_90621",
+      "selection_rank": 29,
+      "sha256": "87f60a007a634abac8d05e1bdcb9586137c6abd56f2f85eeaa55aefdd81b2eab",
+      "side_area_fraction": 0.7499999771250017
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_18078_scaled30mm.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13030,
+        "object_id": "abc_18078",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.026515613092,
+        0.03,
+        0.018713082334
+      ],
+      "faces": 12,
+      "id": "18078",
+      "object_id": "abc_18078",
+      "selection_rank": 30,
+      "sha256": "08521bc0229b52456323a7865637a1dae4b6b80ec30e866acd058f3047b6e62b",
+      "side_area_fraction": 0.5707247426359434
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_49687_scaled30mm.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13031,
+        "object_id": "abc_49687",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.03,
+        0.01159598478,
+        0.019729006518
+      ],
+      "faces": 12,
+      "id": "49687",
+      "object_id": "abc_49687",
+      "selection_rank": 31,
+      "sha256": "daf6124dcf593324cc3a4ac45523d70347af5d5e0296c76266ccfd0bce3aa24f",
+      "side_area_fraction": 0.7022922500534369
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_793782_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13032,
+        "object_id": "abc_793782",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.0271434542,
+        0.01897344552,
+        0.0253999997
+      ],
+      "faces": 12,
+      "id": "793782",
+      "object_id": "abc_793782",
+      "selection_rank": 32,
+      "sha256": "ba28d0395f306fa33dfde59817df35d6fa8309d4aae0ec7cb7d7299d707a957f",
+      "side_area_fraction": 0.6946081815489663
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_108554_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13033,
+        "object_id": "abc_108554",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.01269999984,
+        0.04445,
+        0.0126960529
+      ],
+      "faces": 504,
+      "id": "108554",
+      "object_id": "abc_108554",
+      "selection_rank": 33,
+      "sha256": "6e5694d1d89101b005a311b8ae5011b9f1a7732de8d81420739db9eaede10e14",
+      "side_area_fraction": 0.40275457339005416
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_382909_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13034,
+        "object_id": "abc_382909",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.047300309,
+        0.0253999996,
+        0.0432950426
+      ],
+      "faces": 12,
+      "id": "382909",
+      "object_id": "abc_382909",
+      "selection_rank": 34,
+      "sha256": "af41d4e9b735a8adf2e90b6d9c4e4610108c55dc4364ac93bd2cfa1c53350b93",
+      "side_area_fraction": 0.7219596776357596
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_551365_native.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13035,
+        "object_id": "abc_551365",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.0250000004,
+        0.0450000018,
+        0.0199999996
+      ],
+      "faces": 12,
+      "id": "551365",
+      "object_id": "abc_551365",
+      "selection_rank": 35,
+      "sha256": "e00ea4183f0a35afd6989b8742dc7f43fa92833916cff73e816e9eba058e91e9",
+      "side_area_fraction": 0.5544554345338693
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_403242_scaled30mm.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13036,
+        "object_id": "abc_403242",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.03,
+        0.020603302476,
+        0.017689244709
+      ],
+      "faces": 20,
+      "id": "403242",
+      "object_id": "abc_403242",
+      "selection_rank": 36,
+      "sha256": "7fcd4fca238edcd2686c537ba8d89fa1a1732237882df1d1c70688491bee0950",
+      "side_area_fraction": 0.5629346025396577
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_983078_scaled30mm.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13037,
+        "object_id": "abc_983078",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.016415102844,
+        0.03,
+        0.013382914557
+      ],
+      "faces": 12,
+      "id": "983078",
+      "object_id": "abc_983078",
+      "selection_rank": 37,
+      "sha256": "23ea359abd0dcf2a849f1612acf9c81256f199f5b5a9fa7d3ad33ce5c7dff5be",
+      "side_area_fraction": 0.5905766050297606
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_602823_scaled30mm.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13038,
+        "object_id": "abc_602823",
+        "rgb_noise_std": null,
+        "yaw": 0.27
+      },
+      "dims_m": [
+        0.021613991764,
+        0.03,
+        0.017765394413
+      ],
+      "faces": 12,
+      "id": "602823",
+      "object_id": "abc_602823",
+      "selection_rank": 38,
+      "sha256": "bbf1a304fb7aab608100476e1048add09b40c1c771d39b4a88687db209b176a1",
+      "side_area_fraction": 0.5857702730762795
+    },
+    {
+      "asset": "experiments/rax_dexbin_tinyobj/assets/stage13/abc_54906_scaled30mm.obj",
+      "case_base": {
+        "dx": -0.0012,
+        "dy": 0.0018,
+        "friction": 0.82,
+        "mass_kg": 0.007,
+        "noise_seed": 13039,
+        "object_id": "abc_54906",
+        "rgb_noise_std": null,
+        "yaw": -0.31
+      },
+      "dims_m": [
+        0.009895046554486722,
+        0.03,
+        0.015137656216136811
+      ],
+      "faces": 16,
+      "id": "54906",
+      "object_id": "abc_54906",
+      "selection_rank": 39,
+      "sha256": "30f6890f0c6a3b95a070e7a1b78f67fb7bb48dcf91b0a6f958ed190a8d12c4fd",
+      "side_area_fraction": 0.5256494105152674
+    }
+  ],
+  "schema": 1,
+  "source": "frozen_v4/plan.json",
+  "source_commit": "9daeff1043917ac40f518b8f80d1103d0fe63bc1"
+}
