@@ -1,0 +1,592 @@
+{
+  "source_revision": "3e52b63d14009fae78d1c79f4d32abc733668876",
+  "snapshot_id": "9c197527ff4116c9a90ed6217d0c6cfc5d774e03b055b0d8c6934c15c07fa427",
+  "publication_scope": "research-only explicit files; private history/assets excluded",
+  "files": {
+    "studies/stage17_20261123/CORE_FILES.md": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/CORE_FILES.md",
+      "bytes": 7340,
+      "sha256": "b296098462530d4f80c5ae7211ff0b06f6e7b2892c7ae76996324f10710a825c"
+    },
+    "studies/stage17_20261123/REPORT.md": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/REPORT.md",
+      "bytes": 15579,
+      "sha256": "05dd5d511df3bf2e5537ee5da8cf518d56421c06059bd3f59ac0b8ca69df858b"
+    },
+    "studies/stage17_20261123/REPRODUCE.md": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/REPRODUCE.md",
+      "bytes": 3616,
+      "sha256": "bad41f313d1f979146c9abe498c38c519dc3205633d81e760aeccb4f429fed79"
+    },
+    "studies/stage17_20261123/SOURCE_MANIFEST.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/SOURCE_MANIFEST.json",
+      "bytes": 3876,
+      "sha256": "59da88840b275e63751f4b3223939024bd9ff5a338b4ad8868592fa04d2ccc76"
+    },
+    "studies/stage17_20261123/VISUAL_REVIEW.md": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/VISUAL_REVIEW.md",
+      "bytes": 7677,
+      "sha256": "3442fa1daf2b1a4575a2ebff51bc1343a435d5be2a5da6b6b2f59dbd891cdb88"
+    },
+    "studies/stage17_20261123/cases/A.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cases/A.json",
+      "bytes": 165,
+      "sha256": "b431131d4f35d7e5a81c36e958daea1f32da24afb217a64c17609159f63b2a96"
+    },
+    "studies/stage17_20261123/cases/B.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cases/B.json",
+      "bytes": 162,
+      "sha256": "29be68267145736e20ea0dcdba09192c764934314b0898549a3807051fa14a05"
+    },
+    "studies/stage17_20261123/checks.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/checks.json",
+      "bytes": 1214,
+      "sha256": "965ca287529b80dfb4f32bf41b410bb23417a7a1a1477efc8500c5f25692e087"
+    },
+    "studies/stage17_20261123/cleanup_final_replay_A.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cleanup_final_replay_A.json",
+      "bytes": 138,
+      "sha256": "3e4739e0cfbef669009977f2f8015a7b4950ac73b79ec8c23c0568b3e5cf344e"
+    },
+    "studies/stage17_20261123/cleanup_final_replay_B.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cleanup_final_replay_B.json",
+      "bytes": 140,
+      "sha256": "0b21df11ed1ff948b8c4a5209d86c89fbf53b3882b1d954657115d1ebcb52027"
+    },
+    "studies/stage17_20261123/cleanup_scope.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cleanup_scope.json",
+      "bytes": 620,
+      "sha256": "1ce4553cca6e6f40287646b9393c93b9af670e86d99a0889bc4a25740947eeb5"
+    },
+    "studies/stage17_20261123/code/evaluator.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/evaluator.py",
+      "bytes": 8806,
+      "sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b"
+    },
+    "studies/stage17_20261123/code/general_grasp_contacts.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/general_grasp_contacts.py",
+      "bytes": 61816,
+      "sha256": "872a5421603d0c60b9a296adccff8f15d30f3e87dccdc7bf54b86606b79b7c0a"
+    },
+    "studies/stage17_20261123/code/requirements-research.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/requirements-research.txt",
+      "bytes": 313,
+      "sha256": "da4b535b8b645cce62e480fc939c9695fffed52379ec6197232a4367d393a733"
+    },
+    "studies/stage17_20261123/code/round14_backend.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/round14_backend.py",
+      "bytes": 16694,
+      "sha256": "98242731c8d882a874d570f23c336600abc7b048df775ce8248be2131e169290"
+    },
+    "studies/stage17_20261123/code/round8_convex_audit.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/round8_convex_audit.py",
+      "bytes": 3049,
+      "sha256": "eaa690269030f548fae56f267a558349ad6dcd77d57f0480751a70f8c7a00a0c"
+    },
+    "studies/stage17_20261123/code/run_round14_episode.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/run_round14_episode.py",
+      "bytes": 15368,
+      "sha256": "5b24212d06db90f1e08fc2cf1cba869b0a8585232beab3544ead661c7f4c7e17"
+    },
+    "studies/stage17_20261123/code/run_stage14.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage14.py",
+      "bytes": 4910,
+      "sha256": "9932e0a27fddaaa175ffedf69d54a0b0aa1ede2e5f2e5e7e4719e4775ecd090b"
+    },
+    "studies/stage17_20261123/code/run_stage17.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+      "bytes": 5902,
+      "sha256": "b54c0fb653df17935fcb475e8348ef2f5d5b78b7c647b0218fc0ba610c5c6a70"
+    },
+    "studies/stage17_20261123/code/stage13_recovery.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage13_recovery.py",
+      "bytes": 14057,
+      "sha256": "e367ff5920c8b25810cecef84c1385d5ffba792fff464bd2ef46fd12166b599a"
+    },
+    "studies/stage17_20261123/code/stage14_build_recovery.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage14_build_recovery.py",
+      "bytes": 2855,
+      "sha256": "8983a29a8f9a822b9ad6e40dedc0c03f8b3dfd4e82e2a1b6f9cd91459c10b5d8"
+    },
+    "studies/stage17_20261123/code/stage14_geometry.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage14_geometry.py",
+      "bytes": 5027,
+      "sha256": "afcd9723e49265ec374b7a992c7a4c86b4df1147e55ca97fc043e372e866e446"
+    },
+    "studies/stage17_20261123/code/stage14_resources.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage14_resources.py",
+      "bytes": 1427,
+      "sha256": "7e2a3293359be02825f5e9328b3c5178d1b2097e0a78e6dfda51cbfb7b5725d7"
+    },
+    "studies/stage17_20261123/code/stage14_shape_fit.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage14_shape_fit.py",
+      "bytes": 5041,
+      "sha256": "455bd83a9634903598b03bbbf2f91bca9c4795a46c5aa5cc667c5821c6e6d6f1"
+    },
+    "studies/stage17_20261123/code/stage14_surface_pair.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage14_surface_pair.py",
+      "bytes": 3846,
+      "sha256": "77438ff6e927874e1e1e8d6441b89355e19d9f4ac0de4e882c31dd645726c652"
+    },
+    "studies/stage17_20261123/code/stage15_build_controller.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_build_controller.py",
+      "bytes": 4060,
+      "sha256": "5d37aa12f6ae1fa635738df9836d68bda86774f6385546b98a7abda66909112f"
+    },
+    "studies/stage17_20261123/code/stage15_control.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_control.py",
+      "bytes": 13018,
+      "sha256": "6770e900fb01e06446d7880c880494612b149ecc414ab7600f9343d8ddfd2a5d"
+    },
+    "studies/stage17_20261123/code/stage15_readout.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_readout.py",
+      "bytes": 6870,
+      "sha256": "0855c7b1b178aaacb905267d6c555eb3edf9f2f66ea93d94e460911aca843c38"
+    },
+    "studies/stage17_20261123/code/stage15_runtime.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_runtime.py",
+      "bytes": 9589,
+      "sha256": "717ac6d272f61126150e77548c5ef12fe871faae8f460555b69e7530537178d3"
+    },
+    "studies/stage17_20261123/code/stage16_backend.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_backend.py",
+      "bytes": 6269,
+      "sha256": "a78ffd7301544b71386021d60af2f64d2115630bb9e9bbcb6cb8c51dfbe281a3"
+    },
+    "studies/stage17_20261123/code/stage16_build_controller.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_build_controller.py",
+      "bytes": 1526,
+      "sha256": "6742932d3a4e47ce1ffb3b09f92a7da3dcd1555cb6e95d7d70d0321acea3cea6"
+    },
+    "studies/stage17_20261123/code/stage16_episode.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_episode.py",
+      "bytes": 2750,
+      "sha256": "08e3d68b2df240e1aa8a89c0fd210e4998236e9a3a9f85a189fc7729d1ec8eba"
+    },
+    "studies/stage17_20261123/code/stage16_numerics_overlay.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_numerics_overlay.py",
+      "bytes": 5787,
+      "sha256": "48c39380e529253d02450f14e2368524040bf09b71b32ad9bcfe4c87befc6096"
+    },
+    "studies/stage17_20261123/code/stage17_build_controller.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_build_controller.py",
+      "bytes": 817,
+      "sha256": "c5f15cbf25781f367baec756d0554621ad38b342720c2804526c49469bb4a1f0"
+    },
+    "studies/stage17_20261123/code/stage17_light_batch.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_light_batch.py",
+      "bytes": 2395,
+      "sha256": "575c8a93194df6bbcdb31e28d475a0983a366b1f64ebc06b46161e953a7032ce"
+    },
+    "studies/stage17_20261123/code/stage17_light_batch_v2.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_light_batch_v2.py",
+      "bytes": 1996,
+      "sha256": "02e19d30839d15bcfb7ff7a78cced72c1a1f1b71b43e05452f393bc720dd9941"
+    },
+    "studies/stage17_20261123/code/stage17_lighting.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_lighting.py",
+      "bytes": 1196,
+      "sha256": "7a3f71c49b0e8216d51993cf093ae9af7e7c8c3afa9b0636bd17bd4ab5928156"
+    },
+    "studies/stage17_20261123/code/stage17_replay.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_replay.py",
+      "bytes": 2167,
+      "sha256": "528cf6c4dee6ea3e72fda0f83a3e2894c07087fbee28c8b8436eeff57f10d7e1"
+    },
+    "studies/stage17_20261123/code/stage17_v_replay.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_v_replay.py",
+      "bytes": 4079,
+      "sha256": "b6562151598ef0d7229aceedc263857754d40181054c553900c6353eac55cd59"
+    },
+    "studies/stage17_20261123/code/stage2_contact_audit.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage2_contact_audit.py",
+      "bytes": 1519,
+      "sha256": "e01b16c6403fad404e2206235f74a72afa175ba244e41774f0c06355e066e5f1"
+    },
+    "studies/stage17_20261123/code/stage4_episode.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage4_episode.py",
+      "bytes": 1145,
+      "sha256": "7b23a4f2f0dc40888bff246b2e7f319a93934b0d8850ccadb5fbb7fbd4b72da6"
+    },
+    "studies/stage17_20261123/code/stage5_control.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage5_control.py",
+      "bytes": 45253,
+      "sha256": "e587723555a10ee4beee9d6085909046b7de1ec012d083ad72a759af600a8131"
+    },
+    "studies/stage17_20261123/code/stage9_backend.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_backend.py",
+      "bytes": 8715,
+      "sha256": "bc5fdc591c8bf88fa7afc5af7aa72f1e5423e2153aaf80d3f3a7fae8f6e6703a"
+    },
+    "studies/stage17_20261123/code/stage9_config.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_config.json",
+      "bytes": 908,
+      "sha256": "ea8f7b81a8d3e2e66a1d0f18fdc4c46258efa07d680427048d4176cfdb7ca376"
+    },
+    "studies/stage17_20261123/code/stage9_control.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_control.py",
+      "bytes": 4929,
+      "sha256": "f7edf1d6cff4082b78beb7d1231fb466e94f7ca6741ab98314003944bf7301b1"
+    },
+    "studies/stage17_20261123/code/stage9_frames.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_frames.py",
+      "bytes": 1242,
+      "sha256": "ba486a68ca3ed589cf07b39c2ef87d970c6634fb5ba98e515d7c636128956d51"
+    },
+    "studies/stage17_20261123/code/stage9_observation.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_observation.py",
+      "bytes": 3814,
+      "sha256": "33f3ddc59ec7b0d05ceae6a38168aa8b822fa1c3f277ddd06752e5d9643fd581"
+    },
+    "studies/stage17_20261123/code/stage9_recording.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage9_recording.py",
+      "bytes": 2582,
+      "sha256": "5cd847bb0bea09473f7af374223124927d3311c98fef2c2507e8d8bf23c8eeff"
+    },
+    "studies/stage17_20261123/code/visual_controller.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/visual_controller.py",
+      "bytes": 204255,
+      "sha256": "b686f9a8e7675b3c0a1692ae704987d28c883b9b4875250038439d7e459843d4"
+    },
+    "studies/stage17_20261123/code/visual_observation.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/visual_observation.py",
+      "bytes": 7287,
+      "sha256": "d01e0c831a99b48e0183d6f7085142169f7f019d2b64bfa65ab4e15b0ba9c58a"
+    },
+    "studies/stage17_20261123/code/worker.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/worker.py",
+      "bytes": 2405,
+      "sha256": "4e09648ceced078fcb6a553cd41fe1130cb9a321dc7880eb05177cc8dd36957f"
+    },
+    "studies/stage17_20261123/contact_capture/actual_contacts_summary.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/actual_contacts_summary.json",
+      "bytes": 15908,
+      "sha256": "7f61f94cd5bb33d42659322920c58907c993b2c4c04f8b555a6126defd1130f0"
+    },
+    "studies/stage17_20261123/contact_capture/hold_native_contacts.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/hold_native_contacts.csv",
+      "bytes": 516999,
+      "sha256": "9a3182b305fd8bc2a1c9c384dd0673012cd14e90147993b2ff0ef79f34146f19"
+    },
+    "studies/stage17_20261123/controllers/clean_hs.provenance.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/clean_hs.provenance.json",
+      "bytes": 938,
+      "sha256": "68e64b8d8de6c206175158b336210120a7d6ad391cbe2400789a4402ae0dd9ab"
+    },
+    "studies/stage17_20261123/controllers/clean_hs.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/clean_hs.py",
+      "bytes": 299035,
+      "sha256": "77602eb3a0f7e6de65ded25252572d4ae5f7acc10cbf703a2ebbfcb62e2bd89f"
+    },
+    "studies/stage17_20261123/controllers/clean_legacy.provenance.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/clean_legacy.provenance.json",
+      "bytes": 942,
+      "sha256": "b63b5bad4a73696c2e764f5447e5e212123370182ada530951475ff8085c201c"
+    },
+    "studies/stage17_20261123/controllers/clean_legacy.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/clean_legacy.py",
+      "bytes": 299039,
+      "sha256": "1d5c2c2bd418fe6a5dfb6ad435f7794e56b699c61ab663e04e4965f3589ee247"
+    },
+    "studies/stage17_20261123/controllers/hs.provenance.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/hs.provenance.json",
+      "bytes": 938,
+      "sha256": "7af9ef55270999797992c4d71d50d088ffb3f0700e0dd9db445c9f867bd86103"
+    },
+    "studies/stage17_20261123/controllers/hs.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/hs.py",
+      "bytes": 305908,
+      "sha256": "7e6865a8c6db06d46b0f501ad406a13d4fe25c26c8a51d36fbcbecee76e8d638"
+    },
+    "studies/stage17_20261123/controllers/hs_v2.provenance.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/hs_v2.provenance.json",
+      "bytes": 938,
+      "sha256": "8636eca8008aa5d272ba70eed2d9e5d602ad553a5eba0e9432bd4889803ef3a7"
+    },
+    "studies/stage17_20261123/controllers/hs_v2.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/hs_v2.py",
+      "bytes": 299239,
+      "sha256": "66b685a974f5823c5f00618ed9c258f1a8911a4c46a14efdea046d75f8032e7c"
+    },
+    "studies/stage17_20261123/controllers/legacy.provenance.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/legacy.provenance.json",
+      "bytes": 942,
+      "sha256": "ff3828e987171daf81295918a0985d1f08e52f8aca22a488c1deb09f81d574c0"
+    },
+    "studies/stage17_20261123/controllers/legacy.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/legacy.py",
+      "bytes": 305912,
+      "sha256": "62abf8b156517d56794f73b4b64f4c5a72d78f6c5609f01c3be068357da18244"
+    },
+    "studies/stage17_20261123/controllers/stage16_frozen.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/controllers/stage16_frozen.py",
+      "bytes": 306740,
+      "sha256": "c13c0bce278e3fa3e04308446e52b6307804ae3412e2c66c5cacbc2c35eae2f7"
+    },
+    "studies/stage17_20261123/figures/20_safe_external.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/20_safe_external.png",
+      "bytes": 197310,
+      "sha256": "0f057eddc8ea32597688a4644f62d82196299a808c2df074e909afe2b2db63d6"
+    },
+    "studies/stage17_20261123/figures/20_safe_near_consecutive.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/20_safe_near_consecutive.png",
+      "bytes": 637714,
+      "sha256": "8bee28ab2be8c3c70d61ff03cf9f16b1c83a50337dbf74a0d8a11a8f9eb71fe2"
+    },
+    "studies/stage17_20261123/figures/20_safe_side_geometry.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/20_safe_side_geometry.png",
+      "bytes": 193923,
+      "sha256": "f71fd743dc8ed2f592c73f7835cceea319f81e18065ce9dcbfa4c99e7d86c7a4"
+    },
+    "studies/stage17_20261123/figures/B_external.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/B_external.png",
+      "bytes": 285702,
+      "sha256": "fb721a412073048eaaf9862d6dd0ac9992fd2266616ced676897ca6249b2fba3"
+    },
+    "studies/stage17_20261123/figures/B_near_consecutive.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/B_near_consecutive.png",
+      "bytes": 713577,
+      "sha256": "2eade62b15139c912c62c7480c38066f30ba0a9c2b9c934a2d1cea2bb598f4c7"
+    },
+    "studies/stage17_20261123/figures/B_side_geometry.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/B_side_geometry.png",
+      "bytes": 184520,
+      "sha256": "42614833d47ea753bf3f517d30999ecc5198de260fac0768b2f654e0a25192e4"
+    },
+    "studies/stage17_20261123/figures/C_external.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/C_external.png",
+      "bytes": 302702,
+      "sha256": "917fe2c4dbc30faf478175a53569c78de942739bf2d2e0da74df9f20ad3eee56"
+    },
+    "studies/stage17_20261123/figures/C_near_consecutive.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/C_near_consecutive.png",
+      "bytes": 700206,
+      "sha256": "3fee8792fc1912ab2c68536cb036e0a10c2f106f3bc2f6bbb520781695edbeeb"
+    },
+    "studies/stage17_20261123/figures/C_side_geometry.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/C_side_geometry.png",
+      "bytes": 248318,
+      "sha256": "9cd67267257d941ac15da4a2e9159617dfa010e1078e3af2ab938fb1f46b51a8"
+    },
+    "studies/stage17_20261123/figures/D0_external.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/D0_external.png",
+      "bytes": 271041,
+      "sha256": "06609ee9667636ab714a3b1031681d51f6350fd07725e894f843b66963a672a1"
+    },
+    "studies/stage17_20261123/figures/D0_near_consecutive.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/D0_near_consecutive.png",
+      "bytes": 725835,
+      "sha256": "ed4178288d7bade8ea417e89cc63d7ed486e0be5c977e74a14df224db85f5ac0"
+    },
+    "studies/stage17_20261123/figures/D20.4_external.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/D20.4_external.png",
+      "bytes": 273465,
+      "sha256": "82105644dd904be31ed379416881e1bacc2ceedd9214ca28b8ae74b38a74cea9"
+    },
+    "studies/stage17_20261123/figures/D20.4_near_consecutive.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/D20.4_near_consecutive.png",
+      "bytes": 1966856,
+      "sha256": "431ccdf8cda339ac8304efa09cfc1c902efcd041906640d9d6e2cbec582638ba"
+    },
+    "studies/stage17_20261123/figures/D_side_geometry.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/D_side_geometry.png",
+      "bytes": 188673,
+      "sha256": "36afc03033afbbbe3f706e58169c7a0343a551bd1dfbbd45c500e2bbc622cc0a"
+    },
+    "studies/stage17_20261123/figures/first_rejected_20_34.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/first_rejected_20_34.png",
+      "bytes": 494098,
+      "sha256": "99223014b91da610513e979878dbccca610c71f2b637854c16587cce1623d422"
+    },
+    "studies/stage17_20261123/figures/middle_three_views.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/middle_three_views.png",
+      "bytes": 333408,
+      "sha256": "04ee6ff7b643cec9f2571a71fa137f644a1a258157f1aceb2294915c363d5224"
+    },
+    "studies/stage17_20261123/figures/v_floor.png": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/figures/v_floor.png",
+      "bytes": 279083,
+      "sha256": "5cba598e5793710cd46ff6079a7cf4a738e527562a9496106d938be87d7fe891"
+    },
+    "studies/stage17_20261123/first_rejected_20_34.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/first_rejected_20_34.json",
+      "bytes": 12743,
+      "sha256": "ee1e629a9fbddecd6a59ced41a8f0b8dbd65f3d26159cdb6d1e0ddd4597fdef0"
+    },
+    "studies/stage17_20261123/gates/REPORT.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/REPORT.txt",
+      "bytes": 7998,
+      "sha256": "7eb8f5f98e533648ce4422a87f4db201f4ba79e0439d1535a4beb8cd3bb86982"
+    },
+    "studies/stage17_20261123/gates/attempts.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/attempts.csv",
+      "bytes": 5924,
+      "sha256": "977790db1093af20a32deed1186353a8ae02958d48df04e693af4002b7fd9a3f"
+    },
+    "studies/stage17_20261123/gates/first_gates.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/first_gates.csv",
+      "bytes": 8995,
+      "sha256": "4d1aa80347eaa39a84192fb4e5226f39d2e0e30273179afc19230b1d32268481"
+    },
+    "studies/stage17_20261123/gates/geometry_recompute.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/geometry_recompute.csv",
+      "bytes": 3407,
+      "sha256": "65b3ef92b8623a39e3b75a262d16431e06b02fef45831a8934f96e327e585b64"
+    },
+    "studies/stage17_20261123/gates/recovery_events.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/recovery_events.csv",
+      "bytes": 33237,
+      "sha256": "ad2da8f0c8f2465aeb7ee72c04d9592d7bfa2a0ef71211b78416bf7a4e1eafba"
+    },
+    "studies/stage17_20261123/geometry_figure_provenance.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/geometry_figure_provenance.json",
+      "bytes": 8572,
+      "sha256": "536b3796c3ada301e713518767a5e1215fed53cf3a9b070ea2777c79e58573ec"
+    },
+    "studies/stage17_20261123/initial_mask_audit.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/initial_mask_audit.json",
+      "bytes": 3807,
+      "sha256": "681d8628da2f54c04b7f29abd898f2eda5b3bab56ff43d8f589cab8b395feecd"
+    },
+    "studies/stage17_20261123/lighting_diagnostics.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/lighting_diagnostics.csv",
+      "bytes": 8522,
+      "sha256": "b515b89a61c203a677b8a27c6de5a0765d34cb07ffa7775bda97af9b45d1553f"
+    },
+    "studies/stage17_20261123/lighting_episodes.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/lighting_episodes.csv",
+      "bytes": 5023,
+      "sha256": "3996a16247bf993ce81a7e60b4d4060ab692006ef67feb76b2973f15a5750c37"
+    },
+    "studies/stage17_20261123/lighting_pairs.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/lighting_pairs.csv",
+      "bytes": 280,
+      "sha256": "4a1f42a88fd15631dd8078da479493282a05c97beabbe891f3a861fc12296cc6"
+    },
+    "studies/stage17_20261123/lighting_plan.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/lighting_plan.json",
+      "bytes": 11519,
+      "sha256": "e6cadd35c1ba58165919336313bffbac4ec41dc1fee684e13e0d54a5d4d28fc5"
+    },
+    "studies/stage17_20261123/lighting_plan_v2.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/lighting_plan_v2.json",
+      "bytes": 4669,
+      "sha256": "dc3f560cd2fbecc76f5575964e16d54ecc5a4dfb616797063e4808a420916325"
+    },
+    "studies/stage17_20261123/lighting_readout.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/lighting_readout.json",
+      "bytes": 176098,
+      "sha256": "75a1d1ea324fa623c004fc5f7f9db13d8f5d7dd607b89e431b171cf62539755a"
+    },
+    "studies/stage17_20261123/middle_usd_equivalence.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/middle_usd_equivalence.json",
+      "bytes": 2613,
+      "sha256": "7905296bf8a4881ca31210a5b7cb6d284f74ca5cca27b2aa7a1b87502546d92f"
+    },
+    "studies/stage17_20261123/near_video_frames.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/near_video_frames.json",
+      "bytes": 7703,
+      "sha256": "09a716dac26852e315b28cec5b5e6ce0c41d46ff74928e823cf8bde6ed5ff8ae"
+    },
+    "studies/stage17_20261123/rendered_brightness.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/rendered_brightness.csv",
+      "bytes": 10017,
+      "sha256": "80ac7a7291ed72e6199b04a6ad2d9e3609fd994a9ca125613ef047436c5192a5"
+    },
+    "studies/stage17_20261123/stage16_public_readback.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/stage16_public_readback.json",
+      "bytes": 310,
+      "sha256": "b5ccbfcfbcd3e10c2b8b9ab31539445d51e903bd34257d35b62c985893a00bd3"
+    },
+    "studies/stage17_20261123/tools/check_middle_usd.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/tools/check_middle_usd.py",
+      "bytes": 1933,
+      "sha256": "200be5b26c7edc6429595d6745779f07ee1ba7bffa741ac2bd914133b363cd23"
+    },
+    "studies/stage17_20261123/tools/checks.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/tools/checks.py",
+      "bytes": 2233,
+      "sha256": "104700a01e3533c4b3e96b918516a177d2454da6db1dc23cee6610f4b12e8591"
+    },
+    "studies/stage17_20261123/tools/collect_lighting.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/tools/collect_lighting.py",
+      "bytes": 3536,
+      "sha256": "6872cfd2d3077c03e0a308fb6cddb4d60aa6b9aa7dd812ed9b810f65261daa3d"
+    },
+    "studies/stage17_20261123/tools/finalize_report.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/tools/finalize_report.py",
+      "bytes": 7525,
+      "sha256": "2db2a412a4b934054f62821cbce7cf06d2cc118edd7e776171e1f06f267da69d"
+    },
+    "studies/stage17_20261123/tools/initial_mask_audit.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/tools/initial_mask_audit.py",
+      "bytes": 1148,
+      "sha256": "8ca5e507b29da9950152277bb4783e6f79b7d7d37fa2f3bc0a585750fe19818a"
+    },
+    "studies/stage17_20261123/tools/offline_review.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/tools/offline_review.py",
+      "bytes": 8214,
+      "sha256": "0627646f08aec46ee19a096a4eccddac7af0b68d20079c7e48170b3e1a96f6a5"
+    },
+    "studies/stage17_20261123/tools/summarize_perception.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/tools/summarize_perception.py",
+      "bytes": 2500,
+      "sha256": "3567988b3a99ecdfb58f0742fb2be90290879f9777eb0ae11b1df64ce59b91e8"
+    },
+    "studies/stage17_20261123/tools/v_floor.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/tools/v_floor.py",
+      "bytes": 1928,
+      "sha256": "a9e3bf38abe2e656a1ecddadee628aff7160928a7b0448453ad736253c8fba48"
+    },
+    "studies/stage17_20261123/v_floor.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_floor.csv",
+      "bytes": 5487,
+      "sha256": "ad5e1fdc0c8bcbd9c00c765723b51b7af59ee4e73201c104638d668be2696629"
+    },
+    "studies/stage17_20261123/v_replay/geometry.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_replay/geometry.csv",
+      "bytes": 5513,
+      "sha256": "b818df561f3828b54c55d5746f4207960a5eafcaa3855149763620f29b789d55"
+    },
+    "studies/stage17_20261123/v_replay/pixels.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_replay/pixels.csv",
+      "bytes": 59663,
+      "sha256": "ba0d4486cb63cc6bb40b35653b8c804f68db058f75b4a546b425c9c057ce7b77"
+    },
+    "studies/stage17_20261123/v_replay/provenance.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_replay/provenance.json",
+      "bytes": 5554,
+      "sha256": "e3dc0929eb219c5b371c1b51cf6311858a812f93be8df50c87883c00ce8fe5ca"
+    },
+    "studies/stage17_20261123/v_replay/summary.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_replay/summary.csv",
+      "bytes": 2461,
+      "sha256": "06c1c642bc31ca831392808f6a1cf854941eaca6239968976e792e9332561dfd"
+    },
+    "studies/stage17_20261123/v_replay_v2/geometry.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_replay_v2/geometry.csv",
+      "bytes": 5869,
+      "sha256": "c5eecd5083ac3d3dfd955ce1aed09f91c31816a839d0536bdb033df6ff9a3ba6"
+    },
+    "studies/stage17_20261123/v_replay_v2/pixels.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_replay_v2/pixels.csv",
+      "bytes": 59961,
+      "sha256": "0e11635438c6b39f0d20f11e7e97430dcb0967dfd20022c2658d8f49ca6906ff"
+    },
+    "studies/stage17_20261123/v_replay_v2/provenance.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_replay_v2/provenance.json",
+      "bytes": 5554,
+      "sha256": "7f47e718a70bc2807c151a4a8cd154b8b04396fde2705b7867afd23a894b5b51"
+    },
+    "studies/stage17_20261123/v_replay_v2/summary.csv": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/v_replay_v2/summary.csv",
+      "bytes": 2551,
+      "sha256": "cfaa55fafe8482d6df1c82505f7102817f17cefa5973caaa35559ba3e63f6f3d"
+    },
+    "studies/stage17_20261123/video_frames.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/video_frames.json",
+      "bytes": 9512,
+      "sha256": "90646765f3aaaa09be915c0e5042d60902fbd7e2537b96f4d905fdd29668f829"
+    }
+  }
+}

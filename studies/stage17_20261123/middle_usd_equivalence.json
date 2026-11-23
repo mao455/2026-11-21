@@ -1,0 +1,71 @@
+{
+  "scope": "authored mesh geometry in each body local frame, not cooked PhysX pieces",
+  "usd": "/home/CNS2025331827/docs/fingereye_stage16_contact_closeout/FingerEyeLab/assets/xhand3camFE_left/planning/xhand3camFE_left_usd_convex_decomposition/xhand3camFE_left.usd",
+  "usd_sha256": "6133740229baabbaaaf45ae35b77b7f63b5d1d7282d80d062be5af8db3d503f0",
+  "urdf": "/home/CNS2025331827/docs/fingereye_stage16_contact_closeout/FingerEyeLab/assets/xhand3camFE_left/planning/xhand3camFE_left_floating.urdf",
+  "urdf_sha256": "c4f906a3ca73426367de4015eb42098c80ed5a7abe0d6aea7f13807c3920cdb8",
+  "mesh_checks": [
+    {
+      "link": "left_hand_middle_link2",
+      "urdf_vertices": 8867,
+      "usd_vertices": 8867,
+      "urdf_faces": 17952,
+      "usd_faces": 17952,
+      "bidirectional_nearest_vertex_max_m": 0.0,
+      "passed": true
+    },
+    {
+      "link": "left_hand_middle_camera_component1_link",
+      "urdf_vertices": 8831,
+      "usd_vertices": 8831,
+      "urdf_faces": 17610,
+      "usd_faces": 17610,
+      "bidirectional_nearest_vertex_max_m": 0.0,
+      "passed": true
+    },
+    {
+      "link": "left_hand_middle_camera_component2_link",
+      "urdf_vertices": 82,
+      "usd_vertices": 82,
+      "urdf_faces": 160,
+      "usd_faces": 160,
+      "bidirectional_nearest_vertex_max_m": 0.0,
+      "passed": true
+    },
+    {
+      "link": "left_hand_middle_camera_component3_link",
+      "urdf_vertices": 32,
+      "usd_vertices": 32,
+      "urdf_faces": 60,
+      "usd_faces": 60,
+      "bidirectional_nearest_vertex_max_m": 0.0,
+      "passed": true
+    }
+  ],
+  "usd_collision_manifest": [
+    {
+      "path": "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2/node_STL_BINARY_/mesh",
+      "approximation": "convexDecomposition",
+      "vertices": 8867,
+      "faces": 17952
+    },
+    {
+      "path": "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link/node_STL_BINARY_/mesh",
+      "approximation": "convexDecomposition",
+      "vertices": 8831,
+      "faces": 17610
+    },
+    {
+      "path": "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link/node_STL_BINARY_/mesh",
+      "approximation": "convexDecomposition",
+      "vertices": 82,
+      "faces": 160
+    },
+    {
+      "path": "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link/node_STL_BINARY_/mesh",
+      "approximation": "convexDecomposition",
+      "vertices": 32,
+      "faces": 60
+    }
+  ]
+}

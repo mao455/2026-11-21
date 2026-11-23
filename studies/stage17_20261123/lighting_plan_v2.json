@@ -1,0 +1,140 @@
+[
+  {
+    "name": "A_L1_hs_v2",
+    "case": "A",
+    "light": 1.0,
+    "argv": [
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+      "--session",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/stage17/lighting_v2/A_L1_hs_v2",
+      "--case-file",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cases/A.json",
+      "--asset-root",
+      "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab",
+      "--color-mode",
+      "hs",
+      "--light-multiplier",
+      "1.0",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal"
+    ]
+  },
+  {
+    "name": "B_L1_hs_v2",
+    "case": "B",
+    "light": 1.0,
+    "argv": [
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+      "--session",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/stage17/lighting_v2/B_L1_hs_v2",
+      "--case-file",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cases/B.json",
+      "--asset-root",
+      "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab",
+      "--color-mode",
+      "hs",
+      "--light-multiplier",
+      "1.0",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal"
+    ]
+  },
+  {
+    "name": "A_L0.4_hs_v2",
+    "case": "A",
+    "light": 0.4,
+    "argv": [
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+      "--session",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/stage17/lighting_v2/A_L0.4_hs_v2",
+      "--case-file",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cases/A.json",
+      "--asset-root",
+      "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab",
+      "--color-mode",
+      "hs",
+      "--light-multiplier",
+      "0.4",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal"
+    ]
+  },
+  {
+    "name": "B_L0.4_hs_v2",
+    "case": "B",
+    "light": 0.4,
+    "argv": [
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+      "--session",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/stage17/lighting_v2/B_L0.4_hs_v2",
+      "--case-file",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cases/B.json",
+      "--asset-root",
+      "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab",
+      "--color-mode",
+      "hs",
+      "--light-multiplier",
+      "0.4",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal"
+    ]
+  },
+  {
+    "name": "A_L1.6_hs_v2",
+    "case": "A",
+    "light": 1.6,
+    "argv": [
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+      "--session",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/stage17/lighting_v2/A_L1.6_hs_v2",
+      "--case-file",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cases/A.json",
+      "--asset-root",
+      "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab",
+      "--color-mode",
+      "hs",
+      "--light-multiplier",
+      "1.6",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal"
+    ]
+  },
+  {
+    "name": "B_L1.6_hs_v2",
+    "case": "B",
+    "light": 1.6,
+    "argv": [
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+      "--session",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/stage17/lighting_v2/B_L1.6_hs_v2",
+      "--case-file",
+      "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage17_evidence/cases/B.json",
+      "--asset-root",
+      "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab",
+      "--color-mode",
+      "hs",
+      "--light-multiplier",
+      "1.6",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal"
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "removed_methods": [
+    "_geometry_Stage3LiveVolume.frames",
+    "_geometry_Stage3LiveVolume.carve"
+  ],
+  "delegated_method": "_R13_CHECKER.check -> _S6_BASE_CHECK",
+  "removed_wrapper": "_s9_volume_frames",
+  "reason": "derived implementation unconditionally replaces base; one exact mesh check implementation and one exposure adapter",
+  "historical_sources_retained": [
+    "stage5_control.policy_main",
+    "stage13_recovery.policy_main",
+    "stage13_recovery.s13_preload"
+  ],
+  "historical_reason": "legacy profile fallback and captured aliases still reference these; frozen controllers remain artifacts"
+}

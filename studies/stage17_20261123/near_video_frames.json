@@ -1,0 +1,182 @@
+[
+  {
+    "case": "20_safe",
+    "video": "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab/outputs/stage16/diagnostic/20_safe/episode/fingereye_30fps.mp4",
+    "frame": 894,
+    "time_s": 29.8
+  },
+  {
+    "case": "20_safe",
+    "video": "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab/outputs/stage16/diagnostic/20_safe/episode/fingereye_30fps.mp4",
+    "frame": 895,
+    "time_s": 29.833333333333332
+  },
+  {
+    "case": "20_safe",
+    "video": "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab/outputs/stage16/diagnostic/20_safe/episode/fingereye_30fps.mp4",
+    "frame": 896,
+    "time_s": 29.866666666666667
+  },
+  {
+    "case": "20_safe",
+    "video": "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab/outputs/stage16/diagnostic/20_safe/episode/fingereye_30fps.mp4",
+    "frame": 942,
+    "time_s": 31.4
+  },
+  {
+    "case": "20_safe",
+    "video": "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab/outputs/stage16/diagnostic/20_safe/episode/fingereye_30fps.mp4",
+    "frame": 943,
+    "time_s": 31.433333333333334
+  },
+  {
+    "case": "20_safe",
+    "video": "/home/CNS2025331827/docs/fingereye_stage16/FingerEyeLab/outputs/stage16/diagnostic/20_safe/episode/fingereye_30fps.mp4",
+    "frame": 944,
+    "time_s": 31.466666666666665
+  },
+  {
+    "case": "B",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/recovery_poseB_seed15002/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 840,
+    "time_s": 28.0
+  },
+  {
+    "case": "B",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/recovery_poseB_seed15002/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 841,
+    "time_s": 28.033333333333335
+  },
+  {
+    "case": "B",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/recovery_poseB_seed15002/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 842,
+    "time_s": 28.066666666666666
+  },
+  {
+    "case": "B",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/recovery_poseB_seed15002/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1650,
+    "time_s": 55.0
+  },
+  {
+    "case": "B",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/recovery_poseB_seed15002/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1651,
+    "time_s": 55.03333333333333
+  },
+  {
+    "case": "B",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/recovery_poseB_seed15002/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1652,
+    "time_s": 55.06666666666667
+  },
+  {
+    "case": "C",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/hard_poseC_seed15003/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 885,
+    "time_s": 29.5
+  },
+  {
+    "case": "C",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/hard_poseC_seed15003/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 886,
+    "time_s": 29.533333333333335
+  },
+  {
+    "case": "C",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/hard_poseC_seed15003/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 887,
+    "time_s": 29.566666666666666
+  },
+  {
+    "case": "C",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/hard_poseC_seed15003/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 2280,
+    "time_s": 76.0
+  },
+  {
+    "case": "C",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/hard_poseC_seed15003/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 2281,
+    "time_s": 76.03333333333333
+  },
+  {
+    "case": "C",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/hard_poseC_seed15003/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 2282,
+    "time_s": 76.06666666666666
+  },
+  {
+    "case": "D0",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn0_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 429,
+    "time_s": 14.3
+  },
+  {
+    "case": "D0",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn0_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 430,
+    "time_s": 14.333333333333334
+  },
+  {
+    "case": "D0",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn0_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 431,
+    "time_s": 14.366666666666667
+  },
+  {
+    "case": "D0",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn0_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1197,
+    "time_s": 39.9
+  },
+  {
+    "case": "D0",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn0_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1198,
+    "time_s": 39.93333333333333
+  },
+  {
+    "case": "D0",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn0_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1199,
+    "time_s": 39.96666666666667
+  },
+  {
+    "case": "D20.4",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn20.4_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 429,
+    "time_s": 14.3
+  },
+  {
+    "case": "D20.4",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn20.4_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 430,
+    "time_s": 14.333333333333334
+  },
+  {
+    "case": "D20.4",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn20.4_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 431,
+    "time_s": 14.366666666666667
+  },
+  {
+    "case": "D20.4",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn20.4_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1197,
+    "time_s": 39.9
+  },
+  {
+    "case": "D20.4",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn20.4_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1198,
+    "time_s": 39.93333333333333
+  },
+  {
+    "case": "D20.4",
+    "video": "/home/CNS2025331827/docs/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn20.4_seed15004/launch_001/episode/fingereye_30fps.mp4",
+    "frame": 1199,
+    "time_s": 39.96666666666667
+  }
+]

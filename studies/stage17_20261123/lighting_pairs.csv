@@ -1,0 +1,7 @@
+case,light,baseline,hs_v2,transition,baseline_grasps,hs_grasps,baseline_s,hs_s
+A,0.4,True,True,SS,1,1,35.2,34.7
+B,0.4,False,True,FS,2,2,57.5,49.05
+A,1.0,True,True,SS,1,1,35.2,34.7
+B,1.0,True,True,SS,2,2,50.55,70.5
+A,1.6,True,True,SS,1,1,35.2,34.7
+B,1.6,True,True,SS,2,2,78.1,77.9
