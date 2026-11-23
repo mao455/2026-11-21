@@ -1,0 +1,41 @@
+[
+  {
+    "id": "finalA_dn0",
+    "case": {
+      "object_id": "abc_311740",
+      "dx": -0.0008,
+      "dy": 0.0012,
+      "yaw": -0.2,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 16111,
+      "rgb_noise_std": 0
+    }
+  },
+  {
+    "id": "finalB_dn3",
+    "case": {
+      "object_id": "abc_176242",
+      "dx": 0.0009,
+      "dy": -0.0008,
+      "yaw": 0.18,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 16112,
+      "rgb_noise_std": 3
+    }
+  },
+  {
+    "id": "finalD_dn20.4",
+    "case": {
+      "object_id": "abc_53930",
+      "dx": 0.0006,
+      "dy": 0.0011,
+      "yaw": 0.32,
+      "mass_kg": 0.007,
+      "friction": 0.82,
+      "noise_seed": 16113,
+      "rgb_noise_std": 20.4
+    }
+  }
+]

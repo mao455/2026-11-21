@@ -1,0 +1,14 @@
+{
+  "scope": "Fresh independent raw re-read; no new physical simulation",
+  "source_evidence_commit": "d584af11938b382a2dd7852c53a7b7802239812d",
+  "evaluator_sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+  "physical_cells": 20,
+  "score_mismatches": [],
+  "historical_valid": 14,
+  "historical_invalid": 3,
+  "stage16_valid": 6,
+  "stage16_successes": 5,
+  "raw_file_hashes": 186,
+  "same_exposure_rows": 360,
+  "real_camera_status": "blocked: no authorized driver/static RGB sequence with exposure/gain/ISP/lighting provenance"
+}

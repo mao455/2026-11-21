@@ -1,0 +1,51 @@
+离线复核与物理复跑
+
+本轮已运行：既有stage16_evidence_audit.py一次，以及OFFLINE_AUDIT_SCRIPT.txt的相同
+主体逻辑一次。后者只离线加载USD/原记录，不创建模拟器、不推进物理。15状态原算法
+几何与10回合评分/连续性/实际闭合均通过。脚本文件整合了随后补齐的19个评分前缀表和
+5条历史物理复跑命令；整合后的文件已做语法编译检查，未为它重复有效物理回合。
+
+在源码工作树的FingerEyeLab/experiments/rax_dexbin_tinyobj下运行；激活包含numpy/scipy/
+trimesh/python-fcl/pxr的IsaacLab Python。普通系统python缺scipy，不能用其完成本审计。
+在本机先设置ISAACLAB_PYTHON为现有isaaclab环境python的绝对路径；如搬迁数据，设置
+FINGEREYE_LOCAL_DOCS_ROOT为同时含fingereye_stage15_accept_final、fingereye_stage16_accept、
+fingereye_stage16_accept_final、fingereye_stage16的本地父目录。scene中的原资产路径也必须
+能解析到原哈希资产。原始证据文件位置与SHA256列在source_hashes.csv。
+
+独立离线复核命令（不改原证据；输出目录必须不存在）：
+export FINGEREYE_EXPERIMENT_DIR="$PWD"
+export FINGEREYE_LOCAL_DOCS_ROOT="$(cd ../../../.. && pwd)"
+export FINGEREYE_GATE_AUDIT_OUTPUT=/tmp/stage16_gate_reaudit_new
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 \
+  "$ISAACLAB_PYTHON" stage16_evidence/closeout/gates_recovery/OFFLINE_AUDIT_SCRIPT.txt
+
+上述脚本主审计源为d584af11938b382a2dd7852c53a7b7802239812d；需要evaluator.py、
+round8_convex_audit.py和../rax_tinyobj_round1/geometry.py及原USD/mesh。脚本会比较28个
+碰撞mesh manifest，并调用未加速Audit.check重算三个首坏tick各前后2步。
+USD可能提示视觉reference缺失；本次28个碰撞网格全部加载且manifest精确匹配，不能
+仅因视觉warning把已有有效几何复算改写成阻塞。若碰撞网格未匹配，则不能接受复核。
+
+已有六例审计入口（此次实际输出在/tmp/stage16_public_raw_reaudit）：
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 \
+  "$ISAACLAB_PYTHON" stage16_evidence_audit.py --output /tmp/stage16_raw_reaudit_new
+
+真实仿真复跑：本收尾未再次执行，优先复用原始有效回合。rerun_commands.csv保存B/C/
+D0/D20.4及最终D的原控制模式、配置文件、执行源和完整入口。先从相应execution_source
+创建新工作树，准备原哈希本地资产/标定，进入实验目录；命令中的Python绝对位置按
+本机安装替换，session输出路径必须未使用。不要在当前异版本树直接执行旧命令后称为
+旧版本复跑，不要覆盖原始失败日志。
+
+最终D示例，源码979b5a87cf7a3f47f4f7e8b59d1e8f974ac0682b：
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 \
+  "$ISAACLAB_PYTHON" run_stage16.py \
+  --controller stage16_evidence/release_final/controller.py \
+  --case-file stage16_evidence/acceptance_final/finalD_dn20.4.json \
+  --session ../../outputs/stage16_gate_reproduce/finalD_dn20.4 \
+  --profile fast --fingers two --no-preload --mode minimal --evaluation-mode deferred
+
+解释：CSV中的tick为0起始物理状态编号；记录time_s=(tick+1)/120，命令覆盖区间为
+[start_step,end_step_exclusive)。recovery事件中的step为已经完成的物理步数。
+attempts.csv按累积前缀评分，末240状态为连续2秒窗口；几何仍审查整个前缀，因此能够
+区别“后抓单次抬升通过”和“整回合正式失败”。不允许裁掉前抓几何再冒充正式成功。
+host_elapsed_s来自回合result，含该进程初始化/离线评价，不是真机常驻ready至持稳时延。
+正式40秒时延与完整三例最终验收应读取总交接中的单调时钟表，本包不替它填数。

@@ -1,0 +1,5 @@
+Working tree base: 60b5a7b007f
+Private evaluator sidecar patch only; controller unchanged.
+CWD: <LOCAL_DOCS>/fingereye_stage16_contact_closeout/FingerEyeLab/experiments/rax_dexbin_tinyobj
+S14_DIAGNOSTIC_STOP=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 PYTHONDONTWRITEBYTECODE=1 <ISAACLAB_PYTHON> run_stage16.py --session ../../outputs/stage16_contact_closeout/20_safe_points --case-file stage16_evidence/numerics/cases/20_three.json --controller stage16_evidence/numerics/controllers/20_safe_diagnostic.py --evaluation-mode inline --mode minimal
+<ISAACLAB_PYTHON> is the project IsaacLab Python environment. Case retains its original verified absolute initial_overhead_reference; translate that reference when relocating.

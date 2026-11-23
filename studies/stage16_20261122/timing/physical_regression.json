@@ -1,0 +1,48 @@
+{
+  "scope": "ONE new actual closed-loop simulator regression after an offline-audit/publication-only fix; no hardware; not independent979bheldout acceptance",
+  "row": {
+    "id": "closeout_A_regression",
+    "execution_source": "60b5a7b007fe5c8d52f6a11c31fa66c406238c7a",
+    "controller_sha256": "c13c0bce278e3fa3e04308446e52b6307804ae3412e2c66c5cacbc2c35eae2f7",
+    "configuration_sha256": "db1bd5d5a97dc8979042f2519cad437b1ffa2205d3392939bbff7df201df489c",
+    "case": "{\"dx\": -0.0008, \"dy\": 0.0012, \"friction\": 0.82, \"mass_kg\": 0.007, \"noise_seed\": 16111, \"object_id\": \"abc_311740\", \"rgb_noise_std\": 0, \"yaw\": -0.2}",
+    "execution_valid": true,
+    "success": true,
+    "legacy_strict_success": false,
+    "actual_grasps": 1,
+    "physical_steps": 4224,
+    "physical_s": 35.2,
+    "host_elapsed_s": 93.0475774970837,
+    "ready_to_terminal_rpc_s": 53.26738424599171,
+    "formal_success_wall_within40": false,
+    "first_invalid_step": null,
+    "failure": "success",
+    "raw_score_exact_match": true,
+    "geometry_passed": true,
+    "hold_min_lift_m": 0.031744310465001035,
+    "hold_min_clearance_m": 0.031765973174117196
+  },
+  "episode": "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16_closeout_physical/A_regression/episode",
+  "command": "OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 <ISAAC_PYTHON> run_stage16.py --session ../../outputs/stage16_closeout_physical/A_regression --case-file stage16_evidence/acceptance_final/finalA_dn0.json --asset-root <STAGE16_TREE>/FingerEyeLab --controller stage16_evidence/closeout/release/controller.py --evaluation-mode deferred --phase heldout --mode minimal",
+  "source_sha256": {
+    "result.json": "81f73f9feccc75bbc84a3a3a27d9259dc8047278c678378a51b01fbea07bca37",
+    "steps.jsonl": "c57fbf5485e8d689359ba1549153eb48579b3aef1becca7c06aed2009d247a4f",
+    "agent_trace.jsonl": "6c87856aed5726f22fc279084e61dc6d9439d25efc49e23e3a76b179eb505e73",
+    "image_manifest.jsonl": "689a19b4da5a491241f76a34211fd086a38d4361f6d37d72de47b90814dd4729",
+    "public_responses.jsonl": "d2d5018fc10baebb2afaf13b9c9e37e47ad7906e56605a79737f14d2bbe7797f",
+    "wall_profile_backend.json": "db15be30053bd557e48caeb026d560415f43346479bc4ea8ba2188fe66d24305",
+    "rpc_timing.json": "80d3e363cab52f43e957d6a4aaee8cc1ff477ef58f6f1ca948c7d680232be519"
+  },
+  "actual_speed_diagnostic": {
+    "physics_hz": 120,
+    "max_linear_component_m_s": 0.13545837998390198,
+    "max_angular_joint_rad_s": 1.353289246559143,
+    "linear_violating_steps": 0,
+    "angular_violating_steps": 0
+  },
+  "historical_final_A_comparison": {
+    "all_commands_equal": true,
+    "steps_bytes_equal": true,
+    "old_steps_sha256": "c57fbf5485e8d689359ba1549153eb48579b3aef1becca7c06aed2009d247a4f"
+  }
+}

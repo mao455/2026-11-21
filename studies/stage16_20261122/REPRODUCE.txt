@@ -1,0 +1,70 @@
+Stage16 五项复跑与公开发布
+
+执行版：历史独立验收979b5a87cf7，起点交付d584af11938；本轮离线统计/发布修复60b5a7b007fe5c8d52f6a11c31fa66c406238c7a。
+controller SHA256 c13c0bce278e3fa3e04308446e52b6307804ae3412e2c66c5cacbc2c35eae2f7。
+普通运行需要完整授权代码、当前手私有资产/标定、IsaacLab环境。公开仓库为算法与结构化证据选集，不能单独启动仿真。
+下方设置S16_REPO、S16_PY、S16_ASSET_ROOT为本机完整仓库、isaaclab Python与FingerEyeLab资产根。
+已有输出是不可变证据，每次选择全新S16_OUT；不要覆盖原始失败或重跑到成功后删除失败。
+
+cd "$S16_REPO/FingerEyeLab/experiments/rax_dexbin_tinyobj"
+export OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2
+
+本轮普通入口实际物理回归（刷新freeze仅含离线审计/发布器哈希变化）：
+"$S16_PY" run_stage16.py --session "$S16_OUT/A_regression" \
+ --case-file stage16_evidence/acceptance_final/finalA_dn0.json \
+ --asset-root "$S16_ASSET_ROOT" --controller stage16_evidence/closeout/release/controller.py \
+ --evaluation-mode deferred --phase heldout --mode minimal
+
+原冻结独立三例应在旧标签的新树执行，避免用后续文件冒充历史freeze：
+git -C "$S16_REPO" worktree add --detach "$S16_NEW_TREE" fingereye-stage16-performance-v1
+cd "$S16_NEW_TREE/FingerEyeLab/experiments/rax_dexbin_tinyobj"
+"$S16_PY" stage15_batch.py --runner run_stage16.py \
+ --manifest stage16_evidence/acceptance_final/manifest.json \
+ --asset-root "$S16_NEW_TREE/FingerEyeLab" --controller stage16_evidence/release_final/controller.py \
+ --phase heldout --mode minimal --output "$S16_OUT/acceptance" --concurrency 1 --timeout 1800
+原样重复末尾加--resume。已有有效物理失败也跳过；启动异常/超时新建launch保留旧失败。
+
+两指/三指配对正常入口（精确共享首RGB需要本地归档20.npy/34.npy及对应元数据SHA）：
+"$S16_PY" run_stage16.py --session "$S16_OUT/20_two" \
+ --case-file stage16_evidence/numerics/cases/20_two.json --fingers two \
+ --evaluation-mode deferred --mode minimal
+同场景将two换three或auto；场景20换34。仅改最终法向权重时three追加--normal-weight 4；
+仅改排序时auto追加--margin-tie bounded_relative。原完整命令和controller SHA见numerics/physical/commands.json。
+隔离RGB包络诊断20_safe须显式S14_DIAGNOSTIC_STOP=1与inline，使用原numerics/controllers/20_safe_diagnostic.py；
+原始完整argv见numerics/physical/commands.json。它不属于正常策略，不计正常三指垫成功。
+每条失败的精确首门槛、目标q、物理q/qvel、曝光和时间见gates_recovery/first_gates.csv；
+B/C/D每例命令、配置和版本见gates_recovery/rerun_commands.csv，噪声见noise/commands.csv。
+<LOCAL_DOCS>/<LOCAL_HOME>/<ISAAC_PYTHON>为可移植本地根占位符，不是实际路径。
+
+本轮实际有节拍回放（依次运行A与B，S16_EP指向最终979b归档单个episode目录）：
+cd "$S16_REPO/FingerEyeLab/experiments/rax_dexbin_tinyobj"
+PYTHONPATH="$PWD/stage16_evidence/timing" FINGEREYE_REPLAY_EPISODE="$S16_EP" \
+ "$S16_PY" stage16_realtime_timing.py --adapter recorded_adapter:factory \
+ --controller stage16_evidence/release_final/controller.py --output "$S16_OUT/paced_A"
+B用finalB_dn3_seed16112的episode，输出paced_B。离线审计/发布修改不影响纯controller回放。
+每步50ms同步、采集传输理想零；归档输入不是实机采集，不产生新物理成功。
+
+"$S16_PY" stage16_evidence/closeout/timing_readout.py --raw-root "$S16_FINAL_RAW" \
+ --replay-root stage16_evidence/closeout --output "$S16_OUT/timing"
+"$S16_PY" stage16_evidence_audit.py --output "$S16_OUT/offline_audit"
+"$S16_PY" -m pytest -q test_github_publish.py test_stage16_evidence_audit.py \
+ test_stage16_backend.py test_stage16_numerics.py test_stage16_realtime_timing.py \
+ test_stage15_control.py test_stage15_guard_witnesses.py test_stage15_runtime.py test_stage15_batch_noise.py
+PYTHONPATH=stage16_evidence/timing "$S16_PY" -m unittest -v stage16_evidence/timing/test_recorded_adapter.py
+噪声同曝光回放及原始逐例重裁决详见noise/REPRODUCE.txt；无对应原始数据时不伪造复跑。
+
+真机：缺当前手已授权驱动时阻塞，继续仿真/回放。具备环境后接现成安全factory：
+"$S16_PY" stage16_realtime_timing.py --adapter MODULE:factory \
+ --controller stage16_evidence/closeout/release/controller.py --output "$S16_OUT/hardware"
+factory须提供robot_description/observe/step/note/evaluate/close，实测q/qvel、六相机曝光/帧ID/同调时钟，
+evaluate须提供独立正式结果与perf_counter上的稳定保持完成时间。未实现factory时模板不是可运行真机证据。
+
+公开导出与发布（现有发布器的显式研究增量模式，只推用户指定公开仓库）：
+"$S16_PY" stage16_evidence/closeout/build_public.py
+"$S16_PY" publish_github.py --config stage16_publication.json \
+ --only research --preserve-unlisted --work-root "$S16_OUT/publish_prepare"
+核验准备回执和显式清单后实际发布：
+"$S16_PY" publish_github.py --config stage16_publication.json \
+ --only research --preserve-unlisted --work-root "$S16_OUT/publish_push" --push
+本轮明确授权推送mao455/2026-11-21的main。无force，不上传私有资产/凭据/图片/大日志，不删除旧Stage13对照。
+推送后核对git ls-remote SHA，并匿名HTTP打开该SHA对应REPORT.md与cases.csv核对字节SHA。

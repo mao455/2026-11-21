@@ -1,0 +1,10 @@
+{
+  "source_fix_commit": "60b5a7b007fe5c8d52f6a11c31fa66c406238c7a",
+  "targeted_tests_passed": 53,
+  "targeted_elapsed_s": 10.0,
+  "recorded_adapter_tests_passed": 4,
+  "adapter_elapsed_s": 0.006,
+  "first_development_failure": "Center column fix initially rejected six missing/invisible centers per dose; preserved and corrected to explicit missing counts",
+  "old_failed_test_sha256": "40bd47ee2bfa92aa1002292c67598e3f9f0076dac989a7e0ef70c2612dea26f2",
+  "targeted_log_sha256": "e9b99dd56a55292d596c8e3232ddee215093626ade55e5275531f66e6a7caf39"
+}

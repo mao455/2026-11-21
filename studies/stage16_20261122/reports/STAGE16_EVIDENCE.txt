@@ -1,0 +1,180 @@
+Stage16 历史证据、门槛与噪声独立复核
+2026-11-23；前半部分重读历史归档，最后的“Stage16新增实跑”章节读取本轮原始证据。
+历史、开发实跑与冻结新初态验收分别保留分母。
+
+工作起点与版本
+独立树 <LOCAL_DOCS>/fingereye_stage16 从 fingereye-stage15-handoff-v1 / 34c1c9f667dd56f13b431f455b1a36a26d4b02b4 建立。
+Stage15 实际冻结执行源码 8d089afb42a980f7a2c67094d995514bbac0b67c；34c1c9 是交付与复核记录提交。
+Stage14 实际执行及优化实现 85aa2453689；18475723d28 增加报告、原始证据索引，并调整交付与计时驱动。两者的控制器、Stage14 几何实现和 evaluator 相同。
+Stage13 9daeff1043917ac40f518b8f80d1103d0fe63bc1 的 40 物体 80 回合保留历史对照；不是本轮新增独立测试。
+历史严格成功 41/80；此数字不与 lift30_no_drop_v1 的小批结果合并。
+
+函数与门槛 diff
+机器表 stage16_evidence/evidence/version_gate_diff.csv 共 27 行，每行列版本、函数、旧值、新值、单位、触发时机、改动类别和解释。
+version_function_hashes.json 保存四个版本的 66 个函数源码与 AST 哈希，便于逐项核查“没改”和覆盖关系。
+从 Stage13 到 Stage15，evaluate/evaluate_strict 的 SHA256 都是 31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b。
+optimize 已按 sqrt(2/n) 归一化接触残差；末次两指 normal_weight=4、三指=7 仍然存在。相同每接触法向单位向量误差的平方贡献比 49/16；这不是已修复项。
+_s12_endpoint_gate 的每指位置 <0.8mm、每指法向 <0.5rad、关节及端点几何未变。_s12_path_gate 继续逐节点审计；端点安全不推导整段路径安全。
+s12_order_candidates 的原平局带 max(|nominal-robust|,|best_nominal-best_robust|,0.1*max(1,|robust|,|best_robust|)) 未在 Stage15 修订；生成权重与排序要分开做 Stage16 消融。
+Stage14 的私有几何提速只把线性极值改用凸包顶点并做分离平面剪枝，FCL 三角网格、包含测试、侵入容限和最后裁决保留。
+Stage14 释放后退让从 4/8/12mm 扩展到 20/30/45mm；无新鲜有效图时，实际执行四个 ±6mm 平面偏移和中心观察位。自碰、桌面、关节与速度守卫保留。
+Stage15 的主要决策变化为：固定两指也开 evidence_recovery；独立处理第三抓方向；恢复时注册初始普通 RGB 形状到新鲜 FingerEye RGB；恢复两指落点改为当前 RGB 凸面射线交点；最多一次局部重试后完整释放重采样；末段 unknown 最多加抬 2mm 且命令高度不超35mm。
+Stage15 预载从比例驱动亏量代理改为新鲜可见关联、绝对关节跟踪与有界0.25mm动作；目标从实测 FK 求解，保留合法腕部命令，执行后额外3mm重试抬。默认仍关闭。
+所有数值的详细单位与触发窗在 CSV；18维坐标的前3项是米，后15项是弧度，整体1e-5限位容差不能统称“10微弧度”。
+
+Stage15 六例原始重读
+入口 run_stage15.py；实际树 <LOCAL_DOCS>/fingereye_stage15_accept_final，源码8d089a。
+controller SHA256 3c48dbc2a5b44356a986045a73fa3ab918e4af48a741ddb849216e431956adb1。
+六例配置都是固定两指、恢复开、预载关、最多3次实际闭合；120Hz物理、20Hz控制、六路30fps RGB与18维位置目标。
+acceptance_versions_commands.csv 给逐例版本、完整case、正式/严格裁决、实际抓次、物理/主进程/启动墙钟与精确普通入口复跑命令。
+原始日志路径为 <LOCAL_DOCS>/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/<id>/launch_001/episode。
+每例 steps.jsonl 重读后独立 evaluate 与归档结果完全一致，execution_valid=6/6、正式4/6、legacy_strict2/6、首抓2/6、首抓失败4/6。
+A_dn0/A_dn3：1抓，4128步=34.4s物理，launch墙钟98.919/101.024s；正式成功，strict因角速度失败。
+B：2抓，6948步=57.9s物理，launch141.693s；正式与strict成功。
+C：2抓，9384步=78.2s物理，launch208.992s；正式与strict成功。
+D_dn0/D_dn20.4：1抓，5028步=41.9s物理，launch128.048/129.717s；均整回合几何失败，也未抬起。
+4/6的描述性Wilson95%区间约[0.300,0.903]。六例只有四个初态且加噪共享物体，不声称总体泛化率或独立六物体。
+末尾2s的实际接触见 acceptance_hold_contacts.csv。A/B/C均是 index_camera_component3 与 thumb_camera_component3 指定垫连杆40/40个控制采样点承担载荷；D末尾无手物载荷。
+六例的初始普通RGB原先分别渲染，不能作为严格共享初始帧的噪声因果对照。Stage15另有共享RGB补充四例，A两档都成功，D两档都失败；步数在对应配对内一致，增益0、损失0。
+
+两条恢复与分母
+recovery_compact_timeline.csv 列实际动作、候选ID、接触目标与决策步；recovery_timeline.csv保留更细指令和日志时序。
+B首抓实际闭合1530，首抓终判3450；3474新鲜观察后预载因默认关闭拒绝，3474..4097下放、4098..4241松指；新鲜RGB后局部移位4242..4289，4296第二次真实闭合，6948最终持稳成功。
+B候选 contacts2-374f22c09b683219979b → contacts2-e202c92bf6b405e961fc；接触落点确实变动，不是只重写分支名。
+C首抓闭合1626，首抓终判3546；3570观察/下放，4194起实际松指；局部新图门槛4290/4338拒绝，随后实际完整退让，新鲜图后4674选择 release_resample；6792第二抓，9384最终持稳成功。
+C候选 contacts2-0e246883f56d523ac6e5 → contacts2-cdabc92533c93a2e04bd；新接触布局、高度与方向都变化。
+D两例首抓后2964 grounded RGB veto，2988进入恢复并下放；3564松指，3852起多段退让并换观察位，5028因无可信新图停止。没有第二次闭合。
+上述四个首抓失败均实际发出了恢复动作4/4，后抓真实闭合2/4，后抓救回2/4，总实际抓次8。只数 s13_recovery/executed 会漏掉D已经执行的下放/松指/退让，不能把恢复下发误记成2/4。
+所有动作在一个连续回合内；无 reset；保留初抓失败造成的物体状态。
+Stage15新初态B/C自身没有单独恢复OFF配对，因此“新初态因果增益”未由六例单独估计。
+可复用的严格对齐对照是 Stage14 开发03/08：原策略0/2→修订2/2；首抓命令相同，03共同715命令4290步，08共同763命令4578步，均超过第一次失败终判且进入释放；之后才改变恢复分支。原始路径与差异命令保存在 stage15_evidence/recovery/summary.json.gz。
+
+D两例几何失败的三层证据
+直觉/可推翻假设：可能是RGB凸包保守误拒或私有提速造成错判；若相同实际状态用未加速 authored USD 算法通过，或首个触发来自RGB候选门槛，则需要修正归因。
+代码/数值：两例第一坏状态都是tick1719，time14.333333s，动作s5_preload_adjust，是首抓伺服闭合的阶段名，并非已关闭的恢复预载。1716..1722命令，前一曝光capture1716/frame429，下一capture1720/frame430。
+正式门槛读实际body poses与object pose，authored USD手碰撞网格对内缩0.5mm物体凸实体，left_hand_index_camera_component3_link首次侵入；hand-table minimum7.456462mm；object_min_z=-0.282629mm仍满足>=-0.5mm。
+独立物理/几何：前后各5状态未加速算法重算逐项一致，两个D及开发00共15状态完全相等；28个authored网格与冻结USD一致。1719 native PhysX cooked接触报告index法向力0、最小正分离43.558um；因此应写“正式authored几何违规”，不能声称同一tick已观测到原生PhysX穿透或真实载荷。
+这不是RGB估计误拒。正式几何与PhysX cooked离散凸块边界并不相同；此次无证据支持放宽正式几何口径。
+D最终实际lift=-0.213393mm、净空=-0.281866mm、已完成命令16mm，都不满足28/5/29.5mm；即使另设诊断忽略几何也不成功。两例各548坏状态，保留失败分母。
+failure_gate_summary.csv、failure_windows.json.gz和原始 stage15_evidence/handoff/failure_review.json 给触发命令、曝光时q/qvel、连杆、独立重算与原生接触窗口。
+邻近守卫证据来自 Stage15 testdata_stage15_guard.json：对象20候选1可被RGB估计拒绝而authored几何通过；相邻候选0真实物体侵入；对象34候选52真自碰。表面误拒不能通过关掉整套碰撞检查修复，且诊断truth不进入在线策略。
+
+预载结论
+默认六例预载考虑4次、因显式关闭而下发0次；s5_preload_adjust不是该分支。
+已有v5开发证据：0.25mm提案触发、完整守卫通过、真实命令到后端、实测编码器响应、额外3mm试抬都各1次；原位执行验收成立，物理救回0。
+同首抓v5 ON/OFF配对：ON失败、OFF成功，配对得0失1；不支持默认打开。cap_negative_v6应拒预载且实际走完整释放第3抓，正式成功。
+所有预载链条及目标/实际增量见 stage15_evidence/preload/chains.csv；不是以mock或日志标签充当物理执行。
+
+三指证据范围
+Stage14两条3870步、32.25s的诊断都抬升保持；指定middle pad component3 0/40，middle housing component1 40/40，最小载荷约0.079N。Stage15对象20的新3816步诊断同样middle pad0/40、housing40/40，离pad约3.3mm。
+已有192个公开候选、18个独立native检查、94次同时搜索以及174个frontIK三指端点拒绝，均未提供三个指定指垫各自正常承载且相机壳无承载的成功。不能把相机组件名称或几何端点通过写成正常三指验收。
+正常三指搜索/数值逐项及Stage16物理配对由另一份数值报告补齐；目前有证据支持的默认仍两指。
+
+历史噪声分母
+noise_cells.csv从原始 scene/steps/result 重读14个有效单元，所有独立正式裁决与归档完全一致。17启动中3个基础设施异常单列，不混进物理成功率。
+0DN：6单元，成功3，含01/03各一条原视觉重复；无配对翻转分母。
+3DN：4单元，成功2；完整配对4，SS2、SF0、FS0、FF2；没有观测到配对收益。
+6DN/12DN：历史闭环0；已有同曝光感知重放，不可说已有物理剂量测试。
+20.4DN：4单元，成功1；完整配对4，SS1、SF1、FS0、FF2。唯一SF=abc_311740/seed141。
+配对分别涵盖abc_311740和abc_145502、seed141/142。两个剂量共8个配对对比，共享4条基线；“14个有效单元”不能写成14对。
+0DN基础设施异常2，20.4DN异常1；完整异常详情在audit.json/invalid_noise_launches，原始启动表见stage14_evidence/noise_closed_loop_readout/launches.csv。
+原视觉重复：01成功两次、全3228步相同；03失败两次，但首个141有效基线10374步与重复10146步不同。存在闭环自身波动，不把每个轨迹差异都归因于噪声。
+
+20.4DN退化的首次实质变化
+20.4=0.08*255，为uint8 RGB每通道合成高斯标准差DN；渲染读回后、公用npy/guard/recorder/policy读取前注入，clip[0,255]后uint8截断量化；初始普通RGB不加噪。
+23635六路曝光包，126次重复读，没有曝光元数据不一致；各包保存六相机frameID、capture_step/time、曝光时q/qvel及实际policy像素hash。具体 lineage 见 stage15_evidence/noise/selected_exposure_lineage.jsonl.gz。
+01seed141两回合初始普通RGB相等，物理状态直到首实时图1308前相同；capture1308/frame327/time10.9s是首个实质视觉变化：可用视角都是4，RGB hull1385→1380体素(1mm体素)，中心[-1.126044,1.772591,20.828520]→[-1.128338,1.774621,20.823913]mm，外包bounds仍相同。
+首个浮点命令差在1308，仅2.46nm平移与1.69e-8rad；报告分辨率下首个实质命令差在1356/time11.3s，最大1.293um平移、8.84e-6rad。
+两回合闭合轮次/时刻及离散闭合决定相同；不能声称“第一次闭合判断翻转”。2085/time17.383333s试抬时thumb component3第一次正式几何失败；末尾已实际lift28.703mm、净空28.611mm，单次lift通过但全回合因早先几何失败。
+噪声回合没有保留pre-noise渲染像素，跨进程原始渲染也会有微差，以上闭环对比不能把全部差异唯一归因合成噪声。同一曝光重放才隔离注入。
+同曝光4次、6视角、3种子、5档=360行；首map15组、闭合前后15组。same_exposure_dose_summary.csv给实际残差、边界IoU、中心、裁剪与可用/歧义翻转。
+0/3/6/12/20.4DN的maskIoU中位数1/.99740/.99427/.98755/.96734，边界IoU1/.95664/.90501/.78601/.52815；中心shift中位数0/.02109/.03957/.05524/.08973px。12与20.4DN各6/72个视角-曝光-种子行发生ambiguity flip，无visibility flip。
+这些是同曝光感知剂量，不是新鲜闭环成功率。首次观测到物理退化只可写“原采样0/3/20.4DN中的20.4，4对中1例”，不能当成噪声阈值。
+Stage16预登记补档文件stage16_evidence/evidence/stage16_noise_cases.json：对象01同初态、共享固定初始普通RGB，seed141的0/6/12/20.4及seed142的0/20.4共6作业。真实运行由root统一调度；本文件不预报其结果。
+
+真机噪声范围与复跑
+未提供带工作照明、曝光、增益、ISP设置来源的静态实机FingerEye序列。本次已有0/3/6/12/20.4DN都是仿真合成档位，不能声称实机EMVA标定或相机真实DN就是20.4。
+保留stage15_camera_noise.py采集和估计入口；需要同曝光增益/输出设置、固定场景按亮度和通道估计帧间残差，记录帧时刻/曝光与裁剪像素，区分空间固定图样与时间噪声。硬件可用性与时延入口由STAGE16_TIMING另记。
+
+离线复跑与版本对照命令
+在Stage16树的实验目录：
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 <ISAAC_PYTHON> stage16_evidence_audit.py --output ../../outputs/stage16/evidence_reread
+此命令只读归档原始轨迹，既不启动仿真，也不改原日志。
+Stage15物理普通入口复跑要在新工作树 checkout fingereye-stage15-handoff-v1，使用acceptance_versions_commands.csv逐例命令；旧freeze会拒绝Stage16新增runtime，不能在已修改的Stage16树假称是Stage15冻结原样复跑。
+git diff 9daeff1043917ac40f518b8f80d1103d0fe63bc1 85aa2453689 -- FingerEyeLab/experiments/rax_dexbin_tinyobj/visual_controller.py FingerEyeLab/experiments/rax_dexbin_tinyobj/stage5_control.py
+git diff 85aa2453689 18475723d28 -- FingerEyeLab/experiments/rax_dexbin_tinyobj
+Stage15实际行为须同时读stage15_build_controller.py与其末尾覆盖模块stage15_control.py，单看stage13_recovery.py会误认已覆盖的函数仍生效。
+
+
+Stage16新增实跑：独立原始读取
+工具stage16_evidence/tools/stage16_new_readout.py逐行读取steps、实际控制trace、图像曝光元数据和私有接触侧车，重新调用未变的evaluator；不启动仿真、不改原始日志。
+开发库存输出stage16_evidence/final/；冻结新树输出stage16_evidence/independent_acceptance/。两者都有readout.json、episodes.csv、groups.csv、timing.csv、phase_physics.csv、hold_contacts.csv、events.json.gz、first_geometry_windows.json.gz、video_index.json。
+完整JSON保存每例实际配置、controller哈希、13项记录完整性核验、逐抓裁决和真实后端闭合验证；CSV另列单次hold与整回合正式裁决，不能将末抓抬起写成整回合成功。
+开发库存共40启动：39完整且记录有效，1起始基础设施失败、0未结束；其中4个三指正常策略因候选门槛而0物理步。formal29、legacy_strict15只是异版本/重复/消融的证据库存计数，不能解释成40独立物体总体成功率。
+原Stage15六例单独保留4/6、strict2/6。本轮六例开发回归用bounded_relative单项排序配置：3/6、strict1/6，首抓2/6；首抓失败4例都实际进入下放/松指/退让，后抓2例，正式救回仅C一例，B后抓未抬起，D两例整回合几何失败。历史4/6不能覆盖此次3/6。
+所有开发和冻结新例都逐坐标核对120Hz实际qvel：前3维0.15m/s、后15维1.5rad/s；该独立安全审计与保留不变的formal评分分开列。39个完整开发例中仅fast旧提速2例违反实测速度；formal+实测速度27，不以formal29代替安全验收。
+
+B恢复的复现根因与有限新鲜观察
+stage16_evidence/final/recovery_comparison.json、recovery_comparison_events.csv由独立流式工具stage16_recovery_compare.py生成，保留逐状态/指令相同前缀的SHA256和首个不同像素。
+历史B与本轮回归B首抓候选同为contacts2-374f22c09b683219979b，707条真实命令及4242物理步完全相同，含第一次失败终判3450和实际松指。第一次实际物理/命令分歧tick4242：历史转局部重定位，本轮继续松指，object_pose当步仍相同。
+历史capture4240/frame1060的注册候选中心spread0mm，6/6视角通过，局部后抓4296，6948完成成功；本轮同曝光步spread3.108158mm超过2mm门槛，6/6视角通过但歧义拒绝，实际完整释放重采样后6648闭合、9372完成未抬起。
+同状态并不意味着RGB相同：历史/回归首实时像素差frame2/capture8，两个thumb视角各1像素差1DN；4192/4216/4240时六路RGB都不同但曝光q/qvel完全相同，均值残差约0.21–0.35DN、局部最大42DN。初始普通RGB也有543像素、最大1DN差。不能将后续行为差唯一归因排序或私有评价调度。
+严格共享初始普通RGB的回归B与map_retry/B_off命令/物理仍相同4938步，之后新视觉与重采样得到不同候选；回归失败但OFF重跑正式成功，证明同策略后续观测波动足以改变结局。
+有限观察实验只在全部视角门槛通过但中心spread>=2mm、实测腕速已稳时，原目标保持24步再读新曝光，每回合最多两次；2mm判断不放宽，在线不读真值。
+B_on1/on2各提案2次、真实后端24步目标及原始状态2/2、新鲜曝光2/2；曝光1048→1054→1060，实际手指仍有伺服收敛，不能以腕部不动误写未执行。即时两次注册仍未通过；之后正常松指取得capture4288有效图，spread分别0.683841mm和0mm，4290局部重定位，4344第二次闭合，末尾均正式及strict成功。
+B_OFF也正式成功：OFF物理78.1s、ready至末命令156.606s；ON1/ON2物理57.3/57.05s、112.700/113.339s。样本为OFF1次/ON2次，首次失败状态对齐但后续图各自真实读取；仅证明新观察动作链执行和局部路径可成功，不证明成功率提升或稳定节省20.9s。默认不启用。
+C_on正式成功2抓78.2s，额外观察0次；D_on失败1抓41.9s、首次几何tick1719，额外观察0次，保留“无合适条件则不触发”的反例。
+
+本轮噪声缺档闭环
+6例同控制器、共享并按实际npy SHA核验初始普通RGB：seed141的0/6/12/20.4DN和seed142的0/20.4DN，均真实闭合，完整有效6/6、正式5/6。
+6DN完整配对1：SS1/SF0/FS0/FF0；12DN同样1对SS1；20.4DN完整2对：SS1/SF1/FS0/FF0。各档共享0DN基线，不能当4个独立基线样本。
+20.4DN seed141再现整回合几何退化，首坏tick2085，末次单独lift28.703155mm通过但正式失败；其余5例正式成功。seed142未退化。此次已采样0/6/12/20.4DN里首次观察退化为20.4DN、该档n2对，不是物理噪声阈值。历史3DN四对无翻转和同曝光15组感知对照仍单独保留。
+新增结果不扩展到实机DN或EMVA标定；缺少具有工作曝光/增益/照明来源的静态真机序列。
+
+提速实验的独立安全读数
+fast旧版将远接近命令0.10→0.12m/s、1.0→1.2rad/s，A/B虽formal成功，实际速度超限：A峰0.159899m/s和1.566794rad/s、分别10/11物理步超限；B峰0.158357/1.556985、6/10步超限，两例首坏tick42。安全验收均失败，默认关闭。
+只把此项回退到0.11m/s与1.1rad/s的fast_v2：A/B正式均成功且实测速度0超限，峰分别0.146664/1.488714和0.145543/1.479388；物理33.8/76.9s，ready至末命令53.514/153.538s。A仅1次、B仅1次，B路径变动；不能把旧版49.35s恢复当安全提速证据，v2也没有40s墙钟成功。
+开发35个有实际命令与完整ready计时的回合，40s内正式成功0；另4个正常三指0步拒绝和1启动失败保留。纯物理40s计数单列，不称真机或端到端墙钟。
+B_inline/deferred命令及物理同样相同4242步，随后局部/完整释放分支不同、最终失败/成功。初始RGB508像素有最大1DN差，最早实时frame2/capture8已有差；4192–4240曝光实测状态相同但六路图不同。B这对不能用总时间之差估计等价计算提速。A等价和历史73.27s账本由STAGE16_TIMING另列。
+
+正常三指证据追加
+20_safe独立固定候选诊断有真实s5_close后端闭合1次、formal/strict成功、实测速度通过；末尾2s的20Hz侧车thumb/index指定垫40/40，中指垫0/40、中指component1壳40/40，壳载荷0.002466–0.002588N，独立FK垫到真实物面间隙3.301458mm。
+thumb/index原始steps.contacts还保留240/240个120Hz真实接触位置，已导出numerics/physical/native_contact_points.csv；middle/壳的全手侧车没有保留points，不能编造其逐点位置。正常三垫承载且壳不承载的成功仍0；默认两指。
+
+中间冻结bd92的新树独立验收（保留对照）
+源码冻结bd92bfa48e7ee0dea112fc1ac5d1eb383ae7275f；新树<LOCAL_DOCS>/fingereye_stage16_accept。默认固定两指、恢复开、预载关、原法向权重和排序、原动作节奏、deferred私有评估；有限map重观察和far-approach提速都不默认启用。
+预登记三例是新初态而非新物体：A0DN(seed16011)、B3DN(seed16012)、D20.4DN(seed16013)；batch_plan_sha256=dad51b14748e3ed53c2f984f03646c25e456f48568405e53133387a4aca00bcb。独立读out配置/原始轨迹与存档评分一致3/3，曝光六路30fps且曝光q/qvel与120Hz记录对齐3/3，实际闭合总4次，速度0超限。
+A首抓正式及strict成功1抓34.6s物理、ready55.364s；B首抓未抬起1抓36.25s、ready61.724s、geometry通过，在线unresolved_RGB判stop_unknown，追加2mm后仍未发现grounded，未进入恢复；D第一次失败后实际完整释放重采样2抓70.65s、ready149.909s，末抓lift29.461093mm/净空29.159821mm通过，整回合因首抓tick1715 authored几何失败，正式不算救回。
+正式1/3、strict1/3，单次末尾hold2/3；首抓2例正式失败中仅D进入实际恢复，后抓1例、正式救回0。三个开发之外的新初态的小样本Wilson95%约[0.0615,0.7923]，不能当千物体泛化估计，也不能与开发六例拼成总体成功率。
+冻结3例40s墙钟正式成功0/3；纯物理40s正式成功1/3另列。真机实测0例，没有40s真机达标证据。B的RGB不确定停止和D早先几何违规是具体保留限制，不能称全部能力验收完成。
+独立逐例、实际配置、版本、接触、阶段时间、失败窗见stage16_evidence/independent_acceptance；本树运行后的任何修订都不能覆盖这个冻结结果。
+
+离线新证据复读命令（实验目录）
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 <ISAAC_PYTHON> stage16_evidence/tools/stage16_new_readout.py --here "$PWD" --output stage16_evidence/final
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 <ISAAC_PYTHON> stage16_evidence/tools/stage16_recovery_compare.py --here "$PWD"
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 <ISAAC_PYTHON> stage16_evidence/tools/stage16_new_readout.py --here "$PWD" --root <LOCAL_DOCS>/fingereye_stage16_accept/FingerEyeLab/outputs/stage16_frozen_acceptance --output stage16_evidence/independent_acceptance --label frozen_heldout_new_initial_states
+
+
+最终冻结979b的新树独立验收（与bd92分母分开）
+最终source979b5a87cf7a3f47f4f7e8b59d1e8f974ac0682b只修deferred异常落盘事务并增加测试，不修改正常策略、动作或评分。新树<LOCAL_DOCS>/fingereye_stage16_accept_final按普通batch入口串行启动；原策略controller SHA仍c13c0bce278e3fa3e04308446e52b6307804ae3412e2c66c5cacbc2c35eae2f7。
+release_final/freeze.json SHA6114a9ab96c2f4d8a1e0d5fa0106fd54aedc91a8c462568ec2474faa79642924；evaluator SHA仍31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b。
+三个新初态预登记于2026-11-23T03:06:26.928827UTC、manifest SHAf4dbd75b4bd071b79b5ff781b601f45f1826396427f7696dcc676546dc2901e5；实际batch plan SHA29bd2ffe81ac389926eb16d826f0b52f0b117a6fe2073e30f200cee096707051。对象仍是开发过的A/B/D，新初态/噪声种子16111/16112/16113，不称新物体泛化。
+独立读取stage16_evidence/independent_acceptance_final/readout.json逐行复算：3/3完成、3/3记录有效、六路曝光和实测q/qvel时间戳3/3一致，实际命令目标与后端状态证明4次闭合，无基础设施失败、无未结束项、无审计异常。
+A0DN：正式成功、strict失败；1抓、4224步=35.2s物理，ready至末次实际命令返回50.528771s；末尾240状态lift至少31.744310mm、净空31.765973mm；evaluator记录commanded_lift51.329881mm，不能用名义30mm代替原始口径。
+B3DN：正式成功、strict失败；2抓、8448步=70.4s物理，ready145.446998s；第一抓1530，3450 observed_failure/groundedRGB；实际下放和松指，4578完整释放重采样，6624第二次闭合，8448持稳终判。候选cbc3d1365e22fb3db93c→ff737cfaac51cd45362d，真实接触目标布局由左右变上下，未reset。末尾lift29.939243mm、净空29.834421mm、command30.000001mm，完整geometry通过。
+D20.4DN：正式及strict失败；1抓、5004步=41.7s物理，ready85.887174s；首坏tick1737、time14.483333s、首抓s5_preload_hold，指定index component3 authored侵入内缩0.5mm物体实体；hand_table_min_z7.512568mm，object_min_z−0.282631mm。这个阶段名不是被关闭的原位恢复预载。真实恢复下放/松指/退让已执行，但没有第二抓。最终lift−0.213377mm、净空−0.281845mm、command16.000003mm，保留失败。
+三例首抓正式成功1/3，首抓失败2/3；两失败均进入恢复并真实发出动作2/2，后抓下发1/2，正式救回1/2（B），总闭合4次、正式2/3、strict0/3。小样本Wilson95%约[0.2077,0.9385]，描述该三初态而非千物体总体。
+全部120Hz实际qvel逐坐标0超限：A峰0.135458m/s、1.353289rad/s；B0.135201m/s、1.345185rad/s；D0.127913m/s、1.351606rad/s。原formal evaluator对物体速度/转动是diagnostic，其strict输出另列；这里独立检查的是手的实测本体限速，不能混淆。
+40s墙钟正式成功0/3；纯物理40s正式成功1/3仅A。ready墙钟包含首帧后的初始规划、全部动作/试抬/保持，排除模拟器启动、deferred真值计分和退出；不是常驻真机任务下发延迟。真机测量仍0例，不存在30–40s真机目标达成证据。
+旧bd92三例1/3与新979b三例2/3使用不同初态；它们不能用来估计日志事务修复的物理收益，也不合并成开发或冻结总成功率。保留全部旧结果、startup失败与诊断，不用新通过样例覆盖旧失败。
+独立最终产物包括episodes/groups/timing/phase_physics/hold_contacts CSV、逐抓JSON、首几何窗口gz、曝光/事件gz和录像索引；source_evidence_hashes.json保存source/evaluator/freeze/控制器/预登记及每例原始轨迹、指令和曝光的SHA256。最小模式没有新录像时索引如实为空，代表视频沿用历史已有索引。
+root保存original_batch_summary.json、resume_before.json并实际执行--resume；断点行为的最终proof由root归档，本独立readout保持首次launch_001三例分母。
+复读命令：
+OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 <ISAAC_PYTHON> stage16_evidence/tools/stage16_new_readout.py --here "$PWD" --root <LOCAL_DOCS>/fingereye_stage16_accept_final/FingerEyeLab/outputs/stage16_frozen_acceptance_final --output stage16_evidence/independent_acceptance_final --label final_979b_frozen_new_initial_states
+
+
+A命令抬升口径与续跑最终核对
+独立逐项复算见independent_acceptance_final/A_commanded_lift_reference.json。evaluator.evaluate第87行公式是“最后240行target_q[2]最小值－此前全部记录target_q[2]最小值”，reference不是最近实际闭合的q，也不限定本次lift阶段；这一公式在各冻结版本保持不变。
+finalA最后保持tick3984..4223对应物理区间33.2..35.2s，target base_z最小值0.21910513937473297m；此前tick0..3983最小base_z为0.1677752584218979m，发生在tick1302..1307、物理区间10.85..10.9s、s5_descend。因此原evaluator commanded_lift=(0.21910513937473297−0.1677752584218979)m=51.32988095283508mm。
+随后RGB纵向重定位将真实闭合reference改为tick1548、target base_z0.18710513412952423m；末尾相对实际闭合命令为32.00000524520874mm，其中含额外2mm未决视觉试抬。因此51.329881mm包含闭合前下降最低点到RGB重定位高度的19.329876mm，不能解释成从夹持位置一次抬51.33mm，也不能写成精确命令30mm。实际物体末尾最小抬升31.744310mm独立满足正式>=28mm要求；本轮没有改评价器或将私有参考输入控制器。
+已读root归档resume_verification.json并独立按当前原始steps重新SHA：首次3个launch、实际--resume后仍3个，3/3已完成全部跳过（含正式失败D），三例轨迹SHA与独立readout完全相等，plan不变，无新增实跑。原始结果和续跑行为分别保留。

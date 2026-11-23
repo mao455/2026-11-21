@@ -1,3 +1,9 @@
+# Stage16 收尾核查
+
+最新：[五项逐项报告](studies/stage16_20261122/REPORT.md) · [逐例表](studies/stage16_20261122/cases.csv) · [复跑命令](studies/stage16_20261122/REPRODUCE.txt)。
+
+Stage16推荐固定两指、恢复开、恢复预载关；真机40秒与正常三指垫尚未通过。下文为保留的Stage13历史对照。
+
 # FingerEyeLab 算法与研究结果
 
 本轮报告：[三指与重抓、40 物体原视觉／加噪配对评测](studies/three_regrasp_20261122_01/EVALUATION.md)。完整数据、冻结协议、逐例结果和计算链入口见[证据包索引](studies/three_regrasp_20261122_01/README.md)。

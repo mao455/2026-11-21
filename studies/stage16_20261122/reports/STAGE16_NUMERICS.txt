@@ -1,0 +1,205 @@
+Stage16 两指/三指优化与排序数值核查
+
+1. 核实结果和执行边界
+源码8d089afb42a的末次固定目标 optimize 仍将位置与法向 residual 乘 sqrt(2/n)，
+两指 normal_weight=4，三指 _s12_three_candidates 调用 normal_weight=7。
+位置1500/m；法向用单位法向向量的弦差，不是直接以rad作残差。
+SciPy cost=1/2 sum(residual²)，所以等法向误差时法向项为
+ w² mean[2(1-cos(theta_i))]。
+同theta=.2rad：two w4 cost=.637869509...；three w7 cost=1.953475...；
+共同w4则与two一致。旧7/4损失比严格49/16，接触数量归一化没有消去权重差。
+这是生成解的相对偏好，不是最后排序分数，不能直接据损失大小宣称三指较差。
+本轮新增overlay中的 s16_ik_terms 给出每指位置/法向、max、RMS、每指平方项、
+桌面/腕姿/指关节正则项、q/prior/目标/实际FK法向、中间值和重构cost。
+12行的重构cost与原Scipy cost误差浮点量级。角度rad，位置m，力N，力矩Nm，时间s。
+
+2. 两个固定公共输入案例的单因素A/B
+实际来源：Stage14 diag_20_abc_461505_clean_11 与 diag_34_abc_382909_clean_11。
+两者均使用原始普通RGB和实测initial_q；scene只读取静态robot_description。
+case物理条件7g、摩擦.82，yaw.27，dx=-1.2mm、dy=+1.8mm，noise_seed13020/13034。
+脚本 stage16_numerics.py 重建原有限接触片、布局、区域IK先验及目标；四个选中
+three提案的 w7 最终q与历史逐字数值一致（max_abs_difference=0）。然后只把最后
+固定目标IK改为w4，区域IK、初始化、目标、法向、硬门槛均相同。
+
+物体20，索引1（历史独立端点+整路径安全但RGB拒绝，后来壳承载诊断成功）：
+ w7 -> w4：位置max .793602 -> .732536mm，RMS .639789 -> .584807mm；
+ 法向max .304484 -> .354429rad，RMS .252262 -> .263652rad；nfev26 ->44。
+ 两种均被正常RGB端点包络拒绝。没有因RMS降低而放行。
+物体34，索引12：位置max .141710 -> .046418mm，RMS .120788 -> .039669mm；
+ 法向max .428572 -> .429577rad，RMS .317117 -> .318569rad；nfev24 ->34。
+ 两种仍端点拒绝；历史原生复核是真中指壳侵入/部分布局真自碰。
+另导出20索引4、34索引52，结论相同。w4改善位置、部分法向变差，不等于物理更好。
+两指各有两个原门槛完整路径可行候选。正常three可行数0，所以不存在被排序
+压后的正常three物理候选；不得拿被拒绝候选的LP裕量作合法排序增益。
+
+3. 最后排序独立审查
+s12_order_candidates 旧阈值：
+ max(|nominal-robust|_candidate, |nominal-robust|_best,
+     tolerance * max(1,|robust_best|,|robust_candidate|))。
+nominal与robust的差是改变不确定性情景后的敏感性，不是概率置信带。
+两个实际two最优提案 nominal/robust=3.54224/.16942及3.54812/.19027，
+差值3.37/3.36，远大于.1相对平局带。这种公式确实可把显著不同robust裕量当平局。
+固定数值反例（明确为合成算术见证）：two nominal1.8/robust.8，2s；
+three nominal1.5/robust1.2，4s。旧band1.0，选择two；修订band.12，选择three。
+真近似平局robust1.15/1.2，仍选2s的two，不强行偏好three。
+
+最小修订overlay的 s16_order_candidates 只删除两项nominal/robust gap，保留
+共同alpha任务、名义重力支持前置及相对.1带；带内仍比较路径、净空、观测与误差。
+法向权重和排序各自开关，默认仍历史；root可分别实跑，避免一次改变两项。
+S16_COMMON_NORMAL_WEIGHT=None/4，S16_MARGIN_TIE='historical'/'bounded_relative'。
+被选排序记录逐候选alpha差、threshold、是否平局，不把不确定性情景冒充统计区间。
+
+4. 共同力学假设与证据局限
+相同task_wrench：质量5–15g，摩擦下界.3，法向不确定性.15rad，每垫最大1N，
+横向扰动.02N、力矩扰动.0001Nm、抬升加速度.5m/s²，有限垫半径1.2mm；
+相同公共RGB几何中心COM，实测q上有限差分Jacobian，URDF effort上限。
+robust位置sigma1.5mm；有限垫四边缘Coulomb力锥，共享每垫法向力总限值。
+这些是共同且显式的假设；未测得摩擦/法向力，URDF上限未扣动态/重力储备，
+不把LP称为真机承载证书。完整JSON保留各load/mass trial、最坏扰动见证、
+外部wrench、solver状态、LP次数、逐指Jacobians约束所作用的公共模型结果。
+被拒绝three的LP0与无path是不可行或未形成完整路径；不等于零时长优胜。
+
+5. 正常三指与最佳可执行诊断
+既有三指静态/物理审计仍没有三个指定component3垫同时承载的成功。
+20索引1是独立原生端点和整路径安全的最佳诊断提案（49为相同布局横移）；
+Stage15正常包络拒绝，隔离干预后正式抬升成功，但middle component1承载40/40，
+middle垫0/40，垫与物体约3.3mm间隙。34六个运动学合格提案均真实壳侵入，
+不能为实跑而绕过真自碰/物体实际侵入。正常three两指对照应保留0次闭合拒绝。
+本轮正常双组、自动配对结果由主报告实际运行补入；本报告数值A/B不代替物理。
+
+6. 入口与文件
+stage16_evidence/numerics/candidate_table.csv：12行逐项表。
+fixed_candidate_audit.json：每指、损失、目标、关节、门槛、路径、LP完整中间值。
+normal_and_tie_witnesses.json：法向等误差公式及固定候选旧新排序算术见证。
+cases/、paired_scenarios.json、initial_rgb/：20/34×two/three/auto共享初始RGB；
+首帧hash、实测初态及来源在scenario_registration.json。后续闭环各读真实帧。
+BUILD_RECIPES.txt：三模式、两个独立单因素、最佳安全诊断、01/03/08开发回归命令。
+6项针对性测试通过；不运行仿真、不修改历史冻结控制器、不放松硬门槛。
+
+复算：
+export OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2
+PY=<ISAAC_PYTHON>
+$PY stage16_numerics.py --output ../../outputs/stage16/numerics_NEW
+$PY -m unittest test_stage16_numerics.py
+
+记录开销注意：overlay在每次最终IK后额外做一次FK和vertices以导出分项；历史three
+搜索为42s墙钟上限，日志/诊断本身可能改变接近上限时已探索的候选数。
+因此正式A/B必须同时保留候选数和budget拒绝，不把开销造成的覆盖变化称数值收益。
+同候选固定输入的本次数值A/B不受此候选覆盖问题影响。
+jacobian_and_worst_loads.json补存实际有限差分Jacobian、active joint names/URDF effort、
+每种nominal/robust LP求解数与最坏mass/load/wrench见证，便于独立按共同假设复算。
+
+7. Stage16实际闭环配对验收（新工作树，normal入口10回合）
+独立读回 actual steps、evaluate、program hash、agent notes、20Hz全部手物接触。
+两物体初始普通RGB逐字hash一致，初始实测q相同；20/34每场景运行two、three、auto，
+另各运行three normal4和auto bounded_relative，共10个完整正常入口，returncode均0。
+没有基础设施失败，也没有把three的0步拒绝排除出正式分母。
+
+模式                 20实际抓次/正式/步数/物理s/host结果s   34对应
+固定two              1/成功/4194/34.95/85.832              1/成功/4194/34.95/83.816
+固定three(w7)        0/拒绝/0/0/58.276                    0/拒绝/0/0/55.546
+自动auto             1/成功/4194/34.95/114.137             1/成功/4194/34.95/113.599
+固定three(w4)        0/拒绝/0/0/59.925                    0/拒绝/0/0/56.529
+auto修订tie          1/成功/3294/27.45/107.129             1/成功/4194/34.95/113.639
+host是result elapsed_s，并非任务下发至稳定真机延迟；完整启动墙钟另列physical_table.csv。
+原三模式正式4/6；加单因素后正常入口6/10，6次真实闭合均正式/legacy_strict成功；
+four three模式均正常可行性拒绝，实际闭合0。不能把这组有意开发试验称总体成功率。
+
+每次正常规划接受two2个，three0个；实际选中并绑定1-2-1，实际首闭合step1374。
+固定two完全不搜索three；auto在two同解之外多搜索36个three，两个物体结果如下：
+20 w7：法向拒27、位置拒7、端点拒2；w4：法向拒30、位置拒4、端点拒2。
+34 w7：法向拒27、位置拒8、端点拒1；w4：法向拒32、位置拒3、端点拒1。
+搜索均走完36个布局/初值组合，未触发42s墙钟搜索budget；各nfev/region迭代及最优
+被拒提案在actual_best_candidate_details.json，保留region max_nfev=100情况。
+所有正常候选池只有two，旧排序与修订排序在同一固定合法池上的顺序完全一致。
+因此本次正常实跑没有修订排序带来三指选择收益的证据。
+
+两场景固定two和auto的steps.jsonl SHA完全相同，含每步指令/实测q/物体状态。
+20 auto_tie与two前3294物理步的target/actual/object完全相同，排序、绑定也相同；
+后续因RGB最终支撑判断不同，two继续一次有界重新观察+2mm激励，tie提前结束。
+首次曝光像素差出现在step8/frame2，index_front1与thumb_front2各1通道相差1DN，
+曝光q相同；图像首差不证明该像素本身是后续判断的因果根源。
+不能把20较短900步计为排序提速。34 two/auto/auto_tie整个steps SHA相同。
+image_divergence.json与final_decision_divergence.json保留完整首差及后继判断。
+
+正常two/auto两物体保持末2s各40样本：thumb/index component3均40/40有>1mN载荷；
+middle垫0/40，所有相机壳无>1mN承载。
+20 thumb约.22438~.22450N，index约.22406~.22418N；
+34 thumb约.21218~.21237N，index约.21027~.21044N。
+正常two按正常两指承载验收，不能因此称三个垫承载。
+
+8. 最佳安全三指诊断的本轮实际重跑
+outputs/stage16/diagnostic/20_safe，controller c38a5fd98d526e97cc8189b4c225f63ab93a8c611c1ba2ff5d0a33f5d72180eb。
+1次真实闭合，3816步/31.8物理s，host82.3961s，启动墙钟83.0106s。
+正式与legacy_strict成功，全程几何有效，末2s最低lift30.04635mm/净空29.76469mm。
+末40样本：thumb垫40/40，.309887~.310090N；index垫40/40，.306591~.306884N；
+middle垫0/40；middle component1壳40/40，.00246612~.00258846N。
+离线实际q+实际物体mesh复算：middle垫中心到实际物面3.301458mm、法向间隙3.324173mm。
+因此再次复现壳辅助三指，正常三指垫成功0；此回合单列，不加进正常入口分母。
+全部手物20Hz侧车只有连杆、接触数、总法向力与最小separation，未存middle及壳实际
+接触点；但原120Hz steps.contacts为thumb/index垫保存了真实points_world、normal和
+逐点力，已独立提取到native_contact_points.csv，不能笼统称所有接触点均缺失。
+本报告不把离线FK垫中心或最近mesh点冒充实际接触点位置。middle/壳逐时接触位置
+仍是本批数据缺项，具体采集方式见末节。
+
+9. 本轮实际复跑命令与独立读出
+所有实际执行argv、controller hash、输出文件SHA在
+stage16_evidence/numerics/physical/{commands.json,physical_readout.json,physical_table.csv}。
+完整实际命令已保存；复跑必须把--session改成全新目录（原目录不可覆盖）。
+示例工作目录仍为FingerEyeLab/experiments/rax_dexbin_tinyobj：
+export OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2
+PY=<ISAAC_PYTHON>
+$PY run_stage16.py --session ../../outputs/stage16_REPLAY/numeric/20_two \
+ --case-file stage16_evidence/numerics/cases/20_two.json --evaluation-mode deferred \
+ --mode minimal --fingers two
+$PY run_stage16.py --session ../../outputs/stage16_REPLAY/numeric/20_three \
+ --case-file stage16_evidence/numerics/cases/20_three.json --evaluation-mode deferred \
+ --mode minimal --fingers three
+$PY run_stage16.py --session ../../outputs/stage16_REPLAY/numeric/20_auto \
+ --case-file stage16_evidence/numerics/cases/20_auto.json --evaluation-mode deferred \
+ --mode minimal --fingers auto
+# 将20替换34重复；w4单因素追加--normal-weight4（实际写法：--normal-weight 4）。
+# auto排序单因素追加--margin-tie bounded_relative。
+# 最佳诊断使用commands.json保存的现有精确controller与S14_DIAGNOSTIC_STOP=1，
+# 不能省略独立实际几何停止，也不加入正常three结果。
+
+直接独立重读现有原始证据（不会仿真）：
+$PY stage16_evidence/numerics/physical/read_physical.py
+$PY stage16_evidence/numerics/physical/read_details.py
+固定合法候选新旧排序重算在fixed_feasible_ranking_ab.json；actual_best_candidate_table.csv
+与完整JSON导出正常最佳候选/最接近运动学门槛的被拒three，后者标明不是可行最佳。
+本轮物理证据支持继续推荐已验证two；normal4/tie保留可复现实验开关，不把算术修订
+自动提升为已验证三指能力。
+physical/rerun_commands.sh给出11条完整命令，输出改为全新stage16_NUMERIC_RERUN目录；
+仅作可复跑入口保存，本轮没有重复执行该脚本。含两场景三模式、normal4/tie和安全诊断。
+计时配对注意：20_three/20_auto的启动墙钟还含资源准入等待，分别132.700/135.651s；
+不能用它们与host结果58.276/114.137s混算纯规划开销。其余边界同表，n=1各条件。
+JSON中0步拒绝的轨迹比较明确标注command_comparison_available=false；
+20tie比two少900步记为first_extra_step=3294，不把共同前缀无差异误称全轨迹一致。
+
+10. 原始实际接触点追查与缺字段范围
+继续只读追查发现steps.jsonl.contacts确实含原生get_contact_data点，采样120Hz；
+原diagnostics.Contacts仅订阅index component3、thumb component3与index link2。
+独立提取每个承载>1mN的真实point/normal/normalforce/separation与step、物理时刻，
+保存在physical/native_contact_points.csv；统计在native_contact_points_summary.json。
+20_safe末2s（step3576–3815）thumb/index垫均240/240承载：
+ index总力.306591~.307165N，承载点world约(19.9552,-2.1632,33.6243)mm；
+ thumb总力.309887~.310483N，承载点world约(-23.1662,4.4427,34.6042)mm。
+这些是实际引擎接触数据，未从合力矩推估。载荷最大值与前述20Hz40样本略不同，
+因为这里保留120Hz240样本，边界明确，不混用分母。index link2末窗无承载。
+
+middle component3及middle component1壳仍缺actual point/normal/per-point-force：
+stage2_contact_audit.AuditedContacts.read已从extra.get_contact_data(dt)拿到
+force,point,normal,separation,count,start，但序列化时丢弃point与normal，只存总力。
+native_self_contacts过滤的是手手接触，不含手物point，无法补回middle实际点。
+不能用FK垫中心、最近实际mesh点、接触壳连杆中心或合力矩反推替代。
+
+未来具体采集改动应只在私有评估侧：extra每个link索引i取得n=count[i,0]、
+a=start[i,0]后，立即copy point[a:a+n]、normal[a:a+n]、force[a:a+n]、
+separation[a:a+n]，在下一次native query前完成复制（原生缓冲可能复用）。
+写入私有侧车link、step、time_s、dt、坐标单位/world frame、实测q及关联曝光frame；
+需要保持窗口动力学时采用120Hz并记录实际cadence，否则显式标20Hz。
+保留原evaluator视图、原在线观测边界和公共控制数据；不把实际接触真值送入策略。
+本轮没有改source或新增实跑。此项缺失阻止三个垫完整位置/载荷时序验收，
+而middle垫0/40与壳载荷仍足以否定本条轨迹是正常三垫成功。
+$PY stage16_evidence/numerics/physical/read_native_points.py

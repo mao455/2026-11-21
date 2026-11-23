@@ -1,0 +1,136 @@
+import collections,csv,hashlib,itertools,json,os,sys,time
+from pathlib import Path
+import numpy as np,trimesh
+from pxr import Usd
+H=Path(os.environ['FINGEREYE_EXPERIMENT_DIR']).resolve();R=H.parents[2]
+D=Path(os.environ.get('FINGEREYE_LOCAL_DOCS_ROOT',str(R.parent)))
+O=Path(os.environ['FINGEREYE_GATE_AUDIT_OUTPUT']);O.mkdir(parents=True,exist_ok=False)
+sys.path[:0]=[str(H),str(H.parent/'rax_tinyobj_round1')]
+from evaluator import evaluate
+from geometry import usd_collision_meshes
+from round8_convex_audit import Audit
+
+def js(p):return json.loads(p.read_text())
+def lines(p):
+ if p.exists():
+  for s in p.open():
+   try:yield json.loads(s)
+   except ValueError:continue
+
+def sha(p):
+ if not p.exists():return None
+ h=hashlib.sha256()
+ with p.open('rb') as f:
+  for s in iter(lambda:f.read(1024*1024),b''):h.update(s)
+ return h.hexdigest()
+def csvout(p,rows):
+ fields=list(dict.fromkeys(k for r in rows for k in r))
+ with p.open('w',newline='') as f:
+  w=csv.DictWriter(f,fields,lineterminator='\n');w.writeheader()
+  for r in rows:w.writerow({k:json.dumps(v,sort_keys=True,ensure_ascii=False) if isinstance(v,(list,dict)) else v for k,v in r.items()})
+S15=D/'fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes'
+DEV=R/'FingerEyeLab/outputs/stage16'
+S16=D/'fingereye_stage16_accept_final/FingerEyeLab/outputs/stage16_frozen_acceptance_final/episodes'
+MID=D/'fingereye_stage16_accept/FingerEyeLab/outputs/stage16_frozen_acceptance/episodes'
+specs=[('stage15_B','historical_rescue','8d089afb42a980f7a2c67094d995514bbac0b67c',S15/'recovery_poseB_seed15002/launch_001/episode','recovery_poseB'),('stage15_C','historical_rescue','8d089afb42a980f7a2c67094d995514bbac0b67c',S15/'hard_poseC_seed15003/launch_001/episode','hard_poseC'),('stage15_D0','historical_geometry_failure','8d089afb42a980f7a2c67094d995514bbac0b67c',S15/'divergence_poseD_dn0_seed15004/launch_001/episode','divergence_poseD_dn0'),('stage15_D20p4','historical_geometry_failure','8d089afb42a980f7a2c67094d995514bbac0b67c',S15/'divergence_poseD_dn20.4_seed15004/launch_001/episode','divergence_poseD_dn20.4'),('stage16_final_D20p4','final_frozen_acceptance_failure','979b5a87cf7a3f47f4f7e8b59d1e8f974ac0682b',S16/'finalD_dn20.4_seed16113/launch_001/episode','finalD_dn20.4'),('stage16_mid_B3','intermediate_frozen_failure','bd92bfa48e7ee0dea112fc1ac5d1eb383ae7275f',MID/'freshB_dn3_seed16012/launch_001/episode',None),('stage16_mid_D20p4','intermediate_frozen_failure','bd92bfa48e7ee0dea112fc1ac5d1eb383ae7275f',MID/'freshD_dn20.4_seed16013/launch_001/episode',None),('stage16_dev_B','development_failure','development overlay at recorded controller hash',DEV/'regression/recovery_poseB/episode','recovery_poseB'),('stage16_dev_D0','development_failure','development overlay at recorded controller hash',DEV/'regression/divergence_poseD_dn0/episode','divergence_poseD_dn0'),('stage16_dev_D20p4','development_failure','development overlay at recorded controller hash',DEV/'regression/divergence_poseD_dn20.4/episode','divergence_poseD_dn20.4')]
+provenance=[];episodes=[];gates=[];events=[];blocks=[];contacts=[];geometry=[];errors=[]
+meshcache={}
+for ident,scope,version,ep,casefile in specs:
+ if not (ep/'result.json').exists():errors.append(dict(id=ident,error='missing raw result',path=str(ep)));continue
+ scene=js(ep/'scene.json');host=js(ep/'result.json');cfg=js(ep.parent/'stage9_configuration.json');states=list(lines(ep/'steps.jsonl'));score=evaluate(states,scene['initial_object_pose'][2]);trace=list(lines(ep/'agent_trace.jsonl'));frames=list(lines(ep/'image_manifest.jsonl'));notes=[];commands=[];tick=0
+ for r in trace:
+  if r.get('op')=='note':
+   try:n=json.loads(r['text'])
+   except ValueError:continue
+   for k,v in n.items():
+    if isinstance(v,dict):notes.append(dict(key=k,host_elapsed_s=r.get('elapsed_s'),**v))
+  elif r.get('op')=='step':commands.append(dict(start_step=tick,end_step=tick+r['steps'],phase=r['phase'],target_q=r['target_q'],host_elapsed_s=r.get('elapsed_s')));tick+=r['steps']
+ rec=[n for n in notes if n['key']=='s13_recovery'];grasps=[n for n in rec if n.get('event')=='grasp_dispatched'];decisions=[n for n in rec if n.get('event')=='failure_decision'];firstfail=decisions[0]['step'] if decisions and not evaluate(states[:decisions[0]['step']],scene['initial_object_pose'][2])['success'] else None
+ closurevalid=[]
+ for g in grasps:
+  st=g.get('started_step',g['step']-6);en=g['step'];target=np.asarray(g['target_q'],dtype=np.float32).tolist();window=states[st:en]
+  ok=bool(len(window)==en-st and window and all(r['target_q']==target and r['phase']=='s5_close' for r in window));closurevalid.append(ok)
+  events.append(dict(id=ident,kind='actual_grasp',step=en,start_step=st,physical_s=en/120,host_elapsed_s=g.get('host_elapsed_s'),event='grasp_dispatched',branch=g.get('branch'),candidate_id=g.get('candidate_id'),target_points_m=g.get('points'),target_q=g['target_q'],backend_target_phase_verified=ok,actual_q_at_dispatch=states[en-1]['actual_q']))
+ for n in rec:
+  if n.get('event') in ['failure_decision','executed','stopped','guard_refused','guard','considered','legal_command_seed','unknown_final_excitation']:
+   minimal={k:n[k] for k in ['event','step','frame_id','branch','candidate_id','reason','eligible','decision'] if k in n}
+   if n.get('event')=='considered' and n.get('branch')!='preload':continue
+   if n.get('event') in ['guard','guard_refused']:
+    report=n.get('report',n.get('new_RGB',{}))
+    if report:minimal['map']=dict(valid=report.get('valid'),capture_step=report.get('step'),center_spread_m=report.get('near_solution_center_spread_m'),threshold_m=.002,view_count=len(report.get('views',{})),views_passed=sum(bool(v.get('passed')) for v in report.get('views',{}).values()))
+   if 'step' in n:events.append(dict(id=ident,kind='online_note',physical_s=n['step']/120,host_elapsed_s=n.get('host_elapsed_s'),**minimal))
+ motion=0
+ for phase,group in itertools.groupby(states,key=lambda r:r['phase']):
+  rr=list(group);st=rr[0]['step'];en=rr[-1]['step']+1
+  if firstfail is None or en<=firstfail:continue
+  before=states[st-1]['actual_q'] if st else rr[0]['actual_q'];delta=np.asarray(rr[-1]['actual_q'])-np.asarray(before);isrec=phase in ['s3_lower','s3_open','s3_retreat','s14_release_view','s13_local_reposition','s13_preload_recovery']
+  if isrec and np.max(abs(delta))>1e-9:motion+=1
+  blocks.append(dict(id=ident,phase=phase,start_step=st,end_step_exclusive=en,physical_s=(en-st)/120,recovery_motion=isrec,measured_max_base_translation_change_m=float(np.max(abs(delta[:3]))),measured_max_joint_change_rad=float(np.max(abs(delta[3:]))),object_translation_change_m=float(np.linalg.norm(np.asarray(rr[-1]['object_pose'][:3])-np.asarray(states[st-1]['object_pose'][:3] if st else rr[0]['object_pose'][:3])))))
+ allc=list(lines(ep/'all_hand_object_contacts.jsonl'));hold=[r for r in allc if len(states)-240<=r['step']<len(states)]
+ for name in sorted({c['link'] for r in hold for c in r['contacts']}):
+  force=[sum(c['normal_force_sum_n'] for c in r['contacts'] if c['link']==name) for r in hold]
+  contacts.append(dict(id=ident,link=name,samples=len(hold),positive_force_samples=sum(x>0 for x in force),minimum_force_n=min(force),maximum_force_n=max(force),window_start_step=len(states)-240,window_end_step=len(states)-1,cadence_hz=20))
+ qvel=np.asarray([r['actual_qvel'] for r in states]);lin=np.max(abs(qvel[:,:3]),axis=1);ang=np.max(abs(qvel[:,3:]),axis=1)
+ first=next((r for r in states if not r['penetration']['passed']),None)
+ summary=dict(id=ident,scope=scope,execution_source=version,controller_sha256=host['controller_sha256'],configuration_sha256=sha(ep.parent/'stage9_configuration.json'),case=cfg['case'],fingers=cfg.get('selected_control_settings',{}).get('fingers'),recovery=cfg.get('selected_control_settings',{}).get('evidence_recovery'),preload=cfg.get('preload_requested',False),formal_success=score['success'],legacy_strict_success=score['legacy_strict']['success'],single_terminal_hold=score['hold_physics_passed'],score_exact_match=score==host['physics'],continuous_states=all(r['step']==i and abs(r['time_s']-(i+1)/120)<1e-9 for i,r in enumerate(states)),recorded_commands_match_states=tick==len(states),reset_operations=sum(r.get('op') in ['reset','reset_env','set_object_pose','teleport'] for r in trace),actual_grasps=len(grasps),all_closures_backend_verified=all(closurevalid),first_failure_decision_step=firstfail,actual_recovery_motion_blocks=motion,later_grasp_dispatched=len(grasps)>1,physical_steps=len(states),physical_s=len(states)/120,host_elapsed_s=host['elapsed_s'],formal_failure=score.get('failure'),first_invalid_step=score['first_invalid_step'],hold_min_lift_m=score['hold_min_lift_m'],hold_min_clearance_m=score['hold_min_table_clearance_m'],commanded_lift_m=score['commanded_lift_m'],actual_linear_peak_m_s=float(lin.max()),actual_angular_peak_rad_s=float(ang.max()),actual_linear_limit_violation_steps=int(sum(lin>.15)),actual_angular_limit_violation_steps=int(sum(ang>1.5)))
+ episodes.append(summary)
+ for name in ['steps.jsonl','agent_trace.jsonl','image_manifest.jsonl','public_responses.jsonl','scene.json','result.json','all_hand_object_contacts.jsonl','all_hand_object_contact_manifest.json','native_self_contacts.jsonl','native_self_contact_manifest.json','program/controller.py']:
+  p=ep/name
+  if p.exists():provenance.append(dict(id=ident,execution_source=version,raw_path=str(p),sha256=sha(p),bytes=p.stat().st_size,published=False))
+ for name in ['stage9_configuration.json','receipt.json']:
+  p=ep.parent/name
+  if p.exists():provenance.append(dict(id=ident,execution_source=version,raw_path=str(p),sha256=sha(p),bytes=p.stat().st_size,published=False))
+ if first:
+  i=first['step'];c=next(c for c in commands if c['start_step']<=i<c['end_step']);beforeframe=max((f for f in frames if f['step']<=i),key=lambda f:f['step']);afterframe=next((f for f in frames if f['step']>i),None)
+  native=first['contacts'];name=first['penetration']['hand_object_intrusion_links'][0] if first['penetration']['hand_object_intrusion_links'] else None;contact=native.get(name,{})
+  gates.append(dict(id=ident,scope=scope,first_invalid_step=i,time_s=first['time_s'],phase=first['phase'],gate='offline_authored_USD_hand_vs_eroded_object',decision='fail',link=name,inward_offset_m=first['penetration']['tolerance_m'],hand_table_min_z_m=first['penetration']['hand_table_min_z'],object_min_z_m=first['penetration']['object_min_z'],table_threshold_m=-.0005,command_start_step=c['start_step'],command_end_step_exclusive=c['end_step'],command_target_q=c['target_q'],actual_q=first['actual_q'],actual_qvel=first['actual_qvel'],preceding_frame_id=beforeframe['frame_id'],preceding_capture_step=beforeframe['step'],following_frame_id=afterframe['frame_id'] if afterframe else None,following_capture_step=afterframe['step'] if afterframe else None,frame_q_matches_record=beforeframe['actual_q']==states[beforeframe['step']-1]['actual_q'],native_link_contact_count=contact.get('count',0),native_link_normal_force_n=contact.get('normal_force_sum_n',0),native_link_min_separation_m=min(contact.get('separations_m',[]),default=None),invalid_state_count=sum(not r['penetration']['passed'] for r in states),all_episode_lift_max_m=max(r['object_pose'][2]-scene['initial_object_pose'][2] for r in states)))
+  if ident in ['stage15_D0','stage15_D20p4','stage16_final_D20p4']:
+   usd=Path(scene['robot_description']['urdf_path']).parent/'xhand3camFE_left_usd_convex_decomposition/xhand3camFE_left.usd';key=str(usd)
+   if key not in meshcache:
+    stage=Usd.Stage.Open(str(usd));stage.SetEditTarget(stage.GetSessionLayer());expanded=0
+    while True:
+     ii=[p for p in stage.Traverse() if p.IsInstance()]
+     if not ii:break
+     for prim in ii:prim.SetInstanceable(False);expanded+=1
+    names=js(ep/'all_hand_object_contact_manifest.json')['names'];meshes,manifest=usd_collision_meshes(stage,str(stage.GetDefaultPrim().GetPath()),names);meshcache[key]=(meshes,manifest,names,expanded)
+   meshes,manifest,names,expanded=meshcache[key];audit=Audit(meshes,trimesh.load(scene['mesh'],force='mesh'));normalized=[dict(r,path=r['path'].split('/collisions/',1)[1]) for r in manifest];recorded=[dict(r,path=r['path'].split('/collisions/',1)[1]) for r in scene['collision_geometry']];same=sorted(normalized,key=lambda r:r['path'])==sorted(recorded,key=lambda r:r['path'])
+   for r in states[max(0,i-2):i+3]:
+    check=audit.check(dict(zip(names,r['body_poses'])),r['object_pose']);ref=r['penetration'];exact=check==ref
+    geometry.append(dict(id=ident,step=r['step'],time_s=r['time_s'],phase=r['phase'],recorded_passed=ref['passed'],original_unaccelerated_passed=bool(check['passed']),intrusion_links=check['hand_object_intrusion_links'],all_metrics_exact=exact,hand_table_min_z_m=check['hand_table_min_z'],object_min_z_m=check['object_min_z'],usd_sha256=sha(usd),collision_meshes=len(meshes),collision_manifest_exact=same))
+ print(ident,score['success'],score['first_invalid_step'],len(grasps),flush=True)
+ del states
+csvout(O/'episodes.csv',episodes);csvout(O/'source_hashes.csv',provenance);csvout(O/'first_gates.csv',gates);csvout(O/'recovery_events.csv',events);csvout(O/'recovery_physical_blocks.csv',blocks);csvout(O/'hold_contacts.csv',contacts);csvout(O/'geometry_recompute.csv',geometry)
+output=dict(audit_kind='offline archived raw reread; no simulation, no policy truth input; public summaries only',audit_source_commit='d584af11938b382a2dd7852c53a7b7802239812d',episodes=episodes,first_gates=gates,geometry_recompute=geometry,errors=errors,source_algorithms={str(p.relative_to(R)):sha(p) for p in [H/'evaluator.py',H/'round8_convex_audit.py',H.parent/'rax_tinyobj_round1/geometry.py']},checks=dict(all_scores_exact=all(r['score_exact_match'] for r in episodes),all_continuous=all(r['continuous_states'] for r in episodes),all_command_steps_match=all(r['recorded_commands_match_states'] for r in episodes),all_actual_closures_backend_verified=all(r['all_closures_backend_verified'] for r in episodes),no_reset_operations=all(r['reset_operations']==0 for r in episodes),geometry_recompute_rows=len(geometry),geometry_all_exact=all(r['all_metrics_exact'] and r['collision_manifest_exact'] for r in geometry)),publication_boundary='No asset bytes, RGB, video, raw per-physics-step logs, credentials or full contact clouds included. Raw source paths and SHA256 provide local provenance only.')
+(O/'audit.json').write_text(json.dumps(output,indent=2,ensure_ascii=False)+'\n');print(json.dumps(output['checks']),flush=True)
+
+# Per-attempt prefix scoring and exact archived command export.
+def save(name,rows):
+    fields=list(dict.fromkeys(k for r in rows for k in r))
+    with (O/name).open('w',newline='') as f:
+        w=csv.DictWriter(f,fields,lineterminator='\n');w.writeheader();w.writerows(rows)
+source=list(csv.DictReader((O/'source_hashes.csv').open()))
+rows=[]
+for ep in json.loads((O/'audit.json').read_text())['episodes']:
+    ident=ep['id'];p=Path(next(r['raw_path'] for r in source if r['id']==ident and r['raw_path'].endswith('/steps.jsonl'))).parent
+    scene=json.loads((p/'scene.json').read_text());states=[json.loads(x) for x in (p/'steps.jsonl').open()];trace=[json.loads(x) for x in (p/'agent_trace.jsonl').open()]
+    notes=[]
+    for t in trace:
+        if t.get('op')!='note':continue
+        try:n=json.loads(t['text'])
+        except ValueError:continue
+        if 's13_recovery' in n:notes.append(n['s13_recovery'])
+    closes=[n['step'] for n in notes if n.get('event')=='grasp_dispatched']
+    cuts={n['step']:n for n in notes if n.get('event')=='failure_decision'}
+    cuts.setdefault(len(states),{})
+    for cut,n in sorted(cuts.items()):
+        score=evaluate(states[:cut],scene['initial_object_pose'][2]);d=n.get('decision',{})
+        rows.append(dict(id=ident,scope=ep['scope'],snapshot='final' if cut==len(states) else 'first_attempt_terminal',cumulative_physics_steps=cut,cumulative_physics_s=cut/120,actual_closures=sum(s<=cut for s in closes),formal_success=score['success'],legacy_strict_success=score['legacy_strict']['success'],single_terminal_hold_passed=score['hold_physics_passed'],geometry_passed=score.get('geometry_passed'),first_invalid_step=score.get('first_invalid_step'),failure=score.get('failure','success' if score['success'] else ''),hold_min_lift_m=score.get('hold_min_lift_m'),hold_min_clearance_m=score.get('hold_min_table_clearance_m'),commanded_lift_m=score.get('commanded_lift_m'),online_action=d.get('action'),online_reason=d.get('reason'),scoring_window='cumulative prefix with final continuous 240-state hold; whole-prefix geometry retained'))
+save('attempts.csv',rows)
+cmds=[]
+lookup={'recovery_poseB_seed15002':'stage15_B','hard_poseC_seed15003':'stage15_C','divergence_poseD_dn0_seed15004':'stage15_D0','divergence_poseD_dn20.4_seed15004':'stage15_D20p4'}
+for r in csv.DictReader((H/'stage16_evidence/evidence/acceptance_versions_commands.csv').open()):
+    if r['id'] in lookup:
+        cmds.append(dict(id=lookup[r['id']],execution_source=r['execution_version'],working_directory='FingerEyeLab/experiments/rax_dexbin_tinyobj',controller_sha256=r['controller_sha256'],command=r['reproduce'],execution_this_closeout='not executed; raw physical evidence reused',requirements='checkout execution_source in a new worktree; installed IsaacLab Python; authorized local hand/object assets and calibration; unused output directory'))
+cmds.append(dict(id='stage16_final_D20p4',execution_source='979b5a87cf7a3f47f4f7e8b59d1e8f974ac0682b',working_directory='FingerEyeLab/experiments/rax_dexbin_tinyobj',controller_sha256='c13c0bce278e3fa3e04308446e52b6307804ae3412e2c66c5cacbc2c35eae2f7',command='OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 "$ISAACLAB_PYTHON" run_stage16.py --controller stage16_evidence/release_final/controller.py --case-file stage16_evidence/acceptance_final/finalD_dn20.4.json --session ../../outputs/stage16_gate_reproduce/finalD_dn20.4 --profile fast --fingers two --no-preload --mode minimal --evaluation-mode deferred',execution_this_closeout='not executed; raw physical evidence reused',requirements='checkout execution_source in a new worktree; installed IsaacLab Python; authorized local hand/object assets and calibration; unused output directory'))
+save('rerun_commands.csv',cmds)
+print('attempts',len(rows),'reruns',len(cmds))

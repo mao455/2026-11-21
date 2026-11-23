@@ -1,0 +1,1067 @@
+{
+  "scope": "Existing physical episodes plus explicitly marked new replay/audit/regression. Local roots redacted; raw data and assets excluded.",
+  "files": [
+    {
+      "public_file": "noise/REPORT.md",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/REPORT.md",
+      "source_sha256": "b599a3f7c013a69d558fbd7be8d51fc4050c2dc7d5d3f64b6d9e320263e63fb0",
+      "public_sha256": "b599a3f7c013a69d558fbd7be8d51fc4050c2dc7d5d3f64b6d9e320263e63fb0",
+      "source_bytes": 7334,
+      "public_bytes": 7334,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/REPRODUCE.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/REPRODUCE.txt",
+      "source_sha256": "60f2817eda3a032bba6d292d0f54fd514c29a6cd69a5f559f2f306ea9892cefe",
+      "public_sha256": "60f2817eda3a032bba6d292d0f54fd514c29a6cd69a5f559f2f306ea9892cefe",
+      "source_bytes": 3794,
+      "public_bytes": 3794,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/audit_divergence.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/audit_divergence.py",
+      "source_sha256": "74240b35fb73b91f1bdd760eca4a126b52145255f0c89a4fc24ad2294b02a2a9",
+      "public_sha256": "74240b35fb73b91f1bdd760eca4a126b52145255f0c89a4fc24ad2294b02a2a9",
+      "source_bytes": 4451,
+      "public_bytes": 4451,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/audit_noise.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/audit_noise.py",
+      "source_sha256": "d8400c7c8152c8a332ecab36ce07552fb7604c1e30c0ac15fd12cf7b1495a5b2",
+      "public_sha256": "d8400c7c8152c8a332ecab36ce07552fb7604c1e30c0ac15fd12cf7b1495a5b2",
+      "source_bytes": 9388,
+      "public_bytes": 9388,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/audit_summary.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/audit_summary.json",
+      "source_sha256": "28e0e947186dac9367e365416faafddea80c0b3d7ef39959076990310d375551",
+      "public_sha256": "28e0e947186dac9367e365416faafddea80c0b3d7ef39959076990310d375551",
+      "source_bytes": 563,
+      "public_bytes": 563,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/camera_metadata.template.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/camera_metadata.template.json",
+      "source_sha256": "29d10dc91e629101df8c23a74486429fba6967e41bc103049940b0678667078e",
+      "public_sha256": "29d10dc91e629101df8c23a74486429fba6967e41bc103049940b0678667078e",
+      "source_bytes": 280,
+      "public_bytes": 280,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/commands.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/commands.csv",
+      "source_sha256": "0444594a9997a5deedac1990bd7ca94fe2a98816f2ca108a3c60c7680902804f",
+      "public_sha256": "0444594a9997a5deedac1990bd7ca94fe2a98816f2ca108a3c60c7680902804f",
+      "source_bytes": 14803,
+      "public_bytes": 14803,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/dose_counts.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/dose_counts.csv",
+      "source_sha256": "b337f64939fd7681c81d874bd82f0aa90860b2557dbb471e536864ade8375c9e",
+      "public_sha256": "b337f64939fd7681c81d874bd82f0aa90860b2557dbb471e536864ade8375c9e",
+      "source_bytes": 469,
+      "public_bytes": 469,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/episodes.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/episodes.csv",
+      "source_sha256": "2fb9a680d934d807ec5a90297b95dc604806660e10c9aa48f3ffe65f72a5b4ae",
+      "public_sha256": "2fb9a680d934d807ec5a90297b95dc604806660e10c9aa48f3ffe65f72a5b4ae",
+      "source_bytes": 7529,
+      "public_bytes": 7529,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/first_divergence.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/first_divergence.json",
+      "source_sha256": "b8c37bab803454683364ae587cfab3879934812e60d8cf9451e32d60456813af",
+      "public_sha256": "b8c37bab803454683364ae587cfab3879934812e60d8cf9451e32d60456813af",
+      "source_bytes": 14720,
+      "public_bytes": 14720,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/infrastructure_failures.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/infrastructure_failures.csv",
+      "source_sha256": "bdb55427c941968da066f358d3c88ab4b7f0be39d0b5fd2099c00198130ee8e5",
+      "public_sha256": "bdb55427c941968da066f358d3c88ab4b7f0be39d0b5fd2099c00198130ee8e5",
+      "source_bytes": 383,
+      "public_bytes": 383,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/offline_replay_verification.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/offline_replay_verification.json",
+      "source_sha256": "2b0fb5bcd55e2887ffb8c227883eb4e6c72c431695e32411b816f99182c5fb90",
+      "public_sha256": "2b0fb5bcd55e2887ffb8c227883eb4e6c72c431695e32411b816f99182c5fb90",
+      "source_bytes": 11500,
+      "public_bytes": 11500,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/pairs.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/pairs.csv",
+      "source_sha256": "5f926e352a10803ae2fadb16376f7acbb5355b34d1e6b0c4218af93c212a7e9c",
+      "public_sha256": "5f926e352a10803ae2fadb16376f7acbb5355b34d1e6b0c4218af93c212a7e9c",
+      "source_bytes": 2059,
+      "public_bytes": 2059,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/raw_provenance.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/raw_provenance.csv",
+      "source_sha256": "3e765e392ebcab890e8d6ad48f0ad401ef4b450c5b55871de591d253ba957787",
+      "public_sha256": "3e765e392ebcab890e8d6ad48f0ad401ef4b450c5b55871de591d253ba957787",
+      "source_bytes": 38843,
+      "public_bytes": 38843,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/same_exposure_dose.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/same_exposure_dose.csv",
+      "source_sha256": "c02f72e658322741bb780650883f85a00cefd83aff20f491337f317337a1291a",
+      "public_sha256": "c02f72e658322741bb780650883f85a00cefd83aff20f491337f317337a1291a",
+      "source_bytes": 74009,
+      "public_bytes": 74009,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "noise/same_exposure_summary.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_closeout/noise/same_exposure_summary.csv",
+      "source_sha256": "990e839e6e47cd578157ced5f1034715af10bae3ac1f5e7e76a244883fc5ff66",
+      "public_sha256": "990e839e6e47cd578157ced5f1034715af10bae3ac1f5e7e76a244883fc5ff66",
+      "source_bytes": 990,
+      "public_bytes": 990,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/OFFLINE_AUDIT_SCRIPT.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/OFFLINE_AUDIT_SCRIPT.txt",
+      "source_sha256": "628368a24b689e1902193b5e35fd23611a37874d46cda0f809a88ad254f404ee",
+      "public_sha256": "628368a24b689e1902193b5e35fd23611a37874d46cda0f809a88ad254f404ee",
+      "source_bytes": 18312,
+      "public_bytes": 18312,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/REPORT.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/REPORT.txt",
+      "source_sha256": "7eb8f5f98e533648ce4422a87f4db201f4ba79e0439d1535a4beb8cd3bb86982",
+      "public_sha256": "7eb8f5f98e533648ce4422a87f4db201f4ba79e0439d1535a4beb8cd3bb86982",
+      "source_bytes": 7998,
+      "public_bytes": 7998,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/REPRODUCE.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/REPRODUCE.txt",
+      "source_sha256": "a138bdeefcd5c0af3a8fd88f47cea6779969b98a6ce5076233e1a120b7a34f35",
+      "public_sha256": "a138bdeefcd5c0af3a8fd88f47cea6779969b98a6ce5076233e1a120b7a34f35",
+      "source_bytes": 3810,
+      "public_bytes": 3810,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/artifact_manifest.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/artifact_manifest.json",
+      "source_sha256": "5f2c73f5c387d6c13f299234f835eb97d2213d4200b56ffbea70036f2fd66d70",
+      "public_sha256": "5f2c73f5c387d6c13f299234f835eb97d2213d4200b56ffbea70036f2fd66d70",
+      "source_bytes": 2278,
+      "public_bytes": 2278,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/attempts.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/attempts.csv",
+      "source_sha256": "977790db1093af20a32deed1186353a8ae02958d48df04e693af4002b7fd9a3f",
+      "public_sha256": "977790db1093af20a32deed1186353a8ae02958d48df04e693af4002b7fd9a3f",
+      "source_bytes": 5924,
+      "public_bytes": 5924,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/audit.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/audit.json",
+      "source_sha256": "db9460996b9173c04fdcb03e83573d97d46bfa9ed001bcdb76300ffad0ada0b8",
+      "public_sha256": "db9460996b9173c04fdcb03e83573d97d46bfa9ed001bcdb76300ffad0ada0b8",
+      "source_bytes": 41467,
+      "public_bytes": 41467,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/episodes.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/episodes.csv",
+      "source_sha256": "f0a65a19a4170a6f7e32329002558e36e0c508c8799fc9c72a937c2785e02fd3",
+      "public_sha256": "f0a65a19a4170a6f7e32329002558e36e0c508c8799fc9c72a937c2785e02fd3",
+      "source_bytes": 6650,
+      "public_bytes": 6650,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/existing_audit_rerun.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/existing_audit_rerun.json",
+      "source_sha256": "fd0a22f619f871b0973f9df8c74ca5c7007d08908425587781a1da90653567ba",
+      "public_sha256": "fd0a22f619f871b0973f9df8c74ca5c7007d08908425587781a1da90653567ba",
+      "source_bytes": 589,
+      "public_bytes": 589,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/first_gates.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/first_gates.csv",
+      "source_sha256": "4d1aa80347eaa39a84192fb4e5226f39d2e0e30273179afc19230b1d32268481",
+      "public_sha256": "4d1aa80347eaa39a84192fb4e5226f39d2e0e30273179afc19230b1d32268481",
+      "source_bytes": 8995,
+      "public_bytes": 8995,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/geometry_recompute.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/geometry_recompute.csv",
+      "source_sha256": "65b3ef92b8623a39e3b75a262d16431e06b02fef45831a8934f96e327e585b64",
+      "public_sha256": "65b3ef92b8623a39e3b75a262d16431e06b02fef45831a8934f96e327e585b64",
+      "source_bytes": 3407,
+      "public_bytes": 3407,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/hold_contacts.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/hold_contacts.csv",
+      "source_sha256": "fde8abe78001e192c2a92e854da110cdd011427aafe82fac23fa272ce5a4a6c5",
+      "public_sha256": "fde8abe78001e192c2a92e854da110cdd011427aafe82fac23fa272ce5a4a6c5",
+      "source_bytes": 775,
+      "public_bytes": 775,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/recovery_events.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/recovery_events.csv",
+      "source_sha256": "ad2da8f0c8f2465aeb7ee72c04d9592d7bfa2a0ef71211b78416bf7a4e1eafba",
+      "public_sha256": "ad2da8f0c8f2465aeb7ee72c04d9592d7bfa2a0ef71211b78416bf7a4e1eafba",
+      "source_bytes": 33237,
+      "public_bytes": 33237,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/recovery_physical_blocks.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/recovery_physical_blocks.csv",
+      "source_sha256": "b6afab498e0ad4f927c076ef9c742efd58d5e84b588d1dcc18fa2fa87bb4a278",
+      "public_sha256": "b6afab498e0ad4f927c076ef9c742efd58d5e84b588d1dcc18fa2fa87bb4a278",
+      "source_bytes": 31429,
+      "public_bytes": 31429,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "gates_recovery/rerun_commands.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/rerun_commands.csv",
+      "source_sha256": "d06f48dcb28dfd20505adae27d913f6678c7bd07c7c92461b30330dc1b882caa",
+      "public_sha256": "7d959a6cf530942e15aaac7bf10f15180fbeeda90ec8639d5e1b86f8d46a7cee",
+      "source_bytes": 3748,
+      "public_bytes": 3543,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "gates_recovery/source_hashes.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/gates_recovery/source_hashes.csv",
+      "source_sha256": "7a52ca379907e8ce4ffab40dc10d2f4b2451f789ab3b4742c58970c4aa17d81a",
+      "public_sha256": "eede6f998ce6db2a7059a45ecc1f137673d8ba9c7fec6e1cefaa0d2d995f5519",
+      "source_bytes": 38003,
+      "public_bytes": 36479,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "contact_capture/COMMAND.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/COMMAND.txt",
+      "source_sha256": "86a0a43e057f95a194e5499c2fcaed3f663c89e9058c3795fd78f543b4eb00f3",
+      "public_sha256": "86a0a43e057f95a194e5499c2fcaed3f663c89e9058c3795fd78f543b4eb00f3",
+      "source_bytes": 739,
+      "public_bytes": 739,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/MANIFEST.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/MANIFEST.json",
+      "source_sha256": "fe13033ea4306f288ca52808178721eaea0e7fee771c69f82abf59ab15695afe",
+      "public_sha256": "fe13033ea4306f288ca52808178721eaea0e7fee771c69f82abf59ab15695afe",
+      "source_bytes": 1539,
+      "public_bytes": 1539,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/README.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/README.txt",
+      "source_sha256": "1ab1bedf719e004b8471d67d616380391768e5bd5affb1474eec6b0ed9f9e8c5",
+      "public_sha256": "1ab1bedf719e004b8471d67d616380391768e5bd5affb1474eec6b0ed9f9e8c5",
+      "source_bytes": 3440,
+      "public_bytes": 3440,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/SOURCE_HASHES.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/SOURCE_HASHES.json",
+      "source_sha256": "e1df72b6216bb04af601d0fdd0c516266a4c6bd9a9045999eb8c07cbda0e8c8b",
+      "public_sha256": "e1df72b6216bb04af601d0fdd0c516266a4c6bd9a9045999eb8c07cbda0e8c8b",
+      "source_bytes": 429,
+      "public_bytes": 429,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/actual_contacts_summary.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/actual_contacts_summary.json",
+      "source_sha256": "7f61f94cd5bb33d42659322920c58907c993b2c4c04f8b555a6126defd1130f0",
+      "public_sha256": "7f61f94cd5bb33d42659322920c58907c993b2c4c04f8b555a6126defd1130f0",
+      "source_bytes": 15908,
+      "public_bytes": 15908,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/episode.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/episode.csv",
+      "source_sha256": "623ee555017ff9c0f8ec6280f9457ee0ea5d4af475a2d5e93b12135790c42b1c",
+      "public_sha256": "623ee555017ff9c0f8ec6280f9457ee0ea5d4af475a2d5e93b12135790c42b1c",
+      "source_bytes": 677,
+      "public_bytes": 677,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/evaluator_private.patch.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/evaluator_private.patch",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/hold_native_contacts.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/hold_native_contacts.csv",
+      "source_sha256": "9a3182b305fd8bc2a1c9c384dd0673012cd14e90147993b2ff0ef79f34146f19",
+      "public_sha256": "9a3182b305fd8bc2a1c9c384dd0673012cd14e90147993b2ff0ef79f34146f19",
+      "source_bytes": 516999,
+      "public_bytes": 516999,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/loaded_contact_bounds.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/loaded_contact_bounds.json",
+      "source_sha256": "224d9c4c15b3820bb6fb038b1b2d4d0030f9df77aff1f7a2b6385318b00df1ef",
+      "public_sha256": "224d9c4c15b3820bb6fb038b1b2d4d0030f9df77aff1f7a2b6385318b00df1ef",
+      "source_bytes": 1352,
+      "public_bytes": 1352,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/patched_stage2_contact_audit.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/patched_stage2_contact_audit.py",
+      "source_sha256": "fd479910bcbf62991aec03d5e4d48b6d83324b0d1fdf3eaeade8639a7ce6c3c4",
+      "public_sha256": "fd479910bcbf62991aec03d5e4d48b6d83324b0d1fdf3eaeade8639a7ce6c3c4",
+      "source_bytes": 2414,
+      "public_bytes": 2414,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "contact_capture/read_capture.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/read_capture.py",
+      "source_sha256": "aa701fe98ca9e68f47c8fc3a2e4714c61942ae4d91ac566a793fee50dd4a4745",
+      "public_sha256": "aa701fe98ca9e68f47c8fc3a2e4714c61942ae4d91ac566a793fee50dd4a4745",
+      "source_bytes": 7054,
+      "public_bytes": 7054,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "reports/STAGE16_HANDOFF.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE16_HANDOFF.txt",
+      "source_sha256": "e56062a95f2f8d373012b9ef4267d976a1550bebf602b84be7943374405f668c",
+      "public_sha256": "ab73d1b778ed971fa60a641ccb86c5e8f539b5098ca0d9cd37da18d42d86301f",
+      "source_bytes": 10583,
+      "public_bytes": 10571,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "reports/STAGE16_REPRODUCE.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE16_REPRODUCE.txt",
+      "source_sha256": "bd1e04ec3548ae1e310b662b55fccc7b019b590d914d309a79075181e4d4bd5a",
+      "public_sha256": "d1e4cbaa6a59970400c28f790f9248307e950bc592b55ee066c819ad1bd1cbc9",
+      "source_bytes": 5985,
+      "public_bytes": 5932,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "reports/STAGE16_EVIDENCE.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE16_EVIDENCE.txt",
+      "source_sha256": "50e4f2264b920004b71732359147cafa76560206590cdf340e7333b5ec707f23",
+      "public_sha256": "5245a4ed9ca8522f01fd29b910fc408ab53e88a494e386f01c8f52d34f5af0a5",
+      "source_bytes": 29766,
+      "public_bytes": 29477,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "reports/STAGE16_NUMERICS.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE16_NUMERICS.txt",
+      "source_sha256": "037666b5b195825cda728895fbbb0ed587cee1d3549ca88bfd4be732f4c9cd9c",
+      "public_sha256": "9d63b5e08fe49ab787d0e6c0056081a1662e076e67ee8cdaac58abce97c944ea",
+      "source_bytes": 15633,
+      "public_bytes": 15551,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "reports/STAGE16_TIMING.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/STAGE16_TIMING.txt",
+      "source_sha256": "8984b028f9bc782d04d4a0f8bc1e69f43f80786d580c940a559317d5330aab41",
+      "public_sha256": "1bfc0919124850549c8240118b6b1331f9dfb8abdd0bcc787e6dbec707456ddf",
+      "source_bytes": 23348,
+      "public_bytes": 22948,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "final_acceptance/episodes.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/independent_acceptance_final/episodes.csv",
+      "source_sha256": "31aa23365fca0a9cfdc5550eaa96c2503b671efe0748370d821c5afd63d64179",
+      "public_sha256": "31aa23365fca0a9cfdc5550eaa96c2503b671efe0748370d821c5afd63d64179",
+      "source_bytes": 2615,
+      "public_bytes": 2615,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "final_acceptance/timing.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/independent_acceptance_final/timing.csv",
+      "source_sha256": "aad46fbf9577ca830c70d20b17c0f50dbd05cb324049fe046d33b85872a41f6b",
+      "public_sha256": "aad46fbf9577ca830c70d20b17c0f50dbd05cb324049fe046d33b85872a41f6b",
+      "source_bytes": 1644,
+      "public_bytes": 1644,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "final_acceptance/groups.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/independent_acceptance_final/groups.csv",
+      "source_sha256": "39e059c62c820f00e38c46b6da6057254c413b202c7a511fa7f21754a5870907",
+      "public_sha256": "39e059c62c820f00e38c46b6da6057254c413b202c7a511fa7f21754a5870907",
+      "source_bytes": 1010,
+      "public_bytes": 1010,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "final_acceptance/hold_contacts.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/independent_acceptance_final/hold_contacts.csv",
+      "source_sha256": "7c8d7f780182c1b0014cb731816699d373e54c3613cb9b238e86c97cfe99dbeb",
+      "public_sha256": "7c8d7f780182c1b0014cb731816699d373e54c3613cb9b238e86c97cfe99dbeb",
+      "source_bytes": 692,
+      "public_bytes": 692,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "final_acceptance/phase_physics.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/independent_acceptance_final/phase_physics.csv",
+      "source_sha256": "beb4332610175406fa856cdd12184bd9c85c70823729158a53a2683466926ae8",
+      "public_sha256": "beb4332610175406fa856cdd12184bd9c85c70823729158a53a2683466926ae8",
+      "source_bytes": 3184,
+      "public_bytes": 3184,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "final_acceptance/resume_verification.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/independent_acceptance_final/resume_verification.json",
+      "source_sha256": "7c3b41d13529d50c60d6361a9884b3d10d2a1ac4888091fb73be8947fb0a16dc",
+      "public_sha256": "7c3b41d13529d50c60d6361a9884b3d10d2a1ac4888091fb73be8947fb0a16dc",
+      "source_bytes": 3448,
+      "public_bytes": 3448,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "final_acceptance/A_commanded_lift_reference.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/independent_acceptance_final/A_commanded_lift_reference.json",
+      "source_sha256": "2312750e55b2c1c9c180615eeed8c2e60555766bc90be4b86715682896ca6f77",
+      "public_sha256": "2312750e55b2c1c9c180615eeed8c2e60555766bc90be4b86715682896ca6f77",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "configurations/finalA_dn0.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/acceptance_final/finalA_dn0.json",
+      "source_sha256": "b431131d4f35d7e5a81c36e958daea1f32da24afb217a64c17609159f63b2a96",
+      "public_sha256": "b431131d4f35d7e5a81c36e958daea1f32da24afb217a64c17609159f63b2a96",
+      "source_bytes": 165,
+      "public_bytes": 165,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "configurations/finalB_dn3.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/acceptance_final/finalB_dn3.json",
+      "source_sha256": "d4c99294f4e565f5545feb24d119d5f843c9648b96237c8998106c8d7acfd991",
+      "public_sha256": "d4c99294f4e565f5545feb24d119d5f843c9648b96237c8998106c8d7acfd991",
+      "source_bytes": 165,
+      "public_bytes": 165,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "configurations/finalD_dn20.4.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/acceptance_final/finalD_dn20.4.json",
+      "source_sha256": "b0c790517e0a2090986a92524f25cdf3ad997ca6dadc30805eb77fd2ed011215",
+      "public_sha256": "b0c790517e0a2090986a92524f25cdf3ad997ca6dadc30805eb77fd2ed011215",
+      "source_bytes": 166,
+      "public_bytes": 166,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "configurations/manifest.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/acceptance_final/manifest.json",
+      "source_sha256": "f4dbd75b4bd071b79b5ff781b601f45f1826396427f7696dcc676546dc2901e5",
+      "public_sha256": "f4dbd75b4bd071b79b5ff781b601f45f1826396427f7696dcc676546dc2901e5",
+      "source_bytes": 745,
+      "public_bytes": 745,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/simulation_phase_timing.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/simulation_phase_timing.csv",
+      "source_sha256": "2b115776d8d7e3e67a82995946565bae5544decde535a11745f6484c089f4b65",
+      "public_sha256": "2b115776d8d7e3e67a82995946565bae5544decde535a11745f6484c089f4b65",
+      "source_bytes": 20326,
+      "public_bytes": 20326,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/simulation_timing.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/simulation_timing.csv",
+      "source_sha256": "ffb56da8b809d63ebbabebe0d25c6b221659331b15719370e24575333324de63",
+      "public_sha256": "ffb56da8b809d63ebbabebe0d25c6b221659331b15719370e24575333324de63",
+      "source_bytes": 622,
+      "public_bytes": 622,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/frozen_replay_timing.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/frozen_replay_timing.csv",
+      "source_sha256": "60dcfd6ba4ec58cc1e5f8e0623babd5ac73e8d850311a39ec399f8c445b34a05",
+      "public_sha256": "60dcfd6ba4ec58cc1e5f8e0623babd5ac73e8d850311a39ec399f8c445b34a05",
+      "source_bytes": 813,
+      "public_bytes": 813,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/frozen_replay_phases.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/frozen_replay_phases.csv",
+      "source_sha256": "9fd4ba1232bb9d3778d3f6042b70d07c48a8158bc69a34279e6c1c4eca216b32",
+      "public_sha256": "9fd4ba1232bb9d3778d3f6042b70d07c48a8158bc69a34279e6c1c4eca216b32",
+      "source_bytes": 7226,
+      "public_bytes": 7226,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/timing_readout.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/timing_readout.py",
+      "source_sha256": "ea83cb63f756366745cf66417c45e560a4777291218df0a3c39b15f7b5623feb",
+      "public_sha256": "ea83cb63f756366745cf66417c45e560a4777291218df0a3c39b15f7b5623feb",
+      "source_bytes": 5755,
+      "public_bytes": 5755,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/physical_regression.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/physical_regression.json",
+      "source_sha256": "73818e295541968ff7fa2123cbd7e5bef6c764951e1c9837923f8015256a0a96",
+      "public_sha256": "969b44fbfda724192362b34653bb71ebab94866b6b3554a1257a4166fd07d9a1",
+      "source_bytes": 2779,
+      "public_bytes": 2767,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "timing/physical_regression.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/physical_regression.csv",
+      "source_sha256": "1141ca8ccdcb09470850229c03133d36c2f65d85662987b88919b85b9510b04b",
+      "public_sha256": "1141ca8ccdcb09470850229c03133d36c2f65d85662987b88919b85b9510b04b",
+      "source_bytes": 812,
+      "public_bytes": 812,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/audit_fix.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/audit_fix.json",
+      "source_sha256": "4c8c4d6a4888f16618d5f44a87e45719a1b4319ac45f13a537b38c0d9726e980",
+      "public_sha256": "4c8c4d6a4888f16618d5f44a87e45719a1b4319ac45f13a537b38c0d9726e980",
+      "source_bytes": 2673,
+      "public_bytes": 2673,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/validation.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/validation.json",
+      "source_sha256": "d550a9ebd12a257efb369e77d4271620c3392af93539e20c528ece64ba3465e5",
+      "public_sha256": "d550a9ebd12a257efb369e77d4271620c3392af93539e20c528ece64ba3465e5",
+      "source_bytes": 550,
+      "public_bytes": 550,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/paced_final_A.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/paced_final_A/timing_summary.json",
+      "source_sha256": "34aef977327ba9a330dc317da63d16d76d38ad6cd9c8614c83ba3fac5a5d19f2",
+      "public_sha256": "07baf19651c4c81124726406eabe5a32dceaa5307378bb2769da931cbd66c4fe",
+      "source_bytes": 2074,
+      "public_bytes": 2062,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "timing/paced_final_B.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/paced_final_B/timing_summary.json",
+      "source_sha256": "cd9ce1f7afc2ecc26bc03bcdf080c602e9a4569dda24521621d030a10aaa3fe7",
+      "public_sha256": "a0d0366eb39415f0d44cc50a149ee841284e3676c2c9d446220a221fc39eb99b",
+      "source_bytes": 2081,
+      "public_bytes": 2069,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "timing/historical/historical_boundaries.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/historical_boundaries.csv",
+      "source_sha256": "326ebff84ffac6d36f53ddff7ecdcad5cb319bd70ee2481d65314b00cd603d15",
+      "public_sha256": "326ebff84ffac6d36f53ddff7ecdcad5cb319bd70ee2481d65314b00cd603d15",
+      "source_bytes": 1113,
+      "public_bytes": 1113,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/historical/savings.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/savings.csv",
+      "source_sha256": "42768c23ee08a2adbd4665b3f4d06143655533b8d07513befe1e2209cd77101f",
+      "public_sha256": "42768c23ee08a2adbd4665b3f4d06143655533b8d07513befe1e2209cd77101f",
+      "source_bytes": 1073,
+      "public_bytes": 1073,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/historical/placement.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/placement.csv",
+      "source_sha256": "04c264902680e64e79f7a86e960e11d8863df063879738d228920b9e8c092e99",
+      "public_sha256": "04c264902680e64e79f7a86e960e11d8863df063879738d228920b9e8c092e99",
+      "source_bytes": 2035,
+      "public_bytes": 2035,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/historical/placement_boundaries.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/placement_boundaries.csv",
+      "source_sha256": "1d3a9f4e4f22ef6abd10b5dafeaabe14d10f286ac9690a116c981eba8d4acff2",
+      "public_sha256": "1d3a9f4e4f22ef6abd10b5dafeaabe14d10f286ac9690a116c981eba8d4acff2",
+      "source_bytes": 1652,
+      "public_bytes": 1652,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/historical/public_replay_functions.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/public_replay_functions.csv",
+      "source_sha256": "093c0058e7fa3d99369b984aa6d32f92e4d10504102eec511a4f0719bfedb19f",
+      "public_sha256": "093c0058e7fa3d99369b984aa6d32f92e4d10504102eec511a4f0719bfedb19f",
+      "source_bytes": 7611,
+      "public_bytes": 7611,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "timing/historical/paced_summary.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/paced_summary.csv",
+      "source_sha256": "f3baeec621964f2ef7d97c71468480858f8128f1e3d4ff0380d6bf7050d16938",
+      "public_sha256": "088b96efcbf54da86179a84d496cb8344db655f92b26b6f2de4e79f35c00e55b",
+      "source_bytes": 1809,
+      "public_bytes": 1785,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "timing/historical/hardware_availability.json",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/hardware_availability.json",
+      "source_sha256": "0fa537b25b4847ee8649fa16e818a3f284f4a225a550b8a94a6eb15e6fee2b4e",
+      "public_sha256": "0fa537b25b4847ee8649fa16e818a3f284f4a225a550b8a94a6eb15e6fee2b4e",
+      "source_bytes": 653,
+      "public_bytes": 653,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "history/version_gate_diff.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/evidence/version_gate_diff.csv",
+      "source_sha256": "6d30f19051542179026858f9b5058e3fe7392a006baaf22e8f463c1000d22d90",
+      "public_sha256": "6d30f19051542179026858f9b5058e3fe7392a006baaf22e8f463c1000d22d90",
+      "source_bytes": 9093,
+      "public_bytes": 9093,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "history/acceptance_versions_commands.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/evidence/acceptance_versions_commands.csv",
+      "source_sha256": "62bdc0cc3e8a3ceefb86d4957000d8bfaa811cbf11eb53c44c64542970e9db6b",
+      "public_sha256": "2016088c4ad7119ce70a4280c5e98dd66db43c96c81808a6e4a07874a7d9a0a2",
+      "source_bytes": 6506,
+      "public_bytes": 6188,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "history/acceptance.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/evidence/acceptance.csv",
+      "source_sha256": "db89d499d119343da4575127793646887ac1f1c9ed6d5b389438781e71a31ed0",
+      "public_sha256": "267250855e1a97b9e3724f5658fa14d1f239bd1f917a03a6f019a8c9140fa5ff",
+      "source_bytes": 1588,
+      "public_bytes": 1516,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "history/stage16_version_diff.csv",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/final/stage16_version_diff.csv",
+      "source_sha256": "74416c4dbf30ff7ae550b1dc1f15ab9d8529a77686c11504404c14d15edbd482",
+      "public_sha256": "74416c4dbf30ff7ae550b1dc1f15ab9d8529a77686c11504404c14d15edbd482",
+      "source_bytes": 3683,
+      "public_bytes": 3683,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/run_stage16.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "source_sha256": "bb8bac49bdb2d6d24043c7097e1a72ddc64450800f0386c0dd39dc94db4c9289",
+      "public_sha256": "bb8bac49bdb2d6d24043c7097e1a72ddc64450800f0386c0dd39dc94db4c9289",
+      "source_bytes": 5525,
+      "public_bytes": 5525,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage16_backend.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_backend.py",
+      "source_sha256": "375d3ceef1b8f590b2eb512e93b063929acedac7363fe07283b0ae4d95988773",
+      "public_sha256": "375d3ceef1b8f590b2eb512e93b063929acedac7363fe07283b0ae4d95988773",
+      "source_bytes": 5811,
+      "public_bytes": 5811,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage16_episode.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_episode.py",
+      "source_sha256": "08e3d68b2df240e1aa8a89c0fd210e4998236e9a3a9f85a189fc7729d1ec8eba",
+      "public_sha256": "08e3d68b2df240e1aa8a89c0fd210e4998236e9a3a9f85a189fc7729d1ec8eba",
+      "source_bytes": 2750,
+      "public_bytes": 2750,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage16_build_controller.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_build_controller.py",
+      "source_sha256": "6742932d3a4e47ce1ffb3b09f92a7da3dcd1555cb6e95d7d70d0321acea3cea6",
+      "public_sha256": "6742932d3a4e47ce1ffb3b09f92a7da3dcd1555cb6e95d7d70d0321acea3cea6",
+      "source_bytes": 1526,
+      "public_bytes": 1526,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage16_numerics.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_numerics.py",
+      "source_sha256": "a0f981c1422c34e8b489a2a7471e151ba52507cae7a0f9ed9a26fc00576cbc8e",
+      "public_sha256": "a0f981c1422c34e8b489a2a7471e151ba52507cae7a0f9ed9a26fc00576cbc8e",
+      "source_bytes": 8145,
+      "public_bytes": 8145,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage16_numerics_overlay.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_numerics_overlay.py",
+      "source_sha256": "48c39380e529253d02450f14e2368524040bf09b71b32ad9bcfe4c87befc6096",
+      "public_sha256": "48c39380e529253d02450f14e2368524040bf09b71b32ad9bcfe4c87befc6096",
+      "source_bytes": 5787,
+      "public_bytes": 5787,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage16_evidence_audit.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence_audit.py",
+      "source_sha256": "457521273300521b3ef647c528ca23e4c38f8b6b3842206412b22ebd0516fa3c",
+      "public_sha256": "a0f83cfceb12e7988003e6ca8717d72ae1e857335c257c65cd08fe7d3c360d35",
+      "source_bytes": 7295,
+      "public_bytes": 7283,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "code/stage16_realtime_timing.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_realtime_timing.py",
+      "source_sha256": "40e22f8b3b986c39f425af0b973727d0a9ee2a7e4588de03a61506928916a9c7",
+      "public_sha256": "40e22f8b3b986c39f425af0b973727d0a9ee2a7e4588de03a61506928916a9c7",
+      "source_bytes": 7298,
+      "public_bytes": 7298,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage16_replay_profile.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_replay_profile.py",
+      "source_sha256": "a3ad45a9f7507a09eb37cd5e9ece9f60b78b70e7675b1f391dfb4310743bd25d",
+      "public_sha256": "a3ad45a9f7507a09eb37cd5e9ece9f60b78b70e7675b1f391dfb4310743bd25d",
+      "source_bytes": 7920,
+      "public_bytes": 7920,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage16_timing_audit.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_timing_audit.py",
+      "source_sha256": "93b91f247a976dc6092fbc3bf98816a7c7b381324ff4db8af59ef5103399a8b6",
+      "public_sha256": "93b91f247a976dc6092fbc3bf98816a7c7b381324ff4db8af59ef5103399a8b6",
+      "source_bytes": 8692,
+      "public_bytes": 8692,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage15_batch.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_batch.py",
+      "source_sha256": "14812caec2299ed33c3609b41a446781954b6e77de8c45745b2c98933212d020",
+      "public_sha256": "14812caec2299ed33c3609b41a446781954b6e77de8c45745b2c98933212d020",
+      "source_bytes": 15822,
+      "public_bytes": 15822,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage15_readout.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_readout.py",
+      "source_sha256": "0855c7b1b178aaacb905267d6c555eb3edf9f2f66ea93d94e460911aca843c38",
+      "public_sha256": "0855c7b1b178aaacb905267d6c555eb3edf9f2f66ea93d94e460911aca843c38",
+      "source_bytes": 6870,
+      "public_bytes": 6870,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage15_control.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_control.py",
+      "source_sha256": "6770e900fb01e06446d7880c880494612b149ecc414ab7600f9343d8ddfd2a5d",
+      "public_sha256": "6770e900fb01e06446d7880c880494612b149ecc414ab7600f9343d8ddfd2a5d",
+      "source_bytes": 13018,
+      "public_bytes": 13018,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage15_runtime.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_runtime.py",
+      "source_sha256": "717ac6d272f61126150e77548c5ef12fe871faae8f460555b69e7530537178d3",
+      "public_sha256": "717ac6d272f61126150e77548c5ef12fe871faae8f460555b69e7530537178d3",
+      "source_bytes": 9589,
+      "public_bytes": 9589,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage15_camera_noise.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage15_camera_noise.py",
+      "source_sha256": "bea38a9445b9a2555a9cb2c6e81f6bc54c59eedd29795899c8e53555ce7c891d",
+      "public_sha256": "bea38a9445b9a2555a9cb2c6e81f6bc54c59eedd29795899c8e53555ce7c891d",
+      "source_bytes": 10600,
+      "public_bytes": 10600,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage14_geometry.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage14_geometry.py",
+      "source_sha256": "afcd9723e49265ec374b7a992c7a4c86b4df1147e55ca97fc043e372e866e446",
+      "public_sha256": "afcd9723e49265ec374b7a992c7a4c86b4df1147e55ca97fc043e372e866e446",
+      "source_bytes": 5027,
+      "public_bytes": 5027,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage14_resources.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage14_resources.py",
+      "source_sha256": "7e2a3293359be02825f5e9328b3c5178d1b2097e0a78e6dfda51cbfb7b5725d7",
+      "public_sha256": "7e2a3293359be02825f5e9328b3c5178d1b2097e0a78e6dfda51cbfb7b5725d7",
+      "source_bytes": 1427,
+      "public_bytes": 1427,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/stage13_recovery.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage13_recovery.py",
+      "source_sha256": "e367ff5920c8b25810cecef84c1385d5ffba792fff464bd2ef46fd12166b599a",
+      "public_sha256": "e367ff5920c8b25810cecef84c1385d5ffba792fff464bd2ef46fd12166b599a",
+      "source_bytes": 14057,
+      "public_bytes": 14057,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/general_grasp_contacts.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/general_grasp_contacts.py",
+      "source_sha256": "872a5421603d0c60b9a296adccff8f15d30f3e87dccdc7bf54b86606b79b7c0a",
+      "public_sha256": "872a5421603d0c60b9a296adccff8f15d30f3e87dccdc7bf54b86606b79b7c0a",
+      "source_bytes": 61816,
+      "public_bytes": 61816,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/general_grasp_integration.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/general_grasp_integration.py",
+      "source_sha256": "794588bae3f8ed56eef986f2b4dc06a775c419cf6fcf24911847a60997a6b32b",
+      "public_sha256": "794588bae3f8ed56eef986f2b4dc06a775c419cf6fcf24911847a60997a6b32b",
+      "source_bytes": 5942,
+      "public_bytes": 5942,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/evaluator.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/evaluator.py",
+      "source_sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+      "public_sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+      "source_bytes": 8806,
+      "public_bytes": 8806,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/publish_github.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publish_github.py",
+      "source_sha256": "d78d08d7f3580244797c43cd85d4b260951fd6bb0021fb9e7c07431588c2d924",
+      "public_sha256": "d78d08d7f3580244797c43cd85d4b260951fd6bb0021fb9e7c07431588c2d924",
+      "source_bytes": 13512,
+      "public_bytes": 13512,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/test_github_publish.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_github_publish.py",
+      "source_sha256": "1555f483fd7b5bc5e9eee0c7270a17d3e53600dc3eb6e59bf85fbae8d0a2f3f1",
+      "public_sha256": "1555f483fd7b5bc5e9eee0c7270a17d3e53600dc3eb6e59bf85fbae8d0a2f3f1",
+      "source_bytes": 12697,
+      "public_bytes": 12697,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/test_stage16_evidence_audit.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_stage16_evidence_audit.py",
+      "source_sha256": "e544ae55cccdccc52a636fa42126e0f8f2fbd6c7a429d375893ed05a29c1b0c8",
+      "public_sha256": "e544ae55cccdccc52a636fa42126e0f8f2fbd6c7a429d375893ed05a29c1b0c8",
+      "source_bytes": 1530,
+      "public_bytes": 1530,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/test_stage16_backend.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_stage16_backend.py",
+      "source_sha256": "323006a561c46ddcaf82ec86d9f91b6b61da6ce797823aaa12e0187feaa597e1",
+      "public_sha256": "323006a561c46ddcaf82ec86d9f91b6b61da6ce797823aaa12e0187feaa597e1",
+      "source_bytes": 5575,
+      "public_bytes": 5575,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/test_stage16_numerics.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_stage16_numerics.py",
+      "source_sha256": "3ed366bfcf4b337e33f2d33c1ce1d6d926278726e58a7a72f163243c21862e4c",
+      "public_sha256": "3ed366bfcf4b337e33f2d33c1ce1d6d926278726e58a7a72f163243c21862e4c",
+      "source_bytes": 2627,
+      "public_bytes": 2627,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/test_stage16_realtime_timing.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_stage16_realtime_timing.py",
+      "source_sha256": "3a6f1f76669b127e3aa25f0b075144642904ae7c756e5b848e93727d665823e3",
+      "public_sha256": "3a6f1f76669b127e3aa25f0b075144642904ae7c756e5b848e93727d665823e3",
+      "source_bytes": 3589,
+      "public_bytes": 3589,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/recorded_adapter.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/recorded_adapter.py",
+      "source_sha256": "a8e2f847931d03c17560db9bb6019846076ead6651d00bc9907aac4c70067185",
+      "public_sha256": "a8e2f847931d03c17560db9bb6019846076ead6651d00bc9907aac4c70067185",
+      "source_bytes": 7911,
+      "public_bytes": 7911,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/test_recorded_adapter.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/timing/test_recorded_adapter.py",
+      "source_sha256": "234db767752d8ec26877e05b4045ebab2e2ea58607728e6e1a59ea35849a7b70",
+      "public_sha256": "234db767752d8ec26877e05b4045ebab2e2ea58607728e6e1a59ea35849a7b70",
+      "source_bytes": 3589,
+      "public_bytes": 3589,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/frozen_controller.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/release/controller.py",
+      "source_sha256": "c13c0bce278e3fa3e04308446e52b6307804ae3412e2c66c5cacbc2c35eae2f7",
+      "public_sha256": "157b73be3a6000b2e3f83f7c96924d641c7b4787823b6e81332d6b916f28ad98",
+      "source_bytes": 306740,
+      "public_bytes": 306728,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "code/build_public.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/build_public.py",
+      "source_sha256": "d1ade095acf2b3502b481c0489024ee8981f07c87562cd78f6b293814b25a052",
+      "public_sha256": "11267ee6925db04069bdaafb30cead566bd23dd94cf0fc90fadf0f64fd5062c1",
+      "source_bytes": 9393,
+      "public_bytes": 9333,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "validation/center_fix_tests.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/validation/center_fix_tests.txt",
+      "source_sha256": "ed0d6c079627b8413ba6fa1e9b0419bf2bb3f2c7f1917b91d9f908f1f9a678d2",
+      "public_sha256": "ed0d6c079627b8413ba6fa1e9b0419bf2bb3f2c7f1917b91d9f908f1f9a678d2",
+      "source_bytes": 98,
+      "public_bytes": 98,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "validation/initial_center_fix_failure.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/validation/initial_center_fix_failure.txt",
+      "source_sha256": "40bd47ee2bfa92aa1002292c67598e3f9f0076dac989a7e0ef70c2612dea26f2",
+      "public_sha256": "5dcc4618a78270b4b5aa729290d19c02a10743eae46438bc815b63085bcd9fdd",
+      "source_bytes": 1556,
+      "public_bytes": 1553,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "validation/recorded_adapter_tests.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/validation/recorded_adapter_tests.txt",
+      "source_sha256": "92c73880887718556f9d3fcf26cb8716f4a1c22fbe14a7bc1ba83eb615ce3544",
+      "public_sha256": "92c73880887718556f9d3fcf26cb8716f4a1c22fbe14a7bc1ba83eb615ce3544",
+      "source_bytes": 764,
+      "public_bytes": 764,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "validation/targeted_tests.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/validation/targeted_tests.txt",
+      "source_sha256": "e9b99dd56a55292d596c8e3232ddee215093626ade55e5275531f66e6a7caf39",
+      "public_sha256": "e9b99dd56a55292d596c8e3232ddee215093626ade55e5275531f66e6a7caf39",
+      "source_bytes": 100,
+      "public_bytes": 100,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "code/physical_readout.py",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/physical_readout.py",
+      "source_sha256": "349f13e9ead197e0f84cf42573ecf93c7ab65ae6c844b3b9667d449a6a6ed202",
+      "public_sha256": "cc956a5106489772c3963c3b8ce17b4ac849c1c5d0b15e243ca3aabba274b90d",
+      "source_bytes": 3753,
+      "public_bytes": 3741,
+      "transformation": "UTF-8 local-root redaction; test-log trailing spaces trimmed if applicable"
+    },
+    {
+      "public_file": "REPORT.md",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/PUBLIC_REPORT.md",
+      "source_sha256": "d29e3d83c64c99bc4258d60c6e0526a636e70eb0bc118e6207d93888c2886051",
+      "public_sha256": "d29e3d83c64c99bc4258d60c6e0526a636e70eb0bc118e6207d93888c2886051",
+      "source_bytes": 15723,
+      "public_bytes": 15723,
+      "transformation": "byte exact"
+    },
+    {
+      "public_file": "REPRODUCE.txt",
+      "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/PUBLIC_REPRODUCE.txt",
+      "source_sha256": "146dc10a751652f85466e88c403355a40bfef133de1828897bbd0dace65485c3",
+      "public_sha256": "146dc10a751652f85466e88c403355a40bfef133de1828897bbd0dace65485c3",
+      "source_bytes": 5523,
+      "public_bytes": 5523,
+      "transformation": "byte exact"
+    }
+  ]
+}

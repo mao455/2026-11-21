@@ -1,0 +1,219 @@
+[
+  {
+    "name": "20_safe",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/diagnostic/20_safe",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_three.json",
+      "--controller",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/controllers/20_safe_diagnostic.py",
+      "--mode",
+      "full",
+      "--evaluation-mode",
+      "inline"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/diagnostic/20_safe --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_three.json --controller <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/controllers/20_safe_diagnostic.py --mode full --evaluation-mode inline",
+    "returncode": 0
+  },
+  {
+    "name": "20_auto",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_auto",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_auto.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "auto"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_auto --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_auto.json --evaluation-mode deferred --mode minimal --fingers auto",
+    "returncode": 0
+  },
+  {
+    "name": "20_auto_tie",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_auto_tie",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_auto.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "auto",
+      "--margin-tie",
+      "bounded_relative"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_auto_tie --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_auto.json --evaluation-mode deferred --mode minimal --fingers auto --margin-tie bounded_relative",
+    "returncode": 0
+  },
+  {
+    "name": "20_three",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_three",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_three.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "three"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_three --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_three.json --evaluation-mode deferred --mode minimal --fingers three",
+    "returncode": 0
+  },
+  {
+    "name": "20_three_normal4",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_three_normal4",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_three.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "three",
+      "--normal-weight",
+      "4"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_three_normal4 --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_three.json --evaluation-mode deferred --mode minimal --fingers three --normal-weight 4",
+    "returncode": 0
+  },
+  {
+    "name": "20_two",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_two",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_two.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "two"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/20_two --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/20_two.json --evaluation-mode deferred --mode minimal --fingers two",
+    "returncode": 0
+  },
+  {
+    "name": "34_auto",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_auto",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_auto.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "auto"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_auto --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_auto.json --evaluation-mode deferred --mode minimal --fingers auto",
+    "returncode": 0
+  },
+  {
+    "name": "34_auto_tie",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_auto_tie",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_auto.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "auto",
+      "--margin-tie",
+      "bounded_relative"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_auto_tie --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_auto.json --evaluation-mode deferred --mode minimal --fingers auto --margin-tie bounded_relative",
+    "returncode": 0
+  },
+  {
+    "name": "34_three",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_three",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_three.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "three"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_three --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_three.json --evaluation-mode deferred --mode minimal --fingers three",
+    "returncode": 0
+  },
+  {
+    "name": "34_three_normal4",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_three_normal4",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_three.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "three",
+      "--normal-weight",
+      "4"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_three_normal4 --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_three.json --evaluation-mode deferred --mode minimal --fingers three --normal-weight 4",
+    "returncode": 0
+  },
+  {
+    "name": "34_two",
+    "command": [
+      "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py",
+      "--session",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_two",
+      "--case-file",
+      "<LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_two.json",
+      "--evaluation-mode",
+      "deferred",
+      "--mode",
+      "minimal",
+      "--fingers",
+      "two"
+    ],
+    "shell": "<LOCAL_HOME>/miniconda3/envs/isaaclab/bin/python <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage16.py --session <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/outputs/stage16/numeric/34_two --case-file <LOCAL_DOCS>/fingereye_stage16/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/numerics/cases/34_two.json --evaluation-mode deferred --mode minimal --fingers two",
+    "returncode": 0
+  }
+]

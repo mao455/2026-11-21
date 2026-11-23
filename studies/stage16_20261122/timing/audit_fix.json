@@ -1,0 +1,76 @@
+{
+  "source_fix_commit": "60b5a7b007fe5c8d52f6a11c31fa66c406238c7a",
+  "bug": "wrong centroid_displacement_px column silently omitted centers",
+  "repair": "use actual centroid_shift_px; report visible/missing rows; missing schema raises",
+  "same_exposure": [
+    {
+      "sigma_dn": 0,
+      "rows": 72,
+      "mask_iou_measured_rows": 72,
+      "mask_iou_missing_rows": 0,
+      "mask_iou_median": 1.0,
+      "mask_boundary_iou_measured_rows": 72,
+      "mask_boundary_iou_missing_rows": 0,
+      "mask_boundary_iou_median": 1.0,
+      "centroid_shift_px_measured_rows": 66,
+      "centroid_shift_px_missing_rows": 6,
+      "centroid_shift_px_median": 0.0
+    },
+    {
+      "sigma_dn": 3,
+      "rows": 72,
+      "mask_iou_measured_rows": 72,
+      "mask_iou_missing_rows": 0,
+      "mask_iou_median": 0.9974014720115241,
+      "mask_boundary_iou_measured_rows": 72,
+      "mask_boundary_iou_missing_rows": 0,
+      "mask_boundary_iou_median": 0.9566392479435958,
+      "centroid_shift_px_measured_rows": 66,
+      "centroid_shift_px_missing_rows": 6,
+      "centroid_shift_px_median": 0.021088267777529306
+    },
+    {
+      "sigma_dn": 6,
+      "rows": 72,
+      "mask_iou_measured_rows": 72,
+      "mask_iou_missing_rows": 0,
+      "mask_iou_median": 0.9942716633582166,
+      "mask_boundary_iou_measured_rows": 72,
+      "mask_boundary_iou_missing_rows": 0,
+      "mask_boundary_iou_median": 0.9050125313283208,
+      "centroid_shift_px_measured_rows": 66,
+      "centroid_shift_px_missing_rows": 6,
+      "centroid_shift_px_median": 0.03956516865362837
+    },
+    {
+      "sigma_dn": 12,
+      "rows": 72,
+      "mask_iou_measured_rows": 72,
+      "mask_iou_missing_rows": 0,
+      "mask_iou_median": 0.9875533179240328,
+      "mask_boundary_iou_measured_rows": 72,
+      "mask_boundary_iou_missing_rows": 0,
+      "mask_boundary_iou_median": 0.7860084797092671,
+      "centroid_shift_px_measured_rows": 66,
+      "centroid_shift_px_missing_rows": 6,
+      "centroid_shift_px_median": 0.05523555461614499
+    },
+    {
+      "sigma_dn": 20.4,
+      "rows": 72,
+      "mask_iou_measured_rows": 72,
+      "mask_iou_missing_rows": 0,
+      "mask_iou_median": 0.9673415701167006,
+      "mask_boundary_iou_measured_rows": 72,
+      "mask_boundary_iou_missing_rows": 0,
+      "mask_boundary_iou_median": 0.5281467425679949,
+      "centroid_shift_px_measured_rows": 66,
+      "centroid_shift_px_missing_rows": 6,
+      "centroid_shift_px_median": 0.08972725247520238
+    }
+  ],
+  "acceptance_count": 6,
+  "all_acceptance_metrics_match": true,
+  "noise_all_raw_scores_equal": true,
+  "evaluator_sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b"
+}

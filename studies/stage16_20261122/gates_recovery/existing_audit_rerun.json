@@ -1,0 +1,12 @@
+{
+  "command": "OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 \"$ISAACLAB_PYTHON\" stage16_evidence_audit.py --output /tmp/stage16_public_raw_reaudit",
+  "tool_sha256": "bfe23d08efc6a04ce01edc35a7ec3ffb65d12ce040a821cbc45cee33fd46191e",
+  "audit_scope": "Offline raw re-read, no new physical episodes",
+  "acceptance_count": 6,
+  "acceptance_valid": 6,
+  "acceptance_success": 4,
+  "acceptance_strict": 2,
+  "all_acceptance_metrics_match": true,
+  "evaluator_sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+  "runtime_or_physics_started": false
+}
