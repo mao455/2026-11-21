@@ -1,0 +1,513 @@
+{
+  "episode": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode",
+  "controller_sha256": "20016ea28e2d164bddbf957c5ce49d4a6a6b08785f5d6849aa345e5df81a8edd",
+  "phases": [
+    {
+      "phase": "s5_raise",
+      "start_step": 0,
+      "end_step": 120,
+      "start_s": 0.0,
+      "end_s": 1.0,
+      "commands": 20
+    },
+    {
+      "phase": "s5_park",
+      "start_step": 120,
+      "end_step": 144,
+      "start_s": 1.0,
+      "end_s": 1.2,
+      "commands": 4
+    },
+    {
+      "phase": "s5_orient",
+      "start_step": 144,
+      "end_step": 672,
+      "start_s": 1.2,
+      "end_s": 5.6,
+      "commands": 88
+    },
+    {
+      "phase": "s5_translate",
+      "start_step": 672,
+      "end_step": 984,
+      "start_s": 5.6,
+      "end_s": 8.2,
+      "commands": 52
+    },
+    {
+      "phase": "s5_descend",
+      "start_step": 984,
+      "end_step": 1308,
+      "start_s": 8.2,
+      "end_s": 10.9,
+      "commands": 54
+    },
+    {
+      "phase": "s5_rgb_realign",
+      "start_step": 1308,
+      "end_step": 1548,
+      "start_s": 10.9,
+      "end_s": 12.9,
+      "commands": 40
+    },
+    {
+      "phase": "s5_close",
+      "start_step": 1548,
+      "end_step": 1596,
+      "start_s": 12.9,
+      "end_s": 13.3,
+      "commands": 8
+    },
+    {
+      "phase": "s5_close_observe",
+      "start_step": 1596,
+      "end_step": 1620,
+      "start_s": 13.3,
+      "end_s": 13.5,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_adjust",
+      "start_step": 1620,
+      "end_step": 1644,
+      "start_s": 13.5,
+      "end_s": 13.7,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_hold",
+      "start_step": 1644,
+      "end_step": 1668,
+      "start_s": 13.7,
+      "end_s": 13.9,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_adjust",
+      "start_step": 1668,
+      "end_step": 1692,
+      "start_s": 13.9,
+      "end_s": 14.1,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_hold",
+      "start_step": 1692,
+      "end_step": 1716,
+      "start_s": 14.1,
+      "end_s": 14.3,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_adjust",
+      "start_step": 1716,
+      "end_step": 1740,
+      "start_s": 14.3,
+      "end_s": 14.5,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_hold",
+      "start_step": 1740,
+      "end_step": 1764,
+      "start_s": 14.5,
+      "end_s": 14.7,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_adjust",
+      "start_step": 1764,
+      "end_step": 1788,
+      "start_s": 14.7,
+      "end_s": 14.9,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_hold",
+      "start_step": 1788,
+      "end_step": 1812,
+      "start_s": 14.9,
+      "end_s": 15.1,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_adjust",
+      "start_step": 1812,
+      "end_step": 1836,
+      "start_s": 15.1,
+      "end_s": 15.3,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_hold",
+      "start_step": 1836,
+      "end_step": 1860,
+      "start_s": 15.3,
+      "end_s": 15.5,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_adjust",
+      "start_step": 1860,
+      "end_step": 1884,
+      "start_s": 15.5,
+      "end_s": 15.7,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_hold",
+      "start_step": 1884,
+      "end_step": 1908,
+      "start_s": 15.7,
+      "end_s": 15.9,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_adjust",
+      "start_step": 1908,
+      "end_step": 1932,
+      "start_s": 15.9,
+      "end_s": 16.1,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_hold",
+      "start_step": 1932,
+      "end_step": 1968,
+      "start_s": 16.1,
+      "end_s": 16.4,
+      "commands": 6
+    },
+    {
+      "phase": "s5_preload_adjust",
+      "start_step": 1968,
+      "end_step": 1992,
+      "start_s": 16.4,
+      "end_s": 16.6,
+      "commands": 4
+    },
+    {
+      "phase": "s5_preload_hold",
+      "start_step": 1992,
+      "end_step": 2016,
+      "start_s": 16.6,
+      "end_s": 16.8,
+      "commands": 4
+    },
+    {
+      "phase": "s5_proof",
+      "start_step": 2016,
+      "end_step": 2256,
+      "start_s": 16.8,
+      "end_s": 18.8,
+      "commands": 40
+    },
+    {
+      "phase": "s5_hold",
+      "start_step": 2256,
+      "end_step": 2304,
+      "start_s": 18.8,
+      "end_s": 19.2,
+      "commands": 8
+    },
+    {
+      "phase": "s5_lift",
+      "start_step": 2304,
+      "end_step": 2904,
+      "start_s": 19.2,
+      "end_s": 24.2,
+      "commands": 100
+    },
+    {
+      "phase": "s5_hold",
+      "start_step": 2904,
+      "end_step": 3264,
+      "start_s": 24.2,
+      "end_s": 27.2,
+      "commands": 60
+    },
+    {
+      "phase": "s5_reobserve",
+      "start_step": 3264,
+      "end_step": 3504,
+      "start_s": 27.2,
+      "end_s": 29.2,
+      "commands": 40
+    },
+    {
+      "phase": "s5_lift",
+      "start_step": 3504,
+      "end_step": 3804,
+      "start_s": 29.2,
+      "end_s": 31.7,
+      "commands": 50
+    },
+    {
+      "phase": "s5_hold",
+      "start_step": 3804,
+      "end_step": 4164,
+      "start_s": 31.7,
+      "end_s": 34.7,
+      "commands": 60
+    }
+  ],
+  "events": [
+    {
+      "kind": "s13_recovery",
+      "event": "grasp_dispatched",
+      "step": 1554,
+      "frame_id": 388,
+      "actual_grasps": 1,
+      "candidate_id": "contacts2-55e1a695107d4c0e3df7",
+      "branch": "initial",
+      "started_step": 1548,
+      "target_q": [
+        -0.05248270475054825,
+        -0.01783013896497738,
+        0.18892401387011024,
+        2.24310929336303,
+        0.9821816652775384,
+        2.3451382180153804,
+        1.1729590714080442,
+        0.5047816521833127,
+        0.15874584842052053,
+        6.582960890952128e-05,
+        1.1470805523325125,
+        0.14260820829505888,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actual_q": [
+        -0.05248253419995308,
+        -0.01782999373972416,
+        0.18892060220241547,
+        2.2431068420410156,
+        0.9821812510490417,
+        2.3451404571533203,
+        1.1730375289916992,
+        0.5034112334251404,
+        0.16032403707504272,
+        2.6951174731948413e-05,
+        1.1458351612091064,
+        0.14402316510677338,
+        1.311138362325437e-06,
+        6.418239877348242e-07,
+        1.0301606607754366e-06,
+        8.683978762746847e-07,
+        1.1362717486917973e-06,
+        6.45891532258247e-07
+      ],
+      "contact_count": 2,
+      "points": [
+        [
+          -0.005179739381269005,
+          0.001395120785191632,
+          0.02609638413513809
+        ],
+        [
+          0.0034494647550811636,
+          0.0013840703721414473,
+          0.02610363124937133
+        ]
+      ],
+      "command_plan_sha256": "55e1a695107d4c0e3df71541a9b5725217e77d77618fe3104d28d862ac69a218",
+      "planned_q": [
+        -0.05248270475054825,
+        -0.01783013896497738,
+        0.18892401387011024,
+        2.24310929336303,
+        0.9821816652775384,
+        2.3451382180153804,
+        1.1647910605321559,
+        0.6402486865286396,
+        1.0000000000000002e-06,
+        2.858734978235681e-54,
+        1.2705469977319865,
+        1.0000000000000002e-06,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "recovery_id": null
+    },
+    {
+      "kind": "s5_proof_decision",
+      "action": "continue_lift",
+      "reason": "bounded_larger_proof_needed",
+      "support_state": "unknown",
+      "attempt": 1,
+      "max_attempts": 3,
+      "phase": "proof",
+      "feedback": true,
+      "motor_contact_hypothesis": null,
+      "motor_contact_used": false,
+      "carrying_evidence": false,
+      "grounded_evidence": false,
+      "persistent_image_motion_risk": false,
+      "repeated_lift_image_risk": false,
+      "hold_consistent": false,
+      "use_active_lift_risk": true,
+      "remaining_steps": 21696,
+      "remaining_wall_s": 2269.071902866941,
+      "private_success_certified": false,
+      "native_object_omega_observable": false
+    },
+    {
+      "kind": "s5_middle_decision",
+      "action": "continue_lift",
+      "reason": "continue_original_lift",
+      "support_state": "unknown",
+      "attempt": 1,
+      "max_attempts": 3,
+      "phase": "middle",
+      "feedback": true,
+      "motor_contact_hypothesis": null,
+      "motor_contact_used": false,
+      "carrying_evidence": true,
+      "grounded_evidence": false,
+      "persistent_image_motion_risk": false,
+      "repeated_lift_image_risk": false,
+      "hold_consistent": false,
+      "use_active_lift_risk": true,
+      "remaining_steps": 21396,
+      "remaining_wall_s": 2265.5969175980426,
+      "private_success_certified": false,
+      "native_object_omega_observable": false
+    },
+    {
+      "kind": "s5_final_decision",
+      "action": "reobserve",
+      "reason": "one_bounded_stationary_observation_window",
+      "support_state": "unknown",
+      "attempt": 1,
+      "max_attempts": 3,
+      "phase": "final",
+      "feedback": true,
+      "motor_contact_hypothesis": null,
+      "motor_contact_used": false,
+      "carrying_evidence": true,
+      "grounded_evidence": false,
+      "persistent_image_motion_risk": false,
+      "repeated_lift_image_risk": false,
+      "hold_consistent": false,
+      "use_active_lift_risk": true,
+      "remaining_steps": 20736,
+      "remaining_wall_s": 2257.8981248717755,
+      "private_success_certified": false,
+      "native_object_omega_observable": false
+    },
+    {
+      "kind": "s5_final_decision",
+      "action": "stop_unknown",
+      "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+      "support_state": "unknown",
+      "attempt": 1,
+      "max_attempts": 3,
+      "phase": "final",
+      "feedback": true,
+      "motor_contact_hypothesis": null,
+      "motor_contact_used": false,
+      "carrying_evidence": true,
+      "grounded_evidence": false,
+      "persistent_image_motion_risk": false,
+      "repeated_lift_image_risk": false,
+      "hold_consistent": false,
+      "use_active_lift_risk": true,
+      "remaining_steps": 20496,
+      "remaining_wall_s": 2254.5949290380813,
+      "private_success_certified": false,
+      "native_object_omega_observable": false
+    },
+    {
+      "kind": "s13_recovery",
+      "event": "unknown_final_excitation",
+      "step": 3504,
+      "frame_id": 876,
+      "actual_grasps": 1,
+      "candidate_id": "contacts2-55e1a695107d4c0e3df7",
+      "hypothesis": "possible_carried_grasp_with_unresolved_RGB",
+      "trigger": {
+        "action": "stop_unknown",
+        "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+        "support_state": "unknown",
+        "attempt": 1,
+        "max_attempts": 3,
+        "phase": "final",
+        "feedback": true,
+        "motor_contact_hypothesis": null,
+        "motor_contact_used": false,
+        "carrying_evidence": true,
+        "grounded_evidence": false,
+        "persistent_image_motion_risk": false,
+        "repeated_lift_image_risk": false,
+        "hold_consistent": false,
+        "use_active_lift_risk": true,
+        "remaining_steps": 20496,
+        "remaining_wall_s": 2254.5949290380813,
+        "private_success_certified": false,
+        "native_object_omega_observable": false
+      },
+      "additional_commanded_lift_m": 0.002,
+      "target_height_from_grasp_m": 0.032,
+      "outcome": "requires_independent_trajectory_verification"
+    },
+    {
+      "kind": "s5_final_decision",
+      "action": "stop_unknown",
+      "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+      "support_state": "unknown",
+      "attempt": 1,
+      "max_attempts": 3,
+      "phase": "final",
+      "feedback": true,
+      "motor_contact_hypothesis": null,
+      "motor_contact_used": false,
+      "carrying_evidence": false,
+      "grounded_evidence": false,
+      "persistent_image_motion_risk": false,
+      "repeated_lift_image_risk": false,
+      "hold_consistent": false,
+      "use_active_lift_risk": true,
+      "remaining_steps": 19836,
+      "remaining_wall_s": 2246.8261045068502,
+      "private_success_certified": false,
+      "native_object_omega_observable": false
+    },
+    {
+      "kind": "s13_recovery",
+      "event": "failure_decision",
+      "step": 4164,
+      "frame_id": 1041,
+      "actual_grasps": 1,
+      "candidate_id": "contacts2-55e1a695107d4c0e3df7",
+      "decision": {
+        "action": "stop_unknown",
+        "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+        "support_state": "unknown",
+        "attempt": 1,
+        "max_attempts": 3,
+        "phase": "final",
+        "feedback": true,
+        "motor_contact_hypothesis": null,
+        "motor_contact_used": false,
+        "carrying_evidence": false,
+        "grounded_evidence": false,
+        "persistent_image_motion_risk": false,
+        "repeated_lift_image_risk": false,
+        "hold_consistent": false,
+        "use_active_lift_risk": true,
+        "remaining_steps": 19836,
+        "remaining_wall_s": 2246.8261045068502,
+        "private_success_certified": false,
+        "native_object_omega_observable": false
+      }
+    }
+  ]
+}

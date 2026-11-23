@@ -1,27 +1,9 @@
-# Stage16 收尾核查
+# FingerEyeLab 正式主线
 
-最新：[五项逐项报告](studies/stage16_20261122/REPORT.md) · [逐例表](studies/stage16_20261122/cases.csv) · [复跑命令](studies/stage16_20261122/REPRODUCE.txt)。
+当前交付：[正式算法入口](studies/fingereye_clean_mainline_20261123/mainline/strategy.py) · [完整报告](studies/fingereye_clean_mainline_20261123/mainline/REPORT.md) · [已验证运行命令](studies/fingereye_clean_mainline_20261123/mainline/README.md) · [源码及最小证据清单](studies/fingereye_clean_mainline_20261123/PUBLICATION_MANIFEST.json)。
 
-Stage16推荐固定两指、恢复开、恢复预载关；真机40秒与正常三指垫尚未通过。下文为保留的Stage13历史对照。
+H/S v2、固定两指、最多三次实际闭合、恢复预载关闭，使用原正式评分。正式策略由一个维护源直接提交，未继续保留 Stage17 的多份控制器和拼接 builder。A/B 同记录的动作与门槛裁决相同，新的首抓和重抓两个正常入口回合均成功；只代表已测条件，不声称总体成功率或速度提升。
 
-# FingerEyeLab 算法与研究结果
+完整私有仓库维护分支：https://github.com/ztr583/grasp_small_obj/tree/fingereye-clean-mainline 。公开选集不含完整私有环境、资产、原始 RGB、录像和大日志。
 
-本轮报告：[三指与重抓、40 物体原视觉／加噪配对评测](studies/three_regrasp_20261122_01/EVALUATION.md)。完整数据、冻结协议、逐例结果和计算链入口见[证据包索引](studies/three_regrasp_20261122_01/README.md)。
-
-主配置为 **fast + auto + 最多三次实际抓取**，主判据为 `lift30_no_drop_v1`。基线源码 `7fa3bd3`，正式 80 回合的冻结源码为 `9daeff1043917ac40f518b8f80d1103d0fe63bc1`；发布提交与实验提交分别登记。原视觉首抓／最终均为 **20/40**，加噪首抓／最终均为 **21/40**；123 次实际抓取全部是两指，三指零执行，重抓零救回，因此论文结论为两指抓取基线。
-
-唯一配对不一致对象的原视觉发生启动失败，不能将加噪多一例成功解释为噪声收益。三个基础设施异常均保留在正式分母。38 个两侧完整结束的对象结局一致，另有一个对象双侧超时；这些结果不证明抗噪统计等效。
-
-本仓库保存部分算法、历史 Stage9–12 分析和本轮结构化结果，不包含完整仿真后端、机器人资产和所有依赖，不保证独立运行。完整运行代码在 [grasp_small_obj 的 mao0629 分支](https://github.com/ztr583/grasp_small_obj/tree/mao0629)。原 V9 两指三抓与 [30 mm 成功口径历史重裁决](reports/SUCCESS30_RESULTS.txt) 继续保留为历史参照。
-
-策略只使用普通 RGB、本体和静态标定。物体位姿、接触与仿真几何用于评测和离线统计。原始 RGB、录像、逐物理步日志及大数据按既有发布约定留在本地；本轮证据包登记六段代表录像的版本、用途和哈希，录像复跑不增加正式分母。本地证据路径不代表对应文件已上传。
-
-`MANIFEST.json` 记录发布源文件、字节数、SHA256、发布源码提交和双仓库共同快照号。历史材料从上一研究仓库提交恢复，字节哈希与来源单独登记，不改写原历史结论。新增材料中的报告副本会将本地文件链接转换为可移植的已发布链接或明确标为本地证据。
-
-在完整本地研究工作区执行以下命令更新既有两个仓库；省略 `--push` 只准备和核验：
-
-```bash
-python FingerEyeLab/experiments/rax_dexbin_tinyobj/publish_github.py --push
-```
-
-发布按 `github_publish.json` 的明确清单进行，先准备两份提交，再正常推送并核对两个远端 SHA；回执记录两侧状态。不会强制覆盖远端。
+历史：[Stage17 固定归档](https://github.com/mao455/2026-11-21/tree/1a0c46bb3115cd785d0c83194970a5257aa02db6/studies/stage17_20261123) · [Stage16 固定报告](https://github.com/mao455/2026-11-21/blob/3cb921940d909f5602683caa9dd91e6026bd3f44/studies/stage16_20261122/REPORT.md)。更早 studies 和 reports 是历史结果，不代表当前推荐入口。20_safe 按成功的三指接触抓取报告；中指接触是近指根掌侧 component1 壳面，指定三指垫承载另列。

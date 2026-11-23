@@ -1,0 +1,116 @@
+{
+  "controller_sha256": "20016ea28e2d164bddbf957c5ce49d4a6a6b08785f5d6849aa345e5df81a8edd",
+  "functions": {
+    "main": {
+      "qualname": "main",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 2926
+    },
+    "policy_main": {
+      "qualname": "policy_main",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 3197
+    },
+    "s5_init": {
+      "qualname": "s5_init",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 3029
+    },
+    "initialize_state": {
+      "qualname": "initialize_state",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 2120
+    },
+    "s5_step": {
+      "qualname": "s5_step",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 2678
+    },
+    "dispatch_checked_step": {
+      "qualname": "dispatch_checked_step",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 2136
+    },
+    "optimize": {
+      "qualname": "optimize",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 3252
+    },
+    "solve_target_ik": {
+      "qualname": "solve_target_ik",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 853
+    },
+    "s12_order_candidates": {
+      "qualname": "s12_order_candidates",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 2249
+    },
+    "stage3_live_geometry": {
+      "qualname": "stage3_live_geometry",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 3035
+    },
+    "fit_shape": {
+      "qualname": "fit_shape",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 2938
+    },
+    "capture_preload_snapshot": {
+      "qualname": "s9_timed.<locals>.call",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 2901,
+      "captured_callables": {
+        "fn": {
+          "qualname": "s9_visual.<locals>.wrapped",
+          "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+          "line": 2844,
+          "captured_callables": {
+            "fn": {
+              "qualname": "capture_preload_snapshot",
+              "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+              "line": 464
+            }
+          }
+        }
+      }
+    },
+    "compare_preload": {
+      "qualname": "compare_preload",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 3100
+    },
+    "s13_preload": {
+      "qualname": "s13_preload",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 3141
+    },
+    "s13_preload_proposal": {
+      "qualname": "s13_preload_proposal",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 3123
+    },
+    "Stage3LiveVolume.carve": {
+      "qualname": "Stage3LiveVolume.carve",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 1718
+    },
+    "_S3_VOLUME.carve": {
+      "qualname": "_S3_VOLUME.carve",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 292
+    },
+    "SelfAwareGeometry.check": {
+      "qualname": "s9_timed.<locals>.call",
+      "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+      "line": 2901,
+      "captured_callables": {
+        "fn": {
+          "qualname": "SelfAwareGeometry.check",
+          "file": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
+          "line": 1685
+        }
+      }
+    }
+  }
+}
