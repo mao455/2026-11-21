@@ -1,8 +1,0 @@
-name,object_id,condition,source_commit,success,first_success,rescued,actual_grasps,physical_s,batch_wall_s,frame_count,frame_stride_4,integrity_valid,error
-cube_auto,,,7fa3bd37752a38d5b2dc65da6735804c78057a09,True,True,False,1,28.7,106.2716024001129,862,True,True,
-cube_three,,,7fa3bd37752a38d5b2dc65da6735804c78057a09,False,False,False,0,0.0,39.76631455216557,1,True,True,
-cube_two,,,7fa3bd37752a38d5b2dc65da6735804c78057a09,True,True,False,1,28.7,98.66066022915766,862,True,True,
-cylinder_auto,,,7fa3bd37752a38d5b2dc65da6735804c78057a09,True,True,False,1,24.9,93.2467605099082,748,True,True,
-cylinder_three,,,7fa3bd37752a38d5b2dc65da6735804c78057a09,False,False,False,0,0.0,37.76047159405425,1,True,True,
-cylinder_two,,,7fa3bd37752a38d5b2dc65da6735804c78057a09,True,True,False,1,24.9,86.7810132871382,748,True,True,
-pyramid_auto3,,,7fa3bd37752a38d5b2dc65da6735804c78057a09,False,False,False,1,21.8,115.87017013598233,655,True,True,

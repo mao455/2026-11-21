@@ -1,6 +1,0 @@
-id,link,samples,positive_load_samples,minimum_force_n,maximum_force_n,start_step,end_step
-episodes/finalA_dn0_seed16111/launch_001,left_hand_index_camera_component3_link,40,40,0.24683493375778198,0.24699120223522186,3984,4223
-episodes/finalA_dn0_seed16111/launch_001,left_hand_thumb_camera_component3_link,40,40,0.24397248029708862,0.2441493421792984,3984,4223
-episodes/finalB_dn3_seed16112/launch_001,left_hand_index_camera_component3_link,40,40,0.23818349838256836,0.23835082352161407,8208,8447
-episodes/finalB_dn3_seed16112/launch_001,left_hand_thumb_camera_component3_link,40,40,0.23900708556175232,0.2391863316297531,8208,8447
-episodes/finalD_dn20.4_seed16113/launch_001,none,40,0,0,0,,

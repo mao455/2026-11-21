@@ -1,7 +1,0 @@
-case_name,episode,success,legacy_strict_success,actual_grasps,physical_s,host_elapsed_s,first_invalid_step,failure,archived_metrics_match
-first_poseA_dn0_seed15001,<LOCAL_DOCS>/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/first_poseA_dn0_seed15001/launch_001/episode,True,False,1,34.4,97.53523682896048,,success,True
-first_poseA_dn3_seed15001,<LOCAL_DOCS>/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/first_poseA_dn3_seed15001/launch_001/episode,True,False,1,34.4,99.7393687251024,,success,True
-recovery_poseB_seed15002,<LOCAL_DOCS>/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/recovery_poseB_seed15002/launch_001/episode,True,True,2,57.9,140.34030200215057,,success,True
-hard_poseC_seed15003,<LOCAL_DOCS>/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/hard_poseC_seed15003/launch_001/episode,True,True,2,78.2,207.5764600210823,,success,True
-divergence_poseD_dn0_seed15004,<LOCAL_DOCS>/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn0_seed15004/launch_001/episode,False,False,1,41.9,127.07015216723084,1719,invalid_episode_geometry,True
-divergence_poseD_dn20.4_seed15004,<LOCAL_DOCS>/fingereye_stage15_accept_final/FingerEyeLab/outputs/stage15_acceptance/batch/episodes/divergence_poseD_dn20.4_seed15004/launch_001/episode,False,False,1,41.9,128.64661462791264,1719,invalid_episode_geometry,True

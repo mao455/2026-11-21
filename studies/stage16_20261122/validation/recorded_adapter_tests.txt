@@ -1,9 +1,0 @@
-test_exact_sequence_completes_after50ms_and_labels_old_clock (stage16_evidence.timing.test_recorded_adapter.ReplayTests.test_exact_sequence_completes_after50ms_and_labels_old_clock) ... ok
-test_incomplete_replay_has_no_stable_time (stage16_evidence.timing.test_recorded_adapter.ReplayTests.test_incomplete_replay_has_no_stable_time) ... ok
-test_recovery_can_observe_again_in_recorded_order (stage16_evidence.timing.test_recorded_adapter.ReplayTests.test_recovery_can_observe_again_in_recorded_order) ... ok
-test_tiny_command_difference_rejected_exactly (stage16_evidence.timing.test_recorded_adapter.ReplayTests.test_tiny_command_difference_rejected_exactly) ... ok
-
-----------------------------------------------------------------------
-Ran 4 tests in 0.006s
-
-OK

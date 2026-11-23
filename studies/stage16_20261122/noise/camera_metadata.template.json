@@ -1,9 +1,0 @@
-{
-  "camera_model": "REQUIRED",
-  "sensor": "REQUIRED",
-  "exposure_us": "REQUIRED measured working setting",
-  "gain": "REQUIRED",
-  "illumination": "REQUIRED",
-  "isp": "REQUIRED including denoise/demosaic",
-  "output_settings": "REQUIRED bit depth/RGB conversion/resolution"
-}

@@ -1,7 +1,0 @@
-id,link,samples,positive_force_samples,minimum_force_n,maximum_force_n,window_start_step,window_end_step,cadence_hz
-stage15_B,left_hand_index_camera_component3_link,40,40,0.29765990376472473,0.29818376898765564,6708,6947,20
-stage15_B,left_hand_thumb_camera_component3_link,40,40,0.29567697644233704,0.2962404489517212,6708,6947,20
-stage15_C,left_hand_index_camera_component3_link,40,40,0.2719781696796417,0.27219918370246887,9144,9383,20
-stage15_C,left_hand_thumb_camera_component3_link,40,40,0.27195999026298523,0.27217569947242737,9144,9383,20
-stage16_mid_D20p4,left_hand_index_camera_component3_link,40,40,0.25220680236816406,0.2596448063850403,8238,8477,20
-stage16_mid_D20p4,left_hand_thumb_camera_component3_link,40,40,0.251832515001297,0.26268789172172546,8238,8477,20

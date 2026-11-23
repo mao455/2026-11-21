@@ -1,9 +1,20 @@
-# FingerEyeLab 正式主线
+# FingerEyeLab 当前策略
 
-当前交付：[正式算法入口](studies/fingereye_clean_mainline_20261123/mainline/strategy.py) · [完整报告](studies/fingereye_clean_mainline_20261123/mainline/REPORT.md) · [已验证运行命令](studies/fingereye_clean_mainline_20261123/mainline/README.md) · [源码及最小证据清单](studies/fingereye_clean_mainline_20261123/PUBLICATION_MANIFEST.json)。
+唯一维护策略：`mainline/strategy.py::main(ctx)`。算法依赖：`mainline/general_grasp_contacts.py`；正式评分：`runtime/evaluator.py`。
+H/S v2、固定两指、最多三次实际闭合、恢复预载关闭。120 Hz 物理、20 Hz 控制、30 fps RGB。
+输入只含初始俯视与六路 FingerEye RGB、实测关节状态、静态标定。
 
-H/S v2、固定两指、最多三次实际闭合、恢复预载关闭，使用原正式评分。正式策略由一个维护源直接提交，未继续保留 Stage17 的多份控制器和拼接 builder。A/B 同记录的动作与门槛裁决相同，新的首抓和重抓两个正常入口回合均成功；只代表已测条件，不声称总体成功率或速度提升。
+这里仅发布核心代码，不含私有资产、IsaacLab 环境、原始记录和实验产物。
+完整可运行版本在 https://github.com/ztr583/grasp_small_obj/tree/fingereye-clean-mainline 。
+在完整仓库的 `FingerEyeLab/` 下，使用 IsaacLab Python 环境及 bubblewrap：
 
-完整私有仓库维护分支：https://github.com/ztr583/grasp_small_obj/tree/fingereye-clean-mainline 。公开选集不含完整私有环境、资产、原始 RGB、录像和大日志。
+```bash
+python experiments/rax_dexbin_tinyobj/run.py \
+  --controller /absolute/path/2026-11-21/mainline/strategy.py \
+  --session outputs/first_grasp \
+  --case-json '{"object_id":"abc_311740","dx":-0.0008,"dy":0.0012,"yaw":-0.2,"mass_kg":0.007,"friction":0.82,"noise_seed":16111,"rgb_noise_std":0}'
+```
 
-历史：[Stage17 固定归档](https://github.com/mao455/2026-11-21/tree/1a0c46bb3115cd785d0c83194970a5257aa02db6/studies/stage17_20261123) · [Stage16 固定报告](https://github.com/mao455/2026-11-21/blob/3cb921940d909f5602683caa9dd91e6026bd3f44/studies/stage16_20261122/REPORT.md)。更早 studies 和 reports 是历史结果，不代表当前推荐入口。20_safe 按成功的三指接触抓取报告；中指接触是近指根掌侧 component1 壳面，指定三指垫承载另列。
+完整仓库默认控制器与此策略内容相同；运行时记录加载路径、SHA256 和配置。
+退出码只表示流程执行情况；正式成功读取 `episode/result.json` 中的 `success` 和执行完整性。
+当前树移除了全部 stage/round 实验、证据、报告和发布工具。历史可从 Git 提交 `acf176266127d5b9e298429722240e2f8835e12e` 及其父提交追溯。
