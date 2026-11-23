@@ -36,7 +36,7 @@ Native engine truth remains only in private evaluator sidecar; original
 super().read(dt) result returned unchanged, no new controller input.
 
 Patch: evaluator_private.patch; exact patchedsource retained. Apply to an isolated
-worktree at60b5a7b007f with git apply, then run COMMAND.txt. Keep case reference
+worktree at60b5a7b007f with git apply --unidiff-zero, then run COMMAND.txt. Keep case reference
 and controller bytes as recorded. For relocating, set original case's initial RGB
 reference to copied initial_rgb20.npy/20.json and preserve their hashes.
 read_capture.py --session SESSION --experiment-here EXPERIMENT_DIR reruns offline

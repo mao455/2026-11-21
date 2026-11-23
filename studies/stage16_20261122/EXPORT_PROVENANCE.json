@@ -292,19 +292,19 @@
     {
       "public_file": "contact_capture/MANIFEST.json",
       "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/MANIFEST.json",
-      "source_sha256": "fe13033ea4306f288ca52808178721eaea0e7fee771c69f82abf59ab15695afe",
-      "public_sha256": "fe13033ea4306f288ca52808178721eaea0e7fee771c69f82abf59ab15695afe",
-      "source_bytes": 1539,
-      "public_bytes": 1539,
+      "source_sha256": "af3dc077c807dd359edd91ff4a8d887de24e1e14a929384c0f7a15d565d469af",
+      "public_sha256": "af3dc077c807dd359edd91ff4a8d887de24e1e14a929384c0f7a15d565d469af",
+      "source_bytes": 1687,
+      "public_bytes": 1687,
       "transformation": "byte exact"
     },
     {
       "public_file": "contact_capture/README.txt",
       "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/README.txt",
-      "source_sha256": "1ab1bedf719e004b8471d67d616380391768e5bd5affb1474eec6b0ed9f9e8c5",
-      "public_sha256": "1ab1bedf719e004b8471d67d616380391768e5bd5affb1474eec6b0ed9f9e8c5",
-      "source_bytes": 3440,
-      "public_bytes": 3440,
+      "source_sha256": "8c3e10c7ee67affc43ab76c4daab625529f83b81c668fc04f77ddaf2e831a859",
+      "public_sha256": "8c3e10c7ee67affc43ab76c4daab625529f83b81c668fc04f77ddaf2e831a859",
+      "source_bytes": 3455,
+      "public_bytes": 3455,
       "transformation": "byte exact"
     },
     {
@@ -337,10 +337,10 @@
     {
       "public_file": "contact_capture/evaluator_private.patch.txt",
       "source_file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/evaluator_private.patch",
-      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "source_bytes": 0,
-      "public_bytes": 0,
+      "source_sha256": "df7ed7ed85314cee6bf4fdb4816b43f487895e9cdc4b26e22c376a7cacb4f236",
+      "public_sha256": "df7ed7ed85314cee6bf4fdb4816b43f487895e9cdc4b26e22c376a7cacb4f236",
+      "source_bytes": 2043,
+      "public_bytes": 2043,
       "transformation": "byte exact"
     },
     {

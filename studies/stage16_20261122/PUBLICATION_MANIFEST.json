@@ -1,6 +1,6 @@
 {
-  "source_revision": "a0df54028ac8618082bd6971a3006d8d96c185e0",
-  "snapshot_id": "71b0b9fb533239a0cedbb1d507d768f7435a02a61a69d51855eb53c14fb23f3b",
+  "source_revision": "57b5e0660f9287b073a3a6865615f72d9bc0c7c4",
+  "snapshot_id": "974e225d9af14b9311aed9e0744fba38f51d48931d6af6188f468712a07fc7f3",
   "publication_scope": "research-only explicit files; private history/assets excluded",
   "files": {
     "README.md": {
@@ -10,8 +10,8 @@
     },
     "studies/stage16_20261122/EXPORT_PROVENANCE.json": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_20261122/EXPORT_PROVENANCE.json",
-      "bytes": 55187,
-      "sha256": "0d4674f6859c421391ac873d09dc2ae1b92e796d4bfeb07df8064e9778583ffd"
+      "bytes": 55193,
+      "sha256": "1e45f58647f7ca773816e8450d06eeabe06a398097ee0953c3e17ca56115a557"
     },
     "studies/stage16_20261122/FREEZE.json": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_20261122/FREEZE.json",
@@ -220,13 +220,13 @@
     },
     "studies/stage16_20261122/contact_capture/MANIFEST.json": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_20261122/contact_capture/MANIFEST.json",
-      "bytes": 1539,
-      "sha256": "fe13033ea4306f288ca52808178721eaea0e7fee771c69f82abf59ab15695afe"
+      "bytes": 1687,
+      "sha256": "af3dc077c807dd359edd91ff4a8d887de24e1e14a929384c0f7a15d565d469af"
     },
     "studies/stage16_20261122/contact_capture/README.txt": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_20261122/contact_capture/README.txt",
-      "bytes": 3440,
-      "sha256": "1ab1bedf719e004b8471d67d616380391768e5bd5affb1474eec6b0ed9f9e8c5"
+      "bytes": 3455,
+      "sha256": "8c3e10c7ee67affc43ab76c4daab625529f83b81c668fc04f77ddaf2e831a859"
     },
     "studies/stage16_20261122/contact_capture/SOURCE_HASHES.json": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_20261122/contact_capture/SOURCE_HASHES.json",
@@ -245,8 +245,8 @@
     },
     "studies/stage16_20261122/contact_capture/evaluator_private.patch.txt": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_20261122/contact_capture/evaluator_private.patch.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "bytes": 2043,
+      "sha256": "df7ed7ed85314cee6bf4fdb4816b43f487895e9cdc4b26e22c376a7cacb4f236"
     },
     "studies/stage16_20261122/contact_capture/hold_native_contacts.csv": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/publication/stage16_20261122/contact_capture/hold_native_contacts.csv",

@@ -8,8 +8,8 @@
     },
     {
       "path": "README.txt",
-      "bytes": 3440,
-      "sha256": "1ab1bedf719e004b8471d67d616380391768e5bd5affb1474eec6b0ed9f9e8c5"
+      "bytes": 3455,
+      "sha256": "8c3e10c7ee67affc43ab76c4daab625529f83b81c668fc04f77ddaf2e831a859"
     },
     {
       "path": "SOURCE_HASHES.json",
@@ -22,9 +22,14 @@
       "sha256": "7f61f94cd5bb33d42659322920c58907c993b2c4c04f8b555a6126defd1130f0"
     },
     {
+      "path": "episode.csv",
+      "bytes": 677,
+      "sha256": "623ee555017ff9c0f8ec6280f9457ee0ea5d4af475a2d5e93b12135790c42b1c"
+    },
+    {
       "path": "evaluator_private.patch",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "bytes": 2043,
+      "sha256": "df7ed7ed85314cee6bf4fdb4816b43f487895e9cdc4b26e22c376a7cacb4f236"
     },
     {
       "path": "hold_native_contacts.csv",
