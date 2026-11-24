@@ -1,0 +1,567 @@
+"""URDF selection and immutable runtime description shared by host and backend.
+
+Only generated derivatives are written. Source URDF/STL bytes are fingerprinted.
+Six declared world-to-palm coordinates are an interface actuator, not hand DOFs.
+"""
+import copy
+import hashlib
+import json
+import os
+from pathlib import Path
+import sys
+import xml.etree.ElementTree as ET
+import numpy as np
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE / 'mainline'))
+from hand_description import HandDescription, resolve_mesh
+
+BASE_NAMES = ('base_x', 'base_y', 'base_z', 'base_yaw', 'base_pitch', 'base_roll')
+
+
+def install_optical_frames(root, mounts, calibration):
+    """Apply static mechanical-to-optical calibration to generated URDF only.
+
+    A mechanical camera part is not necessarily an OpenGL optical frame.
+    Virtual fixed links keep rendering, visibility and projection on the same
+    FK path, including the calibration at the exposure's measured joint state.
+    """
+    from scipy.spatial.transform import Rotation
+    offsets = calibration.get('camera_optical_frames', {})
+    for mount in mounts:
+        row = offsets.get(mount['joint_name'], offsets.get('*'))
+        if row is None:
+            continue
+        translation = np.asarray(row['translation_m'], dtype=float)
+        rotation = np.asarray(row['rpy_rad'], dtype=float)
+        if translation.shape != (3,) or rotation.shape != (3,) or not np.isfinite(np.r_[translation, rotation]).all():
+            raise ValueError('Invalid static camera optical transform')
+        mechanical = mount['camera_link']
+        optical = '__optical_' + mount['joint_name']
+        if any(link.get('name') == optical for link in root.findall('link')):
+            raise ValueError('Duplicate optical frame: ' + optical)
+        ET.SubElement(root, 'link', name=optical)
+        joint = ET.SubElement(root, 'joint', name=optical + '_fixed', type='fixed')
+        ET.SubElement(joint, 'parent', link=mechanical)
+        ET.SubElement(joint, 'child', link=optical)
+        ET.SubElement(joint, 'origin', xyz=' '.join(map(str, translation)), rpy=' '.join(map(str, rotation)))
+        parent_rotation = Rotation.from_euler('xyz', mount['rpy'])
+        mount['translation'] = (np.asarray(mount['translation']) + parent_rotation.apply(translation)).tolist()
+        mount['rpy'] = (parent_rotation * Rotation.from_euler('xyz', rotation)).as_euler('xyz').tolist()
+        mount['mechanical_camera_link'] = mechanical
+        mount['camera_link'] = optical
+        mount['optical_transform_source'] = row['source']
+
+
+def selected():
+    path = os.environ.get('FINGEREYE_HAND_DESCRIPTION')
+    return json.loads(Path(path).read_text()) if path else None
+
+
+def discover_chains(hand):
+    """Group active descendants by the first non-palm active ancestor."""
+    paths = {hand.root: ()}
+    chains = {}
+    base = set(hand.base_joint_names)
+    for parent, child, _, _, _, index in hand.joints:
+        previous = paths[parent]
+        name = hand.joint_names[index] if index is not None else None
+        path = previous + ((name,) if name is not None and name not in base else ())
+        paths[child] = path
+        if path:
+            chains.setdefault(path[0], {})[child] = path
+    rows = []
+    for first, descendants in chains.items():
+        terminal, joints = max(descendants.items(), key=lambda item: len(item[1]))
+        rows.append(dict(finger=first, joint_names=list(joints), terminal_link=terminal,
+                         links=list(descendants)))
+    return rows, paths
+
+
+def prepare(source, destination):
+    source = Path(source).expanduser().resolve(strict=True)
+    destination = Path(destination).resolve()
+    destination.mkdir(parents=True, exist_ok=True)
+    hand = HandDescription(source)
+    tree = ET.parse(source)
+    root = tree.getroot()
+    # Historical absolute exports resolve in the selected checkout, never by
+    # silently loading a different URDF with a coincident robot name.
+    source_hashes = {str(source): hashlib.sha256(source.read_bytes()).hexdigest()}
+    for mesh in root.findall('.//mesh'):
+        path = resolve_mesh(source, mesh.get('filename')).resolve()
+        if not path.is_file():
+            marker = '/assets/xhand3camFE_left/'
+            original = mesh.get('filename')
+            if marker in original:
+                path = HERE.parents[1] / 'assets/xhand3camFE_left' / original.split(marker, 1)[1]
+        if not path.is_file():
+            raise FileNotFoundError('Source hand mesh is missing: ' + str(path))
+        source_hashes[str(path)] = hashlib.sha256(path.read_bytes()).hexdigest()
+        mesh.set('filename', str(path))
+    active = set(hand.joint_names)
+    present = set(BASE_NAMES) & active
+    if present and present != set(BASE_NAMES):
+        raise ValueError('Incomplete world-to-palm coordinate chain')
+    palm = hand.root
+    if present:
+        for _, child, _, _, _, index in hand.joints:
+            if index is not None and hand.joint_names[index] == BASE_NAMES[-1]:
+                palm = child
+    else:
+        world = '__runtime_world__'
+        ET.SubElement(root, 'link', name=world)
+        parent = world
+        axes = ('1 0 0', '0 1 0', '0 0 1', '0 0 1', '0 1 0', '1 0 0')
+        for index, (name, axis) in enumerate(zip(BASE_NAMES, axes)):
+            child = hand.root if index == len(BASE_NAMES)-1 else '__runtime_' + name
+            if child != hand.root:
+                link = ET.SubElement(root, 'link', name=child)
+                inertial = ET.SubElement(link, 'inertial')
+                ET.SubElement(inertial, 'mass', value='0.001')
+                ET.SubElement(inertial, 'inertia', ixx='1e-6', iyy='1e-6', izz='1e-6', ixy='0', ixz='0', iyz='0')
+            joint = ET.SubElement(root, 'joint', name=name, type='prismatic' if index < 3 else 'revolute')
+            ET.SubElement(joint, 'parent', link=parent); ET.SubElement(joint, 'child', link=child)
+            ET.SubElement(joint, 'axis', xyz=axis)
+            ET.SubElement(joint, 'limit', lower='-1' if index < 3 else '-3.141592653589793',
+                          upper='1' if index < 3 else '3.141592653589793', effort='200', velocity='2')
+            parent = child
+    # USD identifiers cannot start with a digit. Record source-to-runtime names
+    # explicitly instead of relying on undocumented importer renaming.
+    source_to_runtime = {}
+    for joint in root.findall('joint'):
+        if joint.get('type') != 'fixed':
+            name = joint.get('name')
+            runtime_name = 'hand_joint_' + name if name[:1].isdigit() else name
+            source_to_runtime[name] = runtime_name
+            joint.set('name', runtime_name)
+    order = [*BASE_NAMES, *(source_to_runtime[name] for name in hand.joint_names if name not in BASE_NAMES)]
+    runtime_path = destination / 'hand.urdf'
+    tree.write(runtime_path, encoding='utf-8', xml_declaration=True)
+    runtime = HandDescription(runtime_path, joint_names=order, base_joint_names=BASE_NAMES)
+    chains, paths = discover_chains(runtime)
+    mounts = []
+    for joint in root.findall('joint'):
+        if joint.get('type') != 'fixed':
+            continue
+        child = joint.find('child').get('link')
+        if 'cam' not in child.lower():
+            continue
+        # Restrict to leaf camera frames, not intermediate mechanical modules.
+        if any(j.find('parent').get('link') == child for j in root.findall('joint')):
+            continue
+        chain = paths[child]
+        origin = joint.find('origin')
+        mounts.append(dict(name=joint.get('name'), camera_link=child,
+                           parent_link=joint.find('parent').get('link'),
+                           finger=chain[0] if chain else 'palm', joint_name=joint.get('name'),
+                           translation=np.fromstring(origin.get('xyz', '0 0 0'), sep=' ').tolist(),
+                           rpy=np.fromstring(origin.get('rpy', '0 0 0'), sep=' ').tolist()))
+    calibration_path=HERE/'hand_calibrations'/(source_hashes[str(source)]+'.json')
+    calibration=json.loads(calibration_path.read_text()) if calibration_path.is_file() else {}
+    if calibration.get('camera_optics_by_joint'):
+        mounts=[m for m in mounts if m['joint_name'] in calibration['camera_optics_by_joint']]
+    for mount in mounts:
+        mount['optics_profile']=calibration.get('camera_optics_by_joint',{}).get(mount['joint_name'],'front1')
+    install_optical_frames(root, mounts, calibration)
+    tree.write(runtime_path, encoding='utf-8', xml_declaration=True)
+    runtime = HandDescription(runtime_path, joint_names=order, base_joint_names=BASE_NAMES)
+    chains, paths = discover_chains(runtime)
+    q = np.clip(np.zeros(len(order)), runtime.lower, runtime.upper)
+    q[:3] = [-.18, 0., .30]
+    result = dict(schema='fingereye.hand.v1', source_urdf_path=str(source),
+                  source_sha256=source_hashes, urdf_path=str(runtime_path),
+                  runtime_urdf_sha256=hashlib.sha256(runtime_path.read_bytes()).hexdigest(),
+                  joint_names=order, joint_limits=np.stack([runtime.lower, runtime.upper], axis=1).tolist(),
+                  base_joint_names=list(BASE_NAMES), palm_link=palm, root_link=runtime.root,
+                  source_to_runtime_joint_names=source_to_runtime, finger_chains=chains,
+                  camera_mounts=mounts, initial_q=q.tolist(),
+                  runtime_derivative='source geometry unchanged; declared six-axis palm interface and USD-safe joint names')
+    result['pads']=pad_catalog(runtime,chains,source_hashes[str(source)])
+    path = destination / 'description.json'
+    path.write_text(json.dumps(result, indent=2, ensure_ascii=False)+'\n')
+    return result
+
+
+def configure_env(cfg, sample_path, args):
+    """Use the existing task/physics loop with a URDF-selected articulation."""
+    import isaaclab.sim as sim_utils
+    from isaaclab.sim.converters import UrdfConverter, UrdfConverterCfg
+    from isaaclab.actuators import ImplicitActuatorCfg
+    from isaaclab.assets import ArticulationCfg
+    hand = selected()
+    cfg.sample_pkl = str(sample_path)
+    cfg.use_sample_mesh = True
+    cfg.reset_to_sample_on_reset = True
+    cfg.replay_mode = False
+    cfg.force_usd_conversion = False
+    cfg.converted_usd_dir = str(sample_path.parent / 'converted_objects')
+    cfg.robot_urdf = hand['urdf_path']
+    cfg.enable_cameras = True
+    cfg.scene.num_envs = 1
+    cfg.scene.env_spacing = 10
+    cfg.production_origin_preserving_batch = False
+    cfg.async_batch_ground = False
+    cfg.sim.gravity = (0., 0., 0.)
+    cfg.sim.render_interval = 4
+    cfg.synthe_robot_static_friction = cfg.synthe_robot_dynamic_friction = float(args.robot_friction)
+    cfg.synthe_object_static_friction = cfg.synthe_object_dynamic_friction = float(args.object_friction)
+    material = sim_utils.RigidBodyMaterialCfg(static_friction=float(args.robot_friction),
+        dynamic_friction=float(args.robot_friction), friction_combine_mode='max')
+    cfg.sim.physics_material = material
+    cfg.robot_cfg = copy.deepcopy(cfg.robot_cfg)
+    cfg.robot_cfg.prim_path = '/World/envs/env_.*/Robot'
+    # Preserve the validated authored XHand decomposition. Other hands are
+    # imported from the selected read-only URDF with the same contact offsets.
+    if hand['source_to_runtime_joint_names'].get('left_hand_thumb_joint1'):
+        usd_path = str(HERE / 'assets/round7b_xhand_allfine.usdc')
+    else:
+        conversion = UrdfConverter(UrdfConverterCfg(asset_path=hand['urdf_path'],
+            usd_dir=str(sample_path.parent / 'converted_hand'), usd_file_name='hand.usd',
+            force_usd_conversion=True, make_instanceable=False, fix_base=True,
+            merge_fixed_joints=True, self_collision=True, collider_type='convex_decomposition',
+            joint_drive=UrdfConverterCfg.JointDriveCfg(gains=UrdfConverterCfg.JointDriveCfg.PDGainsCfg(stiffness=0., damping=0.))))
+        usd_path = conversion.usd_path
+        # Imported mesh subtrees can remain instanceable even when the robot
+        # itself is not. Author millimetre contact offsets on the generated
+        # derivative so the spawner cannot silently skip instance proxies.
+        from pxr import Usd, UsdGeom, UsdPhysics, PhysxSchema
+        stage = Usd.Stage.Open(usd_path)
+        while True:
+            instances = [prim for prim in stage.Traverse() if prim.IsInstance()]
+            if not instances:
+                break
+            for prim in instances:
+                prim.SetInstanceable(False)
+        # STL importer puts collision APIs on a wrapper Xform. PhysX mesh
+        # cooking parameters must be authored on the actual Mesh leaf.
+        for wrapper in list(stage.Traverse()):
+            if wrapper.HasAPI(UsdPhysics.CollisionAPI) and not wrapper.IsA(UsdGeom.Mesh):
+                meshes=[leaf for leaf in Usd.PrimRange(wrapper) if leaf.IsA(UsdGeom.Mesh)]
+                if not meshes:raise RuntimeError('Collision wrapper has no mesh: '+str(wrapper.GetPath()))
+                for leaf in meshes:
+                    UsdPhysics.CollisionAPI.Apply(leaf)
+                    UsdPhysics.MeshCollisionAPI.Apply(leaf).CreateApproximationAttr('convexDecomposition')
+                wrapper.RemoveAPI(UsdPhysics.CollisionAPI)
+                wrapper.RemoveAPI(UsdPhysics.MeshCollisionAPI)
+        colliders = []
+        for prim in stage.Traverse():
+            if prim.HasAPI(UsdPhysics.CollisionAPI):
+                api = PhysxSchema.PhysxCollisionAPI.Apply(prim)
+                api.CreateContactOffsetAttr(.0002)
+                api.CreateRestOffsetAttr(0.)
+                cooking = PhysxSchema.PhysxConvexDecompositionCollisionAPI.Apply(prim)
+                cooking.CreateHullVertexLimitAttr(64)
+                cooking.CreateMaxConvexHullsAttr(256)
+                cooking.CreateMinThicknessAttr(.0002)
+                cooking.CreateVoxelResolutionAttr(8000000)
+                cooking.CreateErrorPercentageAttr(.1)
+                cooking.CreateShrinkWrapAttr(True)
+                colliders.append(str(prim.GetPath()))
+        if not colliders:
+            raise RuntimeError('Imported hand has no physical colliders')
+        # URDF joint collisionEnabled alone does not install the articulation
+        # pair filter. Use the exact same structural rule as the policy mesh
+        # guard, applied to the generated fixed-joint-merged rigid bodies.
+        model = HandDescription(hand['urdf_path'], joint_names=hand['joint_names'], base_joint_names=BASE_NAMES)
+        bodies = {prim.GetName(): prim for prim in stage.Traverse()
+                  if prim.HasAPI(UsdPhysics.RigidBodyAPI) and prim.GetName() in model.links}
+        exclusions = model.structural_collision_exclusions(list(bodies))
+        for a, b in sorted(exclusions):
+            for source, target in ((a, b), (b, a)):
+                UsdPhysics.FilteredPairsAPI.Apply(bodies[source]).CreateFilteredPairsRel().AddTarget(bodies[target].GetPath())
+        (sample_path.parent/'converted_hand'/'structural_collision_filters.json').write_text(
+            json.dumps(dict(source='HandDescription.structural_collision_exclusions',
+                            scope='fixed assemblies and direct movable neighbours only',
+                            rigid_bodies=list(bodies), excluded_pairs=sorted(exclusions)), indent=2))
+        stage.GetRootLayer().Save()
+        (sample_path.parent/'converted_hand'/'collision_configuration.json').write_text(
+            json.dumps(dict(contact_offset_m=.0002, rest_offset_m=0., cooking_source='validated round7b_xhand_allfine.json explicit_cooking_parameters', hullVertexLimit=64, maxConvexHulls=256, minThickness=.0002, voxelResolution=8000000, errorPercentage=.1, shrinkWrap=True, colliders=colliders), indent=2))
+    cfg.robot_usd = usd_path
+    cfg.robot_cfg.spawn = sim_utils.UsdFileCfg(usd_path=usd_path, activate_contact_sensors=True,
+        rigid_props=sim_utils.RigidBodyPropertiesCfg(disable_gravity=True),
+        articulation_props=sim_utils.ArticulationRootPropertiesCfg(enabled_self_collisions=True),
+        collision_props=sim_utils.CollisionPropertiesCfg(contact_offset=.0002, rest_offset=0.))
+    cfg.robot_cfg.spawn.physics_material=material
+    cfg.robot_cfg.init_state = ArticulationCfg.InitialStateCfg(pos=(0.,0.,0.))
+    tree=ET.parse(hand['urdf_path'])
+    effort={j.get('name'):float(j.find('limit').get('effort')) for j in tree.findall('joint') if j.find('limit') is not None}
+    fingers=[name for name in hand['joint_names'] if name not in BASE_NAMES]
+    cfg.robot_cfg.actuators={
+        'palm': ImplicitActuatorCfg(joint_names_expr=list(BASE_NAMES), effort_limit_sim=float(args.base_max_effort),
+            stiffness=float(args.base_stiffness), damping=float(args.base_damping)),
+        'fingers': ImplicitActuatorCfg(joint_names_expr=fingers, effort_limit_sim={n:effort[n] for n in fingers},
+            stiffness=float(args.position_stiffness), damping=float(args.position_damping))}
+    cfg.all_actuated_joint_names=list(hand['joint_names'])
+    cfg.control_joint_names=fingers
+    cfg.action_space=len(fingers)
+    cfg.xarm_init_joint_values_degree=[0.]*len(BASE_NAMES)
+    cfg.xhand_init_joint_values_radian=list(hand['initial_q'])
+    cfg.leap_init_joint_values_radian=[0.]*len(fingers)
+    cfg.enable_contact_audit=False  # Native diagnostic queries are installed for all physical bodies below.
+    import types
+    def cameras(self, finger=None, *, requested_fps=30., include_third_view=True, width=160, height=120):
+        configure_cameras(self, requested_fps, width or 160, height or 120)
+    cfg.configure_xhand_cameras=types.MethodType(cameras, cfg)
+    configure_cameras(cfg, 30., 160, 120)
+    from scipy.spatial.transform import Rotation
+    cfg.cam_third_view.offset.pos=(0.,-.001,.5)
+    forward=np.array([0.,.001,-.5]);forward/=np.linalg.norm(forward)
+    right=np.cross(forward,[0.,0.,1.]);right/=np.linalg.norm(right)
+    up=np.cross(right,forward)
+    quat=Rotation.from_matrix(np.stack([right,up,-forward],axis=1)).as_quat()[[3,0,1,2]]
+    cfg.cam_third_view.offset.rot=tuple(quat)
+
+
+def configure_cameras(cfg, fps, width, height):
+    from dataclasses import replace
+    import isaaclab.sim as sim_utils
+    from isaaclab.sensors import TiledCameraCfg
+    from fingereye.tasks.direct.fingereye.xhand_camera_config import XHandCameraSpec, _fisheye_spawn_cfg, _fisheye_metadata
+    hand=selected(); configs={}; metadata={}
+    for mount in hand['camera_mounts']:
+        name=mount['name']
+        spec=XHandCameraSpec(logical_name=name, finger=mount['finger'], mount_name=mount['optics_profile'],
+            joint_name=mount['joint_name'],parent_link=mount['parent_link'],camera_link=mount['camera_link'],
+            translation=tuple(mount['translation']),rpy=tuple(mount['rpy']),width=width,height=height,urdf_path=hand['urdf_path'])
+        configs[name]=TiledCameraCfg(prim_path='/World/envs/env_.*/Robot/FingerEye_'+name,
+            update_period=0.,spawn=_fisheye_spawn_cfg(sim_utils,spec),
+            offset=TiledCameraCfg.OffsetCfg(pos=(0.,0.,0.),rot=(1.,0.,0.,0.),convention='opengl'),
+            data_types=['rgb'],width=width,height=height,update_latest_camera_pose=True)
+        row=_fisheye_metadata(spec,1./fps)
+        row['extrinsic_source']=mount.get('optical_transform_source',
+            'source_URDF_camera_frame_used_as_simulation_optical_frame')
+        row['calibration_status']='simulation_workspace_fisheye_not_hardware_optical_calibration'
+        row['camera_prim_path_pattern']=configs[name].prim_path
+        metadata[name]=row
+    cfg.xhand_camera_configs=configs;cfg.xhand_camera_metadata=metadata
+    cfg.recording_only_camera_names=list(configs)
+    cfg.camera_name_list=['third_view',*configs]
+
+
+def configure_physics(cfg):
+    cfg.seed=0
+    cfg.sim.physx.friction_offset_threshold=.0005
+    cfg.sim.physx.friction_correlation_distance=.001
+    cfg.sim.use_fabric=True
+
+
+_model=None
+
+def capture_cameras(env,cfg,names):
+    global _model
+    import torch
+    from scipy.spatial.transform import Rotation
+    from fingereye.tasks.direct.fingereye.xhand_camera_recorder import to_uint8_batch
+    hand=selected()
+    if _model is None:
+        _model=HandDescription(hand['urdf_path'],joint_names=hand['joint_names'],base_joint_names=BASE_NAMES)
+    actual=env.hand.data.joint_pos[0].cpu().numpy()
+    q=np.array([actual[env.hand.joint_names.index(n)] for n in _model.joint_names])
+    fk=_model.fk(q)
+    for name,cam in env._active_cameras.items():
+        if name=='third_view':continue
+        T=fk[cfg.xhand_camera_metadata[name]['camera_link']]
+        quat=Rotation.from_matrix(T[:3,:3]).as_quat()[[3,0,1,2]]
+        cam.set_world_poses(torch.tensor(T[None,:3,3],dtype=torch.float32,device=env.device),
+            torch.tensor(quat[None],dtype=torch.float32,device=env.device),convention='opengl')
+    env.sim.render()
+    frames={}
+    for name in names:
+        cam=env._active_cameras[name];cam.update(0.,force_recompute=True)
+        frames[name]=to_uint8_batch(cam.data.output['rgb'])
+    return frames
+
+
+def audit_runtime(env,cfg,out):
+    """Prove the simulator's joint order/limits and loaded URDF, without policy truth."""
+    hand=selected()
+    actual=list(env.hand.joint_names)
+    # Private initial collision representation: diagnose cooked convexes,
+    # including solid containment that triangle surface intersection misses.
+    if os.environ.get('FINGEREYE_AUDIT_COOKED')=='1':
+        from pxr import UsdPhysics, UsdGeom, UsdUtils, PhysicsSchemaTools
+        from omni.physx import get_physx_cooking_interface
+        stage=env.sim.stage
+        stage_id=UsdUtils.StageCache.Get().GetId(stage).ToLongInt()
+        cooked=[]
+        for prim in stage.Traverse():
+            if '/Robot/' not in str(prim.GetPath()) or not prim.HasAPI(UsdPhysics.CollisionAPI):continue
+            transform=np.asarray(UsdGeom.Xformable(prim).ComputeLocalToWorldTransform(0)).T
+            path=str(prim.GetPath())
+            def collect(result,convexes):
+                cooked.append(dict(path=path,result=str(result),world_transform=transform.tolist(),
+                    convex_vertices=[np.asarray(c.vertices).tolist() for c in convexes]))
+            get_physx_cooking_interface().request_convex_collision_representation(
+                stage_id=stage_id,collision_prim_id=PhysicsSchemaTools.sdfPathToInt(prim.GetPath()),
+                run_asynchronously=False,on_result=collect)
+        (out/'cross_hand_initial_cooked_convexes.json').write_text(json.dumps(cooked))
+    if set(actual)!=set(hand['joint_names']):
+        raise RuntimeError('Imported actuator mismatch: '+repr((actual,hand['joint_names'])))
+    shape = {key: getattr(env.hand.root_physx_view, method)().cpu().numpy().tolist()
+             for key, method in [('contact_offsets', 'get_contact_offsets'), ('rest_offsets', 'get_rest_offsets')]}
+    (out/'cross_hand_native_shape_properties.json').write_text(json.dumps(shape, indent=2))
+    if not np.allclose(shape['contact_offsets'], .0002, atol=1e-9) or not np.allclose(shape['rest_offsets'], 0., atol=1e-9):
+        raise RuntimeError('Selected hand contact offsets do not match the shared physics configuration')
+    source={path:hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in hand['source_sha256']}
+    if source!=hand['source_sha256']:
+        raise RuntimeError('Source URDF or mesh changed during import')
+    (out/'cross_hand_loaded.json').write_text(json.dumps(dict(hand, actual_simulator_joint_names=actual,
+        loaded_usd=cfg.robot_usd,actual_body_names=list(env.hand.body_names)),indent=2,ensure_ascii=False)+'\n')
+
+
+def _audit_camera_optics(camera, metadata, name, spawn_cfg):
+    """Read renderer USD optics independently; native values stay private.
+
+    Attribute names follow IsaacLab sim/spawners/sensors/sensors.py,
+    CUSTOM_FISHEYE_CAMERA_ATTRIBUTES and the USD Camera schema.
+    """
+    prim = camera._sensor_prims[0].GetPrim()
+    mapping = {
+        'cameraProjectionType': 'projection_type',
+        'fthetaWidth': 'fisheye_nominal_width',
+        'fthetaHeight': 'fisheye_nominal_height',
+        'fthetaCx': 'fisheye_optical_centre_x',
+        'fthetaCy': 'fisheye_optical_centre_y',
+        'fthetaMaxFov': 'fisheye_max_fov',
+    }
+    expected = {attribute: metadata.get(key) for attribute, key in mapping.items()}
+    expected.update(focalLength=float(spawn_cfg.focal_length),
+                    horizontalAperture=float(spawn_cfg.horizontal_aperture),
+                    verticalAperture=float(spawn_cfg.vertical_aperture))
+    polynomial = metadata.get('fisheye_polynomial', [])
+    for index, suffix in enumerate('ABCDEF'):
+        expected['fthetaPoly' + suffix] = polynomial[index] if len(polynomial) == 6 else None
+    native = {key: prim.GetAttribute(key).Get() for key in expected}
+    native['projection'] = prim.GetAttribute('projection').Get()
+    checks = []
+    for attribute, wanted in expected.items():
+        actual = native[attribute]
+        if isinstance(wanted, str):
+            passed = actual == wanted
+            absolute_error = None
+        elif wanted is None or actual is None:
+            passed = False
+            absolute_error = None
+        else:
+            absolute_error = abs(float(actual) - float(wanted))
+            passed = bool(np.isclose(float(actual), float(wanted), rtol=2e-6, atol=1e-12))
+        checks.append(dict(attribute=attribute, expected=wanted, actual=actual,
+                           absolute_error=absolute_error, passed=passed))
+    native_k = camera.data.intrinsic_matrices[0].cpu().numpy()
+    wanted_k = np.asarray(metadata['renderer_intrinsic_matrix'], dtype=float)
+    k_error = float(np.max(np.abs(native_k - wanted_k)))
+    checks.append(dict(attribute='renderer_intrinsic_matrix', expected=wanted_k.tolist(),
+                       actual=native_k.tolist(), max_absolute_error_px=k_error,
+                       passed=bool(np.allclose(native_k, wanted_k, rtol=0., atol=1e-5))))
+    actual_shape = tuple(int(n) for n in camera.data.output['rgb'].shape[-3:-1])
+    wanted_shape = (int(metadata['height']), int(metadata['width']))
+    checks.append(dict(attribute='rendered_image_height_width', expected=list(wanted_shape),
+                       actual=list(actual_shape), passed=actual_shape == wanted_shape))
+    return dict(name=name, prim_path=str(prim.GetPath()), native_usd_attributes=native,
+                source='actual renderer Camera prim; private diagnostic, never a policy observation',
+                mapping_source='IsaacLab sim/spawners/sensors/sensors.py CUSTOM_FISHEYE_CAMERA_ATTRIBUTES',
+                numeric_tolerance=dict(relative=2e-6, absolute=1e-12, intrinsic_absolute_px=1e-5),
+                checks=checks, passed=all(row['passed'] for row in checks))
+
+
+def audit_cameras(env,cfg,step,out):
+    # Rendering uses the same model, FK exposure state and optical metadata as
+    # the policy. Record native camera poses for independent offline checks.
+    rows=[]; optics=[]
+    for name,cam in env._active_cameras.items():
+        if name=='third_view':continue
+        if step==0:
+            optics.append(_audit_camera_optics(cam,cfg.xhand_camera_metadata[name],name,cfg.xhand_camera_configs[name].spawn))
+        rows.append(dict(name=name,position=cam.data.pos_w[0].cpu().numpy().tolist(),
+            quaternion_opengl=cam.data.quat_w_opengl[0].cpu().numpy().tolist(),
+            intrinsic_matrix=cam.data.intrinsic_matrices[0].cpu().numpy().tolist(),
+            calibration=cfg.xhand_camera_metadata[name]))
+    with (out/'cross_hand_camera_frames.jsonl').open('a') as stream:
+        stream.write(json.dumps(dict(step=step,simulator_joint_names=list(env.hand.joint_names),actual_q=env.hand.data.joint_pos[0].cpu().numpy().tolist(),native_body_names=list(env.hand.body_names),native_body_poses=env.hand.data.body_state_w[0,:,:7].cpu().numpy().tolist(),cameras=rows))+'\n')
+
+    if step==0:
+        report=dict(step=step,passed=all(row['passed'] for row in optics),cameras=optics)
+        (out/'cross_hand_camera_optics.json').write_text(json.dumps(report,indent=2)+'\n')
+        if not report['passed']:
+            failures=[(row['name'],check['attribute']) for row in optics
+                      for check in row['checks'] if not check['passed']]
+            raise RuntimeError('Renderer optics disagree with projection metadata: '+repr(failures))
+
+
+def pad_catalog(hand, chains, source_digest):
+    """Load static contact data by asset hash, or propose mesh-supported patches.
+
+    Mesh proposals are metric geometric contact candidates, not measured pad
+    compliance/friction. Native contacts remain private physical diagnostics.
+    """
+    import trimesh
+    path=HERE/'hand_calibrations'/(source_digest+'.json')
+    static=json.loads(path.read_text()) if path.is_file() else {}
+    if static.get('pads'):
+        rows=static['pads']
+        groups={c['finger']:c for c in chains}
+        for row in rows:
+            row['joint_names']=groups[row['finger']]['joint_names']
+        return rows
+    rows=[]
+    for chain in chains:
+        link=chain['terminal_link']
+        pieces=[]
+        for entry in hand.collision_meshes:
+            if entry['link']!=link:continue
+            mesh=trimesh.load(entry['path'],force='mesh',process=True)
+            mesh.apply_scale(entry['scale']);mesh.apply_transform(entry['origin']);pieces.append(mesh)
+        if not pieces:continue
+        mesh=trimesh.util.concatenate(pieces)
+        order=np.argsort(mesh.extents)[::-1];longitudinal,lateral,across=order
+        regions=[];radius=.0012
+        for sign in (-1.,1.):
+            for fraction in (.95,.8,.9,.65):
+                center=mesh.bounds.mean(0)
+                center[longitudinal]=mesh.bounds[0,longitudinal]+fraction*mesh.extents[longitudinal]
+                center[lateral]=mesh.bounds[0,lateral]-.02 if sign<0 else mesh.bounds[1,lateral]+.02
+                direction=np.eye(3)[lateral]*-sign
+                offsets=np.zeros((13,3))
+                angles=np.arange(12)*np.pi/6
+                offsets[1:,longitudinal]=radius*np.cos(angles)
+                offsets[1:,across]=radius*np.sin(angles)
+                origins=center+offsets
+                positions,rays,faces=mesh.ray.intersects_location(origins,np.tile(direction,(13,1)),multiple_hits=True)
+                points=[];normals=[]
+                for i in range(13):
+                    ids=np.flatnonzero(rays==i)
+                    if not len(ids):break
+                    j=ids[np.argmin(np.linalg.norm(positions[ids]-origins[i],axis=1))]
+                    points.append(positions[j]);normals.append(mesh.face_normals[faces[j]])
+                if len(points)!=13:continue
+                normal=np.mean(normals,axis=0);normal/=np.linalg.norm(normal)
+                variation=float(np.max(np.arccos(np.clip(np.asarray(normals)@normal,-1,1))))
+                # A ray may meet an inclined but locally planar fingertip.
+                # Requiring alignment with the ray discarded the inward face
+                # of the supplied hand and retained its outward back surface.
+                if variation>.2 or normal@(-direction)<.5:continue
+                regions.append(dict(point=np.asarray(points[0]).tolist(),normal=normal.tolist(),radius_m=radius,
+                    normal_variation_rad=variation,source='13 static collision-mesh rays over a 1.2 mm disc'))
+        if not regions:continue
+        best=regions[0]
+        distal=np.eye(3)[longitudinal]
+        rows.append(dict(finger=chain['finger'],link=link,surface_link=link,point_m=best['point'],
+            outward_normal=best['normal'],joint_names=chain['joint_names'],support_radius_m=radius,
+            distal_direction=distal.tolist(),regions=regions,
+            source='source URDF collision mesh, static external patch proposal; physical contact validation pending'))
+    if rows:
+        poses=hand.fk(np.clip(np.zeros(len(hand.joint_names)),hand.lower,hand.upper))
+        center=np.mean([poses[r['link']][:3,3] for r in rows],axis=0)
+        for row in rows:
+            pose=poses[row['link']]
+            def inward_score(region):
+                point=pose[:3,:3]@region['point']+pose[:3,3]
+                toward=center-point
+                distal=pose[:3,:3]@row['distal_direction']
+                toward-=distal*(toward@distal)
+                return float((pose[:3,:3]@region['normal'])@toward/max(np.linalg.norm(toward),1e-9))
+            best=max(row['regions'],key=inward_score)
+            row['point_m']=best['point'];row['outward_normal']=best['normal']
+            row['selection_source']='static FK: mesh-supported patch facing the other finger chains'
+    return rows

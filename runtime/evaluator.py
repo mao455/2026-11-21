@@ -1,22 +1,20 @@
+"""Measured 30 mm no-drop verdict, with the historical strict verdict retained.
+
+Private rollout evidence only; no controller phase labels affect scoring. Run this
+module on recorded episode directories to reassess without changing the originals.
+"""
 from __future__ import annotations
-
 import numpy as np
-
 from scipy.spatial.transform import Rotation
 
 DT = 1 / 120
-
 HOLD_STEPS = 240
-
 PROTOCOL_ID = 'lift30_no_drop_v1'
-
 TARGET_LIFT_M = .030
-
 LIFT_TOLERANCE_M = .002  # Evaluation convention, not a hardware calibration.
-
 MIN_COMMANDED_LIFT_M = .0295
-
 MIN_CLEARANCE_M = .005
+
 
 def evaluate_strict(records, initial_object_z):
     """Original strict scorer; thresholds and returned fields are unchanged."""
@@ -50,6 +48,7 @@ def evaluate_strict(records, initial_object_z):
             'hold_relative_rotation_drift_rad': float(rotation.max()), 'hold_max_linear_speed_m_s': float(linear),
             'hold_max_angular_speed_rad_s': float(angular), 'hold_min_contact_force_n': float(contact),
             'commanded_lift_m': float(commanded), 'success': bool(passed and invalid is None)}
+
 
 def evaluate(records, initial_object_z):
     strict = evaluate_strict(records, initial_object_z)
@@ -103,3 +102,52 @@ def evaluate(records, initial_object_z):
         result['failure'] = next(name for name, passed in checks.items() if not passed)
     return result
 
+
+def reassess_episode(episode):
+    """Read original physical evidence and host gates; never rewrite it."""
+    import hashlib
+    import json
+    from pathlib import Path
+    episode = Path(episode)
+    paths = {name: episode / name for name in ('result.json', 'scene.json', 'steps.jsonl')}
+    host = json.loads(paths['result.json'].read_text())
+    scene = json.loads(paths['scene.json'].read_text())
+    records = [json.loads(line) for line in paths['steps.jsonl'].read_text().splitlines() if line.strip()]
+    physics = evaluate(records, scene['initial_object_pose'][2])
+    execution = bool(host['controller_completed'] and host['error'] is None
+                     and host['evaluator_and_adapter_unchanged'])
+    historical = host['physics'].get('legacy_strict', host['physics'])
+    return dict(name=episode.parent.name, episode=str(episode.resolve()),
+                source_sha256={name: hashlib.sha256(path.read_bytes()).hexdigest()
+                               for name, path in paths.items()},
+                physical_s=len(records) * DT, execution_valid=execution,
+                recorded_success=host['success'],
+                legacy_strict_success=bool(execution and physics['legacy_strict']['success']),
+                legacy_strict_matches_recorded=physics['legacy_strict'] == historical,
+                success=bool(execution and physics['success']), physics=physics)
+
+
+def main():
+    import argparse
+    import hashlib
+    import json
+    from pathlib import Path
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('episodes', nargs='+', type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    if args.output.exists():
+        parser.error('refuse to overwrite an existing reassessment')
+    report = dict(protocol_id=PROTOCOL_ID, reassessment_only=True,
+                  evaluator_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                  episodes=[reassess_episode(path) for path in args.episodes])
+    report.update(cases=len(report['episodes']),
+                  successes=sum(r['success'] for r in report['episodes']),
+                  legacy_strict_successes=sum(r['legacy_strict_success'] for r in report['episodes']))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n')
+    print(json.dumps({k: v for k, v in report.items() if k != 'episodes'}))
+
+
+if __name__ == '__main__':
+    main()
