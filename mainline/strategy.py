@@ -916,19 +916,13 @@ def grasp_seed(robot, prior, targets, inward, fraction=None, normal_weight=12.0)
 
 
 def surface_ik_seeds(robot, prior, targets, inward, normal_weight=12.0, seed_hint=None):
-    """Keep measured articulation, then rank starts by contact and clearance.
+    """Rank all existing starts by the same contact and clearance cost.
 
-    The same position/normal weights choose starts for two or three contacts.
-    Match the surface solver's worst full-mesh table-clearance residual, so
-    clear mesh vertices cannot dilute a buried remote link. Include the existing
-    full-mesh self/object collision residual at each actual palm-fitted start;
-    a low contact error alone must not hide an intersecting finger or camera.
-    One original-bank dependency-block composite competes in the ordinary
-    fallback pool; with a valid bound hint, they compete by full static cost for
-    slot1 and the loser competes with the original pool for slot2. This expands
-    the articulation universe and changes the old hint-protection priority. A bound
-    source-domain palm fit still accepts only an original whole-bank articulation.
-    All starts still need every real endpoint and complete-path check.
+    Keep original131 generation, one dependency-block composite and eligible
+    original-bank source hint unchanged. Select three distinct full-q states by
+    the existing count-normalized contact, worst-table and self/object cost.
+    Stable exact ties keep generation order: original131, composite, then hint.
+    Every start still needs all real endpoint and complete-path checks.
     """
     from scipy.stats import qmc
     prior=np.asarray(prior,float);targets=np.asarray(targets,float);inward=np.asarray(inward,float)
@@ -993,10 +987,10 @@ def surface_ik_seeds(robot, prior, targets, inward, normal_weight=12.0, seed_hin
     original_pose_pool=tuple(pool)
     composite_audit=dict(status='unavailable',new_static_evaluations=0,
         original_articulation_count=len(original_bank),maximum_new_proposals=1,
-        ordinary_pool_only=False,ordinary_pool_without_eligible_hint=True,
-        slot1_competition_with_eligible_hint=True,optimizer_slot_count_unchanged=True,
+        ordinary_pool_only=True,ordinary_pool_without_eligible_hint=True,
+        slot1_competition_with_eligible_hint=False,optimizer_slot_count_unchanged=True,
         original_source_hint_bank_contract_unchanged=True,
-        slot_routing='eligible hint and composite compare full static cost for slot1; loser joins ordinary slot2 pool')
+        slot_routing='all existing full-q candidates compete by unchanged full static cost for three distinct slots')
     try:
         description=robot.description
         paths={description.root:()};ancestors={description.root:{description.root}}
@@ -1071,7 +1065,7 @@ def surface_ik_seeds(robot, prior, targets, inward, normal_weight=12.0, seed_hin
             unused_baseline='same all-vector lo+2e-6/hi-2e-6 clipped measured prior as original candidates',
             maximum_unused_clip_change_m_or_rad=float(np.max(np.abs(baseline[unused]-prior[unused]))) if unused else 0.,
             same_active_q_in_original_bank=any(np.allclose(composite['q'][active],row['q'][active],rtol=0.,atol=1e-10) for row in original_bank),
-            scope='one dependency-consistent composite proposal; with an eligible original-bank hint, lower full static cost wins slot1 and loser joins ordinary pool for slot2; without eligible hint, ordinary pool ranking; not feasibility or path certificate')
+            scope='one unchanged dependency-consistent composite proposal competes with all existing candidates by full static cost; not feasibility or path certificate')
         composite['detail']['articulation_composite']=detail
         pool.append(composite)
         composite_audit.update(status='ordinary_pool_candidate',new_static_evaluations=1,
@@ -1080,8 +1074,6 @@ def surface_ik_seeds(robot, prior, targets, inward, normal_weight=12.0, seed_hin
         # Missing/inconsistent metadata only disables the additional proposal;
         # it cannot reject or reorder the original bank by itself.
         composite_audit.update(reason=str(error))
-    pool.sort(key=lambda row:row['detail']['initial_contact_clearance_cost'])
-    chosen=[measured]
     bound_hint=None
     hint_report=dict(status='no_bound_hint',initializer_only=True,static_evaluations=0,
         static_contact_centers_unchanged=True,maximum_optimizer_seed_count=3)
@@ -1109,32 +1101,17 @@ def surface_ik_seeds(robot, prior, targets, inward, normal_weight=12.0, seed_hin
                 hint['detail'].update(rank_seed_index=seed_hint['rank_seed_index'],
                     rank_score=seed_hint['rank_score'],saved_common_palm_pose_preserved=True)
                 bound_hint=hint
-                hint_report.update(status='eligible_slot1_cost_competition',reason=None,static_evaluations=1,
+                hint_report.update(status='eligible_unified_cost_ranking',reason=None,static_evaluations=1,
                     recomputed_static_center_contact_table_self_object_cost=hint['detail'],
                     same_q_in_original_pose_pool=any(np.allclose(q_hint,row['q'],
                         rtol=0.,atol=1e-10) for row in original_pose_pool))
-    # D84B routing is explicit: an eligible original-bank source hint and
-    # the one new composite compare the SAME recomputed full static cost for
-    # slot1. The loser competes with the original pool for slot2. With no
-    # eligible hint, the composite is only an ordinary pool candidate.
+    # Do not rebuild or alter any q: only remove protected source-type slots.
     composite_row=next((row for row in pool if
         row['detail']['source']=='original_bank_dependency_block_composite'),None)
-    if bound_hint is not None:
-        preferred=[bound_hint]+([] if composite_row is None else [composite_row])
-        preferred.sort(key=lambda row:row['detail']['initial_contact_clearance_cost'])
-        # Stable equality protects the pre-existing source hint on a cost tie.
-        for row in preferred:
-            if not any(np.allclose(row['q'],old['q'],rtol=0.,atol=1e-10) for old in chosen):
-                chosen.append(row);break
-        hint_report['slot1_competition']=dict(
-            rule='lower recomputed full contact/table/self-object cost; exact tie keeps bound source hint',
-            hint_cost=bound_hint['detail']['initial_contact_clearance_cost'],
-            composite_cost=None if composite_row is None else composite_row['detail']['initial_contact_clearance_cost'],
-            winner_source=chosen[1]['detail']['source'] if len(chosen)>1 else None)
-    fallback=list(pool)+([] if bound_hint is None else [bound_hint])
-    fallback.sort(key=lambda row:row['detail']['initial_contact_clearance_cost'])
-    for row in fallback:
-        if len(chosen)==3:break
+    candidates=[measured]+list(pool)+([] if bound_hint is None else [bound_hint])
+    ranked=sorted(candidates,key=lambda row:row['detail']['initial_contact_clearance_cost'])
+    chosen=[]
+    for row in ranked:
         if any(np.allclose(row['q'],old['q'],rtol=0.,atol=1e-10)for old in chosen):
             continue
         chosen.append(row)
@@ -1151,12 +1128,19 @@ def surface_ik_seeds(robot, prior, targets, inward, normal_weight=12.0, seed_hin
             np.allclose(row['q'],composite_row['q'],rtol=0.,atol=1e-10)),None)
         composite_audit.update(selected_index=actual_index,
             selected_as_composite=False if actual_index is None else chosen[actual_index] is composite_row)
-    audit=dict(pool_count_including_measured=1+len(pool),
+    selection_audit=dict(rule='stable unchanged full static cost; first three distinct full-q states',
+        stable_tie_order='original131 generation order, then composite, then eligible hint',
+        candidate_count_including_hint=len(candidates),
+        static_evaluation_count=len(original_bank)+composite_audit['new_static_evaluations']+hint_report['static_evaluations'],
+        full_q_dedup_rtol=0.,full_q_dedup_atol=1e-10,
+        selected_generation_ordinals=[next(i for i,candidate in enumerate(candidates) if candidate is row) for row in chosen],
+        selected_named_full_q=[dict(zip(robot.names,row['q'].tolist()))for row in chosen])
+    audit=dict(pool_count_including_measured=1+len(pool),unified_seed_selection=selection_audit,
         original_pool_count_including_measured=len(original_bank),articulation_composite=composite_audit,
         original_uniform_candidates=[row['detail'] for row in pool if row['detail']['source']=='original_uniform_fraction'],
         selected_count=len(chosen),maximum_optimizer_seed_count=3,
         selected=[row['detail'] for row in chosen],source_seed_hint=hint_report,
-        scope='original131 plus at most one dependency-block composite in ordinary pool/three slots; measured first; source hint admits only original whole-bank rows; eligible hint/composite cost competition for slot1, loser joins original pool for slot2; original collision, support and full-path checks unchanged')
+        scope='unchanged original131, at most one composite and eligible original-bank bound hint compete uniformly for three distinct full-q starts by unchanged full static cost; original collision, support and full-path checks unchanged')
     return [row['q']for row in chosen],audit
 
 
@@ -1357,12 +1341,15 @@ def prepare_body_penetration(robot,checker,spacing_m=.001):
         envelope_source='same accepted 0.65mm inset RGB generating halfspaces as current exact checker')
 
 
-def body_penetration(context,poses,*,report=False,cull=True,chunk_size=2048):
-    """Worst directional whole-link exit proxy on unchanged source samples.
+def body_penetration(context,poses,*,report=False,vector=False,cull=True,chunk_size=2048):
+    """Fixed all-link directional exit residuals on unchanged source samples.
 
     For each RGB plane take the minimum signed distance over one link, then
     choose the largest plane separation. Its negative part gives a soft exit
-    distance for that link; the worst link retains the shared 3000/m scale.
+    distance d_L for that link. Each fixed row is 3000*d_L, including zeros
+    for clear/culled links in context order. Vector mode supplies those rows
+    to least_squares; the default scalar is their L2 norm for existing callers.
+    Report depth_m/witness retain the maximum depth and its source witness.
     This asks for a common object-face separator for the whole sampled link.
     It is conservative for corners/concavity and is not exact SAT or first
     touch. A same-plane bounds proof only skips an exactly zero proxy; all
@@ -1370,7 +1357,7 @@ def body_penetration(context,poses,*,report=False,cull=True,chunk_size=2048):
     """
     if not isinstance(chunk_size,int) or chunk_size<1:
         raise PadSurfaceError('Body penetration chunk size must be positive integer')
-    worst=0.;witness=None;records=[] if report else None
+    worst=0.;witness=None;depths=[];records=[] if report else None
     normals=context['normals'];offsets=context['offsets']
     for body in context['samples']:
         if body.link not in poses:raise PadSurfaceError('Missing current body transform: '+body.link)
@@ -1404,6 +1391,7 @@ def body_penetration(context,poses,*,report=False,cull=True,chunk_size=2048):
                     phi_m=float(point_values.max()),active_plane=int(np.argmax(point_values)),
                     directional_plane=plane,directional_plane_distance_m=separation)
         depth=0. if skipped else max(0.,-separation)
+        depths.append(depth)
         if depth>worst:worst=depth;witness=link_witness
         if report:records.append(dict(link=body.link,sample_count=len(body.points),
             source_triangle_count=body.source_triangle_count,source_bounds_plane_zero_proven=bool(skipped),
@@ -1411,17 +1399,24 @@ def body_penetration(context,poses,*,report=False,cull=True,chunk_size=2048):
             min_phi_m=None if skipped else minimum_phi,depth_m=depth,
             original_sampled_inside_depth_m=None if skipped else max(0.,-minimum_phi),
             directional_separation_m=separation,directional_plane=plane))
-    residual=context['weight_per_m']*worst
-    if not report:return residual
-    return dict(depth_m=worst,residual=residual,squared_residual=residual**2,
-        scipy_cost=.5*residual**2,weight_per_m=context['weight_per_m'],
+    residuals=context['weight_per_m']*np.asarray(depths,float)
+    residual=float(np.linalg.norm(residuals))
+    if not report:return residuals if vector else residual
+    squared_residual=float(residuals@residuals)
+    return dict(depth_m=worst,residual=residual,squared_residual=squared_residual,
+        scipy_cost=.5*squared_residual,weight_per_m=context['weight_per_m'],
+        depth_l2_m=float(np.linalg.norm(depths)),link_depths_m=depths,
+        link_residuals=residuals.tolist(),link_order=[body.link for body in context['samples']],
+        residual_count=len(residuals),
+        maximum_depth_residual=context['weight_per_m']*worst,
+        maximum_depth_scipy_cost=.5*(context['weight_per_m']*worst)**2,
         witness=witness,links=records,plane_count=len(offsets),
         total_sample_count=sum(row['sample_count'] for row in records),
         source_bounds_plane_skipped_links=sum(row['source_bounds_plane_zero_proven'] for row in records),
         culling='same RGB planes prove all eight existing source bounds corners outside one common face; exact zero proxy skip',
         spacing_m=context['spacing_m'],prepared_cache_hit=context['prepared_cache_hit'],
         preparation_cpu_s=context['preparation_cpu_s'],preparation_wall_s=context['preparation_wall_s'],
-        aggregation='worst link negative max_plane(min_original_samples signed plane distance); same all-link maximum and scale',
+        aggregation='fixed all-collision-link vector r_L=3000*d_L; scipy cost is 0.5*sum_L(r_L**2); scalar return is L2 norm; no count normalization',
         metric='directional whole-link exit proxy; original min_phi_m retained as a separate diagnostic',
         envelope_source=context['envelope_source'],
         coefficient_source='shared numerical metric weight reused from existing FCL refinement; not material calibration',
@@ -1430,13 +1425,15 @@ def body_penetration(context,poses,*,report=False,cull=True,chunk_size=2048):
 
 
 
-def surface_residual_decomposition(values,count,finger_count,coordinate_count,collision=False):
+def surface_residual_decomposition(values,count,finger_count,coordinate_count,collision=False,body_count=1):
     """Decompose actual returned residual/fit.fun, without new FK or FCL calls."""
     values=np.asarray(values,float)
+    if not isinstance(body_count,(int,np.integer)) or isinstance(body_count,(bool,np.bool_)) or body_count<1:
+        raise ValueError('Surface body residual count must be a positive integer')
     names=['position','normal','finite_support','full_clearance' if collision else 'table',
         'palm_rotation_prior','finger_prior','coordinate_prior','whole_hand_body_penetration']
-    clearance_count=len(values)-(7*count+3+finger_count+coordinate_count+1)
-    sizes=[3*count,3*count,count,clearance_count,3,finger_count,coordinate_count,1]
+    clearance_count=len(values)-(7*count+3+finger_count+coordinate_count+body_count)
+    sizes=[3*count,3*count,count,clearance_count,3,finger_count,coordinate_count,body_count]
     if clearance_count<1 or sum(sizes)!=len(values) or not np.isfinite(values).all():
         raise ValueError('Surface residual decomposition does not match actual residual layout')
     result={};start=0
@@ -1445,6 +1442,7 @@ def surface_residual_decomposition(values,count,finger_count,coordinate_count,co
     return dict(squared_residual_contributions=result,
         reconstructed_scipy_cost=.5*sum(result.values()),
         residual_length=len(values),clearance_residual_count=clearance_count,
+        body_residual_count=int(body_count),
         source='actual residual vector or scipy fit.fun; no extra kinematic/collision evaluation')
 
 
@@ -1814,6 +1812,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
     split=np.cumsum([0]+[len(v) for v in vertices]);dof=len(prior)
     engagement_samples=prepare_own_terminal_surfaces(robot)
     body_context=prepare_body_penetration(robot,robot.ik_checker)
+    body_count=len(body_context['samples'])
     original_local=robot.contact_points.copy()
     hand_domains=[planar_contact_cells(robot,patch) for patch in robot.selected_patches]
     qlo,qhi=robot.upright_bounds()
@@ -1882,7 +1881,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             rotation=Rotation.from_euler('ZYX',q[3:6]).as_matrix()@Rotation.from_euler('ZYX',seed[3:6]).as_matrix().T
             clearance=(robot.ik_checker.optimization_clearance(poses)*3000 if collision else
                 np.atleast_1d(min(float(verts[:,2].min()-robot.ik_checker.table_z-.001),0.)*5000))
-            absolute_body=body_penetration(body_context,poses)
+            absolute_body=body_penetration(body_context,poses,vector=True)
             return np.r_[(p-points(x)).ravel()*1500*np.sqrt(2/len(inward)),
                 (n-inward).ravel()*surface_normal_chord_weight*np.sqrt(2/len(inward)),
                 np.maximum(-actual_support_margins(p),0.)/np.maximum(supported_radii,1e-12)*normal_weight*np.sqrt(2/len(inward)),clearance,
@@ -1906,7 +1905,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             actual_support_margin_m=actual_support_margins(initial_p).tolist(),
             actual_scipy_cost=float(.5*np.sum(initial_residual**2)),
             residual_decomposition=surface_residual_decomposition(initial_residual,
-                len(inward),len(robot.all_finger_indices),total_weights),
+                len(inward),len(robot.all_finger_indices),total_weights,body_count=body_count),
             whole_hand_body_penetration=body_penetration(body_context,initial_poses,report=True),
             object_post_clip_encoding_displacement_m=[float(np.linalg.norm(actual-np.asarray(report['projected_point_m'])))
                 for actual,report in zip(initial_targets+inward*.0003,object_initializers)],
@@ -1920,14 +1919,16 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
         if hasattr(robot,'planning_note'):robot.planning_note('cross_ik_initial_geometry',dict(
             fingers=list(robot.finger_names),regions=list(robot.contact_region_indices),seed=number,
             initial_geometry=initial_encoding))
-        fit=least_squares(residual,x0,bounds=(lower,upper),x_scale=np.r_[[.01]*3,[.3]*(dof-3),np.ones(total_weights)],
+        # Retain SciPy's three-point derivative for the raw geometry fit and
+        # the existing starts, limits and CPU/evaluation caps.
+        fit=least_squares(residual,x0,jac='3-point',bounds=(lower,upper),x_scale=np.r_[[.01]*3,[.3]*(dof-3),np.ones(total_weights)],
             max_nfev=90,ftol=1e-7,xtol=1e-7,gtol=1e-7)
         q,p,n,poses=kinematics(fit.x);goals=points(fit.x)
         errors=np.linalg.norm(p-goals,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
         geometry_cost=float(fit.cost);geometry_nfev=int(fit.nfev);refined=False
         geometry_optimality=float(fit.optimality);geometry_status=int(fit.status)
         geometry_decomposition=surface_residual_decomposition(fit.fun,len(inward),
-            len(robot.all_finger_indices),total_weights)
+            len(robot.all_finger_indices),total_weights,body_count=body_count)
         geometry_body=body_penetration(body_context,poses,report=True)
         geometry_body.update(active_in_objective=True,q=q.tolist(),
             total_scipy_cost=float(fit.cost),residual_decomposition=geometry_decomposition)
@@ -1999,7 +2000,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
         # Scoped polish optimality is never substituted for a joint gradient.
         final_fun=residual(solution_x,refined);final_cost=float(.5*np.sum(final_fun**2))
         final_decomposition=surface_residual_decomposition(final_fun,len(inward),
-            len(robot.all_finger_indices),total_weights,collision=refined)
+            len(robot.all_finger_indices),total_weights,collision=refined,body_count=body_count)
         final_body.update(active_in_objective=True,q=q.tolist(),
             total_scipy_cost=final_cost,residual_decomposition=final_decomposition)
         engagement.update(active_in_objective=False,weight=0.,squared_residual=0.,
@@ -2042,7 +2043,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             geometry_optimality=geometry_optimality,geometry_status=geometry_status,
             table_objective=dict(aggregation='single worst full-mesh clearance; independent of vertex/link/finger count',margin_m=.001,residual_weight=5000),
             objective_phase='source_mesh_refinement' if refined else 'contact_geometry',source_clearance=clearance,
-            solver_prior=seed.tolist(),seed_source='measured articulation first; original131 plus at most one dependency-block composite; eligible original-bank source hint and composite compete by full static cost for slot1; loser joins original pool for slot2; actual selected provenance and hint index in seed_search',
+            solver_prior=seed.tolist(),seed_source='unchanged original131 plus at most one composite and eligible original-bank hint; unified full static cost selects three distinct full-q starts; actual selected provenance and hint index in seed_search',
             contact_parameterization='independent bounded nonnegative normalized coordinates on unchanged radius-inset public RGB facets and hand cells',
             surface_points_world_m=(goals+inward*.0003).tolist(),contact_facet_vertices_world_m=[v.tolist() for v in facets],
             contact_center_regions_world_m=[v.tolist() for v in vertices],contact_facet_inradius_m=inradii,
