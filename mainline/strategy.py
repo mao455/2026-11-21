@@ -1581,6 +1581,181 @@ def ranked_hand_cells(domain, original):
     return sorted(cells,key=rank)
 
 
+def polish_surface_coordinates(
+    endpoint_x,
+    original_x0,
+    *,
+    dof,
+    object_vertices,
+    hand_cells,
+    poses,
+    contact_links,
+    inward,
+    support_halfspaces,
+    supported_radii,
+    normal_weight=12.0,
+    coordinate_eps=1e-8,
+    max_nfev=20,
+):
+    """Minimize the exact coordinate-dependent original residual at fixed q.
+
+    Layout: q, all object convex-coordinate blocks, then nonsingleton hand-cell
+    coordinate blocks. Singleton hand cells consume no coordinates, just as in
+    solve_surface_ik. Object vertices are the unchanged finite support center
+    polygons, before the existing -inward*.0003 shift.
+
+    Residual blocks are position, finite support, and the original coordinate
+    prior. Normal, clearance/table, body, palm and finger priors are constant
+    at fixed q and are intentionally neither evaluated nor included here.
+    The full original squared cost therefore changes by exactly the change in
+    this variable block (up to floating-point arithmetic). No objective term,
+    support convention, cell, boundary, or original regularizer is changed.
+
+    A candidate is accepted only for a finite, strict decrease of this same
+    variable-block squared cost. Solver success/status is logged separately;
+    it is not a geometry, clearance, path, or physical-success gate.
+    """
+    started_cpu = time.process_time()
+    started_wall = time.perf_counter()
+    x = np.asarray(endpoint_x, dtype=float).copy()
+    x0 = np.asarray(original_x0, dtype=float).copy()
+    if x.ndim != 1 or x0.shape != x.shape or not np.isfinite(x).all() or not np.isfinite(x0).all():
+        raise ValueError('Finite same-layout endpoint and ORIGINAL x0 required')
+    if not isinstance(dof, int) or dof < 1 or dof >= len(x):
+        raise ValueError('A nonempty fixed joint block and coordinate block required')
+    if not isinstance(max_nfev, int) or not 1 <= max_nfev <= 45:
+        raise ValueError('Coordinate polish budget must be an integer from 1 to 45')
+    if not np.isfinite(coordinate_eps) or not 0 < coordinate_eps < 1:
+        raise ValueError('Finite coordinate lower bound in (0,1) required')
+    if not np.isfinite(normal_weight) or normal_weight < 0:
+        raise ValueError('Finite nonnegative unchanged support weight required')
+
+    faces = tuple(np.asarray(v, float).copy() for v in object_vertices)
+    cells = tuple(np.asarray(v, float).copy() for v in hand_cells)
+    count = len(faces)
+    if count < 1 or len(cells) != count or len(contact_links) != count or len(support_halfspaces) != count:
+        raise ValueError('Current cells, facets, links and support planes must match contacts')
+    for cell in faces + cells:
+        if cell.ndim != 2 or cell.shape[1] != 3 or not len(cell) or not np.isfinite(cell).all():
+            raise ValueError('Finite nonempty current convex domains required')
+    inward = np.asarray(inward, float).copy()
+    radii = np.asarray(supported_radii, float).copy()
+    if inward.shape != (count, 3) or radii.shape != (count,) or not np.isfinite(inward).all() or not np.isfinite(radii).all() or np.any(radii < 0):
+        raise ValueError('Finite current inward normals and supported radii required')
+    planes = tuple((np.asarray(n, float).copy(), np.asarray(b, float).copy())
+                   for n, b in support_halfspaces)
+    for normals, offsets in planes:
+        if normals.ndim != 2 or normals.shape[1] != 3 or offsets.shape != (len(normals),) or not len(normals) or not np.isfinite(normals).all() or not np.isfinite(offsets).all():
+            raise ValueError('Finite current support edge halfspaces required')
+
+    # Copy all fixed transforms once. Per-coordinate evaluation only decodes
+    # current polygons and applies these affine maps; it never calls robot FK.
+    transforms = []
+    for link in contact_links:
+        pose = np.asarray(poses[link], float)
+        if pose.shape != (4, 4) or not np.isfinite(pose).all():
+            raise ValueError('Finite current contact-link transform required: ' + str(link))
+        transforms.append((pose[:3, :3].copy(), pose[:3, 3].copy()))
+    object_split = np.cumsum([0] + [len(v) for v in faces])
+    hand_split = np.cumsum([0] + [0 if len(v) == 1 else len(v) for v in cells])
+    object_count = int(object_split[-1])
+    coordinate_count = object_count + int(hand_split[-1])
+    if len(x) != dof + coordinate_count:
+        raise ValueError('Endpoint coordinate layout differs from current domains')
+    start = x[dof:].copy()
+    center = x0[dof:].copy()  # Preserve the ORIGINAL prior, never recenter at endpoint.
+    if np.any(start < coordinate_eps) or np.any(start > 1.) or np.any(center < coordinate_eps) or np.any(center > 1.):
+        raise ValueError('Coordinate endpoint/original prior outside unchanged bounds')
+    contact_normalization = np.sqrt(2. / count)
+    radius_scale = np.maximum(radii, 1e-12)
+
+    def point(vertices, coordinates):
+        # Same centered normalized decoder as contact_regions.py, with bounds
+        # validated by least_squares and at the public function boundary.
+        middle = vertices.mean(axis=0)
+        return middle + (coordinates / coordinates.sum()) @ (vertices - middle)
+
+    def geometry(coordinates):
+        goals = np.asarray([
+            point(face, coordinates[object_split[i]:object_split[i + 1]]) - inward[i] * .0003
+            for i, face in enumerate(faces)])
+        local = []
+        for i, cell in enumerate(cells):
+            if len(cell) == 1:
+                local.append(cell[0])
+            else:
+                block = coordinates[object_count + hand_split[i]:object_count + hand_split[i + 1]]
+                local.append(point(cell, block))
+        local = np.asarray(local)
+        # Match original rotation@local+translation operation order.
+        actual = np.asarray([rotation @ site + translation
+                             for site, (rotation, translation) in zip(local, transforms)])
+        margins = np.asarray([-np.max(normals @ site + offsets)
+                              for site, (normals, offsets) in zip(actual, planes)])
+        return local, actual, goals, margins
+
+    residual_calls = [0]
+
+    def variable_residual(coordinates):
+        residual_calls[0] += 1
+        _, actual, goals, margins = geometry(coordinates)
+        return np.r_[
+            (actual - goals).ravel() * 1500 * contact_normalization,
+            np.maximum(-margins, 0.) / radius_scale * normal_weight * contact_normalization,
+            (coordinates - center) * .0001,
+        ]
+
+    before = variable_residual(start)
+    before_sq = float(before @ before)
+    # Intentionally omit diff_step: SciPy's default 2-point absolute step is
+    # retained, rather than the relative 1e-4 used by the old joint refinement.
+    fit = least_squares(variable_residual, start, bounds=(
+        np.full(coordinate_count, coordinate_eps), np.ones(coordinate_count)),
+        x_scale=np.ones(coordinate_count), max_nfev=max_nfev,
+        ftol=1e-7, xtol=1e-7, gtol=1e-7)
+    candidate_residual = variable_residual(fit.x)
+    after_sq = float(candidate_residual @ candidate_residual)
+    accepted = bool(np.isfinite(after_sq) and np.isfinite(fit.x).all()
+                    and after_sq < before_sq)
+    output = x.copy()
+    if accepted:
+        output[dof:] = fit.x
+    # Explicitly preserve source q even if an integration later passes views.
+    assert np.array_equal(output[:dof], x[:dof])
+    _, p_before, targets_before, margins_before = geometry(start)
+    local_after, p_after, targets_after, margins_after = geometry(output[dof:])
+    floor = lambda y: int(np.count_nonzero(y <= coordinate_eps * 1.01))
+    report = dict(
+        accepted=accepted,
+        reason='strict_original_variable_block_squared_cost_reduction' if accepted else 'no_strict_reduction',
+        variable_squared_cost_before=before_sq,
+        variable_squared_cost_proposed=after_sq,
+        variable_squared_cost_after=after_sq if accepted else before_sq,
+        original_full_cost_delta=.5 * (after_sq - before_sq) if accepted else 0.,
+        original_full_cost_delta_scope='fixed-q arithmetic; no full objective/FCL reevaluation in helper',
+        per_finger_error_before_m=np.linalg.norm(p_before - targets_before, axis=1).tolist(),
+        per_finger_error_after_m=np.linalg.norm(p_after - targets_after, axis=1).tolist(),
+        support_margin_before_m=margins_before.tolist(),
+        support_margin_after_m=margins_after.tolist(),
+        solver_status=int(fit.status), solver_success=bool(fit.success),
+        solver_message=str(fit.message), solver_optimality=float(fit.optimality),
+        solver_cost=float(fit.cost), solver_nfev=int(fit.nfev),
+        solver_njev=None if fit.njev is None else int(fit.njev),
+        residual_calls_including_fd_and_acceptance=int(residual_calls[0]),
+        maximum_nfev=max_nfev,
+        coordinate_floor_count_before=floor(start),
+        coordinate_floor_count_after=floor(output[dof:]),
+        coordinate_bounds=[float(coordinate_eps), 1.],
+        solver_scope='coordinate block only; not full joint/collision optimality',
+        q_unchanged=True, current_cells_unchanged=True, current_facets_unchanged=True,
+        original_coordinate_prior_unchanged=True,
+        cpu_s=time.process_time() - started_cpu, wall_s=time.perf_counter() - started_wall,
+    )
+    return dict(x=output, fit=fit, telemetry=report,
+                hand_contact_points_local_m=local_after,
+                actual_hand_points_world_m=p_after, targets_world_m=targets_after)
+
+
 def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
     """Joint/contact optimization on finite RGB facets, including independent heights.
 
@@ -1743,23 +1918,66 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             total_scipy_cost=float(fit.cost),residual_decomposition=geometry_decomposition,
             whole_hand_body_penetration=geometry_body)
         if hasattr(robot,'planning_note'):robot.planning_note('cross_ik_geometry',geometry_record)
+        # Contact coordinates form a cheap independent block at fixed hand FK.
+        # Preserve the actual joint fit above; polish never changes its result
+        # object or claims a full joint/collision first-order optimum.
+        coordinate_polish_reports=[];joint_refinement_nfev=0
+        solution_x=fit.x.copy()
+        final_joint_fit=fit
+        final_solver_scope='joint_configuration_and_coordinates'
+        final_solver_status=int(fit.status);final_solver_optimality=float(fit.optimality)
+        final_solver_success=bool(fit.success)
+        def coordinate_polish(endpoint,poses,phase):
+            result=polish_surface_coordinates(endpoint,x0,dof=dof,
+                object_vertices=vertices,hand_cells=hand_cells,poses=poses,
+                contact_links=robot.contact_links,inward=inward,
+                support_halfspaces=support_halfspaces,supported_radii=supported_radii,
+                normal_weight=normal_weight,coordinate_eps=CONVEX_COORDINATE_EPS,max_nfev=20)
+            result['telemetry']['phase']=phase
+            coordinate_polish_reports.append(result['telemetry'])
+            if hasattr(robot,'planning_note'):robot.planning_note('cross_coordinate_polish',dict(
+                fingers=list(robot.finger_names),regions=list(robot.contact_region_indices),seed=number,
+                report=result['telemetry']))
+            return result
+        polished=coordinate_polish(solution_x,poses,'after_raw')
+        if polished['telemetry']['accepted']:
+            solution_x=polished['x']
+            final_solver_scope='fixed_q_contact_coordinates'
+            final_solver_status=int(polished['fit'].status);final_solver_optimality=float(polished['fit'].optimality)
+            final_solver_success=bool(polished['fit'].success)
+            q,p,n,poses=kinematics(solution_x);goals=points(solution_x)
+            errors=np.linalg.norm(p-goals,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
         clearance=robot.ik_checker.check(q)
         if errors.max()<.002 and angles.max()<.7 and not clearance['passed']:
-            fit=least_squares(lambda x:residual(x,True),fit.x,bounds=(lower,upper),
+            fit=least_squares(lambda x:residual(x,True),solution_x,bounds=(lower,upper),
                 x_scale=np.r_[[.01]*3,[.3]*(dof-3),np.ones(total_weights)],diff_step=1e-4,max_nfev=45,
                 ftol=1e-7,xtol=1e-7,gtol=1e-7)
-            q,p,n,poses=kinematics(fit.x);goals=points(fit.x)
+            joint_refinement_nfev=int(fit.nfev);final_joint_fit=fit;solution_x=fit.x.copy()
+            final_solver_scope='joint_configuration_and_coordinates'
+            final_solver_status=int(fit.status);final_solver_optimality=float(fit.optimality);final_solver_success=bool(fit.success)
+            q,p,n,poses=kinematics(solution_x);goals=points(solution_x)
             errors=np.linalg.norm(p-goals,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1));refined=True
+            polished=coordinate_polish(solution_x,poses,'after_refinement')
+            if polished['telemetry']['accepted']:
+                solution_x=polished['x']
+                final_solver_scope='fixed_q_contact_coordinates'
+                final_solver_status=int(polished['fit'].status);final_solver_optimality=float(polished['fit'].optimality)
+                final_solver_success=bool(polished['fit'].success)
+                q,p,n,poses=kinematics(solution_x);goals=points(solution_x)
+                errors=np.linalg.norm(p-goals,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
             clearance=robot.ik_checker.check(q)
         table=float(robot.vertices(poses)[:,2].min()-robot.ik_checker.table_z)
         contact=bool(errors.max()<.0008 and angles.max()<.5 and table>=.00065)
         feasible=bool(contact and clearance['passed'] and robot.grasp_posture(q,poses)['passed'] and np.all(q>=robot.lo) and np.all(q<=robot.hi))
-        engagement=engagement_at(fit.x,poses)
-        final_body=(body_penetration(body_context,poses,report=True) if refined else geometry_body)
-        final_decomposition=surface_residual_decomposition(fit.fun,len(inward),
+        engagement=engagement_at(solution_x,poses)
+        final_body=(body_penetration(body_context,poses,report=True) if refined else copy.deepcopy(geometry_body))
+        # Evaluate the actual original objective at the accepted endpoint once.
+        # Scoped polish optimality is never substituted for a joint gradient.
+        final_fun=residual(solution_x,refined);final_cost=float(.5*np.sum(final_fun**2))
+        final_decomposition=surface_residual_decomposition(final_fun,len(inward),
             len(robot.all_finger_indices),total_weights,collision=refined)
         final_body.update(active_in_objective=True,q=q.tolist(),
-            total_scipy_cost=float(fit.cost),residual_decomposition=final_decomposition)
+            total_scipy_cost=final_cost,residual_decomposition=final_decomposition)
         engagement.update(active_in_objective=False,weight=0.,squared_residual=0.,
             would_be_squared_residual=float((normal_weight*engagement['worst_normalized_lead'])**2),
             counterfactual_legacy_weight=normal_weight,
@@ -1767,7 +1985,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             body_sampling='seven barycentric source-triangle sites, original representatives of 1mm local voxels',
             normalization='one worst normalized lead across selected contacts; no sum over fingers or mesh points',
             scope='diagnostic only; selected terminal and fixed descendants; old relative lead is not in current scipy residual, not physical contact or gate')
-        meta=dict(hand_contact_points_local_m=hand_points(fit.x).tolist(),
+        meta=dict(hand_contact_points_local_m=hand_points(solution_x).tolist(),
             hand_contact_regions=list(robot.contact_region_indices),
             hand_contact_cells_local_m=[cell.tolist() for cell in hand_cells],
             hand_contact_domain_status=[domain['status'] for domain in hand_domains],
@@ -1775,7 +1993,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             hand_contact_radius_m=[patch['support_radius_m'] for patch in robot.selected_patches],
             hand_contact_source_links=[patch['surface_link'] for patch in robot.selected_patches],
             hand_contact_cell_choice=[next((i for i,cell in enumerate(domain['cells_local_m']) if np.array_equal(cell,chosen)),None) for domain,chosen in zip(hand_domains,hand_cells)],
-            hand_contact_center_shift_m=np.linalg.norm(hand_points(fit.x)-original_local,axis=1).tolist(),
+            hand_contact_center_shift_m=np.linalg.norm(hand_points(solution_x)-original_local,axis=1).tolist(),
             hand_contact_domain_source='original static source triangles, declared radius unchanged, conservative inset cells; no object truth/native contacts',
             initial_contact_geometry=initial_encoding,minimum_coordinate_normalization_sum=minimum_coordinate_sum[0],
             whole_hand_penetration_objective=final_body,
@@ -1783,8 +2001,13 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             geometry_residual_decomposition=geometry_decomposition,
             geometry_whole_hand_penetration=geometry_body,
             final_residual_decomposition=final_decomposition,
-            pad_engagement_objective=engagement,seed=number,seed_provenance=seed_search['selected'][number],seed_search=seed_search,normal_weight=normal_weight,cost=float(fit.cost),nfev=geometry_nfev+(int(fit.nfev) if refined else 0),
-            solver_success=bool(fit.success),final_solver_status=int(fit.status),final_solver_optimality=float(fit.optimality),
+            pad_engagement_objective=engagement,seed=number,seed_provenance=seed_search['selected'][number],seed_search=seed_search,normal_weight=normal_weight,cost=final_cost,
+            nfev=geometry_nfev+joint_refinement_nfev+sum(r['solver_nfev'] for r in coordinate_polish_reports),
+            joint_solver_nfev=geometry_nfev+joint_refinement_nfev,coordinate_polish_reports=coordinate_polish_reports,
+            solver_success=final_solver_success,final_solver_status=final_solver_status,final_solver_optimality=final_solver_optimality,
+            final_solver_scope=final_solver_scope,
+            last_joint_solver_before_coordinate_polish=dict(status=int(final_joint_fit.status),optimality=float(final_joint_fit.optimality),
+                nfev=int(final_joint_fit.nfev),cost=float(final_joint_fit.cost),scope='actual joint solver at its own endpoint before subsequent fixed-q polish'),
             surface_normal_objective=dict(chord_weight=float(surface_normal_chord_weight),
                 position_weight_per_m=1500.,position_tolerance_m=.0008,normal_tolerance_rad=.5,
                 scale_source='equal chord and position squared costs at unchanged task endpoint tolerances; finite support and seed ranking unchanged'),
@@ -1809,7 +2032,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
                 s16_decomposition='s16_numerics.reconstructed_scipy_cost excludes this support term; its per-finger squared residual is reported separately in actual_fk_support_squared_residual'),
             finger_regularizer_normalization=float(np.sqrt(6/len(robot.all_finger_indices))))
         attempts.append(dict(seed=number,feasible=feasible,contact_feasible=contact,error_m=meta['error_m'],normal_error_rad=angles.tolist(),source_clearance=clearance))
-        score=(not feasible,not contact,errors.max()*1500+angles.max(),float(fit.cost))
+        score=(not feasible,not contact,errors.max()*1500+angles.max(),final_cost)
         if best is None or score<best[0]:best=(score,q.copy(),copy.deepcopy(meta))
         if feasible:solutions.append(dict(q=q.tolist(),meta=copy.deepcopy(meta)))
         # Keep distinct endpoint solutions for full-path refusal. The common
