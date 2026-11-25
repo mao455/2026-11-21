@@ -474,6 +474,97 @@ def audit_cameras(env,cfg,step,out):
             raise RuntimeError('Renderer optics disagree with projection metadata: '+repr(failures))
 
 
+def planar_mesh_patch_regions(mesh, existing, blockers, radius, surface_link):
+    """Add exposed planar source faces missed by the axis-ray proposal grid.
+
+    Keep the original radius and connected source-plane containment proof.
+    A planar solid-body face is a geometric candidate, not a material or force
+    calibration. Existing regions and their defaults remain first and intact.
+    """
+    from contact_regions import plane_component, contact_center_domain
+    from shapely.geometry import Point
+
+    triangles = np.asarray(mesh.triangles)
+    areas = np.asarray(mesh.area_faces)
+    normals = np.asarray(mesh.face_normals)
+    groups = [np.asarray(group, dtype=int) for group in mesh.facets]
+    grouped = np.zeros(len(triangles), dtype=bool)
+    for group in groups:
+        grouped[group] = True
+    # trimesh.facets omits isolated triangles, which can also support a disc.
+    groups.extend(np.array([index]) for index in np.flatnonzero(
+        (~grouped) & (areas >= np.pi * radius**2)))
+    result = []
+    for group in groups:
+        if float(areas[group].sum()) < np.pi * radius**2:
+            continue
+        index = int(group[np.argmax(areas[group])])
+        point = triangles[index].mean(axis=0)
+        normal = normals[index]
+        # facets already supplies a connected source subset. Proving support
+        # inside that subset is conservative and avoids a full-STL scan per
+        # face. Later IK still uses the complete original source-plane domain.
+        component, basis = plane_component(triangles[group], point, normal)
+        if component is None:
+            continue
+        # The surface solver already slides over an entire connected plane.
+        # Another static center on that same component adds no contact family.
+        represented = False
+        for old in list(existing) + result:
+            old_point = np.asarray(old['point'])
+            if (np.dot(old['normal'], normal) > .99999 and
+                    abs((old_point-point) @ normal) <= 5e-6 and
+                    component.distance(Point((old_point-point) @ basis.T)) <= 1e-10):
+                represented = True
+                break
+        if represented:
+            continue
+        domain = contact_center_domain(component, point, basis, radius)
+        if not domain['cells']:
+            continue
+        cell = max(domain['cells'], key=lambda row: row['area_m2'])
+        center = point + np.asarray(cell['vertices_uv_m']).mean(axis=0) @ basis
+        angles = np.arange(12) * np.pi / 6
+        disc = np.vstack([center, center + radius * (
+            np.cos(angles)[:, None]*basis[0] + np.sin(angles)[:, None]*basis[1])])
+        # An inner wall or a plane behind another terminal component cannot
+        # become a candidate merely because its local polygon is large enough.
+        reach = float(np.max(np.abs((np.asarray(mesh.vertices)-center) @ normal))) + 2*radius
+        origins = disc + normal*reach
+        positions, rays, _ = mesh.ray.intersects_location(
+            origins, np.tile(-normal, (13, 1)), multiple_hits=True)
+        hits = []
+        for ray in range(13):
+            ids = np.flatnonzero(rays == ray)
+            if not len(ids):
+                break
+            hit = positions[ids[np.argmin(np.linalg.norm(positions[ids]-origins[ray], axis=1))]]
+            hits.append(hit)
+        # Same 5um static coplanarity convention as plane_component; this is
+        # source-face identity, not an execution/contact/success tolerance.
+        if len(hits) != 13 or np.max(np.linalg.norm(np.asarray(hits)-disc, axis=1)) > 5e-6:
+            continue
+        blocked = False
+        for blocker in blockers:
+            starts = np.asarray(hits) + normal*.00005
+            positions, ray_ids, _ = blocker.ray.intersects_location(
+                starts, np.tile(normal, (13, 1)), multiple_hits=True)
+            if len(positions) and np.any(np.linalg.norm(positions-starts[ray_ids], axis=1) < .01):
+                blocked = True
+                break
+        if blocked:
+            continue
+        result.append(dict(point=center.tolist(), normal=normal.tolist(), radius_m=radius,
+            surface_link=surface_link, geometry_class='terminal_body_mesh_patch',
+            source='connected original terminal planar face; unchanged-radius conservative inset; 13 first-source rays; not a measured soft pad',
+            source_component_area_m2=float(component.area),
+            center_domain_area_m2=float(domain['inset_area_m2']),
+            minimum_source_boundary_clearance_m=float(cell['minimum_source_boundary_clearance_m']),
+            camera_clearance_check='13 outward rays: no camera mesh within 10 mm',
+            terminal_exposure_check='13 nearest inward ray hits match source disc within existing 5um static-plane tolerance'))
+    return result
+
+
 def pad_catalog(hand, chains, source_digest):
     """Load static contact data by asset hash, or propose mesh-supported patches.
 
@@ -494,6 +585,7 @@ def pad_catalog(hand, chains, source_digest):
         for region in row.get('regions', []):
             region.setdefault('source', row.get('source', 'static calibration'))
     calibrated={row['finger'] for row in rows}
+    original_region_counts={}
     zero_poses=hand.fk(np.clip(np.zeros(len(hand.joint_names)),hand.lower,hand.upper))
     for chain in chains:
         # Never replace an established calibration with a mesh proposal.
@@ -559,6 +651,13 @@ def pad_catalog(hand, chains, source_digest):
                     normal_variation_rad=variation, surface_link=link,
                     geometry_class='terminal_body_mesh_patch', camera_clearance_check='13 outward rays: no camera mesh within 10 mm',
                     source='13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad'))
+        original_region_counts[chain['finger']]=len(regions)
+        established=[]
+        if chain['finger'] in calibrated:
+            row=next(row for row in rows if row['finger']==chain['finger'])
+            established=[region for region in row.get('regions',[])
+                if region.get('surface_link',row.get('surface_link',link))==link]
+        regions.extend(planar_mesh_patch_regions(mesh, regions+established, blockers, radius, link))
         if not regions:continue
         if chain['finger'] in calibrated:
             row=next(row for row in rows if row['finger']==chain['finger'])
@@ -597,7 +696,8 @@ def pad_catalog(hand, chains, source_digest):
                 distal=pose[:3,:3]@row['distal_direction']
                 toward-=distal*(toward@distal)
                 return float((pose[:3,:3]@region['normal'])@toward/max(np.linalg.norm(toward),1e-9))
-            best=max(row['regions'],key=inward_score)
+            defaults=row['regions'][:original_region_counts.get(row['finger'],0)] or row['regions']
+            best=max(defaults,key=inward_score)
             row['point_m']=best['point'];row['outward_normal']=best['normal']
             row['selection_source']='static FK: mesh-supported patch facing the other finger chains'
     return rows
