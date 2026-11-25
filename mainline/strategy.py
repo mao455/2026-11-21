@@ -1618,6 +1618,10 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
     original_local=robot.contact_points.copy()
     hand_domains=[planar_contact_cells(robot,patch) for patch in robot.selected_patches]
     qlo,qhi=robot.upright_bounds()
+    # Match the normal chord and position costs at the unchanged endpoint
+    # tolerances. Keep normal_weight for seed ranking and finite support.
+    # This is a shared task metric, not a hand/material calibration.
+    surface_normal_chord_weight=1500*.0008/(2*np.sin(.5/2))
     def points(x):
         output=[]
         for i,face in enumerate(vertices):
@@ -1681,7 +1685,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
                 np.atleast_1d(min(float(verts[:,2].min()-robot.ik_checker.table_z-.001),0.)*5000))
             absolute_body=body_penetration(body_context,poses)
             return np.r_[(p-points(x)).ravel()*1500*np.sqrt(2/len(inward)),
-                (n-inward).ravel()*normal_weight*np.sqrt(2/len(inward)),
+                (n-inward).ravel()*surface_normal_chord_weight*np.sqrt(2/len(inward)),
                 np.maximum(-actual_support_margins(p),0.)/np.maximum(supported_radii,1e-12)*normal_weight*np.sqrt(2/len(inward)),clearance,
                 Rotation.from_matrix(rotation).as_rotvec()*.25,
                 (q[robot.all_finger_indices]-seed[robot.all_finger_indices])*.08*np.sqrt(6/len(robot.all_finger_indices)),
@@ -1780,7 +1784,11 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             geometry_whole_hand_penetration=geometry_body,
             final_residual_decomposition=final_decomposition,
             pad_engagement_objective=engagement,seed=number,seed_provenance=seed_search['selected'][number],seed_search=seed_search,normal_weight=normal_weight,cost=float(fit.cost),nfev=geometry_nfev+(int(fit.nfev) if refined else 0),
-            solver_success=bool(fit.success),error_m=float(errors.max()),per_finger_error_m=errors.tolist(),
+            solver_success=bool(fit.success),final_solver_status=int(fit.status),final_solver_optimality=float(fit.optimality),
+            surface_normal_objective=dict(chord_weight=float(surface_normal_chord_weight),
+                position_weight_per_m=1500.,position_tolerance_m=.0008,normal_tolerance_rad=.5,
+                scale_source='equal chord and position squared costs at unchanged task endpoint tolerances; finite support and seed ranking unchanged'),
+            error_m=float(errors.max()),per_finger_error_m=errors.tolist(),
             fingers=list(robot.finger_names),normal_error_rad=angles.tolist(),table_clearance_m=table,
             q=q.tolist(),targets=goals.tolist(),inward=inward.tolist(),joint_count=dof,wall_s=time.perf_counter()-started,
             task_posture=robot.grasp_posture(q,poses),geometry_cost=geometry_cost,geometry_nfev=geometry_nfev,collision_refined=refined,
