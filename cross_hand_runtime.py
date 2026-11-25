@@ -59,23 +59,8 @@ def selected():
 
 
 def discover_chains(hand):
-    """Group active descendants by the first non-palm active ancestor."""
-    paths = {hand.root: ()}
-    chains = {}
-    base = set(hand.base_joint_names)
-    for parent, child, _, _, _, index in hand.joints:
-        previous = paths[parent]
-        name = hand.joint_names[index] if index is not None else None
-        path = previous + ((name,) if name is not None and name not in base else ())
-        paths[child] = path
-        if path:
-            chains.setdefault(path[0], {})[child] = path
-    rows = []
-    for first, descendants in chains.items():
-        terminal, joints = max(descendants.items(), key=lambda item: len(item[1]))
-        rows.append(dict(finger=first, joint_names=list(joints), terminal_link=terminal,
-                         links=list(descendants)))
-    return rows, paths
+    """Use the same topology implementation as policy FK and limits."""
+    return hand.discover_finger_chains()
 
 
 def prepare(source, destination):
@@ -154,7 +139,7 @@ def prepare(source, destination):
         origin = joint.find('origin')
         mounts.append(dict(name=joint.get('name'), camera_link=child,
                            parent_link=joint.find('parent').get('link'),
-                           finger=chain[0] if chain else 'palm', joint_name=joint.get('name'),
+                           finger=next((row['finger'] for row in chains if child in row['links']), 'palm'), joint_name=joint.get('name'),
                            translation=np.fromstring(origin.get('xyz', '0 0 0'), sep=' ').tolist(),
                            rpy=np.fromstring(origin.get('rpy', '0 0 0'), sep=' ').tolist()))
     calibration_path=HERE/'hand_calibrations'/(source_hashes[str(source)]+'.json')
@@ -498,14 +483,21 @@ def pad_catalog(hand, chains, source_digest):
     import trimesh
     path=HERE/'hand_calibrations'/(source_digest+'.json')
     static=json.loads(path.read_text()) if path.is_file() else {}
-    if static.get('pads'):
-        rows=static['pads']
-        groups={c['finger']:c for c in chains}
-        for row in rows:
-            row['joint_names']=groups[row['finger']]['joint_names']
-        return rows
-    rows=[]
+    rows=copy.deepcopy(static.get('pads', []))
+    groups={c['finger']:c for c in chains}
+    for row in rows:
+        if row['finger'] not in groups:
+            raise ValueError('Static contact calibration names an unavailable finger: '+row['finger'])
+        row['joint_names']=groups[row['finger']]['joint_names']
+        row['geometry_class']='legacy_static_contact_surface'
+        row['physical_pad_validation']='legacy contact location retained; surface identity and load require offline contact-point verification'
+        for region in row.get('regions', []):
+            region.setdefault('source', row.get('source', 'static calibration'))
+    calibrated={row['finger'] for row in rows}
+    zero_poses=hand.fk(np.clip(np.zeros(len(hand.joint_names)),hand.lower,hand.upper))
     for chain in chains:
+        # Never replace an established calibration with a mesh proposal.
+        # Other digits remain available even when a partial sidecar exists.
         link=chain['terminal_link']
         pieces=[]
         for entry in hand.collision_meshes:
@@ -514,18 +506,31 @@ def pad_catalog(hand, chains, source_digest):
             mesh.apply_scale(entry['scale']);mesh.apply_transform(entry['origin']);pieces.append(mesh)
         if not pieces:continue
         mesh=trimesh.util.concatenate(pieces)
+        blockers=[]
+        for entry in hand.collision_meshes:
+            if entry['link'] not in chain['links'] or 'cam' not in entry['link'].lower():continue
+            body=trimesh.load(entry['path'],force='mesh',process=True)
+            body.apply_scale(entry['scale']);body.apply_transform(entry['origin'])
+            body.apply_transform(np.linalg.inv(zero_poses[link])@zero_poses[entry['link']])
+            blockers.append(body)
         order=np.argsort(mesh.extents)[::-1];longitudinal,lateral,across=order
         regions=[];radius=.0012
-        for sign in (-1.,1.):
-            for fraction in (.95,.8,.9,.65):
+        # Search broad sides and distal end faces. A single lateral axis can
+        # miss a usable contact face when the mesh frame is permuted.
+        for normal_axis in (int(lateral), int(across), int(longitudinal)):
+          tangents=[axis for axis in range(3) if axis != normal_axis]
+          for sign in (-1.,1.):
+            fractions=(.95,.8,.9,.65) if normal_axis != longitudinal else (.5,)
+            for fraction in fractions:
                 center=mesh.bounds.mean(0)
-                center[longitudinal]=mesh.bounds[0,longitudinal]+fraction*mesh.extents[longitudinal]
-                center[lateral]=mesh.bounds[0,lateral]-.02 if sign<0 else mesh.bounds[1,lateral]+.02
-                direction=np.eye(3)[lateral]*-sign
+                if normal_axis != longitudinal:
+                    center[longitudinal]=mesh.bounds[0,longitudinal]+fraction*mesh.extents[longitudinal]
+                center[normal_axis]=mesh.bounds[0,normal_axis]-.02 if sign<0 else mesh.bounds[1,normal_axis]+.02
+                direction=np.eye(3)[normal_axis]*-sign
                 offsets=np.zeros((13,3))
                 angles=np.arange(12)*np.pi/6
-                offsets[1:,longitudinal]=radius*np.cos(angles)
-                offsets[1:,across]=radius*np.sin(angles)
+                offsets[1:,tangents[0]]=radius*np.cos(angles)
+                offsets[1:,tangents[1]]=radius*np.sin(angles)
                 origins=center+offsets
                 positions,rays,faces=mesh.ray.intersects_location(origins,np.tile(direction,(13,1)),multiple_hits=True)
                 points=[];normals=[]
@@ -537,23 +542,54 @@ def pad_catalog(hand, chains, source_digest):
                 if len(points)!=13:continue
                 normal=np.mean(normals,axis=0);normal/=np.linalg.norm(normal)
                 variation=float(np.max(np.arccos(np.clip(np.asarray(normals)@normal,-1,1))))
-                # A ray may meet an inclined but locally planar fingertip.
-                # Requiring alignment with the ray discarded the inward face
-                # of the supplied hand and retained its outward back surface.
                 if variation>.2 or normal@(-direction)<.5:continue
+                # A body face hidden behind a fixed camera module cannot be
+                # the first load-bearing surface. Camera meshes are blockers,
+                # never automatically labelled as silicone pads.
+                blocked=False
+                for blocker in blockers:
+                    starts=np.asarray(points)+normal*.00005
+                    hits,ray_ids,_=blocker.ray.intersects_location(starts,np.tile(normal,(13,1)),multiple_hits=True)
+                    if len(hits) and np.any(np.linalg.norm(hits-starts[ray_ids],axis=1)<.01):
+                        blocked=True;break
+                if blocked:continue
+                if any(np.linalg.norm(np.asarray(old['point'])-points[0])<.0002 and
+                       np.dot(old['normal'],normal)>.99 for old in regions):continue
                 regions.append(dict(point=np.asarray(points[0]).tolist(),normal=normal.tolist(),radius_m=radius,
-                    normal_variation_rad=variation,source='13 static collision-mesh rays over a 1.2 mm disc'))
+                    normal_variation_rad=variation, surface_link=link,
+                    geometry_class='terminal_body_mesh_patch', camera_clearance_check='13 outward rays: no camera mesh within 10 mm',
+                    source='13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad'))
         if not regions:continue
-        best=regions[0]
-        distal=np.eye(3)[longitudinal]
-        rows.append(dict(finger=chain['finger'],link=link,surface_link=link,point_m=best['point'],
-            outward_normal=best['normal'],joint_names=chain['joint_names'],support_radius_m=radius,
-            distal_direction=distal.tolist(),regions=regions,
-            source='source URDF collision mesh, static external patch proposal; physical contact validation pending'))
+        if chain['finger'] in calibrated:
+            row=next(row for row in rows if row['finger']==chain['finger'])
+            # Each point is expressed in the same terminal link frame. Keep
+            # calibrated locations first and preserve their selected defaults.
+            row.setdefault('regions',[]).extend(regions)
+            row['additional_region_source']='terminal body mesh; camera component meshes excluded from proposals'
+        else:
+            best=regions[0]
+            distal=np.eye(3)[longitudinal]
+            rows.append(dict(finger=chain['finger'],link=link,surface_link=link,point_m=best['point'],
+                outward_normal=best['normal'],joint_names=chain['joint_names'],support_radius_m=radius,
+                distal_direction=distal.tolist(),regions=regions,
+                source='source URDF terminal collision mesh; no camera housing meshes sampled; physical contact validation pending'))
+    for row in rows:
+        radius=float(row.get('support_radius_m', .0012))
+        row['contact_model']=dict(
+            friction_coefficient=.3, normal_force_limit_n=1., support_radius_m=radius,
+            compliance_m_per_n=None,
+            source='explicit conservative simulation assumptions, not hardware measurements',
+            force_limit_source='shared task-model cap; URDF effort and Jacobian additionally bound force',
+            friction_source='shared planning assumption; environment material is separately configured',
+            support_radius_source='static calibration' if row['finger'] in calibrated else '13-ray collision-mesh patch disc',
+            compliance_source='unknown; online motor tracking is only a contact proxy')
+        row.setdefault('geometry_class','terminal_body_mesh_patch')
+        row.setdefault('physical_pad_validation','geometric solid-body support only; material/pad and sustained load unmeasured')
     if rows:
         poses=hand.fk(np.clip(np.zeros(len(hand.joint_names)),hand.lower,hand.upper))
         center=np.mean([poses[r['link']][:3,3] for r in rows],axis=0)
         for row in rows:
+            if row['finger'] in calibrated:continue
             pose=poses[row['link']]
             def inward_score(region):
                 point=pose[:3,:3]@region['point']+pose[:3,3]

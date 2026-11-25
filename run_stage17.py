@@ -33,7 +33,7 @@ def main():
     p.add_argument('--registry-manifest', type=Path)
     p.add_argument('--controller', type=Path)
     p.add_argument('--profile', choices=('fast',), default='fast')
-    p.add_argument('--fingers', choices=('two',), default='two')
+    p.add_argument('--fingers', choices=('auto','two','three'), default='auto')
     p.add_argument('--max-attempts', type=int, choices=(3,), default=3)
     p.add_argument('--preload', action=argparse.BooleanOptionalAction, default=False)
     p.add_argument('--mode', choices=('minimal','full'), default='minimal')
@@ -56,6 +56,8 @@ def main():
     hand = None
     from cross_hand_runtime import prepare
     hand = prepare(a.robot_urdf or selected_root/'assets/xhand3camFE_left/planning/xhand3camFE_left_floating.urdf', a.session/'hand_model')
+    hand['contact_mode']=a.fingers
+    (a.session/'hand_model/description.json').write_text(json.dumps(hand,indent=2)+'\n')
     controller=a.controller.resolve() if a.controller else HERE/'mainline/strategy.py'
     sha=hashlib.sha256(controller.read_bytes()).hexdigest()
     case=json.loads(a.case_file.read_text());case.pop('name',None)
@@ -65,6 +67,9 @@ def main():
         for key in ('rgb_path','metadata_path'):
             if not Path(reference[key]).is_absolute():
                 reference[key]=str((a.case_file.parent/reference[key]).resolve())
+    geometry_reference=case.get('initial_rgb_geometry_reference')
+    if geometry_reference and not Path(geometry_reference['path']).is_absolute():
+        geometry_reference['path']=str((a.case_file.parent/geometry_reference['path']).resolve())
     freeze=controller.parent/'freeze.json'
     if freeze.exists():
         manifest=json.loads(freeze.read_text())
@@ -84,7 +89,7 @@ def main():
     settings=controller_settings(controller)
     if (settings.get('S17_COLOR_MODE') != 'hs' or settings.get('S5_ATTEMPTS') != 3
             or settings.get('S15_PRELOAD') is not False
-            or settings.get('S11_CONFIG', {}).get('fingers') != 'two'):
+            or settings.get('S11_CONFIG', {}).get('fingers') != 'auto'):
         raise RuntimeError('submitted controller differs from formal H/S v2 configuration')
     effective={}
     for node in ast.parse(controller.read_text()).body:
@@ -94,7 +99,7 @@ def main():
                     effective[target.id]=ast.literal_eval(node.value)
     cfg=json.loads((HERE/'stage9_config.json').read_text())
     assert (cfg['physics_hz'],cfg['control_hz'],cfg['camera_fps'])==(120,20,30)
-    cfg.update(case=case,controller_sha256=sha,selected_control_settings=settings.get('S11_CONFIG'),
+    cfg.update(case=case,controller_sha256=sha,selected_control_settings=dict(settings.get('S11_CONFIG',{}),fingers=a.fingers),
         max_attempts=settings.get('S5_ATTEMPTS'),recording_mode=a.mode,
         asset_root=str(selected_root),protocol='lift30_no_drop_v1',
         hand_description=hand,entry='run_stage17.py',controller_source=str(controller),light_multiplier=a.light_multiplier,color_mode_requested=a.color_mode,evaluation_mode=a.evaluation_mode,preload_requested=a.preload,effective_stage15_settings=effective,phase=a.phase)

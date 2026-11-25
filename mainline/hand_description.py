@@ -42,6 +42,7 @@ class PadCalibration:
     outward_normal: tuple[float, float, float]
     joint_names: tuple[str, ...]
     support_radius_m: float | None = None
+    contact_model: dict | None = None
 
 class HandDescription:
     """Order-independent topology with explicit actuator and optical semantics.
@@ -68,6 +69,7 @@ class HandDescription:
         self.lower = np.full(len(self.joint_names), -np.inf)
         self.upper = np.full(len(self.joint_names), np.inf)
         self.urdf_velocity = np.full(len(self.joint_names), np.nan)
+        self.urdf_effort = np.full(len(self.joint_names), np.nan)
         self.joint_types = [None] * len(self.joint_names)
         joints, children = ([], set())
         for j in tree.findall('joint'):
@@ -84,6 +86,7 @@ class HandDescription:
                     self.lower[index] = float(limit.get('lower', '-inf'))
                     self.upper[index] = float(limit.get('upper', 'inf'))
                     self.urdf_velocity[index] = float(limit.get('velocity', 'nan'))
+                    self.urdf_effort[index] = float(limit.get('effort', 'nan'))
             joints.append((parent, child, _origin(j.find('origin')), axis, kind, index))
             children.add(child)
         roots = set(self.links) - children
@@ -112,6 +115,69 @@ class HandDescription:
                 raise ValueError('Pad calibration does not match the URDF')
             if not np.isclose(np.linalg.norm(pad.outward_normal), 1.0):
                 raise ValueError('Pad outward normal must be unit length')
+
+    def discover_finger_chains(self):
+        """Return maximal active branches, retaining shared upstream actuators.
+
+        A common wrist/abduction actuator is present in each relevant chain;
+        it must not merge otherwise independent terminal digits into one.
+        Fixed camera descendants do not create new fingers.
+        """
+        paths = {self.root: ()}
+        active_children = {}
+        base = set(self.base_joint_names)
+        for parent, child, _, _, _, index in self.joints:
+            name = self.joint_names[index] if index is not None else None
+            path = paths[parent] + ((name,) if name is not None and name not in base else ())
+            paths[child] = path
+            if name is not None and name not in base:
+                active_children[path] = child
+        terminals = [(path, link) for path, link in active_children.items()
+                     if not any(len(other) > len(path) and other[:len(path)] == path
+                                for other in active_children)]
+        rows = []
+        for path, terminal in terminals:
+            branch = next((i for i in range(len(path))
+                           if sum(other[:i+1] == path[:i+1] for other, _ in terminals) == 1),
+                          len(path)-1)
+            links = [link for link, ancestry in paths.items()
+                     if len(ancestry) >= branch+1 and path[:len(ancestry)] == ancestry]
+            rows.append(dict(finger=path[branch], joint_names=list(path),
+                             terminal_link=terminal, links=links,
+                             shared_joint_names=list(path[:branch]),
+                             discovery_source='maximal active joint-tree paths; fixed descendants retain digit ownership'))
+        rows.sort(key=lambda row: self.index[row['finger']])
+        return rows, paths
+
+    def forward_axis_in_palm(self, palm_link, pad_rows):
+        """Neutral finger-root to pad-centroid axis from static hand geometry.
+
+        All described fingers contribute, independent of the selected grasp.
+        This defines an anatomical direction; the desired world direction is
+        a task requirement and is not a URDF-axis or camera-axis assumption.
+        """
+        poses = self.fk(np.zeros(len(self.joint_names)))
+        chains, _ = self.discover_finger_chains()
+        rows = {row['finger']: row for row in pad_rows}
+        child_by_joint = {self.joint_names[index]: child
+                          for _, child, _, _, _, index in self.joints
+                          if index is not None}
+        vectors = []
+        for chain in chains:
+            row = rows.get(chain['finger'])
+            if row is None:
+                continue
+            pose = poses[row['link']]
+            point = pose[:3, :3] @ np.asarray(row['point_m']) + pose[:3, 3]
+            root = poses[child_by_joint[chain['finger']]][:3, 3]
+            vectors.append(point - root)
+        if not vectors:
+            raise ValueError('No described finger geometry for palm forward axis')
+        axis = poses[palm_link][:3, :3].T @ np.mean(vectors, axis=0)
+        length = np.linalg.norm(axis)
+        if not np.isfinite(length) or length < 1e-5:
+            raise ValueError('Neutral finger geometry does not identify a forward axis')
+        return axis / length
 
     def structural_collision_exclusions(self, links=None):
         """Exclude one rigid assembly or direct movable neighbours only.
