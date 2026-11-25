@@ -2,16 +2,16 @@
 
 同一入口 `run_stage17.py` → `mainline/strategy.py::main(ctx)`，保留 `observe()` / `step()`。运行器按 URDF 和静态标定提供具名关节、限位、指链、接触区域与相机；`auto`、`two`、`three` 共用优化与执行链，两指和三指从首次规划比较。任务要求大体竖直，当前共享掌轴范围为距向下方向 45°。
 
-**仍在开发，未冻结，未完成两手共同验收。** 本源码对应完整工程已实跑 D90 `dfdbbab8710`，策略 SHA256 `d90494e018b09270c6382ce20707b959c79e341af3a51d2c3c6cc96308b84c6d`。D90 在同一批最多六个接触区域组合、同一保存 q 上，把既有整手桌面净空代价加入接触与采样本体穿透排序；保留原桌面/任务类别、候选、预算和精确碰撞门槛。
+**仍在开发，未冻结，未完成两手共同验收。** 本源码对应完整工程已实跑 D91 `5336e8aba94`，策略 SHA256 `52c54734e08248efbfb1b5f09f68063cceae7d130c9b792d5c8b15a45069cca6`。D91 只把既有采样本体穿透软目标改为每条连杆对共同 RGB 外侧平面的退出代价；样本、3000/m权重、初值、预算及精确碰撞门槛保持原配置。它是保守采样代理，可能误罚已经分离的角落，不能证明可闭合或承载。
 
 固定同一份 RGB、30 mm 开发方块和任务，仅换手及静态标定，顺序实跑：
 
 | 手 | 实际两指 / 三指关节 IK | 完整路径 / 实际闭合 | 原 evaluator | 规划墙钟 / CPU | 抓取动作时间 |
 |---|---:|---:|---|---:|---:|
-| 新三指手 | 33 / 11 | 0 / 0 | 失败 | 264.322 / 264.095 s | 0 s |
-| XHand | 42 / 16 | 0 / 0 | 失败 | 265.524 / 264.950 s | 0 s |
+| 新三指手 | 43 / 17 | 0 / 0 | 失败 | 233.841 / 233.565 s | 0 s |
+| XHand | 48 / 16 | 0 / 0 | 失败 | 221.898 / 221.165 s | 0 s |
 
-新手最近两指 AB 区域18/18的位置误差0.064 mm、法向0.438/0.414 rad，仍因末节 `Empty_Link4/7` 与 RGB 包络相交约2.25/2.52 mm被拒绝。最近三指 ABC4/26/7的位置误差4.081 mm、法向0.272/1.055/1.046 rad，尚未进入路径。XHand也没有可执行路径。两手宿主时间459.811/349.828 s，1565项运行指纹前后、跨手一致，无残留进程。两手零抬升、零闭合，原生接触未打开；历史成功不能替代当前共享竖直策略验证，也没有三块指定指垫持续承载证据。
+新手最近两指 AC 区域4/4的位置误差0.440 mm、法向0.132/0.332 rad，随后被终点碰撞检查拒绝；最近三指 ABC2/0/21的位置误差5.163 mm、法向1.490/1.460/1.284 rad，尚未进入路径。两手宿主时间428.170/306.992 s，1582项运行指纹前后、跨手一致，无残留进程。两手零抬升、零闭合，原生接触未打开。历史成功不能替代当前共享竖直策略验证，也没有三块指定指垫持续承载证据。
 
 物理120 Hz、控制20 Hz、RGB30 fps，每回合最多三次实际闭合。在线仅初始俯视RGB、实时手上RGB、实测q/qvel及静态标定；投影使用曝光时q。物体真值、mesh、原生接触力及evaluator仅环境/离线核验。URDF/STL只读。树、限位、网格、机械安装来自资产；静态侧车按URDF哈希加载。光学来自统一仿真鱼眼配置，未冒充硬件标定。摩擦0.3、每指1 N及未标定区域1.2 mm半径是共享显式假设；材料分区、软垫顺应性、驱动响应仍需独立标定。几何圆盘不能单独证明材料指垫或排除一体相机壳。闭合0.35 mm进给、4.5 mm总上限、0.45跟踪缺额判据仍是旧手开发经验。
 
@@ -28,10 +28,10 @@ COMMON=(--controller mainline/strategy.py --fingers auto --max-attempts 3
   --mode minimal --evaluation-mode inline --phase explore)
 "$PY" run_stage17.py "${COMMON[@]}" \
   --robot-urdf '/home/CNS2025331827/docs/urdf_整手总装-1113-带相机-修正零位与限位.SLDASM/urdf/urdf_整手总装-1113-带相机-修正零位与限位.SLDASM.urdf' \
-  --session /home/CNS2025331827/docs/fingereye_cross_round2/runs/readme_d90_new_001
+  --session /home/CNS2025331827/docs/fingereye_cross_round2/runs/readme_d91_new_001
 "$PY" run_stage17.py "${COMMON[@]}" \
   --robot-urdf /home/CNS2025331827/docs/fingereye_cross_round2/FingerEyeLab/assets/xhand3camFE_left/planning/xhand3camFE_left_floating.urdf \
-  --session /home/CNS2025331827/docs/fingereye_cross_round2/runs/readme_d90_xhand_001
+  --session /home/CNS2025331827/docs/fingereye_cross_round2/runs/readme_d91_xhand_001
 ```
 
-正式开发配对由 `round2_evidence/d90_review/RUN_PAIR.py` 固定1800 s宿主/600 s策略CPU预算并保存收据，旧目录不覆盖。完整证据：`round2_evidence/iterations.json` 和 `d90_audit/D90_PAIRED_CLOSEST_TERMINAL_REPORT.json`（SHA256 `4912b53bd5301e6d2b6c30540b92d6069639c6ec1f693a95d9a6b9e9e7b4ec93`）。两手物理验收后才冻结，再预登记新案例并比较旧策略、新auto、固定two/three，保留失败、超时、零闭合与XHand退化。
+正式开发配对由 `round2_evidence/d91_review/RUN_PAIR.py` 固定1800 s宿主/600 s策略CPU预算并保存收据，旧目录不覆盖。完整证据：`round2_evidence/iterations.json` 和 `d91_audit/D91_PAIRED_CLOSEST_TERMINAL_REPORT.json`（SHA256 `34c90e566719f8be5488d54dbc37c43de6083b31df5a5edeb9f8a6d59d2c4a8f`）。两手物理验收后才冻结，再预登记新案例并比较旧策略、新auto、固定two/three，保留失败、超时、零闭合与XHand退化。

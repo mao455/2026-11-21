@@ -1358,52 +1358,76 @@ def prepare_body_penetration(robot,checker,spacing_m=.001):
 
 
 def body_penetration(context,poses,*,report=False,cull=True,chunk_size=2048):
-    """One worst sampled inside-depth; scalar hot path over validated inputs.
+    """Worst directional whole-link exit proxy on unchanged source samples.
 
-    Zero outside gives no positive-clearance gradient. Finite original surface
-    samples can miss triangle crossings/containment; exact FCL gates remain.
-    AABB culling only skips a sample set provably outside object bounds.
+    For each RGB plane take the minimum signed distance over one link, then
+    choose the largest plane separation. Its negative part gives a soft exit
+    distance for that link; the worst link retains the shared 3000/m scale.
+    This asks for a common object-face separator for the whole sampled link.
+    It is conservative for corners/concavity and is not exact SAT or first
+    touch. A same-plane bounds proof only skips an exactly zero proxy; all
+    exact downstream mesh gates remain unchanged.
     """
     if not isinstance(chunk_size,int) or chunk_size<1:
         raise PadSurfaceError('Body penetration chunk size must be positive integer')
     worst=0.;witness=None;records=[] if report else None
-    normals=context['normals'];offsets=context['offsets'];bounds=context['object_bounds']
+    normals=context['normals'];offsets=context['offsets']
     for body in context['samples']:
         if body.link not in poses:raise PadSurfaceError('Missing current body transform: '+body.link)
         pose=poses[body.link];rotation=pose[:3,:3];translation=pose[:3,3]
         corners=body.bounds_corners@rotation.T+translation
-        skipped=cull and (np.any(corners.max(0)<bounds[0]) or np.any(corners.min(0)>bounds[1]))
-        minimum_phi=float('inf');link_witness=None
+        # These existing eight source-bounds corners enclose every sample.
+        # A plane outside all corners is outside all samples, proving d_L=0.
+        # Unlike world-AABB rejection, this is exact for the new plane proxy.
+        bounds_separation=float((corners@normals.T+offsets).min(axis=0).max())
+        skipped=bool(cull and bounds_separation>=0.)
+        minimum_phi=float('inf');separation=None;plane=None;link_witness=None
         if not skipped:
+            plane_minima=np.full(len(offsets),np.inf)
+            minimizers=np.zeros(len(offsets),dtype=int) if report else None
             for start in range(0,len(body.points),chunk_size):
                 local=body.points[start:start+chunk_size]
                 world=local@rotation.T+translation
                 values=world@normals.T+offsets
-                phi=values.max(axis=1);index=int(np.argmin(phi));value=float(phi[index])
-                if value<minimum_phi:
-                    minimum_phi=value
-                    if report:link_witness=dict(link=body.link,sample_index=start+index,
-                        local_m=local[index].tolist(),world_m=world[index].tolist(),
-                        phi_m=value,active_plane=int(np.argmax(values[index])))
-        depth=0. if skipped else max(0.,-minimum_phi)
+                minima=values.min(axis=0);improved=minima<plane_minima
+                if report:
+                    minimizers[improved]=start+values.argmin(axis=0)[improved]
+                    # Preserve the old min_sample(max_plane phi) diagnostic.
+                    minimum_phi=min(minimum_phi,float(values.max(axis=1).min()))
+                plane_minima=np.minimum(plane_minima,minima)
+            plane=int(np.argmax(plane_minima));separation=float(plane_minima[plane])
+            if report:
+                index=int(minimizers[plane]);local=body.points[index]
+                world=local@rotation.T+translation;point_values=world@normals.T+offsets
+                link_witness=dict(link=body.link,sample_index=index,
+                    local_m=local.tolist(),world_m=world.tolist(),
+                    phi_m=float(point_values.max()),active_plane=int(np.argmax(point_values)),
+                    directional_plane=plane,directional_plane_distance_m=separation)
+        depth=0. if skipped else max(0.,-separation)
         if depth>worst:worst=depth;witness=link_witness
         if report:records.append(dict(link=body.link,sample_count=len(body.points),
-            source_triangle_count=body.source_triangle_count,aabb_proven_outside=bool(skipped),
-            min_phi_m=None if skipped else minimum_phi,depth_m=depth))
+            source_triangle_count=body.source_triangle_count,source_bounds_plane_zero_proven=bool(skipped),
+            source_bounds_plane_separation_lower_bound_m=bounds_separation,
+            min_phi_m=None if skipped else minimum_phi,depth_m=depth,
+            original_sampled_inside_depth_m=None if skipped else max(0.,-minimum_phi),
+            directional_separation_m=separation,directional_plane=plane))
     residual=context['weight_per_m']*worst
     if not report:return residual
     return dict(depth_m=worst,residual=residual,squared_residual=residual**2,
         scipy_cost=.5*residual**2,weight_per_m=context['weight_per_m'],
         witness=witness,links=records,plane_count=len(offsets),
         total_sample_count=sum(row['sample_count'] for row in records),
-        aabb_skipped_links=sum(row['aabb_proven_outside'] for row in records),
+        source_bounds_plane_skipped_links=sum(row['source_bounds_plane_zero_proven'] for row in records),
+        culling='same RGB planes prove all eight existing source bounds corners outside one common face; exact zero proxy skip',
         spacing_m=context['spacing_m'],prepared_cache_hit=context['prepared_cache_hit'],
         preparation_cpu_s=context['preparation_cpu_s'],preparation_wall_s=context['preparation_wall_s'],
-        aggregation='one worst depth over all checker collision link samples; no sum/mean or pad radius',
+        aggregation='worst link negative max_plane(min_original_samples signed plane distance); same all-link maximum and scale',
+        metric='directional whole-link exit proxy; original min_phi_m retained as a separate diagnostic',
         envelope_source=context['envelope_source'],
         coefficient_source='shared numerical metric weight reused from existing FCL refinement; not material calibration',
-        sampling='seven original on-triangle sites, original representatives of 1mm local voxels',
-        scope='soft sampled inside-depth only; no positive-clearance gradient or exact contact/collision/bearing certificate')
+        sampling='unchanged seven original on-triangle sites and original representatives of 1mm local voxels',
+        scope='soft object-face separator proxy; conservative for concavity/corners/link grouping; not exact SAT, contact, first touch or bearing certificate')
+
 
 
 def surface_residual_decomposition(values,count,finger_count,coordinate_count,collision=False):
