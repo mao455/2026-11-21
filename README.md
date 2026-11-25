@@ -1,39 +1,41 @@
 # FingerEyeLab：共享跨手抓取核心源码
 
-共用入口为 `run_stage17.py` → `mainline/strategy.py::main(ctx)`，保留 `observe()` / `step()`。运行器按 URDF 和静态标定提供具名关节、限位、指链、接触区域与相机。`auto`、`two`、`three` 共用优化和执行链；两指与三指从首次规划参与比较。任务要求大体竖直，当前共享掌轴范围为距向下方向45°。
+共用入口 `run_stage17.py` → `mainline/strategy.py::main(ctx)`，保留 `observe()` / `step()`。同一策略按 URDF、自动加载的静态标定和 RGB 几何选择指组、接触区域、掌姿及路径；`auto`、`two`、`three` 共用执行链。掌轴距向下方向不超过 45°，物理/控制/RGB 为 120/20/30 Hz，每场景最多三次实际闭合，规划拒绝不耗抓次。
 
-**开发快照，尚未冻结，也未完成两手共同验收。** 这10个Python文件逐字节对应完整工程已实跑 D96 提交 `027393ef771f5e3d67e7bb6ef370b6ea725b76fa`；策略 SHA256 为 `e0958583694a8e33e955aa60c9832ec9991ca9062974966e362763cd74fb7fb5`。未包含后续未实跑的记录器修正。
+**D104 是已见开发场景的固定源码回归，尚未通过两手共同物理验收。** 本仓库 10 个 Python 文件逐字节对应完整工程实跑提交 `2d67ab9d7574f157d54758f333fa7319be3a1a6a`，策略 SHA256 `2e4aaa72a31e6ad3ca56cf800f4a3724617ca2a3d951dba0179ec4c5651eb1ba`。六例运行期间源码不变；这不是未见案例验证。
 
-D96沿用同一份RGB几何、30 mm开发方块和任务，仅替换URDF及对应静态标定。新增一个共享接近分支：保持可行终点的手指姿态，检查高位运动及下降的完整路径；保留原有开手分支、关节限位、跨指/物体/桌面碰撞检查及原评测。
+| 手 / 三个场景 | 首抓正式成功 | 最多三抓正式成功 | 一次未闭合 | 实际闭合总数 |
+|---|---:|---:|---:|---:|
+| 新三指手 | 0/3 | 0/3 | 1/3 | 2 |
+| XHand | 0/3 | 0/3 | 2/3 | 1 |
 
-| 手 | 通过完整规划路径 | 实际闭合 | 实际抬升与保持 |
-|---|---:|---:|---|
-| 新三指手 | 1 | 0 | 未实现 |
-| XHand | 0 | 0 | 未实现 |
+场景为长方体、圆柱、楔体，成对固定 RGB 几何、初态、任务与预算。新手长方体/圆柱、XHand 圆柱分别实际闭合一次，最大实测掌角 12.12°/20.53°/13.23°，末尾最小抬升 32.43/31.98/32.03 mm 并保持 2 s，但预载时末节本体侵入，原 evaluator 均判失败。其它三例在 2/3/2 轮搜索后因 CPU 预算保留停止，没有完整路径。三个有闭合回合最终持物状态不明，未授权释放，未实际试满三次；没有选定有限指垫共同承载的证明。
 
-新手实际发出了接近命令，但在下降前因实测关节状态持续不稳定、无法满足稳定观测要求而停止；终点和名义路径通过不能证明物理执行成功。XHand仍未找到完整可执行路径。两手本轮零闭合、零抬升，没有三块指定指垫承载证据。历史成功不替代当前共享竖直策略验证。
+继承 D99–D102 的候选局部恢复、曝光实测 q 投影、移除整手最低点对物顶的误拒，以及同面分离的三指候选。D104 只在名义增量闭合路径被拒后，用 URDF 闲置关节避让，保持选中指/掌座节点与时长；XHand 圆柱两次避让确实执行，越过原 ring 相机碰桌阻塞。真实限位、自碰、桌/物碰撞及原 evaluator 未放宽。本组没有触发实际接近失败换候选、无效 RGB 故障恢复或确认空抓后的连续重抓，不能称这些分支已实跑验证。
 
-物理120 Hz、控制20 Hz、RGB30 fps，每回合最多三次实际闭合。在线只使用初始俯视RGB、实时手上RGB、实测q/qvel和静态标定；图像投影使用曝光时q。物体真值、mesh、原生接触力及evaluator仅用于环境和离线核验。URDF/STL只读。
+尚存问题：每指 0.8 mm 终点门槛未考虑闭合可补行程；初值/粗排仍主要 upright+yaw，首区域可能耗掉指组预算；最终承载 LP 仅排序，任务不满足的候选仍可能执行。接触指整块本体的物体检查豁免及固定追加 1.05 mm 预载，尚不能保证指定接触区先触或避免过压。同场景历史第一轮 XHand 基线正式成功 2/3、零闭合 0/3，当前退化保留。
 
-关节树、限位、网格和机械安装来自资产，静态侧车按URDF哈希加载。光学来自统一仿真鱼眼配置，尚非硬件标定。摩擦0.3、每指1 N及未标定区域1.2 mm半径是显式假设；材料分区、软垫顺应性、驱动响应仍需独立标定。几何接触圆盘本身不能证明材料指垫或排除一体相机壳。闭合0.35 mm进给、4.5 mm总上限、0.45跟踪缺额判据仍来自旧手开发经验。
+关节树、顺序、限位/effort、网格、指链和机械安装来自统一手描述及所选 URDF。相机渲染/投影共用仿真光学配置，非硬件标定；摩擦 0.3、每指 1 N、区域半径 1.2 mm 是显式假设。新手区域是几何提案，材料分区、软垫顺应性、驱动响应、硬件光学仍需独立标定。闭合 0.35 mm、总上限 4.5 mm、缺额阈值 0.45 等仍有旧手开发经验。在线只用 RGB、实测 q/qvel 和静态标定；真值、物体 mesh、原生接触及 evaluator 仅用于环境与终态离线核验。源 URDF/STL 只读。
 
-公开仓库仅保留10个关键Python、本README及现有依赖说明。资产、标定、日志、RGB/视频和完整证据留在完整工程。这份源码选集需要同版本完整宿主工程、IsaacLab/IsaacSim和依赖，**不能独立启动**；接触区域构建另需Shapely 2.1.2。
+公开选集仅含 10 个关键 Python、短 README 和原依赖元数据；**不能独立启动**，需要同版本完整 FingerEyeLab、IsaacLab/IsaacSim 及 Shapely 2.1.2。资产、标定、日志及动作轨迹不上传。
 
-在上述D96完整工程提交复跑。以下两次运行共用入口、任务、策略、模式和评测，仅URDF选择手，session用于区分新的输出目录。固定缓存来自D73初始俯视图及首次有效手上曝光，首次实际闭合前固定规划几何；实时RGB仍采集校验，闭合后恢复实时几何。缓存不代表当前曝光，以下仍是开发回合。
+以下在完整宿主上顺序执行，两条命令共用入口、策略、任务、模式及评测，仅 URDF 选择手，session 区分新输出。固定 RGB 缓存来自已见场景，首次闭合前固定规划几何；实时手上 RGB 仍采集校验，闭合后恢复实时几何。
 
 ```bash
-cd /home/CNS2025331827/docs/fingereye_cross_round2/FingerEyeLab/experiments/rax_dexbin_tinyobj
+cd /home/CNS2025331827/docs/fingereye_d104_unused_path/FingerEyeLab/experiments/rax_dexbin_tinyobj
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1
 PY=/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python
+E=/home/CNS2025331827/docs/fingereye_cross_round2/FingerEyeLab/experiments/rax_dexbin_tinyobj/round2_evidence
 COMMON=(--controller mainline/strategy.py --fingers auto --max-attempts 3
-  --case-file round2_evidence/d73_review/cube30_public_cache/dev_cube30_fixed_rgb.json
-  --mode minimal --evaluation-mode inline --phase explore)
+  --case-file "$E/d98_panel/fixtures/box_center/case.fixed_rgb.json"
+  --evaluation-mode inline --mode minimal --no-preload --phase explore
+  --profile fast --color-mode hs --light-multiplier 1.0)
 "$PY" run_stage17.py "${COMMON[@]}" \
   --robot-urdf '/home/CNS2025331827/docs/urdf_整手总装-1113-带相机-修正零位与限位.SLDASM/urdf/urdf_整手总装-1113-带相机-修正零位与限位.SLDASM.urdf' \
-  --session /home/CNS2025331827/docs/fingereye_cross_round2/runs/readme_d96_new_001
+  --session /home/CNS2025331827/docs/d104_readme_new_fresh_001
 "$PY" run_stage17.py "${COMMON[@]}" \
   --robot-urdf /home/CNS2025331827/docs/fingereye_cross_round2/FingerEyeLab/assets/xhand3camFE_left/planning/xhand3camFE_left_floating.urdf \
-  --session /home/CNS2025331827/docs/fingereye_cross_round2/runs/readme_d96_xhand_001
+  --session /home/CNS2025331827/docs/d104_readme_xhand_fresh_001
 ```
 
-完整配对记录由 `round2_evidence/d96_review/RUN_PAIR.py` 固定1800 s宿主、600 s策略CPU预算并保存收据，旧输出目录不覆盖。证据位于完整工程 `round2_evidence/iterations.json`、`d96_review/` 和 `d96_audit/`。两手物理验收后再冻结并预登记新案例，比较旧策略、新auto及固定two/three，保留失败、超时、零闭合和XHand退化。
+正式复跑请用完整工程 `$E/d104_unused_path/run_panel.py` 的 `verify` 及 `run --all --output-root <尚不存在的目录>`，统一限制 600 s worker CPU、1800 s 宿主、24000 物理步并保存清理/身份回执。完整逐回合结果、规划累计墙钟、物理动作时间、候选与实际发送、承载审计和复跑步骤均在 `$E/d104_unused_path/analysis/{REPORT.md,REPRODUCE.txt}`；材料 pin SHA256 `ad50e65f5de703baad3427db059e4f174697d05c3af5120de2528fc7c5eb178e`。尚未完成三指指定垫承载、新案例或固定 two/three 对照验收。

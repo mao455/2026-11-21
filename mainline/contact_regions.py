@@ -5,7 +5,8 @@ side geometry. Live RGB refinement can replace ``collision_points`` with a 3-D
 envelope. Every returned point is on that envelope, before any IK stand-off.
 """
 
-from itertools import combinations
+from itertools import combinations, combinations_with_replacement
+import hashlib
 
 import numpy as np
 from scipy.spatial import ConvexHull
@@ -281,7 +282,7 @@ def _rgb_finite_facets(cloud):
         vertices = cloud[sorted(row['vertex_ids'])]
         # The mean of polygon vertices lies in its finite relative interior.
         facets.append(dict(point=vertices.mean(axis=0), normal=row['equation'][:3],
-                           plane_identity=key))
+                           plane_identity=key, vertices=np.unique(vertices.round(10), axis=0)))
     return facets
 
 
@@ -340,21 +341,75 @@ def _balanced_facet_combinations(facets, count):
         streams = active
 
 
-def generate_contact_sets(info, count, axes=None, heights=None, max_sets=96):
-    """Interleave independent finite RGB facets and preserved side hypotheses.
+def _repeated_facet_combinations(facets, count):
+    """Schedule repeated plane assignments; all contacts use one common rule.
 
-    Each new facet tuple appears once. All old ray starts remain available
-    for seed scoring; IK independently slides over each complete finite facet.
-    Bottom/top/slanted facets remain hypotheses and receive the same downstream
-    force, reach, table, self-collision and path checks as side facets.
+    Angular diversity orders a finite stream, never certifies a grasp. One
+    plane may occupy multiple slots, but an assignment must contain at
+    least two distinct planes. This same structural rule gives no
+    repeated stream for count2; all-one-plane count3 is excluded too.
+    Optimistic force/IK/path checks remain downstream.
+    """
+    normals = np.array([facet['normal'] for facet in facets])
+    rows = (ids for ids in combinations_with_replacement(range(len(facets)), count)
+            if 1 < len(set(ids)) < count)
+    return iter(sorted(rows, key=lambda ids: (
+        min(float(normals[i] @ normals[j]) for i, j in combinations(ids, 2)), ids)))
+
+
+def _finite_facet_start(facets, ids):
+    """Separate repeated contacts inside their assigned finite RGB face.
+
+    Use an interior chord, with canonical vertex order/ties instead of an
+    arbitrary SVD sign. Fractions allocate a deterministic start, not a hand
+    calibration, pad radius, contact or success gate. The solver still insets
+    each face by that selected hand's unchanged supported pad radius.
+    """
+    points = []
+    for slot, face_id in enumerate(ids):
+        facet = facets[face_id]
+        locations = [i for i, value in enumerate(ids) if value == face_id]
+        center = facet['point']
+        if len(locations) == 1:
+            points.append(center)
+            continue
+        vertices = facet['vertices']
+        a, b = min(combinations(range(len(vertices)), 2), key=lambda pair: (
+            -round(float(np.sum((vertices[pair[0]] - vertices[pair[1]])**2)), 15), pair))
+        fraction = (locations.index(slot) + 1) / (len(locations) + 1)
+        chord = (1. - fraction) * vertices[a] + fraction * vertices[b]
+        points.append(.5 * (center + chord))
+    return np.array(points)
+
+
+def _surface_catalog_ids(region):
+    """Stable RGB-only identities, independent of hand, region and row index."""
+    planes = sorted(tuple(np.r_[n, n @ p].round(9))
+                    for p, n in zip(region['points'], region['outward_normals']))
+    starts = sorted(tuple(np.r_[p, n].round(9))
+                    for p, n in zip(region['points'], region['outward_normals']))
+    def digest(values):
+        data = np.asarray(values, dtype='<f8')
+        data[data == 0.] = 0.  # Canonicalize signed zero before byte hashing.
+        return hashlib.sha256(data.tobytes()).hexdigest()[:20]
+    return dict(surface_assignment_id='planes-' + digest(planes),
+                surface_start_id='points-' + digest(starts))
+
+
+def generate_contact_sets(info, count, axes=None, heights=None, max_sets=96):
+    """RGB-only stable catalog; repeated and distinct finite facets share2F.
+
+    Preserve legacy horizontal starts. No hand state enters this catalog, so
+    rank_region_tuples, source_domain_corrected_rank and axis_contact_candidates
+    reproduce the same row indices and stable IDs. The original2F finite-face
+    allocation, max_sets, optimizer call count and runtime budgets are unchanged.
+    Allocation omissions are explicit metadata, not geometric refusals.
     """
     if heights is not None:
         heights = tuple(heights)
     horizontal = _horizontal_contact_sets(info, count, axes, heights, max_sets)
     if max_sets <= 0 or heights == ():
         return []
-    # Preserve every legacy start. The caller scores all heights before
-    # ordered-plane deduplication, retaining its best old initial seed.
     old = horizontal
     for region in old:
         region['provenance']['family'] = 'legacy_RGB_horizontal'
@@ -364,30 +419,49 @@ def generate_contact_sets(info, count, axes=None, heights=None, max_sets=96):
     height = float(cloud[:, 2].max()) - bottom
     if height <= 0:
         return []
-    added = []
-    # Two new plane combinations per finite face is a computation allocation,
-    # not a geometry gate or calibration. It covers facets early without
-    # repeating thousands of ray origins/heights for the same plane tuple.
+    streams = [('independent_RGB_facets', iter(_balanced_facet_combinations(facets, count))),
+               ('repeated_RGB_facets', _repeated_facet_combinations(facets, count))]
+    # One shared allocation, interleaved before truncation. A new repeated
+    # family cannot disappear behind all distinct assignments filling2F first.
     new_budget = min(max_sets, 2 * len(facets))
-    for ids in _balanced_facet_combinations(facets, count):
-        points = np.array([facets[i]['point'] for i in ids])
-        normals = np.array([facets[i]['normal'] for i in ids])
-        if count == 3 and max(float(normals[i] @ normals[j])
-                              for i, j in combinations(range(count), 2)) > .995:
-            continue
-        region = dict(points=points, outward_normals=normals,
-                      height_fractions=((points[:, 2] - bottom) / height).tolist(),
-                      facet_indices=list(ids), heading_rad=float(np.arctan2(normals[0, 1], normals[0, 0])),
-                      chord_offset_fraction=None,
-                      geometry_source='public_RGB_independent_finite_facets',
-                      provenance=dict(input='info.collision_points from RGB',
-                                      height='independent finite RGB facet interior starts',
-                                      visibility='RGB envelope hypotheses; facet visibility not certified',
-                                      point_standoff_m=0., independent_contact_count=count,
-                                      family='independent_RGB_facets'))
-        added.append(region)
-        if len(added) >= new_budget:
-            break
+    added = []
+    while streams and len(added) < new_budget:
+        active = []
+        for family, stream in streams:
+            try:
+                ids = next(stream)
+            except StopIteration:
+                continue
+            active.append((family, stream))
+            normals = np.array([facets[i]['normal'] for i in ids])
+            points = _finite_facet_start(facets, ids)
+            added.append(dict(points=points, outward_normals=normals,
+                height_fractions=((points[:, 2] - bottom) / height).tolist(),
+                facet_indices=list(ids),
+                heading_rad=float(np.arctan2(normals[0, 1], normals[0, 0])),
+                chord_offset_fraction=None,
+                geometry_source='public_RGB_independent_finite_facets',
+                provenance=dict(input='info.collision_points from RGB',
+                    height='independent finite RGB facet interior starts',
+                    visibility='RGB envelope hypotheses; facet visibility not certified',
+                    point_standoff_m=0., independent_contact_count=count, family=family)))
+            if len(added) >= new_budget:
+                break
+        streams = active
+    from math import comb
+    distinct_total = comb(len(facets), count) if len(facets) >= count else 0
+    multiset_total = comb(len(facets) + count - 1, count)
+    single_plane_excluded = len(facets) if count > 1 else 0
+    eligible_total = multiset_total - single_plane_excluded
+    allocation = dict(finite_facet_count=len(facets), finite_assignment_budget=new_budget,
+        all_multiset_assignment_count_before_uniform_single_plane_rule=multiset_total,
+        excluded_single_plane_assignment_count=single_plane_excluded,
+        all_eligible_assignment_count=eligible_total,
+        all_distinct_assignment_count=distinct_total,
+        all_repeated_assignment_count=eligible_total-distinct_total,
+        generated_finite_assignment_count=len(added),
+        ungenerated_finite_assignment_count=eligible_total-len(added),
+        scope='Catalog allocation only; ungenerated assignments are unvisited, not geometrically rejected')
     output, seen = [], set()
     for index in range(max(len(old), len(added))):
         for family in (added, old):
@@ -399,6 +473,8 @@ def generate_contact_sets(info, count, axes=None, heights=None, max_sets=96):
             if key in seen:
                 continue
             seen.add(key)
+            region.update(_surface_catalog_ids(region))
+            region['provenance']['catalog_allocation'] = allocation
             output.append(region)
             if len(output) >= max_sets:
                 return output
@@ -791,54 +867,6 @@ def prioritize_surface_hint(variants, hint):
 # only the complete public contact geometry/model/task determines an LP result.
 _SURFACE_TASK_PRIORITY_CACHE = {}
 
-# One current public RGB geometry at a time. Values are immutable finite-face
-# geometry only; nearest supported centers still depend on each target query.
-_SURFACE_FACET_GEOMETRY_CACHE = dict(geometry=None, facets={}, builds=0, hits=0)
-
-
-def _surface_geometry_content_key(cloud):
-    import hashlib
-    cloud = np.asarray(cloud)
-    return (cloud.shape, cloud.dtype.str,
-            hashlib.sha256(cloud.tobytes(order='C')).digest())
-
-
-def _finite_surface_facet_geometry(cloud, hull, normal, radius, geometry_key):
-    cache = _SURFACE_FACET_GEOMETRY_CACHE
-    if cache['geometry'] != geometry_key:
-        cache['facets'].clear()
-        cache['geometry'] = geometry_key
-        cache['builds'] = cache['hits'] = 0
-    # Normals are the caller's declared unit outward vectors. Keep their exact
-    # values and the original argmax arithmetic; no rounding/renormalization.
-    key = (tuple(np.asarray(normal, float)), float(radius))
-    if key not in cache['facets']:
-        plane = hull.equations[np.argmax(hull.equations[:, :3] @ normal)]
-        on = np.unique(np.round(cloud[abs(cloud @ plane[:3] + plane[3]) < 2e-7], 10), axis=0)
-        center = on.mean(0)
-        _, _, basis = np.linalg.svd(on - center, full_matrices=False)
-        on = on[ConvexHull((on - center) @ basis[:2].T).vertices]
-        inset, _, usable = finite_support_region(on, radius)
-        projection = None
-        if len(inset) > 2:
-            center = inset.mean(0)
-            _, _, basis = np.linalg.svd(inset - center, full_matrices=False)
-            xy = (inset - center) @ basis[:2].T
-            polygon = ConvexHull(xy)
-            projection = (center, basis[:2], polygon.equations.copy())
-            inset = inset[polygon.vertices]
-        inset.setflags(write=False)
-        if projection is not None:
-            for array in projection:
-                array.setflags(write=False)
-        # Insert only a completely built geometry. Preserve existing error
-        # handling on a degenerate face rather than caching a provisional row.
-        cache['facets'][key] = (inset, usable, projection)
-        cache['builds'] += 1
-    else:
-        cache['hits'] += 1
-    return cache['facets'][key]
-
 
 def _finite_surface_task_priority(info, points, outward, radii, models, task, facets):
     """Conditional six-dimensional nominal task priority; never a reject gate.
@@ -849,24 +877,29 @@ def _finite_surface_task_priority(info, points, outward, radii, models, task, fa
     All subsequent original IK, path, robust and effort checks remain binding.
     """
     from general_grasp_contacts import task_wrench_margin
-    cloud, hull = facets[:2]
-    # Production passes this once-prepared content key. Two-item callers keep
-    # the old interface and receive content-safe caching as well.
-    geometry_key = facets[2] if len(facets) > 2 else _surface_geometry_content_key(cloud)
+    cloud, hull = facets
     centers, supported = [], []
     for point, normal, radius in zip(points, outward, radii):
-        inset, usable, projection = _finite_surface_facet_geometry(
-            cloud, hull, normal, radius, geometry_key)
+        plane = hull.equations[np.argmax(hull.equations[:, :3] @ normal)]
+        on = np.unique(np.round(cloud[abs(cloud @ plane[:3] + plane[3]) < 2e-7], 10), axis=0)
+        center = on.mean(0)
+        _, _, basis = np.linalg.svd(on - center, full_matrices=False)
+        on = on[ConvexHull((on - center) @ basis[:2].T).vertices]
+        inset, _, usable = finite_support_region(on, radius)
         query = np.asarray(point) - normal * .0003
         if len(inset) == 1:
             nearest = inset[0]
         else:
             candidates = []
-            if projection is not None:
-                center, basis, equations = projection
-                projected = (query - center) @ basis.T
-                if np.max(equations[:, :2] @ projected + equations[:, 2]) <= 1e-10:
-                    candidates.append(center + projected @ basis)
+            if len(inset) > 2:
+                center = inset.mean(0)
+                _, _, basis = np.linalg.svd(inset - center, full_matrices=False)
+                xy = (inset - center) @ basis[:2].T
+                polygon = ConvexHull(xy)
+                projected = (query - center) @ basis[:2].T
+                if np.max(polygon.equations[:, :2] @ projected + polygon.equations[:, 2]) <= 1e-10:
+                    candidates.append(center + projected @ basis[:2])
+                inset = inset[polygon.vertices]
             for first, last in zip(inset, np.roll(inset, -1, axis=0)):
                 delta = last - first
                 fraction = np.clip((query - first) @ delta / max(delta @ delta, 1e-30), 0., 1.)
@@ -905,149 +938,7 @@ def _finite_surface_task_priority(info, points, outward, radii, models, task, fa
     return dict(_SURFACE_TASK_PRIORITY_CACHE[key], supported_centers_world_m=np.asarray(centers).tolist(),
                 supported_radius_m=supported, cache_hit=hit)
 
-class _RegionRankDeadline(RuntimeError):
-    def __init__(self, stage):
-        super().__init__(stage)
-        self.stage = stage
-
-
-def _region_rank_checkpoint(deadline_cpu_s, stage, audit):
-    # Cooperative boundary only: one existing LP/domain/FK unit is atomic.
-    audit['stage'] = stage
-    if deadline_cpu_s is not None and time.process_time() >= deadline_cpu_s:
-        raise _RegionRankDeadline(stage)
-
-
-def _factorized_region_proposals(point_cloud, normal_cloud, targets, normals,
-                                 lower, upper, default, *, limit, deadline_cpu_s,
-                                 audit):
-    """Bounded coarse admission; no IK, LP, FCL or robot mutation here.
-
-    Per anchor, fit the default tuple, choose each region at that fixed common
-    pose, and jointly refit once. This is not a full-universe search or a
-    reachability certificate. Every winner still needs the original checks.
-    """
-    seed_count, target_count = len(point_cloud[0]), len(targets)
-    default = tuple(default)
-    pool = {}
-    default_witness = None
-    proposal = dict(method='default_anchor_independent_regions_one_joint_refit',
-        retained_limit=limit, default_protected=True, default_regions=list(default),
-        anchors_expected=seed_count*target_count, anchors_processed=0,
-        retained_pool_repeat_hits=0, retained_pool_replacements=0,
-        complete=False, full_tuple_universe_searched=False,
-        unselected_status='not_selected_by_bounded_proposal_not_proven_unreachable',
-        coarse_anchor_not_dispatched_or_added_to_ik_bank=True)
-    audit['region_admission'] = proposal
-
-    def rotate(values, cosine, sine):
-        result = np.broadcast_to(values, cosine.shape+values.shape[-2:]).copy()
-        result[..., 0] = values[..., 0]*cosine[..., None]-values[..., 1]*sine[..., None]
-        result[..., 1] = values[..., 0]*sine[..., None]+values[..., 1]*cosine[..., None]
-        return result
-
-    def fit(points, ns, goals, inward):
-        center = points.mean(-2)
-        centered = points-center[..., None, :]
-        destination = goals-goals.mean(-2)[..., None, :]
-        cosine = 1500.**2*np.sum(centered[..., :2]*destination[..., :2], axis=(-2, -1))
-        cosine += 12.**2*np.sum(ns[..., :2]*inward[..., :2], axis=(-2, -1))
-        sine = 1500.**2*np.sum(centered[..., 0]*destination[..., 1]-centered[..., 1]*destination[..., 0], axis=-1)
-        sine += 12.**2*np.sum(ns[..., 0]*inward[..., 1]-ns[..., 1]*inward[..., 0], axis=-1)
-        theta = np.arctan2(sine, cosine)
-        cosine, sine = np.cos(theta), np.sin(theta)
-        rotated = rotate(points, cosine, sine)
-        translation = np.clip(goals.mean(-2)-rotated.mean(-2), lower, upper)
-        fitted = rotated+translation[..., None, :]
-        fitted_ns = rotate(ns, cosine, sine)
-        # Score the actual clamped pose; no monotonic/global-optimum claim.
-        cost = (1500.**2*np.sum((fitted-goals)**2, axis=(-2, -1))
-                +12.**2*np.sum((fitted_ns-inward)**2, axis=(-2, -1)))/len(default)
-        return cost, cosine, sine, translation
-
-    points0 = np.stack([cloud[:, region] for cloud, region in zip(point_cloud, default)], axis=1)[:, None]
-    normals0 = np.stack([cloud[:, region] for cloud, region in zip(normal_cloud, default)], axis=1)[:, None]
-    for first in range(0, target_count, 6):
-        _region_rank_checkpoint(deadline_cpu_s, 'factorized_target_chunk', audit)
-        goals, inward = targets[None, first:first+6], normals[None, first:first+6]
-        default_cost, cosine, sine, translation = fit(points0, normals0, goals, inward)
-        ids, chosen_points, chosen_normals = [], [], []
-        for finger, (points, ns) in enumerate(zip(point_cloud, normal_cloud)):
-            transformed = rotate(points[:, None], cosine, sine)+translation[..., None, :]
-            transformed_ns = rotate(ns[:, None], cosine, sine)
-            residual = (1500.**2*np.sum((transformed-goals[..., finger, None, :])**2, axis=-1)
-                        +12.**2*np.sum((transformed_ns-inward[..., finger, None, :])**2, axis=-1))
-            region = np.argmin(residual, axis=-1)
-            ids.append(region)
-            chosen_points.append(points[np.arange(seed_count)[:, None], region])
-            chosen_normals.append(ns[np.arange(seed_count)[:, None], region])
-        ids = np.stack(ids, axis=-1)
-        cost, _, _, _ = fit(np.stack(chosen_points, axis=-2),
-                            np.stack(chosen_normals, axis=-2), goals, inward)
-        for seed in range(seed_count):
-            for local_target in range(cost.shape[1]):
-                target = first+local_target
-                default_key = (float(default_cost[seed, local_target]), default, seed, target)
-                if default_witness is None or default_key < default_witness:
-                    default_witness = default_key
-                regions = tuple(int(value) for value in ids[seed, local_target])
-                if regions == default or limit == 1:
-                    continue
-                key = (float(cost[seed, local_target]), regions, seed, target)
-                if regions in pool:
-                    proposal['retained_pool_repeat_hits'] += 1
-                    if key < pool[regions]:pool[regions] = key
-                elif len(pool) < limit-1:
-                    pool[regions] = key
-                else:
-                    worst = max(pool, key=pool.get)
-                    if key < pool[worst]:
-                        del pool[worst]
-                        pool[regions] = key
-                        proposal['retained_pool_replacements'] += 1
-        proposal['anchors_processed'] += seed_count*cost.shape[1]
-        retained = [default_witness]+sorted(pool.values())
-        proposal['retained'] = [dict(regions=list(row[1]), score=row[0],
-            seed_index=row[2], target_index=row[3]) for row in retained]
-        _region_rank_checkpoint(deadline_cpu_s, 'factorized_target_chunk_complete', audit)
-    proposal['complete'] = True
-    return [default]+[row[1] for row in sorted(pool.values())]
-
-
-def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None,
-                       proposal_limit=None,deadline_cpu_s=None):
-    """Original rank, optionally restricted by explicit bounded admission."""
-    started = time.process_time()
-    counts = [len(options) for options in robot.patch_options]
-    universe = 1
-    for count in counts:universe *= count
-    audit = dict(context_complete=False, catalog_region_counts=counts,
-                 full_tuple_universe=universe)
-    if proposal_limit is not None and (not isinstance(proposal_limit, int) or proposal_limit < 1):
-        raise ValueError('proposal_limit must be a positive integer')
-    try:
-        ordered, result = _rank_region_tuples(robot,prior,info,regions,axes,heights,
-            task_wrench=task_wrench,proposal_limit=proposal_limit,
-            deadline_cpu_s=deadline_cpu_s,progress=audit)
-    except _RegionRankDeadline as error:
-        return [], dict(audit,status='group_cpu_deadline_before_solver',
-            deadline_stage=error.stage,cpu_s=time.process_time()-started,
-            region_scores=[],no_solver_admitted=True,
-            provisional_records_are_diagnostics_only=True)
-    result.update(audit)
-    if proposal_limit is not None:
-        result.update(all_input_tuples_retained_scope='admitted_pool_only',
-            full_tuple_universe_searched=False,
-            unselected_status='not_selected_by_bounded_proposal_not_proven_unreachable')
-        if not audit.get('region_admission',{}).get('complete',False):
-            result.update(status='bounded_admission_unavailable',
-                original_status=result['status'],region_scores=[],no_solver_admitted=True)
-            return [], result
-    return ordered, result
-
-
-def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None,
-                        proposal_limit=None,deadline_cpu_s=None,progress=None):
+def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None):
     """Return (all ordered tuples,audit);leave contact selection/catalog intact.
 
     Pass the same task_wrench used by axis_contact_candidates (or set
@@ -1063,9 +954,6 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
     import itertools
     from scipy.stats import qmc
     started=time.process_time();r=robot;prior=np.asarray(prior,float)
-    progress={} if progress is None else progress
-    checkpoint=lambda stage:_region_rank_checkpoint(deadline_cpu_s,stage,progress)
-    checkpoint('rank_preparation_start')
     original=[tuple(ids)for ids in regions];count=len(r.finger_names)
     selected=tuple(r.contact_region_indices)
     task=task_wrench if task_wrench is not None else getattr(r,'region_ranking_task_wrench',None)
@@ -1079,13 +967,9 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
     force=-max(task['mass_range_kg'])*(np.array([0.,0.,-9.81])-np.asarray(task.get('lift_acceleration_m_s2',[0.,0.,.5])))
     force_cache=r.__dict__.setdefault('_surface_force_cache',{})
     sets=generate_contact_sets(info,count,axes=axes,heights=heights,max_sets=4096)
-    checkpoint('target_sets_generated')
-    progress['target_sets']=len(sets)
-    progress['target_rows_prepared']=0
     target_rows=[];force_refusals=0
     for si,region in enumerate(sets):
         for perm in itertools.permutations(range(count)):
-            checkpoint('prepare_force_target')
             normals=np.asarray(region['outward_normals'])[list(perm)]
             key=(tuple(normals.round(9).ravel()),friction,caps,task['normal_uncertainty'],tuple(force))
             if key not in force_cache:
@@ -1094,8 +978,6 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
             if not force_cache[key]['possible']:
                 force_refusals+=1;continue
             target_rows.append((np.asarray(region['points'])[list(perm)]+normals*.0003,-normals,si,perm))
-            progress['target_rows_prepared']=len(target_rows)
-    checkpoint('force_targets_complete')
     if not target_rows:return fallback('unchanged_no_task_possible_public_targets')
     targets=np.array([row[0]for row in target_rows]);normals=np.array([row[1]for row in target_rows])
     destination=targets-targets.mean(1)[:,None,:]
@@ -1107,9 +989,7 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
         q=prior.copy();q[active]=r.lo[active]+fractions*spans;configs.append(q)
     poses=[]
     for q in configs:
-        checkpoint('prepare_articulation_fk')
         q=np.clip(q,r.lo+2e-6,r.hi-2e-6);q[r.base_indices]=0.;poses.append(r.fk(q))
-    checkpoint('articulation_fk_complete')
     # Transform every local region once per finger/seed,never rebuild FK per tuple.
     point_cloud=[];normal_cloud=[]
     for link,options in zip(r.contact_links,r.patch_options):
@@ -1117,17 +997,9 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
         local_points=np.array([opt['point']for opt in options]);local_normals=np.array([opt['normal']for opt in options])
         point_cloud.append((np.einsum('sij,rj->sri',rotations,local_points)+translations[:,None,:])@r.upright_reference.T)
         normal_cloud.append(np.einsum('sij,rj->sri',rotations,local_normals)@r.upright_reference.T)
-    progress['context_complete']=True
-    checkpoint('region_clouds_complete')
-    if proposal_limit is not None:
-        original=_factorized_region_proposals(point_cloud,normal_cloud,targets,normals,
-            r.lo[r.base_indices[:3]]+2e-6,r.hi[r.base_indices[:3]]-2e-6,
-            tuple(r.contact_region_indices),limit=proposal_limit,
-            deadline_cpu_s=deadline_cpu_s,audit=progress)
     target_norm=np.sum(destination**2,axis=(1,2));normal_norm=np.sum(normals**2,axis=(1,2))
     records=[]
-    cloud=np.asarray(info['collision_points'],float)
-    public_facets=(cloud,ConvexHull(cloud),_surface_geometry_content_key(cloud))
+    public_facets=(np.asarray(info['collision_points'],float),ConvexHull(np.asarray(info['collision_points'],float)))
     priority_rows={};priority_cache_hits=0;priority_cache_misses=0;priority_errors=[]
     # Reuse the downstream table relation for priority only. Missing/unknown
     # information never proves rejection and never removes a target or region.
@@ -1152,7 +1024,6 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
     except Exception as error:
         table_priority_errors.append(str(error))
     for ids in original:
-        checkpoint('rank_admitted_tuple')
         points=np.stack([point_cloud[i][:,k]for i,k in enumerate(ids)],axis=1)
         ns=np.stack([normal_cloud[i][:,k]for i,k in enumerate(ids)],axis=1)
         center=points.mean(1);centered=points-center[:,None,:]
@@ -1175,7 +1046,6 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
         if radii not in priority_rows:
             evaluations=[]
             for target,inward in zip(targets,normals):
-                checkpoint('admitted_nominal_surface_task')
                 try:
                     evaluation=_finite_surface_task_priority(info,target,-inward,radii,models,task,public_facets)
                     priority_cache_hits+=int(evaluation['cache_hit']);priority_cache_misses+=int(not evaluation['cache_hit'])
@@ -1185,16 +1055,9 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
                     evaluation=dict(task_feasible=False,gravity_feasible=False,classification='priority_unknown_retained',reason=str(error))
                     priority_errors.append(str(error))
                 evaluations.append(evaluation)
-                progress['nominal_surface_task_rows_completed']=len(evaluations)
-                progress['nominal_surface_facet_cache']=dict(
-                    cached_faces=len(_SURFACE_FACET_GEOMETRY_CACHE['facets']),
-                    builds=_SURFACE_FACET_GEOMETRY_CACHE['builds'],
-                    hits=_SURFACE_FACET_GEOMETRY_CACHE['hits'],
-                    scope='cumulative for current exact public RGB geometry; query centers remain per target')
             priority_rows[radii]=evaluations
         evaluations=priority_rows[radii]
         distances=(None,)*count
-        checkpoint('admitted_pad_hull_priority')
         if table_context is not None:
             # Query the original bound method at candidate catalog points;
             # never select_regions or modify the real robot's contact state.
@@ -1208,7 +1071,6 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
         if distances not in table_priorities:
             proofs=[];unknown=[]
             for inward in normals:
-                checkpoint('admitted_table_priority')
                 witnesses=[];unavailable=table_context is None or any(value is None for value in distances)
                 if table_context is not None:
                     try:
@@ -1231,12 +1093,11 @@ def _rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None
         fitted=points[seed]@rotation.T+clamped[seed,ti];fitted_normals=ns[seed]@rotation.T
         errors=np.linalg.norm(fitted-targets[ti],axis=1)
         angles=np.arccos(np.clip(np.sum(fitted_normals*normals[ti],axis=1),-1.,1.))
-        records.append(dict(regions=list(ids),nominal_surface_task=evaluations[ti],table_priority_proven_impossible=bool(proofs[ti]),table_priority_witnesses=proofs[ti],table_priority_unknown_inputs=unknown[ti],table_priority_pad_hull_distances_m=list(distances),score=float(max(0.,cost[seed,ti])),seed_index=int(seed),target_index=int(ti),target_set=int(target_rows[ti][2]),permutation=list(target_rows[ti][3]),ordered_outward_planes=[list(plane) for plane in ordered_surface_planes(targets[ti],normals[ti])],max_position_m=float(errors.max()),normal_error_rad=angles.tolist()))
-    checkpoint('admitted_region_ranking_complete')
+        records.append(dict(regions=list(ids),nominal_surface_task=evaluations[ti],table_priority_proven_impossible=bool(proofs[ti]),table_priority_witnesses=proofs[ti],table_priority_unknown_inputs=unknown[ti],table_priority_pad_hull_distances_m=list(distances),score=float(max(0.,cost[seed,ti])),seed_index=int(seed),target_index=int(ti),target_set=int(target_rows[ti][2]),surface_assignment_id=sets[target_rows[ti][2]]['surface_assignment_id'],surface_start_id=sets[target_rows[ti][2]]['surface_start_id'],permutation=list(target_rows[ti][3]),ordered_outward_planes=[list(plane) for plane in ordered_surface_planes(targets[ti],normals[ti])],max_position_m=float(errors.max()),normal_error_rad=angles.tolist()))
     ranked=sorted(records,key=lambda row:(row['table_priority_proven_impossible'],not row['nominal_surface_task']['task_feasible'],row['score']));ordered=[tuple(row['regions'])for row in ranked]
     assert len(ordered)==len(original)and sorted(ordered)==sorted(original)
     assert tuple(r.contact_region_indices)==selected
-    return ordered,dict(status='ranked',priority_rule='existing table-proven impossible last; conditional nominal public task pass first within each class; original FK cost next; unknown retained; no new rejection',table_priority_context_available=table_context is not None,table_priority_errors=table_priority_errors,all_existing_table_impossible_targets_retained_for_downstream=True,nominal_surface_task_cache_hits=priority_cache_hits,nominal_surface_task_cache_misses=priority_cache_misses,nominal_surface_task_cache_size=len(_SURFACE_TASK_PRIORITY_CACHE),nominal_surface_task_priority_errors=priority_errors,all_existing_force_surviving_targets_retained=True,nominal_surface_task_target_count_per_radius=len(target_rows),nominal_surface_task_radius_variants=len(priority_rows),approximation='fixed catalog center,upright+yaw;nominal finite RGB footprint task priority has no q/effort/covariance;necessary table/FCL/path and final robust task remain downstream',count=count,tuple_count=len(original),seed_count=len(configs),target_sets=len(sets),target_permutations=len(target_rows),existing_force_necessary_refusals=force_refusals,region_scores=ranked,cpu_s=time.process_time()-started,all_input_tuples_retained=True,normalization='mean1500² position error²+12² unit-normal chord error²',seed_boundary_rule='same131 bank clipped legal before fitting yaw;uniform/Sobol definitions unchanged')
+    return ordered,dict(status='ranked',priority_rule='existing table-proven impossible last; conditional nominal public task pass first within each class; original FK cost next; unknown retained; no new rejection',table_priority_context_available=table_context is not None,table_priority_errors=table_priority_errors,all_existing_table_impossible_targets_retained_for_downstream=True,nominal_surface_task_cache_hits=priority_cache_hits,nominal_surface_task_cache_misses=priority_cache_misses,nominal_surface_task_cache_size=len(_SURFACE_TASK_PRIORITY_CACHE),nominal_surface_task_priority_errors=priority_errors,all_existing_force_surviving_targets_retained=True,nominal_surface_task_target_count_per_radius=len(target_rows),nominal_surface_task_radius_variants=len(priority_rows),approximation='fixed catalog center,upright+yaw;nominal finite RGB footprint task priority has no q/effort/covariance;necessary table/FCL/path and final robust task remain downstream',count=count,tuple_count=len(original),seed_count=len(configs),target_sets=len(sets),catalog_allocation=sets[0]['provenance']['catalog_allocation'] if sets else None,target_permutations=len(target_rows),existing_force_necessary_refusals=force_refusals,region_scores=ranked,cpu_s=time.process_time()-started,all_input_tuples_retained=True,normalization='mean1500² position error²+12² unit-normal chord error²',seed_boundary_rule='same131 bank clipped legal before fitting yaw;uniform/Sobol definitions unchanged')
 
 
 def _compile_source_rank_cell(vertices):
@@ -1268,20 +1129,7 @@ def _closest_source_rank_cell(cell, query):
 
 
 def source_domain_corrected_rank(robot, prior, info, records, axes, heights,
-                                 *, grasp_seed, deadline_cpu_s=None):
-    started = time.process_time()
-    audit = dict(input_records=len(records), processed_records=0)
-    try:
-        return _source_domain_corrected_rank(robot, prior, info, records, axes,
-            heights, grasp_seed=grasp_seed,deadline_cpu_s=deadline_cpu_s,progress=audit)
-    except _RegionRankDeadline as error:
-        return [], dict(audit,status='group_cpu_deadline_before_solver',
-            deadline_stage=error.stage,cpu_s=time.process_time()-started,
-            no_solver_admitted=True,provisional_records_are_diagnostics_only=True)
-
-
-def _source_domain_corrected_rank(robot, prior, info, records, axes, heights,
-                                  *, grasp_seed,deadline_cpu_s=None,progress=None):
+                                 *, grasp_seed):
     """Return all original rank records, reordered by one source-domain refit.
 
     Call after rank_region_tuples and before creating its region hints.
@@ -1295,9 +1143,6 @@ def _source_domain_corrected_rank(robot, prior, info, records, axes, heights,
     import time
     from scipy.stats import qmc
     started = time.process_time()
-    progress={} if progress is None else progress
-    checkpoint=lambda stage:_region_rank_checkpoint(deadline_cpu_s,stage,progress)
-    checkpoint('source_rank_start')
     proxy = copy(robot)
     proxy._planar_contact_center_cache = robot.__dict__.setdefault("_planar_contact_center_cache", {})
     proxy.description = copy(robot.description)
@@ -1317,18 +1162,19 @@ def _source_domain_corrected_rank(robot, prior, info, records, axes, heights,
         bank.append(q)
     sets = generate_contact_sets(info, len(group), axes=axes,
                                                  heights=heights, max_sets=4096)
-    checkpoint('source_rank_sets_ready')
     cache = {}
     result = []
     max_reproduction_error = 0.
     source_domain_cpu = 0.
     for old_rank, original in enumerate(records):
-        checkpoint('source_rank_record')
         row = dict(original)
         proxy.select_pair(group, row['regions'])
         local_before = proxy.contact_points.copy()
         normal_before = proxy.contact_normals.copy()
         surface = sets[row['target_set']]
+        for identity in ('surface_assignment_id', 'surface_start_id'):
+            if identity in row:
+                assert row[identity] == surface[identity], 'RGB catalog identity changed during source refit'
         order = row['permutation']
         outward = np.asarray(surface['outward_normals'])[order]
         targets = np.asarray(surface['points'])[order]+outward*.0003
@@ -1346,14 +1192,12 @@ def _source_domain_corrected_rank(robot, prior, info, records, axes, heights,
                 proxy.selected_patches, targets, local_before):
             key = (patch['link'], patch['surface_link'], tuple(patch['point_m']),
                    tuple(patch['outward_normal']), patch['support_radius_m'])
-            checkpoint('source_rank_domain')
             if key not in cache:
                 domain_start = time.process_time()
                 domain = planar_contact_cells(proxy, patch)
                 cells = domain['cells_local_m'] or [fallback[None, :]]
                 cache[key] = (domain, [_compile_source_rank_cell(cell) for cell in cells])
                 source_domain_cpu += time.process_time()-domain_start
-            checkpoint('source_rank_domain_ready')
             domain, cells = cache[key]
             query = poses[link][:3, :3].T @ (target-poses[link][:3, 3])
             candidates = np.array([_closest_source_rank_cell(cell, query) for cell in cells])
@@ -1382,10 +1226,8 @@ def _source_domain_corrected_rank(robot, prior, info, records, axes, heights,
                 normal_error_rad=np.arccos(np.clip(np.sum(newnormals*inward, axis=1), -1., 1.)).tolist(),
                 target_points_world_m=targets.tolist(), inward_world=inward.tolist(),
                 articulation_unchanged=True, source_normals_unchanged=True,
-                scope='one projection/refit at existing best static seed/target; ranking producer stores initializer; consumer must exactly bind current region and ordered planes; no endpoint/path or feasibility certificate'))
+                scope='one projection/refit at existing best static seed/target; ranking metadata only; initializer not dispatched or inserted into IK bank; no endpoint/path certificate'))
         result.append(row)
-        progress['processed_records']=len(result)
-        checkpoint('source_rank_record_complete')
     result.sort(key=lambda r:(r['table_priority_proven_impossible'],
                               not r['nominal_surface_task']['task_feasible'], r['score']))
     for rank, row in enumerate(result):
@@ -1402,144 +1244,3 @@ def _source_domain_corrected_rank(robot, prior, info, records, axes, heights,
         original_table_and_task_priority_classes_retained=True,
         search_scope='one existing best static seed/target per region; one projection and one common palm refit',
         new_optimizer_calls=0, new_gates=0, simulation_started=False)
-
-
-CONVEX_COORDINATE_EPS = 1e-8
-
-
-def normalized_convex_point(vertices, coordinates):
-    """Decode raw coordinates bounded by [CONVEX_COORDINATE_EPS, 1].
-
-    The lower bound is dimensionless numerical conditioning, not clearance.
-    No extra floor is added by the decoder. Feasible one-sided coordinate
-    changes retain nonzero point derivatives at the numerical lower bound.
-    """
-    vertices = np.asarray(vertices, float)
-    coordinates = np.asarray(coordinates, float)
-    if (vertices.ndim != 2 or vertices.shape[1] != 3 or not len(vertices)
-            or coordinates.shape != (len(vertices),)
-            or not np.all(np.isfinite(vertices))
-            or not np.all(np.isfinite(coordinates))
-            or np.any(coordinates < CONVEX_COORDINATE_EPS)
-            or np.any(coordinates > 1.)):
-        raise ValueError('Finite convex vertices and coordinates in [1e-8, 1] required')
-    weights = coordinates/coordinates.sum()
-    # Center first so a small domain translated far from zero keeps precision.
-    center = vertices.mean(axis=0)
-    return center+weights@(vertices-center)
-
-
-def convex_nearest_weights(vertices, query):
-    """Return bounded raw coordinates for the nearest existing convex point.
-
-    Vertex order is unrestricted; duplicates and interior vertices are allowed.
-    A centroid fan gives barycentric weights for planar polygon interiors; line
-    and singleton domains are supported. The returned initializer is
-    (1 - n*eps)*barycentric + eps, with eps=CONVEX_COORDINATE_EPS. It sums to one
-    and satisfies the decoder bounds. Its displacement from the exact nearest
-    point is bounded by n*eps times the domain diameter upper bound.
-
-    This changes the optimization coordinates as well as their initialization;
-    any existing coordinate regularizer consequently changes its center/units.
-    No FK, LP, IK or physical gate occurs. The existing source cell/facet and
-    its support radius remain the caller's responsibility.
-    """
-    vertices = np.asarray(vertices, float)
-    query = np.asarray(query, float)
-    if (vertices.ndim != 2 or vertices.shape[1] != 3 or not len(vertices)
-            or query.shape != (3,) or not np.all(np.isfinite(vertices))
-            or not np.all(np.isfinite(query))):
-        raise ValueError('Finite Nx3 convex-domain vertices and one query required')
-    count = len(vertices)
-    if count*CONVEX_COORDINATE_EPS >= 1.:
-        raise ValueError('Too many vertices for bounded convex coordinates')
-    center = vertices.mean(axis=0)
-    local = vertices-center
-    _, singular, basis = np.linalg.svd(local, full_matrices=False)
-    numerical = 64*np.finfo(float).eps
-    if count == 1 or singular[0] == 0.:
-        weights = np.full(count, 1./count)
-        kind = 'singleton'
-    elif len(singular) < 2 or singular[1] <= numerical*singular[0]:
-        line = local@basis[0]
-        first, last = int(np.argmin(line)), int(np.argmax(line))
-        fraction = np.clip(((query-center)@basis[0]-line[first])
-                           /(line[last]-line[first]), 0., 1.)
-        weights = np.zeros(count)
-        weights[first], weights[last] = 1-fraction, fraction
-        kind = 'segment'
-    else:
-        polygon = local@basis[:2].T
-        point = (query-center)@basis[:2].T
-        # Normalize for unit-independent hull orientation tests.
-        scale = float(np.max(np.ptp(polygon, axis=0)))
-        uv = polygon/scale
-        target = point/scale
-        order = np.lexsort((uv[:, 1], uv[:, 0]))
-        unique = [int(order[0])]
-        for index in order[1:]:
-            if not np.array_equal(uv[index], uv[unique[-1]]):
-                unique.append(int(index))
-        def turn(a, b, c):
-            ab, ac = uv[b]-uv[a], uv[c]-uv[a]
-            return ab[0]*ac[1]-ab[1]*ac[0]
-        lower, upper = [], []
-        for index in unique:
-            while len(lower) >= 2 and turn(lower[-2], lower[-1], index) <= 0.:
-                lower.pop()
-            lower.append(index)
-        for index in reversed(unique):
-            while len(upper) >= 2 and turn(upper[-2], upper[-1], index) <= 0.:
-                upper.pop()
-            upper.append(index)
-        hull = lower[:-1]+upper[:-1]
-        if len(hull) < 3:
-            raise ValueError('Planar convex domain lost numerical rank')
-        ring = uv[hull]
-        edges = np.roll(ring, -1, axis=0)-ring
-        delta = target-ring
-        signed = edges[:, 0]*delta[:, 1]-edges[:, 1]*delta[:, 0]
-        weights = None
-        if np.all(signed >= -numerical):
-            for offset, first in enumerate(hull):
-                last = hull[(offset+1) % len(hull)]
-                matrix = np.stack([uv[first], uv[last]], axis=1)
-                if abs(np.linalg.det(matrix)) <= numerical:
-                    continue
-                beta, gamma = np.linalg.solve(matrix, target)
-                alpha = 1-beta-gamma
-                if min(alpha, beta, gamma) >= -numerical:
-                    weights = np.full(count, max(0., alpha)/count)
-                    weights[first] += max(0., beta)
-                    weights[last] += max(0., gamma)
-                    weights /= weights.sum()
-                    break
-        if weights is None:
-            fractions = np.clip(np.sum(delta*edges, axis=1)
-                                /np.sum(edges**2, axis=1), 0., 1.)
-            candidates = ring+fractions[:, None]*edges
-            edge = int(np.argmin(np.sum((candidates-target)**2, axis=1)))
-            weights = np.zeros(count)
-            weights[hull[edge]] = 1-fractions[edge]
-            weights[hull[(edge+1) % len(hull)]] = fractions[edge]
-        kind = 'planar_convex_polygon'
-    projected = center+weights@local
-    barycentric = weights.copy()
-    coordinates = (1-count*CONVEX_COORDINATE_EPS)*barycentric+CONVEX_COORDINATE_EPS
-    reconstructed = normalized_convex_point(vertices, coordinates)
-    diameter_bound = float(np.linalg.norm(np.ptp(vertices, axis=0)))
-    floor_fraction = count*CONVEX_COORDINATE_EPS
-    audit = dict(method='closest convex point; centroid-fan nonnegative coordinates',
-        domain_kind=kind, vertex_count=count, query_m=query.tolist(),
-        projected_point_m=projected.tolist(), reconstructed_point_m=reconstructed.tolist(),
-        projection_distance_m=float(np.linalg.norm(query-projected)),
-        encoding_displacement_m=float(np.linalg.norm(reconstructed-projected)),
-        initialization_floor_displacement_bound_m=floor_fraction*diameter_bound,
-        barycentric_weights=barycentric.tolist(),
-        coordinate_epsilon=CONVEX_COORDINATE_EPS,
-        initializer='(1 - n*eps)*barycentric + eps',
-        decoder='coordinate / sum(coordinate)',
-        coordinate_bounds=[CONVEX_COORDINATE_EPS, 1.],
-        factor='bounded normalized convex optimization coordinates and initializer',
-        existing_coordinate_regularizer_changes_coordinates_and_center=True)
-    return coordinates, audit
