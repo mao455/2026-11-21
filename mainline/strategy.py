@@ -3723,18 +3723,25 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
                 for row in corrected:
                     # Keep the original contact-only score and bound hint q.
                     # This changes priority only; it adds no tuple or gate.
-                    body=body_penetration(body_priority_context,
-                        robot.fk(np.asarray(row['source_domain_one_step']['q_initializer'],float)),report=True)
+                    poses=robot.fk(np.asarray(row['source_domain_one_step']['q_initializer'],float))
+                    body=body_penetration(body_priority_context,poses,report=True)
+                    table_clearance=float(robot.vertices(poses)[:,2].min()-checker.table_z)
+                    table_residual=5000.*min(table_clearance-.001,0.)
+                    table_cost=.5*table_residual**2
                     row['source_domain_contact_only_rank']=row['source_domain_new_rank']
                     row['source_domain_body_priority']={key:body[key] for key in (
                         'depth_m','scipy_cost','squared_residual','weight_per_m','witness',
                         'total_sample_count','spacing_m','envelope_source')}
                     row['source_domain_contact_body_score']=row['score']+body['scipy_cost']
+                    row['source_domain_table_priority']=dict(clearance_m=table_clearance,
+                        residual=table_residual,scipy_cost=table_cost,weight_per_m=5000.,margin_m=.001,
+                        source='same single worst full collision-mesh table residual as surface IK; priority only')
+                    row['source_domain_contact_body_table_score']=row['source_domain_contact_body_score']+table_cost
                 corrected.sort(key=lambda row:(row['table_priority_proven_impossible'],
-                    not row['nominal_surface_task']['task_feasible'],row['source_domain_contact_body_score']))
+                    not row['nominal_surface_task']['task_feasible'],row['source_domain_contact_body_table_score']))
                 for rank,row in enumerate(corrected):row['source_domain_new_rank']=rank
                 source_domain['body_priority']=dict(
-                    rule='original table/task classes; contact score plus half squared SAME whole-hand sampled penetration residual',
+                    rule='original table/task classes; contact score plus SAME whole-hand sampled body and single worst full-mesh table costs',
                     tuple_count=len(corrected),all_original_tuples_and_hint_q_retained=True,
                     weight_per_m=body_priority_context['weight_per_m'],
                     preparation_cpu_s=body_priority_context['preparation_cpu_s'],
@@ -3742,7 +3749,7 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
                     scope='fixed saved source-hint q; priority only; sampled zero is not exact clearance, path or physical carrying')
                 regions=[tuple(row['regions']) for row in corrected]
                 region_priority.update(region_scores=corrected,source_domain_correction=source_domain,
-                    approximation='one finite-source projection and common upright+yaw palm refit at each retained static seed/target, then the same whole-hand sampled body cost; original table/task priority classes; ranking only, original IK bank and hard guards unchanged')
+                    approximation='one finite-source projection and common upright+yaw palm refit at each retained static seed/target, then the same whole-hand sampled body and worst full-mesh table costs; original table/task priority classes; ranking only, original IK bank and hard guards unchanged')
                 if source_domain.get('no_solver_admitted'):
                     region_priority.update(status=source_domain['status'],no_solver_admitted=True)
             region_hints={tuple(row['regions']):row for row in region_priority.get('region_scores',[])}
