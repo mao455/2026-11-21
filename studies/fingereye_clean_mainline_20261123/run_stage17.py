@@ -1,0 +1,116 @@
+"""Formal H/S v2 entry; submits mainline/strategy.py through the existing controller interface."""
+import argparse
+import ast
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+def controller_settings(path):
+    """Read effective literal settings from the submitted strategy."""
+    result = {}
+    for node in ast.parse(Path(path).read_text()).body:
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name) and target.id in ('S11_CONFIG', 'S5_ATTEMPTS', 'S9_EARLY_SETTLE', 'S17_COLOR_MODE', 'S15_PRELOAD'):
+                    result[target.id] = ast.literal_eval(node.value)
+    return result
+
+HERE = Path(__file__).resolve().parent
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--color-mode',choices=('hs',),default='hs')
+    p.add_argument('--light-multiplier',type=float,default=1.)
+    p.add_argument('--evaluation-mode',choices=('inline','deferred'),default='deferred')
+    p.add_argument('--session', required=True, type=Path)
+    p.add_argument('--case-file', required=True, type=Path)
+    p.add_argument('--asset-root', type=Path)
+    p.add_argument('--robot-urdf', type=Path, help='read-only source hand URDF; same task and strategy for every hand')
+    p.add_argument('--registry-manifest', type=Path)
+    p.add_argument('--controller', type=Path)
+    p.add_argument('--profile', choices=('fast',), default='fast')
+    p.add_argument('--fingers', choices=('auto','two','three'), default='auto')
+    p.add_argument('--max-attempts', type=int, choices=(3,), default=3)
+    p.add_argument('--preload', action=argparse.BooleanOptionalAction, default=False)
+    p.add_argument('--mode', choices=('minimal','full'), default='minimal')
+    p.add_argument('--phase', choices=('explore','heldout'), default='explore')
+    a=p.parse_args()
+    if not .1 <= a.light_multiplier <= 3.:p.error('light multiplier outside .1..3')
+    os.environ['FINGEREYE_LIGHT_SCALE']=str(a.light_multiplier)
+    if a.preload:
+        p.error('formal H/S v2 keeps recovery preload disabled')
+    if a.asset_root:
+        os.environ['FINGEREYE_ASSET_ROOT']=str(a.asset_root.resolve())
+    if a.registry_manifest:
+        os.environ['FINGEREYE_OBJECT_MANIFEST']=str(a.registry_manifest.resolve())
+    from stage15_runtime import asset_root, external_objects
+    selected_root=asset_root()
+    external_objects(selected_root)  # fail before expensive launch on changed assets
+    if (a.session/'episode').exists():
+        p.error('immutable episode exists; select a new session')
+    a.session.mkdir(parents=True, exist_ok=True)
+    hand = None
+    from cross_hand_runtime import prepare
+    hand = prepare(a.robot_urdf or selected_root/'assets/xhand3camFE_left/planning/xhand3camFE_left_floating.urdf', a.session/'hand_model')
+    hand['contact_mode']=a.fingers
+    (a.session/'hand_model/description.json').write_text(json.dumps(hand,indent=2)+'\n')
+    controller=a.controller.resolve() if a.controller else HERE/'mainline/strategy.py'
+    sha=hashlib.sha256(controller.read_bytes()).hexdigest()
+    case=json.loads(a.case_file.read_text());case.pop('name',None)
+    # Paired archived public RGB can be relative to its case file for portability.
+    reference=case.get('initial_overhead_reference')
+    if reference:
+        for key in ('rgb_path','metadata_path'):
+            if not Path(reference[key]).is_absolute():
+                reference[key]=str((a.case_file.parent/reference[key]).resolve())
+    geometry_reference=case.get('initial_rgb_geometry_reference')
+    if geometry_reference and not Path(geometry_reference['path']).is_absolute():
+        geometry_reference['path']=str((a.case_file.parent/geometry_reference['path']).resolve())
+    freeze=controller.parent/'freeze.json'
+    if freeze.exists():
+        manifest=json.loads(freeze.read_text())
+        if manifest['controller_sha256']!=sha:
+            raise RuntimeError('frozen controller hash mismatch')
+        for name,digest in manifest.get('runtime_sha256',{}).items():
+            path=HERE.parents[1]/name
+            if hashlib.sha256(path.read_bytes()).hexdigest()!=digest:
+                raise RuntimeError('frozen runtime changed: '+name)
+        for name,digest in manifest.get('asset_sha256',{}).items():
+            if hashlib.sha256((selected_root/name).read_bytes()).hexdigest()!=digest:
+                raise RuntimeError('frozen static asset changed: '+name)
+        if a.phase=='heldout' and case not in manifest['acceptance_cases']:
+            raise RuntimeError('case absent from preregistered freeze')
+    elif a.phase=='heldout':
+        raise RuntimeError('heldout requires a frozen controller manifest')
+    settings=controller_settings(controller)
+    if (settings.get('S17_COLOR_MODE') != 'hs' or settings.get('S5_ATTEMPTS') != 3
+            or settings.get('S15_PRELOAD') is not False
+            or settings.get('S11_CONFIG', {}).get('fingers') != 'auto'):
+        raise RuntimeError('submitted controller differs from formal H/S v2 configuration')
+    effective={}
+    for node in ast.parse(controller.read_text()).body:
+        if isinstance(node,ast.Assign):
+            for target in node.targets:
+                if isinstance(target,ast.Name) and target.id in ('S15_PRELOAD','S15_LIGHT_FIRST'):
+                    effective[target.id]=ast.literal_eval(node.value)
+    cfg=json.loads((HERE/'stage9_config.json').read_text())
+    assert (cfg['physics_hz'],cfg['control_hz'],cfg['camera_fps'])==(120,20,30)
+    cfg.update(case=case,controller_sha256=sha,selected_control_settings=dict(settings.get('S11_CONFIG',{}),fingers=a.fingers),
+        max_attempts=settings.get('S5_ATTEMPTS'),recording_mode=a.mode,
+        asset_root=str(selected_root),protocol='lift30_no_drop_v1',
+        hand_description=hand,entry='run_stage17.py',controller_source=str(controller),light_multiplier=a.light_multiplier,color_mode_requested=a.color_mode,evaluation_mode=a.evaluation_mode,preload_requested=a.preload,effective_stage15_settings=effective,phase=a.phase)
+    (a.session/'stage9_configuration.json').write_text(json.dumps(cfg,indent=2)+'\n')
+    (a.session/'frozen_controller.json').write_text(json.dumps(dict(sha256=sha))+'\n')
+    from stage14_resources import admission_slot
+    with admission_slot(a.session):
+        return subprocess.call([sys.executable,str(HERE/'stage16_episode.py'),'--session',str(a.session.resolve()),
+            '--name','episode','--max-episodes','1','--phase',a.phase,
+            '--controller',str(controller),'--case-json',json.dumps(case)],env=dict(os.environ,FINGEREYE_HAND_DESCRIPTION=str((a.session/'hand_model/description.json').resolve()),S9_MODE=a.mode,S16_EVALUATION_MODE=a.evaluation_mode))
+
+
+if __name__=='__main__':
+    raise SystemExit(main())

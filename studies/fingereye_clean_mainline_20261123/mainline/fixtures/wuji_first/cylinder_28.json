@@ -1,0 +1,10 @@
+{
+  "object_id": "d107_cylinder_28",
+  "dx": 0.004,
+  "dy": -0.003,
+  "yaw": 0.15,
+  "mass_kg": 0.007,
+  "friction": 0.82,
+  "noise_seed": 21071,
+  "rgb_noise_std": 0
+}

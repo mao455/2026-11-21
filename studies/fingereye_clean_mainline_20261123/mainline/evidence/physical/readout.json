@@ -1,0 +1,428 @@
+{
+  "episodes": 2,
+  "valid": 2,
+  "counts": {
+    "success": 2,
+    "legacy_strict_success": 1,
+    "first_grasp_success": 1,
+    "first_failed_entered_recovery": 1,
+    "subsequent_grasp_dispatched": 1,
+    "recovered_after_first_failure": 1,
+    "geometry_passed": 2,
+    "final_single_lift_passed": 2
+  },
+  "success_wilson95": [
+    0.34238022750665303,
+    1.0
+  ],
+  "uncertainty_note": "Descriptive small-sample interval only. Paired noise conditions and repeated objects are dependent; no population generalization claim.",
+  "total_actual_grasps": 3,
+  "evaluator_sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+  "rows": [
+    {
+      "episode": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode",
+      "execution_valid": true,
+      "controller_sha256": "20016ea28e2d164bddbf957c5ce49d4a6a6b08785f5d6849aa345e5df81a8edd",
+      "case": {
+        "object_id": "abc_311740",
+        "dx": -0.0008,
+        "dy": 0.0012,
+        "yaw": -0.2,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 16111,
+        "rgb_noise_std": 0
+      },
+      "success": true,
+      "legacy_strict_success": false,
+      "first_grasp_success": true,
+      "actual_grasps": 1,
+      "first_failed_entered_recovery": false,
+      "recovery_actions_dispatched": 0,
+      "subsequent_grasp_dispatched": false,
+      "recovered_after_first_failure": false,
+      "geometry_passed": true,
+      "first_invalid_step": null,
+      "final_single_lift_passed": true,
+      "failure": "success",
+      "physical_steps": 4164,
+      "physical_s": 34.7,
+      "host_elapsed_s": 100.44973204704002,
+      "attempts": [
+        {
+          "actual_grasps": 1,
+          "decision_step": 4164,
+          "decision": {
+            "action": "stop_unknown",
+            "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+            "support_state": "unknown",
+            "attempt": 1,
+            "max_attempts": 3,
+            "phase": "final",
+            "feedback": true,
+            "motor_contact_hypothesis": null,
+            "motor_contact_used": false,
+            "carrying_evidence": false,
+            "grounded_evidence": false,
+            "persistent_image_motion_risk": false,
+            "repeated_lift_image_risk": false,
+            "hold_consistent": false,
+            "use_active_lift_risk": true,
+            "remaining_steps": 19836,
+            "remaining_wall_s": 2246.8261045068502,
+            "private_success_certified": false,
+            "native_object_omega_observable": false
+          },
+          "terminal_window_lift_passed": true,
+          "prefix_official_success": true,
+          "prefix_geometry_passed": true,
+          "geometry_since_previous_decision": true,
+          "lift_m": 0.03127094155206578,
+          "clearance_m": 0.03125099158216906,
+          "hold_duration_s": 2.0,
+          "note": "Terminal 2 s at decision time, with original initial height; whole-prefix geometry retained."
+        }
+      ],
+      "compact_events": [
+        {
+          "event": "grasp_dispatched",
+          "step": 1554,
+          "frame_id": 388,
+          "actual_grasps": 1,
+          "branch": "initial",
+          "recovery_id": null,
+          "candidate_id": "contacts2-55e1a695107d4c0e3df7"
+        }
+      ],
+      "physics": {
+        "success": true,
+        "steps": 4164,
+        "required_hold_steps": 240,
+        "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+        "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+        "geometry_passed": true,
+        "first_invalid_step": null,
+        "hold_physics_passed": true,
+        "hold_min_table_clearance_m": 0.03125099158216906,
+        "hold_min_lift_m": 0.03127094155206578,
+        "hold_relative_translation_drift_m": 1.960420347899833e-06,
+        "hold_relative_rotation_drift_rad": 7.075187932839272e-05,
+        "hold_max_linear_speed_m_s": 0.004139460442836908,
+        "hold_max_angular_speed_rad_s": 1.730267566710385,
+        "hold_min_contact_force_n": 0.4637923240661621,
+        "commanded_lift_m": 0.05314876139163971,
+        "protocol_id": "lift30_no_drop_v1",
+        "target_lift_m": 0.03,
+        "lift_tolerance_m": 0.002,
+        "minimum_actual_lift_m": 0.027999999999999997,
+        "minimum_commanded_lift_m": 0.0295,
+        "legacy_strict": {
+          "success": false,
+          "steps": 4164,
+          "required_hold_steps": 240,
+          "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+          "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+          "geometry_passed": true,
+          "first_invalid_step": null,
+          "hold_physics_passed": false,
+          "hold_min_table_clearance_m": 0.03125099158216906,
+          "hold_min_lift_m": 0.03127094155206578,
+          "hold_relative_translation_drift_m": 1.960420347899833e-06,
+          "hold_relative_rotation_drift_rad": 7.075187932839272e-05,
+          "hold_max_linear_speed_m_s": 0.004139460442836908,
+          "hold_max_angular_speed_rad_s": 1.730267566710385,
+          "hold_min_contact_force_n": 0.4637923240661621,
+          "commanded_lift_m": 0.05314876139163971
+        },
+        "continuous_physics_evidence": true,
+        "hold_checks": {
+          "actual_lift": true,
+          "table_clearance": true,
+          "completed_commanded_lift": true
+        },
+        "hold_start_step": 3924,
+        "hold_end_step": 4163,
+        "hold_start_time_s": 32.7,
+        "hold_end_time_s": 34.7,
+        "hold_duration_s": 2.0
+      },
+      "raw_evidence": {
+        "result.json": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode/result.json",
+          "sha256": "c7a8cb8d01d82bd89f342f4eafcc27e9bb9c9d1b0689711dcd06746a0d160adf"
+        },
+        "scene.json": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode/scene.json",
+          "sha256": "120a6f9771f5505e4d712b90879632a8d084164fe2f592644a77e3443709b6ac"
+        },
+        "steps.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode/steps.jsonl",
+          "sha256": "0bda32c8ffcd954a84cacfc36b6ee219eab53efac448658068c135542ce8dcbd"
+        },
+        "agent_trace.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode/agent_trace.jsonl",
+          "sha256": "418070121874c7067624cfa3cd81c9b5d246d5a62d27704aa068a1740a7603b4"
+        },
+        "public_responses.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode/public_responses.jsonl",
+          "sha256": "1b911f7cc7033bae7b604013c9bd6fd6be40cd7e8af9c35ed51b6a43c8f390a7"
+        },
+        "image_manifest.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode/image_manifest.jsonl",
+          "sha256": "72858062e3322f0697eac194d283e009b35408b7b8039eacdb9e7df4c04ca982"
+        },
+        "all_hand_object_contacts.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode/all_hand_object_contacts.jsonl",
+          "sha256": "d4161453d63034b6cdc7383595352d3365d7cc77dd8e23486e123d15f48d9f07"
+        }
+      },
+      "videos": []
+    },
+    {
+      "episode": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode",
+      "execution_valid": true,
+      "controller_sha256": "20016ea28e2d164bddbf957c5ce49d4a6a6b08785f5d6849aa345e5df81a8edd",
+      "case": {
+        "object_id": "abc_176242",
+        "dx": 0.001,
+        "dy": -0.001,
+        "yaw": 0.2,
+        "mass_kg": 0.007,
+        "friction": 0.82,
+        "noise_seed": 15002,
+        "rgb_noise_std": 0
+      },
+      "success": true,
+      "legacy_strict_success": true,
+      "first_grasp_success": false,
+      "actual_grasps": 2,
+      "first_failed_entered_recovery": true,
+      "recovery_actions_dispatched": 1,
+      "subsequent_grasp_dispatched": true,
+      "recovered_after_first_failure": true,
+      "geometry_passed": true,
+      "first_invalid_step": null,
+      "final_single_lift_passed": true,
+      "failure": "success",
+      "physical_steps": 9396,
+      "physical_s": 78.3,
+      "host_elapsed_s": 227.21749964589253,
+      "attempts": [
+        {
+          "actual_grasps": 1,
+          "decision_step": 3450,
+          "decision": {
+            "action": "retry",
+            "reason": "observed_failure",
+            "support_state": "failure_evidence",
+            "attempt": 1,
+            "max_attempts": 3,
+            "phase": "final",
+            "feedback": true,
+            "motor_contact_hypothesis": null,
+            "motor_contact_used": false,
+            "carrying_evidence": false,
+            "grounded_evidence": true,
+            "persistent_image_motion_risk": false,
+            "repeated_lift_image_risk": false,
+            "hold_consistent": true,
+            "use_active_lift_risk": true,
+            "remaining_steps": 20550,
+            "remaining_wall_s": 2257.230328135658,
+            "private_success_certified": false,
+            "native_object_omega_observable": false
+          },
+          "terminal_window_lift_passed": false,
+          "prefix_official_success": false,
+          "prefix_geometry_passed": true,
+          "geometry_since_previous_decision": true,
+          "lift_m": -0.00010000558540923521,
+          "clearance_m": -2.8058253926211612e-08,
+          "hold_duration_s": 2.0,
+          "note": "Terminal 2 s at decision time, with original initial height; whole-prefix geometry retained."
+        },
+        {
+          "actual_grasps": 2,
+          "decision_step": 9396,
+          "decision": {
+            "action": "stop_unknown",
+            "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+            "support_state": "unknown",
+            "attempt": 2,
+            "max_attempts": 3,
+            "phase": "final",
+            "feedback": true,
+            "motor_contact_hypothesis": null,
+            "motor_contact_used": false,
+            "carrying_evidence": false,
+            "grounded_evidence": false,
+            "persistent_image_motion_risk": false,
+            "repeated_lift_image_risk": false,
+            "hold_consistent": false,
+            "use_active_lift_risk": true,
+            "remaining_steps": 14604,
+            "remaining_wall_s": 2152.814191202633,
+            "private_success_certified": false,
+            "native_object_omega_observable": false
+          },
+          "terminal_window_lift_passed": true,
+          "prefix_official_success": true,
+          "prefix_geometry_passed": true,
+          "geometry_since_previous_decision": true,
+          "lift_m": 0.032346503641747404,
+          "clearance_m": 0.027715399225361266,
+          "hold_duration_s": 2.0,
+          "note": "Terminal 2 s at decision time, with original initial height; whole-prefix geometry retained."
+        }
+      ],
+      "compact_events": [
+        {
+          "event": "grasp_dispatched",
+          "step": 1530,
+          "frame_id": 382,
+          "actual_grasps": 1,
+          "branch": "initial",
+          "recovery_id": null,
+          "candidate_id": "contacts2-4b73e30d8024627f8a53"
+        },
+        {
+          "event": "considered",
+          "step": 3474,
+          "frame_id": 868,
+          "actual_grasps": 1,
+          "branch": "preload",
+          "reason": "preload_disabled_for_paired_control",
+          "candidate_id": "contacts2-4b73e30d8024627f8a53"
+        },
+        {
+          "event": "considered",
+          "step": 3474,
+          "frame_id": 868,
+          "actual_grasps": 1,
+          "branch": "local_pose",
+          "reason": "fresh_RGB_and_local_path_required",
+          "candidate_id": "contacts2-4b73e30d8024627f8a53"
+        },
+        {
+          "event": "guard_refused",
+          "step": 4194,
+          "frame_id": 1048,
+          "actual_grasps": 1,
+          "branch": "planning",
+          "reason": "actual_to_legal_connection",
+          "candidate_id": "contacts2-4b73e30d8024627f8a53"
+        },
+        {
+          "event": "guard_refused",
+          "step": 4242,
+          "frame_id": 1060,
+          "actual_grasps": 1,
+          "branch": "local_pose",
+          "recovery_id": 2,
+          "reason": "fresh_RGB_map",
+          "candidate_id": "contacts2-4b73e30d8024627f8a53"
+        },
+        {
+          "event": "executed",
+          "step": 4578,
+          "frame_id": 1144,
+          "actual_grasps": 1,
+          "branch": "release_resample",
+          "candidate_id": "contacts2-4b73e30d8024627f8a53"
+        },
+        {
+          "event": "grasp_dispatched",
+          "step": 6624,
+          "frame_id": 1656,
+          "actual_grasps": 2,
+          "branch": "release_resample",
+          "recovery_id": null,
+          "candidate_id": "contacts2-219c5596b7335db7fa08"
+        }
+      ],
+      "physics": {
+        "success": true,
+        "steps": 9396,
+        "required_hold_steps": 240,
+        "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+        "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+        "geometry_passed": true,
+        "first_invalid_step": null,
+        "hold_physics_passed": true,
+        "hold_min_table_clearance_m": 0.027715399225361266,
+        "hold_min_lift_m": 0.032346503641747404,
+        "hold_relative_translation_drift_m": 0.00017961817000966627,
+        "hold_relative_rotation_drift_rad": 0.008257931285638516,
+        "hold_max_linear_speed_m_s": 0.0026966374640306633,
+        "hold_max_angular_speed_rad_s": 0.1242213928586336,
+        "hold_min_contact_force_n": 0.28973613679409027,
+        "commanded_lift_m": 0.031999990344047546,
+        "protocol_id": "lift30_no_drop_v1",
+        "target_lift_m": 0.03,
+        "lift_tolerance_m": 0.002,
+        "minimum_actual_lift_m": 0.027999999999999997,
+        "minimum_commanded_lift_m": 0.0295,
+        "legacy_strict": {
+          "success": true,
+          "steps": 9396,
+          "required_hold_steps": 240,
+          "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+          "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+          "geometry_passed": true,
+          "first_invalid_step": null,
+          "hold_physics_passed": true,
+          "hold_min_table_clearance_m": 0.027715399225361266,
+          "hold_min_lift_m": 0.032346503641747404,
+          "hold_relative_translation_drift_m": 0.00017961817000966627,
+          "hold_relative_rotation_drift_rad": 0.008257931285638516,
+          "hold_max_linear_speed_m_s": 0.0026966374640306633,
+          "hold_max_angular_speed_rad_s": 0.1242213928586336,
+          "hold_min_contact_force_n": 0.28973613679409027,
+          "commanded_lift_m": 0.031999990344047546
+        },
+        "continuous_physics_evidence": true,
+        "hold_checks": {
+          "actual_lift": true,
+          "table_clearance": true,
+          "completed_commanded_lift": true
+        },
+        "hold_start_step": 9156,
+        "hold_end_step": 9395,
+        "hold_start_time_s": 76.3,
+        "hold_end_time_s": 78.3,
+        "hold_duration_s": 2.0
+      },
+      "raw_evidence": {
+        "result.json": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode/result.json",
+          "sha256": "eace122d1bc031272b827f01fa6f863add87e8950a467cb445ecbc418925493c"
+        },
+        "scene.json": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode/scene.json",
+          "sha256": "debfa71f5a1c725350f53dd51999618d5f80aeed6b6e067636542bf6c782a317"
+        },
+        "steps.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode/steps.jsonl",
+          "sha256": "c45559469f4f5d72ff32f9a3980044e62bb5804efea4f57998874d4b7d5ba2cd"
+        },
+        "agent_trace.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode/agent_trace.jsonl",
+          "sha256": "13f37480663e6b12c6c6bef9ba96a24c1926f3c7d75c0d134a1e1ff3123211d8"
+        },
+        "public_responses.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode/public_responses.jsonl",
+          "sha256": "9d89907daf29b4ee6c83a37b897665d1dd92eda2717a07cc26280badaec6eec7"
+        },
+        "image_manifest.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode/image_manifest.jsonl",
+          "sha256": "06ba008ee866cadda6f4508334d020fa78e73013dd784403df90bec0219fc82f"
+        },
+        "all_hand_object_contacts.jsonl": {
+          "path": "/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode/all_hand_object_contacts.jsonl",
+          "sha256": "e05ea05c0e6e6a4fb59c203eb2329a89cff59ae011f6a0a5bff117a1c85020a3"
+        }
+      },
+      "videos": []
+    }
+  ]
+}

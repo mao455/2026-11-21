@@ -1,0 +1,59 @@
+{
+  "all_identical": true,
+  "rows": [
+    {
+      "case": "box_center",
+      "hand": "xhand",
+      "unchanged": true,
+      "before": 312,
+      "after": 312,
+      "removed": [],
+      "added": []
+    },
+    {
+      "case": "box_center",
+      "hand": "new",
+      "unchanged": true,
+      "before": 155,
+      "after": 155,
+      "removed": [],
+      "added": []
+    },
+    {
+      "case": "cylinder_offset",
+      "hand": "xhand",
+      "unchanged": true,
+      "before": 312,
+      "after": 312,
+      "removed": [],
+      "added": []
+    },
+    {
+      "case": "cylinder_offset",
+      "hand": "new",
+      "unchanged": true,
+      "before": 155,
+      "after": 155,
+      "removed": [],
+      "added": []
+    },
+    {
+      "case": "wedge_offset",
+      "hand": "xhand",
+      "unchanged": true,
+      "before": 312,
+      "after": 312,
+      "removed": [],
+      "added": []
+    },
+    {
+      "case": "wedge_offset",
+      "hand": "new",
+      "unchanged": true,
+      "before": 155,
+      "after": 155,
+      "removed": [],
+      "added": []
+    }
+  ]
+}

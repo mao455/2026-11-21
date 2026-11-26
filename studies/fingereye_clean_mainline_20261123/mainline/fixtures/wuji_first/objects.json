@@ -1,0 +1,24 @@
+{
+  "objects": [
+    {
+      "object_id": "d107_box_28",
+      "asset": "assets/objects/d107_transfer/box_28.obj",
+      "sha256": "be9d2db86a4541590e84a139be3786a68ddde8e37044367c05781eedc0415e15"
+    },
+    {
+      "object_id": "d107_cylinder_28",
+      "asset": "assets/objects/d107_transfer/cylinder_28.obj",
+      "sha256": "d31685f371db0e7a7300033cea8c32c7a9c0004dc55e81464ed34a1fc09b0094"
+    },
+    {
+      "object_id": "d107_pentagon_28",
+      "asset": "assets/objects/d107_transfer/pentagon_28.obj",
+      "sha256": "c9d89f0d0835e4dcc2e020a0cde03929a6333c820cab8173ac3e784fa7bf63c4"
+    },
+    {
+      "object_id": "d107_wedge_28",
+      "asset": "assets/objects/d107_transfer/wedge_28.obj",
+      "sha256": "5cb0e663034935280a3f855165c3e64851abfcf555ed1d8b04d44e7ce50ab64d"
+    }
+  ]
+}

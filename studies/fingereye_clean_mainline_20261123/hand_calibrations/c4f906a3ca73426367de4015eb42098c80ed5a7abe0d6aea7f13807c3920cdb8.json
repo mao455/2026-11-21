@@ -1,0 +1,95 @@
+{
+  "pads": [
+    {
+      "finger": "left_hand_thumb_joint1",
+      "link": "left_hand_thumb_link3",
+      "surface_link": "left_hand_thumb_camera_component3_link",
+      "point_m": [
+        -0.004921725769802298,
+        -0.06288127811822372,
+        0.014160353456777665
+      ],
+      "outward_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "support_radius_m": 0.0012,
+      "distal_direction": [
+        0,
+        -1,
+        0
+      ],
+      "regions": [
+        {
+          "point": [
+            -0.004921725769802298,
+            -0.06288127811822372,
+            0.014160353456777665
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.0
+        }
+      ],
+      "source": "c559413a0e0 tested XHand static contact frame; no grasp pose or trajectory"
+    },
+    {
+      "finger": "left_hand_index_spread_joint",
+      "link": "left_hand_index_link2",
+      "surface_link": "left_hand_index_camera_component3_link",
+      "point_m": [
+        0.014045697334830359,
+        -0.0066130116137382705,
+        0.06212280944282746
+      ],
+      "outward_normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "support_radius_m": 0.0012,
+      "distal_direction": [
+        0,
+        0,
+        1
+      ],
+      "regions": [
+        {
+          "point": [
+            0.014045697334830359,
+            -0.0066130116137382705,
+            0.06212280944282746
+          ],
+          "normal": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.0
+        }
+      ],
+      "source": "c559413a0e0 tested XHand static contact frame; no grasp pose or trajectory"
+    }
+  ],
+  "camera_optics_by_joint": {
+    "index_fingereye_camera_front1_joint": "front1",
+    "index_fingereye_camera_front2_joint": "front2",
+    "index_fingereye_camera_back_joint": "back",
+    "thumb_fingereye_camera_front1_joint": "front1",
+    "thumb_fingereye_camera_front2_joint": "front2",
+    "thumb_fingereye_camera_back_joint": "back",
+    "middle_fingereye_camera_front1_joint": "front1",
+    "middle_fingereye_camera_front2_joint": "front2",
+    "middle_fingereye_camera_back_joint": "back",
+    "ring_fingereye_camera_front1_joint": "front1",
+    "ring_fingereye_camera_front2_joint": "front2",
+    "ring_fingereye_camera_back_joint": "back"
+  },
+  "camera_optics_source": "existing workspace fingereye_camera_cfg.py front/back simulation calibration, explicit static mapping for all 12 URDF optical frames; middle/ring use same simulation model, no measured hardware calibration"
+}

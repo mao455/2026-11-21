@@ -1,0 +1,90 @@
+{
+  "table_clearance_m": 0.2902001589536667,
+  "table_clearance_link": "left_palm_link",
+  "thresholds": {
+    "table_clearance_m": 0.00065,
+    "self_overlap_m": 0.0,
+    "object_overlap_m": 0.0
+  },
+  "self_collisions": [
+    [
+      "left_finger1_fingereye_link",
+      "left_finger1_link4"
+    ],
+    [
+      "left_finger2_fingereye_link",
+      "left_finger2_link4"
+    ],
+    [
+      "left_finger3_fingereye_link",
+      "left_finger3_link4"
+    ]
+  ],
+  "object_collisions": [],
+  "passed": false,
+  "clearance_witnesses": [
+    {
+      "kind": "table",
+      "links": [
+        "left_palm_link",
+        "table"
+      ],
+      "clearance_m": 0.2902001589536667,
+      "threshold_m": 0.00065,
+      "passed": true,
+      "measurement": "transformed full collision-mesh minimum z"
+    },
+    {
+      "kind": "self_collision",
+      "links": [
+        "left_finger1_fingereye_link",
+        "left_finger1_link4"
+      ],
+      "clearance_m": -0.0026295941256944833,
+      "threshold_m": 0.0,
+      "passed": false,
+      "exact_mesh_overlap": true,
+      "contacts_returned": 32,
+      "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+    },
+    {
+      "kind": "self_collision",
+      "links": [
+        "left_finger2_fingereye_link",
+        "left_finger2_link4"
+      ],
+      "clearance_m": -0.003217366617401204,
+      "threshold_m": 0.0,
+      "passed": false,
+      "exact_mesh_overlap": true,
+      "contacts_returned": 32,
+      "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+    },
+    {
+      "kind": "self_collision",
+      "links": [
+        "left_finger3_fingereye_link",
+        "left_finger3_link4"
+      ],
+      "clearance_m": -0.003246474173148219,
+      "threshold_m": 0.0,
+      "passed": false,
+      "exact_mesh_overlap": true,
+      "contacts_returned": 32,
+      "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+    }
+  ],
+  "first_failed_guard": {
+    "kind": "self_collision",
+    "links": [
+      "left_finger1_fingereye_link",
+      "left_finger1_link4"
+    ],
+    "clearance_m": -0.0026295941256944833,
+    "threshold_m": 0.0,
+    "passed": false,
+    "exact_mesh_overlap": true,
+    "contacts_returned": 32,
+    "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+  }
+}

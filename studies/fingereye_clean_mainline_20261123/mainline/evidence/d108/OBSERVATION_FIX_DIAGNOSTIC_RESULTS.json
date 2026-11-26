@@ -1,0 +1,189 @@
+{
+  "rows": [
+    {
+      "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108/wuji_observation_fix/box_28",
+      "success": false,
+      "first_success": false,
+      "actual_closures": 0,
+      "controller_completed": true,
+      "error": null,
+      "controller_sha256": "c5bdeb64122614fb00d81a25a99dd1cb8d89f1c374bcce4bf0a42db1bf4a9a41",
+      "evaluator_and_adapter_unchanged": true,
+      "physics": {
+        "success": false,
+        "steps": 3108,
+        "required_hold_steps": 240,
+        "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+        "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+        "geometry_passed": true,
+        "first_invalid_step": null,
+        "hold_physics_passed": false,
+        "hold_min_table_clearance_m": -2.219815783605828e-08,
+        "hold_min_lift_m": -0.00010000558540923521,
+        "hold_relative_translation_drift_m": 0.05235209758299628,
+        "hold_relative_rotation_drift_rad": 6.525235236161399e-05,
+        "hold_max_linear_speed_m_s": 5.5866624002666484e-05,
+        "hold_max_angular_speed_rad_s": 0.0004044007247861103,
+        "hold_min_contact_force_n": 0.0,
+        "commanded_lift_m": 0.005518823862075806,
+        "protocol_id": "lift30_no_drop_v1",
+        "target_lift_m": 0.03,
+        "lift_tolerance_m": 0.002,
+        "minimum_actual_lift_m": 0.027999999999999997,
+        "minimum_commanded_lift_m": 0.0295,
+        "legacy_strict": {
+          "success": false,
+          "steps": 3108,
+          "required_hold_steps": 240,
+          "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+          "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+          "geometry_passed": true,
+          "first_invalid_step": null,
+          "hold_physics_passed": false,
+          "hold_min_table_clearance_m": -2.219815783605828e-08,
+          "hold_min_lift_m": -0.00010000558540923521,
+          "hold_relative_translation_drift_m": 0.05235209758299628,
+          "hold_relative_rotation_drift_rad": 6.525235236161399e-05,
+          "hold_max_linear_speed_m_s": 5.5866624002666484e-05,
+          "hold_max_angular_speed_rad_s": 0.0004044007247861103,
+          "hold_min_contact_force_n": 0.0,
+          "commanded_lift_m": 0.005518823862075806
+        },
+        "continuous_physics_evidence": true,
+        "hold_checks": {
+          "actual_lift": false,
+          "table_clearance": false,
+          "completed_commanded_lift": false
+        },
+        "hold_start_step": 2868,
+        "hold_end_step": 3107,
+        "hold_start_time_s": 23.9,
+        "hold_end_time_s": 25.9,
+        "hold_duration_s": 2.0,
+        "failure": "actual_lift"
+      },
+      "first_physics": null,
+      "host_wall_s": 108.04298739600927,
+      "physical_s": 25.9,
+      "closure_starts": [],
+      "last_phase": "observe_settle",
+      "last_failures": [
+        {
+          "event": "stopped",
+          "step": 3108,
+          "frame_id": 777,
+          "actual_grasps": 0,
+          "candidate_id": null,
+          "reason": "initial_rgb_observation_unavailable"
+        }
+      ],
+      "selection_rounds": [],
+      "case": "box_28",
+      "hand": "wuji",
+      "run_root": "FingerEyeLab/outputs/d108/wuji_observation_fix"
+    },
+    {
+      "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108/wuji_observation_fix/cylinder_28",
+      "success": false,
+      "first_success": false,
+      "actual_closures": 0,
+      "controller_completed": true,
+      "error": null,
+      "controller_sha256": "c5bdeb64122614fb00d81a25a99dd1cb8d89f1c374bcce4bf0a42db1bf4a9a41",
+      "evaluator_and_adapter_unchanged": true,
+      "physics": {
+        "success": false,
+        "steps": 2952,
+        "required_hold_steps": 240,
+        "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+        "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+        "geometry_passed": true,
+        "first_invalid_step": null,
+        "hold_physics_passed": false,
+        "hold_min_table_clearance_m": -1.916259890413241e-08,
+        "hold_min_lift_m": -0.00010000931069953367,
+        "hold_relative_translation_drift_m": 0.07371534563556661,
+        "hold_relative_rotation_drift_rad": 6.551295304201353e-05,
+        "hold_max_linear_speed_m_s": 4.519864788709375e-05,
+        "hold_max_angular_speed_rad_s": 0.001896261062847789,
+        "hold_min_contact_force_n": 0.0,
+        "commanded_lift_m": -0.019481182098388672,
+        "protocol_id": "lift30_no_drop_v1",
+        "target_lift_m": 0.03,
+        "lift_tolerance_m": 0.002,
+        "minimum_actual_lift_m": 0.027999999999999997,
+        "minimum_commanded_lift_m": 0.0295,
+        "legacy_strict": {
+          "success": false,
+          "steps": 2952,
+          "required_hold_steps": 240,
+          "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+          "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+          "geometry_passed": true,
+          "first_invalid_step": null,
+          "hold_physics_passed": false,
+          "hold_min_table_clearance_m": -1.916259890413241e-08,
+          "hold_min_lift_m": -0.00010000931069953367,
+          "hold_relative_translation_drift_m": 0.07371534563556661,
+          "hold_relative_rotation_drift_rad": 6.551295304201353e-05,
+          "hold_max_linear_speed_m_s": 4.519864788709375e-05,
+          "hold_max_angular_speed_rad_s": 0.001896261062847789,
+          "hold_min_contact_force_n": 0.0,
+          "commanded_lift_m": -0.019481182098388672
+        },
+        "continuous_physics_evidence": true,
+        "hold_checks": {
+          "actual_lift": false,
+          "table_clearance": false,
+          "completed_commanded_lift": false
+        },
+        "hold_start_step": 2712,
+        "hold_end_step": 2951,
+        "hold_start_time_s": 22.6,
+        "hold_end_time_s": 24.6,
+        "hold_duration_s": 2.0,
+        "failure": "actual_lift"
+      },
+      "first_physics": null,
+      "host_wall_s": 657.8566458560526,
+      "physical_s": 24.6,
+      "closure_starts": [],
+      "last_phase": "observe_descend",
+      "last_failures": [
+        {
+          "event": "stopped",
+          "step": 2952,
+          "frame_id": 738,
+          "actual_grasps": 0,
+          "candidate_id": null,
+          "reason": "planning_cpu_reserve",
+          "search_rounds": 1,
+          "worker_cpu_limit_s": 600,
+          "search_admission_limit_s": 540
+        }
+      ],
+      "selection_rounds": [
+        {
+          "selected": null,
+          "planning_cpu_s": 453.3925581980001,
+          "planning_wall_s": 454.019722990226,
+          "rejected": 15
+        }
+      ],
+      "case": "cylinder_28",
+      "hand": "wuji",
+      "run_root": "FingerEyeLab/outputs/d108/wuji_observation_fix"
+    }
+  ],
+  "totals": {
+    "wuji": {
+      "n": 2,
+      "zero_closure": 2,
+      "first_success": 0,
+      "max3_success": 0,
+      "rescued_second": 0,
+      "rescued_third": 0,
+      "actual_closures": 0
+    }
+  }
+}

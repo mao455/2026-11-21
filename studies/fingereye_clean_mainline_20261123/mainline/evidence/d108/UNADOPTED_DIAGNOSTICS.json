@@ -1,0 +1,1441 @@
+{
+  "scope": "Offline diagnostics after seeing Wuji scores; neither adopted into frozen ff3189380dd nor counted as executed grasps. Exact mesh guards retained; no score inference from endpoint feasibility.",
+  "hypotheses": [
+    {
+      "name": "assembly_contact_pair",
+      "source_json": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108/maintenance/assembly_contact_pair.json",
+      "rows": [
+        {
+          "fraction": null,
+          "q": [
+            0.07814626289775993,
+            -0.032372826930156647,
+            0.12612073701504178,
+            -2.724792007589092,
+            0.07378568989354362,
+            2.3866854632440697,
+            0.047535121168210376,
+            -0.13864067873112124,
+            -0.4641684244125539,
+            -0.46965634867115524,
+            1.5603989999999999,
+            -0.36999899999999997,
+            -0.477699,
+            1.4491830464929165,
+            0.8552284464678482,
+            -0.0523315700473701,
+            0.5995798925590974,
+            0.4218622007734462,
+            0.7559047635433314,
+            -0.36999899999999997,
+            0.7428910557718393,
+            0.11049316230446016,
+            0.48459479478350737,
+            -0.10114373500822746,
+            0.18902981142267153,
+            0.10275420040995542
+          ],
+          "error_m": 0.00047479169485524763,
+          "normal_error_rad": [
+            0.7232569982420742,
+            0.7137195886203206
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0008768024102904018,
+            "table_clearance_link": "left_finger1_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger3_fingereye_link",
+                "left_finger4_link4"
+              ],
+              [
+                "left_finger3_link2",
+                "left_finger4_link2"
+              ],
+              [
+                "left_finger3_link2",
+                "left_finger4_link3"
+              ],
+              [
+                "left_finger3_link3",
+                "left_finger4_link2"
+              ],
+              [
+                "left_finger3_link3",
+                "left_finger4_link3"
+              ],
+              [
+                "left_finger3_link3",
+                "left_finger4_link4"
+              ],
+              [
+                "left_finger3_link4",
+                "left_finger4_link3"
+              ],
+              [
+                "left_finger3_link4",
+                "left_finger4_link4"
+              ]
+            ],
+            "object_collisions": [
+              "left_finger2_fingereye_link",
+              "left_finger2_link3",
+              "left_finger2_link4",
+              "left_finger3_fingereye_link",
+              "left_finger3_link4",
+              "left_finger4_link4"
+            ],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              -0.059855634487609985,
+              0.5149170117115628,
+              -0.8551478083174398
+            ],
+            "angle_from_down_rad": 0.5449604215071768,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        },
+        {
+          "fraction": null,
+          "q": [
+            0.019501717293708278,
+            0.014196216833944094,
+            0.1737746657419337,
+            -2.9721255846373134,
+            0.16218888685031718,
+            -2.9561957512644033,
+            0.4364638626575476,
+            0.12907552719116305,
+            0.04244311526417724,
+            0.036776479333639145,
+            -0.14288400724384676,
+            0.27152308722463514,
+            1.0090272162742047,
+            0.7634544468053768,
+            0.7386533881907155,
+            -0.2478812433700925,
+            0.3504864308565951,
+            0.1955734031998875,
+            0.5666551807168354,
+            0.2593539902712975,
+            -0.014104692048278893,
+            1.2821592181035333,
+            0.5427583740501386,
+            -0.21793103772652744,
+            0.21262066174893404,
+            0.10395537761993291
+          ],
+          "error_m": 0.0006932382481082013,
+          "normal_error_rad": [
+            0.000903142456090232,
+            0.0007542606660406848
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0005608441437836634,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger2_fingereye_link",
+                "left_finger3_fingereye_link"
+              ],
+              [
+                "left_finger2_fingereye_link",
+                "left_finger3_link3"
+              ],
+              [
+                "left_finger2_fingereye_link",
+                "left_finger3_link4"
+              ],
+              [
+                "left_finger2_link2",
+                "left_finger3_link2"
+              ],
+              [
+                "left_finger4_link2",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger4_link2",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link4"
+              ],
+              [
+                "left_finger4_link4",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link4",
+                "left_finger5_link4"
+              ]
+            ],
+            "object_collisions": [
+              "left_finger5_link3",
+              "left_finger5_link4"
+            ],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.3182713447767643,
+              -0.355522591356927,
+              -0.8788100125333378
+            ],
+            "angle_from_down_rad": 0.497433716627643,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        }
+      ]
+    },
+    {
+      "name": "spare_digit_pair",
+      "source_json": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108/maintenance/spare_digit_pair.json",
+      "rows": [
+        {
+          "fraction": 0.1,
+          "q": [
+            -0.009073292206271249,
+            0.00951161028329545,
+            0.1611419859902835,
+            -2.853803949730329,
+            0.5000088724113936,
+            -2.8745469093124623,
+            0.20308000000096316,
+            -0.03159000000014859,
+            -0.2615500000006088,
+            -0.2672299999992869,
+            0.20479980814117346,
+            0.2261413315843139,
+            1.1437954832281032,
+            0.5425186160249666,
+            0.0001501691758093809,
+            -0.2793633971532836,
+            -0.28933460865786736,
+            -0.26411000000009816,
+            0.9170343449490718,
+            0.36196472553370795,
+            -0.0956025665531108,
+            1.4160603772705855,
+            -0.004392396021140182,
+            -0.24213059007727117,
+            -0.27422,
+            -0.26412
+          ],
+          "error_m": 0.00011628611421911175,
+          "normal_error_rad": [
+            0.008809733020956202,
+            0.017096043211262953
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0025772616489994106,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger2_link2",
+                "left_finger3_link2"
+              ],
+              [
+                "left_finger2_link2",
+                "left_finger3_link3"
+              ],
+              [
+                "left_finger2_link3",
+                "left_finger3_link2"
+              ],
+              [
+                "left_finger2_link3",
+                "left_finger3_link3"
+              ],
+              [
+                "left_finger4_link2",
+                "left_finger5_link2"
+              ]
+            ],
+            "object_collisions": [],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.6276484466946917,
+              -0.31150124896050957,
+              -0.7134594587345404
+            ],
+            "angle_from_down_rad": 0.7763732741044213,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        },
+        {
+          "fraction": 0.45,
+          "q": [
+            0.03154697723421487,
+            0.009816680072729875,
+            0.16964127488789155,
+            -2.9689383097385673,
+            0.12963899350210828,
+            -2.995057016095173,
+            0.7451772701293757,
+            0.34243775642250934,
+            0.4445047093843088,
+            0.44018906056572604,
+            -0.15849885534058109,
+            0.2383834588706493,
+            1.3655119702753888,
+            0.3720078189277402,
+            0.6849740341820691,
+            -0.046776547225289906,
+            0.4930728886894802,
+            0.4806653411004195,
+            0.6711123333934033,
+            0.24892154806736894,
+            -0.07024047854131509,
+            1.3560970132768553,
+            0.612799122353709,
+            -0.035967111031129,
+            0.435182140220854,
+            0.4505593400659493
+          ],
+          "error_m": 0.0009836538613207354,
+          "normal_error_rad": [
+            0.0005408671580399468,
+            0.0008321976499376397
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0012524838033823663,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger1_fingereye_link",
+                "left_finger2_fingereye_link"
+              ],
+              [
+                "left_finger1_fingereye_link",
+                "left_finger3_fingereye_link"
+              ],
+              [
+                "left_finger1_fingereye_link",
+                "left_finger3_link4"
+              ],
+              [
+                "left_finger2_fingereye_link",
+                "left_finger3_fingereye_link"
+              ],
+              [
+                "left_finger2_fingereye_link",
+                "left_finger3_link2"
+              ],
+              [
+                "left_finger2_fingereye_link",
+                "left_finger3_link3"
+              ],
+              [
+                "left_finger2_fingereye_link",
+                "left_finger3_link4"
+              ],
+              [
+                "left_finger4_link2",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger4_link2",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link4"
+              ],
+              [
+                "left_finger4_link4",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link4",
+                "left_finger5_link4"
+              ]
+            ],
+            "object_collisions": [
+              "left_finger3_fingereye_link",
+              "left_finger5_link4"
+            ],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.28689307957577653,
+              -0.3240465697217213,
+              -0.9014910878889003
+            ],
+            "angle_from_down_rad": 0.4475938481048169,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        },
+        {
+          "fraction": 0.7,
+          "q": [
+            0.016515628779390546,
+            0.013944121932196386,
+            0.17438705578602545,
+            -2.9720056969223614,
+            0.17391210569083193,
+            -2.953870323029172,
+            1.1592253941433346,
+            0.6206536001617838,
+            0.9591947807349641,
+            0.9427011678215128,
+            -0.1584447672213798,
+            0.27185878881279335,
+            1.0171276037971633,
+            0.7567250431350364,
+            1.008749264603785,
+            0.14813966779956278,
+            0.9162992944397974,
+            0.9503604507917198,
+            0.5429057686602383,
+            0.25014722491603586,
+            0.004468076195239669,
+            1.275642959861992,
+            1.0537699162167515,
+            0.14319049674486345,
+            0.9282264290143277,
+            0.9609599999999998
+          ],
+          "error_m": 0.0002815633386934185,
+          "normal_error_rad": [
+            0.004865601703298191,
+            0.008796387999841723
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0011037378370860468,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger1_fingereye_link",
+                "left_finger4_link2"
+              ],
+              [
+                "left_finger1_fingereye_link",
+                "left_finger4_link3"
+              ],
+              [
+                "left_finger1_fingereye_link",
+                "left_finger5_link1"
+              ],
+              [
+                "left_finger1_fingereye_link",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger1_fingereye_link",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger1_link4",
+                "left_finger3_fingereye_link"
+              ],
+              [
+                "left_finger1_link4",
+                "left_finger3_link2"
+              ],
+              [
+                "left_finger1_link4",
+                "left_finger5_link2"
+              ]
+            ],
+            "object_collisions": [],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.32864682277041246,
+              -0.3558568238844053,
+              -0.874846950487807
+            ],
+            "angle_from_down_rad": 0.5056765577358335,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        },
+        {
+          "fraction": 0.9,
+          "q": [
+            0.02716644923064096,
+            0.010862457688845585,
+            0.1706618232609987,
+            -2.9697285414963486,
+            0.14557736500431862,
+            -2.9873225829171095,
+            1.4357437420544144,
+            0.7998257745307188,
+            1.374856912218608,
+            1.343745807397333,
+            -0.15846500652468495,
+            0.24364120820017912,
+            1.280645736630499,
+            0.4773002949167748,
+            1.3269467695192703,
+            0.2980897554606559,
+            1.3313159609273924,
+            1.3701713769344872,
+            0.6493636605752644,
+            0.24969240239695306,
+            -0.06702156493089297,
+            1.3444033603310328,
+            1.3824983536900624,
+            0.2953562023478776,
+            1.3464199999999997,
+            1.3693199999999999
+          ],
+          "error_m": 0.00023518072648741413,
+          "normal_error_rad": [
+            0.000605131888508912,
+            0.0009067100587333795
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0009162339327306555,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger1_fingereye_link",
+                "left_finger5_link1"
+              ],
+              [
+                "left_finger1_fingereye_link",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger1_fingereye_link",
+                "left_palm_link"
+              ],
+              [
+                "left_finger1_link2",
+                "left_finger3_fingereye_link"
+              ],
+              [
+                "left_finger1_link2_softbody",
+                "left_finger3_fingereye_link"
+              ],
+              [
+                "left_finger1_link3",
+                "left_finger3_fingereye_link"
+              ],
+              [
+                "left_finger1_link3",
+                "left_finger3_link2"
+              ],
+              [
+                "left_finger1_link3",
+                "left_palm_link"
+              ],
+              [
+                "left_finger1_link4",
+                "left_finger3_fingereye_link"
+              ],
+              [
+                "left_finger1_link4",
+                "left_finger4_link1"
+              ],
+              [
+                "left_finger1_link4",
+                "left_finger4_link2"
+              ],
+              [
+                "left_finger1_link4",
+                "left_palm_link"
+              ],
+              [
+                "left_finger3_fingereye_link",
+                "left_palm_link"
+              ]
+            ],
+            "object_collisions": [],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.30157255861548476,
+              -0.32891716372161295,
+              -0.8949120019864741
+            ],
+            "angle_from_down_rad": 0.4625623607018406,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        }
+      ]
+    },
+    {
+      "name": "collision_gradient_pair",
+      "source_json": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108/maintenance/collision_gradient_pair.json",
+      "rows": [
+        {
+          "fraction": 0.1,
+          "q": [
+            -0.012449706007979363,
+            0.005899818349991885,
+            0.16711661150577153,
+            -2.805482660216786,
+            0.5312766332017835,
+            -2.913514612441532,
+            0.20308000000001894,
+            -0.03158999999999955,
+            -0.2615499999999946,
+            -0.2672299999999988,
+            0.41772535867486527,
+            0.12227676648585958,
+            0.6043249761746099,
+            0.9675312036660648,
+            -0.03182696366628246,
+            -0.18446763375757685,
+            -0.286779499626088,
+            -0.26410999999999984,
+            1.0734671037703927,
+            0.30226143399019934,
+            -0.42747868442437037,
+            1.0111569288641378,
+            -0.023414936369976127,
+            -0.16823550958709108,
+            -0.27422,
+            -0.26412
+          ],
+          "error_m": 4.6204322059184104e-05,
+          "normal_error_rad": [
+            0.05066528436993064,
+            0.06427998475837245
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0009966443883088413,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [],
+            "object_collisions": [],
+            "passed": true
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.660022836205969,
+              -0.23813159013706728,
+              -0.7125048782046475
+            ],
+            "angle_from_down_rad": 0.7777346618877282,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        },
+        {
+          "fraction": 0.7,
+          "q": [
+            -0.05297869214970781,
+            0.0010295834421135627,
+            0.169982647405592,
+            -2.8850561894458306,
+            0.5533496861527305,
+            -2.946005309703399,
+            0.8726307081076039,
+            0.42768633836545766,
+            1.0484166790709486,
+            1.1245113743039623,
+            -0.0746516004953562,
+            0.2235539577687448,
+            0.5067091403965213,
+            1.2480549113272927,
+            0.8675403200768028,
+            0.13400617719423522,
+            0.423753708142047,
+            0.4384794662789074,
+            0.5496506224156992,
+            0.21590246704344668,
+            -0.3115729528302465,
+            1.222817695130377,
+            0.4225956114434733,
+            0.354778654268347,
+            0.16238668374828358,
+            0.9609599999999998
+          ],
+          "error_m": 0.00038050677075923076,
+          "normal_error_rad": [
+            0.0587044373523147,
+            0.12407955730864031
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0009872153669183634,
+            "table_clearance_link": "left_finger3_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [],
+            "object_collisions": [],
+            "passed": true
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.6537599929726318,
+              -0.25583527259612115,
+              -0.7121419696128661
+            ],
+            "angle_from_down_rad": 0.7782517351969408,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        }
+      ]
+    },
+    {
+      "name": "gradient_path_pair",
+      "source_json": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108/maintenance/gradient_path_pair.json",
+      "rows": [
+        {
+          "fraction": 0.1,
+          "q": [
+            -0.012449706007979363,
+            0.005899818349991885,
+            0.16711661150577153,
+            -2.805482660216786,
+            0.5312766332017835,
+            -2.913514612441532,
+            0.20308000000001894,
+            -0.03158999999999955,
+            -0.2615499999999946,
+            -0.2672299999999988,
+            0.41772535867486527,
+            0.12227676648585958,
+            0.6043249761746099,
+            0.9675312036660648,
+            -0.03182696366628246,
+            -0.18446763375757685,
+            -0.286779499626088,
+            -0.26410999999999984,
+            1.0734671037703927,
+            0.30226143399019934,
+            -0.42747868442437037,
+            1.0111569288641378,
+            -0.023414936369976127,
+            -0.16823550958709108,
+            -0.27422,
+            -0.26412
+          ],
+          "error_m": 4.6204322059184104e-05,
+          "normal_error_rad": [
+            0.05066528436993064,
+            0.06427998475837245
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0009966443883088413,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [],
+            "object_collisions": [],
+            "passed": true
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.660022836205969,
+              -0.23813159013706728,
+              -0.7125048782046475
+            ],
+            "angle_from_down_rad": 0.7777346618877282,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": "approach_close_path",
+          "path_audit": {
+            "passed": false,
+            "audit_complete": false,
+            "total_nodes": 364,
+            "checked_nodes": 103,
+            "first_rejection": {
+              "node": 102,
+              "phase": "orient",
+              "steps": 6,
+              "object_guard_enabled": true,
+              "commanded_q": [
+                0.07010358318171081,
+                -0.048155427493534984,
+                0.35,
+                1.2553083001413619,
+                0.04714003623977189,
+                1.6192829743220507,
+                0.38483329355579754,
+                0.0935321416740371,
+                -0.024808053541502034,
+                -0.030477645951139457,
+                0.28197662249865896,
+                -0.13735088743175913,
+                0.2087181030858746,
+                0.20626251634155102,
+                0.19901709691593839,
+                -0.18487947832451854,
+                -0.03824858981846922,
+                -0.025463100749726283,
+                0.43099500056737616,
+                -0.062218165512067436,
+                -0.04998814698154351,
+                0.2814380687169842,
+                0.20327039817087475,
+                -0.18129193443756494,
+                -0.037584612465286896,
+                -0.025604748531224436
+              ],
+              "gate": "clearance_collision",
+              "geometry": {
+                "table_clearance_m": 0.1971137055162249,
+                "table_clearance_link": "left_finger1_fingereye_link",
+                "thresholds": {
+                  "table_clearance_m": 0.00065,
+                  "self_overlap_m": 0.0,
+                  "object_overlap_m": 0.0
+                },
+                "self_collisions": [
+                  [
+                    "left_finger4_link2",
+                    "left_finger5_link2"
+                  ]
+                ],
+                "object_collisions": [],
+                "passed": false,
+                "clearance_witnesses": [
+                  {
+                    "kind": "table",
+                    "links": [
+                      "left_finger1_fingereye_link",
+                      "table"
+                    ],
+                    "clearance_m": 0.1971137055162249,
+                    "threshold_m": 0.00065,
+                    "passed": true,
+                    "measurement": "transformed full collision-mesh minimum z"
+                  },
+                  {
+                    "kind": "self_collision",
+                    "links": [
+                      "left_finger4_link2",
+                      "left_finger5_link2"
+                    ],
+                    "clearance_m": -3.658811660262398e-05,
+                    "threshold_m": 0.0,
+                    "passed": false,
+                    "exact_mesh_overlap": true,
+                    "contacts_returned": 10,
+                    "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+                  }
+                ],
+                "first_failed_guard": {
+                  "kind": "self_collision",
+                  "links": [
+                    "left_finger4_link2",
+                    "left_finger5_link2"
+                  ],
+                  "clearance_m": -3.658811660262398e-05,
+                  "threshold_m": 0.0,
+                  "passed": false,
+                  "exact_mesh_overlap": true,
+                  "contacts_returned": 10,
+                  "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+                }
+              }
+            },
+            "failed_path_nodes": [
+              102
+            ],
+            "min_table_clearance_m": 0.06069190805652498,
+            "commanded_peak_translation_m_s": 0.09272160657458284,
+            "commanded_peak_joint_rad_s": 0.7962072238279871,
+            "native_rate_hz": 120,
+            "object_guard_scope": "original close/probe exemption retained"
+          }
+        },
+        {
+          "fraction": 0.7,
+          "q": [
+            -0.05297869214970781,
+            0.0010295834421135627,
+            0.169982647405592,
+            -2.8850561894458306,
+            0.5533496861527305,
+            -2.946005309703399,
+            0.8726307081076039,
+            0.42768633836545766,
+            1.0484166790709486,
+            1.1245113743039623,
+            -0.0746516004953562,
+            0.2235539577687448,
+            0.5067091403965213,
+            1.2480549113272927,
+            0.8675403200768028,
+            0.13400617719423522,
+            0.423753708142047,
+            0.4384794662789074,
+            0.5496506224156992,
+            0.21590246704344668,
+            -0.3115729528302465,
+            1.222817695130377,
+            0.4225956114434733,
+            0.354778654268347,
+            0.16238668374828358,
+            0.9609599999999998
+          ],
+          "error_m": 0.00038050677075923076,
+          "normal_error_rad": [
+            0.0587044373523147,
+            0.12407955730864031
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0009872153669183634,
+            "table_clearance_link": "left_finger3_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [],
+            "object_collisions": [],
+            "passed": true
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              0.6537599929726318,
+              -0.25583527259612115,
+              -0.7121419696128661
+            ],
+            "angle_from_down_rad": 0.7782517351969408,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": "approach_close_path",
+          "path_audit": {
+            "passed": false,
+            "audit_complete": false,
+            "total_nodes": 360,
+            "checked_nodes": 76,
+            "first_rejection": {
+              "node": 75,
+              "phase": "orient",
+              "steps": 6,
+              "object_guard_enabled": true,
+              "commanded_q": [
+                0.0831533299280031,
+                -0.05893082036863872,
+                0.35,
+                2.023261860910937,
+                -0.0435003711498795,
+                2.480602795426848,
+                0.4682330060922192,
+                0.15082548317773253,
+                0.11571534760702991,
+                0.11600397279787386,
+                0.23994804182368218,
+                -0.1603174423100257,
+                0.07844896098431037,
+                0.11865580253406081,
+                0.30850982203693833,
+                -0.16176123184899888,
+                0.06086008215360399,
+                0.07118365700087606,
+                0.28757149842720037,
+                -0.14969517937054197,
+                0.013989443123795717,
+                0.11429884541009681,
+                0.27894950731015444,
+                -0.14568487277880515,
+                0.03930544483584876,
+                0.1090736384218599
+              ],
+              "gate": "clearance_collision",
+              "geometry": {
+                "table_clearance_m": 0.1443953392771029,
+                "table_clearance_link": "left_finger2_fingereye_link",
+                "thresholds": {
+                  "table_clearance_m": 0.00065,
+                  "self_overlap_m": 0.0,
+                  "object_overlap_m": 0.0
+                },
+                "self_collisions": [
+                  [
+                    "left_finger2_fingereye_link",
+                    "left_finger3_fingereye_link"
+                  ]
+                ],
+                "object_collisions": [],
+                "passed": false,
+                "clearance_witnesses": [
+                  {
+                    "kind": "table",
+                    "links": [
+                      "left_finger2_fingereye_link",
+                      "table"
+                    ],
+                    "clearance_m": 0.1443953392771029,
+                    "threshold_m": 0.00065,
+                    "passed": true,
+                    "measurement": "transformed full collision-mesh minimum z"
+                  },
+                  {
+                    "kind": "self_collision",
+                    "links": [
+                      "left_finger2_fingereye_link",
+                      "left_finger3_fingereye_link"
+                    ],
+                    "clearance_m": -0.008468440842937327,
+                    "threshold_m": 0.0,
+                    "passed": false,
+                    "exact_mesh_overlap": true,
+                    "contacts_returned": 22,
+                    "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+                  }
+                ],
+                "first_failed_guard": {
+                  "kind": "self_collision",
+                  "links": [
+                    "left_finger2_fingereye_link",
+                    "left_finger3_fingereye_link"
+                  ],
+                  "clearance_m": -0.008468440842937327,
+                  "threshold_m": 0.0,
+                  "passed": false,
+                  "exact_mesh_overlap": true,
+                  "contacts_returned": 22,
+                  "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+                }
+              }
+            },
+            "failed_path_nodes": [
+              75
+            ],
+            "min_table_clearance_m": 0.06069190805652498,
+            "commanded_peak_translation_m_s": 0.09272160657458284,
+            "commanded_peak_joint_rad_s": 0.45748334063477003,
+            "native_rate_hz": 120,
+            "object_guard_scope": "original close/probe exemption retained"
+          }
+        }
+      ]
+    },
+    {
+      "name": "height_gate_pair",
+      "source_json": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108/maintenance/height_gate_pair.json",
+      "rows": [
+        {
+          "fraction": null,
+          "q": [
+            0.08783022487709911,
+            0.12311801740732176,
+            0.11700097244510006,
+            -0.614001852040508,
+            -0.29485309365908874,
+            2.133261048284493,
+            1.0188858009538708,
+            -0.02779752781168567,
+            0.28031866534047784,
+            0.03713908364938391,
+            0.7115722380208952,
+            -0.15808720339702892,
+            0.36806714400874724,
+            0.1604989861063458,
+            -0.08703558641048764,
+            0.16731024105925169,
+            0.42345215968939753,
+            1.5744989999999943,
+            0.2473581196867539,
+            -0.003809605221159119,
+            -0.47615648021434687,
+            -0.4774453180077874,
+            0.26999519219308515,
+            -0.15781552282660272,
+            -0.19642891720864852,
+            0.042150162160396576
+          ],
+          "error_m": 0.004252695454608175,
+          "normal_error_rad": [
+            0.44043346617734064,
+            0.1375577463906403
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.011518614454243653,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger3_fingereye_link",
+                "left_finger4_link3"
+              ],
+              [
+                "left_finger3_link3",
+                "left_finger4_link3"
+              ],
+              [
+                "left_finger3_link3",
+                "left_finger4_link4"
+              ],
+              [
+                "left_finger3_link4",
+                "left_finger4_link3"
+              ],
+              [
+                "left_finger3_link4",
+                "left_finger4_link4"
+              ],
+              [
+                "left_finger4_link2",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger4_link2",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link3"
+              ]
+            ],
+            "object_collisions": [
+              "left_finger3_link3",
+              "left_finger3_link4",
+              "left_finger4_link4"
+            ],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              -0.30232543755150565,
+              -0.6383219838667684,
+              -0.707915513830347
+            ],
+            "angle_from_down_rad": 0.7842537876766512,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        },
+        {
+          "fraction": null,
+          "q": [
+            0.034998307027074085,
+            0.13353504973091232,
+            0.12604928467123436,
+            1.1665759623517111,
+            0.6901316490642828,
+            2.814529295055694,
+            0.22572124965892826,
+            0.07544010897698544,
+            -0.14474663868794208,
+            -0.09538286764682462,
+            1.317654357646321,
+            0.01657933275614924,
+            0.7856028432892411,
+            0.4550826672320768,
+            -0.16439899999999996,
+            -0.31600171395592,
+            -0.47389899999999996,
+            -0.46839899999999995,
+            -0.01930399123951767,
+            -0.36999899999999997,
+            -0.47649899999999995,
+            -0.477699,
+            0.20198222437847463,
+            -0.17368239555687265,
+            -0.005275721159656882,
+            0.0262456240049431
+          ],
+          "error_m": 0.0003836724745030698,
+          "normal_error_rad": [
+            1.0917518694985817,
+            0.21644100828607077
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0009794664339418321,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger3_link2",
+                "left_finger4_link2"
+              ]
+            ],
+            "object_collisions": [
+              "left_finger3_fingereye_link",
+              "left_finger3_link3",
+              "left_finger3_link4"
+            ],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              -0.1911931039164786,
+              -0.6805988444488446,
+              -0.7072696868590369
+            ],
+            "angle_from_down_rad": 0.7851677534396134,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        },
+        {
+          "fraction": null,
+          "q": [
+            0.15366704706704443,
+            -0.002689622795083235,
+            0.11422253566145145,
+            -0.9525499753505634,
+            0.4310074183239676,
+            2.3044792660033853,
+            0.04750100000000001,
+            -0.13869899999999996,
+            -0.464199,
+            -0.46989899999999996,
+            1.0389969991050194,
+            0.3029912921855288,
+            0.5245641650026165,
+            0.3043622444522695,
+            -0.16439899999999996,
+            0.06740365625432258,
+            -0.47389899999999996,
+            -0.46839899999999995,
+            0.06296709331767121,
+            -0.07201229508131488,
+            -0.47649899999999995,
+            -0.477699,
+            0.2676647901535034,
+            -0.18500086665153503,
+            0.029636286199092865,
+            0.042150162160396576
+          ],
+          "error_m": 0.0013291153339168374,
+          "normal_error_rad": [
+            0.9085008634866658,
+            0.36445563019346455
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0008188417229733833,
+            "table_clearance_link": "left_finger1_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [],
+            "object_collisions": [
+              "left_finger3_fingereye_link",
+              "left_finger3_link3",
+              "left_finger3_link4"
+            ],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              -0.7061297679146464,
+              0.019098000755533584,
+              -0.7078248492614181
+            ],
+            "angle_from_down_rad": 0.7843821454662808,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        },
+        {
+          "fraction": null,
+          "q": [
+            0.11211429597284074,
+            -0.029708969826416694,
+            0.12916827520841184,
+            -2.348883576260237,
+            -0.17601210021512737,
+            2.56708770307845,
+            1.1652906724764875,
+            -0.10863855950085928,
+            -0.24521391785808389,
+            -0.07840675075127858,
+            0.8486104098371486,
+            -0.13549814819702685,
+            0.5348040956428314,
+            0.26109775347155495,
+            1.1444770457418407,
+            0.34329738950314237,
+            -0.4738974882404891,
+            1.5744989998425503,
+            0.12771447656912957,
+            0.36998697819922716,
+            1.456148507042227,
+            -0.4776989999000001,
+            0.2756148333584671,
+            -0.16535855784267817,
+            0.049842496513967036,
+            0.10031224449485238
+          ],
+          "error_m": 0.0003048011042634284,
+          "normal_error_rad": [
+            0.2560535427606595,
+            0.21191377849733029
+          ],
+          "source_clearance": {
+            "table_clearance_m": 0.0009913383349201832,
+            "table_clearance_link": "left_finger2_fingereye_link",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "left_finger4_link2",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger4_link2",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link2"
+              ],
+              [
+                "left_finger4_link3",
+                "left_finger5_link3"
+              ],
+              [
+                "left_finger4_link4",
+                "left_finger5_link3"
+              ]
+            ],
+            "object_collisions": [
+              "left_finger3_link3",
+              "left_finger3_link4"
+            ],
+            "passed": false
+          },
+          "task_posture": {
+            "passed": true,
+            "forward_world": [
+              -0.2894809418830392,
+              0.17921751389206061,
+              -0.9402562772993637
+            ],
+            "angle_from_down_rad": 0.34741408022164416,
+            "maximum_angle_rad": 0.7853981633974483,
+            "measured_tracking_allowance_rad": 0.0,
+            "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+          },
+          "first_rejection": null,
+          "path_audit": null
+        }
+      ]
+    }
+  ],
+  "conclusion": "Fixed assembly contact proposals and a nonconstant collision surrogate can improve an exact recorded endpoint. Two exact-check-valid endpoint solutions still fail full original approach paths because of real finger/fixed-housing collisions. No controller fix was adopted from these offline variants, and none was physically closed. The admitted changes proven by physical pairs remain initial rigid-assembly handling and active observation."
+}

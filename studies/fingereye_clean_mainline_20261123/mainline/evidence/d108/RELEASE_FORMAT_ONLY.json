@@ -1,0 +1,8 @@
+{
+  "scope": "Publication whitespace repair after all physical runs; executed source remains ff3189380dd",
+  "file": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d105/run_trials.py",
+  "before_sha256": "2400d4774a280274c6faaf6e5bf24436dc4b006ab3a8a35f6cdb2a5bf70ab704",
+  "after_sha256": "2aa5e449beeeca80e550cc5b2cb501570eb55d8b9f13f5b661cba9bc138aedcc",
+  "ast_identical": true,
+  "change": "Remove one trailing space at line 27 of batch runner; shared strategy and runtime unchanged"
+}

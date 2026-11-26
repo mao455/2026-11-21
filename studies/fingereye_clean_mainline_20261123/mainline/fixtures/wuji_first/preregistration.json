@@ -1,0 +1,18 @@
+{
+  "registered_utc": "2026-11-26T12:04:47.611926+00:00",
+  "hand_urdf": "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye.urdf",
+  "hand_sha256": "4ebf08f16b373519440102e2614f033cc1fd20891cf26d37418c4bc0df3a8cd5",
+  "cases": [
+    "mainline/fixtures/wuji_first/box_28.json",
+    "mainline/fixtures/wuji_first/cylinder_28.json",
+    "mainline/fixtures/wuji_first/pentagon_28.json",
+    "mainline/fixtures/wuji_first/wedge_28.json"
+  ],
+  "selection": "four distinct convex shapes, 24\u201330 mm span, 7 g, table-supported; selected from static hand geometry before any Wuji physics or control result",
+  "attempt_limit": 3,
+  "reset_between_grasps": false,
+  "physics_hz": 120,
+  "control_hz": 20,
+  "camera_hz": 30,
+  "results_seen": false
+}

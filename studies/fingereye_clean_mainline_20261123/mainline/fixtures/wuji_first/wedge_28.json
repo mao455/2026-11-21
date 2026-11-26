@@ -1,0 +1,10 @@
+{
+  "object_id": "d107_wedge_28",
+  "dx": 0.003,
+  "dy": 0.004,
+  "yaw": 0.25,
+  "mass_kg": 0.007,
+  "friction": 0.82,
+  "noise_seed": 21073,
+  "rgb_noise_std": 0
+}

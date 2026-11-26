@@ -1,0 +1,61 @@
+{
+  "rows": [
+    {
+      "session": "FingerEyeLab/outputs/d108/preflight",
+      "error": "TimeoutError: process produced no protocol response",
+      "controller_completed": false,
+      "requested_control_steps": 0,
+      "physics_steps": 0,
+      "source_unchanged": true,
+      "leftover_descendants": []
+    },
+    {
+      "session": "FingerEyeLab/outputs/d108/preflight_retry",
+      "error": "RuntimeError: ValueError: The following joints have default positions out of the limits: \n\t- 'left_finger1_joint1': 0.000 not in [0.047, 1.603]\n",
+      "controller_completed": false,
+      "requested_control_steps": 0,
+      "physics_steps": 0,
+      "source_unchanged": true,
+      "leftover_descendants": []
+    },
+    {
+      "session": "FingerEyeLab/outputs/d108/preflight_limits",
+      "error": "RuntimeError: ValueError: joint target outside robot joint limits",
+      "controller_completed": false,
+      "requested_control_steps": 6,
+      "physics_steps": 0,
+      "source_unchanged": true,
+      "leftover_descendants": []
+    },
+    {
+      "session": "FingerEyeLab/outputs/d108/preflight_home",
+      "error": "RuntimeError: ValueError: zero-size array to reduction operation minimum which has no identity",
+      "controller_completed": false,
+      "requested_control_steps": 6,
+      "physics_steps": 3,
+      "source_unchanged": true,
+      "leftover_descendants": []
+    },
+    {
+      "session": "FingerEyeLab/outputs/d108/preflight_contact",
+      "error": "RuntimeError: ValueError: joint target outside robot joint limits",
+      "controller_completed": false,
+      "requested_control_steps": 126,
+      "physics_steps": 120,
+      "source_unchanged": true,
+      "leftover_descendants": []
+    },
+    {
+      "session": "FingerEyeLab/outputs/d108/preflight_assembly",
+      "error": null,
+      "controller_completed": true,
+      "requested_control_steps": 1620,
+      "physics_steps": 1620,
+      "source_unchanged": true,
+      "leftover_descendants": []
+    }
+  ],
+  "scope": "no grasp strategy/candidate was run; these are model admission diagnostics, not transfer outcomes",
+  "conclusion": "same nominal optics, source geometry, actuator gains, 120Hz and probe; joint assembly contacts caused the uncontrolled motion; static five-pair assembly exclusions make the same probe stable",
+  "limitation": "exclusions cover palm/proximal-link assembly pairs including fixed descendants, as declared in static sidecar; no all-self-collision disable"
+}

@@ -1,0 +1,10 @@
+{
+  "object_id": "d107_box_28",
+  "dx": 0,
+  "dy": 0,
+  "yaw": 0,
+  "mass_kg": 0.007,
+  "friction": 0.82,
+  "noise_seed": 21070,
+  "rgb_noise_std": 0
+}

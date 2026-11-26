@@ -1,0 +1,84 @@
+{
+  "schema": "fingereye.shared_simulation_camera_pool.v1",
+  "configuration_kind": "shared_simulation_configuration",
+  "source": "Existing FingerEye XHand module nominal housing-to-optical transforms (thumb and index/finger) and xhand_camera_config.py front1/front2/back lens profiles; reused unchanged by user instruction. Nominal virtual optics, not Wuji hardware calibration.",
+  "modules": {
+    "thumb": {
+      "front1": {
+        "translation_m": [
+          -2.35588e-08,
+          -0.040555858,
+          0.009789
+        ],
+        "rpy_rad": [
+          -3.141592654,
+          1.110223025e-15,
+          1.573286243
+        ]
+      },
+      "front2": {
+        "translation_m": [
+          -3.08436e-08,
+          -0.049516258,
+          0.009087789
+        ],
+        "rpy_rad": [
+          3.140987083,
+          -0.2094386477,
+          1.573708963
+        ]
+      },
+      "back": {
+        "translation_m": [
+          -4.4606e-07,
+          -0.038572155,
+          -0.007819577
+        ],
+        "rpy_rad": [
+          1.788305453e-06,
+          -1.178097246,
+          -1.570798262
+        ]
+      }
+    },
+    "finger": {
+      "front1": {
+        "translation_m": [
+          0.009789,
+          7.28584e-17,
+          0.040555857
+        ],
+        "rpy_rad": [
+          3.141592654,
+          1.570796327,
+          0.0
+        ]
+      },
+      "front2": {
+        "translation_m": [
+          0.009087789,
+          1.38778e-17,
+          0.049516257
+        ],
+        "rpy_rad": [
+          3.141592654,
+          1.361356817,
+          4.218847494e-15
+        ]
+      },
+      "back": {
+        "translation_m": [
+          -0.007819577,
+          4.4606e-07,
+          0.038572155
+        ],
+        "rpy_rad": [
+          3.141592654,
+          -0.3926990812,
+          2.442490654e-15
+        ]
+      }
+    }
+  },
+  "renderer_and_projection": "same runtime optical links, exposure FK and existing FingerEye fisheye lens profiles"
+}

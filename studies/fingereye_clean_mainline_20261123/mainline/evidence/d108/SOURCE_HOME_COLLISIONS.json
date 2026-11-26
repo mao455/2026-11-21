@@ -1,0 +1,35 @@
+{
+  "pairs": [
+    {
+      "a": "left_finger1_link2_softbody",
+      "b": "left_palm_link",
+      "contacts": 32,
+      "max_triangle_depth": 0.0020687499370654894
+    },
+    {
+      "a": "left_finger2_link2",
+      "b": "left_palm_link",
+      "contacts": 32,
+      "max_triangle_depth": 0.0011853101844420122
+    },
+    {
+      "a": "left_finger3_link2",
+      "b": "left_palm_link",
+      "contacts": 32,
+      "max_triangle_depth": 0.0013748196855618193
+    },
+    {
+      "a": "left_finger4_link2",
+      "b": "left_palm_link",
+      "contacts": 32,
+      "max_triangle_depth": 0.0012684010707851687
+    },
+    {
+      "a": "left_finger5_link2",
+      "b": "left_palm_link",
+      "contacts": 32,
+      "max_triangle_depth": 0.001015996416031546
+    }
+  ],
+  "scope": "source authored meshes at legal home, all non-structurally-excluded pairs; triangle overlap depth diagnostic"
+}

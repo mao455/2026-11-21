@@ -1,0 +1,9 @@
+{
+  "camera_optical_frames": {
+    "*": {
+      "translation_m": [0.0, 0.0, 0.0002],
+      "rpy_rad": [3.141592653589793, 0.0, 0.0],
+      "source": "simulation optical convention inferred from read-only CAM1-8 STL: each closed marker disc occupies z=-1.5mm..0 with outward +Z front normal; OpenGL -Z must face outward. Place optical centre 0.2mm outside front face. This is static CAD-derived simulation calibration, not measured hardware optics."
+    }
+  }
+}
