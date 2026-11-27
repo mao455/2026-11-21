@@ -18,6 +18,7 @@ def sha(blob):return hashlib.sha256(blob).hexdigest()
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--private-commit',required=True)
+    p.add_argument('--private-branch',default='fingereye-clean-mainline')
     p.add_argument('--public-receipt',type=Path,required=True)
     p.add_argument('--config',type=Path,default=HERE/'mainline/publish.json')
     p.add_argument('--output',type=Path,required=True)
@@ -27,7 +28,7 @@ def main():
     config=json.loads(a.config.read_text());receipt=json.loads(a.public_receipt.read_text())
     pub=receipt['repositories']['research'];assert pub['pushed']
     private=work/'private.git';public=work/'public'
-    run(['git','clone','--quiet','--bare','--depth','1','--filter=blob:none','--single-branch','--branch','fingereye-clean-mainline','https://github.com/ztr583/grasp_small_obj.git',str(private)])
+    run(['git','clone','--quiet','--bare','--depth','1','--filter=blob:none','--single-branch','--branch',a.private_branch,'https://github.com/ztr583/grasp_small_obj.git',str(private)])
     pc=run(['git','rev-parse','HEAD'],private);assert pc==a.private_commit,(pc,a.private_commit)
     run(['git','clone','--quiet','--depth','1','--single-branch','--branch','main',pub['remote'],str(public)])
     uc=run(['git','rev-parse','HEAD'],public);assert uc==pub['commit']
@@ -58,7 +59,7 @@ def main():
     expected=sha((HERE/'mainline/strategy.py').read_bytes());assert source_sha==expected
     baseline=sha((public/'studies/stage16_20261122/REPORT.md').read_bytes())
     assert baseline=='d29e3d83c64c99bc4258d60c6e0526a636e70eb0bc118e6207d93888c2886051'
-    report=dict(private_remote='https://github.com/ztr583/grasp_small_obj',private_commit=pc,
+    report=dict(private_remote='https://github.com/ztr583/grasp_small_obj',private_branch=a.private_branch,private_commit=pc,
                 private_tree_sha=private_tree,private_tree_matches_local=True,removed_private_paths_absent=deleted['removed_file_count'],
                 public_remote=pub['remote'],public_commit=uc,public_source_revision=manifest['source_revision'],
                 selected_files_verified=len(selected),all_selected_bytes_match=True,public_strategy_import_sha256=source_sha,

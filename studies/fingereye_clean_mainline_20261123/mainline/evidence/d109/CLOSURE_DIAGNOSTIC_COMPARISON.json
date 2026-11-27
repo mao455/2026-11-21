@@ -1,0 +1,60 @@
+{
+  "cylinder_003": {
+    "success": false,
+    "contact_fingers": [
+      "left_finger2_joint1",
+      "left_finger4_joint1"
+    ],
+    "regions": [
+      8,
+      1
+    ],
+    "start_points": [
+      [
+        0.004407707211243658,
+        -0.018580769369219013,
+        0.015599998941863364
+      ],
+      [
+        0.004407711098157109,
+        0.012611329105471364,
+        0.015611531148004815
+      ]
+    ],
+    "last_squeeze_m": [
+      0.0005,
+      0.0005
+    ],
+    "closure_stop_reason": "missing_object_rgb_diagnostic_probe_hold",
+    "hold_min_lift_m": -0.00010000931069953367
+  },
+  "cylinder_005": {
+    "success": true,
+    "contact_fingers": [
+      "left_finger2_joint1",
+      "left_finger4_joint1"
+    ],
+    "regions": [
+      8,
+      1
+    ],
+    "start_points": [
+      [
+        0.004407707225051065,
+        -0.018580769364716778,
+        0.0155999989398787
+      ],
+      [
+        0.004407711091911315,
+        0.01261132909274779,
+        0.015611531136976045
+      ]
+    ],
+    "last_squeeze_m": [
+      0.0025,
+      0.00215
+    ],
+    "closure_stop_reason": "object_association_or_motor_settle_hold",
+    "hold_min_lift_m": 0.031575156208418775
+  }
+}

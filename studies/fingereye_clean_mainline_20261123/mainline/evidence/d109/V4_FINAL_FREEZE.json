@@ -1,0 +1,24 @@
+{
+  "source_commit": "29dbccd123b2d5b673a456b406b9befa2b038fd4",
+  "files": {
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py": "9c92546a600f5ff59ebf5188a7529b3cf1ef7209371f2b674f06ed7d65df3c73",
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/contact_regions.py": "8b544ebddf8e01ba16a0363633d1329143954c1d7895b588334b31a853cb1939",
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/cross_hand_runtime.py": "c08f266378dc79bacfcf285a5590f5860ad4c47ef08a6c26bfd8b6b4c3d79810",
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/hand_description.py": "b8d29571a67f21d09b8e5db120593fe650b37a70671001206598d28941d91ece",
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/evaluator.py": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/hand_calibrations/03588dc287dff03e036b022f8ef19b5ed327e44e51b8635be998658f95733ecc.json": "975d16ebba63e4aeee5155851ef72c0a0f3c601481cd6861338a15a088efa587",
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/hand_calibrations/a0f56ab44949139375b3a6fbd7dda37359915d64e78fe54e0ce69670fa0ac9d6.json": "16f7a318aee5d5d20bdb7d89878e4371cc8183334b892d7f8764ab8ec01f2da5",
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/hand_calibrations/shared_simulation_modules_v1.json": "c73064e8ebb8f3cc7fe5ee6676a91cbb6c49a05cdae1991bb50dea7ea2d51b03",
+    "FingerEyeLab/experiments/rax_dexbin_tinyobj/hand_calibrations/c4f906a3ca73426367de4015eb42098c80ed5a7abe0d6aea7f13807c3920cdb8.json": "abf14c647e34c0f6ac94ee4b8bc4542a7551e7f9249707cf59a713ce2b869b3a"
+  },
+  "tests": {
+    "count": 44,
+    "result": "passed"
+  },
+  "formal_panels": [
+    "wuji_final_v4",
+    "regression_final_v4"
+  ],
+  "unadopted_schedule_copy": "outputs/d109/maintenance/small_schedule.py",
+  "scope": "Shared code frozen before complete 4+6 normal-entry physical panel; original evaluator, observation boundary and 120/20/30Hz unchanged"
+}

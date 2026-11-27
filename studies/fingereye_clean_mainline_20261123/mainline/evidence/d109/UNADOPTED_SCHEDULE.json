@@ -1,0 +1,209 @@
+{
+  "adopted": false,
+  "rows": [
+    {
+      "mode": "baseline",
+      "completed": true,
+      "cpu_s": 555.074425162,
+      "candidate_count": 0,
+      "input_metadata_sha256": "00c58c4978ee3970ac168c2c03d69b0af3f5121b3e23d1b7a1b0b049454af945",
+      "controller_sha256": "d732b96485d89a27da69662e69fb29cfd1458b1dfd32d3a49aaba0476672cbda",
+      "searched_groups": [
+        [
+          "left_finger1_joint1",
+          "left_finger2_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger2_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger2_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger2_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger3_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger3_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger4_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger5_joint1"
+        ]
+      ],
+      "physics_dispatched": false
+    },
+    {
+      "mode": "improved",
+      "completed": true,
+      "cpu_s": 536.842463731,
+      "candidate_count": 0,
+      "input_metadata_sha256": "0db7b5881352a8acdff0575ef110aa85b675a1ab92982c3d4aa501ea418d178a",
+      "controller_sha256": "09a5b439bd3085bec51734f4ade6879c5c676bd6d0400b5cca8ec12deaf91870",
+      "searched_groups": [
+        [
+          "left_finger1_joint1",
+          "left_finger2_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger2_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger3_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger3_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger3_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger3_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger4_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger4_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger4_joint1",
+          "left_finger5_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger2_joint1",
+          "left_finger3_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger2_joint1",
+          "left_finger4_joint1"
+        ],
+        [
+          "left_finger1_joint1",
+          "left_finger2_joint1",
+          "left_finger5_joint1"
+        ]
+      ],
+      "physics_dispatched": false
+    }
+  ],
+  "scope": "Offline public RGB replay, shared source episode and measured encoders; each arm rebuilds a map. Input metadata includes measured map compute time, so its fingerprint is not an equality proof of numerical planner input. Both returned zero candidates; no physics benefit established. The physical box diagnostic selected the unchanged direct branch and cannot support a causal scheduling claim."
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v5/wedge_offset_new",
+    "schema": "fingereye.supervisor_recovery.v1",
+    "status": "episode_completed_supervisor_finish_interrupted",
+    "original_receipt_sha256": "bd0f740ff981cdc8a4c50d4b109cc2588f190261c098d4e66c985f25f3fde877",
+    "original_receipt_retained": true,
+    "return_code": null,
+    "actual_host_elapsed_s": null,
+    "episode_elapsed_s": 976.7006654809229,
+    "episode_completed": true,
+    "source_fingerprint_after": {
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/evaluator.py": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/contact_regions.py": "1a310cf74b53b9f8a8b943a40ee66f25b4311b78e269b8a182c516e2fbda0b4e",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/d106/wedge_offset/case.json": "5fc91caa0a4f361de7b05212acdf6b0e5a676130f848b2156a4517a1f4f051b7",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/hand_description.py": "b8d29571a67f21d09b8e5db120593fe650b37a70671001206598d28941d91ece",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py": "72c4c6f128d959b8e05160334a9f7f7775b55db720143c04ab25c6f424b3669d",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/round2_evidence/budget_run.py": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py": "4b5def5e5b46abb40dab46db35838074ff4f7a3f4696145aadcbd3c2431c8e07",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/worker.py": "1c6b53cbc7200c6e596b39b08eea8b587ae905ead266d47c479520d70143e466",
+      "/home/CNS2025331827/docs/urdf_\u6574\u624b\u603b\u88c5-1113-\u5e26\u76f8\u673a-\u4fee\u6b63\u96f6\u4f4d\u4e0e\u9650\u4f4d.SLDASM/urdf/urdf_\u6574\u624b\u603b\u88c5-1113-\u5e26\u76f8\u673a-\u4fee\u6b63\u96f6\u4f4d\u4e0e\u9650\u4f4d.SLDASM.urdf": "03588dc287dff03e036b022f8ef19b5ed327e44e51b8635be998658f95733ecc",
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python3.11": "bb8ce30000f2342310fe7f0524d0d44cc868f6019b7e35745c52cbd3304250b1"
+    },
+    "source_unchanged": true,
+    "leftover_descendants": [],
+    "timeout_triggered": null,
+    "recovery_time_unix": 1795756574.25535,
+    "evidence": "complete controller event, evaluator result and backend lifecycle exist; original exit code/wall duration unavailable; current process scan and original source pins verified"
+  },
+  {
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/cylinder_budget_only_pair_v6/cylinder_offset_new",
+    "schema": "fingereye.supervisor_recovery.v1",
+    "status": "episode_completed_supervisor_finish_interrupted",
+    "original_receipt_sha256": "9d8f4c2b59a7aa61d2335e784e743f86ebde755e89a1902fdee384ff50b8d675",
+    "original_receipt_retained": true,
+    "return_code": null,
+    "actual_host_elapsed_s": null,
+    "episode_elapsed_s": 953.35300134914,
+    "episode_completed": true,
+    "source_fingerprint_after": {
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/evaluator.py": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/contact_regions.py": "1a310cf74b53b9f8a8b943a40ee66f25b4311b78e269b8a182c516e2fbda0b4e",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/d106/cylinder_offset/case.json": "4b0ef2396ae15df15c34317c53276f42eb00afeee6ebacd2ba9dda51be40b66d",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/hand_description.py": "b8d29571a67f21d09b8e5db120593fe650b37a70671001206598d28941d91ece",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/round2_evidence/budget_run.py": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py": "4b5def5e5b46abb40dab46db35838074ff4f7a3f4696145aadcbd3c2431c8e07",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/worker.py": "1c6b53cbc7200c6e596b39b08eea8b587ae905ead266d47c479520d70143e466",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/maintenance/reserve_budget_only_v6.py": "2fd69f73b41388ef0e90ea8246cd6f357af03a280b3e63d5e9802f48079c9de3",
+      "/home/CNS2025331827/docs/urdf_\u6574\u624b\u603b\u88c5-1113-\u5e26\u76f8\u673a-\u4fee\u6b63\u96f6\u4f4d\u4e0e\u9650\u4f4d.SLDASM/urdf/urdf_\u6574\u624b\u603b\u88c5-1113-\u5e26\u76f8\u673a-\u4fee\u6b63\u96f6\u4f4d\u4e0e\u9650\u4f4d.SLDASM.urdf": "03588dc287dff03e036b022f8ef19b5ed327e44e51b8635be998658f95733ecc",
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python3.11": "bb8ce30000f2342310fe7f0524d0d44cc868f6019b7e35745c52cbd3304250b1"
+    },
+    "source_unchanged": true,
+    "leftover_descendants": [],
+    "timeout_triggered": null,
+    "recovery_time_unix": 1795756574.314746,
+    "evidence": "complete controller event, evaluator result and backend lifecycle exist; original exit code/wall duration unavailable; current process scan and original source pins verified"
+  }
+]

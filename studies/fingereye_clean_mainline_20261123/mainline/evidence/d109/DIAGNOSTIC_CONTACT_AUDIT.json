@@ -1,0 +1,76 @@
+[
+  {
+    "session": "FingerEyeLab/outputs/d109/cylinder_005",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 15384,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "left_finger2_link4",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.6709469556808472,
+        "mean_normal_force_n": 0.6711183172961076,
+        "maximum_normal_force_n": 0.6712648868560791,
+        "mean_weighted_normal_vector": [
+          -0.01321285253164256,
+          -0.6708193581874322,
+          0.002090784326096012
+        ]
+      },
+      {
+        "link": "left_finger4_link4",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.6686334609985352,
+        "mean_normal_force_n": 0.6688039660453796,
+        "maximum_normal_force_n": 0.6689518690109253,
+        "mean_weighted_normal_vector": [
+          0.03251109479788777,
+          0.6680033295667326,
+          -0.003649482905595141
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.08272641152143478,
+    "hold_min_lift_m": 0.031575156208418775,
+    "online_use": false
+  },
+  {
+    "session": "FingerEyeLab/outputs/d109/box_regression_003/box_center_new",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 9354,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "Empty_Link4",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.5283578634262085,
+        "mean_normal_force_n": 0.5284148012598355,
+        "maximum_normal_force_n": 0.5284576416015625,
+        "mean_weighted_normal_vector": [
+          -0.1662781167230259,
+          -0.4987514561895555,
+          0.05311097842439702
+        ]
+      },
+      {
+        "link": "Empty_Link7",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.5807628631591797,
+        "mean_normal_force_n": 0.5808344687024752,
+        "maximum_normal_force_n": 0.5809010863304138,
+        "mean_weighted_normal_vector": [
+          -0.07960427454975443,
+          0.5753345500885586,
+          0.004691702934032107
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.07037845253944397,
+    "hold_min_lift_m": 0.031771970745467115,
+    "online_use": false
+  }
+]

@@ -640,20 +640,24 @@ def pad_catalog(hand, chains, source_digest):
         # Never replace an established calibration with a mesh proposal.
         # Other digits remain available even when a partial sidecar exists.
         link=chain['terminal_link']
-        pieces=[]
+        # Fixed descendants are one physical contact assembly, independently
+        # of component names, inertial tags, or camera ownership.
+        assembly={link}
+        while True:
+            before=len(assembly)
+            for parent,child,_,_,kind,index in hand.joints:
+                if parent in assembly and index is None:assembly.add(child)
+            if len(assembly)==before:break
+        pieces=[];face_links=[]
         for entry in hand.collision_meshes:
-            if entry['link']!=link:continue
-            mesh=trimesh.load(entry['path'],force='mesh',process=True)
-            mesh.apply_scale(entry['scale']);mesh.apply_transform(entry['origin']);pieces.append(mesh)
-        if not pieces:continue
-        mesh=trimesh.util.concatenate(pieces)
-        blockers=[]
-        for entry in hand.collision_meshes:
-            if entry['link'] not in chain['links'] or 'cam' not in entry['link'].lower():continue
+            if entry['link'] not in assembly:continue
             body=trimesh.load(entry['path'],force='mesh',process=True)
             body.apply_scale(entry['scale']);body.apply_transform(entry['origin'])
-            body.apply_transform(np.linalg.inv(zero_poses[link])@zero_poses[entry['link']])
-            blockers.append(body)
+            if entry['link']!=link:
+                body.apply_transform(np.linalg.inv(zero_poses[link])@zero_poses[entry['link']])
+            pieces.append(body);face_links.extend([entry['link']]*len(body.faces))
+        if not pieces:continue
+        mesh=trimesh.util.concatenate(pieces)
         order=np.argsort(mesh.extents)[::-1];longitudinal,lateral,across=order
         regions=[];radius=.0012
         # Search broad sides and distal end faces. A single lateral axis can
@@ -684,36 +688,38 @@ def pad_catalog(hand, chains, source_digest):
                 normal=np.mean(normals,axis=0);normal/=np.linalg.norm(normal)
                 variation=float(np.max(np.arccos(np.clip(np.asarray(normals)@normal,-1,1))))
                 if variation>.2 or normal@(-direction)<.5:continue
-                # A body face hidden behind a fixed camera module cannot be
-                # the first load-bearing surface. Camera meshes are blockers,
-                # never automatically labelled as silicone pads.
-                blocked=False
-                for blocker in blockers:
-                    starts=np.asarray(points)+normal*.00005
-                    hits,ray_ids,_=blocker.ray.intersects_location(starts,np.tile(normal,(13,1)),multiple_hits=True)
-                    if len(hits) and np.any(np.linalg.norm(hits-starts[ray_ids],axis=1)<.01):
-                        blocked=True;break
-                if blocked:continue
+                # The nearest hit of the whole fixed assembly is its exposed
+                # support, including a rigid housing when that is encountered
+                # before the bare digit. Require one source surface over disc.
+                source_links=[face_links[faces[np.flatnonzero(rays==i)[np.argmin(np.linalg.norm(positions[rays==i]-origins[i],axis=1))]]] for i in range(13)]
+                if len(set(source_links))!=1:continue
                 if any(np.linalg.norm(np.asarray(old['point'])-points[0])<.0002 and
                        np.dot(old['normal'],normal)>.99 for old in regions):continue
                 regions.append(dict(point=np.asarray(points[0]).tolist(),normal=normal.tolist(),radius_m=radius,
-                    normal_variation_rad=variation, surface_link=link,
-                    geometry_class='terminal_body_mesh_patch', camera_clearance_check='13 outward rays: no camera mesh within 10 mm',
+                    normal_variation_rad=variation, surface_link=source_links[0],
+                    geometry_class='fixed_assembly_exterior_patch', exposure_check='13 nearest incoming rays against every fixed assembly collision mesh',
                     source='13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad'))
         if not regions:continue
         if chain['finger'] in calibrated:
             row=next(row for row in rows if row['finger']==chain['finger'])
             # Each point is expressed in the same terminal link frame. Keep
             # calibrated locations first and preserve their selected defaults.
-            row.setdefault('regions',[]).extend(regions)
-            row['additional_region_source']='terminal body mesh; camera component meshes excluded from proposals'
+            existing=row.setdefault('regions',[])
+            # Preserve a static surface description and do not multiply its
+            # search budget with numerically equivalent generated patches.
+            for region in regions:
+                duplicate=any(old.get('surface_link',row.get('surface_link',link))==region['surface_link']
+                    and np.linalg.norm(np.asarray(old['point'])-region['point'])<.0002
+                    and np.dot(old['normal'],region['normal'])>.99 for old in existing)
+                if not duplicate:existing.append(region)
+            row['additional_region_source']='exposed collision surfaces of complete fixed terminal assembly'
         else:
             best=regions[0]
             distal=np.eye(3)[longitudinal]
             rows.append(dict(finger=chain['finger'],link=link,surface_link=link,point_m=best['point'],
                 outward_normal=best['normal'],joint_names=chain['joint_names'],support_radius_m=radius,
                 distal_direction=distal.tolist(),regions=regions,
-                source='source URDF terminal collision mesh; no camera housing meshes sampled; physical contact validation pending'))
+                source='source URDF fixed terminal assembly exterior; rigid surface, no measured compliance'))
     for row in rows:
         radius=float(row.get('support_radius_m', .0012))
         row['contact_model']=dict(

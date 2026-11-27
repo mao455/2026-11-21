@@ -1,0 +1,47 @@
+D109 物理复验报告
+
+冻结执行代码：6117d290ba29f84a599c359e53d7189cf98667f8
+从 D108 ff3189380dd / fa35794882f 继续。四例沿用事先登记的物体、初态和共享名义仿真镜头配置；原两手六例沿用 D106 输入。正常 --robot-urdf 入口，三只手共用策略；物理/控制/RGB 120/20/30 Hz；每回合最多三次实际闭合，抓间不重置。原 evaluator 与在线观测边界未改。
+
+逐例正式成绩（diagnostic replay 不计入）：
+手 | 场景 | 首抓 | 实际闭合 | 三抓内 | 真正救回抓次 | 最后阶段
+Wuji 左手 | box_28 | 未闭合 | 0 | 失败 | 无 | observe_parallax
+Wuji 左手 | cylinder_28 | 成功 | 1 | 成功 | 无 | s5_hold
+Wuji 左手 | pentagon_28 | 未闭合 | 0 | 失败 | 无 | observe_descend
+Wuji 左手 | wedge_28 | 未闭合 | 0 | 失败 | 无 | observe_descend
+XHand | box_center | 成功 | 1 | 成功 | 无 | s5_hold
+原三指手 | box_center | 成功 | 1 | 成功 | 无 | s5_hold
+XHand | cylinder_offset | 成功 | 1 | 成功 | 无 | s5_hold
+原三指手 | cylinder_offset | 成功 | 1 | 成功 | 无 | s5_hold
+XHand | wedge_offset | 成功 | 1 | 成功 | 无 | s5_hold
+原三指手 | wedge_offset | 未闭合 | 0 | 失败 | 无 | observe_descend
+
+各手汇总：
+原三指手：零闭合 1/3，首抓成功 2/3，三抓内成功 2/3，第二抓救回 0，第三抓救回 0。
+Wuji 左手：零闭合 3/4，首抓成功 1/4，三抓内成功 1/4，第二抓救回 0，第三抓救回 0。
+XHand：零闭合 0/3，首抓成功 3/3，三抓内成功 3/3，第二抓救回 0，第三抓救回 0。
+
+实际改变物理结果的修改与配对证据：
+1. 接触面来自 URDF 运动树上的末端固定装配，合并真实碰撞外表面，保留面所属 link。沿入射方向对局部接触圆盘发射 13 条射线，选择首先可触及的表面；被壳体挡住的指面不再当作可接触面，外露壳体本身可以作为合法接触。等价区域去重。原三指手用静态 sidecar 保存已校验的度量区域，避免重新拟合造成数值漂移，无手名/物体案例分支。
+2. IK 原网格碰撞优化失败时，从原接触种子重启，只对真实相交对使用变化的逃离目标。未参与夹持的手指有独立避让自由度；整手 RRT、有限逐指顺序及接近/闭合/抬升预检保留全部路点并按真实关节速度计时。D108 两个终点合法、途中相撞的圆柱解现在均通过完整路径预检。
+3. Wuji 圆柱物理对照只恢复两项缺 RGB 时的闭合 gate：候选落点最大差 7.12e-14m、预闭合编码器最大差 2.53e-7，额外闭合停在每指 0.5mm，实际空抓。共享实现允许在原 4.5mm 上限内进行 0.25/0.35mm 的有界编码器探闭，仍受关节响应、限位及几何/路径保护，较大预载仍要求所有选中手指阻滞；实际达到 2.50/2.15mm 并合法抬起。见 RGB_GATE_PHYSICAL_PAIR.json。
+4. 统一 0.8mm 整手额外余量曾让 XHand 楔体退化为零闭合。旧成功路线上存在约 0.30–0.60mm 的真实网格间隙；同一候选目标与 IK q 的最大差均为 0，严格余量版及单独恢复旧掌轴版都失败，取消额外硬余量的物理对照首抓成功，保持阶段最低抬高 28.94mm。最终实现优先搜索有余量的路径，仅在扩展/检查预算耗尽后才用不相交的精确整手网格通道，保留全部限位、桌面、物体、自碰和实测响应检查。最终实现与成功对照下发的全部动作指令相同。见 WEDGE_MARGIN_PHYSICAL_PAIR.json。
+5. V5 过宽的窄通道回退还接受了起点无效的路径搜索，改变原三指手圆柱候选顺序，预载阶段 Empty_Link7 对物体侵入超过 0.5mm，虽然抬起仍判失败。最终版仅在扩展/碰撞检查预算耗尽时回退，起点/终点无效保留既有处理。单项物理对照恢复首抓成功、最低抬高 32.13mm，全部动作指令与 V4 成功回合相同；见 START_RECOVERY_PHYSICAL_PAIR.json。
+6. 排序循环有进度心跳，并在既有 CPU 预算内退回未排序的完整候选表，避免把长计算误当作 RPC 无响应或耗尽 worker 硬限额。未扩展物理、控制或搜索总预算。
+
+恢复与成绩边界：
+历史轨迹及固定 q 回放只用于诊断。原 D108 首次 Wuji 0/4 及 D109 V4/V5 结果保留，没有用后续成绩替换。缺 mask 不代表空抓；共享恢复保留同相机、两个非共线实测基线排除随手运动的证据，并在相矛盾的携带证据存在时保住可能已经抓起的物体。圆柱严格 gate 诊断识别空抓后确实从现场退让，但重新观测不足，未执行第二次闭合；该诊断没有救回，单列而不计正式成绩。正式回合实际救回数以表中数据为准。
+最终 Wuji 盒体、五边形、楔体均在 planning_cpu_reserve 正常停止，实际闭合 0 次。主要剩余拒绝为 per_finger_position / per_finger_normal（接触位置或法向没有达到执行要求），五边形还出现终点真实碰撞。早期盒体诊断曾找到接近可行、闭合时 finger4_link3 与 finger5_link3 约 0.155mm 网格重叠的候选，保留拒绝；这条历史诊断不替代最终面板的失败阶段。原三指手楔体最终也是零闭合，finite_contact_search_exhausted；一条端点可行的候选在转掌路径 node 72 上 Empty_Link2/Empty_Link4 出现约 0.308mm 真实网格重叠，拒绝下发。全部失败场景的终止阶段、拒绝类型和具体几何见 FAILURE_STAGES.json 与 FINAL_RESULTS.json。
+
+复跑（完整工程，IsaacLab Python；每次使用新输出目录）：
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1
+PY=/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python
+cd /home/CNS2025331827/docs/fingereye_d106_recovery
+E=FingerEyeLab/experiments/rax_dexbin_tinyobj
+"$PY" "$E/mainline/evidence/d109/run_panel.py" --out "$PWD/FingerEyeLab/outputs/teacher/wuji_panel_002"
+"$PY" "$E/mainline/evidence/d105/run_trials.py" --root "$PWD" --out "$PWD/FingerEyeLab/outputs/teacher/old_hands_002" --hands xhand new
+单例与新增物体的资产目录、objects.json、case JSON 和完整 --robot-urdf 命令见 TEACHER_CASE.md；示例为已验证的 Wuji 圆柱。
+
+核验：最终执行版 44 项测试通过；每例记录源码及配置 SHA、原 evaluator/adapter 未改、预算回执与无残留子进程。V5 原三指手楔体及圆柱单项对照的物理仿真完成后，外层回执收尾遭中断；原回执保留，另存 SUPERVISION_RECOVERY.json，缺失退出码与外层总时长保持 null，不伪称正常回执。相机曝光 FK/光学参数/投影一致性、全步几何和原生接触均离线核验，物体真值与原生接触不进入策略。
+
+最终十例均正常完成预算回执，无超时和遗留子进程；全部相机与全程几何审计通过。FINAL_RUN_AUDIT.json 汇总源码、评分与审计文件哈希。Wuji 圆柱最终保持阶段最低实际抬高 31.504mm，连续保持 2 秒。

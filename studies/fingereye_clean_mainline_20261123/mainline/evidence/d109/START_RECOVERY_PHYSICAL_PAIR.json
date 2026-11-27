@@ -1,0 +1,662 @@
+{
+  "diagnostic_only": true,
+  "rows": [
+    {
+      "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v4/cylinder_offset_new",
+      "success": true,
+      "first_success": true,
+      "actual_closures": 1,
+      "controller_completed": true,
+      "error": null,
+      "controller_sha256": "9c92546a600f5ff59ebf5188a7529b3cf1ef7209371f2b674f06ed7d65df3c73",
+      "evaluator_and_adapter_unchanged": true,
+      "physics": {
+        "success": true,
+        "steps": 8142,
+        "required_hold_steps": 240,
+        "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+        "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+        "geometry_passed": true,
+        "first_invalid_step": null,
+        "hold_physics_passed": true,
+        "hold_min_table_clearance_m": 0.03215122077042435,
+        "hold_min_lift_m": 0.03213462775602238,
+        "hold_relative_translation_drift_m": 9.074695409295685e-08,
+        "hold_relative_rotation_drift_rad": 5.61774514207864e-06,
+        "hold_max_linear_speed_m_s": 0.015479810538862666,
+        "hold_max_angular_speed_rad_s": 2.0651161485404033,
+        "hold_min_contact_force_n": 2.0014424920082092,
+        "commanded_lift_m": 0.03200000524520874,
+        "protocol_id": "lift30_no_drop_v1",
+        "target_lift_m": 0.03,
+        "lift_tolerance_m": 0.002,
+        "minimum_actual_lift_m": 0.027999999999999997,
+        "minimum_commanded_lift_m": 0.0295,
+        "legacy_strict": {
+          "success": false,
+          "steps": 8142,
+          "required_hold_steps": 240,
+          "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+          "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+          "geometry_passed": true,
+          "first_invalid_step": null,
+          "hold_physics_passed": false,
+          "hold_min_table_clearance_m": 0.03215122077042435,
+          "hold_min_lift_m": 0.03213462775602238,
+          "hold_relative_translation_drift_m": 9.074695409295685e-08,
+          "hold_relative_rotation_drift_rad": 5.61774514207864e-06,
+          "hold_max_linear_speed_m_s": 0.015479810538862666,
+          "hold_max_angular_speed_rad_s": 2.0651161485404033,
+          "hold_min_contact_force_n": 2.0014424920082092,
+          "commanded_lift_m": 0.03200000524520874
+        },
+        "continuous_physics_evidence": true,
+        "hold_checks": {
+          "actual_lift": true,
+          "table_clearance": true,
+          "completed_commanded_lift": true
+        },
+        "hold_start_step": 7902,
+        "hold_end_step": 8141,
+        "hold_start_time_s": 65.85,
+        "hold_end_time_s": 67.85,
+        "hold_duration_s": 2.0
+      },
+      "first_physics": null,
+      "host_wall_s": 664.6967209796421,
+      "physical_s": 67.85,
+      "closure_starts": [
+        {
+          "event": "grasp_dispatched",
+          "step": 4542,
+          "frame_id": 1135,
+          "actual_grasps": 1,
+          "candidate_id": "contacts2-d058738c40c4469b09cc",
+          "branch": "initial",
+          "started_step": 4536,
+          "target_q": [
+            -0.04296162298295948,
+            0.06273921625142982,
+            0.2919115661979312,
+            2.4017235485946364,
+            -0.12042923935975525,
+            3.136171997884025,
+            2.9820477130071543,
+            1.4461244246877578,
+            0.34257920904413164,
+            0.49579791071888746,
+            1.4289219578211694,
+            0.3313533924882768,
+            0.4204326666963695,
+            -1.1055847814711068,
+            1.4983625050028586,
+            -0.5530719512520942,
+            -0.5531032626591319
+          ],
+          "actual_q": [
+            -0.04296150058507919,
+            0.06274089217185974,
+            0.2919072210788727,
+            2.4017081260681152,
+            -0.12042944878339767,
+            3.136157989501953,
+            2.9819602966308594,
+            1.446327567100525,
+            0.3427489697933197,
+            0.49601247906684875,
+            1.4295042753219604,
+            0.33295533061027527,
+            0.41943463683128357,
+            -1.1055822372436523,
+            1.4983519315719604,
+            -0.5530675053596497,
+            -0.55311119556427
+          ],
+          "contact_count": 2,
+          "points": [
+            [
+              -0.00098893876242855,
+              -0.008268030357769546,
+              0.022878404848023857
+            ],
+            [
+              0.009286792532340752,
+              0.001233714461832184,
+              0.023622571200696912
+            ]
+          ],
+          "command_plan_sha256": "d058738c40c4469b09cce491c1479432892506588459636426d78cfd040ab7ba",
+          "planned_q": [
+            -0.04416154322181172,
+            0.06154369713751393,
+            0.29188371251398365,
+            2.4017235485946364,
+            -0.12042923935975525,
+            3.136171997884025,
+            3.0515747136636717,
+            1.4463110038476534,
+            0.3416803598406546,
+            0.49567157919439,
+            1.4300746600249439,
+            0.33594589632986444,
+            0.42022375940992157,
+            -1.1055847814711068,
+            1.4983625050028586,
+            -0.5530719512520942,
+            -0.5531032626591319
+          ],
+          "recovery_id": null
+        }
+      ],
+      "last_phase": "s5_hold",
+      "last_failures": [
+        {
+          "event": "failure_decision",
+          "step": 8142,
+          "frame_id": 2035,
+          "actual_grasps": 1,
+          "candidate_id": "contacts2-d058738c40c4469b09cc",
+          "decision": {
+            "action": "stop_unknown",
+            "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+            "support_state": "unknown",
+            "attempt": 1,
+            "max_attempts": 3,
+            "phase": "final",
+            "feedback": true,
+            "motor_contact_hypothesis": null,
+            "motor_contact_used": false,
+            "carrying_evidence": false,
+            "grounded_evidence": false,
+            "persistent_image_motion_risk": false,
+            "repeated_lift_image_risk": false,
+            "hold_consistent": false,
+            "use_active_lift_risk": true,
+            "remaining_steps": 15858,
+            "remaining_wall_s": 1752.297270707786,
+            "private_success_certified": false,
+            "native_object_omega_observable": false,
+            "confirmed_empty": false,
+            "confirmed_empty_source": null,
+            "confirmed_empty_step": null,
+            "release_authorized": false
+          }
+        }
+      ],
+      "selection_rounds": [
+        {
+          "selected": 2,
+          "planning_cpu_s": 245.78563267200002,
+          "planning_wall_s": 245.81082481704652,
+          "rejected": 10
+        }
+      ]
+    },
+    {
+      "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v5/cylinder_offset_new",
+      "success": false,
+      "first_success": false,
+      "actual_closures": 1,
+      "controller_completed": true,
+      "error": null,
+      "controller_sha256": "72c4c6f128d959b8e05160334a9f7f7775b55db720143c04ab25c6f424b3669d",
+      "evaluator_and_adapter_unchanged": true,
+      "physics": {
+        "success": false,
+        "steps": 8820,
+        "required_hold_steps": 240,
+        "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+        "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+        "geometry_passed": false,
+        "first_invalid_step": 5817,
+        "hold_physics_passed": true,
+        "hold_min_table_clearance_m": 0.031851269224065545,
+        "hold_min_lift_m": 0.03198499402060406,
+        "hold_relative_translation_drift_m": 4.0045363803436886e-05,
+        "hold_relative_rotation_drift_rad": 0.0018691513017142299,
+        "hold_max_linear_speed_m_s": 0.01473421210023453,
+        "hold_max_angular_speed_rad_s": 2.4819688805126594,
+        "hold_min_contact_force_n": 1.6158376336097717,
+        "commanded_lift_m": 0.03232845664024353,
+        "protocol_id": "lift30_no_drop_v1",
+        "target_lift_m": 0.03,
+        "lift_tolerance_m": 0.002,
+        "minimum_actual_lift_m": 0.027999999999999997,
+        "minimum_commanded_lift_m": 0.0295,
+        "legacy_strict": {
+          "success": false,
+          "steps": 8820,
+          "required_hold_steps": 240,
+          "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+          "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+          "geometry_passed": false,
+          "first_invalid_step": 5817,
+          "hold_physics_passed": false,
+          "hold_min_table_clearance_m": 0.031851269224065545,
+          "hold_min_lift_m": 0.03198499402060406,
+          "hold_relative_translation_drift_m": 4.0045363803436886e-05,
+          "hold_relative_rotation_drift_rad": 0.0018691513017142299,
+          "hold_max_linear_speed_m_s": 0.01473421210023453,
+          "hold_max_angular_speed_rad_s": 2.4819688805126594,
+          "hold_min_contact_force_n": 1.6158376336097717,
+          "commanded_lift_m": 0.03232845664024353
+        },
+        "continuous_physics_evidence": true,
+        "hold_checks": {
+          "actual_lift": true,
+          "table_clearance": true,
+          "completed_commanded_lift": true
+        },
+        "hold_start_step": 8580,
+        "hold_end_step": 8819,
+        "hold_start_time_s": 71.49999999999999,
+        "hold_end_time_s": 73.5,
+        "hold_duration_s": 2.0,
+        "failure": "invalid_episode_geometry"
+      },
+      "first_physics": null,
+      "host_wall_s": 813.1363136139698,
+      "physical_s": 73.5,
+      "closure_starts": [
+        {
+          "event": "grasp_dispatched",
+          "step": 5358,
+          "frame_id": 1339,
+          "actual_grasps": 1,
+          "candidate_id": "contacts2-dbaddae62d4b4e77853e",
+          "branch": "initial",
+          "started_step": 5352,
+          "target_q": [
+            -0.052593589537443274,
+            0.0724694029504839,
+            0.26076338484796335,
+            2.399444723032032,
+            -0.10152595113962248,
+            3.1375436548641287,
+            3.0154198252280846,
+            2.0177774121627228,
+            0.7603712538074705,
+            0.8411739160059151,
+            2.0293872020595116,
+            0.9591655214569923,
+            0.5727942399600843,
+            -1.2921364607611903,
+            1.708459462146219,
+            -0.6067944966532431,
+            -0.7002447139106717
+          ],
+          "actual_q": [
+            -0.052592549473047256,
+            0.07246951758861542,
+            0.2607657015323639,
+            2.3994312286376953,
+            -0.101526640355587,
+            3.137531280517578,
+            3.015375852584839,
+            2.0177783966064453,
+            0.7603747248649597,
+            0.8411847949028015,
+            2.029554605484009,
+            0.9598801136016846,
+            0.5720346570014954,
+            -1.2921353578567505,
+            1.7084472179412842,
+            -0.6067854762077332,
+            -0.7002524733543396
+          ],
+          "contact_count": 2,
+          "points": [
+            [
+              -0.0010219280073417514,
+              -0.008237677558623594,
+              0.022741788254844256
+            ],
+            [
+              0.009409051646646247,
+              0.001114113129984281,
+              0.02436532376694449
+            ]
+          ],
+          "command_plan_sha256": "dbaddae62d4b4e77853ef2b56e2c6509bd48b91bc12abeb8e17a2f29c620578a",
+          "planned_q": [
+            -0.05379083010581545,
+            0.07126940295048391,
+            0.25956338484796343,
+            2.399444723032032,
+            -0.10152595113962248,
+            3.1375436548641287,
+            3.0558181539938962,
+            2.0340821473533173,
+            0.7691715608911589,
+            0.8546122330318576,
+            1.9912180262066688,
+            0.7413465264499088,
+            0.8373810670244226,
+            -1.2921364607611903,
+            1.708459462146219,
+            -0.6067944966532431,
+            -0.7002447139106717
+          ],
+          "recovery_id": null
+        }
+      ],
+      "last_phase": "s5_hold",
+      "last_failures": [
+        {
+          "event": "failure_decision",
+          "step": 8820,
+          "frame_id": 2205,
+          "actual_grasps": 1,
+          "candidate_id": "contacts2-dbaddae62d4b4e77853e",
+          "decision": {
+            "action": "stop_unknown",
+            "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+            "support_state": "unknown",
+            "attempt": 1,
+            "max_attempts": 3,
+            "phase": "final",
+            "feedback": true,
+            "motor_contact_hypothesis": null,
+            "motor_contact_used": false,
+            "carrying_evidence": false,
+            "grounded_evidence": false,
+            "persistent_image_motion_risk": false,
+            "repeated_lift_image_risk": false,
+            "hold_consistent": false,
+            "use_active_lift_risk": true,
+            "remaining_steps": 15180,
+            "remaining_wall_s": 1748.1831451300532,
+            "private_success_certified": false,
+            "native_object_omega_observable": false,
+            "confirmed_empty": false,
+            "confirmed_empty_source": null,
+            "confirmed_empty_step": null,
+            "release_authorized": false
+          }
+        }
+      ],
+      "selection_rounds": [
+        {
+          "selected": 2,
+          "planning_cpu_s": 224.38312392099996,
+          "planning_wall_s": 226.46064998721704,
+          "rejected": 10
+        }
+      ]
+    },
+    {
+      "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/cylinder_budget_only_pair_v6/cylinder_offset_new",
+      "success": true,
+      "first_success": true,
+      "actual_closures": 1,
+      "controller_completed": true,
+      "error": null,
+      "controller_sha256": "2fd69f73b41388ef0e90ea8246cd6f357af03a280b3e63d5e9802f48079c9de3",
+      "evaluator_and_adapter_unchanged": true,
+      "physics": {
+        "success": true,
+        "steps": 8142,
+        "required_hold_steps": 240,
+        "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+        "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+        "geometry_passed": true,
+        "first_invalid_step": null,
+        "hold_physics_passed": true,
+        "hold_min_table_clearance_m": 0.03215122077042435,
+        "hold_min_lift_m": 0.03213462775602238,
+        "hold_relative_translation_drift_m": 9.074695409295685e-08,
+        "hold_relative_rotation_drift_rad": 5.61774514207864e-06,
+        "hold_max_linear_speed_m_s": 0.015479810538862666,
+        "hold_max_angular_speed_rad_s": 2.0651161485404033,
+        "hold_min_contact_force_n": 2.0014424920082092,
+        "commanded_lift_m": 0.03200000524520874,
+        "protocol_id": "lift30_no_drop_v1",
+        "target_lift_m": 0.03,
+        "lift_tolerance_m": 0.002,
+        "minimum_actual_lift_m": 0.027999999999999997,
+        "minimum_commanded_lift_m": 0.0295,
+        "legacy_strict": {
+          "success": false,
+          "steps": 8142,
+          "required_hold_steps": 240,
+          "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+          "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+          "geometry_passed": true,
+          "first_invalid_step": null,
+          "hold_physics_passed": false,
+          "hold_min_table_clearance_m": 0.03215122077042435,
+          "hold_min_lift_m": 0.03213462775602238,
+          "hold_relative_translation_drift_m": 9.074695409295685e-08,
+          "hold_relative_rotation_drift_rad": 5.61774514207864e-06,
+          "hold_max_linear_speed_m_s": 0.015479810538862666,
+          "hold_max_angular_speed_rad_s": 2.0651161485404033,
+          "hold_min_contact_force_n": 2.0014424920082092,
+          "commanded_lift_m": 0.03200000524520874
+        },
+        "continuous_physics_evidence": true,
+        "hold_checks": {
+          "actual_lift": true,
+          "table_clearance": true,
+          "completed_commanded_lift": true
+        },
+        "hold_start_step": 7902,
+        "hold_end_step": 8141,
+        "hold_start_time_s": 65.85,
+        "hold_end_time_s": 67.85,
+        "hold_duration_s": 2.0
+      },
+      "first_physics": null,
+      "host_wall_s": 953.35300134914,
+      "physical_s": 67.85,
+      "closure_starts": [
+        {
+          "event": "grasp_dispatched",
+          "step": 4542,
+          "frame_id": 1135,
+          "actual_grasps": 1,
+          "candidate_id": "contacts2-d058738c40c4469b09cc",
+          "branch": "initial",
+          "started_step": 4536,
+          "target_q": [
+            -0.04296162298295948,
+            0.06273921625142982,
+            0.2919115661979312,
+            2.4017235485946364,
+            -0.12042923935975525,
+            3.136171997884025,
+            2.9820477130071543,
+            1.4461244246877578,
+            0.34257920904413164,
+            0.49579791071888746,
+            1.4289219578211694,
+            0.3313533924882768,
+            0.4204326666963695,
+            -1.1055847814711068,
+            1.4983625050028586,
+            -0.5530719512520942,
+            -0.5531032626591319
+          ],
+          "actual_q": [
+            -0.04296150058507919,
+            0.06274089217185974,
+            0.2919072210788727,
+            2.4017081260681152,
+            -0.12042944878339767,
+            3.136157989501953,
+            2.9819602966308594,
+            1.446327567100525,
+            0.3427489697933197,
+            0.49601247906684875,
+            1.4295042753219604,
+            0.33295533061027527,
+            0.41943463683128357,
+            -1.1055822372436523,
+            1.4983519315719604,
+            -0.5530675053596497,
+            -0.55311119556427
+          ],
+          "contact_count": 2,
+          "points": [
+            [
+              -0.00098893876242855,
+              -0.008268030357769546,
+              0.022878404848023857
+            ],
+            [
+              0.009286792532340752,
+              0.001233714461832184,
+              0.023622571200696912
+            ]
+          ],
+          "command_plan_sha256": "d058738c40c4469b09cce491c1479432892506588459636426d78cfd040ab7ba",
+          "planned_q": [
+            -0.04416154322181172,
+            0.06154369713751393,
+            0.29188371251398365,
+            2.4017235485946364,
+            -0.12042923935975525,
+            3.136171997884025,
+            3.0515747136636717,
+            1.4463110038476534,
+            0.3416803598406546,
+            0.49567157919439,
+            1.4300746600249439,
+            0.33594589632986444,
+            0.42022375940992157,
+            -1.1055847814711068,
+            1.4983625050028586,
+            -0.5530719512520942,
+            -0.5531032626591319
+          ],
+          "recovery_id": null
+        }
+      ],
+      "last_phase": "s5_hold",
+      "last_failures": [
+        {
+          "event": "failure_decision",
+          "step": 8142,
+          "frame_id": 2035,
+          "actual_grasps": 1,
+          "candidate_id": "contacts2-d058738c40c4469b09cc",
+          "decision": {
+            "action": "stop_unknown",
+            "reason": "unresolved_RGB_do_not_destroy_possible_carried_grasp",
+            "support_state": "unknown",
+            "attempt": 1,
+            "max_attempts": 3,
+            "phase": "final",
+            "feedback": true,
+            "motor_contact_hypothesis": null,
+            "motor_contact_used": false,
+            "carrying_evidence": false,
+            "grounded_evidence": false,
+            "persistent_image_motion_risk": false,
+            "repeated_lift_image_risk": false,
+            "hold_consistent": false,
+            "use_active_lift_risk": true,
+            "remaining_steps": 15858,
+            "remaining_wall_s": 1748.5103555619717,
+            "private_success_certified": false,
+            "native_object_omega_observable": false,
+            "confirmed_empty": false,
+            "confirmed_empty_source": null,
+            "confirmed_empty_step": null,
+            "release_authorized": false
+          }
+        }
+      ],
+      "selection_rounds": [
+        {
+          "selected": 2,
+          "planning_cpu_s": 242.46914398299998,
+          "planning_wall_s": 242.55862704990432,
+          "rejected": 10
+        }
+      ]
+    }
+  ],
+  "only_change": "Use exact narrow-corridor fallback only after RRT extension/check budget exhaustion; invalid-start or invalid-goal keeps prior handling",
+  "original_success_vs_control_commands": {
+    "count": 1357,
+    "identical": true
+  },
+  "first_invalid_v5": {
+    "step": 5817,
+    "phase": "s5_preload_hold",
+    "geometry": {
+      "hand_object_intrusion_links": [
+        "Empty_Link7"
+      ],
+      "tolerance_m": 0.0005,
+      "hand_table_min_z": 0.0009879492655029132,
+      "object_min_z": 1.8457730894909635e-07,
+      "passed": false
+    }
+  },
+  "control_contact_audit": {
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/cylinder_budget_only_pair_v6/cylinder_offset_new",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 8142,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "Empty_Link4",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 1.0020309686660767,
+        "mean_normal_force_n": 1.002100216348966,
+        "maximum_normal_force_n": 1.0021779537200928,
+        "mean_weighted_normal_vector": [
+          -0.7189160192468099,
+          -0.6980706182761793,
+          0.00787575086810627
+        ]
+      },
+      {
+        "link": "Empty_Link7",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.9994115233421326,
+        "mean_normal_force_n": 0.9994962016741434,
+        "maximum_normal_force_n": 0.9995766878128052,
+        "mean_weighted_normal_vector": [
+          0.6305700383336376,
+          0.7735839937525072,
+          0.00781252184667142
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.14690253138542175,
+    "hold_min_lift_m": 0.03213462775602238,
+    "online_use": false
+  },
+  "supervision_note": "physical episode completed with evaluator; original budget supervisor finish was interrupted; supplementary recovery receipt retains missing exit/wall as null",
+  "recovery_receipt": {
+    "schema": "fingereye.supervisor_recovery.v1",
+    "status": "episode_completed_supervisor_finish_interrupted",
+    "original_receipt_sha256": "9d8f4c2b59a7aa61d2335e784e743f86ebde755e89a1902fdee384ff50b8d675",
+    "original_receipt_retained": true,
+    "return_code": null,
+    "actual_host_elapsed_s": null,
+    "episode_elapsed_s": 953.35300134914,
+    "episode_completed": true,
+    "source_fingerprint_after": {
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/evaluator.py": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/contact_regions.py": "1a310cf74b53b9f8a8b943a40ee66f25b4311b78e269b8a182c516e2fbda0b4e",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/d106/cylinder_offset/case.json": "4b0ef2396ae15df15c34317c53276f42eb00afeee6ebacd2ba9dda51be40b66d",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/hand_description.py": "b8d29571a67f21d09b8e5db120593fe650b37a70671001206598d28941d91ece",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/round2_evidence/budget_run.py": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py": "4b5def5e5b46abb40dab46db35838074ff4f7a3f4696145aadcbd3c2431c8e07",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/worker.py": "1c6b53cbc7200c6e596b39b08eea8b587ae905ead266d47c479520d70143e466",
+      "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/maintenance/reserve_budget_only_v6.py": "2fd69f73b41388ef0e90ea8246cd6f357af03a280b3e63d5e9802f48079c9de3",
+      "/home/CNS2025331827/docs/urdf_\u6574\u624b\u603b\u88c5-1113-\u5e26\u76f8\u673a-\u4fee\u6b63\u96f6\u4f4d\u4e0e\u9650\u4f4d.SLDASM/urdf/urdf_\u6574\u624b\u603b\u88c5-1113-\u5e26\u76f8\u673a-\u4fee\u6b63\u96f6\u4f4d\u4e0e\u9650\u4f4d.SLDASM.urdf": "03588dc287dff03e036b022f8ef19b5ed327e44e51b8635be998658f95733ecc",
+      "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python3.11": "bb8ce30000f2342310fe7f0524d0d44cc868f6019b7e35745c52cbd3304250b1"
+    },
+    "source_unchanged": true,
+    "leftover_descendants": [],
+    "timeout_triggered": null,
+    "recovery_time_unix": 1795756574.314746,
+    "evidence": "complete controller event, evaluator result and backend lifecycle exist; original exit code/wall duration unavailable; current process scan and original source pins verified"
+  }
+}

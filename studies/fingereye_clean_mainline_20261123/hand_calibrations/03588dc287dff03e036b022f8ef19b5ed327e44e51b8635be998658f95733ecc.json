@@ -1,9 +1,534 @@
 {
   "camera_optical_frames": {
     "*": {
-      "translation_m": [0.0, 0.0, 0.0002],
-      "rpy_rad": [3.141592653589793, 0.0, 0.0],
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0002
+      ],
+      "rpy_rad": [
+        3.141592653589793,
+        0.0,
+        0.0
+      ],
       "source": "simulation optical convention inferred from read-only CAM1-8 STL: each closed marker disc occupies z=-1.5mm..0 with outward +Z front normal; OpenGL -Z must face outward. Place optical centre 0.2mm outside front face. This is static CAD-derived simulation calibration, not measured hardware optics."
     }
+  },
+  "pads": [
+    {
+      "finger": "hand_joint_1",
+      "link": "Empty_Link4",
+      "surface_link": "Empty_Link4",
+      "point_m": [
+        0.03838436026126146,
+        0.0013984134420752525,
+        0.009999999776482582
+      ],
+      "outward_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "joint_names": [
+        "hand_joint_1",
+        "hand_joint_2",
+        "hand_joint_3",
+        "hand_joint_4"
+      ],
+      "support_radius_m": 0.0012,
+      "distal_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "regions": [
+        {
+          "point": [
+            0.06374422740191221,
+            -0.012812401257863967,
+            0.0
+          ],
+          "normal": [
+            -0.3746071754131969,
+            -0.9271836194244085,
+            0.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 8.514550106025985e-07,
+          "surface_link": "Empty_Link4",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.06374422740191221,
+            -0.007477497808832771,
+            0.0
+          ],
+          "normal": [
+            0.707280675012977,
+            0.7069138587407909,
+            -0.005181030147828667
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.04603781826311318,
+          "surface_link": "Empty_Link4",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.05106429383158684,
+            0.0023455806737312096,
+            0.0
+          ],
+          "normal": [
+            0.5591929736252063,
+            0.8290375252350597,
+            5.719208945118779e-07
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 5.26873537184985e-06,
+          "surface_link": "Empty_Link4",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.03838436026126146,
+            0.0013984134420752525,
+            -0.010000000707805157
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 1.4901161193847656e-08,
+          "surface_link": "Empty_Link4",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.03838436026126146,
+            0.0013984134420752525,
+            0.009999999776482582
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.0,
+          "surface_link": "Empty_Link4",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            -0.008373045667882686,
+            0.0013984134420752525,
+            0.0
+          ],
+          "normal": [
+            -0.9879421448864313,
+            0.15482350712084197,
+            0.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.1036325711841684,
+          "surface_link": "Empty_Link4",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.05246852697328166,
+            0.0013984134420752525,
+            0.0
+          ],
+          "normal": [
+            0.5591930652161192,
+            0.8290374634559029,
+            8.963707439300483e-07
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 7.470402575850749e-06,
+          "surface_link": "Empty_Link4",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        }
+      ],
+      "source": "source URDF terminal collision mesh; no camera housing meshes sampled; physical contact validation pending",
+      "contact_model": {
+        "friction_coefficient": 0.3,
+        "normal_force_limit_n": 1.0,
+        "support_radius_m": 0.0012,
+        "compliance_m_per_n": null,
+        "source": "explicit conservative simulation assumptions, not hardware measurements",
+        "force_limit_source": "shared task-model cap; URDF effort and Jacobian additionally bound force",
+        "friction_source": "shared planning assumption; environment material is separately configured",
+        "support_radius_source": "13-ray collision-mesh patch disc",
+        "compliance_source": "unknown; online motor tracking is only a contact proxy"
+      },
+      "geometry_class": "terminal_body_mesh_patch",
+      "physical_pad_validation": "geometric solid-body support only; material/pad and sustained load unmeasured",
+      "selection_source": "static FK: mesh-supported patch facing the other finger chains"
+    },
+    {
+      "finger": "hand_joint_5",
+      "link": "Empty_Link7",
+      "surface_link": "Empty_Link7",
+      "point_m": [
+        0.05246852697328166,
+        0.0013984134420752525,
+        0.0
+      ],
+      "outward_normal": [
+        0.5591930652161192,
+        0.829037463455903,
+        8.963707439300149e-07
+      ],
+      "joint_names": [
+        "hand_joint_5",
+        "hand_joint_6",
+        "hand_joint_7"
+      ],
+      "support_radius_m": 0.0012,
+      "distal_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "regions": [
+        {
+          "point": [
+            0.06374422740191221,
+            -0.012812401257863967,
+            0.0
+          ],
+          "normal": [
+            -0.3746071754131969,
+            -0.9271836194244085,
+            0.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 8.514550106025985e-07,
+          "surface_link": "Empty_Link7",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.06374422740191221,
+            -0.00747749780883275,
+            0.0
+          ],
+          "normal": [
+            0.7072806750129769,
+            0.7069138587407909,
+            -0.005181030147836816
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.046037818263118,
+          "surface_link": "Empty_Link7",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.05106429383158684,
+            0.0023455806737312096,
+            0.0
+          ],
+          "normal": [
+            0.5591929736252063,
+            0.8290375252350597,
+            5.719208945118445e-07
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 5.26873537184985e-06,
+          "surface_link": "Empty_Link7",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.03838436026126146,
+            0.0013984134420752525,
+            -0.010000000707805157
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 1.4901161193847656e-08,
+          "surface_link": "Empty_Link7",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.03838436026126146,
+            0.0013984134420752525,
+            0.009999999776482582
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.0,
+          "surface_link": "Empty_Link7",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            -0.008373045667882686,
+            0.0013984134420752525,
+            0.0
+          ],
+          "normal": [
+            -0.9879421448863475,
+            0.1548235071213773,
+            0.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.10363257118362641,
+          "surface_link": "Empty_Link7",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.05246852697328166,
+            0.0013984134420752525,
+            0.0
+          ],
+          "normal": [
+            0.5591930652161192,
+            0.829037463455903,
+            8.963707439300149e-07
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 7.4703877142135385e-06,
+          "surface_link": "Empty_Link7",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        }
+      ],
+      "source": "source URDF terminal collision mesh; no camera housing meshes sampled; physical contact validation pending",
+      "contact_model": {
+        "friction_coefficient": 0.3,
+        "normal_force_limit_n": 1.0,
+        "support_radius_m": 0.0012,
+        "compliance_m_per_n": null,
+        "source": "explicit conservative simulation assumptions, not hardware measurements",
+        "force_limit_source": "shared task-model cap; URDF effort and Jacobian additionally bound force",
+        "friction_source": "shared planning assumption; environment material is separately configured",
+        "support_radius_source": "13-ray collision-mesh patch disc",
+        "compliance_source": "unknown; online motor tracking is only a contact proxy"
+      },
+      "geometry_class": "terminal_body_mesh_patch",
+      "physical_pad_validation": "geometric solid-body support only; material/pad and sustained load unmeasured",
+      "selection_source": "static FK: mesh-supported patch facing the other finger chains"
+    },
+    {
+      "finger": "hand_joint_8",
+      "link": "Empty_Link11",
+      "surface_link": "Empty_Link11",
+      "point_m": [
+        0.03838436026126146,
+        0.0013984134420752525,
+        -0.010000000707805157
+      ],
+      "outward_normal": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "joint_names": [
+        "hand_joint_8",
+        "hand_joint_9",
+        "hand_joint_10",
+        "hand_joint_11"
+      ],
+      "support_radius_m": 0.0012,
+      "distal_direction": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "regions": [
+        {
+          "point": [
+            0.06374422740191221,
+            -0.012812401257863967,
+            0.0
+          ],
+          "normal": [
+            -0.3746071754131969,
+            -0.9271836194244085,
+            0.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 8.514550106025985e-07,
+          "surface_link": "Empty_Link11",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.06374422740191221,
+            -0.007477497808832778,
+            0.0
+          ],
+          "normal": [
+            0.707280675012977,
+            0.7069138587407909,
+            -0.005181030147826024
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.046037818263118,
+          "surface_link": "Empty_Link11",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.05106429383158684,
+            0.0023455806737312096,
+            0.0
+          ],
+          "normal": [
+            0.5591929736252063,
+            0.8290375252350597,
+            5.719208945118711e-07
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 5.26873537184985e-06,
+          "surface_link": "Empty_Link11",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.03838436026126146,
+            0.0013984134420752525,
+            -0.010000000707805157
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 1.4901161193847656e-08,
+          "surface_link": "Empty_Link11",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.03838436026126146,
+            0.0013984134420752525,
+            0.009999999776482582
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.0,
+          "surface_link": "Empty_Link11",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            -0.008373045667882686,
+            0.0013984134420752525,
+            0.0
+          ],
+          "normal": [
+            -0.9879421448864328,
+            0.15482350712083204,
+            0.0
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 0.10363257118417912,
+          "surface_link": "Empty_Link11",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        },
+        {
+          "point": [
+            0.05246852697328166,
+            0.0013984134420752525,
+            0.0
+          ],
+          "normal": [
+            0.5591930652161192,
+            0.829037463455903,
+            8.963707439300415e-07
+          ],
+          "radius_m": 0.0012,
+          "normal_variation_rad": 7.4703877142135385e-06,
+          "surface_link": "Empty_Link11",
+          "geometry_class": "terminal_body_mesh_patch",
+          "camera_clearance_check": "13 outward rays: no camera mesh within 10 mm",
+          "source": "13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad"
+        }
+      ],
+      "source": "source URDF terminal collision mesh; no camera housing meshes sampled; physical contact validation pending",
+      "contact_model": {
+        "friction_coefficient": 0.3,
+        "normal_force_limit_n": 1.0,
+        "support_radius_m": 0.0012,
+        "compliance_m_per_n": null,
+        "source": "explicit conservative simulation assumptions, not hardware measurements",
+        "force_limit_source": "shared task-model cap; URDF effort and Jacobian additionally bound force",
+        "friction_source": "shared planning assumption; environment material is separately configured",
+        "support_radius_source": "13-ray collision-mesh patch disc",
+        "compliance_source": "unknown; online motor tracking is only a contact proxy"
+      },
+      "geometry_class": "terminal_body_mesh_patch",
+      "physical_pad_validation": "geometric solid-body support only; material/pad and sustained load unmeasured",
+      "selection_source": "static FK: mesh-supported patch facing the other finger chains"
+    }
+  ],
+  "pad_description_type": "frozen_metric_URDF_mesh_proposals",
+  "pad_description_source": "D108 source-mesh catalog; every region independently rechecked as first exterior ray hit over complete fixed assembly; no object, trajectory or hand action in this description",
+  "pad_description_validation": {
+    "max_exterior_first_hit_error_m": 2.419581382582219e-09,
+    "material_calibrated": false
   }
 }

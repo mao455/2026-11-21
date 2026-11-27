@@ -73,6 +73,16 @@ STAGE3_SUPPORT_VERSION = 'support_v3'
 STAGE3_TOTAL_STEPS = 24000
 STAGE3_RESERVE_ATTEMPT_STEPS = 6000
 
+def planning_progress(robot,stage):
+    """Keep the existing RPC watchdog alive during bounded CPU planning."""
+    callback=getattr(robot,'planning_note',None)
+    now=time.monotonic()
+    if callback is not None and now-getattr(robot,'_progress_wall_s',0.)>=15.:
+        robot._progress_wall_s=now
+        callback('planning_progress',dict(stage=stage,process_cpu_s=time.process_time(),
+            observations_requested=False,physics_steps_requested=0))
+
+
 class Robot:
     """Planning geometry and actuation use the runner's single hand model."""
     def __init__(self, urdf=None):
@@ -196,6 +206,7 @@ class Robot:
         return self.description.fk(q)
 
     def tips(self,q):
+        planning_progress(self,"contact_FK")
         poses=self.fk(q)
         points=np.array([poses[n][:3,:3]@p+poses[n][:3,3] for n,p in zip(self.contact_links,self.contact_points)])
         normals=np.array([poses[n][:3,:3]@p for n,p in zip(self.contact_links,self.contact_normals)])
@@ -370,8 +381,8 @@ class _S3_VOLUME:
         """Closest full component3 surface to RGB boundary, never contact truth."""
         poses = self.robot.fk(q)
         answers = []
-        for digit in self.robot.finger_names:
-            name = self.robot.catalog[digit]['surface_link']
+        for patch in self.robot.selected_patches:
+            name = patch['surface_link']
             mesh = self.robot.surfaces[name]
             if not hasattr(self, 'surface_samples'):
                 self.surface_samples = {}
@@ -1414,12 +1425,25 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=12.0, seed_inde
         # A source-mesh intersection is a discontinuous objective far from a
         # grasp. First reach the contact manifold, then refine nearby collisions.
         if errors.max()<.002 and angles.max()<.7 and not source_clearance['passed']:
+            escape_seed=q.copy()
             fit=least_squares(lambda x:residual(x,True),robot.encode_upright(q),bounds=(lo,hi),
                 x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],diff_step=1e-4,
                 max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
             q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
             errors=np.linalg.norm(p-targets,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
             source_clearance=robot.ik_checker.check(q);collision_refined=True
+            if not source_clearance['passed']:
+                # Keep established feasible solves. A zero-depth triangle
+                # contact gets a changing escape objective only on refusal.
+                robot.ik_checker.escape_collisions=True
+                try:
+                    fit=least_squares(lambda x:residual(x,True),robot.encode_upright(escape_seed),bounds=(lo,hi),
+                        x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],diff_step=1e-4,
+                        max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
+                finally:robot.ik_checker.escape_collisions=False
+                q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
+                errors=np.linalg.norm(p-targets,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
+                source_clearance=robot.ik_checker.check(q)
         clearance=float(robot.vertices(poses)[:,2].min()-robot.ik_checker.table_z)
         contact_feasible=bool(errors.max()<.0008 and angles.max()<.5 and clearance>=.00065)
         feasible=bool(contact_feasible and source_clearance['passed'] and robot.grasp_posture(q,poses)['passed'] and np.all(q>=robot.lo) and np.all(q<=robot.hi))
@@ -1894,6 +1918,28 @@ def coupled_opening_curve(robot, q, points, inward, opening, rise):
     return list(reversed(curve))
 
 
+def clear_unused_digits(robot,q,*,object_check=True):
+    """Release spare digits from actual source collisions without moving tips."""
+    checker=robot.ik_checker;prior=np.asarray(q,float).copy()
+    if checker.motion_check(prior,object_check=object_check)['passed']:return prior
+    ii=robot.unused_finger_indices
+    if not len(ii):return prior
+    def decode(x):
+        cur=prior.copy();cur[ii]=x;return cur
+    def residual(x):
+        checker.optimization_motion_margin_m=.001
+        try:loss=checker.optimization_clearance(robot.fk(decode(x)),object_check)*3000
+        finally:checker.optimization_motion_margin_m=0.
+        return np.r_[loss,(x-prior[ii])*.04]
+    for fraction in (None,.1,.7):
+        seed=prior[ii] if fraction is None else robot.lo[ii]+fraction*(robot.hi[ii]-robot.lo[ii])
+        fit=least_squares(residual,np.clip(seed,robot.lo[ii]+1e-7,robot.hi[ii]-1e-7),
+            bounds=(robot.lo[ii]+1e-7,robot.hi[ii]-1e-7),diff_step=1e-4,max_nfev=60)
+        candidate=decode(fit.x)
+        if checker.motion_check(candidate,object_check=object_check)['passed']:return candidate
+    return prior
+
+
 def _S3_APPROACH(robot, q, points, inward, initial=None):
     try:
         from joint_path import plan_finger_rrt_connect
@@ -1901,7 +1947,13 @@ def _S3_APPROACH(robot, q, points, inward, initial=None):
         from mainline.joint_path import plan_finger_rrt_connect
     initial = np.asarray(_ACTIVE_DESCRIPTION['initial_q']) if initial is None else np.array(initial)
     recovery = bool((STAGE3_RELEASE_TICKET or {}).get('ready'))
-    checker=robot.ik_checker
+    class MotionChecker:
+        reserve=True
+        def check(self,q,object_check=True):
+            geometry=robot.ik_checker
+            return geometry.motion_check(q,object_check) if self.reserve else geometry.check(q,object_check)
+        def diagnose(self,q,object_check=True):return self.check(q,object_check)
+    checker=MotionChecker()
     raised=initial.copy();raised[2]=.35
     robot.approach_search=[];fallback=None
     surface=getattr(robot,'ik_surface_info',None)
@@ -1909,9 +1961,13 @@ def _S3_APPROACH(robot, q, points, inward, initial=None):
     variants=[(opening,0.) for opening in (.006,.003,.0015)]
     variants += [(opening,height*fraction) for fraction in (.5,1.) for opening in (.003,.006,.0015)]
     for opening,rise in variants:
+        checker.reserve=True
         opened=close_ik(robot,q,points-inward*opening)
         curve=coupled_opening_curve(robot,q,points,inward,opening,rise) if rise else None
         if curve is not None:opened=curve[0]
+        opened=clear_unused_digits(robot,opened)
+        if curve is not None:
+            for node in curve:node[robot.unused_finger_indices]=opened[robot.unused_finger_indices]
         high=opened.copy();high[2]=.35
         near=opened.copy();near[2]+=.045
         report=dict(opening_m=opening,palm_rise_m=rise,rise_source='fraction of current RGB envelope height' if rise else 'fixed palm',opened_endpoint=checker.check(opened))
@@ -1926,21 +1982,31 @@ def _S3_APPROACH(robot, q, points, inward, initial=None):
             fallback.append([fallback[-1][0],240,'probe_hold'])
         if not report['opened_endpoint']['passed']:continue
         finger_goal=raised.copy();finger_goal[robot.all_finger_indices]=opened[robot.all_finger_indices]
-        sequential,orders=(observation_digit_route(robot,checker,raised,finger_goal)
-            if recovery else (None,[]))
-        if sequential is not None:
-            route=[raised[robot.all_finger_indices]]+[node[robot.all_finger_indices]for node in sequential]
-            stats=dict(method='checked_sequential_digits',orders=orders)
-        else:
+        route,stats=plan_finger_rrt_connect(robot,checker,raised,finger_goal,
+            seed=17001,max_extensions=1000,max_collision_checks=5000,object_check=True)
+        if route is None:
+            sequential,orders=observation_digit_route(robot,checker,raised,finger_goal,max_orders=120)
+            if sequential is not None:
+                route=[raised[robot.all_finger_indices]]+[node[robot.all_finger_indices]for node in sequential]
+                stats=dict(method='checked_sequential_digits',orders=orders,rrt=stats)
+        if route is None and stats.get('reason') in ('extension_budget_exhausted','collision_check_budget_exhausted'):
+            # Extra cooking/tracking clearance is a route preference. A narrow
+            # real corridor must still get the unchanged exact source-mesh test.
+            # Keep every full-hand edge, joint limit, table and object check;
+            # actual encoder deviation remains an execution stop condition.
+            report['preferred_clearance_search']=stats
+            checker.reserve=False
             route,stats=plan_finger_rrt_connect(robot,checker,raised,finger_goal,
                 seed=17001,max_extensions=1000,max_collision_checks=5000,object_check=True)
+            report['clearance_policy']='exact_full_hand_after_preferred_reserve_exhausted'
+        else:
+            report['clearance_policy']='preferred_0.8mm_full_hand_route'
         report['joint_path']=stats
         if route is None:continue
         acts=smooth_segment(initial,raised,120,'raise');cur=raised.copy()
         for finger_q in route[1:]:
             nxt=cur.copy();nxt[robot.all_finger_indices]=finger_q
-            duration=(_s3_steps(nxt-cur,minimum=12,joint=.3)
-                if recovery else 12)
+            duration=_s3_steps(nxt-cur,minimum=12,joint=.3)
             acts+=smooth_segment(cur,nxt,duration,'route_fingers');cur=nxt
         for a,b,n,label in ((cur,high,600,'orient'),(high,near,360,'translate'),(near,opened,360,'descend')):
             acts+=smooth_segment(a,b,n,label)
@@ -2129,6 +2195,7 @@ class SelfAwareGeometry(_R13_CHECKER):
 
     def optimization_clearance(self, poses, object_check=True):
         """Metric source-mesh penalties; exact boolean gates remain decisive."""
+        planning_progress(self.robot,"collision_objective")
         vertices=[self.hulls[name]@poses[name][:3,:3].T+poses[name][:3,3] for name in self.names]
         lower=np.array([v.min(0) for v in vertices]);upper=np.array([v.max(0) for v in vertices])
         objects=self.__dict__.setdefault('_optimization_objects',{});updated=set()
@@ -2139,21 +2206,54 @@ class SelfAwareGeometry(_R13_CHECKER):
                 else:objects[i].setTransform(transform)
                 updated.add(i)
             return objects[i]
-        def overlap(a,b):
+        def overlap(a,b,extent):
             result=self.fcl.CollisionResult()
             hit=self.fcl.collide(a,b,self.fcl.CollisionRequest(enable_contact=True,num_max_contacts=16),result)
-            return max([0.]+[float(c.penetration_depth) for c in result.contacts])+.0001 if hit else 0.
+            # Triangle intersections often report zero depth. Use a changing
+            # conservative escape objective only after an exact mesh hit; this
+            # never replaces the exact collision acceptance check.
+            if not hit:return 0.
+            if getattr(self,'escape_collisions',False) or getattr(self,'optimization_motion_margin_m',0.):
+                return max(0.,float(np.min(extent)))+.0001
+            return max([0.]+[float(c.penetration_depth) for c in result.contacts])+.0001
         pair_loss=np.zeros(len(self.pairs))
-        near=np.all(upper[self.pairs[:,0]]>=lower[self.pairs[:,1]],axis=1)&np.all(upper[self.pairs[:,1]]>=lower[self.pairs[:,0]],axis=1)
+        margin=getattr(self,'optimization_motion_margin_m',0.)
+        near=np.all(upper[self.pairs[:,0]]+margin>=lower[self.pairs[:,1]],axis=1)&np.all(upper[self.pairs[:,1]]+margin>=lower[self.pairs[:,0]],axis=1)
         for k in np.flatnonzero(near):
-            i,j=self.pairs[k];pair_loss[k]=overlap(obj(i),obj(j))
+            i,j=self.pairs[k];pair_loss[k]=overlap(obj(i),obj(j),np.minimum(upper[i]-lower[j],upper[j]-lower[i]))
+            if margin:
+                distance=self.fcl.distance(obj(i),obj(j),self.fcl.DistanceRequest(),self.fcl.DistanceResult())
+                pair_loss[k]=max(pair_loss[k],margin-distance if distance>=0 else margin)
         object_loss=np.zeros(len(vertices))
         if object_check:
             near=np.all(upper>=self.object_bounds[0],axis=1)&np.all(lower<=self.object_bounds[1],axis=1)
-            for i in np.flatnonzero(near):object_loss[i]=overlap(obj(i),self.object)
+            for i in np.flatnonzero(near):object_loss[i]=overlap(obj(i),self.object,np.minimum(upper[i]-self.object_bounds[0],self.object_bounds[1]-lower[i]))
         return np.r_[np.minimum(lower[:,2]-self.table_z-.001,0),pair_loss,object_loss]
 
+    def motion_check(self,q,object_check=True):
+        key=(np.asarray(q,float).tobytes(),bool(object_check))
+        cache=self.__dict__.setdefault('_motion_checks',{})
+        if key in cache:return cache[key]
+        report=dict(self.check(q,object_check))
+        if report['passed']:
+            poses=self.robot.fk(q);margin=.0008
+            vertices=[self.hulls[n]@poses[n][:3,:3].T+poses[n][:3,3]for n in self.names]
+            lower=np.array([v.min(0)for v in vertices]);upper=np.array([v.max(0)for v in vertices])
+            close=np.all(upper[self.pairs[:,0]]+margin>=lower[self.pairs[:,1]],axis=1)&np.all(upper[self.pairs[:,1]]+margin>=lower[self.pairs[:,0]],axis=1)
+            witnesses=[]
+            for k in np.flatnonzero(close):
+                aa,bb=self.pairs[k];names=[self.names[aa],self.names[bb]];objects=[]
+                for n in names:
+                    pose=poses[n];objects.append(self.fcl.CollisionObject(self.models[n],self.fcl.Transform(pose[:3,:3],pose[:3,3])))
+                distance=float(self.fcl.distance(*objects,self.fcl.DistanceRequest(),self.fcl.DistanceResult()))
+                if distance<margin-1e-6:witnesses.append(dict(links=names,clearance_m=distance,required_m=margin))
+            report.update(passed=not witnesses,motion_clearance_failures=witnesses,self_motion_margin_m=margin,
+                margin_source='two 0.2mm native contact offsets plus 0.4mm cooking/tracking reserve; 1um comparison tolerance')
+        cache[key]=report
+        return report
+
     def check(self, q, object_check=True):
+        planning_progress(self.robot,"exact_geometry")
         cache = self.__dict__.setdefault('_s6_exact_checks', {})
         key = (np.asarray(q, dtype=float).tobytes(), bool(object_check))
         if key not in cache:
@@ -3174,6 +3274,7 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
     previous=s.get('c',{}).get('meta') if replanning and not kwargs.get('refinement') else None
     robot.ik_checker=checker
     robot.planning_note=lambda key,value:s5_note(s['ctx'],key,value)
+    robot.rank_progress=lambda:planning_progress(robot,'contact_region_ranking')
     mode=s['ctx'].robot_description.get('contact_mode',S11_CONFIG['fingers'])
     counts={'two':(2,),'three':(3,),'auto':(2,3)}[mode]
     groups_by_count={n:list(itertools.combinations(robot.catalog,n)) for n in counts}
@@ -4007,8 +4108,9 @@ def s5_close(s, mode='fixed', cap=0.0025):
             visible_views = [row for row in before.get('views', {}).values()
                              if row.get('status') == 'ok' and row.get('visible', False)]
             if len(visible_views) < 2:
-                delta[:] = 0.0
-                reason = 'missing_object_rgb_diagnostic_probe_hold'
+                # Occlusion does not imply contact or justify stopping the
+                # bounded approach to contact. Encoders still cap resistance.
+                reason = 'bounded_encoder_probe_with_occluded_object'
         if mode == 'feedback' and evidence is not None:
             delta, reason = stage2_response_action(evidence, i, 'preload')
         if mode in ('adaptive', 'servo') and evidence is not None:
@@ -4016,10 +4118,11 @@ def s5_close(s, mode='fixed', cap=0.0025):
             object_observation = evidence.get('object_observation', {})
             object_associated = object_observation.get('associated', False)
             delta = np.full(len(c['points']), 0.00035)
-            reason = 'bounded_motor_probe_with_whole_object_association'
+            reason = ('bounded_motor_probe_with_whole_object_association' if object_associated
+                      else 'bounded_encoder_probe_with_occluded_object')
             for k, finger in enumerate(robot.finger_names):
                 motor = motors.get(finger, {})
-                if not object_associated or not motor.get('settled', False):
+                if not motor.get('settled', False):
                     delta[k] = 0.0
                     reason = 'object_association_or_motor_settle_hold'
                 deficit = motor.get('drive_deficit')
@@ -4699,6 +4802,20 @@ def s13_release_recover(s):
         s['s15_local_retry_executed'] = True
     return recovered
 
+def temporal_grounded_support(reports):
+    """Two noncollinear measured camera baselines must both exclude carry."""
+    if any(r['classification']=='carrying_evidence' for report in reports for r in report['views']):return []
+    evidence=[]
+    for i,first in enumerate(reports):
+        for second in reports[i+1:]:
+            if first['before_step']!=second['before_step']:continue
+            a=np.asarray(first['measured_offset_m'])[:2];b=np.asarray(second['measured_offset_m'])[:2]
+            if abs(float(a[0]*b[1]-a[1]*b[0]))<.00004:continue
+            cameras={r['camera']for r in first['views']if r['classification']=='grounded_evidence'}&{r['camera']for r in second['views']if r['classification']=='grounded_evidence'}
+            evidence.extend(dict(camera=n,steps=[first['step'],second['step']],baseline_area_m2=abs(float(a[0]*b[1]-a[1]*b[0])))for n in sorted(cameras))
+    return evidence
+
+
 def s106_active_support(s):
     """Closed-hand translations chosen to reveal border-clipped silhouettes.
 
@@ -4730,7 +4847,7 @@ def s106_active_support(s):
     for _,_,offset in proposals:
         if all(np.linalg.norm(offset-old)>=.0079 for old in offsets):offsets.append(offset)
         if len(offsets)>=6:break
-    snapshots=[initial];reports=[]
+    snapshots=[initial];reports=[];evidence_history=[]
     for offset in offsets:
         target=base.copy();target[robot.base_indices[:3]]+=offset
         duration=_s3_steps(target-s['last'],minimum=120,translation=.025,joint=.3)
@@ -4757,8 +4874,12 @@ def s106_active_support(s):
             labels=[r['classification']for r in rows];state='unknown'
             if labels.count('carrying_evidence')>=2 and 'grounded_evidence'not in labels:state='carrying_evidence'
             if labels.count('grounded_evidence')>=2 and 'carrying_evidence'not in labels:state='grounded_evidence'
-            report=dict(mode='lift',state=state,before_step=before['step'],step=after['step'],step_delta=after['step']-before['step'],views=rows,offset_m=offset.tolist(),source='bounded closed-hand lateral RGB/q test',private_success_certified=False)
+            report=dict(mode='lift',state=state,before_step=before['step'],step=after['step'],step_delta=after['step']-before['step'],views=rows,offset_m=offset.tolist(),measured_offset_m=(after['palm'][:3,3]-before['palm'][:3,3]).tolist(),source='bounded closed-hand lateral RGB/q test',private_success_certified=False)
+            evidence_history.append(report)
             if state!='unknown':break
+        temporal=temporal_grounded_support(evidence_history)
+        if report['state']=='unknown' and temporal:
+            report.update(state='grounded_evidence',temporal_grounded_evidence=temporal)
         reports.append(report);s5_note(s['ctx'],'s106_active_support',report);snapshots.append(after)
         if report['state']!='unknown':break
     s5_move(s,base,_s3_steps(base-s['last'],minimum=120,translation=.025),'s106_support_return')

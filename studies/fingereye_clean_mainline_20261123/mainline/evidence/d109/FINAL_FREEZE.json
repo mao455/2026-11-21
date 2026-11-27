@@ -1,0 +1,9 @@
+{
+  "source_commit": "6117d290ba29f84a599c359e53d7189cf98667f8",
+  "controller_sha256": "2fd69f73b41388ef0e90ea8246cd6f357af03a280b3e63d5e9802f48079c9de3",
+  "configuration": "same fixed object/pose and simulation optics; narrow corridor fallback only on exhausted route search, invalid starts retain original recovery",
+  "panels": [
+    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/wuji_final_v6",
+    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v6"
+  ]
+}

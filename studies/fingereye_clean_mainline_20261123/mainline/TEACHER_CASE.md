@@ -9,10 +9,10 @@ PY=/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python
 E=FingerEyeLab/experiments/rax_dexbin_tinyobj
 HAND=/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf
 "$PY" "$E/run_stage17.py" \
-  --session "$PWD/FingerEyeLab/outputs/teacher/box_001" \
+  --session "$PWD/FingerEyeLab/outputs/teacher/cylinder_001" \
   --robot-urdf "$HAND" --controller "$E/mainline/strategy.py" \
   --registry-manifest "$E/mainline/fixtures/wuji_first/objects.json" \
-  --case-file "$E/mainline/fixtures/wuji_first/box_28.json" \
+  --case-file "$E/mainline/fixtures/wuji_first/cylinder_28.json" \
   --evaluation-mode inline --mode minimal --fingers auto --max-attempts 3 \
   --no-preload --phase explore --profile fast --color-mode hs --light-multiplier 1.0
 ```
@@ -23,7 +23,7 @@ HAND=/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_descri
 
 1. 将以米为单位、封闭且尺度正确的物体网格放在 `FingerEyeLab/assets/objects/<自己的集合>/`。四个现成示例位于 `assets/objects/d107_transfer/`。沿用示例的坐标约定：物体底面在局部 z=0，桌上初始放置后不悬空也不穿桌。
 2. 复制 `mainline/fixtures/wuji_first/objects.json`，为新物体添加唯一 `object_id`、相对 **FingerEyeLab** 的 `asset` 路径和该文件的 SHA256（`sha256sum 文件`）。该清单供环境装载资产，不提供给在线策略。
-3. 复制 `box_28.json`，修改 `object_id` 和初态 `dx`、`dy`（米）、`yaw`（弧度），按需要修改质量、摩擦和观测噪声。保留一份固定清单便于比较；改变初态应另建 case。
+3. 复制 `cylinder_28.json`，修改 `object_id` 和初态 `dx`、`dy`（米）、`yaw`（弧度），按需要修改质量、摩擦和观测噪声。保留一份固定清单便于比较；改变初态应另建 case。
 4. 用上述命令指定新 `--registry-manifest`、`--case-file` 和新 `--session`。无需修改策略。
 
 换手只改 `--robot-urdf`。程序按 URDF 内容哈希加载 `hand_calibrations/<sha256>.json`。Wuji 的 sidecar 引用 `shared_simulation_modules_v1.json`：在三个源 URDF 固定 FingerEye 壳体挂点上各安装 front1/front2/back 三个虚拟镜头，复用已有名义模块变换和镜头参数；渲染、曝光 FK 与策略投影共用这份配置。这是**共享仿真配置**，不代表 Wuji 实机镜头标定。未知手需要提供对应静态描述；不能自动把壳体原点当成光学中心。
@@ -31,7 +31,7 @@ HAND=/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_descri
 完整四例顺序复跑：
 
 ```bash
-"$PY" "$E/mainline/evidence/d108/run_panel.py" \
+"$PY" "$E/mainline/evidence/d109/run_panel.py" \
   --out "$PWD/FingerEyeLab/outputs/teacher/wuji_panel_001"
 ```
 

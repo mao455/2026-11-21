@@ -954,6 +954,8 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
     import itertools
     from scipy.stats import qmc
     started=time.process_time();r=robot;prior=np.asarray(prior,float)
+    progress=getattr(r,'rank_progress',lambda:None)
+    expired=lambda:time.process_time()>=530.
     original=[tuple(ids)for ids in regions];count=len(r.finger_names)
     selected=tuple(r.contact_region_indices)
     task=task_wrench if task_wrench is not None else getattr(r,'region_ranking_task_wrench',None)
@@ -969,6 +971,8 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
     sets=generate_contact_sets(info,count,axes=axes,heights=heights,max_sets=4096)
     target_rows=[];force_refusals=0
     for si,region in enumerate(sets):
+        progress()
+        if expired():return fallback('unchanged_ranking_cpu_reserve')
         for perm in itertools.permutations(range(count)):
             normals=np.asarray(region['outward_normals'])[list(perm)]
             key=(tuple(normals.round(9).ravel()),friction,caps,task['normal_uncertainty'],tuple(force))
@@ -1024,6 +1028,8 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
     except Exception as error:
         table_priority_errors.append(str(error))
     for ids in original:
+        progress()
+        if expired():return fallback('unchanged_ranking_cpu_reserve')
         points=np.stack([point_cloud[i][:,k]for i,k in enumerate(ids)],axis=1)
         ns=np.stack([normal_cloud[i][:,k]for i,k in enumerate(ids)],axis=1)
         center=points.mean(1);centered=points-center[:,None,:]
@@ -1046,6 +1052,7 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
         if radii not in priority_rows:
             evaluations=[]
             for target,inward in zip(targets,normals):
+                if expired():return fallback('unchanged_ranking_cpu_reserve')
                 try:
                     evaluation=_finite_surface_task_priority(info,target,-inward,radii,models,task,public_facets)
                     priority_cache_hits+=int(evaluation['cache_hit']);priority_cache_misses+=int(not evaluation['cache_hit'])

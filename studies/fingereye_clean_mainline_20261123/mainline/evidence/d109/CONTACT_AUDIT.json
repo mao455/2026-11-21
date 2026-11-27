@@ -1,0 +1,292 @@
+[
+  {
+    "case": "box_center",
+    "hand": "xhand",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v6/box_center_xhand",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 10548,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "left_hand_index_camera_component3_link",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.2261294573545456,
+        "mean_normal_force_n": 0.22645523380488158,
+        "maximum_normal_force_n": 0.22679249942302704,
+        "mean_weighted_normal_vector": [
+          -0.00038846920559878464,
+          -0.22645488196699076,
+          0.0001052815401489362
+        ]
+      },
+      {
+        "link": "left_hand_thumb_camera_component3_link",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.22221364080905914,
+        "mean_normal_force_n": 0.22648280219485362,
+        "maximum_normal_force_n": 0.23092642426490784,
+        "mean_weighted_normal_vector": [
+          0.0003890341100119212,
+          0.2264824329888602,
+          -0.0001058951007395309
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.029826056212186813,
+    "hold_min_lift_m": 0.031534643676423,
+    "online_use": false
+  },
+  {
+    "case": "box_28",
+    "hand": "wuji",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/wuji_final_v6/box_28",
+    "success": false,
+    "geometry_valid_every_step": true,
+    "physics_steps": 3156,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [],
+    "hold_max_abs_joint_velocity": 0.062319688498973846,
+    "hold_min_lift_m": -0.00010000558540923521,
+    "online_use": false
+  },
+  {
+    "case": "box_center",
+    "hand": "new",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v6/box_center_new",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 9726,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "Empty_Link4",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.5353179574012756,
+        "mean_normal_force_n": 0.5379184703032176,
+        "maximum_normal_force_n": 0.5408197641372681,
+        "mean_weighted_normal_vector": [
+          -0.16684839684320263,
+          -0.5082968285813179,
+          0.052384701377544717
+        ]
+      },
+      {
+        "link": "Empty_Link7",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.594363808631897,
+        "mean_normal_force_n": 0.5956496022641659,
+        "maximum_normal_force_n": 0.5972874760627747,
+        "mean_weighted_normal_vector": [
+          -0.08112007431874516,
+          0.5900793936658985,
+          0.004930310905397024
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.12644749879837036,
+    "hold_min_lift_m": 0.03178019991173642,
+    "online_use": false
+  },
+  {
+    "case": "cylinder_28",
+    "hand": "wuji",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/wuji_final_v6/cylinder_28",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 15540,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "left_finger2_link4",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.8805361986160278,
+        "mean_normal_force_n": 0.880713022996982,
+        "maximum_normal_force_n": 0.8809036016464233,
+        "mean_weighted_normal_vector": [
+          -0.023805595183072216,
+          -0.8802526333672598,
+          -0.006014366362547692
+        ]
+      },
+      {
+        "link": "left_finger4_link4",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.8756946921348572,
+        "mean_normal_force_n": 0.8758683321376641,
+        "maximum_normal_force_n": 0.8760570287704468,
+        "mean_weighted_normal_vector": [
+          0.03885449673659098,
+          0.8749888354659104,
+          -0.005493025622558369
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.08976689726114273,
+    "hold_min_lift_m": 0.03150420805468457,
+    "online_use": false
+  },
+  {
+    "case": "cylinder_offset",
+    "hand": "xhand",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v6/cylinder_offset_xhand",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 10008,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "left_hand_index_camera_component3_link",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.2672767639160156,
+        "mean_normal_force_n": 0.2673618894070387,
+        "maximum_normal_force_n": 0.2675791382789612,
+        "mean_weighted_normal_vector": [
+          -0.2673273371481762,
+          -0.002224103252082073,
+          0.003677955787214607
+        ]
+      },
+      {
+        "link": "left_hand_thumb_camera_component3_link",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.26695549488067627,
+        "mean_normal_force_n": 0.2670364776005348,
+        "maximum_normal_force_n": 0.26723888516426086,
+        "mean_weighted_normal_vector": [
+          0.2669873253046792,
+          0.002226751095112675,
+          0.004614215060198291
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.01720382831990719,
+    "hold_min_lift_m": 0.029810409825586248,
+    "online_use": false
+  },
+  {
+    "case": "pentagon_28",
+    "hand": "wuji",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/wuji_final_v6/pentagon_28",
+    "success": false,
+    "geometry_valid_every_step": true,
+    "physics_steps": 2928,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [],
+    "hold_max_abs_joint_velocity": 0.07091119885444641,
+    "hold_min_lift_m": -0.00010000651673180982,
+    "online_use": false
+  },
+  {
+    "case": "cylinder_offset",
+    "hand": "new",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v6/cylinder_offset_new",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 8142,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "Empty_Link4",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 1.0020309686660767,
+        "mean_normal_force_n": 1.002100216348966,
+        "maximum_normal_force_n": 1.0021779537200928,
+        "mean_weighted_normal_vector": [
+          -0.7189160192468099,
+          -0.6980706182761793,
+          0.00787575086810627
+        ]
+      },
+      {
+        "link": "Empty_Link7",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.9994115233421326,
+        "mean_normal_force_n": 0.9994962016741434,
+        "maximum_normal_force_n": 0.9995766878128052,
+        "mean_weighted_normal_vector": [
+          0.6305700383336376,
+          0.7735839937525072,
+          0.00781252184667142
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.14690253138542175,
+    "hold_min_lift_m": 0.03213462775602238,
+    "online_use": false
+  },
+  {
+    "case": "wedge_28",
+    "hand": "wuji",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/wuji_final_v6/wedge_28",
+    "success": false,
+    "geometry_valid_every_step": true,
+    "physics_steps": 3024,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [],
+    "hold_max_abs_joint_velocity": 0.07091119885444641,
+    "hold_min_lift_m": -0.00010001489863498136,
+    "online_use": false
+  },
+  {
+    "case": "wedge_offset",
+    "hand": "xhand",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v6/wedge_offset_xhand",
+    "success": true,
+    "geometry_valid_every_step": true,
+    "physics_steps": 10950,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [
+      {
+        "link": "left_hand_index_camera_component3_link",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.25334981083869934,
+        "mean_normal_force_n": 0.25653439164161684,
+        "maximum_normal_force_n": 0.2596738934516907,
+        "mean_weighted_normal_vector": [
+          -0.08922455026321824,
+          -0.24003046499463465,
+          -0.015305066702253838
+        ]
+      },
+      {
+        "link": "left_hand_thumb_camera_component3_link",
+        "positive_hold_steps": 240,
+        "minimum_normal_force_n": 0.22904062271118164,
+        "mean_normal_force_n": 0.2321518786251545,
+        "maximum_normal_force_n": 0.2352265864610672,
+        "mean_weighted_normal_vector": [
+          0.15330537593300128,
+          0.1715275179546419,
+          0.031148860533967544
+        ]
+      }
+    ],
+    "hold_max_abs_joint_velocity": 0.01730581745505333,
+    "hold_min_lift_m": 0.028940429743670393,
+    "online_use": false
+  },
+  {
+    "case": "wedge_offset",
+    "hand": "new",
+    "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v6/wedge_offset_new",
+    "success": false,
+    "geometry_valid_every_step": true,
+    "physics_steps": 3696,
+    "physics_time_increment_errors": 0,
+    "hold_steps": 240,
+    "hold_contacts": [],
+    "hold_max_abs_joint_velocity": 0.07441569119691849,
+    "hold_min_lift_m": -0.00010000651673180982,
+    "online_use": false
+  }
+]

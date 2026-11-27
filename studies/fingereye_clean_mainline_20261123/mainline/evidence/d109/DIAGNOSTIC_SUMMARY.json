@@ -1,0 +1,74 @@
+{
+  "d108_fixed_endpoint_pair": [
+    {
+      "fraction": 0.1,
+      "position_error_m": 4.6204322059184104e-05,
+      "normal_error_rad": [
+        0.05066528436993064,
+        0.06427998475837245
+      ],
+      "endpoint": {
+        "table_clearance_m": 0.0009966443883088413,
+        "table_clearance_link": "left_finger2_fingereye_link",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [],
+        "passed": true
+      },
+      "path_passed": true,
+      "candidate_completed": true
+    },
+    {
+      "fraction": 0.7,
+      "position_error_m": 0.00038050677075923076,
+      "normal_error_rad": [
+        0.0587044373523147,
+        0.12407955730864031
+      ],
+      "endpoint": {
+        "table_clearance_m": 0.0009872153669183634,
+        "table_clearance_link": "left_finger3_fingereye_link",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [],
+        "passed": true
+      },
+      "path_passed": true,
+      "candidate_completed": true
+    }
+  ],
+  "first_normal_success": {
+    "session": "FingerEyeLab/outputs/d109/cylinder_005",
+    "first_success": true,
+    "actual_closures": 1,
+    "maximum_3_success": true,
+    "hold_min_lift_m": 0.031575156208418775,
+    "hold_seconds": 2.0,
+    "geometry_valid_every_step": true
+  },
+  "empty_control": {
+    "session": "FingerEyeLab/outputs/d109/cylinder_003",
+    "actual_closures": 1,
+    "success": false,
+    "closure_squeeze_m": [
+      0.0005,
+      0.0005
+    ],
+    "stop_reason": "missing RGB zero increment; support remained unknown"
+  },
+  "verified_contact_audit": "DIAGNOSTIC_CONTACT_AUDIT.json",
+  "formal_panels": [
+    "FingerEyeLab/outputs/d109/wuji_final_v2",
+    "FingerEyeLab/outputs/d109/regression_final_v2"
+  ],
+  "formal_source_commit": "8001752f5d5a2d89312cf8d8d06dfbb0ac8d7668",
+  "scope": "Early D109 diagnostics and early panel launch references only. Final ten-case source and results are FINAL_FREEZE.json and FINAL_RESULTS.json; early panel fields are preserved as history."
+}
