@@ -1,6 +1,6 @@
 {
-  "source_revision": "493eb86146c2d818a77e5ab92744ce9a4ac4db82",
-  "snapshot_id": "f550a05ddcb4b8b6181f58829bb6d72ecb49d250f7ecc1880d72f195f7fbe5fc",
+  "source_revision": "ee42af2358b9183a821e12a3d1b219ff6c50e47d",
+  "snapshot_id": "8e8f007c738ee71c537573df15ec6c0c7435805ebd782d8583cf2fbf7d29c510",
   "publication_scope": "research-only explicit files; private history/assets excluded",
   "files": {
     "README.md": {
@@ -520,8 +520,8 @@
     },
     "studies/fingereye_clean_mainline_20261123/mainline/tools/verify_release.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/tools/verify_release.py",
-      "bytes": 4731,
-      "sha256": "143412ffe52ab23edcea795bf3768402253960bb7e4f9ab4903d4ac2bfb38148"
+      "bytes": 5534,
+      "sha256": "34b8c117f5e4fb83a9fcd29e5f4b8410c7e6703deb3120d2ec1ce300cba1618f"
     },
     "studies/fingereye_clean_mainline_20261123/record_success_views.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/record_success_views.py",

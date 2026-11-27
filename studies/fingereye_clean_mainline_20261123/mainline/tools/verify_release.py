@@ -30,7 +30,7 @@ def main():
     private=work/'private.git';public=work/'public'
     run(['git','clone','--quiet','--bare','--depth','1','--filter=blob:none','--single-branch','--branch',a.private_branch,'https://github.com/ztr583/grasp_small_obj.git',str(private)])
     pc=run(['git','rev-parse','HEAD'],private);assert pc==a.private_commit,(pc,a.private_commit)
-    run(['git','clone','--quiet','--depth','1','--single-branch','--branch','main',pub['remote'],str(public)])
+    run(['git','clone','--quiet','--depth','2','--single-branch','--branch','main',pub['remote'],str(public)])
     uc=run(['git','rev-parse','HEAD'],public);assert uc==pub['commit']
     manifest=json.loads((public/config['research']['manifest_path']).read_text())
     assert manifest['source_revision']==receipt['source_revision']
@@ -57,13 +57,26 @@ def main():
     code="from pathlib import Path; import hashlib; from mainline import strategy; from run_stage17 import controller_settings; p=Path(strategy.__file__); assert controller_settings(p)['S17_COLOR_MODE']=='hs'; print(hashlib.sha256(p.read_bytes()).hexdigest())"
     source_sha=run([sys.executable,'-c',code],study)
     expected=sha((HERE/'mainline/strategy.py').read_bytes());assert source_sha==expected
-    baseline=sha((public/'studies/stage16_20261122/REPORT.md').read_bytes())
-    assert baseline=='d29e3d83c64c99bc4258d60c6e0526a636e70eb0bc118e6207d93888c2886051'
+    # Preserve all prior public files outside this export and explicit pruning.
+    # Historical report directories may already have been retired before this release.
+    previous=run(['git','rev-parse',uc+'^'],public)
+    def tree(revision):
+        raw=subprocess.check_output(['git','ls-tree','-r','-z',revision],cwd=public)
+        return {entry.split(b'\t',1)[1].decode():entry.split(b'\t',1)[0].split()[2].decode()
+                for entry in raw.split(b'\0') if entry}
+    before=tree(previous);after=tree(uc)
+    exported=set(config['research']['files'])|{config['research']['manifest_path']}
+    prune=config['research'].get('prune_prefixes',[])
+    retained=[n for n in before if n not in exported
+              and not any(n==p or n.startswith(p+'/') for p in prune)]
+    assert all(after.get(n)==before[n] for n in retained), 'Unlisted prior public file changed'
+
     report=dict(private_remote='https://github.com/ztr583/grasp_small_obj',private_branch=a.private_branch,private_commit=pc,
                 private_tree_sha=private_tree,private_tree_matches_local=True,removed_private_paths_absent=deleted['removed_file_count'],
                 public_remote=pub['remote'],public_commit=uc,public_source_revision=manifest['source_revision'],
                 selected_files_verified=len(selected),all_selected_bytes_match=True,public_strategy_import_sha256=source_sha,
-                public_old_stage17_only_archive=True,prior_stage16_report_sha256=baseline,
+                public_old_stage17_only_archive=True,previous_public_commit=previous,
+                preserved_unlisted_files=len(retained),all_unlisted_prior_files_unchanged=True,
                 private_checkout=str(private),public_checkout=str(public),verified_files=selected)
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({k:v for k,v in report.items() if k!='verified_files'},indent=2))
