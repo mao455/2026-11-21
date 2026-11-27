@@ -33,6 +33,11 @@ try:
 except ImportError:
     from mainline.contact_regions import generate_contact_sets, sort_task_candidates, force_support_possible, region_surface_schedule, finite_support_region, interleave_surface_families, rgb_facet_height_bounds, necessary_table_witnesses, rank_region_tuples, ordered_surface_planes, prioritize_surface_hint, source_domain_corrected_rank
 
+try:
+    from contact_intent import ContactIntent
+except ImportError:
+    from mainline.contact_intent import ContactIntent
+
 def color_reliability(rgb):
     """Photometric validity only; dark/clipped pixels cannot certify free space."""
     rgb = np.asarray(rgb, dtype=np.uint8)
@@ -96,7 +101,7 @@ class Robot:
         self.base_indices=np.array([self.description.index[n] for n in data['base_joint_names']],int)
         self.all_finger_indices=np.array([i for i,n in enumerate(self.names) if n not in data['base_joint_names']],int)
         self.catalog={row['finger']:row for row in data['pads']}
-        self.palm_forward_axis=self.description.forward_axis_in_palm(self.palm_link,data['pads'])
+        self.palm_forward_axis=np.asarray(data['task_frame']['forward_axis_in_palm']) if data.get('task_frame') else self.description.forward_axis_in_palm(self.palm_link,data['pads'])
         neutral=self.description.fk(np.zeros(len(self.names)))[self.palm_link][:3,:3]@self.palm_forward_axis
         self.upright_reference=Rotation.align_vectors([[0.,0.,-1.]],[neutral])[0].as_matrix()
         if len(self.catalog)<2:
@@ -938,6 +943,9 @@ def surface_ik_seeds(robot, prior, targets, inward, normal_weight=12.0):
     clear mesh vertices cannot dilute a buried remote link. This is a seed cost;
     the unchanged surface solver and complete collision/path checks still bind.
     """
+    if getattr(robot,'ik_seed_hints',None):
+        hints=robot.ik_seed_hints
+        return hints,dict(source='whole-hand FK/table/coarse body ranking; exact meshes remain endpoint/path gates',selected=[dict(source='FK proposal',rank=i)for i in range(len(hints))])
     from scipy.stats import qmc
     prior=np.asarray(prior,float);targets=np.asarray(targets,float);inward=np.asarray(inward,float)
     # Canonical names keep deterministic Sobol coordinates attached to the
@@ -1392,35 +1400,49 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
     meta["final_bound_pad_engagement"]=prepared_engagement(prepare_own_terminal_surfaces(robot),robot.fk(best[1]),hull.equations,supported_radii)
     return best[1],meta
 
-def solve_target_ik(robot, prior, targets, inward, normal_weight=12.0, seed_index=0):
+def solve_target_ik(robot, prior, targets, inward, normal_weight=2.5, seed_index=0):
     """The same bounded geometry search for every declared hand DOF."""
     if getattr(robot,'ik_surface_info',None) is not None:
-        return solve_surface_ik(robot,prior,targets,inward,robot.ik_surface_info,normal_weight)
+        return solve_surface_ik(robot,prior,targets,inward,robot.ik_surface_info,12.)
     prior=np.asarray(prior,float);targets=np.asarray(targets);inward=np.asarray(inward)
     if prior.shape!=robot.lo.shape:raise ValueError('IK prior must follow declared joint order')
     started=time.perf_counter();lo,hi=robot.upright_bounds()
     finger_scale=np.sqrt(6/max(1,len(robot.all_finger_indices)))
-    seeds=[]
-    if np.max(np.linalg.norm(robot.tips(prior)[0]-targets,axis=1))<.01:
-        seeds.append(np.clip(prior,lo+1e-7,hi-1e-7))
-    seeds.extend(grasp_seed(robot,prior,targets,inward,f,normal_weight) for f in (None,.15,.4,.7))
+    if getattr(robot,'ik_seed_hints',None):
+        seeds=robot.ik_seed_hints
+        seed_search=dict(source='shared whole-hand FK, table and coarse-body ranked proposal bank; exact endpoint/path checks remain',selected=[dict(source='FK proposal',rank=i)for i in range(len(seeds))])
+    else:
+        seeds=[]
+        if np.max(np.linalg.norm(robot.tips(prior)[0]-targets,axis=1))<.01:
+            seeds.append(np.clip(prior,robot.lo+1e-7,robot.hi-1e-7))
+        seeds.extend(grasp_seed(robot,prior,targets,inward,f,12.) for f in (None,.15,.4,.7))
+        seed_search=dict(source='measured articulation and selected-digit limit fractions; unused digits measured',selected=[dict(rank=i)for i in range(len(seeds))])
+    try:from contact_intent import ContactIntent
+    except ImportError:from mainline.contact_intent import ContactIntent
+    intent=ContactIntent(robot,targets,inward,getattr(robot,'ik_contact_info',None))
     attempts=[];best=None
     for number,seed in enumerate(seeds):
-        def residual(x, collision=False):
+        phase="preferred_center"
+        def residual(x, collision=False, preferred=None):
+            preferred=(phase=="preferred_center") if preferred is None else preferred
             q=robot.decode_upright(x)
             p,n,_,poses=robot.tips(q);verts=robot.vertices(poses)
             rotation=Rotation.from_euler('ZYX',q[3:6]).as_matrix()@Rotation.from_euler('ZYX',seed[3:6]).as_matrix().T
             clearance=(robot.ik_checker.optimization_clearance(poses)*3000 if collision else
-                np.minimum(verts[:,2]-robot.ik_checker.table_z-.001,0)*5000/np.sqrt(len(verts)))
-            return np.r_[(p-targets).ravel()*1500*np.sqrt(2/len(targets)),
-                (n-inward).ravel()*normal_weight*np.sqrt(2/len(targets)),clearance,
+                np.minimum(verts[:,2]-robot.ik_checker.table_z-.001,0.)*5000/np.sqrt(len(verts)))
+            position=(p-targets).ravel()*1500 if preferred else intent.residual(p)
+            weight=12. if preferred else normal_weight
+            return np.r_[position*np.sqrt(2/len(targets)),
+                (n-inward).ravel()*weight*np.sqrt(2/len(targets)),clearance,
                 Rotation.from_matrix(rotation).as_rotvec()*.25,
                 (q[robot.all_finger_indices]-seed[robot.all_finger_indices])*.08*finger_scale]
-        fit=least_squares(residual,robot.encode_upright(seed),bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],
+        fit=least_squares(lambda x:residual(x,preferred=True),np.clip(robot.encode_upright(seed),lo+1e-7,hi-1e-7),bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],
             max_nfev=120,ftol=1e-7,xtol=1e-7,gtol=1e-7)
         q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
-        errors=np.linalg.norm(p-targets,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
+        errors=(np.linalg.norm(p-targets,axis=1) if phase=="preferred_center" else intent.errors(p));angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
         source_clearance=robot.ik_checker.check(q)
+        preferred_center=dict(cost=float(fit.cost),error_m=errors.tolist(),normal_error_rad=angles.tolist(),nfev=int(fit.nfev))
+        finite_refined=False
         geometry_cost=float(fit.cost);geometry_nfev=int(fit.nfev);collision_refined=False
         # A source-mesh intersection is a discontinuous objective far from a
         # grasp. First reach the contact manifold, then refine nearby collisions.
@@ -1430,7 +1452,7 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=12.0, seed_inde
                 x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],diff_step=1e-4,
                 max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
             q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
-            errors=np.linalg.norm(p-targets,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
+            errors=(np.linalg.norm(p-targets,axis=1) if phase=="preferred_center" else intent.errors(p));angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
             source_clearance=robot.ik_checker.check(q);collision_refined=True
             if not source_clearance['passed']:
                 # Keep established feasible solves. A zero-depth triangle
@@ -1442,26 +1464,49 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=12.0, seed_inde
                         max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
                 finally:robot.ik_checker.escape_collisions=False
                 q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
-                errors=np.linalg.norm(p-targets,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
+                errors=(np.linalg.norm(p-targets,axis=1) if phase=="preferred_center" else intent.errors(p));angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
                 source_clearance=robot.ik_checker.check(q)
+        if not getattr(robot,'defer_finite_contact',False) and not (errors.max()<.0008 and angles.max()<.5 and source_clearance['passed']):
+            phase='finite_region'
+            fit=least_squares(residual,fit.x,bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],max_nfev=90,ftol=1e-7,xtol=1e-7,gtol=1e-7)
+            q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
+            errors=(np.linalg.norm(p-targets,axis=1) if phase=="preferred_center" else intent.errors(p));angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
+            source_clearance=robot.ik_checker.check(q);finite_refined=True
+            if errors.max()<.002 and angles.max()<.7 and not source_clearance['passed']:
+                robot.ik_checker.escape_collisions=True
+                try:
+                    fit=least_squares(lambda x:residual(x,True),fit.x,bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],diff_step=1e-4,max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
+                finally:robot.ik_checker.escape_collisions=False
+                q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
+                errors=(np.linalg.norm(p-targets,axis=1) if phase=="preferred_center" else intent.errors(p));angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1));source_clearance=robot.ik_checker.check(q)
+        correction=None
+        if not getattr(robot,'defer_finite_contact',False) and .0008<=errors.max()<.002 and angles.max()<.5 and source_clearance['passed']:
+            trial=close_ik(robot,q,intent.goals(p))
+            tp,tn,_,tposes=robot.tips(trial);te=intent.errors(tp)
+            ta=np.arccos(np.clip(np.sum(tn*inward,axis=1),-1,1))
+            tc=robot.ik_checker.check(trial)
+            accepted=bool(te.max()<.0008 and ta.max()<.5 and tc['passed'] and robot.grasp_posture(trial,tposes)['passed'])
+            correction=dict(accepted=accepted,before_error_m=errors.tolist(),after_error_m=te.tolist(),normal_error_rad=ta.tolist(),geometry=tc,
+                source='bounded close IK with actual joint limits, fixed palm attitude, support-radius-limited translation and full source-mesh check; no error tolerance change')
+            if accepted:q,p,n,poses,errors,angles,source_clearance=trial,tp,tn,tposes,te,ta,tc
         clearance=float(robot.vertices(poses)[:,2].min()-robot.ik_checker.table_z)
         contact_feasible=bool(errors.max()<.0008 and angles.max()<.5 and clearance>=.00065)
         feasible=bool(contact_feasible and source_clearance['passed'] and robot.grasp_posture(q,poses)['passed'] and np.all(q>=robot.lo) and np.all(q<=robot.hi))
-        meta=dict(seed=number,normal_weight=normal_weight,
+        meta=dict(seed=number,normal_weight=(12. if phase=="preferred_center" else normal_weight),contact_objective_phase=phase,preferred_center=preferred_center,finite_region_refined=finite_refined,seed_search=seed_search,contact_correction=correction,
             cost=float(fit.cost),nfev=geometry_nfev+(int(fit.nfev) if collision_refined else 0),solver_success=bool(fit.success),error_m=float(errors.max()),
             per_finger_error_m=errors.tolist(),fingers=list(robot.finger_names),normal_error_rad=angles.tolist(),
-            table_clearance_m=clearance,wall_s=time.perf_counter()-started,q=q.tolist(),targets=targets.tolist(),
-            inward=inward.tolist(),joint_count=len(q),finger_regularizer_normalization=finger_scale,
+            table_clearance_m=clearance,wall_s=time.perf_counter()-started,q=q.tolist(),targets=(targets if phase=="preferred_center" else intent.goals(p)).tolist(),original_target_centers=targets.tolist(),
+            inward=inward.tolist(),contact_intent=intent.report(p),joint_count=len(q),finger_regularizer_normalization=finger_scale,
             geometry_cost=geometry_cost,geometry_nfev=geometry_nfev,collision_refined=collision_refined,
-            objective_phase='source_mesh_refinement' if collision_refined else 'contact_geometry',
+            objective_phase='bounded_contact_correction' if correction and correction['accepted'] else ('source_mesh_refinement' if collision_refined else 'contact_geometry'),
             task_posture=robot.grasp_posture(q,poses),source_clearance=source_clearance,
             seed_source='current measured joint state and limit-normalized geometry search',solver_prior=seed.tolist())
         attempts.append(dict(seed=number,feasible=feasible,contact_feasible=contact_feasible,error_m=meta['error_m'],normal_error_rad=angles.tolist(),table_clearance_m=clearance,cost=meta['cost'],collision_refined=collision_refined,source_clearance=source_clearance))
         reserve_ok=True
         if feasible:
-            preview=close_ik(robot,q,p+inward*.0035)
+            preview=close_ik(robot,q,p+inward*.0005)
             reserve=robot.ik_checker.check(preview,object_check=False)
-            meta['closure_reserve_preview']=dict(squeeze_m=.0035,geometry=reserve)
+            meta['closure_reserve_preview']=dict(squeeze_m=.0005,geometry=reserve,scope='initial closure preview; full checked closure with backtracking is decisive')
             reserve_ok=bool(reserve['passed'])
         score=(not(feasible and reserve_ok),not feasible,not contact_feasible,
             max(0.,.00065-clearance)*5000+errors.max()*1500+angles.max(),fit.cost)
@@ -1812,11 +1857,11 @@ def _s2v_motor(before, after, command):
     result.update(commanded_delta=command.tolist(), tracking_residual=residual.tolist())
     for finger, indices in before['groups'].items():
         active = [index for index in indices if abs(command[index]) > 1e-06]
-        row = dict(joint_indices=indices, active_joint_indices=active, tracking_ratio=None, drive_deficit=None, settled=None)
+        speed = float(np.max(np.abs(after['actual_qvel'][indices])))
+        row = dict(joint_indices=indices, active_joint_indices=active, tracking_ratio=None, drive_deficit=None, settled=speed < 0.06, max_abs_qvel=speed)
         if active:
             denominator = float(command[active] @ command[active])
             ratio = float(measured[active] @ command[active] / denominator)
-            speed = float(np.max(np.abs(after['actual_qvel'][active])))
             row.update(tracking_ratio=ratio, drive_deficit=1.0 - ratio, settled=speed < 0.06, max_abs_qvel=speed)
         result['fingers'][finger] = row
     result['uncertainty'] = 'tracking deficit is a compliance/servo-lag proxy, not contact force; command starts at before.actual_q'
@@ -2860,6 +2905,22 @@ def initialize_state(ctx):
 def s5_static(s):
     return dict(s['ctx'].robot_description, volume=s['volume'], info=s['info'], hue=s['hue'], calibration=s['volume'].calibration, color=s['info']['color'], finger_joint_indices=s['robot'].description.finger_joint_indices)
 
+def measured_speed_limits(robot):
+    """Palm task rates and digit actuator rates have different meanings."""
+    description=robot.description
+    declared=np.asarray(description.urdf_velocity,dtype=float)
+    kinds=np.asarray(description.joint_types)
+    if declared.shape!=robot.lo.shape or kinds.shape!=robot.lo.shape:
+        raise ValueError('URDF velocity order does not match command order')
+    fallback=np.where(kinds=='prismatic',.15,1.5)
+    limits=np.where(np.isfinite(declared)&(declared>0.),declared,fallback)
+    translation=np.asarray(robot.base_indices[:3],dtype=int)
+    rotation=np.asarray(robot.base_indices[3:],dtype=int)
+    limits[translation]=np.minimum(limits[translation],.15)
+    limits[rotation]=np.minimum(limits[rotation],1.5)
+    return limits
+
+
 def dispatch_checked_step(s, q, n, phase, object_check=False):
     if not 1 <= n <= 24:
         raise ValueError('each dispatch must contain 1..24 physical steps')
@@ -2875,11 +2936,10 @@ def dispatch_checked_step(s, q, n, phase, object_check=False):
         if not finite:
             s5_note(s['ctx'], 's5_measured_stop', dict(reason='nonfinite_or_invalid_measured_state', phase=phase, step=s['obs']['step']))
             raise RuntimeError('measured joint instability: invalid state')
-        translation = np.asarray(robot.base_indices[:3], dtype=int)
-        angular = np.setdiff1d(np.arange(len(actual)), translation)
-        excessive_speed = bool(np.max(abs(speed[translation])) > 0.15 or np.max(abs(speed[angular])) > 1.5)
+        limits=measured_speed_limits(robot)
+        excessive_speed=bool(np.any(abs(speed)>limits))
         if excessive_speed:
-            s5_note(s['ctx'], 's5_measured_stop', dict(reason='measured_native_robot_speed', phase=phase, step=s['obs']['step'], actual_q=actual.tolist(), actual_qvel=speed.tolist(), max_translation_m_s=0.15, max_angular_rad_s=1.5))
+            s5_note(s['ctx'], 's5_measured_stop', dict(reason='measured_native_robot_speed', phase=phase, step=s['obs']['step'], actual_q=actual.tolist(), actual_qvel=speed.tolist(), max_translation_m_s=0.15, max_palm_angular_rad_s=1.5, per_joint_velocity_limits=limits.tolist(), digit_rate_source='URDF limit velocity in command order'))
             raise RuntimeError('measured joint instability: ' + phase)
     # Planning projection precision is not a physical servo-state tolerance.
     # Retain finite-state and existing speed protection in every phase.
@@ -2964,6 +3024,28 @@ def _s5_initial_close_motion(robot, checker, initial, q, points, inward):
             nodes.extend(_s5_motion_path(previous, node, 24, 's5_close'))
             previous = node
         audit = _s12_path_gate(robot, checker, initial, nodes, object_check=False)
+        # The first approach-to-contact ramp needs the same whole-hand freedom
+        # as later increments. An idle finger cannot forbid a feasible pinch
+        # solely because the old preview held all unused joints fixed.
+        if (not audit['passed'] and len(robot.unused_finger_indices)
+                and audit['first_rejection']['gate']=='clearance_collision'):
+            repaired=[];current=initial.copy();protected=set();repairs=[]
+            deadline=min(540.,time.process_time()+12.)
+            for index in range(1,count+1):
+                reference=_s5_close_reference(robot,q,current)
+                contact_goal=start_points+(goal-start_points)*(index/count)
+                endpoint=close_ik(robot,reference,contact_goal)
+                segment,detail=_s5_incremental_close_plan(robot,checker,current,current,endpoint,
+                    n=24,phase='s5_close',cpu_deadline=deadline,protected_idle_links=protected)
+                repairs.append(detail)
+                if not detail['passed']:break
+                repaired.extend(segment);current=np.asarray(segment[-1][0])
+                protected.update(detail.get('idle_links',()))
+            else:
+                final=_s5_close_path_audit(robot,checker,initial,initial,repaired,idle_links=protected)
+                if final['passed']:
+                    nodes,audit=repaired,dict(final,initial_unused_repair=repairs,
+                        idle_links=sorted(protected))
         audit.update(task_space_resolution_m=resolution, task_space_segments=count,
             task_space_start_points_world_m=start_points.tolist(),
             task_space_goal_points_world_m=goal.tolist(),
@@ -3136,6 +3218,7 @@ def _s5_servo_preview(robot, checker, initial, q, points, inward):
     checks=[first];current=np.asarray(tail[-1][0]);protected_idle_links=set()
     for number in range(15):
         if amount >= S5_CAP:break
+        previous_amount=amount
         amount=min(S5_CAP,amount+(.00025 if number == 0 else .00035))
         reference=_s5_close_reference(robot,q,current)
         target=close_ik(robot,reference,points+inward*amount)
@@ -3155,6 +3238,7 @@ def _s5_servo_preview(robot, checker, initial, q, points, inward):
     return tail,dict(passed=all(c['passed'] for c in checks),
         min_table_clearance_m=min(c['min_table_clearance_m'] for c in checks),
         first_rejection=next((c['first_rejection'] for c in checks if not c['passed']),None),
+        achievable_squeeze_m=float(amount if stop is None else previous_amount),
         squeeze_stop=stop,checked_nodes=sum(c['checked_nodes'] for c in checks),
         initial_close=first,
         source='same _s5_motion_path and close_ik as actual servo',
@@ -3222,17 +3306,24 @@ def s12_task_quality(robot, candidate, info):
         jacobian[:, column] = ((robot.tips(plus)[0] - robot.tips(minus)[0]) / 2e-06).ravel()
     limits = {joint.get('name'): float(joint.find('limit').get('effort', 'inf')) for joint in ET.parse(robot.urdf_path).getroot().findall('joint') if joint.find('limit') is not None}
     effort = np.array([limits.get(robot.names[i], np.inf) for i in indices])
-    points = np.asarray(candidate['meta']['targets'])
+    actual_points,actual_normals,_,_=robot.tips(q)
+    intent=ContactIntent(robot,candidate['meta']['targets'],candidate['inward'],info)
+    points=intent.goals(actual_points)
     parameters = dict(S11_CONFIG['task_wrench'])
     sigma = parameters.pop('position_sigma_m', 0.00025)
     parameters.pop('margin_tolerance', None)
     models=[patch['contact_model'] for patch in robot.selected_patches]
     parameters.update(friction=[m['friction_coefficient'] for m in models],max_normal_force=[m['normal_force_limit_n'] for m in models],pad_radius_m=[r['support_radius_m'] for r in robot.selected_patches])
+    parameters['pad_radius_m']=intent.support_radii(actual_points,parameters['pad_radius_m']).tolist()
+    candidate['meta']['realized_contact_geometry']=dict(points_m=actual_points.tolist(),
+        projected_points_m=points.tolist(),hand_normals=actual_normals.tolist(),
+        object_normals=np.asarray(intent.normals).tolist(),support_radius_m=parameters['pad_radius_m'],
+        ik_error_m=np.linalg.norm(actual_points-points,axis=1).tolist())
     if 'contact_supported_radius_m' in candidate['meta']:
         parameters['pad_radius_m']=np.minimum(parameters['pad_radius_m'],candidate['meta']['contact_supported_radius_m']).tolist()
     common = dict(reference=np.asarray(info['center']), torque_map=jacobian.T, effort_limits=effort, **parameters)
-    nominal = task_wrench_margin(points, -np.asarray(candidate['inward']), **common)
-    robust = task_wrench_margin(points, -np.asarray(candidate['inward']), covariances=np.tile(np.eye(3) * sigma ** 2, (count, 1, 1)), **common)
+    nominal = task_wrench_margin(points, np.asarray(intent.normals), **common)
+    robust = task_wrench_margin(points, np.asarray(intent.normals), covariances=np.tile(np.eye(3) * sigma ** 2, (count, 1, 1)), **common)
     return dict(nominal=nominal, robust=robust, contact_models=models, position_sigma_m=sigma, classification='conditional_load_model_not_physical_certificate', measured_force_available=False)
 
 def s12_select_contacts(s, candidate):
@@ -3270,6 +3361,9 @@ def prioritize_replan_surface_schedule(schedule, group, previous):
 
 def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, heights, shift, geometry_source, **kwargs):
     import itertools
+    preferred_static=kwargs.pop('preferred_static',False)
+    robot.region_normal_weight=12. if preferred_static else 2.5
+    robot.region_max_sets=4096 if preferred_static else 48
     replanning=kwargs.pop('replanning',False)
     previous=s.get('c',{}).get('meta') if replanning and not kwargs.get('refinement') else None
     robot.ik_checker=checker
@@ -3282,6 +3376,9 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
     for i in range(max(map(len,groups_by_count.values()),default=0)):
         for n in counts:
             if i<len(groups_by_count[n]):groups.append(groups_by_count[n][i])
+    if s.get('group_priority') and not kwargs.get('refinement') and not preferred_static:
+        priorities={tuple(group):i for i,group in enumerate(s['group_priority'])}
+        groups.sort(key=lambda group:priorities.get(tuple(group),len(priorities)))
     if kwargs.get('refinement'):
         groups=[tuple(s['c']['meta']['contact_fingers'])]
     s5_note(s['ctx'],'cross_group_enumeration',dict(mode=mode,groups=[list(g) for g in groups],
@@ -3300,15 +3397,21 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
             regions=[tuple(s['c']['meta']['hand_contact_regions'])]
         else:
             default=robot.contact_region_indices
-            all_regions=itertools.product(*(range(len(options)) for options in robot.patch_options))
+            domains=[]
+            for name,options in zip(robot.finger_names,robot.patch_options):
+                static=[i for i,option in enumerate(options)if option.get('geometry_class')=='terminal_body_mesh_patch'] if robot.catalog[name].get('geometry_class')=='legacy_static_contact_surface' else []
+                domains.append(static if preferred_static and static else list(range(len(options))))
+            all_regions=itertools.product(*domains)
             regions=list(all_regions)
             regions.sort(key=lambda ids:-sum(float(robot.patch_options[i][k]['point']@robot.contact_distals[i]) for i,k in enumerate(ids)))
+            robot.region_rank_deadline=min(520.,time.process_time()+(90. if preferred_static else min(8.,group_budget[len(group)]/2)))
             regions,region_priority=rank_region_tuples(robot,prior,info,regions,axes,heights,task_wrench=S11_CONFIG['task_wrench'])
             if region_priority.get('region_scores'):
                 corrected,source_domain=source_domain_corrected_rank(robot,prior,info,
-                    region_priority['region_scores'],axes,heights,grasp_seed=grasp_seed)
-                regions=[tuple(row['regions']) for row in corrected]
-                region_priority.update(region_scores=corrected,source_domain_correction=source_domain,
+                    region_priority['region_scores'][:12],axes,heights,grasp_seed=grasp_seed)
+                polished={tuple(row['regions']) for row in corrected}
+                regions=[tuple(row['regions']) for row in corrected]+[ids for ids in regions if ids not in polished]
+                region_priority.update(region_scores=corrected+region_priority['region_scores'][12:],source_domain_correction=source_domain,
                     approximation='one finite-source projection and common upright+yaw palm refit at each retained static seed/target; original table/task priority classes; ranking only, original IK bank and hard guards unchanged')
             region_hints={tuple(row['regions']):row for row in region_priority.get('region_scores',[])}
             s5_note(s['ctx'],'cross_region_reachability',dict(fingers=list(group),**region_priority))
@@ -3361,6 +3464,7 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
                 candidate['meta'].update(hand_contact_regions=list(region_ids),surface_offset=surface_offset,contact_fingers=list(group),contact_count=len(group),
                     selected_patches=[dict(patch) for patch in robot.selected_patches],quality_score=score,quality_terms=terms,task_quality=task,candidate_id=f"{s['attempt']}-{'+'.join(group)}-{region_number}-s{surface_offset}-{index}")
                 accepted.append(candidate)
+            if preferred_static and accepted:break
             if any(c['meta']['task_quality']['robust'].get('gravity_feasible',False)
                    and c['meta']['task_quality']['robust']['minimum_task_margin']>=1.
                    for c in choices if c['meta'].get('task_quality')):break
@@ -3370,6 +3474,7 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
             remaining_unvisited_slots=max(0,len(schedule)-len(visited)) if resume else None,
             reason='CPU/allocation/acceptable candidate may stop admission; unvisited is not rejected',
             group_cpu_s=time.process_time()-group_start,group_budget_cpu_s=group_budget[len(group)]))
+        if preferred_static and accepted:break
     robot.surface_variant_offset=0;robot.surface_variant_count=12
     accepted=s12_order_candidates(accepted,S11_CONFIG['task_wrench'].get('margin_tolerance',.1))
     if accepted:
@@ -3420,6 +3525,225 @@ def _s12_rgb_contact_regions(info, axis, height_fractions, tangent_angles):
     return regions
 
 
+def _s12_pair_sufficient(meta):
+    task=meta.get('task_quality',{})
+    model=task.get('nominal',{})
+    return bool(model.get('lift_feasible') and model.get('minimum_task_margin',0.)>=1.)
+
+
+def _s12_pair_can_balance(meta):
+    # Cheap conditional two-force cone overlap: a budget preference only.
+    # It prevents an uninformative zero task score from hiding a known broad
+    # opposing surface, while a top/side mismatch still expands source search.
+    task=meta.get('task_quality',{})
+    normals=np.asarray(task.get('nominal',{}).get('outward_normals',[]),dtype=float)
+    models=task.get('contact_models',[])
+    if normals.shape!=(2,3) or len(models)!=2:return False
+    angle=float(np.arccos(np.clip(-normals[0]@normals[1],-1.,1.)))
+    cone=sum(np.arctan(float(model['friction_coefficient'])) for model in models)
+    return angle<=cone+1e-10
+
+
+def _s12_load_repair_candidates(s,robot,info,initial,candidates,rejected,retime):
+    """Repair a task-weak contact arrangement on its finite observed surfaces.
+
+    Forces are bounded Coulomb hypotheses used only to find better geometry.
+    Independent task LP, joint effort, original mesh/path and physical proof
+    still decide admission; no estimated force is sent to the actuators.
+    """
+    if not candidates or any(_s12_pair_sufficient(c['meta'])for c in candidates):return candidates
+    deadline=min(490.,time.process_time()+28.)
+    for old in list(candidates)[:2]:
+        if time.process_time()>=deadline:break
+        saved=old['meta'];robot.select_pair(saved['contact_fingers'],saved['hand_contact_regions']);apply_contact_geometry(robot,saved)
+        q0=np.asarray(old['q']);inward=np.asarray(old['inward']);count=len(inward)
+        intent=ContactIntent(robot,saved['targets'],inward,info)
+        normals=-np.asarray(intent.normals)
+        tangent=[];second=[]
+        for normal in normals:
+            u=np.eye(3)[np.argmin(abs(normal))];u-=normal*(u@normal);u/=np.linalg.norm(u)
+            tangent.append(u);second.append(np.cross(normal,u))
+        tangent=np.asarray(tangent);second=np.asarray(second)
+        models=[p['contact_model']for p in robot.selected_patches];task=S11_CONFIG['task_wrench']
+        mu=np.maximum(0.,np.tan(np.arctan([m['friction_coefficient']for m in models])-task['normal_uncertainty']))
+        caps=np.asarray([m['normal_force_limit_n']for m in models])
+        mass=max(task['mass_range_kg']);gravity=mass*(np.array([0.,0.,-9.81])-np.asarray(task.get('lift_acceleration_m_s2',[0.,0.,.5])))
+        load=max(np.linalg.norm(gravity),1e-8);center=np.asarray(info['center'])
+        length=max(float(np.linalg.norm(np.ptp(np.asarray(old['points']),axis=0))),.0015)
+        selected=np.r_[robot.base_indices,robot.active_finger_indices];encoded=robot.encode_upright(q0)
+        lo,hi=robot.upright_bounds();nq=len(selected)
+        lower=np.r_[lo[selected],np.tile([0.,-1.,-1.],count)]
+        upper=np.r_[hi[selected],np.tile([1.,1.,1.],count)]
+        def decode(x):
+            z=encoded.copy();z[selected]=x[:nq];return robot.decode_upright(z)
+        def residual(x,collision=False):
+            q=decode(x);points,n,_,poses=robot.tips(q);contact=intent.goals(points)
+            a=x[nq:].reshape(count,3);uv=a[:,1:]/np.maximum(1.,np.linalg.norm(a[:,1:],axis=1))[:,None]
+            force=(a[:,0]*caps)[:,None]*(normals+mu[:,None]*(uv[:,0,None]*tangent+uv[:,1,None]*second))
+            balance=np.r_[(force.sum(0)+gravity)/load,np.cross(contact-center,force).sum(0)/(load*length)]
+            vertices=robot.vertices(poses)
+            clearance=(s['checker'].optimization_clearance(poses)*3000 if collision else
+                np.minimum(vertices[:,2]-s['checker'].table_z-.00065,0.)*5000/np.sqrt(len(vertices)))
+            return np.r_[intent.residual(points),(n-inward).ravel()*2.5,balance*8.,
+                (x[:nq]-encoded[selected])*.15,clearance]
+        start=time.process_time();x0=np.r_[encoded[selected],np.tile([.5,0.,0.],count)]
+        fit=least_squares(residual,np.clip(x0,lower+1e-7,upper-1e-7),bounds=(lower,upper),
+            x_scale=np.r_[np.where(np.isin(selected,robot.base_indices[:3]),.01,.3),np.ones(3*count)],
+            max_nfev=75,ftol=1e-7,xtol=1e-7,gtol=1e-7)
+        q=decode(fit.x);points,n,_,_=robot.tips(q)
+        if not s['checker'].check(q)['passed'] and time.process_time()<deadline:
+            fit=least_squares(lambda x:residual(x,True),fit.x,bounds=(lower,upper),
+                diff_step=1e-4,max_nfev=35,ftol=1e-7,xtol=1e-7,gtol=1e-7)
+            q=decode(fit.x);points,n,_,_=robot.tips(q)
+        errors=intent.errors(points);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1.,1.))
+        meta=dict(saved);meta.update(candidate_id=str(saved['candidate_id'])+'-load-repair',
+            q=q.tolist(),targets=intent.goals(points).tolist(),contact_intent=intent.report(points),source_clearance=s['checker'].check(q),
+            error_m=float(errors.max()),per_finger_error_m=errors.tolist(),normal_error_rad=angles.tolist(),
+            contact_target_method='finite_observed_surface_and_conditional_load_equilibrium',
+            load_repair=dict(cpu_s=time.process_time()-start,nfev=int(fit.nfev),
+                before_task_margin=saved['task_quality']['nominal']['minimum_task_margin'],
+                assumptions='same public envelope center, task mass range, friction and normal-force bounds; auxiliary forces are not observations'))
+        candidate=None
+        if _s12_endpoint_gate(robot,q,meta,s['checker'],initial):
+            candidate=_s12_complete_candidate(robot,s['checker'],initial,q,inward,meta,retime)
+        if candidate is None:
+            rejected.append(meta)
+            s5_note(s['ctx'],'contact_load_repair',dict(passed=False,cpu_s=time.process_time()-start,first_rejection=meta.get('first_rejection'),per_finger_error_m=errors.tolist()))
+            continue
+        quality,terms=s11_contact_quality(robot,candidate,initial)
+        meta.update(quality_score=quality,quality_terms=terms,task_quality=s12_task_quality(robot,candidate,info))
+        meta['load_repair']['model_gain']=any(
+            meta['task_quality'][kind].get(name,0.)>saved['task_quality'][kind].get(name,0.)+1e-8
+            for kind in ('robust','nominal') for name in
+            ('minimum_task_margin','lateral_margin','torque_margin','gravity_feasible'))
+        candidates.append(candidate)
+        s5_note(s['ctx'],'contact_load_repair',dict(passed=True,cpu_s=time.process_time()-start,
+            before_task_margin=saved['task_quality']['nominal']['minimum_task_margin'],
+            after_task_margin=meta['task_quality']['nominal']['minimum_task_margin'],
+            before_points_m=old['points'].tolist(),after_points_m=points.tolist(),
+            exact_endpoint_and_full_path=True,auxiliary_force_is_not_observed=True))
+        if _s12_pair_sufficient(meta):break
+    return candidates
+
+
+def _s12_triad_extensions(s,robot,info,initial,candidates,rejected,retime):
+    """Bounded third-contact comparison, retaining every executable pair.
+
+    Rank by current FK and a real moment arm before spending IK/path budget.
+    A triad must pass the same independent endpoint, whole-hand path and lift
+    preview; its three same-pose pair ablations are scored by task_wrench_margin.
+    """
+    candidates=_s12_load_repair_candidates(s,robot,info,initial,candidates,rejected,retime)
+    if not candidates or s['ctx'].robot_description.get('contact_mode',S11_CONFIG['fingers'])!='auto':return candidates
+    pair=next((c for c in s12_order_candidates(candidates) if len(c['points'])==2),None)
+    if pair is None or _s12_pair_sufficient(pair['meta']):return candidates
+    deadline=min(515.,time.process_time()+42.)
+    if deadline-time.process_time()<8.:return candidates
+    saved=pair['meta'];group=tuple(saved['contact_fingers']);regions=tuple(saved['hand_contact_regions'])
+    robot.select_pair(group,regions);apply_contact_geometry(robot,saved)
+    local=robot.contact_points.copy();cells=saved.get('hand_contact_cells_local_m',[[p.tolist()]for p in local])
+    q0=np.asarray(pair['q']);goals=np.asarray(saved['targets']);inward=np.asarray(pair['inward'])
+    line=pair['points'][1]-pair['points'][0];line/=max(np.linalg.norm(line),1e-12)
+    cloud=np.asarray(info['collision_points']);hull=ConvexHull(cloud)
+    facets=np.unique(np.round(hull.equations,8),axis=0)
+    vertices=cloud[hull.vertices];surfaces=[]
+    for plane in sorted(facets,key=lambda row:abs(row[2])):
+        normal=plane[:3]
+        if any(normal@old[0]>.995 for old in surfaces):continue
+        face=vertices[abs(vertices@normal+plane[3])<3e-7]
+        if len(face)<3:continue
+        origin=face.mean(0);_,_,basis=np.linalg.svd(face-origin,full_matrices=False);basis=basis[:2]
+        xy=(face-origin)@basis.T;boundary=ConvexHull(xy)
+        surfaces.append((normal,origin,basis,xy[boundary.vertices],boundary.equations))
+        if len(surfaces)>=16:break
+    proposals=[]
+    for finger in robot.catalog:
+        if finger in group:continue
+        options=robot.catalog[finger]['regions']
+        for region_id in range(len(options)):
+            names=group+(finger,);ids=regions+(region_id,)
+            robot.select_pair(names,ids)
+            binding=dict(contact_fingers=list(names),hand_contact_regions=list(ids),
+                hand_contact_points_local_m=np.vstack([local,robot.contact_points[-1]]).tolist(),
+                hand_contact_cells_local_m=list(cells)+[[robot.contact_points[-1].tolist()]])
+            apply_contact_geometry(robot,binding)
+            points,normals,_,_=robot.tips(q0)
+            for normal,origin,basis,polygon,planes in surfaces:
+                xy=(points[-1]-origin)@basis.T
+                if np.max(planes[:,:2]@xy+planes[:,2])>0:
+                    edge=np.roll(polygon,-1,axis=0)-polygon
+                    t=np.clip(np.sum((xy-polygon)*edge,axis=1)/np.sum(edge*edge,axis=1),0,1)
+                    nearest=polygon+t[:,None]*edge
+                    xy=nearest[np.argmin(np.sum((nearest-xy)**2,axis=1))]
+                target=origin+xy@basis+normal*.0003
+                arm=float(np.linalg.norm(np.cross(target-pair['points'][0],line)))
+                uncertainty=max(float(r.get('position_uncertainty_m',.0015))for r in saved.get('contact_regions',[]) or [{}])
+                if arm<2.*uncertainty:continue
+                distance=float(np.linalg.norm(points[-1]-target))
+                alignment=float(normals[-1]@(-normal))
+                # Normal disagreement and distance are order preferences only.
+                score=distance/.01+2.*(1.-alignment)-min(arm/max(np.linalg.norm(pair['points'][1]-pair['points'][0]),1e-6),1.)
+                proposals.append((score,names,ids,binding,np.vstack([goals,target]),np.vstack([inward,-normal]),arm))
+    proposals.sort(key=lambda row:row[0]);tried=set();audits=[]
+    for score,names,ids,binding,targets,directions,arm in proposals:
+        signature=(names[-1],tuple(np.round(directions[-1],3)))
+        if signature in tried:continue
+        if len(tried)>=3 or time.process_time()>=deadline:break
+        tried.add(signature);robot.select_pair(names,ids);apply_contact_geometry(robot,binding)
+        robot.ik_surface_info=None;robot.ik_contact_info=info;robot.ik_checker=s['checker']
+        robot.ik_seed_hints=[q0];robot.surface_search_start_cpu=time.process_time();robot.candidate_cpu_budget_s=max(.1,min(10.,deadline-time.process_time()))
+        try:q,meta=solve_target_ik(robot,q0,targets,directions)
+        finally:robot.ik_seed_hints=None
+        meta.update(binding,contact_count=3,candidate_id=f"{s['attempt']}-third-{len(tried)}",
+            contact_target_method='same_pair_surface_plus_reachable_exposed_third_surface',
+            extension_of=saved.get('candidate_id'),third_point_moment_arm_m=arm,
+            cheap_reachability_score=float(score),contact_regions=[dict(r)for r in saved.get('contact_regions',[])]+[dict(position_uncertainty_m=.0015,normal_uncertainty_rad=.15)])
+        if not _s12_endpoint_gate(robot,q,meta,s['checker'],initial):
+            rejected.append(meta);audits.append(dict(candidate_id=meta['candidate_id'],first_rejection=meta['first_rejection']));continue
+        candidate=_s12_complete_candidate(robot,s['checker'],initial,q,directions,meta,retime)
+        if candidate is None:
+            rejected.append(meta);audits.append(dict(candidate_id=meta['candidate_id'],first_rejection=meta['first_rejection']));continue
+        quality,terms=s11_contact_quality(robot,candidate,initial)
+        meta.update(quality_score=quality,quality_terms=terms,task_quality=s12_task_quality(robot,candidate,info),selected_patches=[dict(p)for p in robot.selected_patches])
+        if s99_candidate_key(candidate) in s.get('rejected_candidate_keys',set()):continue
+        candidates.append(candidate);audits.append(dict(candidate_id=meta['candidate_id'],accepted=True,
+            nominal_margin=meta['task_quality']['nominal']['minimum_task_margin'],
+            robust_margin=meta['task_quality']['robust']['minimum_task_margin'],
+            same_pose_pair_subsets=meta['task_quality']['robust'].get('same_pose_pair_subsets')))
+        if _s12_pair_sufficient(meta):break
+    robot.select_pair(group,regions);apply_contact_geometry(robot,saved)
+    s5_note(s['ctx'],'third_contact_comparison',dict(proposals=len(proposals),full_solves=len(tried),
+        audits=audits,pair_retained=True,deadline_cpu_s=deadline,
+        scope='public RGB, source surfaces, measured limits, conditional load assumptions; no native contact input'))
+    return candidates
+
+
+def _s12_retry_near_contact(robot, prior, goals, inward, q, meta):
+    """Refine a near miss from its own solution, on the same finite RGB face.
+
+    Keep established successes unchanged. The existing 2mm bounded-correction
+    domain selects work; every original endpoint and path gate still applies.
+    No old trajectory or object identity enters the retry.
+    """
+    errors=np.asarray(meta['per_finger_error_m'])
+    if not (.0008<=errors.max()<.002 and max(meta['normal_error_rad'])<.5
+            and meta['source_clearance']['passed']):return q,meta
+    before={key:meta.get(key) for key in ('per_finger_error_m','normal_error_rad','contact_intent','q')}
+    old_hints=getattr(robot,'ik_seed_hints',None)
+    old_defer=getattr(robot,'defer_finite_contact',False)
+    robot.ik_seed_hints=[np.asarray(q).copy()];robot.defer_finite_contact=False
+    started=time.process_time()
+    try:updated,report=optimize(robot,prior,goals,inward)
+    finally:robot.ik_seed_hints=old_hints;robot.defer_finite_contact=old_defer
+    usable=bool(max(report['per_finger_error_m'])<.0008
+        and max(report['normal_error_rad'])<.5 and report['source_clearance']['passed'])
+    if usable:q,meta=updated,report
+    meta['near_contact_retry']=dict(before=before,accepted=usable,cpu_s=time.process_time()-started,
+        after_error_m=report['per_finger_error_m'],after_normal_error_rad=report['normal_error_rad'],
+        source='own current IK solution, unchanged source patch and finite observed face; original strict gates')
+    return q,meta
+
+
 def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heights, shift, geometry_source, **kwargs):
     """Try calibrated fixed patches and RGB chords before the expanded search.
 
@@ -3432,11 +3756,15 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
     replanning=kwargs.get('replanning',False)
     robot.ik_checker=checker
     robot.ik_surface_info=None
+    robot.ik_contact_info=info
     robot.planning_note=lambda key,value:s5_note(s['ctx'],key,value)
     mode=s['ctx'].robot_description.get('contact_mode',S11_CONFIG['fingers'])
     counts={'two':(2,),'three':(3,),'auto':(2,3)}[mode]
     groups=[tuple(s['c']['meta']['contact_fingers'])] if refinement else [g for n in counts for g in itertools.combinations(robot.catalog,n)]
-    proposals=[];rejected=[];accepted=[]
+    try:from kinematic_candidates import KinematicCandidateBank
+    except ImportError:from mainline.kinematic_candidates import KinematicCandidateBank
+    kinematic_bank=KinematicCandidateBank(robot,prior,checker)
+    proposals=[];rejected=[];accepted=[];deferred=[];rgb_contacts={};default_regions={}
     started=time.process_time();wall=time.perf_counter()
     cloud=np.asarray(info['collision_points'])
     # Both principal axes and both assignments are cheap, and important for
@@ -3449,14 +3777,8 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
         regions=robot.contact_region_indices
         if refinement:
             regions=tuple(s['c']['meta']['hand_contact_regions'])
+        default_regions[group]=regions
         region_sets=[regions]
-        if s.get('actual_grasps',0)>0 and not refinement:
-            # Once a placement has physically failed, include distal source
-            # patches in the cheap fixed-target search before the facet bank.
-            # Distality comes entirely from each declared URDF digit frame.
-            options=list(itertools.product(*(range(len(v))for v in robot.patch_options)))
-            options.sort(key=lambda ids:-sum(float(robot.patch_options[i][k]['point']@robot.contact_distals[i])for i,k in enumerate(ids)))
-            region_sets=[ids for ids in options[:4] if ids!=regions]+[regions]
         for regions in region_sets:
             robot.select_regions(regions)
             if refinement:apply_contact_geometry(robot,s['c']['meta'])
@@ -3465,59 +3787,166 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
                     axis=np.asarray(direction)*sign
                     for height in heights:
                         angles=(0.,0.) if len(group)==2 else (0.,-.45,.45)
-                        contacts=_s12_rgb_contact_regions(info,axis,[height]*len(group),angles)
+                        contact_key=(len(group),tuple(np.round(axis,10)),float(height))
+                        if contact_key not in rgb_contacts:
+                            contacts=_s12_rgb_contact_regions(info,axis,[height]*len(group),angles)
+                            rgb_contacts[contact_key]=(contacts,np.asarray([r['point_world_m']for r in contacts]),-np.asarray([r['outward_normal_world']for r in contacts]))
+                        contacts,goals,inward=rgb_contacts[contact_key]
                         if not contacts:continue
-                        goals=np.asarray([r['point_world_m']for r in contacts]);inward=-np.asarray([r['outward_normal_world']for r in contacts])
-                        seed=grasp_seed(robot,prior,goals,inward,.4)
-                        pp,nn,_,poses=robot.tips(seed)
-                        score=float(np.mean(np.linalg.norm(pp-goals,axis=1))/.01+np.mean(np.linalg.norm(nn-inward,axis=1)))
-                        proposals.append((score,group,regions,goals,inward,contacts,height))
-    proposals.sort(key=lambda row:(round(row[0],6), abs(row[6]-.5)))
+                        score,hints=kinematic_bank.rank(goals,inward)
+                        # Retain the small measured/default-articulation route as
+                        # a seed, alongside the full coverage bank. Both use the
+                        # same finite contact intent and strict geometry gates.
+                        if regions==default_regions[group]:
+                            direct_seed=grasp_seed(robot,prior,goals,inward,.4)
+                            pp,nn,_,_=robot.tips(direct_seed)
+                            score=float(np.mean(np.linalg.norm(pp-goals,axis=1))/.01+np.mean(np.linalg.norm(nn-inward,axis=1)))
+                        # A tilted upper hull facet can fit FK while pushing down.
+                        # Use balanced opposing normals as a soft grasp-quality
+                        # preference. This replaces the blanket 75%-height gate;
+                        # elevated/side contacts remain available if executable.
+                        balance=float(np.linalg.norm(inward.sum(0))/len(group))
+                        # Equivalent opposing force cones do not need further
+                        # normal ranking: retain their original FK search order.
+                        # Penalize only imbalance outside the declared friction
+                        # cones plus the RGB normal-uncertainty model.
+                        cone=(sum(np.arctan(p['contact_model']['friction_coefficient'])
+                            for p in robot.selected_patches)/len(group)
+                            +max(c['normal_uncertainty_rad']for c in contacts))
+                        allowance=float(np.sin(min(np.pi/2,cone)))if len(group)==2 else 1.
+                        score += 10.*max(0.,balance-allowance)
+                        proposals.append((score,group,regions,goals,inward,contacts,height,hints))
+    # Prefer the observed occupied-volume centroid, reducing gravity lever
+    # arms and dependence on unconstrained upper silhouette extrusion.
+    centroid=np.asarray(info.get('rgb_centroid_world_m',info['center']))
+    proposals.sort(key=lambda row:(row[2]!=default_regions[row[1]],round(row[0],6),round(abs(float(np.mean(row[3][:,2]))-centroid[2]),6)))
     # Interleave groups, retaining their best geometry first. An unsuccessful
     # seed cannot exhaust the whole hand's candidate budget.
-    bank={g:[p for p in proposals if p[1]==g] for g in groups}
+    bank={}
+    for group in groups:
+        pool=[p for p in proposals if p[1]==group]
+        first=[];rest=[];seen=set()
+        for proposal in pool:
+            identity=ordered_surface_planes(proposal[3],proposal[4])
+            if identity not in seen:
+                first.append(proposal);seen.add(identity)
+            else:rest.append(proposal)
+        bank[group]=first+rest
     schedule=[]
     ranked=sorted(groups,key=lambda g:bank[g][0][0] if bank[g] else float('inf'))
+    s['group_priority']=[list(group)for group in ranked]
+    # Every finger group receives its first chance before a second RGB
+    # assignment from another group can consume the direct-search budget.
     for index in range(max(map(len,bank.values()),default=0)):
-        schedule += [bank[g][index] for g in ranked if index<len(bank[g])]
-    s5_note(s['ctx'],'direct_candidate_schedule',dict(groups=[list(g)for g in ranked],proposals=len(schedule),source='URDF/static canonical patches and current public RGB ray intersections',refinement=refinement))
-    for ordinal,(_,group,regions,goals,inward,contacts,height) in enumerate(schedule):
+        schedule += [bank[g][index]for g in ranked if index<len(bank[g])]
+    s5_note(s['ctx'],'direct_candidate_schedule',dict(groups=[list(g)for g in ranked],proposals=len(schedule),source='whole-hand FK-ranked rigid surface features and shared cached public RGB facets',refinement=refinement,proposal_cpu_s=time.process_time()-started,unique_rgb_contact_sets=len(rgb_contacts)))
+    for ordinal,(_,group,regions,goals,inward,contacts,height,hints) in enumerate(schedule):
         if time.process_time()-started>100. or time.process_time()>515.:break
-        if height > .75:
-            rejected.append(dict(candidate_id=f"{s['attempt']}-direct-{ordinal}",
-                contact_fingers=list(group),hand_contact_regions=list(regions),
-                height_fraction=height,first_rejection='upper_envelope_height_without_side_support'))
-            continue
         robot.select_pair(group,regions)
         if refinement:apply_contact_geometry(robot,s['c']['meta'])
+        # Fixed hand feature / finite observed object region first: fewer
+        # variables, no facet logits. Source-region motion is a fallback.
         robot.ik_surface_info=None
         seed=np.asarray(prior).copy();seed[robot.unused_finger_indices]=initial[robot.unused_finger_indices]
-        q,meta=optimize(robot,seed,goals,inward)
-        meta.update(contact_regions=contacts,height_fraction=height,geometry_source=geometry_source,hand_contact_regions=list(regions),contact_fingers=list(group),contact_count=len(group),candidate_id=f"{s['attempt']}-direct-{ordinal}",contact_target_method='fixed_static_patch_current_RGB_chord')
+        robot.ik_seed_hints=None if regions==default_regions[group] else hints
+        robot.defer_finite_contact=True
+        try:q,meta=optimize(robot,seed,goals,inward)
+        finally:robot.ik_seed_hints=None;robot.defer_finite_contact=False
+        q,meta=_s12_retry_near_contact(robot,seed,goals,inward,q,meta)
+        meta.update(contact_regions=contacts,height_fraction=height,geometry_source=geometry_source,hand_contact_regions=list(regions),contact_fingers=list(group),contact_count=len(group),candidate_id=f"{s['attempt']}-direct-{ordinal}",contact_target_method='fixed_exposed_hand_feature_finite_public_RGB_region')
         if not _s12_endpoint_gate(robot,q,meta,checker,initial,refinement):
             rejected.append(meta);continue
-        preview=close_ik(robot,q,robot.tips(q)[0]+inward*.0035)
+        preview=close_ik(robot,q,robot.tips(q)[0]+inward*.0005)
         reserve=checker.check(preview,object_check=False)
-        meta['closure_reserve_preview']=dict(squeeze_m=.0035,geometry=reserve)
-        if not reserve['passed'] and not s.get('actual_grasps',0):
-            meta.update(first_rejection='insufficient_collision_free_closure_reserve')
-            rejected.append(meta);continue
+        meta['closure_reserve_preview']=dict(squeeze_m=.0005,geometry=reserve,scope='initial closure preview; full checked closure with backtracking is decisive')
         candidate=_s12_complete_candidate(robot,checker,initial,q,inward,meta,kwargs.get('retime',False))
         if candidate is None:rejected.append(meta);continue
         if s99_candidate_key(candidate) in s.get('rejected_candidate_keys',set()):continue
         if any(old.get('fingers')==list(group) and len(old['points'])==len(candidate['points']) and np.mean(np.linalg.norm(np.asarray(old['points'])-candidate['points'],axis=1))<.001 for old in s.get('tried_contacts',[])):continue
         score,terms=s11_contact_quality(robot,candidate,initial)
         meta.update(quality_score=score,quality_terms=terms,task_quality=s12_task_quality(robot,candidate,info),selected_patches=[dict(p)for p in robot.selected_patches])
+        uncertainty=max(c['position_uncertainty_m']for c in contacts)
+        preview=close_ik(robot,q,robot.tips(q)[0]+inward*uncertainty)
+        reserve=checker.check(preview,object_check=False)
+        achievable=np.sum((robot.tips(preview)[0]-robot.tips(q)[0])*inward,axis=1)
+        meta['uncertainty_closure_quality']=dict(requested_m=uncertainty,achieved_m=achievable.tolist(),geometry=reserve,source='declared RGB contact position uncertainty; quality preference only, original complete close/path gates remain')
+        if not reserve['passed']:
+            deferred.append(candidate)
+            continue
         accepted.append(candidate)
-        # Full motion is already feasible. Keep the main flow small and direct.
-        break
+        # Keep executable pairs, but a task-weak first solution must not hide
+        # better contact geometry or every independent third-digit proposal.
+        if _s12_pair_sufficient(meta) or len(accepted)>=3:break
+    has_static=any(row.get('geometry_class')=='legacy_static_contact_surface' for row in robot.catalog.values())
+    if (not refinement and has_static and time.process_time()<375.
+            and not any(_s12_pair_sufficient(c['meta']) or _s12_pair_can_balance(c['meta']) for c in accepted)):
+        robot.ik_surface_info=info
+        choices,failures=expanded_contact_candidates(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,preferred_static=True,**kwargs)
+        accepted+=choices;rejected+=failures
+    if not accepted and not refinement and time.process_time()<375.:
+        try:from kinematic_candidates import joint_region_proposals
+        except ImportError:from mainline.kinematic_candidates import joint_region_proposals
+        joint=[];joint_started=time.process_time()
+        pair_groups=[g for g in groups if len(g)==2]
+        # Simultaneously select both physical source regions and articulation.
+        # No calibrated/default region is required in this finite second pass.
+        for group in pair_groups:
+            robot.select_pair(group)
+            for direction in directions:
+                for sign in (1.,-1.):
+                    axis=np.asarray(direction)*sign
+                    for height in sorted(heights,key=lambda h:abs(float(h)-.5)):
+                        contacts,goals,inward=rgb_contacts[(2,tuple(np.round(axis,10)),float(height))]
+                        if not contacts:continue
+                        for row in joint_region_proposals(kinematic_bank,goals,inward,limit=2):
+                            row.update(group=group,goals=goals,inward=inward,contacts=contacts,height=height)
+                            balance=float(np.linalg.norm(inward.sum(0))/2)
+                            row['score']+=10.*balance
+                            joint.append(row)
+                        if time.process_time()-joint_started>55.:break
+                    if time.process_time()-joint_started>55.:break
+                if time.process_time()-joint_started>55.:break
+            if time.process_time()-joint_started>55.:break
+        # Prioritize proximity to the observed occupied-volume centroid.
+        # Upper silhouette extrusion is uncertain; height remains a ranking
+        # preference, never a rejection of an otherwise legal contact.
+        joint.sort(key=lambda row:(round(abs(float(np.mean(row['goals'][:,2]))-float(centroid[2])),5),row['score']))
+        s5_note(s['ctx'],'joint_region_schedule',dict(proposals=len(joint),proposal_cpu_s=time.process_time()-joint_started,source='simultaneous source-region SVD across measured/limit/Sobol articulations; full exact gates unchanged'))
+        for ordinal,row in enumerate(joint):
+            if time.process_time()>430. or time.process_time()-joint_started>170.:break
+            group=row['group'];regions=row['regions'];goals=row['goals'];inward=row['inward']
+            robot.select_pair(group,regions);robot.ik_surface_info=None
+            robot.ik_seed_hints=[row['q']]
+            try:q,meta=optimize(robot,prior,goals,inward)
+            finally:robot.ik_seed_hints=None
+            meta.update(contact_regions=row['contacts'],height_fraction=row['height'],geometry_source=geometry_source,hand_contact_regions=list(regions),contact_fingers=list(group),contact_count=len(group),candidate_id=f"{s['attempt']}-joint-regions-{ordinal}",contact_target_method='joint_rigid_source_regions',region_proposal={k:(v.tolist()if isinstance(v,np.ndarray)else v)for k,v in row.items()if k not in ('goals','inward','contacts')})
+            if not _s12_endpoint_gate(robot,q,meta,checker,initial):rejected.append(meta);continue
+            candidate=_s12_complete_candidate(robot,checker,initial,q,inward,meta,kwargs.get('retime',False))
+            if candidate is None:rejected.append(meta);continue
+            if s99_candidate_key(candidate) in s.get('rejected_candidate_keys',set()):continue
+            if any(old.get('fingers')==list(group) and len(old['points'])==len(candidate['points']) and np.mean(np.linalg.norm(np.asarray(old['points'])-candidate['points'],axis=1))<.001 for old in s.get('tried_contacts',[])):continue
+            score,terms=s11_contact_quality(robot,candidate,initial)
+            meta.update(quality_score=score,quality_terms=terms,task_quality=s12_task_quality(robot,candidate,info),selected_patches=[dict(p)for p in robot.selected_patches])
+            accepted.append(candidate)
+            if _s12_pair_sufficient(meta) or len(accepted)>=3:break
     if not accepted and time.process_time()<430. and not refinement:
         s5_note(s['ctx'],'s106_direct_refusals',dict(rejected=rejected,
             planning_cpu_s=time.process_time()-started))
         robot.ik_surface_info=info
-        return expanded_contact_candidates(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,**kwargs)
+        choices,failures=expanded_contact_candidates(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,**kwargs)
+        if choices or not deferred:
+            rejected+=failures
+            choices=_s12_triad_extensions(s,robot,info,initial,choices,rejected,kwargs.get('retime',False))
+            return s12_order_candidates(choices),rejected
+        rejected+=failures
+    if not accepted and deferred:
+        accepted=[min(deferred,key=lambda c:c['meta']['quality_score'])]
+    if not refinement:
+        accepted=_s12_triad_extensions(s,robot,info,initial,accepted,rejected,kwargs.get('retime',False))
     accepted=s12_order_candidates(accepted,S11_CONFIG['task_wrench'].get('margin_tolerance',.1))
-    if accepted:apply_contact_geometry(robot,accepted[0]['meta'])
+    if accepted:
+        robot.select_pair(accepted[0]['meta']['contact_fingers'],accepted[0]['meta']['hand_contact_regions'])
+        apply_contact_geometry(robot,accepted[0]['meta'])
     s5_note(s['ctx'],'s11_finger_selection',dict(mode=mode,selected=len(accepted[0]['points'])if accepted else None,candidates=[c['meta']for c in accepted],rejected=rejected,ordered_candidate_ids=[c['meta']['candidate_id']for c in accepted],planning_cpu_s=time.process_time()-started,planning_wall_s=time.perf_counter()-wall,actual_attempts=s['attempt']-1,selection_reason='direct calibrated RGB chords, full IK and checked motion before expanded search'))
     return accepted,rejected
 
@@ -3734,6 +4163,7 @@ def s5_stationary_rgb(s, phase, max_wait_steps=240):
                       finger_velocity_rad_s=finger_velocity, image_error=image_error,
                       map=report, valid=False)
         if waited == max_wait_steps:
+            s['stationary_rgb_state']=detail
             s5_note(s['ctx'], 's5_stationary_rgb', detail)
             return None
         s5_step(s, s['last'], 6, phase, object_check=True)
@@ -3743,6 +4173,8 @@ def s5_rgb_envelope(s, report):
     """The measured-exposure visual hull, retaining the public table frame."""
     if not report.get('valid'):
         return None, None
+    s['valid_rgb_model_epoch'] = int(s.get('actual_grasps',0))
+    s['valid_rgb_model_step'] = int(s['obs']['image_state']['step'])
     info = s['info']
     points = np.asarray(s['volume'].points)
     local = points[:, :2] @ info['axes']
@@ -3753,7 +4185,8 @@ def s5_rgb_envelope(s, report):
         half=np.r_[(hi - lo) / 2, (top - table) / 2], top_z=top,
         collision_points=np.concatenate([points + np.array([a, b, c])
             for a in [-0.0005, 0.0005] for b in [-0.0005, 0.0005] for c in [-0.0005, 0.0005]]),
-        height_source='current public multiview RGB hull; finite visibility and search domain')
+        height_source='current public multiview RGB hull; finite visibility and search domain',
+        rgb_centroid_world_m=report.get('center_world_m',np.mean(points,axis=0).tolist()))
     change = max(float(np.linalg.norm(refined['center'] - info['center'])),
                  float(np.max(abs(refined['half'] - info['half']))))
     if s.get('initial_rgb_geometry_applied') and not s.get('actual_grasps', 0):
@@ -3770,11 +4203,107 @@ def s5_rgb_envelope(s, report):
     return refined, change
 
 
+def s5_occluded_preclose_prior(s, phase):
+    """An occluded view does not erase this attempt's observed static model.
+
+    A physical closure invalidates the model epoch. Recovery must observe the
+    changed object before this permission can be obtained again. Every actual
+    state, bridge and remaining approach is still checked against that model;
+    the existing bounded encoder probe supplies contact feedback at closure.
+    """
+    epoch=int(s.get('actual_grasps',0))
+    state=s.get('stationary_rgb_state',{})
+    if s.get('valid_rgb_model_epoch')!=epoch or not state.get('fresh') or not state.get('current_settled'):
+        return None
+    robot=s['robot'];actual=np.asarray(s['obs']['actual_q'])
+    check=s['checker'].check(actual)
+    if not check['passed'] or np.any(actual<robot.lo-1e-6) or np.any(actual>robot.hi+1e-6):return None
+    result=dict(status='unchanged',change_m=0.,visibility='unknown_occluded',
+        observed_model_step=s['valid_rgb_model_step'],actual_closures=epoch,
+        geometry=check,phase=phase,
+        scope='same-attempt public RGB model retained; occlusion supplies no free-space or contact evidence; strict remaining-path and original bounded closure checks remain')
+    s5_note(s['ctx'],'occluded_preclose_model',dict(step=s['obs']['step'],**result))
+    return result
+
+
+def _s5_selected_surface_change(s,refined,extent_change):
+    robot=s['robot'];meta=s['c']['meta']
+    robot.select_pair(meta['contact_fingers'],meta['hand_contact_regions']);apply_contact_geometry(robot,meta)
+    targets=np.asarray(meta['targets']);inward=np.asarray(s['c']['inward'])
+    intent=ContactIntent(robot,targets,inward,refined)
+    updated=intent.goals(targets);normals=np.asarray(intent.normals)
+    normal_change=np.arccos(np.clip(np.sum(normals*(-inward),axis=1),-1.,1.))
+    shifts=np.linalg.norm(updated-targets,axis=1)
+    material=bool(extent_change>=S6_UPDATE_MM or shifts.max()>=S6_UPDATE_MM or normal_change.max()>=.15)
+    report=dict(material=material,extent_change_m=extent_change,
+        visual_target_change_m=shifts.tolist(),visual_normal_change_rad=normal_change.tolist(),
+        previous_targets_m=targets.tolist(),updated_targets_m=updated.tolist(),
+        previous_normals=(-inward).tolist(),updated_normals=normals.tolist(),
+        ik_target_error_m=meta.get('per_finger_error_m'),
+        command_actual_joint_error=(np.asarray(s['last'])-np.asarray(s['obs']['actual_q'])).tolist(),
+        thresholds=dict(position_m=S6_UPDATE_MM,normal_rad=.15),
+        source='fresh public RGB selected facets; independent of whole-object center displacement')
+    s5_note(s['ctx'],'selected_surface_update',report)
+    return report
+
+
+def _s5_local_rgb_repair(s,update):
+    """Repair the selected surfaces from measured q, then check the full bridge.
+
+    No endpoint-only teleport: last command -> measured q -> corrected
+    preclose, whole-hand clearance, protected close and lift are all checked.
+    """
+    robot=s['robot'];old=s['c'];actual=np.asarray(s['obs']['actual_q'])
+    import hashlib
+    key=(hashlib.sha256(np.asarray(s['info']['collision_points']).tobytes()).hexdigest(),
+        old['meta'].get('planner_candidate_id'),tuple(np.round(actual,7)))
+    seen=s.setdefault('local_rgb_repairs',set())
+    if key in seen:return False
+    seen.add(key)
+    robot.select_pair(old['meta']['contact_fingers'],old['meta']['hand_contact_regions']);apply_contact_geometry(robot,old['meta'])
+    robot.ik_checker=s['checker'];robot.ik_contact_info=s['info'];robot.ik_surface_info=None
+    robot.ik_seed_hints=[np.asarray(old['q'])];robot.surface_search_start_cpu=time.process_time();robot.candidate_cpu_budget_s=12.
+    inward=-np.asarray(update['updated_normals']);targets=np.asarray(update['updated_targets_m'])
+    started=time.process_time()
+    try:q,meta=solve_target_ik(robot,actual,targets,inward)
+    finally:robot.ik_seed_hints=None
+    for name in ('contact_fingers','hand_contact_regions','hand_contact_points_local_m','hand_contact_cells_local_m','contact_regions'):
+        if name in old['meta']:meta[name]=old['meta'][name]
+    meta.update(candidate_id=str(old['meta'].get('candidate_id'))+'-local-rgb',
+        local_repair_of=old['meta'].get('planner_candidate_id'),visual_update=update)
+    passed=_s12_endpoint_gate(robot,q,meta,s['checker'],actual,True)
+    candidate=_s12_complete_candidate(robot,s['checker'],actual,q,inward,meta,True)if passed else None
+    if candidate is not None:
+        preclose=np.asarray(candidate['prefix'][-1][0])
+        sync=_s5_motion_path(np.asarray(s['last']),actual,24,'s5_local_rgb_sync')
+        local=_s5_motion_path(actual,preclose,_s3_steps(preclose-actual,minimum=48),'descend')
+        connection=_s12_path_gate(robot,s['checker'],np.asarray(s['last']),sync+local)
+        if connection['passed']:
+            candidate['prefix']=sync+local
+            meta['local_connection']=connection
+            _s12_candidate_identity(candidate)
+            s['c']=candidate;s['candidate_pool']=[];s12_select_contacts(s,candidate)
+            s['refined']=True;s.pop('approach_blocked',None)
+            s5_note(s['ctx'],'local_rgb_repair',dict(passed=True,cpu_s=time.process_time()-started,
+                ik_target_error_m=meta['per_finger_error_m'],visual_update=update,
+                command_actual_joint_error=(np.asarray(s['last'])-actual).tolist(),
+                path=connection,measured_start_q=actual.tolist(),previous_solution_seed=old['q'].tolist()))
+            return True
+        meta['first_rejection']='local_connection';meta['local_connection']=connection
+    s5_note(s['ctx'],'local_rgb_repair',dict(passed=False,cpu_s=time.process_time()-started,
+        first_rejection=meta.get('first_rejection'),ik_target_error_m=meta.get('per_finger_error_m'),
+        path=meta.get('local_connection'),fallback='full approach from measured state'))
+    robot.select_pair(old['meta']['contact_fingers'],old['meta']['hand_contact_regions']);apply_contact_geometry(robot,old['meta'])
+    return False
+
+
 def s5_early_rgb_checkpoint(s):
     """Stop at the first descent boundary; stale geometry cannot authorize it."""
     entry = int(s['obs']['step'])
     report = s5_stationary_rgb(s, 's5_early_rgb_settle')
     if report is None:
+        retained=s5_occluded_preclose_prior(s,'early')
+        if retained is not None:return retained
         return s5_vision_block(s, 'early_rgb_not_fresh_settled_valid',
             observation_timeout_steps=240)
     refined, change = s5_rgb_envelope(s, report)
@@ -3784,7 +4313,8 @@ def s5_early_rgb_checkpoint(s):
     actual = np.asarray(s['obs']['actual_q'])
     mesh_min_z = float(robot.vertices(robot.fk(actual))[:, 2].min())
     hull_top = float(np.asarray(refined['collision_points'])[:, 2].max())
-    material = change >= S6_UPDATE_MM
+    surface_update=_s5_selected_surface_change(s,refined,change)
+    material = surface_update['material']
     old_id = s['c']['meta'].get('candidate_id')
     s5_note(s['ctx'], 's5_early_rgb_checkpoint', dict(step=s['obs']['step'],
         entry_step=entry, frame_id=s9_frame(s['obs']), exposure_step=s['obs']['image_state']['step'],
@@ -3814,6 +4344,8 @@ def s5_early_rgb_checkpoint(s):
         s5_step(s, q, n, phase, object_check=True)
     if not material:
         return dict(status='unchanged', change_m=change)
+    if _s5_local_rgb_repair(s,surface_update):
+        return dict(status='replanned',candidate_id=s['c']['meta'].get('candidate_id'),local=True)
     if s.get('early_rgb_restarts', 0) >= 1:
         return s5_vision_block(s, 'early_rgb_restart_limit')
     s['early_rgb_restarts'] = s.get('early_rgb_restarts', 0) + 1
@@ -3990,19 +4522,28 @@ def s5_refine(s):
     report = s5_stationary_rgb(s, 's5_near_rgb_settle')
     s5_note(s['ctx'], 's5_near_map', report)
     if report is None:
+        retained=s5_occluded_preclose_prior(s,'near')
+        if retained is not None:return retained
         return s5_vision_block(s, 'near_rgb_invalid', observation_timeout_steps=240)
     refined, change = s5_rgb_envelope(s, report)
-    s5_note(s['ctx'], 's6_target_change', dict(step=s['obs']['step'], change_m=change, threshold_m=S6_UPDATE_MM, material=change >= S6_UPDATE_MM))
-    if change < S6_UPDATE_MM:
-        return dict(status='unchanged', change_m=change)
+    update=_s5_selected_surface_change(s,refined,change)
+    s5_note(s['ctx'],'s6_target_change',update)
+    if not update['material']:
+        s['info']=refined;s['checker']=SelfAwareGeometry(s['robot'],refined)
+        # Preserve the verified remaining approach when RGB did not change
+        # its contact intent. A synthetic direct line to the contact endpoint
+        # can cross fingers even when the planned coupled route is clear.
+        # s5_approach_edge checks each actual-to-next-command connection;
+        # closure checks its complete protected route again before dispatch.
+        return dict(status='unchanged',change_m=change)
     s['approach_blocked'] = 'material_near_rgb_change_pending_replan'
     s['candidate_pool'] = []
     s['contact_search_progress'] = {}
     s['info'] = refined
     checker = SelfAwareGeometry(s['robot'], refined)
     s['checker'] = checker
-    # A local endpoint correction used to bypass the candidate's complete
-    # approach prefix. Reuse the same checked approach from measured q instead.
+    if _s5_local_rgb_repair(s,update):
+        return dict(status='replanned',local=True,candidate_id=s['c']['meta'].get('candidate_id'))
     return s5_full_rgb_replan(s)
 
 def s11_motor_snapshot(s):
@@ -4067,6 +4608,25 @@ def _s5_height_target(robot, closure_q, current_q, height):
     return target
 
 
+# Same angular command-tracking band as the existing protected preload probe.
+# Raw velocity still gates resistance inference, not every small motion command.
+S5_FINGER_TRACKING_ERROR_RAD = .03
+
+
+def _s5_finger_command_error(s, motor):
+    indices=np.asarray(motor.get('joint_indices',[]),dtype=int)
+    actual=np.asarray(s['obs']['actual_q'],dtype=float)
+    target=np.asarray(s['last'],dtype=float)
+    if not len(indices) or np.any(indices<0) or np.any(indices>=len(actual)):
+        return None
+    # This inherited angular calibration is not applied to prismatic digits.
+    description=getattr(s['robot'],'description',None)
+    kinds={row[5]:row[4] for row in getattr(description,'joints',[]) if row[5] is not None}
+    if any(kinds.get(int(i),'revolute') not in ('revolute','continuous') for i in indices):
+        return None
+    return float(np.max(abs((target-actual)[indices])))
+
+
 def s5_close(s, mode='fixed', cap=0.0025):
     if s.get('approach_blocked'):
         raise RuntimeError('RGB invalidated grasp prefix: ' + s['approach_blocked'])
@@ -4095,6 +4655,8 @@ def s5_close(s, mode='fixed', cap=0.0025):
     contact_at = np.full(len(c['points']), np.nan)
     last_increment = np.full(len(c['points']), 0.00025)
     protected_idle_links=set()
+    blocked_streak=np.zeros(len(c['points']),dtype=int)
+    unsettled_probe_limit=np.full(len(c['points']),np.inf)
     for i in range(15 if mode == 'servo' else 6):
         refreshed = False
         if mode in ('adaptive', 'servo'):
@@ -4104,6 +4666,8 @@ def s5_close(s, mode='fixed', cap=0.0025):
         before = capture_preload_snapshot(s['obs'], robot, s5_static(s)) if visual_round else s11_motor_snapshot(s)
         delta = np.full(len(c['points']), 0.00025 if i == 0 else 0.00035)
         reason = 'fixed_schedule'
+        waiting_for_settle = False
+        unsettled_tracking=[]
         if mode in ('adaptive', 'servo') and evidence is None:
             visible_views = [row for row in before.get('views', {}).values()
                              if row.get('status') == 'ok' and row.get('visible', False)]
@@ -4123,10 +4687,29 @@ def s5_close(s, mode='fixed', cap=0.0025):
             for k, finger in enumerate(robot.finger_names):
                 motor = motors.get(finger, {})
                 if not motor.get('settled', False):
-                    delta[k] = 0.0
-                    reason = 'object_association_or_motor_settle_hold'
+                    error=_s5_finger_command_error(s,motor)
+                    tracked=error is not None and error<=S5_FINGER_TRACKING_ERROR_RAD
+                    unsettled_tracking.append(dict(finger=finger,command_error_rad=error,
+                        tracking_band_rad=S5_FINGER_TRACKING_ERROR_RAD,
+                        action='bounded_probe' if tracked else 'hold',
+                        raw_motor_settled=False,contact_or_force_inferred=False))
+                    if tracked:
+                        allowance=min(.00035,robot.selected_patches[k]['support_radius_m']/3)
+                        unsettled_probe_limit[k]=min(unsettled_probe_limit[k],squeeze[k]+allowance)
+                        # Oscillating joints can already follow the command.
+                        # Permit only the inherited small probe; all raw-settle
+                        # requirements for contact/preload evidence stay intact.
+                        delta[k]=min(delta[k],.00025)
+                        reason='bounded_probe_with_tracked_unsettled_motor'
+                    else:
+                        waiting_for_settle = True
+                        delta[k] = 0.0
+                        reason = 'object_association_or_motor_settle_hold'
                 deficit = motor.get('drive_deficit')
-                if last_increment[k] > 0.0001 and deficit is not None and (deficit >= 0.45) and np.isnan(contact_at[k]):
+                blocked_streak[k]=(blocked_streak[k]+1 if motor.get('settled',False)
+                    and deficit is not None and deficit>=.45
+                    and (last_increment[k]>.0001 or np.isfinite(contact_at[k])) else 0)
+                if motor.get('settled',False) and last_increment[k] > 0.0001 and deficit is not None and (deficit >= 0.45) and np.isnan(contact_at[k]):
                     contact_at[k] = squeeze[k]
                 # Extra preload requires resistance on every selected digit;
                 # one obstructed digit alone gets only a small probe.
@@ -4135,9 +4718,25 @@ def s5_close(s, mode='fixed', cap=0.0025):
                              if bilateral else min(0.00035, robot.selected_patches[k]['support_radius_m']/3))
                 if not np.isnan(contact_at[k]):
                     delta[k] = min(delta[k], max(0.0, contact_at[k] + allowance - squeeze[k]))
+            # Hold an already resistant digit while the others seek contact.
+            # When every digit resists, retain the existing finite bilateral
+            # allowance; encoder residual is never re-labelled as force.
+            if not np.isfinite(contact_at).all():
+                delta[blocked_streak>=2]=0.
+                if np.any(blocked_streak>=2):reason='persistent_settled_digit_hold_others_probe'
             if _s5_closure_motion_veto(evidence):
                 delta[:] = 0.0
                 reason = 'registered_object_motion_hold'
+                waiting_for_settle = False
+        # Per-step probe limits also need a finite cumulative budget. Once an
+        # oscillating digit consumes the inherited unilateral allowance, hold
+        # it for this closure while other digits seek contact. Settling or an
+        # encoder residual never resets this limit or proves contact force.
+        surface_step=np.asarray([patch['support_radius_m']/3 for patch in robot.selected_patches])
+        delta=np.minimum(delta,surface_step)
+        delta=np.minimum(delta,np.maximum(0.,unsettled_probe_limit-squeeze))
+        if np.any(np.isfinite(unsettled_probe_limit) & (delta<1e-7)):
+            waiting_for_settle=True
         proposed = np.clip(squeeze + delta, initial_squeeze, cap)
         reference = _s5_close_reference(robot,c['q'],s['last'])
         target = close_ik(robot, reference, c['points'] + c['inward'] * proposed[:, None])
@@ -4156,7 +4755,7 @@ def s5_close(s, mode='fixed', cap=0.0025):
             audit=audit,nodes=[[np.asarray(node).tolist(),steps,phase] for node,steps,phase in proposal]))
         target=np.asarray(proposal[-1][0])
         protected_idle_links.update(audit.get('idle_links',()))
-        s5_note(ctx, 's5_closure_action', dict(step=s['obs']['step'], round=i, mode=mode, reason=reason, response_used=evidence if mode in ('feedback', 'adaptive', 'servo') else None, contact_proxy_at_m=[float(x) if np.isfinite(x) else None for x in contact_at], squeeze_m=proposed.tolist(), target_q=target.tolist()))
+        s5_note(ctx, 's5_closure_action', dict(step=s['obs']['step'], round=i, mode=mode, reason=reason, response_used=evidence if mode in ('feedback', 'adaptive', 'servo') else None, contact_proxy_at_m=[float(x) if np.isfinite(x) else None for x in contact_at], settled_blocked_streak=blocked_streak.tolist(), unsettled_tracking=unsettled_tracking, unsettled_probe_limit_m=[float(x) if np.isfinite(x) else None for x in unsettled_probe_limit], squeeze_m=proposed.tolist(), target_q=target.tolist()))
         interrupted=False
         for node,steps,phase in proposal:
             connection=(_s5_close_path_audit(robot,s['checker'],
@@ -4180,7 +4779,10 @@ def s5_close(s, mode='fixed', cap=0.0025):
         s5_note(ctx, 's5_closure_response', dict(step=s['obs']['step'], round=i, features=evidence))
         last_increment = proposed - squeeze
         squeeze = proposed
-        if mode == 'servo' and np.all(last_increment < 1e-07):
+        # A temporary motor-settle hold needs another feedback decision,
+        # even when this action requested no additional squeeze. The existing
+        # finite round budget, motion veto and geometry stops still apply.
+        if mode == 'servo' and np.all(last_increment < 1e-07) and not waiting_for_settle:
             break
     _s5_record_closure_reference(s)
     s['squeeze'] = squeeze
@@ -5176,7 +5778,7 @@ def s16_ik_terms(robot, q, prior, targets, inward, normal_weight):
     angles = np.arccos(np.clip(np.sum(n * inward, axis=1), -1, 1))
     position = (p - targets) * 1500 * scale
     normal = (n - inward) * normal_weight * scale
-    table = np.minimum(vertices[:, 2] - robot.ik_checker.table_z - 0.001, 0) * 5000 / np.sqrt(len(vertices))
+    table = np.minimum(vertices[:,2]-robot.ik_checker.table_z-.001,0.)*5000/np.sqrt(len(vertices))
     wrist = Rotation.from_matrix(Rotation.from_euler('ZYX',q[3:6]).as_matrix() @ Rotation.from_euler('ZYX',prior[3:6]).as_matrix().T).as_rotvec() * .25
     fingers = (q[robot.all_finger_indices] - prior[robot.all_finger_indices]) * .08 * np.sqrt(6/len(robot.all_finger_indices))
     components = dict(position=float(np.sum(position ** 2)), normal=float(np.sum(normal ** 2)), table=float(np.sum(table ** 2)), wrist_regularizer=float(np.sum(wrist ** 2)), finger_regularizer=float(np.sum(fingers ** 2)))
@@ -5184,12 +5786,21 @@ def s16_ik_terms(robot, q, prior, targets, inward, normal_weight):
     return dict(contact_count=count, units=dict(position='m', angle='rad', wrist_translation='m', wrist_rotation_and_finger_joints='rad', residual='dimensionless weighted mixed objective'), position_weight_per_m=1500.0, normal_chord_weight=float(normal_weight), contact_count_normalization=scale, per_finger_position_error_m=errors.tolist(), max_position_error_m=float(errors.max()), rms_position_error_m=float(np.sqrt(np.mean(errors ** 2))), per_finger_normal_error_rad=angles.tolist(), max_normal_error_rad=float(angles.max()), rms_normal_error_rad=float(np.sqrt(np.mean(angles ** 2))), per_finger_position_squared_residual=np.sum(position ** 2, axis=1).tolist(), per_finger_normal_squared_residual=np.sum(normal ** 2, axis=1).tolist(), squared_residual_contributions=components, reconstructed_scipy_cost=0.5 * sum(components.values()), per_coordinate_limit_margin=joint_margin.tolist(), minimum_translation_limit_margin_m=float(joint_margin[:3].min()), minimum_angular_limit_margin_rad=float(joint_margin[3:].min()), table_clearance_m=float(vertices[:, 2].min()), q=q.tolist(), prior_q=prior.tolist(), targets_world_m=targets.tolist(), desired_inward_world=inward.tolist(), actual_pad_points_world_m=p.tolist(), actual_pad_normals_world=n.tolist(), hard_gate_scope='each finger position and normal plus full endpoint/path checker; RMS never replaces these gates')
 _S16_ORIGINAL_OPTIMIZE = optimize
 
-def optimize(robot, prior, targets, inward, normal_weight=12.0, seed_index=0):
+def optimize(robot, prior, targets, inward, normal_weight=2.5, seed_index=0):
     requested = float(normal_weight)
     common = None
     used = requested if common is None else float(common)
     q, meta = _S16_ORIGINAL_OPTIMIZE(robot, prior, targets, inward, normal_weight=used, seed_index=seed_index)
+    used=float(meta.get('normal_weight',used))
     meta['s16_numerics'] = s16_ik_terms(robot, q, np.asarray(meta.get('solver_prior',prior)), np.asarray(meta.get('targets',targets)), inward, used)
+    height=meta.get('height_excess_m',meta.get('contact_intent',{}).get('height_excess_m'))
+    if height is not None:
+        numerics=meta['s16_numerics'];scale=np.sqrt(2/len(height))
+        squared=float(np.sum((np.asarray(height)*1500*scale)**2))
+        numerics['squared_residual_contributions']['height_search_window']=squared
+        numerics['reconstructed_scipy_cost']+=.5*squared
+        numerics['admission_per_finger_error_m']=meta['per_finger_error_m']
+        numerics['height_search_window_source']='same public 1.5mm position-uncertainty hypothesis around each proposed contact height'
     if meta.get('collision_refined'):
         terms=meta['s16_numerics']
         contributions=terms['squared_residual_contributions']

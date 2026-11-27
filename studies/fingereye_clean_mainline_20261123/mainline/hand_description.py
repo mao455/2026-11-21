@@ -174,7 +174,7 @@ class HandDescription:
             if row is None:
                 continue
             pose = poses[row['link']]
-            point = pose[:3, :3] @ np.asarray(row['point_m']) + pose[:3, 3]
+            point = pose[:3, :3] @ np.asarray(row.get('assembly_centroid_local_m',row['point_m'])) + pose[:3, 3]
             root = poses[child_by_joint[chain['finger']]][:3, 3]
             vectors.append(point - root)
         if not vectors:

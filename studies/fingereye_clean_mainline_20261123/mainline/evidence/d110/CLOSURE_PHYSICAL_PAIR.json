@@ -1,0 +1,147 @@
+{
+  "offline_diagnostic": true,
+  "counted_as_final_panel": false,
+  "left_source": "b196dffba7675c19cc00a094a9a39fcbb9a387fd",
+  "right_source": "83034464a460d9eacb7204369f54b3a3dd2075d2",
+  "change": "finite cumulative unsettled probe; existing min(0.35mm, selected support radius/3) unilateral allowance is not renewed each servo round",
+  "initial_info_identical": false,
+  "initial_rgb_pixels_identical": false,
+  "initial_exposure_q_max_delta": 0.0,
+  "selected_q_max_delta": 0.0,
+  "physical_prefix": {
+    "steps_checked": 7650,
+    "first_command_difference_native_step": 7650,
+    "max_actual_q_delta": 0.0,
+    "max_object_pose_component_delta": 0.0
+  },
+  "first_changed_action": {
+    "left": {
+      "step": 7650,
+      "round": 5,
+      "reason": "bounded_probe_with_tracked_unsettled_motor",
+      "squeeze_m": [
+        0.0024000000000000002,
+        0.0024000000000000002
+      ]
+    },
+    "right": {
+      "step": 7650,
+      "round": 5,
+      "reason": "bounded_probe_with_tracked_unsettled_motor",
+      "squeeze_m": [
+        0.0024000000000000002,
+        0.002380443652
+      ],
+      "unsettled_probe_limit_m": [
+        0.0024430664026666668,
+        0.002380443652
+      ]
+    }
+  },
+  "left_physics": {
+    "success": false,
+    "steps": 12582,
+    "required_hold_steps": 240,
+    "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+    "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+    "geometry_passed": false,
+    "first_invalid_step": 7853,
+    "hold_physics_passed": true,
+    "hold_min_table_clearance_m": 0.028165738374158013,
+    "hold_min_lift_m": 0.029045253824733663,
+    "hold_relative_translation_drift_m": 7.202986052271205e-08,
+    "hold_relative_rotation_drift_rad": 2.1096506436862687e-06,
+    "hold_max_linear_speed_m_s": 0.008243426130522256,
+    "hold_max_angular_speed_rad_s": 0.3807913168626494,
+    "hold_min_contact_force_n": 1.7027857899665833,
+    "commanded_lift_m": 0.03267699480056763,
+    "protocol_id": "lift30_no_drop_v1",
+    "target_lift_m": 0.03,
+    "lift_tolerance_m": 0.002,
+    "minimum_actual_lift_m": 0.027999999999999997,
+    "minimum_commanded_lift_m": 0.0295,
+    "legacy_strict": {
+      "success": false,
+      "steps": 12582,
+      "required_hold_steps": 240,
+      "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+      "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+      "geometry_passed": false,
+      "first_invalid_step": 7853,
+      "hold_physics_passed": true,
+      "hold_min_table_clearance_m": 0.028165738374158013,
+      "hold_min_lift_m": 0.029045253824733663,
+      "hold_relative_translation_drift_m": 7.202986052271205e-08,
+      "hold_relative_rotation_drift_rad": 2.1096506436862687e-06,
+      "hold_max_linear_speed_m_s": 0.008243426130522256,
+      "hold_max_angular_speed_rad_s": 0.3807913168626494,
+      "hold_min_contact_force_n": 1.7027857899665833,
+      "commanded_lift_m": 0.03267699480056763
+    },
+    "continuous_physics_evidence": true,
+    "hold_checks": {
+      "actual_lift": true,
+      "table_clearance": true,
+      "completed_commanded_lift": true
+    },
+    "hold_start_step": 12342,
+    "hold_end_step": 12581,
+    "hold_start_time_s": 102.85,
+    "hold_end_time_s": 104.85,
+    "hold_duration_s": 2.0,
+    "failure": "invalid_episode_geometry"
+  },
+  "right_physics": {
+    "success": true,
+    "steps": 12582,
+    "required_hold_steps": 240,
+    "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+    "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+    "geometry_passed": true,
+    "first_invalid_step": null,
+    "hold_physics_passed": true,
+    "hold_min_table_clearance_m": 0.030759003002090776,
+    "hold_min_lift_m": 0.030857631769322325,
+    "hold_relative_translation_drift_m": 4.8819707844668315e-08,
+    "hold_relative_rotation_drift_rad": 2.0474508987203014e-06,
+    "hold_max_linear_speed_m_s": 0.004640521718302418,
+    "hold_max_angular_speed_rad_s": 0.1762648326874053,
+    "hold_min_contact_force_n": 0.8977689743041992,
+    "commanded_lift_m": 0.03269132971763611,
+    "protocol_id": "lift30_no_drop_v1",
+    "target_lift_m": 0.03,
+    "lift_tolerance_m": 0.002,
+    "minimum_actual_lift_m": 0.027999999999999997,
+    "minimum_commanded_lift_m": 0.0295,
+    "legacy_strict": {
+      "success": true,
+      "steps": 12582,
+      "required_hold_steps": 240,
+      "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+      "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+      "geometry_passed": true,
+      "first_invalid_step": null,
+      "hold_physics_passed": true,
+      "hold_min_table_clearance_m": 0.030759003002090776,
+      "hold_min_lift_m": 0.030857631769322325,
+      "hold_relative_translation_drift_m": 4.8819707844668315e-08,
+      "hold_relative_rotation_drift_rad": 2.0474508987203014e-06,
+      "hold_max_linear_speed_m_s": 0.004640521718302418,
+      "hold_max_angular_speed_rad_s": 0.1762648326874053,
+      "hold_min_contact_force_n": 0.8977689743041992,
+      "commanded_lift_m": 0.03269132971763611
+    },
+    "continuous_physics_evidence": true,
+    "hold_checks": {
+      "actual_lift": true,
+      "table_clearance": true,
+      "completed_commanded_lift": true
+    },
+    "hold_start_step": 12342,
+    "hold_end_step": 12581,
+    "hold_start_time_s": 102.85,
+    "hold_end_time_s": 104.85,
+    "hold_duration_s": 2.0
+  },
+  "interpretation": "same selected grasp and exactly identical native q/object trajectory for 7650 steps; first command difference is cumulative cap; live initial RGB differs, so this is not a frozen-visual-input pair"
+}

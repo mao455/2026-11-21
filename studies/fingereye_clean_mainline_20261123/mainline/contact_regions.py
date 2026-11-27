@@ -499,7 +499,7 @@ def interleave_surface_families(variants):
 
 
 def sort_task_candidates(candidates, tolerance=.1):
-    """Rank the SAME task load for every digit count, with a hard margin gate.
+    """Rank the SAME conditional task load for every digit count; no success gate.
 
     A nominal-minus-robust difference is not a confidence interval. It cannot
     turn a task-failing 0.8 into a tie with a task-passing 1.2. Robust margin is
@@ -518,9 +518,29 @@ def sort_task_candidates(candidates, tolerance=.1):
         gravity = bool(task['robust'].get('gravity_feasible', task['nominal'].get('gravity_feasible', False)))
         meets_task = gravity and robust >= 1.
         terms = meta.get('quality_terms', {})
+        preview=meta.get('lift_tail_audits',{}).get('servo',{})
+        uncertainty=max((float(r.get('position_uncertainty_m',0.))
+                         for r in meta.get('contact_regions',[])),default=0.)
+        available=preview.get('achievable_squeeze_m')
+        coverage=(min(1.,float(available)/max(uncertainty,.0003))
+                  if available is not None else 1.)
+        normal=np.asarray(task['nominal'].get('outward_normals',[]),dtype=float)
+        balance=(float(np.linalg.norm(normal.mean(0))) if normal.size else 0.)
+        # These are ordering preferences, never collision/contact certificates.
+        # When conditional models tie, prefer enough checked approach-to-contact
+        # travel and balanced normals before saving a fraction of motion time.
+        # A third digit must add load/anti-torque reserve to beat a pair on merit.
         # Twelve decimals eliminate solver round-off ties without grouping
         # meaningful differences in reserve under an uncertainty-width rule.
         key = (not meets_task, not gravity, -round(robust, 12),
+               not bool(task['nominal'].get('gravity_feasible',False)),
+               -round(nominal,12),
+               -round(float(task['robust'].get('lateral_margin',0.)),12),
+               -round(float(task['robust'].get('torque_margin',0.)),12),
+               -round(float(task['nominal'].get('lateral_margin',0.)),12),
+               -round(float(task['nominal'].get('torque_margin',0.)),12),
+               bool(meta.get('load_repair')) and not meta['load_repair'].get('model_gain',False),
+               -round(coverage,6),round(balance,6),len(candidate.get('points',())),
                float(terms.get('planned_motion_s', float('inf'))),
                -float(terms.get('min_table_clearance_m', 0.)),
                float(meta.get('quality_score', 0.)), index)
@@ -530,7 +550,7 @@ def sort_task_candidates(candidates, tolerance=.1):
     ordered = []
     for _, candidate, robust, nominal, gravity, meets_task in sorted(values, key=lambda item: item[0]):
         candidate['meta']['rank_reason'] = dict(
-            rule='robust task >=1; robust gravity; monotonic robust reserve; motion for numerical ties',
+            rule='conditional task/load/torque reserve; checked closure coverage; balanced normals; digit count; motion for ties',
             load_gate='robust_task_supported' if meets_task else 'conditional_task_not_met',
             robust_task_margin=robust, nominal_task_margin=nominal,
             gravity_feasible=gravity, task_requirement_margin=1.,
@@ -806,8 +826,13 @@ def planar_contact_cells(robot, patch):
         desc = robot.description
         neutral = desc.fk(np.clip(np.zeros(len(desc.joint_names)), desc.lower, desc.upper))
         relative = np.linalg.inv(neutral[terminal]) @ neutral[surface]
-        triangles = np.asarray(robot.surfaces[surface].triangles, float)
-        triangles = triangles @ relative[:3, :3].T + relative[:3, 3]
+        pieces=[]
+        for component in sorted(fixed_descendants):
+            if component not in robot.surfaces:continue
+            transform=np.linalg.inv(neutral[terminal])@neutral[component]
+            triangles=np.asarray(robot.surfaces[component].triangles,float)
+            pieces.append(triangles@transform[:3,:3].T+transform[:3,3])
+        triangles=np.concatenate(pieces)
         try:
             domain = source_contact_center_cells(triangles, p, n, radius)
             result.update(domain)
@@ -943,7 +968,7 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
 
     Pass the same task_wrench used by axis_contact_candidates (or set
     robot.region_ranking_task_wrench). Missing task/hypotheses preserve input
-    order. Mean1500² position+12² normal cost matches current seed weighting.
+    order. Mean1500² position+2.5² normal cost matches current seed weighting.
     Existing table-proven impossible hints receive last priority; unknown
     stays unproven. Nominal task feasibility then original FK cost order
     hints within each class. This never
@@ -955,12 +980,17 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
     from scipy.stats import qmc
     started=time.process_time();r=robot;prior=np.asarray(prior,float)
     progress=getattr(r,'rank_progress',lambda:None)
-    expired=lambda:time.process_time()>=530.
+    expired=lambda:time.process_time()>=min(530.,getattr(r,'region_rank_deadline',530.))
     original=[tuple(ids)for ids in regions];count=len(r.finger_names)
     selected=tuple(r.contact_region_indices)
     task=task_wrench if task_wrench is not None else getattr(r,'region_ranking_task_wrench',None)
+    weight=float(getattr(r,"region_normal_weight",2.5))
+    records=[]
     def fallback(reason):
-        return original,dict(status=reason,cpu_s=time.process_time()-started,all_input_tuples_retained=True)
+        ranked=sorted(records,key=lambda row:(row['table_priority_proven_impossible'],not row['nominal_surface_task']['task_feasible'],row['score']))
+        visited={tuple(row['regions'])for row in ranked}
+        ordered=[tuple(row['regions'])for row in ranked]+[ids for ids in original if ids not in visited]
+        return ordered,dict(status=reason,cpu_s=time.process_time()-started,region_scores=ranked,all_input_tuples_retained=True,partial_ranked_count=len(ranked))
     if not original:return fallback('empty')
     if task is None:return fallback('unchanged_missing_shared_task')
     models=[patch['contact_model']for patch in r.selected_patches]
@@ -968,7 +998,7 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
     caps=tuple(model['normal_force_limit_n']for model in models)
     force=-max(task['mass_range_kg'])*(np.array([0.,0.,-9.81])-np.asarray(task.get('lift_acceleration_m_s2',[0.,0.,.5])))
     force_cache=r.__dict__.setdefault('_surface_force_cache',{})
-    sets=generate_contact_sets(info,count,axes=axes,heights=heights,max_sets=4096)
+    sets=generate_contact_sets(info,count,axes=axes,heights=heights,max_sets=getattr(r,"region_max_sets",48))
     target_rows=[];force_refusals=0
     for si,region in enumerate(sets):
         progress()
@@ -1037,10 +1067,10 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
         spos=np.einsum('sc,tc->st',centered[:,:,0],destination[:,:,1])-np.einsum('sc,tc->st',centered[:,:,1],destination[:,:,0])
         cn=np.einsum('sci,tci->st',ns[:,:,:2],normals[:,:,:2])
         sn=np.einsum('sc,tc->st',ns[:,:,0],normals[:,:,1])-np.einsum('sc,tc->st',ns[:,:,1],normals[:,:,0])
-        cosine=1500.**2*cpos+12.**2*cn;sine=1500.**2*spos+12.**2*sn
+        cosine=1500.**2*cpos+weight**2*cn;sine=1500.**2*spos+weight**2*sn
         pconst=(np.sum(centered**2,axis=(1,2))[:,None]+target_norm[None,:]-2*np.einsum('sc,tc->st',centered[:,:,2],destination[:,:,2]))
         nconst=(np.sum(ns**2,axis=(1,2))[:,None]+normal_norm[None,:]-2*np.einsum('sc,tc->st',ns[:,:,2],normals[:,:,2]))
-        cost=(1500.**2*pconst+12.**2*nconst-2*np.hypot(cosine,sine))/count
+        cost=(1500.**2*pconst+weight**2*nconst-2*np.hypot(cosine,sine))/count
         theta=np.arctan2(sine,cosine);co=np.cos(theta);si=np.sin(theta)
         rotated_center=np.broadcast_to(center[:,None,:],(len(configs),len(targets),3)).copy()
         rotated_center[:,:,0]=center[:,None,0]*co-center[:,None,1]*si
@@ -1049,12 +1079,15 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
         clamped=np.clip(translation,r.lo[r.base_indices[:3]]+2e-6,r.hi[r.base_indices[:3]]-2e-6)
         cost+=1500.**2*np.sum((clamped-translation)**2,axis=2)
         radii=tuple(float(r.patch_options[i][region].get('radius_m',r.selected_patches[i]['support_radius_m'])) for i,region in enumerate(ids))
-        if radii not in priority_rows:
+        # A single footprint hypothesis is sufficient for coarse seed ranking;
+        # exact per-region radii are scored after executable joint IK.
+        ranking_radii=tuple(float(p['support_radius_m'])for p in r.selected_patches)
+        if ranking_radii not in priority_rows:
             evaluations=[]
             for target,inward in zip(targets,normals):
                 if expired():return fallback('unchanged_ranking_cpu_reserve')
                 try:
-                    evaluation=_finite_surface_task_priority(info,target,-inward,radii,models,task,public_facets)
+                    evaluation=_finite_surface_task_priority(info,target,-inward,ranking_radii,models,task,public_facets)
                     priority_cache_hits+=int(evaluation['cache_hit']);priority_cache_misses+=int(not evaluation['cache_hit'])
                 except Exception as error:
                     # Missing/degenerate geometry cannot drop a target. It
@@ -1062,8 +1095,8 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
                     evaluation=dict(task_feasible=False,gravity_feasible=False,classification='priority_unknown_retained',reason=str(error))
                     priority_errors.append(str(error))
                 evaluations.append(evaluation)
-            priority_rows[radii]=evaluations
-        evaluations=priority_rows[radii]
+            priority_rows[ranking_radii]=evaluations
+        evaluations=priority_rows[ranking_radii]
         distances=(None,)*count
         if table_context is not None:
             # Query the original bound method at candidate catalog points;
@@ -1104,7 +1137,7 @@ def rank_region_tuples(robot,prior,info,regions,axes,heights,*,task_wrench=None)
     ranked=sorted(records,key=lambda row:(row['table_priority_proven_impossible'],not row['nominal_surface_task']['task_feasible'],row['score']));ordered=[tuple(row['regions'])for row in ranked]
     assert len(ordered)==len(original)and sorted(ordered)==sorted(original)
     assert tuple(r.contact_region_indices)==selected
-    return ordered,dict(status='ranked',priority_rule='existing table-proven impossible last; conditional nominal public task pass first within each class; original FK cost next; unknown retained; no new rejection',table_priority_context_available=table_context is not None,table_priority_errors=table_priority_errors,all_existing_table_impossible_targets_retained_for_downstream=True,nominal_surface_task_cache_hits=priority_cache_hits,nominal_surface_task_cache_misses=priority_cache_misses,nominal_surface_task_cache_size=len(_SURFACE_TASK_PRIORITY_CACHE),nominal_surface_task_priority_errors=priority_errors,all_existing_force_surviving_targets_retained=True,nominal_surface_task_target_count_per_radius=len(target_rows),nominal_surface_task_radius_variants=len(priority_rows),approximation='fixed catalog center,upright+yaw;nominal finite RGB footprint task priority has no q/effort/covariance;necessary table/FCL/path and final robust task remain downstream',count=count,tuple_count=len(original),seed_count=len(configs),target_sets=len(sets),catalog_allocation=sets[0]['provenance']['catalog_allocation'] if sets else None,target_permutations=len(target_rows),existing_force_necessary_refusals=force_refusals,region_scores=ranked,cpu_s=time.process_time()-started,all_input_tuples_retained=True,normalization='mean1500² position error²+12² unit-normal chord error²',seed_boundary_rule='same131 bank clipped legal before fitting yaw;uniform/Sobol definitions unchanged')
+    return ordered,dict(status='ranked',priority_rule='existing table-proven impossible last; conditional nominal public task pass first within each class; original FK cost next; unknown retained; no new rejection',table_priority_context_available=table_context is not None,table_priority_errors=table_priority_errors,all_existing_table_impossible_targets_retained_for_downstream=True,nominal_surface_task_cache_hits=priority_cache_hits,nominal_surface_task_cache_misses=priority_cache_misses,nominal_surface_task_cache_size=len(_SURFACE_TASK_PRIORITY_CACHE),nominal_surface_task_priority_errors=priority_errors,all_existing_force_surviving_targets_retained=True,nominal_surface_task_target_count_per_radius=len(target_rows),nominal_surface_task_radius_variants=len(priority_rows),approximation='fixed catalog center,upright+yaw;nominal finite RGB footprint task priority has no q/effort/covariance;necessary table/FCL/path and final robust task remain downstream',count=count,tuple_count=len(original),seed_count=len(configs),target_sets=len(sets),catalog_allocation=sets[0]['provenance']['catalog_allocation'] if sets else None,target_permutations=len(target_rows),existing_force_necessary_refusals=force_refusals,region_scores=ranked,cpu_s=time.process_time()-started,all_input_tuples_retained=True,normalization='mean1500² position error²+2.5² unit-normal chord error²',seed_boundary_rule='same131 bank clipped legal before fitting yaw;uniform/Sobol definitions unchanged')
 
 
 def _compile_source_rank_cell(vertices):
@@ -1189,10 +1222,10 @@ def source_domain_corrected_rank(robot, prior, info, records, axes, heights,
         assert ordered_surface_planes(targets, inward) == tuple(
             tuple(plane) for plane in row['ordered_outward_planes'])
         seed = grasp_seed(proxy, np.clip(bank[row['seed_index']],
-                          proxy.lo+2e-6, proxy.hi-2e-6), targets, inward, None, 12.)
+                          proxy.lo+2e-6, proxy.hi-2e-6), targets, inward, None, float(getattr(robot,"region_normal_weight",2.5)))
         points, normals, _, poses = proxy.tips(seed)
         baseline = float((1500.**2*np.sum((points-targets)**2)
-                          +12.**2*np.sum((normals-inward)**2))/len(group))
+                          +float(getattr(robot,"region_normal_weight",2.5))**2*np.sum((normals-inward)**2))/len(group))
         max_reproduction_error = max(max_reproduction_error, abs(baseline-row['score']))
         projected, sources = [], []
         for link, patch, target, fallback in zip(proxy.contact_links,
@@ -1218,10 +1251,10 @@ def source_domain_corrected_rank(robot, prior, info, records, axes, heights,
                 query_distance_m=float(np.linalg.norm(point-query)),
                 unchanged_radius_m=domain['support_radius_m']))
         proxy.contact_points = np.asarray(projected)
-        fitted = grasp_seed(proxy, seed, targets, inward, None, 12.)
+        fitted = grasp_seed(proxy, seed, targets, inward, None, float(getattr(robot,"region_normal_weight",2.5)))
         newpoints, newnormals, _, _ = proxy.tips(fitted)
         newscore = float((1500.**2*np.sum((newpoints-targets)**2)
-                         +12.**2*np.sum((newnormals-inward)**2))/len(group))
+                         +float(getattr(robot,"region_normal_weight",2.5))**2*np.sum((newnormals-inward)**2))/len(group))
         assert np.array_equal(seed[proxy.all_finger_indices], fitted[proxy.all_finger_indices])
         assert np.array_equal(normal_before, proxy.contact_normals)
         row.update(score=newscore, source_domain_original_score=original['score'],

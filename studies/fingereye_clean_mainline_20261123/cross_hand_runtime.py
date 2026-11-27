@@ -298,6 +298,7 @@ def prepare(source, destination):
                   collision_primitive_derivatives=primitives,
                   runtime_derivative='source geometry unchanged; declared six-axis palm interface and USD-safe joint names')
     result['pads']=pad_catalog(runtime,chains,source_hashes[str(source)])
+    result['task_frame']=calibration.get('task_frame',dict(forward_axis_in_palm=runtime.forward_axis_in_palm(palm,result['pads']).tolist(),source='neutral URDF finger roots to full fixed terminal assembly centroids; independent of selected contact regions'))
     path = destination / 'description.json'
     path.write_text(json.dumps(result, indent=2, ensure_ascii=False)+'\n')
     return result
@@ -615,7 +616,22 @@ def audit_cameras(env,cfg,step,out):
             raise RuntimeError('Renderer optics disagree with projection metadata: '+repr(failures))
 
 
-def pad_catalog(hand, chains, source_digest):
+_PAD_CATALOG_CACHE={}
+
+
+def pad_catalog(hand,chains,source_digest):
+    # Cache immutable static surfaces, not current articulation or observations.
+    # The kinematic/mesh signature also protects numerical URDF-frame audits.
+    signature=(source_digest,repr(hand.joints),repr(hand.collision_meshes),repr(chains))
+    calibration=HERE/'hand_calibrations'/(source_digest+'.json')
+    key=signature+((calibration.read_bytes()if calibration.is_file()else b''),)
+    if key not in _PAD_CATALOG_CACHE:
+        if len(_PAD_CATALOG_CACHE)>=8:_PAD_CATALOG_CACHE.pop(next(iter(_PAD_CATALOG_CACHE)))
+        _PAD_CATALOG_CACHE[key]=_build_pad_catalog(hand,chains,source_digest)
+    return copy.deepcopy(_PAD_CATALOG_CACHE[key])
+
+
+def _build_pad_catalog(hand, chains, source_digest):
     """Load static contact data by asset hash, or propose mesh-supported patches.
 
     Mesh proposals are metric geometric contact candidates, not measured pad
@@ -658,47 +674,201 @@ def pad_catalog(hand, chains, source_digest):
             pieces.append(body);face_links.extend([entry['link']]*len(body.faces))
         if not pieces:continue
         mesh=trimesh.util.concatenate(pieces)
-        order=np.argsort(mesh.extents)[::-1];longitudinal,lateral,across=order
-        regions=[];radius=.0012
-        # Search broad sides and distal end faces. A single lateral axis can
-        # miss a usable contact face when the mesh frame is permuted.
-        for normal_axis in (int(lateral), int(across), int(longitudinal)):
+        # Work in a physical frame tied to the motion chain, never in the
+        # terminal mesh's arbitrary local XYZ chart. Compensated URDF frame
+        # changes therefore rotate every sample with the unchanged geometry.
+        rotation=zero_poses[link][:3,:3]
+        joint_rows=[j for j in hand.joints if j[5] is not None and
+                    hand.joint_names[j[5]] in chain['joint_names']]
+        pivot=zero_poses[link][:3,3]
+        center_world=rotation@mesh.center_mass+zero_poses[link][:3,3]
+        upstream=[zero_poses[j[1]][:3,3] for j in joint_rows]
+        anatomical=next((pivot-point for point in reversed(upstream)
+                         if np.linalg.norm(pivot-point)>1e-6),center_world-pivot)
+        if np.linalg.norm(anatomical)<1e-8:
+            # Synthetic/zero-length chains: choose the principal *world*
+            # geometry axis, with sign anchored to the unchanged root frame.
+            world=np.asarray(mesh.vertices)@rotation.T
+            _,_,axes=np.linalg.svd(world-world.mean(0),full_matrices=False)
+            anatomical=axes[0]
+            if anatomical[np.argmax(abs(anatomical))]<0:anatomical=-anatomical
+        distal=rotation.T@(anatomical/np.linalg.norm(anatomical))
+        if joint_rows:
+            parent,child,origin,axis,kind,index=joint_rows[-1]
+            lateral=rotation.T@(zero_poses[parent][:3,:3]@origin[:3,:3]@axis)
+        else:lateral=rotation.T@np.eye(3)[np.argmin(abs(rotation@distal))]
+        lateral-=distal*(lateral@distal)
+        if np.linalg.norm(lateral)<1e-8:
+            lateral=rotation.T@np.eye(3)[np.argmin(abs(rotation@distal))]
+            lateral-=distal*(lateral@distal)
+        lateral/=np.linalg.norm(lateral)
+        basis=np.stack([distal,lateral,np.cross(distal,lateral)])
+        terminal_basis=basis.copy();terminal_origin=mesh.center_mass.copy()
+        canonical=np.eye(4);canonical[:3,:3]=basis;canonical[:3,3]=-basis@terminal_origin
+        mesh.apply_transform(canonical)
+        # 0.1nm canonical rounding removes arithmetic chart noise before the
+        # float32 ray accelerator makes boundary/triangle decisions.
+        mesh.vertices=np.round(np.asarray(mesh.vertices),10)
+        basis=np.eye(3)
+        projected=np.asarray(mesh.vertices)@basis.T
+        bounds=np.array([projected.min(0),projected.max(0)]);extents=np.ptp(bounds,axis=0)
+        regions=[]
+        # Four percent of the narrowest assembly dimension is a geometric
+        # support hypothesis. Curvature/edges can reduce it; it is not a pad
+        # compliance or a minimum contact size requirement.
+        radius=max(1e-5,float(extents.min())*.04)
+        angles=np.arange(12)*np.pi/6
+        def source_disc(point,normal,support_radius):
+            u=np.eye(3)[np.argmin(abs(normal))];u-=normal*(u@normal);u/=np.linalg.norm(u);v=np.cross(normal,u)
+            disc=np.vstack([point,point+support_radius*(np.cos(angles)[:,None]*u+np.sin(angles)[:,None]*v)])
+            reach=float(np.max(abs((np.asarray(mesh.vertices)-point)@normal)))+.02
+            starts=disc+normal*reach
+            hit,ray_ids,face_ids=mesh.ray.intersects_location(starts,np.tile(-normal,(13,1)),multiple_hits=True)
+            support=[];normals=[];owners=[]
+            for ray in range(13):
+                ids=np.flatnonzero(ray_ids==ray)
+                if not len(ids):return None
+                j=ids[np.argmin(np.linalg.norm(hit[ids]-starts[ray],axis=1))]
+                support.append(hit[j]);normals.append(mesh.face_normals[face_ids[j]]);owners.append(face_links[face_ids[j]])
+            variation=float(np.max(np.arccos(np.clip(np.asarray(normals)@normal,-1,1))))
+            if np.linalg.norm(support[0]-point)>1e-6 or variation>.25:return None
+            if np.max(abs((np.asarray(support)-point)@normal))>support_radius*np.tan(.25)+1e-7:return None
+            return dict(point=np.asarray(support[0]).tolist(),normal=normal.tolist(),radius_m=support_radius,
+                normal_variation_rad=variation,surface_link=owners[0],surface_links=sorted(set(owners)),
+                geometry_class='fixed_assembly_exterior_patch',exposure_check='13 first hits in actual surface-normal direction against complete rigid assembly',
+                source='source surface-plane area and motion-chain coordinates; adaptive geometric support, not measured compliance')
+        # Actual planar source features precede box scan proposals. Averaging
+        # oblique scan-ray normals can miss the very plane that can engage.
+        normals=np.asarray(mesh.face_normals);centers=np.asarray(mesh.triangles_center);areas=np.asarray(mesh.area_faces)
+        keys=np.c_[np.round(normals,4),np.round(np.sum(normals*centers,axis=1),5)]
+        unique,labels=np.unique(keys,axis=0,return_inverse=True)
+        totals=np.bincount(labels,weights=areas)
+        groups=sorted(range(len(unique)),key=lambda i:(-round(float(totals[i]),10),tuple(unique[i])))[:64]
+        for group in groups:
+            ids=np.flatnonzero(labels==group)
+            if totals[group]<1e-9:continue
+            normal=np.average(normals[ids],axis=0,weights=areas[ids]);normal/=np.linalg.norm(normal)
+            # Surface bounds, not triangle-centroid quantiles, survive a
+            # continuous plane being split into several fixed source links.
+            u=np.eye(3)[np.argmin(abs(normal))];u-=normal*(u@normal);u/=np.linalg.norm(u);v=np.cross(normal,u)
+            vertices=np.asarray(mesh.triangles)[ids].reshape(-1,3)
+            uv=vertices@np.stack([u,v]).T;lower=uv.min(0);upper=uv.max(0)
+            offset=float(np.average(centers[ids]@normal,weights=areas[ids]))
+            proposals=[]
+            for fraction in (.5,.2,.8):
+                coordinate=(lower+upper)/2;axis=int(np.argmax(upper-lower));coordinate[axis]=lower[axis]+fraction*(upper[axis]-lower[axis])
+                proposals.append(normal*offset+coordinate[0]*u+coordinate[1]*v)
+            for point in proposals:
+                for support_radius in (radius,radius/2,radius/4,radius/8):
+                    region=source_disc(point,normal,support_radius)
+                    if region is None:continue
+                    if not any(np.linalg.norm(np.asarray(old['point'])-region['point'])<.0002 and np.dot(old['normal'],normal)>.99 for old in regions):regions.append(region)
+                    break
+        for normal_axis in (1,2,0):
           tangents=[axis for axis in range(3) if axis != normal_axis]
           for sign in (-1.,1.):
-            fractions=(.95,.8,.9,.65) if normal_axis != longitudinal else (.5,)
+            fractions=(.95,.8,.65,.4,.2) if normal_axis else (.5,)
             for fraction in fractions:
-                center=mesh.bounds.mean(0)
-                if normal_axis != longitudinal:
-                    center[longitudinal]=mesh.bounds[0,longitudinal]+fraction*mesh.extents[longitudinal]
-                center[normal_axis]=mesh.bounds[0,normal_axis]-.02 if sign<0 else mesh.bounds[1,normal_axis]+.02
-                direction=np.eye(3)[normal_axis]*-sign
-                offsets=np.zeros((13,3))
-                angles=np.arange(12)*np.pi/6
-                offsets[1:,tangents[0]]=radius*np.cos(angles)
-                offsets[1:,tangents[1]]=radius*np.sin(angles)
-                origins=center+offsets
-                positions,rays,faces=mesh.ray.intersects_location(origins,np.tile(direction,(13,1)),multiple_hits=True)
-                points=[];normals=[]
-                for i in range(13):
-                    ids=np.flatnonzero(rays==i)
-                    if not len(ids):break
-                    j=ids[np.argmin(np.linalg.norm(positions[ids]-origins[i],axis=1))]
-                    points.append(positions[j]);normals.append(mesh.face_normals[faces[j]])
-                if len(points)!=13:continue
-                normal=np.mean(normals,axis=0);normal/=np.linalg.norm(normal)
-                variation=float(np.max(np.arccos(np.clip(np.asarray(normals)@normal,-1,1))))
-                if variation>.2 or normal@(-direction)<.5:continue
-                # The nearest hit of the whole fixed assembly is its exposed
-                # support, including a rigid housing when that is encountered
-                # before the bare digit. Require one source surface over disc.
-                source_links=[face_links[faces[np.flatnonzero(rays==i)[np.argmin(np.linalg.norm(positions[rays==i]-origins[i],axis=1))]]] for i in range(13)]
-                if len(set(source_links))!=1:continue
-                if any(np.linalg.norm(np.asarray(old['point'])-points[0])<.0002 and
-                       np.dot(old['normal'],normal)>.99 for old in regions):continue
-                regions.append(dict(point=np.asarray(points[0]).tolist(),normal=normal.tolist(),radius_m=radius,
-                    normal_variation_rad=variation, surface_link=source_links[0],
-                    geometry_class='fixed_assembly_exterior_patch', exposure_check='13 nearest incoming rays against every fixed assembly collision mesh',
-                    source='13 static collision-mesh rays over a 1.2 mm disc; all three local normal axes; not a measured soft pad'))
+              for cross_fraction in (0.,-.3,.3):
+                center=bounds.mean(0)
+                if normal_axis:
+                    center[0]=bounds[0,0]+fraction*extents[0]
+                    other=next(a for a in tangents if a!=0)
+                    center[other]+=cross_fraction*extents[other]
+                else:center[tangents[0]]+=cross_fraction*extents[tangents[0]]
+                center[normal_axis]=bounds[0,normal_axis]-.02 if sign<0 else bounds[1,normal_axis]+.02
+                direction=basis[normal_axis]*-sign
+                for support_radius in (radius,radius/2,radius/4,radius/8):
+                    offsets=np.zeros((13,3))
+                    offsets[1:]=support_radius*(np.cos(angles)[:,None]*basis[tangents[0]]+np.sin(angles)[:,None]*basis[tangents[1]])
+                    origins=center@basis+offsets
+                    positions,rays,faces=mesh.ray.intersects_location(origins,np.tile(direction,(13,1)),multiple_hits=True)
+                    points=[];normals=[];owners=[]
+                    for i in range(13):
+                        ids=np.flatnonzero(rays==i)
+                        if not len(ids):break
+                        j=ids[np.argmin(np.linalg.norm(positions[ids]-origins[i],axis=1))]
+                        points.append(positions[j]);normals.append(mesh.face_normals[faces[j]]);owners.append(face_links[faces[j]])
+                    if len(points)!=13:continue
+                    normal=np.mean(normals,axis=0);normal/=np.linalg.norm(normal)
+                    variation=float(np.max(np.arccos(np.clip(np.asarray(normals)@normal,-1,1))))
+                    if variation>.25 or normal@(-direction)<.5:continue
+                    if np.max(abs((np.asarray(points)-points[0])@normal))>support_radius*np.tan(.25)+1e-7:continue
+                    # Verify exposure in the eventual contact-normal direction,
+                    # rather than only in the proposal's anatomical scan axis.
+                    # A side lip can otherwise hide a tilted face by centimetres.
+                    u=basis[tangents[0]]-normal*(basis[tangents[0]]@normal)
+                    if np.linalg.norm(u)<1e-8:continue
+                    u/=np.linalg.norm(u);v=np.cross(normal,u)
+                    disc=np.vstack([points[0],points[0]+support_radius*(np.cos(angles)[:,None]*u+np.sin(angles)[:,None]*v)])
+                    reach=float(np.max(abs((np.asarray(mesh.vertices)-points[0])@normal)))+.02
+                    starts=disc+normal*reach
+                    hit,ray_ids,face_ids=mesh.ray.intersects_location(starts,np.tile(-normal,(13,1)),multiple_hits=True)
+                    support=[];support_normals=[];support_owners=[]
+                    for ray in range(13):
+                        ids=np.flatnonzero(ray_ids==ray)
+                        if not len(ids):break
+                        j=ids[np.argmin(np.linalg.norm(hit[ids]-starts[ray],axis=1))]
+                        support.append(hit[j]);support_normals.append(mesh.face_normals[face_ids[j]]);support_owners.append(face_links[face_ids[j]])
+                    if len(support)!=13 or np.linalg.norm(support[0]-points[0])>1e-6:continue
+                    if np.max(np.arccos(np.clip(np.asarray(support_normals)@normal,-1,1)))>.25:continue
+                    if np.max(abs((np.asarray(support)-points[0])@normal))>support_radius*np.tan(.25)+1e-7:continue
+                    points=support;owners=support_owners
+                    # Link ownership is descriptive. A continuous exposed
+                    # support is allowed to span several rigidly fixed parts.
+                    if any(np.linalg.norm(np.asarray(old['point'])-points[0])<.0002 and
+                           np.dot(old['normal'],normal)>.99 for old in regions):break
+                    regions.append(dict(point=np.asarray(points[0]).tolist(),normal=normal.tolist(),radius_m=support_radius,
+                        normal_variation_rad=variation,surface_link=owners[0],surface_links=sorted(set(owners)),
+                        geometry_class='fixed_assembly_exterior_patch',exposure_check='13 nearest incoming rays against complete fixed assembly; continuous depth and normals across component seams',
+                        source='motion-chain physical frame; scale/curvature adaptive exposed collision support, not a measured soft pad'))
+                    break
+        # Add geometry principal-axis scans. Their axes are computed in the
+        # motion-chain chart, so a terminal-link coordinate change cannot alter
+        # them. This covers curved distal skins as well as planar housings.
+        # Integrate the uniform surface second moment exactly over triangles;
+        # vertex PCA depends on how a fixed surface was tessellated/split.
+        triangles=np.asarray(mesh.triangles);area=np.asarray(mesh.area_faces)
+        total=float(area.sum());surface_mean=np.sum(mesh.triangles_center*area[:,None],axis=0)/total
+        sums=triangles.sum(1)
+        second=np.einsum('t,tvi,tvj->ij',area,triangles,triangles)+np.einsum('t,ti,tj->ij',area,sums,sums)
+        covariance=second/(12*total)-np.outer(surface_mean,surface_mean)
+        values,vectors=np.linalg.eigh(covariance);principal=vectors[:,np.argsort(values)[::-1]].T
+        for axis in principal:
+            if axis[np.argmax(abs(axis))]<0:axis*=-1
+        projected=np.asarray(mesh.vertices)@principal.T
+        pb=np.array([projected.min(0),projected.max(0)]);span=np.ptp(pb,axis=0)
+        for normal_axis in (1,2,0):
+            tangents=[i for i in range(3)if i!=normal_axis]
+            for sign in (-1.,1.):
+                for fraction in ((.95,.8,.65,.4,.2)if normal_axis else (.5,)):
+                    coordinate=pb.mean(0)
+                    if normal_axis:coordinate[0]=pb[0,0]+fraction*span[0]
+                    coordinate[normal_axis]=pb[0,normal_axis]-.02 if sign<0 else pb[1,normal_axis]+.02
+                    origin=coordinate@principal;direction=-sign*principal[normal_axis]
+                    hits,ray_ids,face_ids=mesh.ray.intersects_location(origin[None],direction[None],multiple_hits=True)
+                    if not len(hits):continue
+                    j=np.argmin(np.linalg.norm(hits-origin,axis=1));point=hits[j];normal=mesh.face_normals[face_ids[j]]
+                    for support_radius in (radius,radius/2,radius/4,radius/8):
+                        region=source_disc(point,normal,support_radius)
+                        if region is None:continue
+                        if not any(np.linalg.norm(np.asarray(old['point'])-point)<.0002 and np.dot(old['normal'],normal)>.99 for old in regions):regions.append(region)
+                        break
+        # Bound combinatorics with farthest physical coverage, independent
+        # of link/frame names and source triangle tessellation.
+        if len(regions)>48:
+            chosen=[regions[0]];remaining=regions[1:]
+            scale=max(float(extents.max()),1e-6)
+            while len(chosen)<48 and remaining:
+                def separation(candidate):
+                    return round(min(np.linalg.norm(np.asarray(candidate['point'])-old['point'])/scale+
+                               .5*(1-np.dot(candidate['normal'],old['normal'])) for old in chosen),8)
+                best=max(range(len(remaining)),key=lambda i:separation(remaining[i]))
+                chosen.append(remaining.pop(best))
+            regions=chosen
+        for region in regions:
+            region['point']=(np.asarray(region['point'])@terminal_basis+terminal_origin).tolist()
+            region['normal']=(np.asarray(region['normal'])@terminal_basis).tolist()
         if not regions:continue
         if chain['finger'] in calibrated:
             row=next(row for row in rows if row['finger']==chain['finger'])
@@ -715,10 +885,9 @@ def pad_catalog(hand, chains, source_digest):
             row['additional_region_source']='exposed collision surfaces of complete fixed terminal assembly'
         else:
             best=regions[0]
-            distal=np.eye(3)[longitudinal]
             rows.append(dict(finger=chain['finger'],link=link,surface_link=link,point_m=best['point'],
-                outward_normal=best['normal'],joint_names=chain['joint_names'],support_radius_m=radius,
-                distal_direction=distal.tolist(),regions=regions,
+                outward_normal=best['normal'],joint_names=chain['joint_names'],support_radius_m=best['radius_m'],
+                distal_direction=distal.tolist(),assembly_centroid_local_m=terminal_origin.tolist(),regions=regions,
                 source='source URDF fixed terminal assembly exterior; rigid surface, no measured compliance'))
     for row in rows:
         radius=float(row.get('support_radius_m', .0012))
@@ -744,7 +913,9 @@ def pad_catalog(hand, chains, source_digest):
                 distal=pose[:3,:3]@row['distal_direction']
                 toward-=distal*(toward@distal)
                 return float((pose[:3,:3]@region['normal'])@toward/max(np.linalg.norm(toward),1e-9))
-            best=max(row['regions'],key=inward_score)
-            row['point_m']=best['point'];row['outward_normal']=best['normal']
+            world_points=np.asarray([r['point']for r in row['regions']])
+            length=max(float(np.ptp(world_points@np.asarray(row['distal_direction']))),1e-6)
+            best=max(row['regions'],key=lambda r:inward_score(r)+.2*float(np.asarray(r['point'])@row['distal_direction'])/length)
+            row['point_m']=best['point'];row['outward_normal']=best['normal'];row['support_radius_m']=best['radius_m'];row['contact_model']['support_radius_m']=best['radius_m']
             row['selection_source']='static FK: mesh-supported patch facing the other finger chains'
     return rows

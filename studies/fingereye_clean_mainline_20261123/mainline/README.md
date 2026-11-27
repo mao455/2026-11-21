@@ -1,8 +1,6 @@
-# FingerEyeLab 共享抓取入口（D109）
+# FingerEyeLab 共享抓取入口（D110）
 
-从 D108 冻结版继续，最终共享执行版为 `6117d290ba2`。本轮完成接触外表面提取、整手路径和有界闭合修正；正常入口自主选姿和物理执行，未用诊断回放计分。结果见 `D109_REPORT.txt` 与 `evidence/d109/`，D108 首次迁移成绩保持原样。
-
-D109：Wuji 圆柱首抓成功，四例共 1/4；XHand 3/3、原三指手 2/3 首抓成功，保住原五个成功回合。第二、第三抓均无实际救回。逐例闭合次数、失败阶段与配对证据见 D109 报告。
+冻结执行版 `058c570113b`：XHand 3/3、原三指手 2/3、Wuji 3/4，八例均首抓成功；原六个成功全部保住，新增 Wuji 盒体和五边柱。原三指楔体0次闭合；Wuji楔体1次闭合失败，恢复后规划无解。第二、第三抓没有实际救回。逐例成绩、失败边界与配对证据见 [D110_REPORT.txt](D110_REPORT.txt) 和 [FINAL_SUMMARY.json](evidence/d110/FINAL_SUMMARY.json)。
 
 正常入口为 `run_stage17.py --robot-urdf ... --controller mainline/strategy.py`。运行器按 URDF 内容哈希选择 `hand_calibrations/<sha256>.json`，生成物理与规划共用的模型。换手只改 URDF 参数；共享策略根据手的运动能力和观测几何选姿、联合 IK、检查路径、接近闭合、有限预载与试抬。确认空抓后从现场退让、重新观察并选姿，每回合最多三次实际闭合，抓间不重置物体。
 
@@ -12,27 +10,16 @@ Wuji 使用 `for_feixin` 的 `wuji_left_w_fingereye_6dof_floating_joint.urdf`。
 
 在线只使用约定的初始俯视 RGB、手上 RGB、曝光时及当前实测 q/qvel、URDF 与静态描述。物体真值、原生接触和物体 mesh 只在环境及离线审计中使用。物理/控制/RGB 为 120/20/30 Hz，成功沿用原 evaluator 的合法抓起并保持标准。
 
-完整四例顺序复跑（新输出目录）：
+同一冻结版原十例完整顺序复跑（包含三只手，需完整实验室资产）：
 
 ```bash
-cd /home/CNS2025331827/docs/fingereye_d106_recovery
-export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1
-PY=/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python
-E=FingerEyeLab/experiments/rax_dexbin_tinyobj
-"$PY" "$E/mainline/evidence/d109/run_panel.py" \
-  --out "$PWD/FingerEyeLab/outputs/d109/wuji_reproduce_001"
+bash /home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/REPRODUCE.txt
 ```
 
-四个物体和初态沿用 D107 首次迁移前登记，D108 接入用户指定的带浮动链源 URDF 与授权的统一相机配置，D109 沿用同一份输入。`run_panel.py` 保存每例完整 argv、源码/配置哈希及预算回执，并逐例调用正常入口。最初四例结果与看过结果后的任何修后复验分开保存。
+文件内保存十条实际正常入口命令，使用已冻结case、原始URDF和自动静态描述。默认输出位于 `FingerEyeLab/outputs/d110/reproduce/`；再次运行请改为新的输出目录。脚本采用文本后缀以兼容现有发布选集，内容可直接交给bash。`new`仅是批处理对原三指手的历史标签。
 
-原两手六例回归：
+本轮固定装配外表面候选、面内接触意图、第三指收益比较、整手避让和逐指有限探闭均为共享实现。限位、真实自碰、桌面碰撞和非法穿透继续检查，没有统一增加碰撞余量。观测改变接触面或法向会触发从实测q出发的局部修正；保持不变时沿用已检查路径。全部成功仍为两指，三指改进尚无本批物理胜出证据。
 
-```bash
-"$PY" "$E/mainline/evidence/d105/run_trials.py" \
-  --root "$PWD" --out "$PWD/FingerEyeLab/outputs/d109/regression_reproduce_001" \
-  --hands xhand new
-```
-
-`new` 仅是历史批处理中的原三指手 URDF 标签，不是策略分支。D106 完整基线位于 `FingerEyeLab/outputs/d106_baseline/frozen_v11/`，最小输入位于 `mainline/fixtures/d106/`。D109 复验保住 XHand 三例和原三指手盒体、圆柱共五个首抓成功；原三指手楔体仍失败。
+正式十例和诊断回放分开；D108首次迁移与D109基线不被本轮成绩覆盖。原始物理日志/RGB保留在实验室 `FingerEyeLab/outputs/d110/finite_retry_v53_*`。结构化证据中的绝对路径指向当时实际会话；重跑命令已改回主工作树。
 
 给师长的单例命令、资产位置、清单与初态扩展方法见 [TEACHER_CASE.md](TEACHER_CASE.md)。新运行均放项目现有 `outputs` 下。公开仓库是明确文件选集；完整 IsaacLab 环境与手/物体资产由实验室工程提供。

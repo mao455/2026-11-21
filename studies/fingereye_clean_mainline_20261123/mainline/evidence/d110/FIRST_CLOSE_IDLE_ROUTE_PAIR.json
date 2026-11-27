@@ -1,0 +1,108 @@
+{
+  "offline_only": true,
+  "same_public_geometry": true,
+  "same_legal_path_origin": true,
+  "q_max_delta": 0.0,
+  "before_endpoint": true,
+  "after_endpoint": true,
+  "before_path": false,
+  "after_path": true,
+  "before_first_rejection": {
+    "node": 6,
+    "phase": "s5_close",
+    "steps": 6,
+    "object_guard_enabled": false,
+    "commanded_q": [
+      -0.06860334624586398,
+      0.005285327952332401,
+      0.16668864356900556,
+      0.22465112958832978,
+      -0.17984911637246803,
+      2.989748009741829,
+      0.4625431728812984,
+      0.14837759475602025,
+      0.05708669833733594,
+      0.036697995433218895,
+      0.0024559217490364212,
+      -0.0422094067639602,
+      1.0207528032049067,
+      0.724431707813476,
+      1.0750463412630078,
+      0.0352627446952002,
+      0.48624077511695374,
+      0.3536695249959132,
+      0.6079315307960123,
+      0.08792063045216661,
+      -0.08376802985672575,
+      0.8131042774449342,
+      0.32228892510797297,
+      -0.025499608716292765,
+      0.14449102604207742,
+      0.16898877454335728
+    ],
+    "gate": "clearance_collision",
+    "geometry": {
+      "table_clearance_m": 0.0014184624125445997,
+      "table_clearance_link": "left_finger2_link4",
+      "thresholds": {
+        "table_clearance_m": 0.00065,
+        "self_overlap_m": 0.0,
+        "object_overlap_m": 0.0
+      },
+      "self_collisions": [
+        [
+          "left_finger4_link3",
+          "left_finger5_link3"
+        ]
+      ],
+      "object_collisions": [],
+      "passed": false,
+      "clearance_witnesses": [
+        {
+          "kind": "table",
+          "links": [
+            "left_finger2_link4",
+            "table"
+          ],
+          "clearance_m": 0.0014184624125445997,
+          "threshold_m": 0.00065,
+          "passed": true,
+          "measurement": "transformed full collision-mesh minimum z"
+        },
+        {
+          "kind": "self_collision",
+          "links": [
+            "left_finger4_link3",
+            "left_finger5_link3"
+          ],
+          "clearance_m": -3.0225632168213654e-05,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 4,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      ],
+      "first_failed_guard": {
+        "kind": "self_collision",
+        "links": [
+          "left_finger4_link3",
+          "left_finger5_link3"
+        ],
+        "clearance_m": -3.0225632168213654e-05,
+        "threshold_m": 0.0,
+        "passed": false,
+        "exact_mesh_overlap": true,
+        "contacts_returned": 4,
+        "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+      }
+    }
+  },
+  "before_cpu_s": 38.108630477000005,
+  "after_cpu_s": 33.217622368,
+  "source_sessions": [
+    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/CYLINDER_DIRECT_LOCAL_SAME_ORIGIN_BASELINE.json",
+    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/CYLINDER_DIRECT_LOCAL_REPAIRED_PAIR.json"
+  ],
+  "limitation": "numerical guarded-path comparison only, not a normal-entry physical result"
+}

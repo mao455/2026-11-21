@@ -44,3 +44,5 @@ HAND=/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_descri
 ```
 
 报告须同时记录首抓、实际闭合次数、三抓内结果、真正救回的抓次和失败阶段。达到三抓上限是允许的最大预算，并不保证规划器一定能找到三次可执行闭合。`episode/result.json` 是原 evaluator 结果，`agent_trace.jsonl` 保存策略阶段与拒绝原因；未经物理执行的候选不计为实际抓次。
+
+D110同版本三手十例复跑：`bash "$E/mainline/evidence/d110/REPRODUCE.txt"`。已固定的四个Wuji物体和初态继续沿用，单例命令如上。

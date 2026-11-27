@@ -705,24 +705,30 @@ def task_wrench_margin(points, normals, *, reference, mass_range_kg=(.01, .05),
         input_scope='public contact geometry, candidate-q Jacobians, static hand limits; no object truth',
         ranking_scope='feasibility gates first; compare common task margin and lateral/torque terms; retain uncertainty caveats')
     if remove_third and len(points) == 3:
-        arguments = dict(reference=center, mass_range_kg=masses, gravity_m_s2=gravity,
-                         lift_acceleration_m_s2=acceleration, lateral_force_n=lateral_force_n,
-                         torque_nm=torque_nm, sigma=sigma, cone_edges=cone_edges, remove_third=False,
-                         load_scale_cap=load_scale_cap, pad_radius_m=radii[:2])
-        for key, value in [('friction', friction), ('normal_uncertainty', normal_uncertainty),
-                           ('max_normal_force', max_normal_force)]:
-            arguments[key] = np.broadcast_to(value, (3,))[:2]
-        if covariances is not None:
-            arguments['covariances'] = np.asarray(covariances)[:2]
-        if torque_map is not None:
-            arguments['torque_map'] = np.asarray(torque_map)[:, :6]
-            arguments['effort_limits'] = effort_limits
-        baseline = task_wrench_margin(points[:2], normals[:2], **arguments)
-        result['without_third_contact'] = {key: baseline[key] for key in
-                                           ('gravity_feasible', 'lift_feasible', 'task_feasible',
-                                            'minimum_task_margin', 'lateral_margin', 'torque_margin')}
-        result['third_contact_increment'] = {key: result[key] - baseline[key] for key in
-                                             ('minimum_task_margin', 'lateral_margin', 'torque_margin')}
+        from itertools import combinations
+        subsets=[]
+        for subset in combinations(range(3),2):
+            ids=np.asarray(subset,int)
+            arguments=dict(reference=center,mass_range_kg=masses,gravity_m_s2=gravity,
+                lift_acceleration_m_s2=acceleration,lateral_force_n=lateral_force_n,
+                torque_nm=torque_nm,sigma=sigma,cone_edges=cone_edges,remove_third=False,
+                load_scale_cap=load_scale_cap,pad_radius_m=radii[ids])
+            for key,value in [('friction',friction),('normal_uncertainty',normal_uncertainty),
+                              ('max_normal_force',max_normal_force)]:
+                arguments[key]=np.broadcast_to(value,(3,))[ids]
+            if covariances is not None:arguments['covariances']=np.asarray(covariances)[ids]
+            if torque_map is not None:
+                columns=np.concatenate([np.arange(3*i,3*i+3)for i in ids])
+                arguments.update(torque_map=np.asarray(torque_map)[:,columns],effort_limits=effort_limits)
+            baseline=task_wrench_margin(points[ids],normals[ids],**arguments)
+            subsets.append(dict(indices=list(subset),**{key:baseline[key]for key in
+                ('gravity_feasible','lift_feasible','task_feasible','minimum_task_margin','lateral_margin','torque_margin')}))
+        best=max(subsets,key=lambda row:(row['task_feasible'],row['gravity_feasible'],
+            row['minimum_task_margin'],row['lateral_margin'],row['torque_margin']))
+        result['same_pose_pair_subsets']=subsets
+        result['without_third_contact']=best
+        result['third_contact_increment']={key:result[key]-best[key]for key in
+            ('minimum_task_margin','lateral_margin','torque_margin')}
     return result
 
 

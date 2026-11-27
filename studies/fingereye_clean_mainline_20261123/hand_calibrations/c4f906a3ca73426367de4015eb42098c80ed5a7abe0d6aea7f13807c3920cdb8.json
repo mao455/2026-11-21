@@ -91,5 +91,14 @@
     "ring_fingereye_camera_front2_joint": "front2",
     "ring_fingereye_camera_back_joint": "back"
   },
-  "camera_optics_source": "existing workspace fingereye_camera_cfg.py front/back simulation calibration, explicit static mapping for all 12 URDF optical frames; middle/ring use same simulation model, no measured hardware calibration"
+  "camera_optics_source": "existing workspace fingereye_camera_cfg.py front/back simulation calibration, explicit static mapping for all 12 URDF optical frames; middle/ring use same simulation model, no measured hardware calibration",
+  "task_frame": {
+    "forward_axis_in_palm": [
+      0.2624499838382443,
+      -0.38614789708634256,
+      0.8843131840920957
+    ],
+    "source": "registered D109 neutral URDF/finger-root and static contact-reference anatomical task direction; frozen independently of generated contact candidates",
+    "scope": "task coordinate convention only; no object/episode/trajectory parameters"
+  }
 }
