@@ -1,0 +1,954 @@
+{
+  "offline_only": true,
+  "sampling": "20Hz retained samples plus 12-step windows around commands; times bracket native events, not every old physics step",
+  "rows": [
+    {
+      "case": "wedge_28_wuji",
+      "closure_start": 5778,
+      "first_recorded_force_above_10mN": {
+        "left_finger1_link4": 5946,
+        "left_finger2_link4": 5885
+      },
+      "last_recorded_force_above_10mN": {
+        "left_finger1_link4": 9942,
+        "left_finger2_link4": 7014
+      },
+      "samples": [
+        {
+          "step": 5880,
+          "phase": "s5_preload_adjust",
+          "normal_force_n": [
+            0,
+            0.0
+          ]
+        },
+        {
+          "step": 6000,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.06403040140867233,
+            0.09523112699389458
+          ]
+        },
+        {
+          "step": 6120,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.22966038435697556,
+            0.23296964010944876
+          ]
+        },
+        {
+          "step": 6240,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.24967601150274277,
+            0.24939298629760742
+          ]
+        },
+        {
+          "step": 6360,
+          "phase": "s5_preload_adjust",
+          "normal_force_n": [
+            0.2495943158864975,
+            0.24944782257080078
+          ]
+        },
+        {
+          "step": 6480,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.24961017072200775,
+            0.24962373077869415
+          ]
+        },
+        {
+          "step": 6600,
+          "phase": "s5_preload_adjust",
+          "normal_force_n": [
+            0.24956629425287247,
+            0.24947486817836761
+          ]
+        },
+        {
+          "step": 6720,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.24926769733428955,
+            0.2496502548456192
+          ]
+        },
+        {
+          "step": 6840,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.24962285161018372,
+            0.24945349991321564
+          ]
+        },
+        {
+          "step": 6960,
+          "phase": "s5_proof",
+          "normal_force_n": [
+            0.24020159617066383,
+            0.20987343788146973
+          ]
+        },
+        {
+          "step": 7080,
+          "phase": "s5_proof",
+          "normal_force_n": [
+            0.02844824455678463,
+            0.0
+          ]
+        },
+        {
+          "step": 7200,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.025538800284266472,
+            0.0
+          ]
+        },
+        {
+          "step": 7320,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.022749619092792273,
+            0
+          ]
+        },
+        {
+          "step": 7440,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 7560,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 7680,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 7800,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 7920,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 8040,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 8160,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 8280,
+          "phase": "s5_reobserve",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 8400,
+          "phase": "s5_reobserve",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 8520,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 8640,
+          "phase": "s106_support_settle",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 8760,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 8880,
+          "phase": "s106_support_return",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 9000,
+          "phase": "s106_support_return",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 9120,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 9240,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 9360,
+          "phase": "s3_lower",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 9480,
+          "phase": "s3_lower",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 9600,
+          "phase": "s3_lower",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 9720,
+          "phase": "s3_lower",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 9840,
+          "phase": "s3_lower",
+          "normal_force_n": [
+            0.21775007652030354,
+            0
+          ]
+        },
+        {
+          "step": 9960,
+          "phase": "s3_open",
+          "normal_force_n": [
+            0.0,
+            0
+          ]
+        },
+        {
+          "step": 10080,
+          "phase": "s3_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 10200,
+          "phase": "s3_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 10320,
+          "phase": "s3_settle",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 10440,
+          "phase": "s3_retreat",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 10560,
+          "phase": "s3_retreat",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 10680,
+          "phase": "s3_settle",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 10800,
+          "phase": "s3_settle",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 10920,
+          "phase": "s14_release_view",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 11040,
+          "phase": "s14_release_view",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 11160,
+          "phase": "s14_release_view",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 11280,
+          "phase": "s3_settle",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 11400,
+          "phase": "s3_settle",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 11520,
+          "phase": "s106_release_view_raise",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 11640,
+          "phase": "s106_release_view_raise",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 11760,
+          "phase": "observe_retreat",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 11880,
+          "phase": "observe_retreat",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12000,
+          "phase": "observe_retreat",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12120,
+          "phase": "observe_retreat",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12240,
+          "phase": "observe_retreat",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12360,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12480,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12600,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12720,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12840,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 12960,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 13080,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 13200,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 13320,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 13440,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 13560,
+          "phase": "observe_open",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 13680,
+          "phase": "observe_reorient",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 13800,
+          "phase": "observe_translate",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 13920,
+          "phase": "observe_translate",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 14040,
+          "phase": "observe_translate",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 14160,
+          "phase": "observe_descend",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 14280,
+          "phase": "observe_descend",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 14400,
+          "phase": "observe_descend",
+          "normal_force_n": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "case": "pentagon_28_wuji",
+      "closure_start": 6942,
+      "first_recorded_force_above_10mN": {
+        "left_finger1_link4": 7062,
+        "left_finger2_link4": 7008
+      },
+      "last_recorded_force_above_10mN": {
+        "left_finger1_link4": 12042,
+        "left_finger2_link4": 12042
+      },
+      "samples": [
+        {
+          "step": 6960,
+          "phase": "s5_preload_adjust",
+          "normal_force_n": [
+            0,
+            0.0
+          ]
+        },
+        {
+          "step": 7080,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.09304653853178024,
+            0.09039454162120819
+          ]
+        },
+        {
+          "step": 7200,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.29927948117256165,
+            0.25204136967658997
+          ]
+        },
+        {
+          "step": 7320,
+          "phase": "s5_preload_adjust",
+          "normal_force_n": [
+            0.3529311716556549,
+            0.3375169634819031
+          ]
+        },
+        {
+          "step": 7440,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.3953140377998352,
+            0.36959388852119446
+          ]
+        },
+        {
+          "step": 7560,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.3951549232006073,
+            0.36948361992836
+          ]
+        },
+        {
+          "step": 7680,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.395233154296875,
+            0.36956536769866943
+          ]
+        },
+        {
+          "step": 7800,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.3952002227306366,
+            0.3695268929004669
+          ]
+        },
+        {
+          "step": 7920,
+          "phase": "s5_preload_adjust",
+          "normal_force_n": [
+            0.39522355794906616,
+            0.36952564120292664
+          ]
+        },
+        {
+          "step": 8040,
+          "phase": "s5_preload_hold",
+          "normal_force_n": [
+            0.39515480399131775,
+            0.36950400471687317
+          ]
+        },
+        {
+          "step": 8160,
+          "phase": "s5_proof",
+          "normal_force_n": [
+            0.2585911750793457,
+            0.24442072212696075
+          ]
+        },
+        {
+          "step": 8280,
+          "phase": "s5_proof",
+          "normal_force_n": [
+            0.25829584151506424,
+            0.24400533735752106
+          ]
+        },
+        {
+          "step": 8400,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.2585539296269417,
+            0.24434491991996765
+          ]
+        },
+        {
+          "step": 8520,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.26008063554763794,
+            0.24625398218631744
+          ]
+        },
+        {
+          "step": 8640,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.2580706775188446,
+            0.24381297826766968
+          ]
+        },
+        {
+          "step": 8760,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.2598840519785881,
+            0.24594399333000183
+          ]
+        },
+        {
+          "step": 8880,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.25921445339918137,
+            0.24521389603614807
+          ]
+        },
+        {
+          "step": 9000,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.2581916078925133,
+            0.24386253952980042
+          ]
+        },
+        {
+          "step": 9120,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.25816284120082855,
+            0.2438581883907318
+          ]
+        },
+        {
+          "step": 9240,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.25817298889160156,
+            0.24387402832508087
+          ]
+        },
+        {
+          "step": 9360,
+          "phase": "s5_reobserve",
+          "normal_force_n": [
+            0.2581600621342659,
+            0.2438468188047409
+          ]
+        },
+        {
+          "step": 9480,
+          "phase": "s5_reobserve",
+          "normal_force_n": [
+            0.2579243406653404,
+            0.24364010989665985
+          ]
+        },
+        {
+          "step": 9600,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.2594813033938408,
+            0.2401118129491806
+          ]
+        },
+        {
+          "step": 9720,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.25899846106767654,
+            0.23749439418315887
+          ]
+        },
+        {
+          "step": 9840,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.26000988483428955,
+            0.24652983248233795
+          ]
+        },
+        {
+          "step": 9960,
+          "phase": "s106_support_settle",
+          "normal_force_n": [
+            0.2581949010491371,
+            0.24388766288757324
+          ]
+        },
+        {
+          "step": 10080,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.2687024921178818,
+            0.25947484374046326
+          ]
+        },
+        {
+          "step": 10200,
+          "phase": "s106_support_settle",
+          "normal_force_n": [
+            0.25816839188337326,
+            0.24384371936321259
+          ]
+        },
+        {
+          "step": 10320,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.26312513649463654,
+            0.251447856426239
+          ]
+        },
+        {
+          "step": 10440,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.2554263100028038,
+            0.24037854373455048
+          ]
+        },
+        {
+          "step": 10560,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.24312570691108704,
+            0.22436930239200592
+          ]
+        },
+        {
+          "step": 10680,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.25121302157640457,
+            0.23480483889579773
+          ]
+        },
+        {
+          "step": 10800,
+          "phase": "s106_support_settle",
+          "normal_force_n": [
+            0.258107528090477,
+            0.24379253387451172
+          ]
+        },
+        {
+          "step": 10920,
+          "phase": "s106_support_translate",
+          "normal_force_n": [
+            0.2579137235879898,
+            0.24370448291301727
+          ]
+        },
+        {
+          "step": 11040,
+          "phase": "s106_support_return",
+          "normal_force_n": [
+            0.25569794327020645,
+            0.2515745759010315
+          ]
+        },
+        {
+          "step": 11160,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.258120633661747,
+            0.24382102489471436
+          ]
+        },
+        {
+          "step": 11280,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.25814594328403473,
+            0.24383024871349335
+          ]
+        },
+        {
+          "step": 11400,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.25816871225833893,
+            0.24383877217769623
+          ]
+        },
+        {
+          "step": 11520,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.2583184018731117,
+            0.24410299956798553
+          ]
+        },
+        {
+          "step": 11640,
+          "phase": "s5_lift",
+          "normal_force_n": [
+            0.25824303925037384,
+            0.24392974376678467
+          ]
+        },
+        {
+          "step": 11760,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.2581438645720482,
+            0.24383452534675598
+          ]
+        },
+        {
+          "step": 11880,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.2581923231482506,
+            0.2438739687204361
+          ]
+        },
+        {
+          "step": 12000,
+          "phase": "s5_hold",
+          "normal_force_n": [
+            0.2581315338611603,
+            0.24381770193576813
+          ]
+        }
+      ]
+    }
+  ]
+}

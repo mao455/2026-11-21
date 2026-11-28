@@ -1,0 +1,900 @@
+{
+  "offline_only": true,
+  "limits_and_uncertainty_unchanged": true,
+  "rows": [
+    {
+      "case": "wedge_offset_new",
+      "candidate_id": "1-direct-3",
+      "gaps": [
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        }
+      ],
+      "worst_normalized_gap": 1.0,
+      "nominal_task_margin": 0.0,
+      "robust_task_margin": 0.0
+    },
+    {
+      "case": "wedge_offset_new",
+      "candidate_id": "1-direct-3-load-repair",
+      "gaps": [
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        }
+      ],
+      "worst_normalized_gap": 1.0,
+      "nominal_task_margin": 0.0,
+      "robust_task_margin": 0.0
+    },
+    {
+      "case": "wedge_28_wuji",
+      "candidate_id": "1-joint-regions-0",
+      "gaps": [
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        }
+      ],
+      "worst_normalized_gap": 1.0,
+      "nominal_task_margin": 0.0,
+      "robust_task_margin": 0.0
+    },
+    {
+      "case": "wedge_28_wuji",
+      "candidate_id": "1-joint-regions-22",
+      "gaps": [
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        }
+      ],
+      "worst_normalized_gap": 1.0,
+      "nominal_task_margin": 0.0,
+      "robust_task_margin": 0.0
+    },
+    {
+      "case": "wedge_28_wuji",
+      "candidate_id": "1-joint-regions-22-load-repair",
+      "gaps": [
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        }
+      ],
+      "worst_normalized_gap": 1.0,
+      "nominal_task_margin": 0.0,
+      "robust_task_margin": 0.0
+    },
+    {
+      "case": "wedge_28_wuji",
+      "candidate_id": "1-joint-regions-0-load-repair",
+      "gaps": [
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.051550000000000006,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        },
+        {
+          "gravity_feasible": false,
+          "gap_l1_n": 0.15465,
+          "normalized_gap": 1.0
+        }
+      ],
+      "worst_normalized_gap": 1.0,
+      "nominal_task_margin": 0.0,
+      "robust_task_margin": 0.0
+    }
+  ]
+}

@@ -30,6 +30,8 @@ class Peer(OldPeer):
                     shutil.copy2(HERE / 'mainline/contact_intent.py', Path(command[index - 1]) / 'contact_intent.py')
                     shutil.copy2(HERE / 'mainline/kinematic_candidates.py', Path(command[index - 1]) / 'kinematic_candidates.py')
                     shutil.copy2(HERE / 'mainline/joint_path.py', Path(command[index - 1]) / 'joint_path.py')
+                    shutil.copy2(HERE / 'mainline/motor_feedback.py', Path(command[index - 1]) / 'motor_feedback.py')
+                    shutil.copy2(HERE / 'mainline/surface_repair.py', Path(command[index - 1]) / 'surface_repair.py')
         command = [str(HERE / 'stage16_backend.py') if str(x) == str(HERE / 'round14_backend.py') else x for x in command]
         self.is_backend = any(str(x) == str(HERE / 'stage16_backend.py') for x in command)
         self.out = Path(command[command.index('--output') + 1]) if self.is_backend else None

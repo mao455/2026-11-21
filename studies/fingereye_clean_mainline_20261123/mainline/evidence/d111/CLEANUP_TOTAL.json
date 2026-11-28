@@ -1,0 +1,80 @@
+{
+  "receipts": [
+    {
+      "receipt": "CLEANUP.json",
+      "directories": 4414,
+      "allocated_bytes": 347930619904
+    },
+    {
+      "receipt": "TRIM_DIAGNOSTICS.json",
+      "directories": 36,
+      "allocated_bytes": 2619506688
+    },
+    {
+      "receipt": "TRIM_TERMINAL_DIAGNOSTICS.json",
+      "directories": 38,
+      "allocated_bytes": 7281033216
+    },
+    {
+      "receipt": "TRIM_FAILURE_SAMPLES.json",
+      "directories": 70,
+      "allocated_bytes": 11258929152
+    },
+    {
+      "receipt": "TRIM_RGB_DIAGNOSTICS.json",
+      "directories": 46,
+      "allocated_bytes": 5934039040
+    },
+    {
+      "receipt": "TRIM_C3_DIAGNOSTICS.json",
+      "directories": 44,
+      "allocated_bytes": 9641873408
+    },
+    {
+      "receipt": "TRIM_C4_DIAGNOSTICS.json",
+      "directories": 23,
+      "allocated_bytes": 4535607296
+    },
+    {
+      "receipt": "TRIM_C5_DIAGNOSTICS.json",
+      "directories": 106,
+      "allocated_bytes": 23677427712
+    },
+    {
+      "receipt": "TRIM_C6_DIAGNOSTICS.json",
+      "directories": 44,
+      "allocated_bytes": 10204921856
+    },
+    {
+      "receipt": "TRIM_C7_DIAGNOSTICS.json",
+      "directories": 43,
+      "allocated_bytes": 5938249728
+    },
+    {
+      "receipt": "TRIM_C8_DIAGNOSTICS.json",
+      "directories": 43,
+      "allocated_bytes": 5759836160
+    },
+    {
+      "receipt": "TRIM_OLD_PUBLISH_WORKTREES.json",
+      "directories": 111,
+      "allocated_bytes": 528461824
+    },
+    {
+      "receipt": "TRIM_FINAL_PANEL.json",
+      "directories": 105,
+      "allocated_bytes": 27792515072
+    },
+    {
+      "receipt": "TRIM_LIVE_FACE_DIAGNOSTICS.json",
+      "directories": 24,
+      "allocated_bytes": 3196678144
+    }
+  ],
+  "removed_directories": 5147,
+  "allocated_bytes_removed": 466299699200,
+  "available_after_bytes": 996524150784,
+  "retired_top_level_old_run_directories": 5,
+  "retired_registered_worktrees": 9,
+  "scope": "small-object grasping only, D106-D110 retired runs plus D111 consumed diagnostics and final raw panel; inode blocks counted once within each retired data tree; unrelated experiments untouched"
+}

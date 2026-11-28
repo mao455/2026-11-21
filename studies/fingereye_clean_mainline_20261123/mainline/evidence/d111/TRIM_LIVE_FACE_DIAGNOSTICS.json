@@ -1,0 +1,41 @@
+{
+  "rows": [
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/live_face_yaw_025",
+      "allocated_bytes": 2244681728,
+      "directories": 11
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/live_face_box_yaw_045",
+      "allocated_bytes": 951713792,
+      "directories": 11
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/live_face_scripts",
+      "allocated_bytes": 20480,
+      "directories": 1
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/live_face_box_scripts",
+      "allocated_bytes": 20480,
+      "directories": 1
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/live_face_yaw_025.log",
+      "allocated_bytes": 163840,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/live_face_box_yaw_045.log",
+      "allocated_bytes": 77824,
+      "directories": 0
+    }
+  ],
+  "removed_directories": 24,
+  "allocated_bytes_removed": 3196678144,
+  "available_before_bytes": 993334976512,
+  "available_after_bytes": 996531630080,
+  "open_files_before": [],
+  "worktrees_checked": true,
+  "nested_git_checked": true
+}

@@ -1,0 +1,6 @@
+{
+  "purpose": "respect existing 5 MiB per-file public export limit; no numerical/control evidence changed",
+  "combined_before_sha256": "5cce7e9d43aebc4eebbc89bc2f54d3dfcaf0c453ae95806cc33aa731f8bff0f2",
+  "per_case_index_sha256": "2cb1f42f6de0c8bb0127d70526653cdb93d67d4a69b0c565a1eaa4f337b2ae5a",
+  "all_case_payloads_equal": true
+}

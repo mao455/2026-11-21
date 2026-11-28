@@ -1,0 +1,47 @@
+{
+  "source_commit": "b0f59424c83114a9e9d758389017977d7a022936",
+  "scope": "index; per-case files retain the exact compact evidence and raw control windows",
+  "rows": [
+    {
+      "hand": "new",
+      "case": "wedge_offset",
+      "diagnosis_file": "PHYSICAL_new_wedge_offset.json",
+      "sha256": "37d634f3f1be3ad5108743518d5194e97c32ee883de96dacd776f10a4afb636f",
+      "bytes": 1801195,
+      "actual_closure_starts": [
+        6060,
+        9300
+      ],
+      "first_invalid": null,
+      "initial_object_z_m": 9.999999747378752e-05,
+      "peak_lift_m": 1.0160561942029744e-05
+    },
+    {
+      "hand": "wuji",
+      "case": "wedge_28",
+      "diagnosis_file": "PHYSICAL_wuji_wedge_28.json",
+      "sha256": "43a633a7982101bc54ef5bdbca739ba157844f62ca9867fa8c8c3b2e8d0bc985",
+      "bytes": 4776957,
+      "actual_closure_starts": [
+        5556,
+        11052
+      ],
+      "first_invalid": null,
+      "initial_object_z_m": 9.999999747378752e-05,
+      "peak_lift_m": 0.0002559831555117853
+    },
+    {
+      "hand": "wuji",
+      "case": "pentagon_28",
+      "diagnosis_file": "PHYSICAL_wuji_pentagon_28.json",
+      "sha256": "dd9863c1defaa9a2d114bb80291ab3fb1e3629c8f5f5fc7d2adac7a105238dd2",
+      "bytes": 1992531,
+      "actual_closure_starts": [
+        6720
+      ],
+      "first_invalid": null,
+      "initial_object_z_m": 9.999999747378752e-05,
+      "peak_lift_m": 0.032166788187169004
+    }
+  ]
+}

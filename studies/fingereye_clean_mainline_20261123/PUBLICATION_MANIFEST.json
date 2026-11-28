@@ -1,17 +1,17 @@
 {
-  "source_revision": "f3f5620e54a1f0fe71fc6c644df8188dda88676e",
-  "snapshot_id": "be762e9106b897c1f051df46a9699a386978fb4d4e2dbfd80176e3821710b523",
+  "source_revision": "bb3242c5833c6dafcf67ba17396b9a20e1f476d7",
+  "snapshot_id": "399432ac3f19319a2136b03a0fcc96f1b3ae094d2370e9613fa5d1da23cadcc0",
   "publication_scope": "research-only explicit files; private history/assets excluded",
   "files": {
     "README.md": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/PUBLIC_ROOT_README.md",
-      "bytes": 1812,
-      "sha256": "6fd128e11ef27ee9594d5f69503bb9a6577802784b69f9333914b3a4bba1c3b3"
+      "bytes": 1961,
+      "sha256": "14a96dbcab9cd7b319776bbc0069e98524f0693d7742e8334c2d34d44ef3abc9"
     },
     "studies/fingereye_clean_mainline_20261123/README.md": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/PUBLIC_INDEX.md",
-      "bytes": 1602,
-      "sha256": "d3adbfa9cc68b1d13c5f2bb28dc4082cbaa0dfdad99dbb7b89ac5b6c39731892"
+      "bytes": 1751,
+      "sha256": "bea7be7e7384504f9bea5d801bfa62c7ac7296b614a9ee7ff2a623917ad404c8"
     },
     "studies/fingereye_clean_mainline_20261123/cross_evidence/audit_recorded_cameras.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/cross_evidence/audit_recorded_cameras.py",
@@ -78,20 +78,25 @@
       "bytes": 7047,
       "sha256": "ee6c3515be58d0120f406223d3e65710bc6297ac46d337f52cd02eaef2aa0b9b"
     },
+    "studies/fingereye_clean_mainline_20261123/mainline/D111_REPORT.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/D111_REPORT.txt",
+      "bytes": 12500,
+      "sha256": "88071528ae33e1db4ae94bab87450682e856f6d634b80378e7bff4f88dedcbc7"
+    },
     "studies/fingereye_clean_mainline_20261123/mainline/README.md": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/README.md",
-      "bytes": 3520,
-      "sha256": "b6983cf36bef3ac7f1619cba4398cb742c24ba6cbef7ed669c2e3307df117e76"
+      "bytes": 2659,
+      "sha256": "8dbe92fd35c29e64a7e513b67047d38f36c8db3555b49bb09e1477fd0a3517ec"
     },
     "studies/fingereye_clean_mainline_20261123/mainline/REPORT.md": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/REPORT.md",
-      "bytes": 435,
-      "sha256": "145a455d772a1667430ac65aba3335a3b86fd07c85eeed11f95e67f139b57140"
+      "bytes": 525,
+      "sha256": "303043b208158c90aa4d2d86768892a29d113ee51016748cc5254694a29c3d10"
     },
     "studies/fingereye_clean_mainline_20261123/mainline/TEACHER_CASE.md": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/TEACHER_CASE.md",
-      "bytes": 3628,
-      "sha256": "60ba04b0888d8dcacea9314eeec0469c8f6f9fac6916ffd5f79da40a67411714"
+      "bytes": 4042,
+      "sha256": "32e12f859573f28e89d9f4d3e45a12c3643b08787160c04063d21f857230ea2f"
     },
     "studies/fingereye_clean_mainline_20261123/mainline/contact_intent.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/contact_intent.py",
@@ -128,141 +133,6 @@
       "bytes": 2843,
       "sha256": "4c9f161c6bb04a5e0bc5d9efef0baf39c347a65fba656835d8f57c86e397cb7d"
     },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/ACTIVE_VIEW_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/ACTIVE_VIEW_PAIR.json",
-      "bytes": 6226,
-      "sha256": "e1e68773ec452d48e814cb44a82ac2c3f7c30251ba411e1877c67f75e44130ee"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/ADMISSION_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/ADMISSION_PAIR.json",
-      "bytes": 2481,
-      "sha256": "d1713f6d4c0e58be996bd8a0ef4da7ef97a423ed18edcfadb5edbad2d400fd7b"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/ASSEMBLY_FIX_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/ASSEMBLY_FIX_RESULTS.json",
-      "bytes": 9133,
-      "sha256": "3a5ad0267ea0e6c41e92a22693ed254337fbfc6961f0e2d7fa4ec6917dc7435c"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/CAMERA_AUDITS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/CAMERA_AUDITS.json",
-      "bytes": 95341,
-      "sha256": "99803bb70f03d625b669598309bb1214a84f9ce97f00634c398c8097d22b6a22"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/CHECKS.txt": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/CHECKS.txt",
-      "bytes": 239,
-      "sha256": "32abc7ac59a77e1b7553a4852a1d3c2c2c6758884a8733d79bd8576727f9daf1"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/CONTACT_AUDIT.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/CONTACT_AUDIT.json",
-      "bytes": 8864,
-      "sha256": "a1f03b9da2574baa5f17bc3bc1201b021e72caef9ce301782990723923a1bac2"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/FINAL_FREEZE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/FINAL_FREEZE.json",
-      "bytes": 24011,
-      "sha256": "ae94922aaa2eedb0f200d0d81cef181312a9135a71266c9264b2723dff87ca65"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/FINAL_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/FINAL_RESULTS.json",
-      "bytes": 15329,
-      "sha256": "2decad4589249a5c7ace637fce6098c8e8f6df3a3ab2b6fc2e25fbf1fa58ad01"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/FIRST_INITIAL_GATE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/FIRST_INITIAL_GATE.json",
-      "bytes": 2328,
-      "sha256": "059a3e09664fec19459e487bcb031bf1a0ca432538ce8333c1f1a231ede7fde1"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/FIRST_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/FIRST_RESULTS.json",
-      "bytes": 10272,
-      "sha256": "01a1914ac139e17bb03686f8eb4a52b9489de5d3af66c83af86d737c4ec188d7"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/FIXED_ASSEMBLY_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/FIXED_ASSEMBLY_PAIR.json",
-      "bytes": 1387,
-      "sha256": "13b52a6d4edf4606e2ddfb31707ecd910f787885b51bcdad459349bd24b15f4d"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/IK_ATTITUDE_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/IK_ATTITUDE_PAIR.json",
-      "bytes": 8749,
-      "sha256": "38a7f6072063d7ed8560fe3aa719d2ac340ac934fb39e3bd0340e262fc0f9394"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/LEGACY_COLLISION_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/LEGACY_COLLISION_PAIR.json",
-      "bytes": 1065,
-      "sha256": "08587c10c468a6352b5ed8362b0c0223a79c7e568fea26301b380bd8e559b549"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/OBSERVATION_FIX_DIAGNOSTIC_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/OBSERVATION_FIX_DIAGNOSTIC_RESULTS.json",
-      "bytes": 7508,
-      "sha256": "bc1d529a54c6fff6f6d971da8c8528f0664d980444f30c67c761833150f0cd6e"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/OBSERVATION_SEARCH_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/OBSERVATION_SEARCH_PAIR.json",
-      "bytes": 173002,
-      "sha256": "32b27f10678f588d0f3eeba40bb9bb6012623daf1589491d58376a36a15d625c"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/ORIGINAL_WEDGE_FAILURE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/ORIGINAL_WEDGE_FAILURE.json",
-      "bytes": 2463,
-      "sha256": "bedbc54431c9c09227b979ba5ce50575b3edaab8c89dadb6bb1025aeab1d3ae9"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/PLAN_DIAGNOSTICS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/PLAN_DIAGNOSTICS.json",
-      "bytes": 89649,
-      "sha256": "2105e2c898b9722b030a98754f8754bbef9486661545c4e841d64d18765557b0"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/PREFLIGHT.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/PREFLIGHT.json",
-      "bytes": 7697,
-      "sha256": "f4ee256e8bad4006fbdc7495f230e3121fcb16926b9bed80dc95724a3585ce39"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/RECEIPT_SUMMARY.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/RECEIPT_SUMMARY.json",
-      "bytes": 6118,
-      "sha256": "624cbc76172f48146c90fd737d03dc0a88d356cf01a9c0c7f96b87ae390e12f2"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/REGRESSION_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/REGRESSION_PAIR.json",
-      "bytes": 4030,
-      "sha256": "70f8f4448f0d37a12abbe0ba474abc29cfccefacc4d656042e6d1a5d5dcc8b64"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/REGRESSION_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/REGRESSION_RESULTS.json",
-      "bytes": 45631,
-      "sha256": "cdc1fb4ee4355b37fb8f459978a6ad9a8538b7e307f74eb0e118bd677e197a66"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/RELEASE_FORMAT_ONLY.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/RELEASE_FORMAT_ONLY.json",
-      "bytes": 506,
-      "sha256": "75d6f4054424ef4ac12207b169b0f6a7dcbf1df984d37998fcbe657fce8ac855"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/RENDERED_TARGET_PROJECTION.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/RENDERED_TARGET_PROJECTION.json",
-      "bytes": 4081,
-      "sha256": "c0c7907f12795841c56dba8cddf5885530dc5494f696c1ec21ab004938041602"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/SOCKET_CONTACT_GEOMETRY.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/SOCKET_CONTACT_GEOMETRY.json",
-      "bytes": 989,
-      "sha256": "a19a5e3ec1d32303481518bdc47350531bd196e699b4ceda8af076a6aa8372a0"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/SOURCE_HOME_COLLISIONS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/SOURCE_HOME_COLLISIONS.json",
-      "bytes": 885,
-      "sha256": "63e587b6524b9823256453ccde90e097da842115e9b84fc920101ff0e0d3b8de"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/STATIC_ADMISSION.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/STATIC_ADMISSION.json",
-      "bytes": 9750,
-      "sha256": "e3ca0f2737ddf767670c0031f48c8b83ed03f55f9ad5f06700b1a48262bee206"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/UNADOPTED_DIAGNOSTICS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/UNADOPTED_DIAGNOSTICS.json",
-      "bytes": 48774,
-      "sha256": "3564b04bf6b90efbc9475460f07e66e2d488d8f2fe6732e50314d992325a1563"
-    },
     "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/audit_preflight.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/audit_preflight.py",
       "bytes": 2721,
@@ -273,220 +143,15 @@
       "bytes": 1081,
       "sha256": "71b0284c509b8e6f5b62bb35f96c5b7acc7f44ad6cbe74e099d70bdb6cbf5ab4"
     },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/registration.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/registration.json",
-      "bytes": 2566,
-      "sha256": "c10f473163df6f0b85e6fe4b96745179430407c15acbe3e0c26ccfeacf48bc4b"
-    },
     "studies/fingereye_clean_mainline_20261123/mainline/evidence/d108/run_panel.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d108/run_panel.py",
       "bytes": 3014,
       "sha256": "c58193e6480dab53d89a14146a455d6de382e8da6dabcd5005bd75e7d72c9e36"
     },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/CAMERA_AUDITS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/CAMERA_AUDITS.json",
-      "bytes": 94706,
-      "sha256": "998b1f814b231d3a3cc9ac83a26b7b2c238204e6d55f7d689f29977b65235cba"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/CHECKS.txt": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/CHECKS.txt",
-      "bytes": 141,
-      "sha256": "7ace5d9c289d44b393b680d50be2fbfc73b485e89ca331eaf28980b54bfadd14"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/CLOSURE_DIAGNOSTIC_COMPARISON.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/CLOSURE_DIAGNOSTIC_COMPARISON.json",
-      "bytes": 1183,
-      "sha256": "d900d058c032366517f2b55dd2ec86bc11a1aeb8669c0e7da41620bf92719c8b"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/CONTACT_AUDIT.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/CONTACT_AUDIT.json",
-      "bytes": 9698,
-      "sha256": "db993f38dfeb2bb43f3bc0272b04c705269cc68633297b4d2b64fc08458fc275"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/CYLINDER_LANDING_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/CYLINDER_LANDING_PAIR.json",
-      "bytes": 4281,
-      "sha256": "a8e24b0a40b057a30543d49bfae7bd927505546f5dd4bcb5837d125d51d4e6bc"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/DIAGNOSTIC_CONTACT_AUDIT.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/DIAGNOSTIC_CONTACT_AUDIT.json",
-      "bytes": 2326,
-      "sha256": "ce08fd4760a427d5b20f7fa2499d933ad86bda95d4f78416041b0b2bee4a3d77"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/DIAGNOSTIC_SUMMARY.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/DIAGNOSTIC_SUMMARY.json",
-      "bytes": 2272,
-      "sha256": "e9dca7144844ee70b64a702e9aa950c1aa9106bf3f79dffa7e56e0e7a7224df6"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/FAILURE_STAGES.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/FAILURE_STAGES.json",
-      "bytes": 111835,
-      "sha256": "4f6335ed3c47a48b3f6876951e8a8748772fc3a653cf855c952b45a9a69ee2ca"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/FINAL_FREEZE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/FINAL_FREEZE.json",
-      "bytes": 537,
-      "sha256": "efeee86ce7aaa76ee49be122abfb75bece3ae7cd6740db1fb95252bfe5bfb2b4"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/FINAL_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/FINAL_RESULTS.json",
-      "bytes": 60365,
-      "sha256": "d999b049d50bbd9b01844944f800b8be1471058b04444c49293139f282ec3e51"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/FINAL_RUN_AUDIT.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/FINAL_RUN_AUDIT.json",
-      "bytes": 1951,
-      "sha256": "44885594e1eba31e606f3f1c40391a2f59a639f13c3afb59891ec4fbd492f7a3"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/NUMERICAL_MARGIN_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/NUMERICAL_MARGIN_PAIR.json",
-      "bytes": 2132,
-      "sha256": "a0e5642145f42926c3895b1843e930894b1645f5a897834622aee7011e3b7c78"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/RECEIPT_SUMMARY.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/RECEIPT_SUMMARY.json",
-      "bytes": 4721,
-      "sha256": "12058bbcb7a79244668b670796e35efa01fdad232e3bcb15278e3e9bafd7d0b2"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/REGRESSION_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/REGRESSION_PAIR.json",
-      "bytes": 4328,
-      "sha256": "e27474d8f06f08978798deedcb9ec95ce4efa4ec78a56cf2e6cb26123c1843cc"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/REPLAY_SUPPORT_PAIRS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/REPLAY_SUPPORT_PAIRS.json",
-      "bytes": 10258,
-      "sha256": "a11eb379bde82ed2d0c2859e86ca72efda3e9d35ab780609ab3edad5c5132937"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/RGB_GATE_PHYSICAL_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/RGB_GATE_PHYSICAL_PAIR.json",
-      "bytes": 17344,
-      "sha256": "53eacbf5c64a5c2a235aaf9b084df0ca04a6618b42220d3093c207bc2e77c437"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/SEED_RESTART_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/SEED_RESTART_PAIR.json",
-      "bytes": 16725,
-      "sha256": "c6ab3290c3375340c9f7d5aff0b65d0650120f3741734fa7a5e67c66f334658f"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/START_RECOVERY_PHYSICAL_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/START_RECOVERY_PHYSICAL_PAIR.json",
-      "bytes": 25986,
-      "sha256": "a9a9580a05aa1350709dd4c9f4663fffb9da4905289a07f7ea6ed6df5bda718b"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/SUPERVISION_RECOVERY.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/SUPERVISION_RECOVERY.json",
-      "bytes": 5825,
-      "sha256": "132c4b39e37f4ceeb5e0834c3eb4d290a8cb64751b6414b6e7675aa4a6737500"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/UNADOPTED_SCHEDULE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/UNADOPTED_SCHEDULE.json",
-      "bytes": 5211,
-      "sha256": "885d0c5a0114be1b8fa33c826132b4db4b376074a9c7750b7a0c8016788a21ec"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/V4_FINAL_FREEZE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/V4_FINAL_FREEZE.json",
-      "bytes": 1937,
-      "sha256": "d675e1fd8a74e0c41204c27367b169511b46a2ab02b1a56de6aa8f0b9c476554"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/V4_FINAL_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/V4_FINAL_RESULTS.json",
-      "bytes": 56547,
-      "sha256": "534c5c295dd057ffe100cad0ce7272f14c0d206b06fe85f0fd8191976cc58edd"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/V4_REGRESSION_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/V4_REGRESSION_PAIR.json",
-      "bytes": 4328,
-      "sha256": "7d8575467e949a2962d580b4661532bd35094f4362f0a4c2c6343774377a245c"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/V5_FINAL_FREEZE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/V5_FINAL_FREEZE.json",
-      "bytes": 524,
-      "sha256": "34fceba3712d1a3d8ef45970976a6f390cc909261dcc06dfc268c2e454da47c7"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/V5_FINAL_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/V5_FINAL_RESULTS.json",
-      "bytes": 65731,
-      "sha256": "974fd857c520da18a03d3fa546fdbda2c8a60d6aabbc500b3768dbcd463e4d3e"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/V5_REGRESSION_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/V5_REGRESSION_PAIR.json",
-      "bytes": 4593,
-      "sha256": "69264dc60b404dae460ce3b9494653f19f05202af71f320e65c275105fb56027"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/WEDGE_MARGIN_PHYSICAL_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/WEDGE_MARGIN_PHYSICAL_PAIR.json",
-      "bytes": 173541,
-      "sha256": "d3053d375f1ae8d171ee038b4cce9dd893c8182ee0e14a0b40be78084d746fb5"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/registration.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/registration.json",
-      "bytes": 2566,
-      "sha256": "c10f473163df6f0b85e6fe4b96745179430407c15acbe3e0c26ccfeacf48bc4b"
-    },
     "studies/fingereye_clean_mainline_20261123/mainline/evidence/d109/run_panel.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d109/run_panel.py",
       "bytes": 3014,
       "sha256": "c58193e6480dab53d89a14146a455d6de382e8da6dabcd5005bd75e7d72c9e36"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/CHECKS.txt": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/CHECKS.txt",
-      "bytes": 730,
-      "sha256": "ccd004eb9350720c178b8bf1ae5e15b749b4c8fa64ccd6cd0579717de9e8f477"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/CLOSURE_PHYSICAL_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/CLOSURE_PHYSICAL_PAIR.json",
-      "bytes": 6089,
-      "sha256": "31d5aee189c4163dd2f6d69aaf181c3aa5682dc41e152d14b31b93dd2775256a"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/CODE_READBACK.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/CODE_READBACK.json",
-      "bytes": 809,
-      "sha256": "5f7a6eb8c282092ebc11828a3c910e4f6a5b97d5f8fb226ef6e211fe2da601c9"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/FINAL_SUMMARY.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/FINAL_SUMMARY.json",
-      "bytes": 35434,
-      "sha256": "9e5ce7e0cd5f485639f3c7a8422b7b1ac169e4bbc8492fa38caa7fb6de8c162a"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/FIRST_CLOSE_IDLE_ROUTE_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/FIRST_CLOSE_IDLE_ROUTE_PAIR.json",
-      "bytes": 3201,
-      "sha256": "d1bac5b408dc84f7eda0b0c3d100a223294c9e8b6df4f0215d96e508800757d8"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/PENTAGON_SOURCE_COVERAGE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/PENTAGON_SOURCE_COVERAGE.json",
-      "bytes": 3469,
-      "sha256": "445efe05e9cef0daa59d8d691d5538454d450608d8fe85126dc59ef15189fadb"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/REPRODUCE.txt": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/REPRODUCE.txt",
-      "bytes": 9399,
-      "sha256": "6360f289434d5c1c070619b4a7ba479d60bffa5db72667e1a8dcc2a9e498ec50"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/SAME_CANDIDATE_PHYSICAL_PAIR.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/SAME_CANDIDATE_PHYSICAL_PAIR.json",
-      "bytes": 11926,
-      "sha256": "299c9f629df216bf340a37080e0ffc726225f6619ad0742e672d2f8054ed09e3"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/V53_FINAL_RESULTS.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/V53_FINAL_RESULTS.json",
-      "bytes": 3234624,
-      "sha256": "a8fdd8385dbd75b640113c6721229d8e36fe675fde0975db48d79614d25956a5"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/V53_FINAL_STATE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/V53_FINAL_STATE.json",
-      "bytes": 76486,
-      "sha256": "d62a91f59edc3664c591a80805c292eb1f7a2a5ad03b7cbfad629c0a626b3665"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/V53_FREEZE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/V53_FREEZE.json",
-      "bytes": 21123,
-      "sha256": "b35eb3aa53aeb2666a3c404841d5bce56cdaf8779eb984f0068a3b5b0ecddc9b"
-    },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/WEDGE_PHYSICAL_FAILURE.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/WEDGE_PHYSICAL_FAILURE.json",
-      "bytes": 67179,
-      "sha256": "195b78595cc8b06d9304d7d114bd0aea8922d313a4233d8fa2d30d1c5da986d9"
     },
     "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/aggregate.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/aggregate.py",
@@ -503,10 +168,355 @@
       "bytes": 9251,
       "sha256": "5ad84b504e72d7fe8e652f851fcc9402358ea7a199ab76509244e1c1e192408b"
     },
-    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d110/catalog_invariance_13.json": {
-      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d110/catalog_invariance_13.json",
-      "bytes": 10027,
-      "sha256": "b8067969588bb7641973c3552e3226cbd5300f755484de483357e6e6bba4cb10"
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/BROAD_PAIR_NORMAL_V2_TERMINAL.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/BROAD_PAIR_NORMAL_V2_TERMINAL.json",
+      "bytes": 183774,
+      "sha256": "20f60824980bd45434f613f15ded1cc41259b3f087c114a46ef24fbbf15994f5"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/C8_RECOVERY_TIMEOUT.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/C8_RECOVERY_TIMEOUT.json",
+      "bytes": 45243,
+      "sha256": "3d6cc92b64909f23822c2a053e3c51fcf4cc37760c4a74bc56561d5c1b16d7b3"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/C9_CODE_FREEZE.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/C9_CODE_FREEZE.json",
+      "bytes": 1150,
+      "sha256": "2ef4c58d1f54976e53123244795fb2f8bfdd9d676a5a679c0b3295537a9891b4"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/C9_INPUT_READBACK.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/C9_INPUT_READBACK.json",
+      "bytes": 254,
+      "sha256": "856aeca54886f3c80a0d14e6dc7699c2a8b758f9bd36947f9a1977c2663d723c"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/C9_MOTOR_ROUND_SUMMARY.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/C9_MOTOR_ROUND_SUMMARY.json",
+      "bytes": 9329,
+      "sha256": "87f3899facefea15f8847afc54d83450b501b86116a80258e4be5218f0336b07"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/CALIBRATED_RAY_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/CALIBRATED_RAY_PAIR.json",
+      "bytes": 7065,
+      "sha256": "71e49e35e972583acd672f536c522506826567ac20f529720d05af081f97ca6d"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/CLEANUP.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/CLEANUP.json",
+      "bytes": 3360,
+      "sha256": "6975b866502fb2147aac94220b99131c3e7de95254e2a4cc8fa09a5609317ea7"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/CLEANUP_TOTAL.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/CLEANUP_TOTAL.json",
+      "bytes": 2107,
+      "sha256": "b52895267381b5a578060416e3cf5584cc624330fa0d08adb154bd4d584a57db"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/CLOSURE_COMPUTE_BUDGET_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/CLOSURE_COMPUTE_BUDGET_PAIR.json",
+      "bytes": 17924,
+      "sha256": "27c4b90243e11fcc46e63c6b2b57d878956788a611c253683ba12ccf607454c7"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/DEFAULT_SEED_FALLBACK_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/DEFAULT_SEED_FALLBACK_PAIR.json",
+      "bytes": 36423,
+      "sha256": "29206ddc3737ea0a75d968035187812528f7d48bb90cbb17e12474828c7b9c92"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/DRIVE_MODEL.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/DRIVE_MODEL.json",
+      "bytes": 1472,
+      "sha256": "d8093f4dba74be9f1f124394cffec72365634027f5e65894c5e87b6ad33e0151"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/EARLY_BALANCE_BREAK_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/EARLY_BALANCE_BREAK_PAIR.json",
+      "bytes": 5666,
+      "sha256": "247ad5cd364f4ffa2c1edc5dc9f5d6c664b285163e4434b065d1586f5c2cd423"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/EVIDENCE_COMPACTION.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/EVIDENCE_COMPACTION.json",
+      "bytes": 3471,
+      "sha256": "98d3c57c95dc1f093614a9503433b50233f0f949a9a8f42e358bb0aa09c91f64"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/FINAL_INPUT_SOURCE_AUDIT.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/FINAL_INPUT_SOURCE_AUDIT.json",
+      "bytes": 25281,
+      "sha256": "c0b7b8fc8dea529a72af5c8c25c689b675ea7c061688ddfa2cbce76318a18ff8"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/FINAL_PANEL_RECEIPTS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/FINAL_PANEL_RECEIPTS.json",
+      "bytes": 736167,
+      "sha256": "e352fedf522d4f9c1ee3c7526f25a49dd18b7a22aaaa1cee2e6276d7f73ef5a8"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/FINAL_PHYSICAL_DIAGNOSIS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/FINAL_PHYSICAL_DIAGNOSIS.json",
+      "bytes": 1423,
+      "sha256": "2cb1f42f6de0c8bb0127d70526653cdb93d67d4a69b0c565a1eaa4f337b2ae5a"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/FINAL_RESULTS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/FINAL_RESULTS.json",
+      "bytes": 314540,
+      "sha256": "a89908b0be559322d5f1a00e6e15804610c3fc507b914cf1bfc2e0f33aebfbf3"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/FINITE_FACE_NORMAL_TRADEOFF.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/FINITE_FACE_NORMAL_TRADEOFF.json",
+      "bytes": 57312,
+      "sha256": "5142dc56b7aba9b143c802355615348016c75f24483063d15a8c56336ff114ae"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/FIRST_ATTEMPT_NATIVE_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/FIRST_ATTEMPT_NATIVE_PAIR.json",
+      "bytes": 1865,
+      "sha256": "fbdd845a439b23eed4ae4a5df0179ee323cb15f5a04fbcd896a631a21e50f7db"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/FRESH_TARGET_COMMAND_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/FRESH_TARGET_COMMAND_PAIR.json",
+      "bytes": 15389,
+      "sha256": "f5c0c4da23f7a3054d8f9ebd15896c743b96943440084844e5b5e2851309d882"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/IK_ABLATION_SUMMARY.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/IK_ABLATION_SUMMARY.json",
+      "bytes": 25852,
+      "sha256": "da652dfa48e98bd2d83aa3bbfbb4f292250f8707ca4f4067418a60c08962936d"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/INPUT_READBACK.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/INPUT_READBACK.json",
+      "bytes": 92,
+      "sha256": "aa0780303ae2ee9f3ede31f83cc66b97a9112da14bf29e315bff34f861a6c83d"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/INSTALLATION.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/INSTALLATION.json",
+      "bytes": 993,
+      "sha256": "dcf527358439967bccb50810107672c8cd1b0188f4e34f039e5e9a6691e5d009"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/LIVE_FACE_BOX_DIAGNOSTIC_CONFIG.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/LIVE_FACE_BOX_DIAGNOSTIC_CONFIG.json",
+      "bytes": 2557,
+      "sha256": "824ac7d7edb65e25c6d4684c33814106b76fc4c5bd129bc933e6630c4ddc073f"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/LIVE_FACE_DIAGNOSTIC_CONFIG.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/LIVE_FACE_DIAGNOSTIC_CONFIG.json",
+      "bytes": 2585,
+      "sha256": "fa00635fcf022c3ad902b978fbf71b5c59e92f3a001376ab07435efe6aeb3b1d"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/LIVE_FACE_DIAGNOSTIC_RESULTS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/LIVE_FACE_DIAGNOSTIC_RESULTS.json",
+      "bytes": 192073,
+      "sha256": "ae79b8fa300946a0b1473a91b91785fb98b1e6e819efc0982a0bcd7cb465ee81"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/LIVE_RGB_STATIONARY_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/LIVE_RGB_STATIONARY_PAIR.json",
+      "bytes": 14269,
+      "sha256": "68eed05c5d8287d46f97dabbba65cefe1039676e801bd0c967bed76223056d4b"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/MATCHED_FORCE_PROXY.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/MATCHED_FORCE_PROXY.json",
+      "bytes": 364602,
+      "sha256": "42b993e65379ec7cab5e37239c14ab9999751cd10d624b8d71fe9b88754c4a83"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/MOTOR_INTERVAL_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/MOTOR_INTERVAL_PAIR.json",
+      "bytes": 367627,
+      "sha256": "1b80f665f23638302a58c2c1a19edeb305e51a53bca854f3025d952dd2f6df24"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/MOTOR_ONLY_WUJI_TERMINAL.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/MOTOR_ONLY_WUJI_TERMINAL.json",
+      "bytes": 295774,
+      "sha256": "f14a18bdf3277d6b5a6cce041b08d8e2e4c87075ce984c3f3e1edf04edbc85b3"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/NATIVE_CLOSE_DIAGNOSIS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/NATIVE_CLOSE_DIAGNOSIS.json",
+      "bytes": 20268,
+      "sha256": "29c602c23f16b6e15015c7ce479dc7b9646f0624a7318590b66df37a38028919"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/OLD3_FIRST_REPRODUCED.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/OLD3_FIRST_REPRODUCED.json",
+      "bytes": 34329,
+      "sha256": "e810bc015b7d2a313b14b7815a75f4f66f5187f1f8e8e3e9af5c6aeeb339d3ab"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/OLD3_IK_ABLATION.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/OLD3_IK_ABLATION.json",
+      "bytes": 133702,
+      "sha256": "3923bb5272418dafa7dd6be29040cf299fbe21fdcedb92c708e2b46c784ae8af"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/OLD3_PATH_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/OLD3_PATH_PAIR.json",
+      "bytes": 269539,
+      "sha256": "f6ba9ea98fa183f3641349d7792c3f9ea941b191273915cd4a3670f6a8c0171f"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/PHYSICAL_SHARD_READBACK.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/PHYSICAL_SHARD_READBACK.json",
+      "bytes": 336,
+      "sha256": "a0283a027d6874f91e132bd849a1dfb7478162ba24476bcf9b71f0629e0c3660"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/PHYSICAL_new_wedge_offset.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/PHYSICAL_new_wedge_offset.json",
+      "bytes": 1801195,
+      "sha256": "37d634f3f1be3ad5108743518d5194e97c32ee883de96dacd776f10a4afb636f"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/PHYSICAL_wuji_pentagon_28.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/PHYSICAL_wuji_pentagon_28.json",
+      "bytes": 1992531,
+      "sha256": "dd9863c1defaa9a2d114bb80291ab3fb1e3629c8f5f5fc7d2adac7a105238dd2"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/PHYSICAL_wuji_wedge_28.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/PHYSICAL_wuji_wedge_28.json",
+      "bytes": 4776957,
+      "sha256": "43a633a7982101bc54ef5bdbca739ba157844f62ca9867fa8c8c3b2e8d0bc985"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/READY_PLAN_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/READY_PLAN_PAIR.json",
+      "bytes": 359511,
+      "sha256": "86d4ced7f5f5f2b48886194c438100c4ce1ae33958c405b97ed77fe5becf6195"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/RECOVERY_RGB_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/RECOVERY_RGB_PAIR.json",
+      "bytes": 6527,
+      "sha256": "9c8f0df4d322c9eed398ec95b3112ca7be4ac9e15b96514dd1ecc38717e39512"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/RECOVERY_RIGID_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/RECOVERY_RIGID_PAIR.json",
+      "bytes": 6506,
+      "sha256": "c73ffa5e5b1f563fbf66808bd4579f8b7b72ebd9c6ffdd69d016900119bdefcd"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/RELEASE_CPU_CAP_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/RELEASE_CPU_CAP_PAIR.json",
+      "bytes": 3663,
+      "sha256": "fee572231c5eb1095cdd3697dcf7599559e7cb9e24fc0b20a1b08f858fdbc5bc"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/RELEASE_NUMERICAL_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/RELEASE_NUMERICAL_PAIR.json",
+      "bytes": 4459,
+      "sha256": "4c483618ef8416a972355b634c2eb9652b24638ee2ed0d69428f87bca52f39e4"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/REPRODUCE.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/REPRODUCE.txt",
+      "bytes": 9337,
+      "sha256": "be5c9065045dade3aec3220680f4a84d5b2930db0231d129a6e0c5dc6f55d350"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/RESTORED_STATIC_SURFACE_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/RESTORED_STATIC_SURFACE_PAIR.json",
+      "bytes": 1316269,
+      "sha256": "a6220a47f11322f5b43b7c8391ecc26de038733a1c1d3f0d0b346a03f748e8da"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/SHARED_TESTS.txt": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/SHARED_TESTS.txt",
+      "bytes": 626,
+      "sha256": "dd7d2e5e75bf6c19c4a433d1bcbdeda90c7bec1fe6f463b0e9ce1328d8520901"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/STABLE_INPUTS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/STABLE_INPUTS.json",
+      "bytes": 34358,
+      "sha256": "109dc400d3191de4af730b419deec209ab46127bc217f2464aaab97b9d53da85"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/STALE_REGISTRATION_PRUNED.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/STALE_REGISTRATION_PRUNED.json",
+      "bytes": 537,
+      "sha256": "2e5bd13027704e403635e5785d95bcc1589ae3173abc30dc5ece78730593bd63"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_C3_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_C3_DIAGNOSTICS.json",
+      "bytes": 914,
+      "sha256": "e273410a36250a8dec2b265a0c05443cbd7955f0f047779919690036914cabed"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_C4_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_C4_DIAGNOSTICS.json",
+      "bytes": 127888,
+      "sha256": "fdcd6b562d4941444882a1284ea1f6ea6bc8d21de66cb6b1b8ed8338c10e284d"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_C5_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_C5_DIAGNOSTICS.json",
+      "bytes": 3812,
+      "sha256": "cdb867adfe33dbf38f744bc65b9899e507564bba5d1894bde38d725346c9b04a"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_C6_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_C6_DIAGNOSTICS.json",
+      "bytes": 729,
+      "sha256": "403bc6f69477f2afa0d9d6402008bd71b9328c1caa80283bc00bc4fa4ef19dd2"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_C7_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_C7_DIAGNOSTICS.json",
+      "bytes": 544,
+      "sha256": "d52fa9445cc49607a8002d9ce5f194c2526660407571f0fac10824c0885fbf39"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_C8_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_C8_DIAGNOSTICS.json",
+      "bytes": 361,
+      "sha256": "3694f2f0bb5a222ce35c50d12442bacac6c924fce20628cd946cb5fb7d52d5ca"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_DIAGNOSTICS.json",
+      "bytes": 521,
+      "sha256": "7451e670bfd260d0d0d3cd7c911e6f81ce112e9bdbbe09557beba4a138f72109"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_FAILURE_SAMPLES.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_FAILURE_SAMPLES.json",
+      "bytes": 2221,
+      "sha256": "9cf03334b8c20b48a000b9418b14f3a88f7163296de0fce861aae9943fe6e77b"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_FINAL_PANEL.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_FINAL_PANEL.json",
+      "bytes": 437,
+      "sha256": "2dcee94bc7b729946f66c81af6aed3067c839fb7676a37702e95fde496431647"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_LIVE_FACE_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_LIVE_FACE_DIAGNOSTICS.json",
+      "bytes": 1358,
+      "sha256": "944be6372d1738f8f2e2e57e82d5ac1a218b53fdbe9750d0efb4562f7fc64c8e"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_OLD_PUBLISH_WORKTREES.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_OLD_PUBLISH_WORKTREES.json",
+      "bytes": 1182,
+      "sha256": "bdc620de1e55cd88435d06f24a8ec4bf0e6f1a3932c2866ab76518883f50fe5b"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_RGB_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_RGB_DIAGNOSTICS.json",
+      "bytes": 1334,
+      "sha256": "dcd2ccfcc8b91a1240125dc4ec5e432801f30fc7e5f672d3ee2e5e11fdd37c23"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/TRIM_TERMINAL_DIAGNOSTICS.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/TRIM_TERMINAL_DIAGNOSTICS.json",
+      "bytes": 810,
+      "sha256": "f485a0083977fb39a45ef03e343973148ca4ae3e0066fd0ceb9ebe5b3722a421"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/WRENCH_DISTANCE_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/WRENCH_DISTANCE_PAIR.json",
+      "bytes": 22809,
+      "sha256": "cf6e3bf17113d8e11b1ed7dc2a5ff3a966959c3a82997c0a95ffc0d3e0155376"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/WUJI_SURFACE_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/WUJI_SURFACE_PAIR.json",
+      "bytes": 261774,
+      "sha256": "783c6fb768c53de8056f883c3a86465b5f09ecbd61d22f941705a9cd08cc16de"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/WUJI_THIRD_BANK_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/WUJI_THIRD_BANK_PAIR.json",
+      "bytes": 42731,
+      "sha256": "9111cadffb6e25ad2b46f94b2bbe2c513c9d3fd05af4d1a1fafa3a9d2cb81178"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/WUJI_THIRD_PAIR.json": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/WUJI_THIRD_PAIR.json",
+      "bytes": 85004,
+      "sha256": "32a4026d0b4a84f634a3c950a9e66c7419c8178ab6241370b43ffa9089bceec6"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/collect_panel.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/collect_panel.py",
+      "bytes": 5460,
+      "sha256": "bd97446b9cd7f50dd1c79ed398e7586d3bfba7fd038954906314bf817fa3ffa0"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/compact_panel.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/compact_panel.py",
+      "bytes": 8407,
+      "sha256": "9b73f3ca5529c242621cedec2122bfb3fbe8a2effc981c2e246342dbffd32e44"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/prepare_live_face_diagnostic.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/prepare_live_face_diagnostic.py",
+      "bytes": 3960,
+      "sha256": "e065f806c1fcfbc0cd90b61ca9dd6e0d38326eff24b259a0d8fef21b0ecdea38"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/retire_run_data.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/retire_run_data.py",
+      "bytes": 3528,
+      "sha256": "e61b07500ff911ac4fef066aeee0cf9b7c7955d39f9b9df349ebfcd4fee56483"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/evidence/d111/run_cases.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/run_cases.py",
+      "bytes": 3446,
+      "sha256": "6061594cf38dc032fa069b6058dada1d34ea6c3ad09005a99f9e81a7ad3e0575"
     },
     "studies/fingereye_clean_mainline_20261123/mainline/evidence/deletions.json": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/deletions.json",
@@ -598,10 +608,20 @@
       "bytes": 8399,
       "sha256": "ed8d74b164552e1e0ef6f51b6e8f1ac8c3d98a54c14b5ce125c6ba6bdf90fb19"
     },
+    "studies/fingereye_clean_mainline_20261123/mainline/motor_feedback.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/motor_feedback.py",
+      "bytes": 4460,
+      "sha256": "b5438c942cb8533c9efb07d33ead87fdde416221f41f71f6b2283d2e8e4f9ffa"
+    },
     "studies/fingereye_clean_mainline_20261123/mainline/strategy.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py",
-      "bytes": 364322,
-      "sha256": "f6e320940f25a796b75dda9545673bb6a6432ee33fac1bbbe794a7798f7b1bfe"
+      "bytes": 375734,
+      "sha256": "158136ca0114b1c760c00b0ec4f84e16a99d2370a2e8f06c8985f1d37a6b0fa8"
+    },
+    "studies/fingereye_clean_mainline_20261123/mainline/surface_repair.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/surface_repair.py",
+      "bytes": 4794,
+      "sha256": "f0bb016b46f3a362ce74c25cbf044f9eb66581bfd67d6608320ad5a8e3167ce1"
     },
     "studies/fingereye_clean_mainline_20261123/mainline/tools/collect_validation.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/tools/collect_validation.py",
@@ -755,8 +775,8 @@
     },
     "studies/fingereye_clean_mainline_20261123/stage16_episode.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_episode.py",
-      "bytes": 5110,
-      "sha256": "bbc750018ea59c8856b608ab7429062c971482438f558b4be9c0132b7b5d8e59"
+      "bytes": 5346,
+      "sha256": "66d97da2d4a66ce695b3822cd46f0c8caebb42b86ffe1c7c126c30a8b8c02dec"
     },
     "studies/fingereye_clean_mainline_20261123/stage16_evidence/closeout/contact_capture/actual_contacts_summary.json": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_evidence/closeout/contact_capture/actual_contacts_summary.json",
@@ -918,10 +938,25 @@
       "bytes": 25454,
       "sha256": "0649ba407ab00c6bbba829c5b48d5fee709d0436ba92fa4ec68d9baff00e5f88"
     },
+    "studies/fingereye_clean_mainline_20261123/test_motor_interval.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_motor_interval.py",
+      "bytes": 2038,
+      "sha256": "e571112a463575ccd4a7d83ab0df5168cc3804fa0433d83beaf91c8520d8cffc"
+    },
     "studies/fingereye_clean_mainline_20261123/test_near_contact_retry.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_near_contact_retry.py",
       "bytes": 2309,
       "sha256": "978fe783c83185a309eb76032835496d244210ac19dbbf891a76daff3421801e"
+    },
+    "studies/fingereye_clean_mainline_20261123/test_planning_compare_budget.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_planning_compare_budget.py",
+      "bytes": 4138,
+      "sha256": "f9f35c372689ab19abac3b60241fab5e78d2aa94060efd0e6740f858f91a8121"
+    },
+    "studies/fingereye_clean_mainline_20261123/test_rigid_rgb.py": {
+      "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_rigid_rgb.py",
+      "bytes": 4374,
+      "sha256": "bf1c83a5d7ba4f58a1ba47c4e05e8e9554f52da97902c235815375ce29b251b9"
     },
     "studies/fingereye_clean_mainline_20261123/test_round2_source_domain_rank.py": {
       "source": "FingerEyeLab/experiments/rax_dexbin_tinyobj/test_round2_source_domain_rank.py",

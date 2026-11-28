@@ -1,0 +1,109 @@
+{
+  "rows": [
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/balanced_pair",
+      "allocated_bytes": 4390256640,
+      "directories": 23
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/final_remaining",
+      "allocated_bytes": 19286495232,
+      "directories": 83
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/motor_only_wuji.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/replay_third_bank.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/check_supported_v2.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/replay_wuji.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/shared_bounded_old3.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/shared_next_old3.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/check_supported.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2.log",
+      "allocated_bytes": 602112,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/replay_old3.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/ik_ablation.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/path_fix_normal.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/shared_next_success_control.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/replay_ready.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/static_surface_replay.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/empty_response_wuji.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/replay_wuji_finite.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal.log",
+      "allocated_bytes": 8192,
+      "directories": 0
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/execute_ready_old3.log",
+      "allocated_bytes": 4096,
+      "directories": 0
+    }
+  ],
+  "removed_directories": 106,
+  "allocated_bytes_removed": 23677427712,
+  "available_after_bytes": 995852660736,
+  "open_files_before": [],
+  "source_worktrees_checked": true
+}

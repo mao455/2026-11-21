@@ -1,0 +1,25 @@
+{
+  "paths": [
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/rigid_pair",
+      "resolved": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/rigid_pair",
+      "directories": 21,
+      "allocated_bytes": 7246106624,
+      "logical_bytes": 7008798218
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/rigid_remaining",
+      "resolved": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/rigid_remaining",
+      "directories": 23,
+      "allocated_bytes": 2395766784,
+      "logical_bytes": 2281475569
+    }
+  ],
+  "available_before_bytes": 986556067840,
+  "worktree_check": true,
+  "open_output_users": [],
+  "removed_directories": 44,
+  "allocated_bytes_removed": 9641873408,
+  "available_after_bytes": 996197883904,
+  "completed_unix": 1795839340.6554744
+}

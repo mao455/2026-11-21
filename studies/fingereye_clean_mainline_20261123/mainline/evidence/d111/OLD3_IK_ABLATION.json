@@ -1,0 +1,4605 @@
+{
+  "offline_only": true,
+  "same_world_targets": true,
+  "rows": [
+    {
+      "seed": "original_solver_prior",
+      "finite_region": false,
+      "phase": "position",
+      "cpu_s": 0.18430818600000265,
+      "q": [
+        0.002308848216630458,
+        -0.022640478533674572,
+        0.28106992663516683,
+        1.832811276545141,
+        -0.047727639602051175,
+        3.10735575730006,
+        0.4645121963608563,
+        0.3726374864437639,
+        0.23180048058307529,
+        0.23147011971631745,
+        0.3001137035100266,
+        0.30286819373313967,
+        0.3012472358872626,
+        -1.0995616912841797,
+        1.4974613189697266,
+        -0.5497538447380066,
+        -0.5497853755950928
+      ],
+      "origin_error_m": [
+        2.9924798150370193e-09,
+        1.5301096736213845e-09
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.008057953774175335,
+            -0.0076164174746350954,
+            0.01620587338868521
+          ],
+          [
+            0.0015570954961252872,
+            0.015759563332129915,
+            0.01625222428094061
+          ]
+        ],
+        "per_finger_error_m": [
+          2.7215383949373552e-09,
+          1.1332382525208263e-09
+        ],
+        "normal_gap_m": [
+          2.7215383949373556e-09,
+          -1.1332382525208263e-09
+        ],
+        "tangential_outside_region_m": [
+          8.89476574809788e-19,
+          1.1399365244452669e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0,
+          0.0
+        ],
+        "tangential_center_shift_m": [
+          1.283435726985882e-09,
+          1.0200096508992609e-09
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.5317717109968627,
+        1.375201727084854
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.001609505056208431,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": -0.001609505056208431,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.0024980839188410014,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.005908053008887099,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": -0.001609505056208431,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 0.007431799738789373
+    },
+    {
+      "seed": "original_solver_prior",
+      "finite_region": false,
+      "phase": "normal",
+      "cpu_s": 0.23162286600000215,
+      "q": [
+        0.16593294421265298,
+        0.08947547204095606,
+        0.20024428032182978,
+        2.6305650965901126,
+        -0.38994272947314457,
+        -2.5400581891238145,
+        0.275602335998247,
+        0.6523599517006883,
+        0.3077772668957957,
+        0.3770015253553347,
+        0.3033729489128772,
+        0.14524135683181436,
+        0.7602675743646726,
+        -1.0995616912841797,
+        1.4974613189697266,
+        -0.5497538447380066,
+        -0.5497853755950928
+      ],
+      "origin_error_m": [
+        1.3385716520260682e-05,
+        7.153377799474915e-06
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.008061122559884178,
+            -0.007615513978011036,
+            0.016198992403610602
+          ],
+          [
+            0.0015593746502121832,
+            0.01575623803286031,
+            0.016256408861671432
+          ]
+        ],
+        "per_finger_error_m": [
+          1.0998550775757744e-05,
+          4.171082625331905e-06
+        ],
+        "normal_gap_m": [
+          -1.0998550775757744e-05,
+          4.171082625331905e-06
+        ],
+        "tangential_outside_region_m": [
+          8.862542498516441e-19,
+          1.6258516105445261e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0,
+          0.0
+        ],
+        "tangential_center_shift_m": [
+          7.62947490534149e-06,
+          5.8114494513867915e-06
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.5072514836534918,
+        0.6900495647310911
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.050887643382931225,
+        "table_clearance_link": "Empty_Link11",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link11",
+              "table"
+            ],
+            "clearance_m": -0.050887643382931225,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.0013987250478348576,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.002340234414541748,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link11",
+            "table"
+          ],
+          "clearance_m": -0.050887643382931225,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 26.782035212502535
+    },
+    {
+      "seed": "original_solver_prior",
+      "finite_region": false,
+      "phase": "table",
+      "cpu_s": 0.16367837199999968,
+      "q": [
+        0.18886648443011422,
+        -0.008067150895249646,
+        0.21806668937235704,
+        2.457606251303074,
+        -0.6167234401355368,
+        -2.754090634740457,
+        0.3214183907202174,
+        0.44250329708555414,
+        0.16215499715387652,
+        0.08638593534128061,
+        0.44040672463876124,
+        0.36684175216191556,
+        0.32153598532316013,
+        -1.080953544283806,
+        1.506601537056603,
+        -0.556591781724521,
+        -0.5585538364078872
+      ],
+      "origin_error_m": [
+        0.015599598174932986,
+        0.00677409166404255
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.0015654674745940124,
+            0.015368317793423252,
+            0.01778371852189236
+          ]
+        ],
+        "per_finger_error_m": [
+          0.010344291248949455,
+          0.005711677174769221
+        ],
+        "normal_gap_m": [
+          -0.003830232636773007,
+          -0.0013601449222092783
+        ],
+        "tangential_outside_region_m": [
+          0.009609041543842506,
+          0.005547365315117442
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.013168087586440285,
+          0.0023234481818593506
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.0015807026905358195
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.15128285454355486,
+        0.9916704378297169
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.001040552569608874,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": -0.001040552569608874,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.004074460350414049,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.0005079117412291542,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": -0.001040552569608874,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 46,
+      "optimality": 880.611651017631
+    },
+    {
+      "seed": "original_solver_prior",
+      "finite_region": false,
+      "phase": "whole_hand",
+      "cpu_s": 0.8356853400000013,
+      "q": [
+        0.18718858158677054,
+        -0.008745787389439407,
+        0.2143731130220079,
+        2.215902460792262,
+        -0.5138997671596346,
+        -2.6057740784240586,
+        0.016007994243703364,
+        0.452249828071757,
+        0.233447448671458,
+        0.20557844664003733,
+        0.39979111549439933,
+        0.3667829701694771,
+        0.32535601461379915,
+        -0.8084499102569824,
+        1.6273935066722705,
+        -0.5800110813210879,
+        -0.628814130214001
+      ],
+      "origin_error_m": [
+        0.010476414578824639,
+        0.006839987458504795
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.00022152334807201517,
+            0.01604028985668425,
+            0.020471606774936355
+          ]
+        ],
+        "per_finger_error_m": [
+          0.006453278344220992,
+          0.00451717361338404
+        ],
+        "normal_gap_m": [
+          -0.005220879697288568,
+          -0.0029042682259670196
+        ],
+        "tangential_outside_region_m": [
+          0.003793048454005254,
+          0.003459780849286759
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0070981135742288395,
+          0.0037909297531416287
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.004434609013139127
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.5243845515555954,
+        0.9328259953232475
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 9.245233642818373e-05,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 9.245233642818373e-05,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.006119393662262301,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.0008596466138647077,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": 9.245233642818373e-05,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 27,
+      "optimality": 1460642.9389153335
+    },
+    {
+      "seed": "original_solver_prior",
+      "finite_region": true,
+      "phase": "position",
+      "cpu_s": 0.06198545699999869,
+      "q": [
+        -0.007075317163146516,
+        0.009842180483665343,
+        0.2881686511100158,
+        1.9577233265715517,
+        0.08094626982094533,
+        3.109703231492344,
+        0.45608024474947945,
+        0.35410249611085487,
+        0.19440516651083617,
+        0.18793402265817952,
+        0.3179693601474419,
+        0.33153945042062616,
+        0.3267043475209822,
+        -1.0995616912841797,
+        1.4974613189697266,
+        -0.5497538447380066,
+        -0.5497853755950928
+      ],
+      "origin_error_m": [
+        0.005798788222750293,
+        0.006081563158252891
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007870314594004103,
+            -0.007558824933746328,
+            0.02200133850453004
+          ],
+          [
+            -0.0005121158630343771,
+            0.01640832420510319,
+            0.02193402622568616
+          ]
+        ],
+        "per_finger_error_m": [
+          9.940656137707721e-14,
+          1.1315063071109524e-13
+        ],
+        "normal_gap_m": [
+          -9.940656136781164e-14,
+          -1.1315063068208229e-13
+        ],
+        "tangential_outside_region_m": [
+          1.3572468992840636e-18,
+          2.562356389122494e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.004295465458443856,
+          0.0041818029288797475
+        ],
+        "tangential_center_shift_m": [
+          0.005798788222750293,
+          0.006081563158252893
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.408280845285401,
+        1.353320868170356
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.006185710505440548,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 0.006185710505440548,
+            "threshold_m": 0.00065,
+            "passed": true,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.002248593746409776,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.005307376906115202,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "object_collision",
+          "links": [
+            "Empty_Link4",
+            "RGB_envelope"
+          ],
+          "clearance_m": -0.002248593746409776,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 32,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 20,
+      "optimality": 6.159942178398569e-07
+    },
+    {
+      "seed": "original_solver_prior",
+      "finite_region": true,
+      "phase": "normal",
+      "cpu_s": 0.27037816900000067,
+      "q": [
+        0.12029184878384318,
+        0.02591303366003385,
+        0.24882450984465465,
+        1.438423629865877,
+        0.2536119955534284,
+        -2.7037431113076478,
+        1.4342613398484962,
+        0.18783184510759635,
+        0.12160734849417149,
+        0.08188471787431553,
+        0.00012188968669139385,
+        0.07963344115095396,
+        0.004502408524171227,
+        -1.0995616912841797,
+        1.4974613189697266,
+        -0.5497538447380066,
+        -0.5497853755950928
+      ],
+      "origin_error_m": [
+        0.005816938916736507,
+        0.00930770403045627
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007867892745253239,
+            -0.007559793571923257,
+            0.02199310913296281
+          ],
+          [
+            0.00543121508714684,
+            0.01393544398714684,
+            0.008052223296786707
+          ]
+        ],
+        "per_finger_error_m": [
+          8.174841226311394e-05,
+          8.985829133256278e-05
+        ],
+        "normal_gap_m": [
+          -2.2458600330857685e-05,
+          3.363334845548929e-05
+        ],
+        "tangential_outside_region_m": [
+          7.860288912450253e-05,
+          8.33265287461284e-05
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.004310483385730519,
+          0.006718217427847622
+        ],
+        "tangential_center_shift_m": [
+          0.005790633004211524,
+          0.009250741324607938
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.29503835636405407,
+        0.639535689925674
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.043869636130117545,
+        "table_clearance_link": "Empty_Link11",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link11",
+              "table"
+            ],
+            "clearance_m": -0.043869636130117545,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.001159749432560496,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.003912476951864065,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link11",
+            "table"
+          ],
+          "clearance_m": -0.043869636130117545,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 406.1049915556086
+    },
+    {
+      "seed": "original_solver_prior",
+      "finite_region": true,
+      "phase": "table",
+      "cpu_s": 0.1308233670000014,
+      "q": [
+        0.08248124892420818,
+        0.08025261947206302,
+        0.2586047902750912,
+        1.3304378555572285,
+        0.4609385228056371,
+        -2.9231140727755536,
+        1.2495644993851343,
+        0.22060678695135805,
+        0.14796329369038375,
+        0.09524451065446046,
+        0.05240070999619261,
+        0.15527981900034982,
+        0.06470233030732894,
+        -1.3035200034075312,
+        1.3390601710260375,
+        -0.7009374508933848,
+        -0.6943788312413194
+      ],
+      "origin_error_m": [
+        0.012323749475059811,
+        0.007403224132631669
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.004554425637570707,
+            0.013935443987146839,
+            0.011559381095091234
+          ]
+        ],
+        "per_finger_error_m": [
+          0.006826965797666515,
+          0.0029828447369572605
+        ],
+        "normal_gap_m": [
+          0.0004023894105060058,
+          0.00192628009400354
+        ],
+        "tangential_outside_region_m": [
+          0.006815096827252056,
+          0.0022774564154423114
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.010551642391763835,
+          0.00247290273731429
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.0058595365291393715
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.5542695524996935,
+        0.6534804762919105
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 4.347507148863561e-05,
+        "table_clearance_link": "Empty_Link7",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link7",
+              "table"
+            ],
+            "clearance_m": 4.347507148863561e-05,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.0009690409680584364,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.008013660477371821,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link7",
+            "table"
+          ],
+          "clearance_m": 4.347507148863561e-05,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 35,
+      "optimality": 1102.2609142555764
+    },
+    {
+      "seed": "original_solver_prior",
+      "finite_region": true,
+      "phase": "whole_hand",
+      "cpu_s": 0.3075990120000007,
+      "q": [
+        0.07855468894415912,
+        0.06821664744081653,
+        0.259632714285317,
+        1.5614698284358162,
+        0.3573893890838571,
+        -2.8669268699317096,
+        1.664750967610224,
+        0.2166272820311038,
+        0.14874663331197194,
+        0.07673563592929654,
+        0.09677458902270808,
+        0.20448164450130646,
+        0.12978682449762288,
+        -1.5228084412702758,
+        1.4986488003316158,
+        -0.8044098796469935,
+        -0.7975142118073212
+      ],
+      "origin_error_m": [
+        0.006981626321883312,
+        0.008170798801130806
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.004997255844294958,
+            0.01393544398714684,
+            0.009788060268194232
+          ]
+        ],
+        "per_finger_error_m": [
+          0.0020106118255371398,
+          0.00206222468162439
+        ],
+        "normal_gap_m": [
+          0.0009441618285686936,
+          0.001748010374097046
+        ],
+        "tangential_outside_region_m": [
+          0.001775138967648339,
+          0.001094180227179198
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.005308630246057508,
+          0.004475088178482625
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.007546358017005323
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.504158727606158,
+        0.8018565020030639
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.000798821346099661,
+        "table_clearance_link": "Empty_Link7",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link7",
+              "table"
+            ],
+            "clearance_m": 0.000798821346099661,
+            "threshold_m": 0.00065,
+            "passed": true,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.0003520139446455753,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.00355676943188888,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "self_collision",
+          "links": [
+            "Empty_Link4",
+            "Empty_Link7"
+          ],
+          "clearance_m": -0.0003520139446455753,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 32,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 24,
+      "optimality": 4045611.7034677523
+    },
+    {
+      "seed": "FK_ranked_0",
+      "finite_region": false,
+      "phase": "position",
+      "cpu_s": 0.19310684599999917,
+      "q": [
+        -0.014893412557304355,
+        -0.012496516778852381,
+        0.2816855131186789,
+        1.8478217922103695,
+        0.008540733194422057,
+        3.053404337145333,
+        0.4985684267595158,
+        0.3757082103846396,
+        0.23252829589972146,
+        0.23248416936304267,
+        0.29733853227997037,
+        0.3044387124958276,
+        0.29874059576386663,
+        -1.0995616912841797,
+        1.4974613189697266,
+        -0.5497538447380066,
+        -0.5497853755950928
+      ],
+      "origin_error_m": [
+        5.159008810603327e-09,
+        3.4401883120822547e-09
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.008057954640045824,
+            -0.0076164171666809055,
+            0.01620587447053557
+          ],
+          [
+            0.0015570952041902813,
+            0.015759563291018023,
+            0.016252225613128203
+          ]
+        ],
+        "per_finger_error_m": [
+          4.483494294625161e-09,
+          2.5017251618882773e-09
+        ],
+        "normal_gap_m": [
+          4.483494294625161e-09,
+          -2.501725161888277e-09
+        ],
+        "tangential_outside_region_m": [
+          1.5722036954139056e-18,
+          1.2502202497407057e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0,
+          0.0
+        ],
+        "tangential_center_shift_m": [
+          2.5839534653328674e-09,
+          2.353646017221454e-09
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.4829965437211245,
+        1.3989274228888455
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0002567279047468937,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 0.0002567279047468937,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.00776686581800165,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.005955478719935386,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": 0.0002567279047468937,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 0.012732107415353367
+    },
+    {
+      "seed": "FK_ranked_0",
+      "finite_region": false,
+      "phase": "normal",
+      "cpu_s": 0.2213937080000008,
+      "q": [
+        0.16387443054963335,
+        0.08320831932585605,
+        0.20763658626989243,
+        2.5157410119000243,
+        -0.3243695477642592,
+        -2.5235539281408865,
+        0.3499917220882692,
+        0.4730543726255759,
+        0.16876661879537166,
+        0.17150198866916586,
+        0.3913086024245728,
+        0.3869301475774121,
+        0.5345781247628666,
+        -1.0995616912841797,
+        1.4974613189697266,
+        -0.5497538447380066,
+        -0.5497853755950928
+      ],
+      "origin_error_m": [
+        5.2403068042542174e-05,
+        4.439759486773764e-05
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.008037165597369781,
+            -0.007624026233311645,
+            0.016169459421761432
+          ],
+          [
+            0.0015692310202217571,
+            0.01575520262740778,
+            0.01622112500344327
+          ]
+        ],
+        "per_finger_error_m": [
+          3.049822364726996e-05,
+          2.894397526724204e-05
+        ],
+        "normal_gap_m": [
+          -3.0498223647269963e-05,
+          2.894397526724204e-05
+        ],
+        "tangential_outside_region_m": [
+          1.6312628916430705e-18,
+          2.391041985732647e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0,
+          0.0
+        ],
+        "tangential_center_shift_m": [
+          4.2613833255550666e-05,
+          3.366590485069754e-05
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.4771877996218471,
+        0.7326786074812801
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.05078572824615743,
+        "table_clearance_link": "Empty_Link11",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link11",
+              "table"
+            ],
+            "clearance_m": -0.05078572824615743,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.004121818753027749,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.002829802249025397,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link11",
+            "table"
+          ],
+          "clearance_m": -0.05078572824615743,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 164.00875950638962
+    },
+    {
+      "seed": "FK_ranked_0",
+      "finite_region": false,
+      "phase": "table",
+      "cpu_s": 0.1268143319999986,
+      "q": [
+        0.18368210303137963,
+        -0.03140998224541084,
+        0.22095011785872068,
+        2.3011629998944594,
+        -0.6048153014021602,
+        -2.7427255584517543,
+        0.5585827856480764,
+        0.4192790517502832,
+        0.1790997140584414,
+        0.1850735623975457,
+        0.32461293686859777,
+        0.28390907334529203,
+        0.08988808379279659,
+        -1.0866626068288443,
+        1.501698776889729,
+        -0.5520973803264841,
+        -0.5538705288995104
+      ],
+      "origin_error_m": [
+        0.01594863312718641,
+        0.004396403753077806
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.001543151675083291,
+            0.015379475693178612,
+            0.017828350120913803
+          ]
+        ],
+        "per_finger_error_m": [
+          0.010372183514616733,
+          0.003472538958320801
+        ],
+        "normal_gap_m": [
+          -0.0033922099149584655,
+          -0.002518017775854177
+        ],
+        "tangential_outside_region_m": [
+          0.009801790793204302,
+          0.002391257681124747
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.014001415372149507,
+          0.0007278326072696676
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.0016213688699508802
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.15952009112917315,
+        1.044028423799712
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.0009459753568811791,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": -0.0009459753568811791,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.003621369876358022,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.0027106237709381975,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": -0.0009459753568811791,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 38,
+      "optimality": 476.5356528893256
+    },
+    {
+      "seed": "FK_ranked_0",
+      "finite_region": false,
+      "phase": "whole_hand",
+      "cpu_s": 0.2354123649999984,
+      "q": [
+        0.17693295213680033,
+        -0.048695473464122334,
+        0.21751447405822424,
+        2.299593454122261,
+        -0.6257616758948763,
+        -2.7980114518465204,
+        0.31213575946305244,
+        0.49554392832746597,
+        0.0926404628861084,
+        0.6448575842950917,
+        0.3017106327396881,
+        0.2921988241095549,
+        0.12571122605112678,
+        -1.0669637745318834,
+        1.5059846352489847,
+        -0.5575214676703156,
+        -0.5592909353770003
+      ],
+      "origin_error_m": [
+        0.012774239937349286,
+        0.004841250770191658
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.0009282774500758222,
+            0.015686912805682345,
+            0.01905809857092874
+          ]
+        ],
+        "per_finger_error_m": [
+          0.007646414317692844,
+          0.003636518761725547
+        ],
+        "normal_gap_m": [
+          -0.003417912782303711,
+          -0.0034964704698848934
+        ],
+        "tangential_outside_region_m": [
+          0.006839994453973119,
+          0.000999481344300542
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.01026639698039483,
+          0.0011528237712547218
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.0028763911960648304
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.0923254888263411,
+        1.0955360052064194
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0002076128759363055,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 0.0002076128759363055,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.0014390030922288057,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.002256453119720739,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": 0.0002076128759363055,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 21,
+      "optimality": 8270.881946255611
+    },
+    {
+      "seed": "FK_ranked_0",
+      "finite_region": true,
+      "phase": "position",
+      "cpu_s": 0.06195780099999837,
+      "q": [
+        -0.0069860821698110205,
+        0.011450999263434994,
+        0.28843671711818525,
+        1.9683874686955252,
+        0.08722833816641784,
+        3.1127624644886245,
+        0.41558028605175495,
+        0.3548634361771468,
+        0.18868497271174833,
+        0.17912125454219202,
+        0.31687835241869816,
+        0.3346371961041746,
+        0.32599279957013927,
+        -1.0995616912841797,
+        1.4974613189697266,
+        -0.5497538447380066,
+        -0.5497853755950928
+      ],
+      "origin_error_m": [
+        0.005803242876945849,
+        0.006550468437846603
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871640218396977,
+            -0.00755829494108101,
+            0.02200583315851199
+          ],
+          [
+            -0.0007172790036629006,
+            0.01650969311841931,
+            0.022349203134935762
+          ]
+        ],
+        "per_finger_error_m": [
+          1.5413531030663368e-13,
+          2.708455271320926e-13
+        ],
+        "normal_gap_m": [
+          -1.5413531029891842e-13,
+          -2.708455271268635e-13
+        ],
+        "tangential_outside_region_m": [
+          1.5422084057154606e-18,
+          1.6830285722319045e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.004299960112424733,
+          0.0045969798381019
+        ],
+        "tangential_center_shift_m": [
+          0.00580324287694585,
+          0.006550468437846605
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.4381809031823687,
+        1.351574066680015
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.005916315515141324,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 0.005916315515141324,
+            "threshold_m": 0.00065,
+            "passed": true,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.002390766122480568,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.004957045697368739,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "object_collision",
+          "links": [
+            "Empty_Link4",
+            "RGB_envelope"
+          ],
+          "clearance_m": -0.002390766122480568,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 32,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 18,
+      "optimality": 7.168547710428312e-07
+    },
+    {
+      "seed": "FK_ranked_0",
+      "finite_region": true,
+      "phase": "normal",
+      "cpu_s": 0.23834872499999804,
+      "q": [
+        0.07865626284658847,
+        0.04805999830726936,
+        0.26205245488358914,
+        1.4115663632846216,
+        0.3090243101760013,
+        -2.8855848127578794,
+        1.3867558548806576,
+        0.23604220371678145,
+        0.1870258467701748,
+        0.17483957115826096,
+        0.08096597946195332,
+        0.1781324859762503,
+        0.07399920500898635,
+        -1.0995616912841797,
+        1.4974613189697266,
+        -0.5497538447380066,
+        -0.5497853755950928
+      ],
+      "origin_error_m": [
+        0.005805472364793091,
+        0.00935200568733605
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.00543121508714684,
+            0.01393544398714684,
+            0.008052223296786707
+          ]
+        ],
+        "per_finger_error_m": [
+          1.628864304282013e-05,
+          0.00010417851622715016
+        ],
+        "normal_gap_m": [
+          -1.6027634798620872e-05,
+          -1.4000810046133174e-05
+        ],
+        "tangential_outside_region_m": [
+          2.9042752862719567e-06,
+          0.0001032334275384804
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.004301905225350377,
+          0.006800847381451298
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.009250741324607938
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.33199442752264213,
+        0.7712420080138523
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.028389116434361147,
+        "table_clearance_link": "Empty_Link11",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link11",
+              "table"
+            ],
+            "clearance_m": -0.028389116434361147,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.0007101037410245526,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.007907655961356118,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link11",
+            "table"
+          ],
+          "clearance_m": -0.028389116434361147,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 164.281550104353
+    },
+    {
+      "seed": "FK_ranked_0",
+      "finite_region": true,
+      "phase": "table",
+      "cpu_s": 0.3199534150000005,
+      "q": [
+        0.032515060040927114,
+        0.050638239058611256,
+        0.27212906833173867,
+        1.3639321159377822,
+        0.2805780397179123,
+        -3.0682936271716805,
+        1.3423647457473602,
+        0.2201413775566785,
+        0.1918545788329001,
+        0.1746099545541993,
+        0.1320297904857217,
+        0.2473284574700521,
+        0.08224595344657615,
+        -1.2289728424806126,
+        1.4552081839356155,
+        -0.6734996380039292,
+        -0.6792161516584055
+      ],
+      "origin_error_m": [
+        0.005807271286510165,
+        0.007974694796257186
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.005106464457288445,
+            0.01393544398714684,
+            0.009351225816220285
+          ]
+        ],
+        "per_finger_error_m": [
+          1.7480621234678417e-05,
+          1.7639380791929508e-05
+        ],
+        "normal_gap_m": [
+          -1.6891119996523963e-05,
+          -1.5111747873000389e-05
+        ],
+        "tangential_outside_region_m": [
+          4.501353575683482e-06,
+          9.098507072347639e-06
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.004303689185365741,
+          0.0054020915411348205
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.007971775127987281
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.2972907152264517,
+        0.9168225359257169
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0006497701781683005,
+        "table_clearance_link": "Empty_Link11",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link4",
+            "Empty_Link6"
+          ],
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link11",
+              "table"
+            ],
+            "clearance_m": 0.0006497701781683005,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link6"
+            ],
+            "clearance_m": -0.0002796629841037915,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 26,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.0016131553137219944,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.008006420432658815,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link11",
+            "table"
+          ],
+          "clearance_m": 0.0006497701781683005,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 2.1396853090456327
+    },
+    {
+      "seed": "FK_ranked_0",
+      "finite_region": true,
+      "phase": "whole_hand",
+      "cpu_s": 0.18715986599999823,
+      "q": [
+        0.039988158415041275,
+        0.06537157444041164,
+        0.2660165690762264,
+        1.4384126252832408,
+        0.34865502943021176,
+        -3.05307963682543,
+        1.6439961542700692,
+        0.2754898841031781,
+        0.25118205572483526,
+        0.2297806265393424,
+        0.13877263180197302,
+        0.20240287798526718,
+        0.24062964999544975,
+        -1.2874773324730495,
+        1.570759297550698,
+        -0.7074317601255545,
+        -0.7135195754072252
+      ],
+      "origin_error_m": [
+        0.005111610575262271,
+        0.011476947259202841
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007297794351697288,
+            -0.007787832929345638,
+            0.02005477459487258
+          ],
+          [
+            0.00543121508714684,
+            0.01393544398714684,
+            0.008052223296786707
+          ]
+        ],
+        "per_finger_error_m": [
+          0.002099187515378647,
+          0.004474516374966614
+        ],
+        "normal_gap_m": [
+          -0.0012871973166910654,
+          0.0024581059958738495
+        ],
+        "tangential_outside_region_m": [
+          0.0016582253443440367,
+          0.003738851655641529
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0028234082345741838,
+          0.0060387645728102925
+        ],
+        "tangential_center_shift_m": [
+          0.003926992083452428,
+          0.009250741324607938
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.41242549288300534,
+        0.9554204141930391
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0010324730588374617,
+        "table_clearance_link": "Empty_Link7",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link4",
+            "Empty_Link6"
+          ],
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link7",
+              "table"
+            ],
+            "clearance_m": 0.0010324730588374617,
+            "threshold_m": 0.00065,
+            "passed": true,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link6"
+            ],
+            "clearance_m": -0.0004092039578388121,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.0021011695621230564,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.00016236236754022665,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 30,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.003984226588264477,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "self_collision",
+          "links": [
+            "Empty_Link4",
+            "Empty_Link6"
+          ],
+          "clearance_m": -0.0004092039578388121,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 32,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 17,
+      "optimality": 96122.69329653987
+    },
+    {
+      "seed": "FK_ranked_1",
+      "finite_region": false,
+      "phase": "position",
+      "cpu_s": 0.19724902400000133,
+      "q": [
+        -0.014893412557304355,
+        -0.012496516778852381,
+        0.2816855131186789,
+        1.8478217922103695,
+        0.008540733194422057,
+        3.053404337145333,
+        0.4985684267595158,
+        0.3757082103846396,
+        0.23252829589972146,
+        0.23248416936304267,
+        0.29733853227997037,
+        0.3044387124958276,
+        0.29874059576386663,
+        -2.67036,
+        0.3455745,
+        -1.33518,
+        -1.33518
+      ],
+      "origin_error_m": [
+        5.159008810603327e-09,
+        3.4401883120822547e-09
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.008057954640045824,
+            -0.0076164171666809055,
+            0.01620587447053557
+          ],
+          [
+            0.0015570952041902813,
+            0.015759563291018023,
+            0.016252225613128203
+          ]
+        ],
+        "per_finger_error_m": [
+          4.483494294625161e-09,
+          2.5017251618882773e-09
+        ],
+        "normal_gap_m": [
+          4.483494294625161e-09,
+          -2.501725161888277e-09
+        ],
+        "tangential_outside_region_m": [
+          1.5722036954139056e-18,
+          1.2502202497407057e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0,
+          0.0
+        ],
+        "tangential_center_shift_m": [
+          2.5839534653328674e-09,
+          2.353646017221454e-09
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.4829965437211245,
+        1.3989274228888455
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0002567279047468937,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link11",
+            "Empty_Link8"
+          ],
+          [
+            "Empty_Link11",
+            "base_link"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM8"
+          ],
+          [
+            "Empty_LinkCAM7",
+            "base_link"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 0.0002567279047468937,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "Empty_Link8"
+            ],
+            "clearance_m": -0.002226674640680208,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "base_link"
+            ],
+            "clearance_m": -0.024084434778030742,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM7"
+            ],
+            "clearance_m": -0.0011395995023484543,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM8"
+            ],
+            "clearance_m": -0.002741287666211817,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM7",
+              "base_link"
+            ],
+            "clearance_m": -0.0007967991721780224,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.00776686581800165,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.005955478719935386,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": 0.0002567279047468937,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 0.012732107415353367
+    },
+    {
+      "seed": "FK_ranked_1",
+      "finite_region": false,
+      "phase": "normal",
+      "cpu_s": 0.22250261900000012,
+      "q": [
+        0.16387443054963335,
+        0.08320831932585605,
+        0.20763658626989243,
+        2.5157410119000243,
+        -0.3243695477642592,
+        -2.5235539281408865,
+        0.3499917220882692,
+        0.4730543726255759,
+        0.16876661879537166,
+        0.17150198866916586,
+        0.3913086024245728,
+        0.3869301475774121,
+        0.5345781247628666,
+        -2.67036,
+        0.3455745,
+        -1.33518,
+        -1.33518
+      ],
+      "origin_error_m": [
+        5.2403068042542174e-05,
+        4.439759486773764e-05
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.008037165597369781,
+            -0.007624026233311645,
+            0.016169459421761432
+          ],
+          [
+            0.0015692310202217571,
+            0.01575520262740778,
+            0.01622112500344327
+          ]
+        ],
+        "per_finger_error_m": [
+          3.049822364726996e-05,
+          2.894397526724204e-05
+        ],
+        "normal_gap_m": [
+          -3.0498223647269963e-05,
+          2.894397526724204e-05
+        ],
+        "tangential_outside_region_m": [
+          1.6312628916430705e-18,
+          2.391041985732647e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0,
+          0.0
+        ],
+        "tangential_center_shift_m": [
+          4.2613833255550666e-05,
+          3.366590485069754e-05
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.4771877996218471,
+        0.7326786074812801
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.010011573545921193,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link11",
+            "Empty_Link8"
+          ],
+          [
+            "Empty_Link11",
+            "base_link"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM8"
+          ],
+          [
+            "Empty_LinkCAM7",
+            "base_link"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": -0.010011573545921193,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "Empty_Link8"
+            ],
+            "clearance_m": -0.0022266746406802308,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "base_link"
+            ],
+            "clearance_m": -0.02408443477803074,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM7"
+            ],
+            "clearance_m": -0.001139599502348489,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM8"
+            ],
+            "clearance_m": -0.0027412876662118377,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM7",
+              "base_link"
+            ],
+            "clearance_m": -0.0007967991721780616,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.004121818753027749,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.002829802249025397,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": -0.010011573545921193,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 164.00875950638962
+    },
+    {
+      "seed": "FK_ranked_1",
+      "finite_region": false,
+      "phase": "table",
+      "cpu_s": 0.17473852900000253,
+      "q": [
+        0.14402028554233964,
+        0.1121350168065111,
+        0.20605714539693956,
+        2.4065799267806325,
+        -0.05144533460368539,
+        -2.4243758625992093,
+        0.1822368118373382,
+        0.5784211731931121,
+        0.2064685291513442,
+        0.39542228168431603,
+        0.3577237537579568,
+        0.40598790719665895,
+        0.5487417713744654,
+        -2.670387021212834,
+        0.34555227185236537,
+        -1.33518,
+        -1.33518
+      ],
+      "origin_error_m": [
+        5.4575910405985596e-05,
+        9.487114241385375e-06
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.008051255896418537,
+            -0.007617511842661396,
+            0.0162599625835184
+          ],
+          [
+            0.0015546121404215242,
+            0.015763196313651636,
+            0.016247625777668778
+          ]
+        ],
+        "per_finger_error_m": [
+          2.609436549658497e-06,
+          7.03593940653672e-06
+        ],
+        "normal_gap_m": [
+          -2.6094365496584973e-06,
+          -7.03593940653672e-06
+        ],
+        "tangential_outside_region_m": [
+          1.4620022804537548e-18,
+          1.8017127496568522e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0,
+          0.0
+        ],
+        "tangential_center_shift_m": [
+          5.451349138123471e-05,
+          6.364023123227736e-06
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.6812388446969704,
+        0.6806219119151149
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0006456723478169488,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link11",
+            "Empty_Link8"
+          ],
+          [
+            "Empty_Link11",
+            "base_link"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM8"
+          ],
+          [
+            "Empty_LinkCAM7",
+            "base_link"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 0.0006456723478169488,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "Empty_Link8"
+            ],
+            "clearance_m": -0.00222675294881027,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "base_link"
+            ],
+            "clearance_m": -0.024083563405213743,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM7"
+            ],
+            "clearance_m": -0.0011395817445083722,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM8"
+            ],
+            "clearance_m": -0.0027423931078527017,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM7",
+              "base_link"
+            ],
+            "clearance_m": -0.0007957404211231792,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.004076999461477472,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.0029326880566586354,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link4",
+            "table"
+          ],
+          "clearance_m": 0.0006456723478169488,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 54,
+      "optimality": 1.2214291356928828
+    },
+    {
+      "seed": "FK_ranked_1",
+      "finite_region": false,
+      "phase": "whole_hand",
+      "cpu_s": 0.4550581919999992,
+      "q": [
+        0.14362763826859348,
+        0.10627691971206743,
+        0.20741637963774742,
+        2.399876869350565,
+        -0.043053279481495066,
+        -2.4341968901602127,
+        0.22223796227328696,
+        0.6351615295598079,
+        0.22685580673102995,
+        0.44372591115454607,
+        0.370480955047222,
+        0.454498524665186,
+        0.5969822532568106,
+        -2.690751698624994,
+        0.36752214203298045,
+        -1.3521561949734704,
+        -1.147579939993198
+      ],
+      "origin_error_m": [
+        0.0038503520046745702,
+        0.003632636902226486
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.00819657569596743,
+            -0.007558291935085444,
+            0.016807011308169743
+          ],
+          [
+            0.0015306260266803253,
+            0.015385738517380095,
+            0.017853401417719735
+          ]
+        ],
+        "per_finger_error_m": [
+          0.0037190257664287884,
+          0.0024717166652718447
+        ],
+        "normal_gap_m": [
+          0.003334423226365334,
+          0.001005305327343467
+        ],
+        "tangential_outside_region_m": [
+          0.0016470502113890256,
+          0.00225803996248902
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0,
+          0.001305489459013339
+        ],
+        "tangential_center_shift_m": [
+          0.0006196468323987912,
+          0.001644450424773171
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.6605137482910166,
+        0.7058841033637295
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0010480756914642703,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link11",
+            "base_link"
+          ],
+          [
+            "Empty_LinkCAM7",
+            "base_link"
+          ],
+          [
+            "Empty_LinkCAM8",
+            "base_link"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 0.0010480756914642703,
+            "threshold_m": 0.00065,
+            "passed": true,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "base_link"
+            ],
+            "clearance_m": -0.024208534804619864,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM7",
+              "base_link"
+            ],
+            "clearance_m": -0.0025522427719860824,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM8",
+              "base_link"
+            ],
+            "clearance_m": -0.0018365778361339056,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.002819249937919173,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.00035600655446686377,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 21,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "self_collision",
+          "links": [
+            "Empty_Link11",
+            "base_link"
+          ],
+          "clearance_m": -0.024208534804619864,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 32,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 29,
+      "optimality": 3142256.577878458
+    },
+    {
+      "seed": "FK_ranked_1",
+      "finite_region": true,
+      "phase": "position",
+      "cpu_s": 0.06276469499999848,
+      "q": [
+        -0.0069860821702642005,
+        0.01145099861975882,
+        0.28843671711529417,
+        1.968387339652665,
+        0.08722833470192604,
+        3.1127624645339615,
+        0.4155802590833646,
+        0.3548634378676007,
+        0.18868495889556663,
+        0.17912123919254921,
+        0.3168783526956804,
+        0.3346372009348843,
+        0.32599280417760756,
+        -2.67036,
+        0.3455745,
+        -1.33518,
+        -1.33518
+      ],
+      "origin_error_m": [
+        0.0058032418461305395,
+        0.006550468741958467
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871643888568973,
+            -0.0075582937493839635,
+            0.022005832233066767
+          ],
+          [
+            -0.0007172789049860093,
+            0.016509692922841494,
+            0.022349203522539475
+          ]
+        ],
+        "per_finger_error_m": [
+          6.155601261157987e-13,
+          7.170376906757004e-13
+        ],
+        "normal_gap_m": [
+          -6.155601261142876e-13,
+          -7.170376906661901e-13
+        ],
+        "tangential_outside_region_m": [
+          1.3639221848802996e-18,
+          3.6930453763935786e-18
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.004299959186970478,
+          0.004596980225627939
+        ],
+        "tangential_center_shift_m": [
+          0.005803241846130539,
+          0.006550468741958471
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.4381810590977122,
+        1.3515740459200856
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.00591631361877068,
+        "table_clearance_link": "Empty_Link4",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link11",
+            "Empty_Link8"
+          ],
+          [
+            "Empty_Link11",
+            "base_link"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM8"
+          ],
+          [
+            "Empty_LinkCAM7",
+            "base_link"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link4",
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link4",
+              "table"
+            ],
+            "clearance_m": 0.00591631361877068,
+            "threshold_m": 0.00065,
+            "passed": true,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "Empty_Link8"
+            ],
+            "clearance_m": -0.002226674640680208,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "base_link"
+            ],
+            "clearance_m": -0.024084434778030742,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM7"
+            ],
+            "clearance_m": -0.0011395995023484543,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM8"
+            ],
+            "clearance_m": -0.0027412876662118446,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM7",
+              "base_link"
+            ],
+            "clearance_m": -0.0007967991721781042,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link4",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.0023907672445012546,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.004957045373725884,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "self_collision",
+          "links": [
+            "Empty_Link11",
+            "Empty_Link8"
+          ],
+          "clearance_m": -0.002226674640680208,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 32,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 16,
+      "optimality": 7.077769169418334e-07
+    },
+    {
+      "seed": "FK_ranked_1",
+      "finite_region": true,
+      "phase": "normal",
+      "cpu_s": 0.23908771000000328,
+      "q": [
+        0.07356040475581417,
+        0.04808362975663423,
+        0.2640471185821547,
+        1.4300457533362296,
+        0.2978298395716106,
+        -2.902054424747355,
+        1.365681881061294,
+        0.24121027505588716,
+        0.188584973994367,
+        0.17639497439721888,
+        0.08677056726742377,
+        0.17686631722990048,
+        0.07963037762604556,
+        -2.67036,
+        0.3455745,
+        -1.33518,
+        -1.33518
+      ],
+      "origin_error_m": [
+        0.005805419672412449,
+        0.009026913108946417
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.005374101496241139,
+            0.01393544398714684,
+            0.008280677660409505
+          ]
+        ],
+        "per_finger_error_m": [
+          1.4761944027790211e-05,
+          1.4781597140699182e-05
+        ],
+        "normal_gap_m": [
+          -1.4331209714764486e-05,
+          -1.219563325932561e-05
+        ],
+        "tangential_outside_region_m": [
+          3.539974518418345e-06,
+          8.352373520979365e-06
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.004301914518933829,
+          0.006472258073682074
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.009024549134762805
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.3221067204544044,
+        0.7927438287907295
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": -0.0012140124970277943,
+        "table_clearance_link": "Empty_Link7",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link10",
+            "Empty_Link6"
+          ],
+          [
+            "Empty_Link11",
+            "Empty_Link8"
+          ],
+          [
+            "Empty_Link11",
+            "base_link"
+          ],
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM8"
+          ],
+          [
+            "Empty_LinkCAM7",
+            "base_link"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link7",
+              "table"
+            ],
+            "clearance_m": -0.0012140124970277943,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link10",
+              "Empty_Link6"
+            ],
+            "clearance_m": -0.002334014802125684,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "Empty_Link8"
+            ],
+            "clearance_m": -0.0022266746406802186,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "base_link"
+            ],
+            "clearance_m": -0.024084434778030735,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.001315723799440855,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM7"
+            ],
+            "clearance_m": -0.001139599502348456,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM8"
+            ],
+            "clearance_m": -0.0027412876662118377,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM7",
+              "base_link"
+            ],
+            "clearance_m": -0.0007967991721781073,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.00807653561269904,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link7",
+            "table"
+          ],
+          "clearance_m": -0.0012140124970277943,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 3.418844862790373
+    },
+    {
+      "seed": "FK_ranked_1",
+      "finite_region": true,
+      "phase": "table",
+      "cpu_s": 0.31611180099999814,
+      "q": [
+        0.08257614808575647,
+        0.03621794249692353,
+        0.2641185976719047,
+        1.4802626334016844,
+        0.24276768951101757,
+        -2.853941955656895,
+        1.3897854545372588,
+        0.23783471418481583,
+        0.17228156912948447,
+        0.16188585246374118,
+        0.09644937023867138,
+        0.18464067964166578,
+        0.07901371699946501,
+        -2.67036,
+        0.3455745,
+        -1.33518,
+        -1.33518
+      ],
+      "origin_error_m": [
+        0.005831023143402875,
+        0.00796600533736462
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007871646837347776,
+            -0.007558291935085442,
+            0.022005873046084236
+          ],
+          [
+            0.005104581185499045,
+            0.013935443987146839,
+            0.009358758903377881
+          ]
+        ],
+        "per_finger_error_m": [
+          2.8526121714707643e-05,
+          5.962229430492512e-06
+        ],
+        "normal_gap_m": [
+          7.242658706031903e-07,
+          3.2861687043292044e-06
+        ],
+        "tangential_outside_region_m": [
+          2.8516925834160215e-05,
+          4.974864322624125e-06
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.004327916411940113,
+          0.005392052189118387
+        ],
+        "tangential_center_shift_m": [
+          0.005803282559566798,
+          0.007964415766483346
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.2744442302871893,
+        0.8093560296131233
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0006475942357690861,
+        "table_clearance_link": "Empty_Link7",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link10",
+            "Empty_Link6"
+          ],
+          [
+            "Empty_Link11",
+            "Empty_Link8"
+          ],
+          [
+            "Empty_Link11",
+            "base_link"
+          ],
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM8"
+          ],
+          [
+            "Empty_LinkCAM7",
+            "base_link"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link7",
+              "table"
+            ],
+            "clearance_m": 0.0006475942357690861,
+            "threshold_m": 0.00065,
+            "passed": false,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link10",
+              "Empty_Link6"
+            ],
+            "clearance_m": -0.0020473832473376294,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "Empty_Link8"
+            ],
+            "clearance_m": -0.002226674640680208,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "base_link"
+            ],
+            "clearance_m": -0.024084434778030715,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.01004253210800636,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM7"
+            ],
+            "clearance_m": -0.0011395995023484526,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM8"
+            ],
+            "clearance_m": -0.00274128766621181,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM7",
+              "base_link"
+            ],
+            "clearance_m": -0.0007967991721780244,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.008463384464776147,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "table",
+          "links": [
+            "Empty_Link7",
+            "table"
+          ],
+          "clearance_m": 0.0006475942357690861,
+          "threshold_m": 0.00065,
+          "passed": false,
+          "measurement": "transformed full collision-mesh minimum z"
+        }
+      },
+      "status": 0,
+      "termination": "The maximum number of function evaluations is exceeded.",
+      "nfev": 80,
+      "optimality": 7.389122228122011
+    },
+    {
+      "seed": "FK_ranked_1",
+      "finite_region": true,
+      "phase": "whole_hand",
+      "cpu_s": 0.5571854999999992,
+      "q": [
+        0.08556320425351177,
+        0.029918768673219447,
+        0.2645317270992303,
+        1.4485490618642811,
+        0.22898283532845487,
+        -2.8532055927584286,
+        1.434032624725373,
+        0.26317261318107454,
+        0.17322449216006103,
+        0.1633835423693185,
+        0.09694728027403078,
+        0.18191607286557085,
+        0.07635685077763364,
+        -2.779174360942617,
+        0.349015566020629,
+        -1.4535239923272891,
+        -1.1701976274261512
+      ],
+      "origin_error_m": [
+        0.005366797887560647,
+        0.009528133010852976
+      ],
+      "finite_contact": {
+        "targets": [
+          [
+            -0.007921991115766696,
+            -0.007558291935085443,
+            0.021200364591381495
+          ],
+          [
+            0.00526535225436249,
+            0.013935443987146839,
+            0.008715674627924105
+          ]
+        ],
+        "per_finger_error_m": [
+          0.0017938127013273633,
+          0.002457571785215077
+        ],
+        "normal_gap_m": [
+          -0.0006593429365643815,
+          0.0012118064832549813
+        ],
+        "tangential_outside_region_m": [
+          0.0016682418587980672,
+          0.00213803277024147
+        ],
+        "selected_facet_normals": [
+          [
+            -0.313229124492586,
+            -0.9494757836181511,
+            0.019576820280786642
+          ],
+          [
+            0.6963106238227914,
+            0.6963106238227914,
+            0.174077655955698
+          ]
+        ],
+        "finite_region_contacts": [
+          true,
+          true
+        ],
+        "height_search_uncertainty_m": 0.0015,
+        "height_offset_diagnostic_m": [
+          0.0035803881207258754,
+          0.00546452897953952
+        ],
+        "tangential_center_shift_m": [
+          0.004996679892633534,
+          0.008595239756323026
+        ],
+        "source": "public RGB facet including edge contacts; nearest finite contact point plus 0.3mm stand-off; static footprint size is a load-quality assumption",
+        "normal_chord_weight": 2.5,
+        "position_weight_per_m": 1500.0,
+        "position_limit_m": 0.0008,
+        "normal_limit_rad": 0.5
+      },
+      "normal_error_rad": [
+        0.25332367646893783,
+        0.810804308994754
+      ],
+      "active_limits": [],
+      "geometry": {
+        "table_clearance_m": 0.0007176878392976052,
+        "table_clearance_link": "Empty_Link7",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link10",
+            "Empty_Link6"
+          ],
+          [
+            "Empty_Link11",
+            "Empty_Link8"
+          ],
+          [
+            "Empty_Link11",
+            "base_link"
+          ],
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ],
+          [
+            "Empty_Link8",
+            "Empty_LinkCAM7"
+          ],
+          [
+            "Empty_LinkCAM7",
+            "base_link"
+          ]
+        ],
+        "object_collisions": [
+          "Empty_Link7"
+        ],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link7",
+              "table"
+            ],
+            "clearance_m": 0.0007176878392976052,
+            "threshold_m": 0.00065,
+            "passed": true,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link10",
+              "Empty_Link6"
+            ],
+            "clearance_m": -0.0011069407306839568,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 4,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "Empty_Link8"
+            ],
+            "clearance_m": -0.0010693364283281097,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link11",
+              "base_link"
+            ],
+            "clearance_m": -0.015071490911495875,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.001691904820106541,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link8",
+              "Empty_LinkCAM7"
+            ],
+            "clearance_m": -0.002404791567003805,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_LinkCAM7",
+              "base_link"
+            ],
+            "clearance_m": -0.0012859216479176008,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          },
+          {
+            "kind": "object_collision",
+            "links": [
+              "Empty_Link7",
+              "RGB_envelope"
+            ],
+            "clearance_m": -0.003131239051340806,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 32,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "self_collision",
+          "links": [
+            "Empty_Link10",
+            "Empty_Link6"
+          ],
+          "clearance_m": -0.0011069407306839568,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 4,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      },
+      "status": 3,
+      "termination": "`xtol` termination condition is satisfied.",
+      "nfev": 27,
+      "optimality": 23215.17298775235
+    }
+  ]
+}

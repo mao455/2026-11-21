@@ -1,0 +1,5323 @@
+{
+  "state": {
+    "receipts": [
+      {
+        "actual_host_elapsed_s": 968.2133373483084,
+        "argv": [
+          "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+          "--session",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji",
+          "--case-file",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/wedge_28.json",
+          "--robot-urdf",
+          "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf",
+          "--controller",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py",
+          "--evaluation-mode",
+          "inline",
+          "--mode",
+          "minimal",
+          "--fingers",
+          "auto",
+          "--max-attempts",
+          "3",
+          "--no-preload",
+          "--phase",
+          "explore",
+          "--profile",
+          "fast",
+          "--color-mode",
+          "hs",
+          "--light-multiplier",
+          "1.0",
+          "--registry-manifest",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/objects.json"
+        ],
+        "cleanup_elapsed_s": 0.014672251883894205,
+        "cleanup_grace_s": 5.0,
+        "cpu_budget_note": "Worker existing per-process RLIMIT_CPU; not aggregate simulator/tree CPU",
+        "cwd": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj",
+        "deadline_start_semantics": "monotonic immediately before Popen; includes runner preparation",
+        "ended_utc": "2026-11-28T02:39:16Z",
+        "environment": {
+          "CUDA_VISIBLE_DEVICES": null,
+          "MKL_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "PYTHONDONTWRITEBYTECODE": null
+        },
+        "interrupted_signal": null,
+        "leader_pid": 2884826,
+        "leftover_descendants": [],
+        "ownership": "Linux child subreaper, ancestry, PID plus creation time; no process-group signals",
+        "planned_host_budget_s": 1800.0,
+        "processes": [
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+              "--session",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji",
+              "--case-file",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/wedge_28.json",
+              "--robot-urdf",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf",
+              "--controller",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py",
+              "--evaluation-mode",
+              "inline",
+              "--mode",
+              "minimal",
+              "--fingers",
+              "auto",
+              "--max-attempts",
+              "3",
+              "--no-preload",
+              "--phase",
+              "explore",
+              "--profile",
+              "fast",
+              "--color-mode",
+              "hs",
+              "--light-multiplier",
+              "1.0",
+              "--registry-manifest",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/objects.json"
+            ],
+            "cpu_system_s": 0.17,
+            "cpu_user_s": 3.02,
+            "create_time": 1795832587.63,
+            "exit_code": 0,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2884826,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_episode.py",
+              "--session",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji",
+              "--name",
+              "episode",
+              "--max-episodes",
+              "1",
+              "--phase",
+              "explore",
+              "--controller",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py",
+              "--case-json",
+              "{\"object_id\": \"d107_wedge_28\", \"dx\": 0.003, \"dy\": 0.004, \"yaw\": 0.25, \"mass_kg\": 0.007, \"friction\": 0.82, \"noise_seed\": 21073, \"rgb_noise_std\": 0}"
+            ],
+            "cpu_system_s": 19.08,
+            "cpu_user_s": 26.44,
+            "create_time": 1795832590.8,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2884917,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_backend.py",
+              "--output",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode",
+              "--case-json",
+              "{\"object_id\": \"d107_wedge_28\", \"dx\": 0.003, \"dy\": 0.004, \"yaw\": 0.25, \"mass_kg\": 0.007, \"friction\": 0.82, \"noise_seed\": 21073, \"rgb_noise_std\": 0}"
+            ],
+            "cpu_system_s": 462.89,
+            "cpu_user_s": 569.94,
+            "create_time": 1795832591.54,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2884918,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_backend.py",
+              "--output",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode",
+              "--case-json",
+              "{\"object_id\": \"d107_wedge_28\", \"dx\": 0.003, \"dy\": 0.004, \"yaw\": 0.25, \"mass_kg\": 0.007, \"friction\": 0.82, \"noise_seed\": 21073, \"rgb_noise_std\": 0}"
+            ],
+            "cpu_system_s": 0.12,
+            "cpu_user_s": 0.04,
+            "create_time": 1795832592.54,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2884975,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_backend.py",
+              "--output",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode",
+              "--case-json",
+              "{\"object_id\": \"d107_wedge_28\", \"dx\": 0.003, \"dy\": 0.004, \"yaw\": 0.25, \"mass_kg\": 0.007, \"friction\": 0.82, \"noise_seed\": 21073, \"rgb_noise_std\": 0}"
+            ],
+            "cpu_system_s": 0.12,
+            "cpu_user_s": 0.03,
+            "create_time": 1795832593.35,
+            "exit_code": 0,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2885050,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "bwrap",
+              "--unshare-all",
+              "--die-with-parent",
+              "--new-session",
+              "--clearenv",
+              "--proc",
+              "/proc",
+              "--dev",
+              "/dev",
+              "--tmpfs",
+              "/tmp",
+              "--ro-bind",
+              "/usr",
+              "/usr",
+              "--ro-bind",
+              "/bin",
+              "/bin",
+              "--ro-bind",
+              "/lib",
+              "/lib",
+              "--ro-bind",
+              "/lib64",
+              "/lib64",
+              "--ro-bind",
+              "/etc",
+              "/etc",
+              "--ro-bind",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/xhand3camFE_left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/hand_model",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/hand_model",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/wuji-description/hand/body-with-soft/meshes/left",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/wuji-description/hand/body-with-soft/meshes/left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/fingereye_mesh",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/fingereye_mesh",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/program",
+              "/workspace",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/public",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/public",
+              "--dir",
+              "/output",
+              "--chdir",
+              "/workspace",
+              "--setenv",
+              "PATH",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin:/usr/bin:/bin",
+              "--setenv",
+              "HOME",
+              "/tmp",
+              "--setenv",
+              "OMP_NUM_THREADS",
+              "1",
+              "--setenv",
+              "MKL_NUM_THREADS",
+              "1",
+              "--setenv",
+              "OPENBLAS_NUM_THREADS",
+              "1",
+              "--setenv",
+              "PYTHONUNBUFFERED",
+              "1",
+              "--setenv",
+              "PYTHONDONTWRITEBYTECODE",
+              "1",
+              "--setenv",
+              "CUDA_VISIBLE_DEVICES",
+              "",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/workspace/worker.py",
+              "/workspace/controller.py"
+            ],
+            "cpu_system_s": 0.0,
+            "cpu_user_s": 0.0,
+            "create_time": 1795832610.09,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": true,
+            "pid": 2885578,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "bwrap",
+              "--unshare-all",
+              "--die-with-parent",
+              "--new-session",
+              "--clearenv",
+              "--proc",
+              "/proc",
+              "--dev",
+              "/dev",
+              "--tmpfs",
+              "/tmp",
+              "--ro-bind",
+              "/usr",
+              "/usr",
+              "--ro-bind",
+              "/bin",
+              "/bin",
+              "--ro-bind",
+              "/lib",
+              "/lib",
+              "--ro-bind",
+              "/lib64",
+              "/lib64",
+              "--ro-bind",
+              "/etc",
+              "/etc",
+              "--ro-bind",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/xhand3camFE_left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/hand_model",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/hand_model",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/wuji-description/hand/body-with-soft/meshes/left",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/wuji-description/hand/body-with-soft/meshes/left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/fingereye_mesh",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/fingereye_mesh",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/program",
+              "/workspace",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/public",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/public",
+              "--dir",
+              "/output",
+              "--chdir",
+              "/workspace",
+              "--setenv",
+              "PATH",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin:/usr/bin:/bin",
+              "--setenv",
+              "HOME",
+              "/tmp",
+              "--setenv",
+              "OMP_NUM_THREADS",
+              "1",
+              "--setenv",
+              "MKL_NUM_THREADS",
+              "1",
+              "--setenv",
+              "OPENBLAS_NUM_THREADS",
+              "1",
+              "--setenv",
+              "PYTHONUNBUFFERED",
+              "1",
+              "--setenv",
+              "PYTHONDONTWRITEBYTECODE",
+              "1",
+              "--setenv",
+              "CUDA_VISIBLE_DEVICES",
+              "",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/workspace/worker.py",
+              "/workspace/controller.py"
+            ],
+            "cpu_system_s": 0.0,
+            "cpu_user_s": 0.0,
+            "create_time": 1795832610.09,
+            "exit_code": -9,
+            "exit_signal": 9,
+            "is_policy_worker": true,
+            "pid": 2885580,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/workspace/worker.py",
+              "/workspace/controller.py"
+            ],
+            "cpu_system_s": 13.31,
+            "cpu_user_s": 467.24,
+            "create_time": 1795832610.1,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": true,
+            "pid": 2885581,
+            "rlimit_cpu_soft_hard": [
+              600,
+              600
+            ]
+          }
+        ],
+        "return_code": 0,
+        "run_id": "98d9bd368ead400084efefdd0b5fc631",
+        "schema": "fingereye.round2.budget.v1",
+        "source_fingerprint_after": {
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py": "24da7b97f10e5fff767652e2df23367c03468fd3ed18610acdcc8a237303efa6",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/objects.json": "247f2b7376ac09ea4c1a6d0368bf2bdf5c8f31246e138c4f543479468ee8b18c",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/wedge_28.json": "2cf0244b642b4d0c54ad1a52f4fe1891d8bb18f979cb84debf14074d3e01a5f5",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/round2_evidence/budget_run.py": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py": "4b5def5e5b46abb40dab46db35838074ff4f7a3f4696145aadcbd3c2431c8e07",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/worker.py": "1c6b53cbc7200c6e596b39b08eea8b587ae905ead266d47c479520d70143e466",
+          "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf": "a0f56ab44949139375b3a6fbd7dda37359915d64e78fe54e0ce69670fa0ac9d6",
+          "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python3.11": "bb8ce30000f2342310fe7f0524d0d44cc868f6019b7e35745c52cbd3304250b1"
+        },
+        "source_fingerprint_before": {
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py": "24da7b97f10e5fff767652e2df23367c03468fd3ed18610acdcc8a237303efa6",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/objects.json": "247f2b7376ac09ea4c1a6d0368bf2bdf5c8f31246e138c4f543479468ee8b18c",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/wedge_28.json": "2cf0244b642b4d0c54ad1a52f4fe1891d8bb18f979cb84debf14074d3e01a5f5",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/round2_evidence/budget_run.py": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py": "4b5def5e5b46abb40dab46db35838074ff4f7a3f4696145aadcbd3c2431c8e07",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/worker.py": "1c6b53cbc7200c6e596b39b08eea8b587ae905ead266d47c479520d70143e466",
+          "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf": "a0f56ab44949139375b3a6fbd7dda37359915d64e78fe54e0ce69670fa0ac9d6",
+          "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python3.11": "bb8ce30000f2342310fe7f0524d0d44cc868f6019b7e35745c52cbd3304250b1"
+        },
+        "source_unchanged": true,
+        "started_utc": "2026-11-28T02:23:08Z",
+        "status": "completed",
+        "supervisor_sha256": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+        "timeout_triggered": false
+      }
+    ]
+  },
+  "rows": [
+    {
+      "session": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji",
+      "terminal": true,
+      "result": {
+        "controller_completed": true,
+        "error": null,
+        "requested_control_steps": 14598,
+        "elapsed_s": 964.1934094303288,
+        "evaluator_and_adapter_unchanged": true,
+        "controller_sha256": "24da7b97f10e5fff767652e2df23367c03468fd3ed18610acdcc8a237303efa6",
+        "physics": {
+          "success": false,
+          "steps": 14598,
+          "required_hold_steps": 240,
+          "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+          "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+          "geometry_passed": true,
+          "first_invalid_step": null,
+          "hold_physics_passed": false,
+          "hold_min_table_clearance_m": -4.326132064419008e-08,
+          "hold_min_lift_m": -0.00010001303598983213,
+          "hold_relative_translation_drift_m": 0.05762285650495815,
+          "hold_relative_rotation_drift_rad": 6.056826380206377e-05,
+          "hold_max_linear_speed_m_s": 2.173547214432688e-05,
+          "hold_max_angular_speed_rad_s": 0.001593700293892524,
+          "hold_min_contact_force_n": 0.0,
+          "commanded_lift_m": 0.15439751744270325,
+          "protocol_id": "lift30_no_drop_v1",
+          "target_lift_m": 0.03,
+          "lift_tolerance_m": 0.002,
+          "minimum_actual_lift_m": 0.027999999999999997,
+          "minimum_commanded_lift_m": 0.0295,
+          "legacy_strict": {
+            "success": false,
+            "steps": 14598,
+            "required_hold_steps": 240,
+            "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+            "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+            "geometry_passed": true,
+            "first_invalid_step": null,
+            "hold_physics_passed": false,
+            "hold_min_table_clearance_m": -4.326132064419008e-08,
+            "hold_min_lift_m": -0.00010001303598983213,
+            "hold_relative_translation_drift_m": 0.05762285650495815,
+            "hold_relative_rotation_drift_rad": 6.056826380206377e-05,
+            "hold_max_linear_speed_m_s": 2.173547214432688e-05,
+            "hold_max_angular_speed_rad_s": 0.001593700293892524,
+            "hold_min_contact_force_n": 0.0,
+            "commanded_lift_m": 0.15439751744270325
+          },
+          "continuous_physics_evidence": true,
+          "hold_checks": {
+            "actual_lift": false,
+            "table_clearance": false,
+            "completed_commanded_lift": true
+          },
+          "hold_start_step": 14358,
+          "hold_end_step": 14597,
+          "hold_start_time_s": 119.64999999999999,
+          "hold_end_time_s": 121.64999999999999,
+          "hold_duration_s": 2.0,
+          "failure": "actual_lift"
+        },
+        "success": false,
+        "success_protocol": "lift30_no_drop_v1",
+        "legacy_strict_success": false
+      },
+      "actual_closures": 1,
+      "dispatched": [
+        {
+          "event": "grasp_dispatched",
+          "step": 5502,
+          "frame_id": 1375,
+          "actual_grasps": 1,
+          "candidate_id": "contacts2-d186f05c9b1534059f26",
+          "branch": "initial",
+          "started_step": 5496,
+          "target_q": [
+            -0.054718045746417886,
+            0.0033324282398738926,
+            0.1925121396060649,
+            0.7175231404024637,
+            -0.16329754166166865,
+            2.421479637786346,
+            0.047504072162557615,
+            0.37273103923716133,
+            0.26460068073587345,
+            0.02489937892659539,
+            -0.15849783471397555,
+            -0.31585036436343694,
+            -0.07624418287008007,
+            1.5677035056674378,
+            1.0899992715469127,
+            -0.15340394472248112,
+            -0.18912031249999994,
+            0.9680140625,
+            1.050513572574989,
+            -0.16199400026689295,
+            1.0100959617485108,
+            1.2763703125,
+            0.5634890625000001,
+            0.21968750000000004,
+            -0.128615625,
+            0.074053125
+          ],
+          "actual_q": [
+            -0.05471816286444664,
+            0.0033324293326586485,
+            0.19251471757888794,
+            0.7175230979919434,
+            -0.16329647600650787,
+            2.4214682579040527,
+            0.04750793054699898,
+            0.37168148159980774,
+            0.2647954821586609,
+            0.02475372888147831,
+            -0.1584925800561905,
+            -0.3143326938152313,
+            -0.07673433423042297,
+            1.5676207542419434,
+            1.0907673835754395,
+            -0.1540955901145935,
+            -0.18912315368652344,
+            0.9680057168006897,
+            1.049627423286438,
+            -0.16046808660030365,
+            1.0106145143508911,
+            1.2763633728027344,
+            0.5634822249412537,
+            0.2196858674287796,
+            -0.12861952185630798,
+            0.07405368238687515
+          ],
+          "contact_count": 2,
+          "points": [
+            [
+              -0.014132147609089596,
+              0.01736796016953245,
+              0.01622126829415424
+            ],
+            [
+              0.0017589868533420209,
+              -0.014020960557743663,
+              0.0184117781892105
+            ]
+          ],
+          "command_plan_sha256": "d186f05c9b1534059f26ebf44b4cb28cd44440c65e2cb1e36e26e1fbf5b30efe",
+          "planned_q": [
+            -0.05559719721731365,
+            0.004211507816274428,
+            0.19217939756886024,
+            0.7175231404024637,
+            -0.16329754166166865,
+            2.421479637786346,
+            0.049422855579687466,
+            0.4260581637260411,
+            0.294784953110534,
+            -0.019263526695603286,
+            -0.156133064609019,
+            -0.36862049162970256,
+            -0.04475900820602051,
+            1.5593946966300314,
+            1.088731090206766,
+            -0.15226248145860194,
+            -0.18912031249999994,
+            0.9680140625,
+            1.0519710004884537,
+            -0.16450398562938154,
+            1.0092496377090052,
+            1.2763703125,
+            0.5634890625000001,
+            0.21968750000000004,
+            -0.128615625,
+            0.074053125
+          ],
+          "recovery_id": null
+        }
+      ],
+      "selected": [
+        {
+          "candidate_id": "1-joint-regions-0-broad-0",
+          "contact_count": 2,
+          "step": 2748,
+          "task_quality": {
+            "nominal": {
+              "gravity_feasible": false,
+              "lift_feasible": false,
+              "task_feasible": false,
+              "minimum_task_margin": 0.0,
+              "lateral_margin": 0.0,
+              "torque_margin": 0.0,
+              "margin_scale_cap": 100.0,
+              "reference": [
+                0.002490212408583767,
+                0.004080331471827582,
+                0.01425
+              ],
+              "contact_points": [
+                [
+                  -0.0136349572384,
+                  0.017250833684400006,
+                  0.016
+                ],
+                [
+                  0.001696260436765842,
+                  -0.013785461379720811,
+                  0.018408476798864384
+                ]
+              ],
+              "outward_normals": [
+                [
+                  -0.27472112789737807,
+                  0.9615239476408232,
+                  -0.0
+                ],
+                [
+                  0.2573579818762299,
+                  -0.9662211951142667,
+                  0.013545156940854213
+                ]
+              ],
+              "footprint_points": [
+                [
+                  -0.0136349572384,
+                  0.017250833684400006,
+                  0.016
+                ],
+                [
+                  0.0016961166004180882,
+                  -0.01378492136255556,
+                  0.01844973091392629
+                ],
+                [
+                  0.0016964042731135959,
+                  -0.013786001396886061,
+                  0.01836722268380248
+                ],
+                [
+                  0.001656392521790091,
+                  -0.013796080403803137,
+                  0.018408476798864384
+                ],
+                [
+                  0.001736128351741593,
+                  -0.013774842355638485,
+                  0.018408476798864384
+                ]
+              ],
+              "footprint_contact_groups": [
+                0,
+                1,
+                1,
+                1,
+                1
+              ],
+              "per_load": [
+                {
+                  "name": "force_x+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "force_y+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "force_x-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    -0.02,
+                    -0.0,
+                    -0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "force_y-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    -0.0,
+                    -0.02,
+                    -0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_x+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_y+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_z+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_x-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0001,
+                    -0.0,
+                    -0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_y-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    -0.0001,
+                    -0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_z-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    -0.0,
+                    -0.0001
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                }
+              ],
+              "mass_trials": [
+                {
+                  "mass_kg": 0.005,
+                  "feasible": false,
+                  "minimum_load_scale": 0.0,
+                  "scale_cap": 100.0,
+                  "normalized_residual": null,
+                  "nominal_wrench_rank": 6,
+                  "full_force_closure_certified": false,
+                  "reference": [
+                    0.002490212408583767,
+                    0.004080331471827582,
+                    0.01425
+                  ],
+                  "external_wrenches": [
+                    [
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.02,
+                      -0.0,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.0,
+                      -0.02,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0001,
+                      -0.0,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0001,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0,
+                      -0.0001
+                    ]
+                  ],
+                  "robust_friction": [
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367
+                  ],
+                  "max_normal_force": [
+                    1.0,
+                    1.0
+                  ],
+                  "contact_groups": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "normal_force_scope": "shared sum over footprint sites within each contact group",
+                  "uncertainty_scenarios": 1,
+                  "uncertainty_scope": "one-patch principal-axis scenarios; not joint uncertainty certification",
+                  "solver_statuses": [
+                    2
+                  ],
+                  "worst_witness": {
+                    "scenario": 0,
+                    "reason": "gravity_not_supported",
+                    "external_wrench": null,
+                    "contact_forces": null,
+                    "normal_forces": null
+                  },
+                  "gravity_feasible": false,
+                  "gravity_wrench": [
+                    0.0,
+                    0.0,
+                    -0.051550000000000006,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "gravity_failure_scenarios": [
+                    {
+                      "scenario": 0,
+                      "solver_status": 2
+                    }
+                  ],
+                  "gravity_checks": [
+                    {
+                      "scenario": 0,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    }
+                  ],
+                  "lp_solve_count": 1,
+                  "per_load": [
+                    {
+                      "external_wrench": [
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        -0.02,
+                        -0.0,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        -0.0,
+                        -0.02,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0001,
+                        -0.0,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0001,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0,
+                        -0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    }
+                  ],
+                  "load_semantics": "fixed gravity plus scaled disturbance",
+                  "force_semantics": "hypothetical LP forces at the reported load scale, not measurements",
+                  "effort_semantics": "quasistatic contact effort; hand own gravity/dynamics reserve unavailable"
+                },
+                {
+                  "mass_kg": 0.015,
+                  "feasible": false,
+                  "minimum_load_scale": 0.0,
+                  "scale_cap": 100.0,
+                  "normalized_residual": null,
+                  "nominal_wrench_rank": 6,
+                  "full_force_closure_certified": false,
+                  "reference": [
+                    0.002490212408583767,
+                    0.004080331471827582,
+                    0.01425
+                  ],
+                  "external_wrenches": [
+                    [
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.02,
+                      -0.0,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.0,
+                      -0.02,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0001,
+                      -0.0,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0001,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0,
+                      -0.0001
+                    ]
+                  ],
+                  "robust_friction": [
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367
+                  ],
+                  "max_normal_force": [
+                    1.0,
+                    1.0
+                  ],
+                  "contact_groups": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "normal_force_scope": "shared sum over footprint sites within each contact group",
+                  "uncertainty_scenarios": 1,
+                  "uncertainty_scope": "one-patch principal-axis scenarios; not joint uncertainty certification",
+                  "solver_statuses": [
+                    2
+                  ],
+                  "worst_witness": {
+                    "scenario": 0,
+                    "reason": "gravity_not_supported",
+                    "external_wrench": null,
+                    "contact_forces": null,
+                    "normal_forces": null
+                  },
+                  "gravity_feasible": false,
+                  "gravity_wrench": [
+                    0.0,
+                    0.0,
+                    -0.15465,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "gravity_failure_scenarios": [
+                    {
+                      "scenario": 0,
+                      "solver_status": 2
+                    }
+                  ],
+                  "gravity_checks": [
+                    {
+                      "scenario": 0,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    }
+                  ],
+                  "lp_solve_count": 1,
+                  "per_load": [
+                    {
+                      "external_wrench": [
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        -0.02,
+                        -0.0,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        -0.0,
+                        -0.02,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0001,
+                        -0.0,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0001,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0,
+                        -0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    }
+                  ],
+                  "load_semantics": "fixed gravity plus scaled disturbance",
+                  "force_semantics": "hypothetical LP forces at the reported load scale, not measurements",
+                  "effort_semantics": "quasistatic contact effort; hand own gravity/dynamics reserve unavailable"
+                }
+              ],
+              "assumptions": {
+                "mass_range_kg": [
+                  0.005,
+                  0.015
+                ],
+                "friction_lower": [
+                  0.3,
+                  0.3
+                ],
+                "normal_uncertainty_rad": 0.15,
+                "max_normal_force_n": [
+                  1.0,
+                  1.0
+                ],
+                "gravity_m_s2": [
+                  0.0,
+                  0.0,
+                  -9.81
+                ],
+                "lift_acceleration_m_s2": [
+                  0.0,
+                  0.0,
+                  0.5
+                ],
+                "horizontal_disturbance_n": 0.02,
+                "torque_disturbance_nm": 0.0001,
+                "com": "assumed at common public geometry reference",
+                "calibration": "mass, friction, normal-force limits and acceleration are declared assumptions, not measurements",
+                "pad_radius_m": [
+                  0.0,
+                  4.125790005531961e-05
+                ],
+                "force_model": "four rim Coulomb sites per finite pad; shared per-pad normal-force sum; no intrinsic torsion",
+                "footprint": "assumed planar contacting footprint within static calibrated pad; not observed contact area",
+                "jacobian": "center-contact Jacobian repeated at rim sites; local kinematic approximation",
+                "effort": "URDF incremental contact effort only; actuator gravity/dynamics reserve unavailable",
+                "uncertainty": "normal bound plus one-contact covariance axes; not a full joint uncertainty certificate"
+              },
+              "input_scope": "public contact geometry, candidate-q Jacobians, static hand limits; no object truth",
+              "ranking_scope": "feasibility gates first; compare common task margin and lateral/torque terms; retain uncertainty caveats"
+            },
+            "robust": {
+              "gravity_feasible": false,
+              "lift_feasible": false,
+              "task_feasible": false,
+              "minimum_task_margin": 0.0,
+              "lateral_margin": 0.0,
+              "torque_margin": 0.0,
+              "margin_scale_cap": 100.0,
+              "reference": [
+                0.002490212408583767,
+                0.004080331471827582,
+                0.01425
+              ],
+              "contact_points": [
+                [
+                  -0.0136349572384,
+                  0.017250833684400006,
+                  0.016
+                ],
+                [
+                  0.001696260436765842,
+                  -0.013785461379720811,
+                  0.018408476798864384
+                ]
+              ],
+              "outward_normals": [
+                [
+                  -0.27472112789737807,
+                  0.9615239476408232,
+                  -0.0
+                ],
+                [
+                  0.2573579818762299,
+                  -0.9662211951142667,
+                  0.013545156940854213
+                ]
+              ],
+              "footprint_points": [
+                [
+                  -0.0136349572384,
+                  0.017250833684400006,
+                  0.016
+                ],
+                [
+                  0.0016961166004180882,
+                  -0.01378492136255556,
+                  0.01844973091392629
+                ],
+                [
+                  0.0016964042731135959,
+                  -0.013786001396886061,
+                  0.01836722268380248
+                ],
+                [
+                  0.001656392521790091,
+                  -0.013796080403803137,
+                  0.018408476798864384
+                ],
+                [
+                  0.001736128351741593,
+                  -0.013774842355638485,
+                  0.018408476798864384
+                ]
+              ],
+              "footprint_contact_groups": [
+                0,
+                1,
+                1,
+                1,
+                1
+              ],
+              "per_load": [
+                {
+                  "name": "force_x+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "force_y+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "force_x-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    -0.02,
+                    -0.0,
+                    -0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "force_y-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    -0.0,
+                    -0.02,
+                    -0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_x+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_y+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_z+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_x-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0001,
+                    -0.0,
+                    -0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_y-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    -0.0001,
+                    -0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_z-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    -0.0,
+                    -0.0001
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                }
+              ],
+              "mass_trials": [
+                {
+                  "mass_kg": 0.005,
+                  "feasible": false,
+                  "minimum_load_scale": 0.0,
+                  "scale_cap": 100.0,
+                  "normalized_residual": null,
+                  "nominal_wrench_rank": 6,
+                  "full_force_closure_certified": false,
+                  "reference": [
+                    0.002490212408583767,
+                    0.004080331471827582,
+                    0.01425
+                  ],
+                  "external_wrenches": [
+                    [
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.02,
+                      -0.0,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.0,
+                      -0.02,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0001,
+                      -0.0,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0001,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0,
+                      -0.0001
+                    ]
+                  ],
+                  "robust_friction": [
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367
+                  ],
+                  "max_normal_force": [
+                    1.0,
+                    1.0
+                  ],
+                  "contact_groups": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "normal_force_scope": "shared sum over footprint sites within each contact group",
+                  "uncertainty_scenarios": 13,
+                  "uncertainty_scope": "one-patch principal-axis scenarios; not joint uncertainty certification",
+                  "solver_statuses": [
+                    2
+                  ],
+                  "worst_witness": {
+                    "scenario": 12,
+                    "reason": "gravity_not_supported",
+                    "external_wrench": null,
+                    "contact_forces": null,
+                    "normal_forces": null
+                  },
+                  "gravity_feasible": false,
+                  "gravity_wrench": [
+                    0.0,
+                    0.0,
+                    -0.051550000000000006,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "gravity_failure_scenarios": [
+                    {
+                      "scenario": 0,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 1,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 2,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 3,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 4,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 5,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 6,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 7,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 8,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 9,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 10,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 11,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 12,
+                      "solver_status": 2
+                    }
+                  ],
+                  "gravity_checks": [
+                    {
+                      "scenario": 0,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 1,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 2,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 3,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 4,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 5,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 6,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 7,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 8,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 9,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 10,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 11,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 12,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    }
+                  ],
+                  "lp_solve_count": 13,
+                  "per_load": [
+                    {
+                      "external_wrench": [
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        -0.02,
+                        -0.0,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        -0.0,
+                        -0.02,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0001,
+                        -0.0,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0001,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0,
+                        -0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    }
+                  ],
+                  "load_semantics": "fixed gravity plus scaled disturbance",
+                  "force_semantics": "hypothetical LP forces at the reported load scale, not measurements",
+                  "effort_semantics": "quasistatic contact effort; hand own gravity/dynamics reserve unavailable"
+                },
+                {
+                  "mass_kg": 0.015,
+                  "feasible": false,
+                  "minimum_load_scale": 0.0,
+                  "scale_cap": 100.0,
+                  "normalized_residual": null,
+                  "nominal_wrench_rank": 6,
+                  "full_force_closure_certified": false,
+                  "reference": [
+                    0.002490212408583767,
+                    0.004080331471827582,
+                    0.01425
+                  ],
+                  "external_wrenches": [
+                    [
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.02,
+                      -0.0,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.0,
+                      -0.02,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0001,
+                      -0.0,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0001,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0,
+                      -0.0001
+                    ]
+                  ],
+                  "robust_friction": [
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367
+                  ],
+                  "max_normal_force": [
+                    1.0,
+                    1.0
+                  ],
+                  "contact_groups": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "normal_force_scope": "shared sum over footprint sites within each contact group",
+                  "uncertainty_scenarios": 13,
+                  "uncertainty_scope": "one-patch principal-axis scenarios; not joint uncertainty certification",
+                  "solver_statuses": [
+                    2
+                  ],
+                  "worst_witness": {
+                    "scenario": 12,
+                    "reason": "gravity_not_supported",
+                    "external_wrench": null,
+                    "contact_forces": null,
+                    "normal_forces": null
+                  },
+                  "gravity_feasible": false,
+                  "gravity_wrench": [
+                    0.0,
+                    0.0,
+                    -0.15465,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "gravity_failure_scenarios": [
+                    {
+                      "scenario": 0,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 1,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 2,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 3,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 4,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 5,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 6,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 7,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 8,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 9,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 10,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 11,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 12,
+                      "solver_status": 2
+                    }
+                  ],
+                  "gravity_checks": [
+                    {
+                      "scenario": 0,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 1,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 2,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 3,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 4,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 5,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 6,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 7,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 8,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 9,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 10,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 11,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 12,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    }
+                  ],
+                  "lp_solve_count": 13,
+                  "per_load": [
+                    {
+                      "external_wrench": [
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        -0.02,
+                        -0.0,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        -0.0,
+                        -0.02,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0001,
+                        -0.0,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0001,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0,
+                        -0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    }
+                  ],
+                  "load_semantics": "fixed gravity plus scaled disturbance",
+                  "force_semantics": "hypothetical LP forces at the reported load scale, not measurements",
+                  "effort_semantics": "quasistatic contact effort; hand own gravity/dynamics reserve unavailable"
+                }
+              ],
+              "assumptions": {
+                "mass_range_kg": [
+                  0.005,
+                  0.015
+                ],
+                "friction_lower": [
+                  0.3,
+                  0.3
+                ],
+                "normal_uncertainty_rad": 0.15,
+                "max_normal_force_n": [
+                  1.0,
+                  1.0
+                ],
+                "gravity_m_s2": [
+                  0.0,
+                  0.0,
+                  -9.81
+                ],
+                "lift_acceleration_m_s2": [
+                  0.0,
+                  0.0,
+                  0.5
+                ],
+                "horizontal_disturbance_n": 0.02,
+                "torque_disturbance_nm": 0.0001,
+                "com": "assumed at common public geometry reference",
+                "calibration": "mass, friction, normal-force limits and acceleration are declared assumptions, not measurements",
+                "pad_radius_m": [
+                  0.0,
+                  4.125790005531961e-05
+                ],
+                "force_model": "four rim Coulomb sites per finite pad; shared per-pad normal-force sum; no intrinsic torsion",
+                "footprint": "assumed planar contacting footprint within static calibrated pad; not observed contact area",
+                "jacobian": "center-contact Jacobian repeated at rim sites; local kinematic approximation",
+                "effort": "URDF incremental contact effort only; actuator gravity/dynamics reserve unavailable",
+                "uncertainty": "normal bound plus one-contact covariance axes; not a full joint uncertainty certificate"
+              },
+              "input_scope": "public contact geometry, candidate-q Jacobians, static hand limits; no object truth",
+              "ranking_scope": "feasibility gates first; compare common task margin and lateral/torque terms; retain uncertainty caveats"
+            },
+            "contact_models": [
+              {
+                "friction_coefficient": 0.3,
+                "normal_force_limit_n": 1.0,
+                "support_radius_m": 0.000250089371,
+                "compliance_m_per_n": null,
+                "source": "explicit conservative simulation assumptions, not hardware measurements",
+                "force_limit_source": "shared task-model cap; URDF effort and Jacobian additionally bound force",
+                "friction_source": "shared planning assumption; environment material is separately configured",
+                "support_radius_source": "13-ray collision-mesh patch disc",
+                "compliance_source": "unknown; online motor tracking is only a contact proxy"
+              },
+              {
+                "friction_coefficient": 0.3,
+                "normal_force_limit_n": 1.0,
+                "support_radius_m": 0.0008791992079999999,
+                "compliance_m_per_n": null,
+                "source": "explicit conservative simulation assumptions, not hardware measurements",
+                "force_limit_source": "shared task-model cap; URDF effort and Jacobian additionally bound force",
+                "friction_source": "shared planning assumption; environment material is separately configured",
+                "support_radius_source": "13-ray collision-mesh patch disc",
+                "compliance_source": "unknown; online motor tracking is only a contact proxy"
+              }
+            ],
+            "position_sigma_m": 0.0015,
+            "classification": "conditional_load_model_not_physical_certificate",
+            "measured_force_available": false
+          }
+        },
+        {
+          "candidate_id": "1-joint-regions-0-broad-0",
+          "contact_count": 2,
+          "step": 2748,
+          "task_quality": {
+            "nominal": {
+              "gravity_feasible": false,
+              "lift_feasible": false,
+              "task_feasible": false,
+              "minimum_task_margin": 0.0,
+              "lateral_margin": 0.0,
+              "torque_margin": 0.0,
+              "margin_scale_cap": 100.0,
+              "reference": [
+                0.002490212408583767,
+                0.004080331471827582,
+                0.01425
+              ],
+              "contact_points": [
+                [
+                  -0.0136349572384,
+                  0.017250833684400006,
+                  0.016
+                ],
+                [
+                  0.001696260436765842,
+                  -0.013785461379720811,
+                  0.018408476798864384
+                ]
+              ],
+              "outward_normals": [
+                [
+                  -0.27472112789737807,
+                  0.9615239476408232,
+                  -0.0
+                ],
+                [
+                  0.2573579818762299,
+                  -0.9662211951142667,
+                  0.013545156940854213
+                ]
+              ],
+              "footprint_points": [
+                [
+                  -0.0136349572384,
+                  0.017250833684400006,
+                  0.016
+                ],
+                [
+                  0.0016961166004180882,
+                  -0.01378492136255556,
+                  0.01844973091392629
+                ],
+                [
+                  0.0016964042731135959,
+                  -0.013786001396886061,
+                  0.01836722268380248
+                ],
+                [
+                  0.001656392521790091,
+                  -0.013796080403803137,
+                  0.018408476798864384
+                ],
+                [
+                  0.001736128351741593,
+                  -0.013774842355638485,
+                  0.018408476798864384
+                ]
+              ],
+              "footprint_contact_groups": [
+                0,
+                1,
+                1,
+                1,
+                1
+              ],
+              "per_load": [
+                {
+                  "name": "force_x+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "force_y+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "force_x-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    -0.02,
+                    -0.0,
+                    -0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "force_y-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    -0.0,
+                    -0.02,
+                    -0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_x+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_y+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_z+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_x-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0001,
+                    -0.0,
+                    -0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_y-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    -0.0001,
+                    -0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                },
+                {
+                  "name": "torque_z-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    -0.0,
+                    -0.0001
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 0
+                }
+              ],
+              "mass_trials": [
+                {
+                  "mass_kg": 0.005,
+                  "feasible": false,
+                  "minimum_load_scale": 0.0,
+                  "scale_cap": 100.0,
+                  "normalized_residual": null,
+                  "nominal_wrench_rank": 6,
+                  "full_force_closure_certified": false,
+                  "reference": [
+                    0.002490212408583767,
+                    0.004080331471827582,
+                    0.01425
+                  ],
+                  "external_wrenches": [
+                    [
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.02,
+                      -0.0,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.0,
+                      -0.02,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0001,
+                      -0.0,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0001,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0,
+                      -0.0001
+                    ]
+                  ],
+                  "robust_friction": [
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367
+                  ],
+                  "max_normal_force": [
+                    1.0,
+                    1.0
+                  ],
+                  "contact_groups": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "normal_force_scope": "shared sum over footprint sites within each contact group",
+                  "uncertainty_scenarios": 1,
+                  "uncertainty_scope": "one-patch principal-axis scenarios; not joint uncertainty certification",
+                  "solver_statuses": [
+                    2
+                  ],
+                  "worst_witness": {
+                    "scenario": 0,
+                    "reason": "gravity_not_supported",
+                    "external_wrench": null,
+                    "contact_forces": null,
+                    "normal_forces": null
+                  },
+                  "gravity_feasible": false,
+                  "gravity_wrench": [
+                    0.0,
+                    0.0,
+                    -0.051550000000000006,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "gravity_failure_scenarios": [
+                    {
+                      "scenario": 0,
+                      "solver_status": 2
+                    }
+                  ],
+                  "gravity_checks": [
+                    {
+                      "scenario": 0,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    }
+                  ],
+                  "lp_solve_count": 1,
+                  "per_load": [
+                    {
+                      "external_wrench": [
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        -0.02,
+                        -0.0,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        -0.0,
+                        -0.02,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0001,
+                        -0.0,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0001,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0,
+                        -0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    }
+                  ],
+                  "load_semantics": "fixed gravity plus scaled disturbance",
+                  "force_semantics": "hypothetical LP forces at the reported load scale, not measurements",
+                  "effort_semantics": "quasistatic contact effort; hand own gravity/dynamics reserve unavailable"
+                },
+                {
+                  "mass_kg": 0.015,
+                  "feasible": false,
+                  "minimum_load_scale": 0.0,
+                  "scale_cap": 100.0,
+                  "normalized_residual": null,
+                  "nominal_wrench_rank": 6,
+                  "full_force_closure_certified": false,
+                  "reference": [
+                    0.002490212408583767,
+                    0.004080331471827582,
+                    0.01425
+                  ],
+                  "external_wrenches": [
+                    [
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.02,
+                      -0.0,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.0,
+                      -0.02,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0001,
+                      -0.0,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0001,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0,
+                      -0.0001
+                    ]
+                  ],
+                  "robust_friction": [
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367
+                  ],
+                  "max_normal_force": [
+                    1.0,
+                    1.0
+                  ],
+                  "contact_groups": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "normal_force_scope": "shared sum over footprint sites within each contact group",
+                  "uncertainty_scenarios": 1,
+                  "uncertainty_scope": "one-patch principal-axis scenarios; not joint uncertainty certification",
+                  "solver_statuses": [
+                    2
+                  ],
+                  "worst_witness": {
+                    "scenario": 0,
+                    "reason": "gravity_not_supported",
+                    "external_wrench": null,
+                    "contact_forces": null,
+                    "normal_forces": null
+                  },
+                  "gravity_feasible": false,
+                  "gravity_wrench": [
+                    0.0,
+                    0.0,
+                    -0.15465,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "gravity_failure_scenarios": [
+                    {
+                      "scenario": 0,
+                      "solver_status": 2
+                    }
+                  ],
+                  "gravity_checks": [
+                    {
+                      "scenario": 0,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    }
+                  ],
+                  "lp_solve_count": 1,
+                  "per_load": [
+                    {
+                      "external_wrench": [
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        -0.02,
+                        -0.0,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        -0.0,
+                        -0.02,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0001,
+                        -0.0,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0001,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0,
+                        -0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 0
+                    }
+                  ],
+                  "load_semantics": "fixed gravity plus scaled disturbance",
+                  "force_semantics": "hypothetical LP forces at the reported load scale, not measurements",
+                  "effort_semantics": "quasistatic contact effort; hand own gravity/dynamics reserve unavailable"
+                }
+              ],
+              "assumptions": {
+                "mass_range_kg": [
+                  0.005,
+                  0.015
+                ],
+                "friction_lower": [
+                  0.3,
+                  0.3
+                ],
+                "normal_uncertainty_rad": 0.15,
+                "max_normal_force_n": [
+                  1.0,
+                  1.0
+                ],
+                "gravity_m_s2": [
+                  0.0,
+                  0.0,
+                  -9.81
+                ],
+                "lift_acceleration_m_s2": [
+                  0.0,
+                  0.0,
+                  0.5
+                ],
+                "horizontal_disturbance_n": 0.02,
+                "torque_disturbance_nm": 0.0001,
+                "com": "assumed at common public geometry reference",
+                "calibration": "mass, friction, normal-force limits and acceleration are declared assumptions, not measurements",
+                "pad_radius_m": [
+                  0.0,
+                  4.125790005531961e-05
+                ],
+                "force_model": "four rim Coulomb sites per finite pad; shared per-pad normal-force sum; no intrinsic torsion",
+                "footprint": "assumed planar contacting footprint within static calibrated pad; not observed contact area",
+                "jacobian": "center-contact Jacobian repeated at rim sites; local kinematic approximation",
+                "effort": "URDF incremental contact effort only; actuator gravity/dynamics reserve unavailable",
+                "uncertainty": "normal bound plus one-contact covariance axes; not a full joint uncertainty certificate"
+              },
+              "input_scope": "public contact geometry, candidate-q Jacobians, static hand limits; no object truth",
+              "ranking_scope": "feasibility gates first; compare common task margin and lateral/torque terms; retain uncertainty caveats"
+            },
+            "robust": {
+              "gravity_feasible": false,
+              "lift_feasible": false,
+              "task_feasible": false,
+              "minimum_task_margin": 0.0,
+              "lateral_margin": 0.0,
+              "torque_margin": 0.0,
+              "margin_scale_cap": 100.0,
+              "reference": [
+                0.002490212408583767,
+                0.004080331471827582,
+                0.01425
+              ],
+              "contact_points": [
+                [
+                  -0.0136349572384,
+                  0.017250833684400006,
+                  0.016
+                ],
+                [
+                  0.001696260436765842,
+                  -0.013785461379720811,
+                  0.018408476798864384
+                ]
+              ],
+              "outward_normals": [
+                [
+                  -0.27472112789737807,
+                  0.9615239476408232,
+                  -0.0
+                ],
+                [
+                  0.2573579818762299,
+                  -0.9662211951142667,
+                  0.013545156940854213
+                ]
+              ],
+              "footprint_points": [
+                [
+                  -0.0136349572384,
+                  0.017250833684400006,
+                  0.016
+                ],
+                [
+                  0.0016961166004180882,
+                  -0.01378492136255556,
+                  0.01844973091392629
+                ],
+                [
+                  0.0016964042731135959,
+                  -0.013786001396886061,
+                  0.01836722268380248
+                ],
+                [
+                  0.001656392521790091,
+                  -0.013796080403803137,
+                  0.018408476798864384
+                ],
+                [
+                  0.001736128351741593,
+                  -0.013774842355638485,
+                  0.018408476798864384
+                ]
+              ],
+              "footprint_contact_groups": [
+                0,
+                1,
+                1,
+                1,
+                1
+              ],
+              "per_load": [
+                {
+                  "name": "force_x+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "force_y+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "force_x-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    -0.02,
+                    -0.0,
+                    -0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "force_y-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    -0.0,
+                    -0.02,
+                    -0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_x+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001,
+                    0.0,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_y+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001,
+                    0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_z+",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0001
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_x-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0001,
+                    -0.0,
+                    -0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_y-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    -0.0001,
+                    -0.0
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                },
+                {
+                  "name": "torque_z-",
+                  "mass_kg": 0.005,
+                  "external_wrench": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0,
+                    -0.0,
+                    -0.0001
+                  ],
+                  "minimum_load_scale": 0.0,
+                  "scenario": 12
+                }
+              ],
+              "mass_trials": [
+                {
+                  "mass_kg": 0.005,
+                  "feasible": false,
+                  "minimum_load_scale": 0.0,
+                  "scale_cap": 100.0,
+                  "normalized_residual": null,
+                  "nominal_wrench_rank": 6,
+                  "full_force_closure_certified": false,
+                  "reference": [
+                    0.002490212408583767,
+                    0.004080331471827582,
+                    0.01425
+                  ],
+                  "external_wrenches": [
+                    [
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.02,
+                      -0.0,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.0,
+                      -0.02,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0001,
+                      -0.0,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0001,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0,
+                      -0.0001
+                    ]
+                  ],
+                  "robust_friction": [
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367
+                  ],
+                  "max_normal_force": [
+                    1.0,
+                    1.0
+                  ],
+                  "contact_groups": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "normal_force_scope": "shared sum over footprint sites within each contact group",
+                  "uncertainty_scenarios": 13,
+                  "uncertainty_scope": "one-patch principal-axis scenarios; not joint uncertainty certification",
+                  "solver_statuses": [
+                    2
+                  ],
+                  "worst_witness": {
+                    "scenario": 12,
+                    "reason": "gravity_not_supported",
+                    "external_wrench": null,
+                    "contact_forces": null,
+                    "normal_forces": null
+                  },
+                  "gravity_feasible": false,
+                  "gravity_wrench": [
+                    0.0,
+                    0.0,
+                    -0.051550000000000006,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "gravity_failure_scenarios": [
+                    {
+                      "scenario": 0,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 1,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 2,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 3,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 4,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 5,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 6,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 7,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 8,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 9,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 10,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 11,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 12,
+                      "solver_status": 2
+                    }
+                  ],
+                  "gravity_checks": [
+                    {
+                      "scenario": 0,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 1,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 2,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 3,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 4,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 5,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 6,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 7,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 8,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 9,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 10,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 11,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 12,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    }
+                  ],
+                  "lp_solve_count": 13,
+                  "per_load": [
+                    {
+                      "external_wrench": [
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        -0.02,
+                        -0.0,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        -0.0,
+                        -0.02,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0001,
+                        -0.0,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0001,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0,
+                        -0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    }
+                  ],
+                  "load_semantics": "fixed gravity plus scaled disturbance",
+                  "force_semantics": "hypothetical LP forces at the reported load scale, not measurements",
+                  "effort_semantics": "quasistatic contact effort; hand own gravity/dynamics reserve unavailable"
+                },
+                {
+                  "mass_kg": 0.015,
+                  "feasible": false,
+                  "minimum_load_scale": 0.0,
+                  "scale_cap": 100.0,
+                  "normalized_residual": null,
+                  "nominal_wrench_rank": 6,
+                  "full_force_closure_certified": false,
+                  "reference": [
+                    0.002490212408583767,
+                    0.004080331471827582,
+                    0.01425
+                  ],
+                  "external_wrenches": [
+                    [
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.02,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.02,
+                      -0.0,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      -0.0,
+                      -0.02,
+                      -0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001,
+                      0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0001
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0001,
+                      -0.0,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0001,
+                      -0.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      -0.0,
+                      -0.0,
+                      -0.0001
+                    ]
+                  ],
+                  "robust_friction": [
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367,
+                    0.14240792605446367
+                  ],
+                  "max_normal_force": [
+                    1.0,
+                    1.0
+                  ],
+                  "contact_groups": [
+                    0,
+                    1,
+                    1,
+                    1,
+                    1
+                  ],
+                  "normal_force_scope": "shared sum over footprint sites within each contact group",
+                  "uncertainty_scenarios": 13,
+                  "uncertainty_scope": "one-patch principal-axis scenarios; not joint uncertainty certification",
+                  "solver_statuses": [
+                    2
+                  ],
+                  "worst_witness": {
+                    "scenario": 12,
+                    "reason": "gravity_not_supported",
+                    "external_wrench": null,
+                    "contact_forces": null,
+                    "normal_forces": null
+                  },
+                  "gravity_feasible": false,
+                  "gravity_wrench": [
+                    0.0,
+                    0.0,
+                    -0.15465,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "gravity_failure_scenarios": [
+                    {
+                      "scenario": 0,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 1,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 2,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 3,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 4,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 5,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 6,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 7,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 8,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 9,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 10,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 11,
+                      "solver_status": 2
+                    },
+                    {
+                      "scenario": 12,
+                      "solver_status": 2
+                    }
+                  ],
+                  "gravity_checks": [
+                    {
+                      "scenario": 0,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 1,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 2,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 3,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 4,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 5,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 6,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 7,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 8,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 9,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 10,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 11,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    },
+                    {
+                      "scenario": 12,
+                      "feasible": false,
+                      "solver_status": 2,
+                      "contact_forces": null
+                    }
+                  ],
+                  "lp_solve_count": 13,
+                  "per_load": [
+                    {
+                      "external_wrench": [
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.02,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        -0.02,
+                        -0.0,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        -0.0,
+                        -0.02,
+                        -0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001,
+                        0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0001,
+                        -0.0,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0001,
+                        -0.0
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    },
+                    {
+                      "external_wrench": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        -0.0,
+                        -0.0,
+                        -0.0001
+                      ],
+                      "minimum_load_scale": 0.0,
+                      "scenario": 12
+                    }
+                  ],
+                  "load_semantics": "fixed gravity plus scaled disturbance",
+                  "force_semantics": "hypothetical LP forces at the reported load scale, not measurements",
+                  "effort_semantics": "quasistatic contact effort; hand own gravity/dynamics reserve unavailable"
+                }
+              ],
+              "assumptions": {
+                "mass_range_kg": [
+                  0.005,
+                  0.015
+                ],
+                "friction_lower": [
+                  0.3,
+                  0.3
+                ],
+                "normal_uncertainty_rad": 0.15,
+                "max_normal_force_n": [
+                  1.0,
+                  1.0
+                ],
+                "gravity_m_s2": [
+                  0.0,
+                  0.0,
+                  -9.81
+                ],
+                "lift_acceleration_m_s2": [
+                  0.0,
+                  0.0,
+                  0.5
+                ],
+                "horizontal_disturbance_n": 0.02,
+                "torque_disturbance_nm": 0.0001,
+                "com": "assumed at common public geometry reference",
+                "calibration": "mass, friction, normal-force limits and acceleration are declared assumptions, not measurements",
+                "pad_radius_m": [
+                  0.0,
+                  4.125790005531961e-05
+                ],
+                "force_model": "four rim Coulomb sites per finite pad; shared per-pad normal-force sum; no intrinsic torsion",
+                "footprint": "assumed planar contacting footprint within static calibrated pad; not observed contact area",
+                "jacobian": "center-contact Jacobian repeated at rim sites; local kinematic approximation",
+                "effort": "URDF incremental contact effort only; actuator gravity/dynamics reserve unavailable",
+                "uncertainty": "normal bound plus one-contact covariance axes; not a full joint uncertainty certificate"
+              },
+              "input_scope": "public contact geometry, candidate-q Jacobians, static hand limits; no object truth",
+              "ranking_scope": "feasibility gates first; compare common task margin and lateral/torque terms; retain uncertainty caveats"
+            },
+            "contact_models": [
+              {
+                "friction_coefficient": 0.3,
+                "normal_force_limit_n": 1.0,
+                "support_radius_m": 0.000250089371,
+                "compliance_m_per_n": null,
+                "source": "explicit conservative simulation assumptions, not hardware measurements",
+                "force_limit_source": "shared task-model cap; URDF effort and Jacobian additionally bound force",
+                "friction_source": "shared planning assumption; environment material is separately configured",
+                "support_radius_source": "13-ray collision-mesh patch disc",
+                "compliance_source": "unknown; online motor tracking is only a contact proxy"
+              },
+              {
+                "friction_coefficient": 0.3,
+                "normal_force_limit_n": 1.0,
+                "support_radius_m": 0.0008791992079999999,
+                "compliance_m_per_n": null,
+                "source": "explicit conservative simulation assumptions, not hardware measurements",
+                "force_limit_source": "shared task-model cap; URDF effort and Jacobian additionally bound force",
+                "friction_source": "shared planning assumption; environment material is separately configured",
+                "support_radius_source": "13-ray collision-mesh patch disc",
+                "compliance_source": "unknown; online motor tracking is only a contact proxy"
+              }
+            ],
+            "position_sigma_m": 0.0015,
+            "classification": "conditional_load_model_not_physical_certificate",
+            "measured_force_available": false
+          }
+        }
+      ],
+      "max_object_lift_m": 0.0003492860123515129,
+      "planning": [
+        {
+          "attempt": 1,
+          "step": 2748,
+          "accepted": 5,
+          "first_rejections": [
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_normal",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_normal",
+            "per_finger_normal",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_normal",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position"
+          ]
+        },
+        {
+          "attempt": 2,
+          "step": 14598,
+          "accepted": 0,
+          "first_rejections": [
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_normal",
+            "per_finger_position",
+            "per_finger_position",
+            "per_finger_normal",
+            "per_finger_position"
+          ]
+        }
+      ],
+      "closure_actions": [
+        {
+          "round": 0,
+          "step": 5706,
+          "reason": "fixed_schedule",
+          "squeeze_m": [
+            0.00075,
+            0.00075
+          ]
+        },
+        {
+          "round": 1,
+          "step": 5754,
+          "reason": "bounded_motor_probe_with_whole_object_association",
+          "squeeze_m": [
+            0.0011,
+            0.0010430664026666665
+          ]
+        },
+        {
+          "round": 2,
+          "step": 5802,
+          "reason": "bounded_motor_probe_with_whole_object_association",
+          "squeeze_m": [
+            0.0014500000000000001,
+            0.0013361328053333333
+          ]
+        },
+        {
+          "round": 3,
+          "step": 5886,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0017000000000000001,
+            0.001629199208
+          ]
+        },
+        {
+          "round": 4,
+          "step": 6042,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 5,
+          "step": 6126,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 6,
+          "step": 6210,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 7,
+          "step": 6294,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 8,
+          "step": 6378,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 9,
+          "step": 6462,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 10,
+          "step": 6546,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 11,
+          "step": 6630,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 12,
+          "step": 6714,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 13,
+          "step": 6798,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        },
+        {
+          "round": 14,
+          "step": 6882,
+          "reason": "bounded_probe_with_tracked_unsettled_motor",
+          "squeeze_m": [
+            0.0018000000000000002,
+            0.0019222656106666668
+          ]
+        }
+      ],
+      "live_surface_updates": [
+        {
+          "material": false,
+          "extent_change_m": 0.0,
+          "visual_target_change_m": [
+            3.469446951953614e-18,
+            4.336808689942018e-19
+          ],
+          "visual_normal_change_rad": [
+            0.0,
+            1.2470153175232742e-05
+          ],
+          "previous_targets_m": [
+            [
+              -0.0136349572384,
+              0.017250833684400006,
+              0.016
+            ],
+            [
+              0.001696260436765842,
+              -0.013785461379720811,
+              0.018408476798864384
+            ]
+          ],
+          "updated_targets_m": [
+            [
+              -0.0136349572384,
+              0.017250833684400002,
+              0.016
+            ],
+            [
+              0.0016962604367658425,
+              -0.013785461379720811,
+              0.018408476798864384
+            ]
+          ],
+          "previous_normals": [
+            [
+              -0.274721128,
+              0.961523948,
+              -0.0
+            ],
+            [
+              0.257357982,
+              -0.966221195,
+              0.013545157
+            ]
+          ],
+          "updated_normals": [
+            [
+              -0.27472112789737807,
+              0.9615239476408232,
+              0.0
+            ],
+            [
+              0.2573579818762299,
+              -0.9662211951142667,
+              0.013545156940854213
+            ]
+          ],
+          "ik_target_error_m": [
+            0.0005566655514973641,
+            0.00024373215906840155
+          ],
+          "command_actual_joint_error": [
+            6.717832963520909e-08,
+            -1.7853311259918847e-09,
+            -9.037848743009835e-06,
+            2.784224179985806e-06,
+            -4.805846620437038e-06,
+            -4.59416250642164e-06,
+            -2.909775434532108e-05,
+            -6.186014851361499e-06,
+            3.999233988949413e-05,
+            -4.488182660765394e-07,
+            -4.294646827035509e-05,
+            -1.82037910848587e-05,
+            8.216188762698307e-05,
+            -2.846809046919141e-05,
+            2.7762106419970678e-05,
+            -1.9636249261600902e-05,
+            3.534061908727626e-05,
+            2.5929069519037284e-05,
+            2.5363869287975405e-05,
+            -9.373819733343725e-06,
+            5.548727469717463e-06,
+            -3.5507202147400108e-06,
+            1.714916229256236e-05,
+            4.374384880101445e-06,
+            2.6472115516651407e-05,
+            -2.2211074829359134e-07
+          ],
+          "thresholds": {
+            "position_m": 0.0008,
+            "normal_rad": 0.15
+          },
+          "source": "fresh public RGB selected facets; independent of whole-object center displacement"
+        },
+        {
+          "material": false,
+          "extent_change_m": 0.0,
+          "visual_target_change_m": [
+            3.469446951953614e-18,
+            4.336808689942018e-19
+          ],
+          "visual_normal_change_rad": [
+            0.0,
+            1.2470153175232742e-05
+          ],
+          "previous_targets_m": [
+            [
+              -0.0136349572384,
+              0.017250833684400006,
+              0.016
+            ],
+            [
+              0.001696260436765842,
+              -0.013785461379720811,
+              0.018408476798864384
+            ]
+          ],
+          "updated_targets_m": [
+            [
+              -0.0136349572384,
+              0.017250833684400002,
+              0.016
+            ],
+            [
+              0.0016962604367658425,
+              -0.013785461379720811,
+              0.018408476798864384
+            ]
+          ],
+          "previous_normals": [
+            [
+              -0.274721128,
+              0.961523948,
+              -0.0
+            ],
+            [
+              0.257357982,
+              -0.966221195,
+              0.013545157
+            ]
+          ],
+          "updated_normals": [
+            [
+              -0.2747211278973781,
+              0.9615239476408233,
+              0.0
+            ],
+            [
+              0.2573579818762299,
+              -0.9662211951142667,
+              0.013545156940854213
+            ]
+          ],
+          "ik_target_error_m": [
+            0.0005566655514973641,
+            0.00024373215906840155
+          ],
+          "command_actual_joint_error": [
+            1.4540942590290928e-07,
+            -3.415145631568972e-09,
+            -0.00012776352985727213,
+            -3.1521734833450665e-07,
+            -9.663625169631374e-06,
+            7.80360360685961e-06,
+            -2.716805397071781e-05,
+            -3.831631382733569e-06,
+            3.656507281490917e-05,
+            -5.680275556273207e-07,
+            -4.068149176889024e-05,
+            -1.686268657741241e-05,
+            7.664845798525943e-05,
+            -2.9779392654250003e-05,
+            2.6808432103564428e-05,
+            -1.7266964631779125e-05,
+            3.2390189170894423e-05,
+            2.277002334594158e-05,
+            1.4992661097057436e-05,
+            -9.165203476629857e-06,
+            -6.968247933114569e-06,
+            6.820487976177958e-06,
+            1.732797622688853e-05,
+            4.583001136815312e-06,
+            2.404322624205424e-05,
+            -5.573868751551636e-07
+          ],
+          "thresholds": {
+            "position_m": 0.0008,
+            "normal_rad": 0.15
+          },
+          "source": "fresh public RGB selected facets; independent of whole-object center displacement"
+        },
+        {
+          "material": false,
+          "extent_change_m": 2.5422691009719085e-05,
+          "visual_target_change_m": [
+            3.469446951953614e-18,
+            4.336808689942018e-19
+          ],
+          "visual_normal_change_rad": [
+            0.0,
+            1.2470153175232742e-05
+          ],
+          "previous_targets_m": [
+            [
+              -0.0136349572384,
+              0.017250833684400006,
+              0.016
+            ],
+            [
+              0.001696260436765842,
+              -0.013785461379720811,
+              0.018408476798864384
+            ]
+          ],
+          "updated_targets_m": [
+            [
+              -0.0136349572384,
+              0.017250833684400002,
+              0.016
+            ],
+            [
+              0.0016962604367658425,
+              -0.013785461379720811,
+              0.018408476798864384
+            ]
+          ],
+          "previous_normals": [
+            [
+              -0.274721128,
+              0.961523948,
+              -0.0
+            ],
+            [
+              0.257357982,
+              -0.966221195,
+              0.013545157
+            ]
+          ],
+          "updated_normals": [
+            [
+              -0.2747211278973781,
+              0.9615239476408233,
+              0.0
+            ],
+            [
+              0.2573579818762299,
+              -0.9662211951142667,
+              0.013545156940854213
+            ]
+          ],
+          "ik_target_error_m": [
+            0.0005566655514973641,
+            0.00024373215906840155
+          ],
+          "command_actual_joint_error": [
+            1.4540942590290928e-07,
+            1.2414672415084205e-09,
+            -4.90843895295523e-06,
+            -9.112637960884129e-07,
+            -2.004428315993678e-06,
+            1.0426207976976798e-05,
+            -7.468718872451208e-06,
+            1.0227517244221218e-07,
+            9.117133895841789e-06,
+            -1.8804794518420542e-07,
+            -1.1370907700591903e-05,
+            -6.461676064106747e-06,
+            2.1320446472503085e-05,
+            -1.1540371352980472e-05,
+            9.642294408251928e-06,
+            -4.288053231937816e-06,
+            9.189081192073623e-06,
+            7.928466796869316e-06,
+            -5.045465445441266e-07,
+            -3.3835529334169667e-06,
+            -6.968247933114569e-06,
+            6.820487976177958e-06,
+            7.135581970296734e-06,
+            1.7070770264027146e-06,
+            6.653571128834024e-06,
+            -5.573868751551636e-07
+          ],
+          "thresholds": {
+            "position_m": 0.0008,
+            "normal_rad": 0.15
+          },
+          "source": "fresh public RGB selected facets; independent of whole-object center displacement"
+        }
+      ],
+      "local_repairs": [],
+      "budget": {
+        "actual_host_elapsed_s": 968.2133373483084,
+        "argv": [
+          "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+          "--session",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji",
+          "--case-file",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/wedge_28.json",
+          "--robot-urdf",
+          "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf",
+          "--controller",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py",
+          "--evaluation-mode",
+          "inline",
+          "--mode",
+          "minimal",
+          "--fingers",
+          "auto",
+          "--max-attempts",
+          "3",
+          "--no-preload",
+          "--phase",
+          "explore",
+          "--profile",
+          "fast",
+          "--color-mode",
+          "hs",
+          "--light-multiplier",
+          "1.0",
+          "--registry-manifest",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/objects.json"
+        ],
+        "cleanup_elapsed_s": 0.014672251883894205,
+        "cleanup_grace_s": 5.0,
+        "cpu_budget_note": "Worker existing per-process RLIMIT_CPU; not aggregate simulator/tree CPU",
+        "cwd": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj",
+        "deadline_start_semantics": "monotonic immediately before Popen; includes runner preparation",
+        "ended_utc": "2026-11-28T02:39:16Z",
+        "environment": {
+          "CUDA_VISIBLE_DEVICES": null,
+          "MKL_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "PYTHONDONTWRITEBYTECODE": null
+        },
+        "interrupted_signal": null,
+        "leader_pid": 2884826,
+        "leftover_descendants": [],
+        "ownership": "Linux child subreaper, ancestry, PID plus creation time; no process-group signals",
+        "planned_host_budget_s": 1800.0,
+        "processes": [
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py",
+              "--session",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji",
+              "--case-file",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/wedge_28.json",
+              "--robot-urdf",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf",
+              "--controller",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py",
+              "--evaluation-mode",
+              "inline",
+              "--mode",
+              "minimal",
+              "--fingers",
+              "auto",
+              "--max-attempts",
+              "3",
+              "--no-preload",
+              "--phase",
+              "explore",
+              "--profile",
+              "fast",
+              "--color-mode",
+              "hs",
+              "--light-multiplier",
+              "1.0",
+              "--registry-manifest",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/objects.json"
+            ],
+            "cpu_system_s": 0.17,
+            "cpu_user_s": 3.02,
+            "create_time": 1795832587.63,
+            "exit_code": 0,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2884826,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_episode.py",
+              "--session",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji",
+              "--name",
+              "episode",
+              "--max-episodes",
+              "1",
+              "--phase",
+              "explore",
+              "--controller",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py",
+              "--case-json",
+              "{\"object_id\": \"d107_wedge_28\", \"dx\": 0.003, \"dy\": 0.004, \"yaw\": 0.25, \"mass_kg\": 0.007, \"friction\": 0.82, \"noise_seed\": 21073, \"rgb_noise_std\": 0}"
+            ],
+            "cpu_system_s": 19.08,
+            "cpu_user_s": 26.44,
+            "create_time": 1795832590.8,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2884917,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_backend.py",
+              "--output",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode",
+              "--case-json",
+              "{\"object_id\": \"d107_wedge_28\", \"dx\": 0.003, \"dy\": 0.004, \"yaw\": 0.25, \"mass_kg\": 0.007, \"friction\": 0.82, \"noise_seed\": 21073, \"rgb_noise_std\": 0}"
+            ],
+            "cpu_system_s": 462.89,
+            "cpu_user_s": 569.94,
+            "create_time": 1795832591.54,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2884918,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_backend.py",
+              "--output",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode",
+              "--case-json",
+              "{\"object_id\": \"d107_wedge_28\", \"dx\": 0.003, \"dy\": 0.004, \"yaw\": 0.25, \"mass_kg\": 0.007, \"friction\": 0.82, \"noise_seed\": 21073, \"rgb_noise_std\": 0}"
+            ],
+            "cpu_system_s": 0.12,
+            "cpu_user_s": 0.04,
+            "create_time": 1795832592.54,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2884975,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/stage16_backend.py",
+              "--output",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode",
+              "--case-json",
+              "{\"object_id\": \"d107_wedge_28\", \"dx\": 0.003, \"dy\": 0.004, \"yaw\": 0.25, \"mass_kg\": 0.007, \"friction\": 0.82, \"noise_seed\": 21073, \"rgb_noise_std\": 0}"
+            ],
+            "cpu_system_s": 0.12,
+            "cpu_user_s": 0.03,
+            "create_time": 1795832593.35,
+            "exit_code": 0,
+            "exit_signal": null,
+            "is_policy_worker": false,
+            "pid": 2885050,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "bwrap",
+              "--unshare-all",
+              "--die-with-parent",
+              "--new-session",
+              "--clearenv",
+              "--proc",
+              "/proc",
+              "--dev",
+              "/dev",
+              "--tmpfs",
+              "/tmp",
+              "--ro-bind",
+              "/usr",
+              "/usr",
+              "--ro-bind",
+              "/bin",
+              "/bin",
+              "--ro-bind",
+              "/lib",
+              "/lib",
+              "--ro-bind",
+              "/lib64",
+              "/lib64",
+              "--ro-bind",
+              "/etc",
+              "/etc",
+              "--ro-bind",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/xhand3camFE_left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/hand_model",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/hand_model",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/wuji-description/hand/body-with-soft/meshes/left",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/wuji-description/hand/body-with-soft/meshes/left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/fingereye_mesh",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/fingereye_mesh",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/program",
+              "/workspace",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/public",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/public",
+              "--dir",
+              "/output",
+              "--chdir",
+              "/workspace",
+              "--setenv",
+              "PATH",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin:/usr/bin:/bin",
+              "--setenv",
+              "HOME",
+              "/tmp",
+              "--setenv",
+              "OMP_NUM_THREADS",
+              "1",
+              "--setenv",
+              "MKL_NUM_THREADS",
+              "1",
+              "--setenv",
+              "OPENBLAS_NUM_THREADS",
+              "1",
+              "--setenv",
+              "PYTHONUNBUFFERED",
+              "1",
+              "--setenv",
+              "PYTHONDONTWRITEBYTECODE",
+              "1",
+              "--setenv",
+              "CUDA_VISIBLE_DEVICES",
+              "",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/workspace/worker.py",
+              "/workspace/controller.py"
+            ],
+            "cpu_system_s": 0.0,
+            "cpu_user_s": 0.0,
+            "create_time": 1795832610.09,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": true,
+            "pid": 2885578,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "bwrap",
+              "--unshare-all",
+              "--die-with-parent",
+              "--new-session",
+              "--clearenv",
+              "--proc",
+              "/proc",
+              "--dev",
+              "/dev",
+              "--tmpfs",
+              "/tmp",
+              "--ro-bind",
+              "/usr",
+              "/usr",
+              "--ro-bind",
+              "/bin",
+              "/bin",
+              "--ro-bind",
+              "/lib",
+              "/lib",
+              "--ro-bind",
+              "/lib64",
+              "/lib64",
+              "--ro-bind",
+              "/etc",
+              "/etc",
+              "--ro-bind",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/assets/xhand3camFE_left",
+              "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/assets/xhand3camFE_left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/hand_model",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/hand_model",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/wuji-description/hand/body-with-soft/meshes/left",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/wuji-description/hand/body-with-soft/meshes/left",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/fingereye_mesh",
+              "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/fingereye_mesh",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/program",
+              "/workspace",
+              "--ro-bind",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/public",
+              "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal_v2/wedge_28_wuji/episode/public",
+              "--dir",
+              "/output",
+              "--chdir",
+              "/workspace",
+              "--setenv",
+              "PATH",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin:/usr/bin:/bin",
+              "--setenv",
+              "HOME",
+              "/tmp",
+              "--setenv",
+              "OMP_NUM_THREADS",
+              "1",
+              "--setenv",
+              "MKL_NUM_THREADS",
+              "1",
+              "--setenv",
+              "OPENBLAS_NUM_THREADS",
+              "1",
+              "--setenv",
+              "PYTHONUNBUFFERED",
+              "1",
+              "--setenv",
+              "PYTHONDONTWRITEBYTECODE",
+              "1",
+              "--setenv",
+              "CUDA_VISIBLE_DEVICES",
+              "",
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/workspace/worker.py",
+              "/workspace/controller.py"
+            ],
+            "cpu_system_s": 0.0,
+            "cpu_user_s": 0.0,
+            "create_time": 1795832610.09,
+            "exit_code": -9,
+            "exit_signal": 9,
+            "is_policy_worker": true,
+            "pid": 2885580,
+            "rlimit_cpu_soft_hard": [
+              -1,
+              -1
+            ]
+          },
+          {
+            "command": [
+              "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python",
+              "/workspace/worker.py",
+              "/workspace/controller.py"
+            ],
+            "cpu_system_s": 13.31,
+            "cpu_user_s": 467.24,
+            "create_time": 1795832610.1,
+            "exit_code": null,
+            "exit_signal": null,
+            "is_policy_worker": true,
+            "pid": 2885581,
+            "rlimit_cpu_soft_hard": [
+              600,
+              600
+            ]
+          }
+        ],
+        "return_code": 0,
+        "run_id": "98d9bd368ead400084efefdd0b5fc631",
+        "schema": "fingereye.round2.budget.v1",
+        "source_fingerprint_after": {
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py": "24da7b97f10e5fff767652e2df23367c03468fd3ed18610acdcc8a237303efa6",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/objects.json": "247f2b7376ac09ea4c1a6d0368bf2bdf5c8f31246e138c4f543479468ee8b18c",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/wedge_28.json": "2cf0244b642b4d0c54ad1a52f4fe1891d8bb18f979cb84debf14074d3e01a5f5",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/round2_evidence/budget_run.py": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py": "4b5def5e5b46abb40dab46db35838074ff4f7a3f4696145aadcbd3c2431c8e07",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/worker.py": "1c6b53cbc7200c6e596b39b08eea8b587ae905ead266d47c479520d70143e466",
+          "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf": "a0f56ab44949139375b3a6fbd7dda37359915d64e78fe54e0ce69670fa0ac9d6",
+          "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python3.11": "bb8ce30000f2342310fe7f0524d0d44cc868f6019b7e35745c52cbd3304250b1"
+        },
+        "source_fingerprint_before": {
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/evidence/d111/broad_pair_controller.py": "24da7b97f10e5fff767652e2df23367c03468fd3ed18610acdcc8a237303efa6",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/objects.json": "247f2b7376ac09ea4c1a6d0368bf2bdf5c8f31246e138c4f543479468ee8b18c",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/fixtures/wuji_first/wedge_28.json": "2cf0244b642b4d0c54ad1a52f4fe1891d8bb18f979cb84debf14074d3e01a5f5",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/round2_evidence/budget_run.py": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/run_stage17.py": "4b5def5e5b46abb40dab46db35838074ff4f7a3f4696145aadcbd3c2431c8e07",
+          "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/worker.py": "1c6b53cbc7200c6e596b39b08eea8b587ae905ead266d47c479520d70143e466",
+          "/home/CNS2025331827/docs/for_feixin/models/wuji_left/xarm7_wuji_left_description/wuji_left_w_fingereye_6dof_floating_joint.urdf": "a0f56ab44949139375b3a6fbd7dda37359915d64e78fe54e0ce69670fa0ac9d6",
+          "/home/CNS2025331827/miniconda3/envs/isaaclab/bin/python3.11": "bb8ce30000f2342310fe7f0524d0d44cc868f6019b7e35745c52cbd3304250b1"
+        },
+        "source_unchanged": true,
+        "started_utc": "2026-11-28T02:23:08Z",
+        "status": "completed",
+        "supervisor_sha256": "ee7d2db78723fb28c7880380ffb1c124c2b1d2b4633898f292136261f8aefcc1",
+        "timeout_triggered": false
+      }
+    }
+  ]
+}

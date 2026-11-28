@@ -1,0 +1,597 @@
+{
+  "offline_only": true,
+  "exposure_step": 5934,
+  "actual_q": [
+    0.08850804716348648,
+    -0.0680798888206482,
+    0.22896325588226318,
+    -0.5436768531799316,
+    0.37646862864494324,
+    -3.0785248279571533,
+    0.07255962491035461,
+    0.21547310054302216,
+    0.6120599508285522,
+    0.0913458913564682,
+    1.7009189128875732,
+    0.8608603477478027,
+    1.0026744604110718,
+    -0.011242387816309929,
+    0.34688600897789,
+    -0.8086642026901245,
+    -0.14346955716609955
+  ],
+  "last_command_q": [
+    0.08851046860218048,
+    -0.06808122247457504,
+    0.22896155714988708,
+    -0.5436718463897705,
+    0.37646791338920593,
+    -3.078512191772461,
+    0.07307473570108414,
+    0.21288177371025085,
+    0.6096374988555908,
+    0.08978847414255142,
+    1.7009501457214355,
+    0.8608293533325195,
+    1.0026828050613403,
+    -0.011573992669582367,
+    0.34469500184059143,
+    -0.8066839575767517,
+    -0.1427263468503952
+  ],
+  "rejected_target_q": [
+    0.08878169677789102,
+    -0.06812937674812848,
+    0.22826584434622338,
+    -0.5436718652351691,
+    0.37646790829222554,
+    -3.078512252036717,
+    0.08121214720040067,
+    0.20619434581162932,
+    0.6095894817511147,
+    0.08962120770593132,
+    1.7009501430124747,
+    0.8608293272686056,
+    1.0026828459638482,
+    -0.01758764161975636,
+    0.3389218117816706,
+    -0.8135083007937699,
+    -0.1338644144985552
+  ],
+  "original_audit": {
+    "passed": false,
+    "audit_complete": false,
+    "total_nodes": 4,
+    "checked_nodes": 1,
+    "first_rejection": {
+      "node": 0,
+      "phase": "s5_preload_adjust",
+      "steps": 6,
+      "object_guard_enabled": false,
+      "commanded_q": [
+        0.08853854527674791,
+        -0.06808620970529454,
+        0.22888914166641794,
+        -0.5436718652351691,
+        0.37646790829222554,
+        -3.078512252036717,
+        0.07391708758994109,
+        0.21218952469377675,
+        0.6096325049926283,
+        0.0897711565197528,
+        1.7009501430124747,
+        0.8608293272686056,
+        1.0026828459638482,
+        -0.012196499173436954,
+        0.3440973784443548,
+        -0.8073903812451425,
+        -0.14180899277130837
+      ],
+      "gate": "clearance_collision",
+      "geometry": {
+        "table_clearance_m": 0.0012349003793210023,
+        "table_clearance_link": "Empty_Link10",
+        "thresholds": {
+          "table_clearance_m": 0.00065,
+          "self_overlap_m": 0.0,
+          "object_overlap_m": 0.0
+        },
+        "self_collisions": [
+          [
+            "Empty_Link4",
+            "Empty_Link7"
+          ]
+        ],
+        "object_collisions": [],
+        "passed": false,
+        "clearance_witnesses": [
+          {
+            "kind": "table",
+            "links": [
+              "Empty_Link10",
+              "table"
+            ],
+            "clearance_m": 0.0012349003793210023,
+            "threshold_m": 0.00065,
+            "passed": true,
+            "measurement": "transformed full collision-mesh minimum z"
+          },
+          {
+            "kind": "self_collision",
+            "links": [
+              "Empty_Link4",
+              "Empty_Link7"
+            ],
+            "clearance_m": -0.00016963824592029775,
+            "threshold_m": 0.0,
+            "passed": false,
+            "exact_mesh_overlap": true,
+            "contacts_returned": 30,
+            "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+          }
+        ],
+        "first_failed_guard": {
+          "kind": "self_collision",
+          "links": [
+            "Empty_Link4",
+            "Empty_Link7"
+          ],
+          "clearance_m": -0.00016963824592029775,
+          "threshold_m": 0.0,
+          "passed": false,
+          "exact_mesh_overlap": true,
+          "contacts_returned": 30,
+          "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+        }
+      }
+    },
+    "failed_path_nodes": [
+      0
+    ],
+    "min_table_clearance_m": 0.0012349003793210023,
+    "commanded_peak_translation_m_s": 0.0014394230052422463,
+    "commanded_peak_joint_rad_s": 0.018346956359734934,
+    "native_rate_hz": 120,
+    "object_guard_scope": "original close/probe exemption retained",
+    "unused_repair": false,
+    "search_cpu_s": 0.0,
+    "repair_status": "cpu_reserve"
+  },
+  "rows": [
+    {
+      "label": "CPU_reserve_exhausted",
+      "audit": {
+        "passed": false,
+        "audit_complete": false,
+        "total_nodes": 4,
+        "checked_nodes": 1,
+        "first_rejection": {
+          "node": 0,
+          "phase": "s5_preload_adjust",
+          "steps": 6,
+          "object_guard_enabled": false,
+          "commanded_q": [
+            0.08853854495630677,
+            -0.06808620719429835,
+            0.22888954000419534,
+            -0.5436718483405637,
+            0.3764679128615888,
+            -3.078512198010753,
+            0.07391708493831807,
+            0.2121895204316826,
+            0.6096325283350102,
+            0.08977115945282317,
+            1.7009501454410159,
+            0.8608293506344972,
+            1.002682809295389,
+            -0.01219649929919022,
+            0.34409738646339844,
+            -0.8073903837300759,
+            -0.14180899838428676
+          ],
+          "gate": "clearance_collision",
+          "geometry": {
+            "table_clearance_m": 0.0012352980631770497,
+            "table_clearance_link": "Empty_Link10",
+            "thresholds": {
+              "table_clearance_m": 0.00065,
+              "self_overlap_m": 0.0,
+              "object_overlap_m": 0.0
+            },
+            "self_collisions": [
+              [
+                "Empty_Link4",
+                "Empty_Link7"
+              ]
+            ],
+            "object_collisions": [],
+            "passed": false,
+            "clearance_witnesses": [
+              {
+                "kind": "table",
+                "links": [
+                  "Empty_Link10",
+                  "table"
+                ],
+                "clearance_m": 0.0012352980631770497,
+                "threshold_m": 0.00065,
+                "passed": true,
+                "measurement": "transformed full collision-mesh minimum z"
+              },
+              {
+                "kind": "self_collision",
+                "links": [
+                  "Empty_Link4",
+                  "Empty_Link7"
+                ],
+                "clearance_m": -0.00016964116542550478,
+                "threshold_m": 0.0,
+                "passed": false,
+                "exact_mesh_overlap": true,
+                "contacts_returned": 30,
+                "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+              }
+            ],
+            "first_failed_guard": {
+              "kind": "self_collision",
+              "links": [
+                "Empty_Link4",
+                "Empty_Link7"
+              ],
+              "clearance_m": -0.00016964116542550478,
+              "threshold_m": 0.0,
+              "passed": false,
+              "exact_mesh_overlap": true,
+              "contacts_returned": 30,
+              "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+            }
+          }
+        },
+        "failed_path_nodes": [
+          0
+        ],
+        "min_table_clearance_m": 0.0012352980631770497,
+        "commanded_peak_translation_m_s": 0.00144034291383488,
+        "commanded_peak_joint_rad_s": 0.018346969322168838,
+        "native_rate_hz": 120,
+        "object_guard_scope": "original close/probe exemption retained",
+        "unused_repair": false,
+        "search_cpu_s": 0.0,
+        "repair_status": "cpu_reserve"
+      },
+      "wall_s": 0.032635997980833054,
+      "nodes": [
+        [
+          [
+            0.08853854495630677,
+            -0.06808620719429835,
+            0.22888954000419534,
+            -0.5436718483405637,
+            0.3764679128615888,
+            -3.078512198010753,
+            0.07391708493831807,
+            0.2121895204316826,
+            0.6096325283350102,
+            0.08977115945282317,
+            1.7009501454410159,
+            0.8608293506344972,
+            1.002682809295389,
+            -0.01219649929919022,
+            0.34409738646339844,
+            -0.8073903837300759,
+            -0.14180899838428676
+          ],
+          6,
+          "s5_preload_adjust"
+        ],
+        [
+          [
+            0.08864608269003575,
+            -0.06810529961135176,
+            0.22861370074805523,
+            -0.5436718558124698,
+            0.37646791084071574,
+            -3.078512221904589,
+            0.0771434414507424,
+            0.2095380597609401,
+            0.6096134903033528,
+            0.08970484092424137,
+            1.700950144366955,
+            0.8608293403005626,
+            1.0026828255125944,
+            -0.014580817144669363,
+            0.341808406811131,
+            -0.8100961291852609,
+            -0.13829538067447522
+          ],
+          6,
+          "s5_preload_adjust"
+        ],
+        [
+          [
+            0.08875362042376474,
+            -0.06812439202840517,
+            0.22833786149191512,
+            -0.5436718632843759,
+            0.37646790881984266,
+            -3.078512245798425,
+            0.08036979796316673,
+            0.20688659909019758,
+            0.6095944522716953,
+            0.08963852239565957,
+            1.7009501432928944,
+            0.860829329966628,
+            1.0026828417297995,
+            -0.016965134990148505,
+            0.3395194271588636,
+            -0.8128018746404457,
+            -0.13478176296466365
+          ],
+          6,
+          "s5_preload_adjust"
+        ],
+        [
+          [
+            0.08878169677789102,
+            -0.06812937674812848,
+            0.22826584434622338,
+            -0.5436718652351691,
+            0.37646790829222554,
+            -3.078512252036717,
+            0.08121214720040067,
+            0.20619434581162932,
+            0.6095894817511147,
+            0.08962120770593132,
+            1.7009501430124747,
+            0.8608293272686056,
+            1.0026828459638482,
+            -0.01758764161975636,
+            0.3389218117816706,
+            -0.8135083007937699,
+            -0.1338644144985552
+          ],
+          6,
+          "s5_preload_adjust"
+        ]
+      ]
+    },
+    {
+      "label": "same_geometry_with_compute_remaining",
+      "audit": {
+        "passed": true,
+        "audit_complete": true,
+        "total_nodes": 4,
+        "checked_nodes": 4,
+        "first_rejection": null,
+        "failed_path_nodes": [],
+        "min_table_clearance_m": 0.0009146788613714867,
+        "commanded_peak_translation_m_s": 0.005516785122802181,
+        "commanded_peak_joint_rad_s": 0.20064174076897867,
+        "native_rate_hz": 120,
+        "object_guard_scope": "original close/probe exemption retained",
+        "measured_connection_passed": true,
+        "max_selected_pad_delta_m": 0.0,
+        "max_selected_normal_delta": 0.0,
+        "unused_repair": true,
+        "original_refusal": {
+          "passed": false,
+          "audit_complete": false,
+          "total_nodes": 4,
+          "checked_nodes": 1,
+          "first_rejection": {
+            "node": 0,
+            "phase": "s5_preload_adjust",
+            "steps": 6,
+            "object_guard_enabled": false,
+            "commanded_q": [
+              0.08853854495630677,
+              -0.06808620719429835,
+              0.22888954000419534,
+              -0.5436718483405637,
+              0.3764679128615888,
+              -3.078512198010753,
+              0.07391708493831807,
+              0.2121895204316826,
+              0.6096325283350102,
+              0.08977115945282317,
+              1.7009501454410159,
+              0.8608293506344972,
+              1.002682809295389,
+              -0.01219649929919022,
+              0.34409738646339844,
+              -0.8073903837300759,
+              -0.14180899838428676
+            ],
+            "gate": "clearance_collision",
+            "geometry": {
+              "table_clearance_m": 0.0012352980631770497,
+              "table_clearance_link": "Empty_Link10",
+              "thresholds": {
+                "table_clearance_m": 0.00065,
+                "self_overlap_m": 0.0,
+                "object_overlap_m": 0.0
+              },
+              "self_collisions": [
+                [
+                  "Empty_Link4",
+                  "Empty_Link7"
+                ]
+              ],
+              "object_collisions": [],
+              "passed": false,
+              "clearance_witnesses": [
+                {
+                  "kind": "table",
+                  "links": [
+                    "Empty_Link10",
+                    "table"
+                  ],
+                  "clearance_m": 0.0012352980631770497,
+                  "threshold_m": 0.00065,
+                  "passed": true,
+                  "measurement": "transformed full collision-mesh minimum z"
+                },
+                {
+                  "kind": "self_collision",
+                  "links": [
+                    "Empty_Link4",
+                    "Empty_Link7"
+                  ],
+                  "clearance_m": -0.00016964116542550478,
+                  "threshold_m": 0.0,
+                  "passed": false,
+                  "exact_mesh_overlap": true,
+                  "contacts_returned": 30,
+                  "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+                }
+              ],
+              "first_failed_guard": {
+                "kind": "self_collision",
+                "links": [
+                  "Empty_Link4",
+                  "Empty_Link7"
+                ],
+                "clearance_m": -0.00016964116542550478,
+                "threshold_m": 0.0,
+                "passed": false,
+                "exact_mesh_overlap": true,
+                "contacts_returned": 30,
+                "measurement": "FCL triangle contact penetration; zero depth can still overlap"
+              }
+            }
+          },
+          "failed_path_nodes": [
+            0
+          ],
+          "min_table_clearance_m": 0.0012352980631770497,
+          "commanded_peak_translation_m_s": 0.00144034291383488,
+          "commanded_peak_joint_rad_s": 0.018346969322168838,
+          "native_rate_hz": 120,
+          "object_guard_scope": "original close/probe exemption retained",
+          "unused_repair": false,
+          "search_cpu_s": 0.0
+        },
+        "repair_status": "accepted",
+        "unused_joints": [
+          "hand_joint_5",
+          "hand_joint_6",
+          "hand_joint_7"
+        ],
+        "idle_links": [
+          "Empty_Link5",
+          "Empty_Link6",
+          "Empty_Link7",
+          "Empty_LinkCAM5",
+          "Empty_LinkCAM6",
+          "__optical_CAM5",
+          "__optical_CAM6"
+        ],
+        "endpoint_offset_rad": [
+          0.02138021025513834,
+          -0.02530257769808543,
+          0.0084540659539523
+        ],
+        "search_cpu_s": 0.30289024200000014,
+        "total_physics_steps": 24,
+        "original_physics_steps": 24,
+        "numerical_source": "existing mesh clearance residual; normalized mean idle motion; 30 nfev",
+        "checked_scope": "all original command nodes, not a continuous collision proof"
+      },
+      "wall_s": 0.3083348968066275,
+      "nodes": [
+        [
+          [
+            0.08853854495630677,
+            -0.06808620719429835,
+            0.22888954000419534,
+            -0.5436718483405637,
+            0.3764679128615888,
+            -3.078512198010753,
+            0.07391708493831807,
+            0.2121895204316826,
+            0.6096325283350102,
+            0.08977115945282317,
+            1.703163331268208,
+            0.8582101384899687,
+            1.0035579372164036,
+            -0.01219649929919022,
+            0.34409738646339844,
+            -0.8073903837300759,
+            -0.14180899838428676
+          ],
+          6,
+          "s5_preload_adjust"
+        ],
+        [
+          [
+            0.08864608269003575,
+            -0.06810529961135176,
+            0.22861370074805523,
+            -0.5436718558124698,
+            0.37646791084071574,
+            -3.078512221904589,
+            0.0771434414507424,
+            0.2095380597609401,
+            0.6096134903033528,
+            0.08970484092424137,
+            1.7116402494945242,
+            0.8481780514515198,
+            1.0069098584895706,
+            -0.014580817144669363,
+            0.341808406811131,
+            -0.8100961291852609,
+            -0.13829538067447522
+          ],
+          6,
+          "s5_preload_adjust"
+        ],
+        [
+          [
+            0.08875362042376474,
+            -0.06812439202840517,
+            0.22833786149191512,
+            -0.5436718632843759,
+            0.37646790881984266,
+            -3.078512245798425,
+            0.08036979796316673,
+            0.20688659909019758,
+            0.6095944522716953,
+            0.08963852239565957,
+            1.7201171677208407,
+            0.8381459644130709,
+            1.0102617797627371,
+            -0.016965134990148505,
+            0.3395194271588636,
+            -0.8128018746404457,
+            -0.13478176296466365
+          ],
+          6,
+          "s5_preload_adjust"
+        ],
+        [
+          [
+            0.08878169677789102,
+            -0.06812937674812848,
+            0.22826584434622338,
+            -0.5436718652351691,
+            0.37646790829222554,
+            -3.078512252036717,
+            0.08121214720040067,
+            0.20619434581162932,
+            0.6095894817511147,
+            0.08962120770593132,
+            1.722330353267613,
+            0.8355267495705202,
+            1.0111369119178004,
+            -0.01758764161975636,
+            0.3389218117816706,
+            -0.8135083007937699,
+            -0.1338644144985552
+          ],
+          6,
+          "s5_preload_adjust"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "path": "/tmp/fingereye_bc_probe_umTLIk",
+  "reason": "already absent directory; stale registration only",
+  "retained_ref": "d111-retired-bc-probe",
+  "physical_directories_deleted": 0,
+  "bytes_reclaimed_not_counted": true,
+  "current_worktrees": "worktree /home/CNS2025331827/docs/grasp_small_obj\nHEAD cae50aae51e6a8655b8fb7cc824ac4187aab367e\nbranch refs/heads/mao0629\n\nworktree /home/CNS2025331827/docs/fingereye_d106_recovery\nHEAD b0f59424c83114a9e9d758389017977d7a022936\nbranch refs/heads/experiment/d106-recovery\n\n"
+}

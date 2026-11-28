@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/path_fix_normal",
+    "allocated_bytes": 1138761728,
+    "directories": 12
+  },
+  {
+    "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/broad_pair_normal",
+    "allocated_bytes": 341934080,
+    "directories": 12
+  },
+  {
+    "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d111/shared_next_old3",
+    "allocated_bytes": 1138810880,
+    "directories": 12
+  }
+]

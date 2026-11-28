@@ -1,0 +1,18 @@
+{
+  "source_commit": "b0f59424c83",
+  "files": {
+    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/strategy.py": "158136ca0114b1c760c00b0ec4f84e16a99d2370a2e8f06c8985f1d37a6b0fa8",
+    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/surface_repair.py": "f0bb016b46f3a362ce74c25cbf044f9eb66581bfd67d6608320ad5a8e3167ce1",
+    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/mainline/motor_feedback.py": "b5438c942cb8533c9efb07d33ead87fdde416221f41f71f6b2283d2e8e4f9ffa",
+    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/experiments/rax_dexbin_tinyobj/evaluator.py": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b"
+  },
+  "evaluator_sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+  "rates_hz": [
+    120,
+    20,
+    30
+  ],
+  "max_actual_closures": 3,
+  "reset_between_attempts": false,
+  "note": "C9: only optional numerical timeout optimality interface corrected after C8 recovery error; complete ten-case rerun required"
+}

@@ -1,0 +1,82 @@
+{
+  "started": 1795831634.3559132,
+  "paths": [
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d106_baseline",
+      "resolved": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d106_baseline",
+      "allocated_bytes": 13738311680,
+      "logical_bytes": 13262575613,
+      "directories": 62,
+      "files": 126782
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d107",
+      "resolved": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d107",
+      "allocated_bytes": 13758283776,
+      "logical_bytes": 13281988931,
+      "directories": 72,
+      "files": 126988
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108",
+      "resolved": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d108",
+      "allocated_bytes": 19728637952,
+      "logical_bytes": 19031197013,
+      "directories": 516,
+      "files": 188093
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109",
+      "resolved": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109",
+      "allocated_bytes": 109622054912,
+      "logical_bytes": 105451810581,
+      "directories": 947,
+      "files": 1110346
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110",
+      "resolved": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110",
+      "allocated_bytes": 191083331584,
+      "logical_bytes": 183949224747,
+      "directories": 2817,
+      "files": 1898977
+    }
+  ],
+  "worktrees": [
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/finite_probe_worktree",
+      "commit": "83034464a460d9eacb7204369f54b3a3dd2075d2"
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/finite_retry_worktree",
+      "commit": "058c570113ba868b0213fed19f19d2e5c434789d"
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/height_worktree",
+      "commit": "5fc051797e65d16ab658df0d386135900157e91e"
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/selection_worktree",
+      "commit": "a2f802d76ea125d9c160154c2f97c2daf03cea9c"
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/settle_worktree",
+      "commit": "a4d911f9b35b060159412d7dac21a0c82d3cd9b4"
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/tracked_probe_worktree",
+      "commit": "b196dffba7675c19cc00a094a9a39fcbb9a387fd"
+    },
+    {
+      "path": "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d110/maintenance/velocity_worktree",
+      "commit": "f261c2f70eee5267681c79ba6bc7ff7ac7279b36"
+    }
+  ],
+  "available_before_bytes": 650726461440,
+  "completed": 1795831804.8736424,
+  "removed_top_level_run_directories": 5,
+  "removed_directories": 4414,
+  "allocated_bytes_removed": 347930619904,
+  "available_after_bytes": 998652375040,
+  "available_space_gain_bytes": 347925913600
+}

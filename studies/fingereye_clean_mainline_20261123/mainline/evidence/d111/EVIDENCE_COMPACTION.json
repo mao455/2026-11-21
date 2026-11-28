@@ -1,0 +1,82 @@
+{
+  "scope": "post-run numerical evidence only; repeated interior collision samples replaced by identical convex hull vertices with original float64 hash; no control source or accepted solutions changed",
+  "rows": [
+    {
+      "path": "C6_BUDGET_FAILURE.json",
+      "before_bytes": 6258703,
+      "after_bytes": 485614,
+      "before_sha256": "d497297752fca35254354f7b19881ea07cfdc0b85dc50f1e7a443ba38184a6ff",
+      "after_sha256": "a7ca446b8b17da56c01d3be280a3c4ef4604a0788354cc01c82d76261713eca8"
+    },
+    {
+      "path": "C7_BUDGET_FAILURE.json",
+      "before_bytes": 4939159,
+      "after_bytes": 66040,
+      "before_sha256": "45ae593582c59a14496a73e3247673c7afa431436014b2de0f43088cebb17ab9",
+      "after_sha256": "6bfc6bb7990bbbb5ccae455fb4c83b221840858f709750840e06efc5958b8e96"
+    },
+    {
+      "path": "EXECUTE_READY_OLD3_TERMINAL.json",
+      "before_bytes": 1198049,
+      "after_bytes": 544331,
+      "before_sha256": "8760335795d54a88604032f0e0b1c7279c6854b4bd11dd6c7658103dccf39d99",
+      "after_sha256": "58b973e8e8060fa7b722e82661bb1a01068b2c0f4ec1db8620bcb00253b4d6b2"
+    },
+    {
+      "path": "RESTORED_STATIC_SURFACE_PAIR.json",
+      "before_bytes": 2792829,
+      "after_bytes": 1316269,
+      "before_sha256": "eac49ad590a2b0101012ac989a265f9cf438bcd4f93e29b5423441cc67bea96a",
+      "after_sha256": "a6220a47f11322f5b43b7c8391ecc26de038733a1c1d3f0d0b346a03f748e8da"
+    },
+    {
+      "path": "READY_PLAN_PAIR.json",
+      "before_bytes": 754126,
+      "after_bytes": 359511,
+      "before_sha256": "158cf00e6c520493cc122565897134fd67f9aa37580500d73ff82f67c966c010",
+      "after_sha256": "86d4ced7f5f5f2b48886194c438100c4ce1ae33958c405b97ed77fe5becf6195"
+    },
+    {
+      "path": "MOTOR_ONLY_WUJI_TERMINAL.json",
+      "before_bytes": 520088,
+      "after_bytes": 295774,
+      "before_sha256": "ee63a7bafcbeafbe87d817d52641b1a53a8654e0c352c18e49ab6f57bbcd797e",
+      "after_sha256": "f14a18bdf3277d6b5a6cce041b08d8e2e4c87075ce984c3f3e1edf04edbc85b3"
+    },
+    {
+      "path": "FINITE_PROBE_WUJI_TERMINAL.json",
+      "before_bytes": 470174,
+      "after_bytes": 209954,
+      "before_sha256": "af5051fea600ec43cf9e7c000421cf32da1fd437e0ee961a9627bb75f9b464e2",
+      "after_sha256": "678ef79a981bc3b4d2537c483d7b2878f3f292b1d8cba8e4bb53768aa534f8a2"
+    },
+    {
+      "path": "FINAL_PAIR_TERMINAL.json",
+      "before_bytes": 390471,
+      "after_bytes": 146453,
+      "before_sha256": "0c94c32ed4b9fe950c2277943043d662f4c46c711af15f9f65cbd88c2fcde4ea",
+      "after_sha256": "0a1333d3187fd680ab47e4ea18a5c57db04baf4e1d5a107411157dc2dce320b6"
+    },
+    {
+      "path": "WUJI_THIRD_BANK_PAIR.json",
+      "before_bytes": 88677,
+      "after_bytes": 42731,
+      "before_sha256": "ff23dc5a471a9afaf72241c33f0038d495011abdfd20ad423550b4cd38679e18",
+      "after_sha256": "9111cadffb6e25ad2b46f94b2bbe2c513c9d3fd05af4d1a1fafa3a9d2cb81178"
+    },
+    {
+      "path": "WUJI_THIRD_PAIR.json",
+      "before_bytes": 176153,
+      "after_bytes": 85004,
+      "before_sha256": "1d3fa2fd49e781473b0150e9b8e119a0e011b92277e3c6383ca4ba25fab739b3",
+      "after_sha256": "32a4026d0b4a84f634a3c950a9e66c7419c8178ab6241370b43ffa9089bceec6"
+    },
+    {
+      "path": "WUJI_FINITE_PAIR.json",
+      "before_bytes": 115763,
+      "after_bytes": 54235,
+      "before_sha256": "41a9e5698c3871ee7d05e3dbf22ea0cabd988eb48aa09f61873b3009eb839794",
+      "after_sha256": "32b61808e1e85eddd4f54e15faeafd356766a3c53c28e17c0eea747914c144a5"
+    }
+  ]
+}

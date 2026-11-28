@@ -1,3 +1,11 @@
+
+try:
+    from motor_feedback import interval_feedback
+    from surface_repair import supported_pair_alternatives
+except ImportError:
+    from mainline.motor_feedback import interval_feedback
+    from mainline.surface_repair import supported_pair_alternatives
+import copy
 """Shared H/S v2 two/three-finger strategy: call main(ctx) through run_stage17.py.
 
 Maintained source, extracted from the physically tested Stage17 controller.
@@ -78,8 +86,27 @@ STAGE3_SUPPORT_VERSION = 'support_v3'
 STAGE3_TOTAL_STEPS = 24000
 STAGE3_RESERVE_ATTEMPT_STEPS = 6000
 
+class _PlanningComparisonComplete(BaseException):
+    """Leave unfinished search without relabelling it as geometric refusal."""
+
+
+def _remember_verified_candidate(robot,candidate):
+    guard=getattr(robot,'_planning_comparison',None)
+    meta=candidate['meta']
+    if not guard or not guard.get('active') or not meta.get('feasibility_passed') or 'task_quality' not in meta:return
+    key=s99_candidate_key(candidate)
+    if key not in guard['choices']:guard['choices'][key]=copy.deepcopy(candidate)
+    if guard['first_verified_cpu_s'] is None:
+        now=time.process_time();guard['first_verified_cpu_s']=now
+        guard['deadline_cpu_s']=min(now+120.,525.)
+
+
 def planning_progress(robot,stage):
     """Keep the existing RPC watchdog alive during bounded CPU planning."""
+    guard=getattr(robot,'_planning_comparison',None)
+    if guard and guard.get('active') and guard['choices'] and time.process_time()>=guard['deadline_cpu_s']:
+        guard['stopped_stage']=stage
+        raise _PlanningComparisonComplete()
     callback=getattr(robot,'planning_note',None)
     now=time.monotonic()
     if callback is not None and now-getattr(robot,'_progress_wall_s',0.)>=15.:
@@ -1338,7 +1365,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
         q,p,n,poses=kinematics(fit.x);goals=points(fit.x)
         errors=np.linalg.norm(p-goals,axis=1);angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
         geometry_cost=float(fit.cost);geometry_nfev=int(fit.nfev);refined=False
-        geometry_optimality=float(fit.optimality);geometry_status=int(fit.status)
+        geometry_optimality=None if fit.get('optimality') is None else float(fit.optimality);geometry_status=int(fit.status)
         if hasattr(robot,'planning_note'):robot.planning_note('cross_ik_geometry',dict(fingers=list(robot.finger_names),regions=list(robot.contact_region_indices),seed=number,error_m=float(errors.max()),normal_error_rad=angles.tolist(),wall_s=time.perf_counter()-started))
         clearance=robot.ik_checker.check(q)
         if errors.max()<.002 and angles.max()<.7 and not clearance['passed']:
@@ -1368,7 +1395,7 @@ def solve_surface_ik(robot, prior, targets, inward, info, normal_weight=12.0):
             hand_contact_center_shift_m=np.linalg.norm(hand_points(fit.x)-original_local,axis=1).tolist(),
             hand_contact_domain_source='original static source triangles, declared radius unchanged, conservative inset cells; no object truth/native contacts',
             pad_engagement_objective=engagement,seed=number,seed_provenance=seed_search['selected'][number],seed_search=seed_search,normal_weight=normal_weight,cost=float(fit.cost),nfev=geometry_nfev+(int(fit.nfev) if refined else 0),
-            solver_success=bool(fit.success),error_m=float(errors.max()),per_finger_error_m=errors.tolist(),
+            solver_success=bool(fit.success),solver_termination=str(fit.message),solver_status=int(fit.status),error_m=float(errors.max()),per_finger_error_m=errors.tolist(),
             fingers=list(robot.finger_names),normal_error_rad=angles.tolist(),table_clearance_m=table,
             q=q.tolist(),targets=goals.tolist(),inward=inward.tolist(),joint_count=dof,wall_s=time.perf_counter()-started,
             task_posture=robot.grasp_posture(q,poses),geometry_cost=geometry_cost,geometry_nfev=geometry_nfev,collision_refined=refined,
@@ -1407,6 +1434,7 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=2.5, seed_index
     prior=np.asarray(prior,float);targets=np.asarray(targets);inward=np.asarray(inward)
     if prior.shape!=robot.lo.shape:raise ValueError('IK prior must follow declared joint order')
     started=time.perf_counter();lo,hi=robot.upright_bounds()
+    robot.ik_call_deadline=time.process_time()+18.
     finger_scale=np.sqrt(6/max(1,len(robot.all_finger_indices)))
     if getattr(robot,'ik_seed_hints',None):
         seeds=robot.ik_seed_hints
@@ -1436,7 +1464,7 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=2.5, seed_index
                 (n-inward).ravel()*weight*np.sqrt(2/len(targets)),clearance,
                 Rotation.from_matrix(rotation).as_rotvec()*.25,
                 (q[robot.all_finger_indices]-seed[robot.all_finger_indices])*.08*finger_scale]
-        fit=least_squares(lambda x:residual(x,preferred=True),np.clip(robot.encode_upright(seed),lo+1e-7,hi-1e-7),bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],
+        fit=_slice_least_squares(robot,lambda x:residual(x,preferred=True),np.clip(robot.encode_upright(seed),lo+1e-7,hi-1e-7),bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],
             max_nfev=120,ftol=1e-7,xtol=1e-7,gtol=1e-7)
         q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
         errors=(np.linalg.norm(p-targets,axis=1) if phase=="preferred_center" else intent.errors(p));angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
@@ -1448,7 +1476,7 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=2.5, seed_index
         # grasp. First reach the contact manifold, then refine nearby collisions.
         if errors.max()<.002 and angles.max()<.7 and not source_clearance['passed']:
             escape_seed=q.copy()
-            fit=least_squares(lambda x:residual(x,True),robot.encode_upright(q),bounds=(lo,hi),
+            fit=_slice_least_squares(robot,lambda x:residual(x,True),robot.encode_upright(q),bounds=(lo,hi),
                 x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],diff_step=1e-4,
                 max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
             q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
@@ -1459,7 +1487,7 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=2.5, seed_index
                 # contact gets a changing escape objective only on refusal.
                 robot.ik_checker.escape_collisions=True
                 try:
-                    fit=least_squares(lambda x:residual(x,True),robot.encode_upright(escape_seed),bounds=(lo,hi),
+                    fit=_slice_least_squares(robot,lambda x:residual(x,True),robot.encode_upright(escape_seed),bounds=(lo,hi),
                         x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],diff_step=1e-4,
                         max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
                 finally:robot.ik_checker.escape_collisions=False
@@ -1468,14 +1496,14 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=2.5, seed_index
                 source_clearance=robot.ik_checker.check(q)
         if not getattr(robot,'defer_finite_contact',False) and not (errors.max()<.0008 and angles.max()<.5 and source_clearance['passed']):
             phase='finite_region'
-            fit=least_squares(residual,fit.x,bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],max_nfev=90,ftol=1e-7,xtol=1e-7,gtol=1e-7)
+            fit=_slice_least_squares(robot,residual,fit.x,bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],max_nfev=90,ftol=1e-7,xtol=1e-7,gtol=1e-7)
             q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
             errors=(np.linalg.norm(p-targets,axis=1) if phase=="preferred_center" else intent.errors(p));angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1))
             source_clearance=robot.ik_checker.check(q);finite_refined=True
             if errors.max()<.002 and angles.max()<.7 and not source_clearance['passed']:
                 robot.ik_checker.escape_collisions=True
                 try:
-                    fit=least_squares(lambda x:residual(x,True),fit.x,bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],diff_step=1e-4,max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
+                    fit=_slice_least_squares(robot,lambda x:residual(x,True),fit.x,bounds=(lo,hi),x_scale=np.r_[[.01]*3,[.3]*(len(seed)-3)],diff_step=1e-4,max_nfev=60,ftol=1e-7,xtol=1e-7,gtol=1e-7)
                 finally:robot.ik_checker.escape_collisions=False
                 q=robot.decode_upright(fit.x);p,n,_,poses=robot.tips(q)
                 errors=(np.linalg.norm(p-targets,axis=1) if phase=="preferred_center" else intent.errors(p));angles=np.arccos(np.clip(np.sum(n*inward,axis=1),-1,1));source_clearance=robot.ik_checker.check(q)
@@ -1493,7 +1521,7 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=2.5, seed_index
         contact_feasible=bool(errors.max()<.0008 and angles.max()<.5 and clearance>=.00065)
         feasible=bool(contact_feasible and source_clearance['passed'] and robot.grasp_posture(q,poses)['passed'] and np.all(q>=robot.lo) and np.all(q<=robot.hi))
         meta=dict(seed=number,normal_weight=(12. if phase=="preferred_center" else normal_weight),contact_objective_phase=phase,preferred_center=preferred_center,finite_region_refined=finite_refined,seed_search=seed_search,contact_correction=correction,
-            cost=float(fit.cost),nfev=geometry_nfev+(int(fit.nfev) if collision_refined else 0),solver_success=bool(fit.success),error_m=float(errors.max()),
+            cost=float(fit.cost),nfev=geometry_nfev+(int(fit.nfev) if collision_refined else 0),solver_success=bool(fit.success),solver_termination=str(fit.message),solver_status=int(fit.status),error_m=float(errors.max()),
             per_finger_error_m=errors.tolist(),fingers=list(robot.finger_names),normal_error_rad=angles.tolist(),
             table_clearance_m=clearance,wall_s=time.perf_counter()-started,q=q.tolist(),targets=(targets if phase=="preferred_center" else intent.goals(p)).tolist(),original_target_centers=targets.tolist(),
             inward=inward.tolist(),contact_intent=intent.report(p),joint_count=len(q),finger_regularizer_normalization=finger_scale,
@@ -1512,6 +1540,7 @@ def solve_target_ik(robot, prior, targets, inward, normal_weight=2.5, seed_index
             max(0.,.00065-clearance)*5000+errors.max()*1500+angles.max(),fit.cost)
         if best is None or score<best[0]:best=(score,q.copy(),meta)
         if feasible and reserve_ok:break
+        if time.process_time()>=robot.ik_call_deadline:break
     meta=best[2];meta['seed_attempts']=attempts
     return best[1],meta
 
@@ -1844,28 +1873,8 @@ def _s2v_calibration(row):
         raise ValueError('Unsupported calibrated camera projection')
     return result
 
-def _s2v_motor(before, after, command):
-    measured = after['actual_q'] - before['actual_q']
-    result = dict(measured_delta=measured.tolist(), commanded_delta=None, tracking_residual=None, fingers={}, force_observable=False)
-    if command is None:
-        result['uncertainty'] = 'own command delta unavailable; no tracking/compliance inference'
-        return result
-    command = np.asarray(command, dtype=float)
-    if command.shape != measured.shape or not np.isfinite(command).all():
-        raise ValueError('commanded_delta must match raw actual_q and be finite')
-    residual = command - measured
-    result.update(commanded_delta=command.tolist(), tracking_residual=residual.tolist())
-    for finger, indices in before['groups'].items():
-        active = [index for index in indices if abs(command[index]) > 1e-06]
-        speed = float(np.max(np.abs(after['actual_qvel'][indices])))
-        row = dict(joint_indices=indices, active_joint_indices=active, tracking_ratio=None, drive_deficit=None, settled=speed < 0.06, max_abs_qvel=speed)
-        if active:
-            denominator = float(command[active] @ command[active])
-            ratio = float(measured[active] @ command[active] / denominator)
-            row.update(tracking_ratio=ratio, drive_deficit=1.0 - ratio, settled=speed < 0.06, max_abs_qvel=speed)
-        result['fingers'][finger] = row
-    result['uncertainty'] = 'tracking deficit is a compliance/servo-lag proxy, not contact force; command starts at before.actual_q'
-    return result
+def _s2v_motor(before,after,command):
+    return interval_feedback(before,after,command)
 
 def _s2v_response(before, after, bounds):
     source, target, detected = _s2v_tracks(before, after)
@@ -2034,7 +2043,10 @@ def _S3_APPROACH(robot, q, points, inward, initial=None):
             if sequential is not None:
                 route=[raised[robot.all_finger_indices]]+[node[robot.all_finger_indices]for node in sequential]
                 stats=dict(method='checked_sequential_digits',orders=orders,rrt=stats)
-        if route is None and stats.get('reason') in ('extension_budget_exhausted','collision_check_budget_exhausted'):
+        if route is None and stats.get('reason') in ('extension_budget_exhausted','collision_check_budget_exhausted','invalid_start','invalid_goal'):
+            # A preferred reserve can reject the measured start or goal too.
+            # Retry exact geometry on those endpoint refusals; full path and
+            # measured tracking guards remain unchanged.
             # Extra cooking/tracking clearance is a route preference. A narrow
             # real corridor must still get the unchanged exact source-mesh test.
             # Keep every full-hand edge, joint limit, table and object check;
@@ -2332,7 +2344,7 @@ class SelfAwareGeometry(_R13_CHECKER):
 class Stage3LiveVolume(_geometry_Stage3LiveVolume):
 
     def carve(self, obs, fuse=False):
-        info, report = fit_shape(self, s9_exposure(obs), _S14_SHAPE_PRIOR)
+        info, report = stage3_live_geometry(self, obs, self.info)
         if info is None:
             self.points = None
             self.boundary = None
@@ -2842,6 +2854,11 @@ def solve_close_ik(robot, q, targets, normal_weight=1.0):
     coupled = decode(fit.x)
     if checker.check(coupled, object_check=False)['passed']:
         return coupled
+    recovery=_recover_geometry_least_squares(lambda x:residual(x,True),base[selected],
+        bounds=(lower,upper),x_scale=np.r_[np.full(3,.01),np.full(len(selected)-3,.3)],
+        max_nfev=45)
+    recovered=decode(recovery.x)
+    if checker.check(recovered,object_check=False)['passed']:return recovered
     return base
 
 def close_ik(robot, q, targets, normal_weight=1.0):
@@ -2958,6 +2975,11 @@ def dispatch_checked_step(s, q, n, phase, object_check=False):
         # The context already sends 6-step control commands. Inspect each
         # returned 20 Hz measured sample, rather than only the last of four.
         count = min(6, n)
+        if s.get('pending_rgb_command_comparison') and np.max(abs(q-np.asarray(s['last'])))>1e-7:
+            comparison=s.pop('pending_rgb_command_comparison')
+            comparison.update(step=s['obs']['step'],phase=phase,first_different_command_q=q.tolist(),
+                current_measured_q=s['obs']['actual_q'],actual_command_dispatched=True)
+            s5_note(s['ctx'],'rgb_changed_command',comparison)
         s['obs'] = s['ctx'].step(q, steps=count, phase=phase)
         n -= count
         measured_guard()
@@ -3333,6 +3355,7 @@ def s12_select_contacts(s, candidate):
     apply_contact_geometry(s['robot'],candidate['meta'])
     s['hand'] = s['robot'].description
     s['squeeze'] = np.full(count, 0.0005)
+    candidate['meta']['rgb_contact_pose']=np.asarray(s['info'].get('rgb_pose_matrix',np.eye(4))).tolist()
     s5_note(s['ctx'], 's12_candidate_command_binding', dict(attempt=s['attempt'], step=s['obs']['step'], frame_id=s9_frame(s['obs']), contact_count=count, candidate_id=candidate['meta'].get('candidate_id'), actual_q=s['obs']['actual_q'], planned_q=candidate['q'].tolist(), task_quality=candidate['meta'].get('task_quality'), selected_patches=s['robot'].selected_patches, approach_first_command=np.asarray(candidate['prefix'][0][0]).tolist() if candidate['prefix'] else None))
 
 def s12_order_candidates(candidates, tolerance=.1):
@@ -3362,6 +3385,7 @@ def prioritize_replan_surface_schedule(schedule, group, previous):
 def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, heights, shift, geometry_source, **kwargs):
     import itertools
     preferred_static=kwargs.pop('preferred_static',False)
+    planning_deadline=min(540.,float(kwargs.pop('planning_deadline_cpu',540.)))
     robot.region_normal_weight=12. if preferred_static else 2.5
     robot.region_max_sets=4096 if preferred_static else 48
     replanning=kwargs.pop('replanning',False)
@@ -3389,7 +3413,7 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
     # Counts get equal budget, groups within one count share that allocation.
     group_budget={n:180./max(1,len(counts))/max(1,len(gs)) for n,gs in groups_by_count.items()}
     for group in groups:
-        if time.process_time()>=540.:break
+        if time.process_time()>=planning_deadline:break
         robot.select_pair(group);robot.configure_contacts(len(group))
         group_start=time.process_time();robot.candidate_cpu_budget_s=group_budget[len(group)]
         region_hints={}
@@ -3404,7 +3428,7 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
             all_regions=itertools.product(*domains)
             regions=list(all_regions)
             regions.sort(key=lambda ids:-sum(float(robot.patch_options[i][k]['point']@robot.contact_distals[i]) for i,k in enumerate(ids)))
-            robot.region_rank_deadline=min(520.,time.process_time()+(90. if preferred_static else min(8.,group_budget[len(group)]/2)))
+            robot.region_rank_deadline=min(520.,planning_deadline,time.process_time()+(90. if preferred_static else min(8.,group_budget[len(group)]/2)))
             regions,region_priority=rank_region_tuples(robot,prior,info,regions,axes,heights,task_wrench=S11_CONFIG['task_wrench'])
             if region_priority.get('region_scores'):
                 corrected,source_domain=source_domain_corrected_rank(robot,prior,info,
@@ -3433,9 +3457,9 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
         for slot,(region_number,region_ids,surface_offset) in enumerate(schedule):
             search_tuple=(tuple(region_ids),surface_offset)
             if search_tuple in visited:continue
-            if time.process_time()>=540.:break
-            remaining=group_budget[len(group)]-(time.process_time()-group_start)
-            if admitted and remaining<=0:break
+            if time.process_time()>=planning_deadline:break
+            remaining=min(planning_deadline-time.process_time(),group_budget[len(group)]-(time.process_time()-group_start))
+            if remaining<=0:break
             if resume:visited.add(search_tuple)
             admitted+=1
             robot.select_regions(region_ids)
@@ -3464,6 +3488,7 @@ def expanded_contact_candidates(s, robot, info, prior, checker, initial, axes, h
                 candidate['meta'].update(hand_contact_regions=list(region_ids),surface_offset=surface_offset,contact_fingers=list(group),contact_count=len(group),
                     selected_patches=[dict(patch) for patch in robot.selected_patches],quality_score=score,quality_terms=terms,task_quality=task,candidate_id=f"{s['attempt']}-{'+'.join(group)}-{region_number}-s{surface_offset}-{index}")
                 accepted.append(candidate)
+                _remember_verified_candidate(robot,candidate)
             if preferred_static and accepted:break
             if any(c['meta']['task_quality']['robust'].get('gravity_feasible',False)
                    and c['meta']['task_quality']['robust']['minimum_task_margin']>=1.
@@ -3555,7 +3580,10 @@ def _s12_load_repair_candidates(s,robot,info,initial,candidates,rejected,retime)
     deadline=min(490.,time.process_time()+28.)
     for old in list(candidates)[:2]:
         if time.process_time()>=deadline:break
-        saved=old['meta'];robot.select_pair(saved['contact_fingers'],saved['hand_contact_regions']);apply_contact_geometry(robot,saved)
+        saved=old['meta']
+        if saved.get('load_repair_considered'):continue
+        saved['load_repair_considered']=True
+        robot.select_pair(saved['contact_fingers'],saved['hand_contact_regions']);apply_contact_geometry(robot,saved)
         q0=np.asarray(old['q']);inward=np.asarray(old['inward']);count=len(inward)
         intent=ContactIntent(robot,saved['targets'],inward,info)
         normals=-np.asarray(intent.normals)
@@ -3617,6 +3645,7 @@ def _s12_load_repair_candidates(s,robot,info,initial,candidates,rejected,retime)
             for kind in ('robust','nominal') for name in
             ('minimum_task_margin','lateral_margin','torque_margin','gravity_feasible'))
         candidates.append(candidate)
+        _remember_verified_candidate(robot,candidate)
         s5_note(s['ctx'],'contact_load_repair',dict(passed=True,cpu_s=time.process_time()-start,
             before_task_margin=saved['task_quality']['nominal']['minimum_task_margin'],
             after_task_margin=meta['task_quality']['nominal']['minimum_task_margin'],
@@ -3633,6 +3662,7 @@ def _s12_triad_extensions(s,robot,info,initial,candidates,rejected,retime):
     A triad must pass the same independent endpoint, whole-hand path and lift
     preview; its three same-pose pair ablations are scored by task_wrench_margin.
     """
+    candidates=supported_pair_alternatives(__import__('types').SimpleNamespace(**globals()),s,robot,info,initial,candidates,rejected,retime)
     candidates=_s12_load_repair_candidates(s,robot,info,initial,candidates,rejected,retime)
     if not candidates or s['ctx'].robot_description.get('contact_mode',S11_CONFIG['fingers'])!='auto':return candidates
     pair=next((c for c in s12_order_candidates(candidates) if len(c['points'])==2),None)
@@ -3706,6 +3736,7 @@ def _s12_triad_extensions(s,robot,info,initial,candidates,rejected,retime):
         quality,terms=s11_contact_quality(robot,candidate,initial)
         meta.update(quality_score=quality,quality_terms=terms,task_quality=s12_task_quality(robot,candidate,info),selected_patches=[dict(p)for p in robot.selected_patches])
         if s99_candidate_key(candidate) in s.get('rejected_candidate_keys',set()):continue
+        _remember_verified_candidate(robot,candidate)
         candidates.append(candidate);audits.append(dict(candidate_id=meta['candidate_id'],accepted=True,
             nominal_margin=meta['task_quality']['nominal']['minimum_task_margin'],
             robust_margin=meta['task_quality']['robust']['minimum_task_margin'],
@@ -3744,7 +3775,7 @@ def _s12_retry_near_contact(robot, prior, goals, inward, q, meta):
     return q,meta
 
 
-def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heights, shift, geometry_source, **kwargs):
+def _rank_contact_candidates_search(s, robot, info, prior, checker, initial, axes, heights, shift, geometry_source, **kwargs):
     """Try calibrated fixed patches and RGB chords before the expanded search.
 
     A cheap geometric screen orders all declared groups; no hand or object IDs.
@@ -3766,6 +3797,10 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
     kinematic_bank=KinematicCandidateBank(robot,prior,checker)
     proposals=[];rejected=[];accepted=[];deferred=[];rgb_contacts={};default_regions={}
     started=time.process_time();wall=time.perf_counter()
+    if getattr(robot,'_planning_comparison',None) is not None:robot._planning_comparison['rejected']=rejected
+    recovery=bool(s.get('actual_grasps',0))
+    direct_slice=30. if recovery else 100.
+    search_ceiling=540. if recovery else 515.
     cloud=np.asarray(info['collision_points'])
     # Both principal axes and both assignments are cheap, and important for
     # asymmetric fingers. Triads use two separated points on the opposite side.
@@ -3841,7 +3876,7 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
         schedule += [bank[g][index]for g in ranked if index<len(bank[g])]
     s5_note(s['ctx'],'direct_candidate_schedule',dict(groups=[list(g)for g in ranked],proposals=len(schedule),source='whole-hand FK-ranked rigid surface features and shared cached public RGB facets',refinement=refinement,proposal_cpu_s=time.process_time()-started,unique_rgb_contact_sets=len(rgb_contacts)))
     for ordinal,(_,group,regions,goals,inward,contacts,height,hints) in enumerate(schedule):
-        if time.process_time()-started>100. or time.process_time()>515.:break
+        if time.process_time()-started>direct_slice or time.process_time()>search_ceiling:break
         robot.select_pair(group,regions)
         if refinement:apply_contact_geometry(robot,s['c']['meta'])
         # Fixed hand feature / finite observed object region first: fewer
@@ -3874,16 +3909,21 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
             deferred.append(candidate)
             continue
         accepted.append(candidate)
+        _remember_verified_candidate(robot,candidate)
         # Keep executable pairs, but a task-weak first solution must not hide
         # better contact geometry or every independent third-digit proposal.
         if _s12_pair_sufficient(meta) or len(accepted)>=3:break
     has_static=any(row.get('geometry_class')=='legacy_static_contact_surface' for row in robot.catalog.values())
-    if (not refinement and has_static and time.process_time()<375.
-            and not any(_s12_pair_sufficient(c['meta']) or _s12_pair_can_balance(c['meta']) for c in accepted)):
+    # First try the small finite-surface load correction. An executable pair
+    # must not lose its execution/recovery budget to Cartesian enumeration.
+    if not refinement and has_static and accepted:
+        accepted=_s12_load_repair_candidates(s,robot,info,initial,accepted,rejected,kwargs.get('retime',False))
+    if (not refinement and has_static and time.process_time()<min(490. if recovery else 375.,started+180.)
+            and not any(_s12_pair_sufficient(c['meta']) for c in accepted)):
         robot.ik_surface_info=info
-        choices,failures=expanded_contact_candidates(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,preferred_static=True,**kwargs)
+        choices,failures=expanded_contact_candidates(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,preferred_static=True,planning_deadline_cpu=min(search_ceiling,started+240.),**kwargs)
         accepted+=choices;rejected+=failures
-    if not accepted and not refinement and time.process_time()<375.:
+    if not accepted and not refinement and time.process_time()<min(490. if recovery else 375.,started+180.):
         try:from kinematic_candidates import joint_region_proposals
         except ImportError:from mainline.kinematic_candidates import joint_region_proposals
         joint=[];joint_started=time.process_time()
@@ -3913,7 +3953,7 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
         joint.sort(key=lambda row:(round(abs(float(np.mean(row['goals'][:,2]))-float(centroid[2])),5),row['score']))
         s5_note(s['ctx'],'joint_region_schedule',dict(proposals=len(joint),proposal_cpu_s=time.process_time()-joint_started,source='simultaneous source-region SVD across measured/limit/Sobol articulations; full exact gates unchanged'))
         for ordinal,row in enumerate(joint):
-            if time.process_time()>430. or time.process_time()-joint_started>170.:break
+            if time.process_time()>(525. if recovery else 430.) or time.process_time()-joint_started>170.:break
             group=row['group'];regions=row['regions'];goals=row['goals'];inward=row['inward']
             robot.select_pair(group,regions);robot.ik_surface_info=None
             robot.ik_seed_hints=[row['q']]
@@ -3928,8 +3968,9 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
             score,terms=s11_contact_quality(robot,candidate,initial)
             meta.update(quality_score=score,quality_terms=terms,task_quality=s12_task_quality(robot,candidate,info),selected_patches=[dict(p)for p in robot.selected_patches])
             accepted.append(candidate)
+            _remember_verified_candidate(robot,candidate)
             if _s12_pair_sufficient(meta) or len(accepted)>=3:break
-    if not accepted and time.process_time()<430. and not refinement:
+    if not accepted and time.process_time()<(525. if recovery else 430.) and not refinement:
         s5_note(s['ctx'],'s106_direct_refusals',dict(rejected=rejected,
             planning_cpu_s=time.process_time()-started))
         robot.ik_surface_info=info
@@ -3949,6 +3990,37 @@ def rank_contact_candidates(s, robot, info, prior, checker, initial, axes, heigh
         apply_contact_geometry(robot,accepted[0]['meta'])
     s5_note(s['ctx'],'s11_finger_selection',dict(mode=mode,selected=len(accepted[0]['points'])if accepted else None,candidates=[c['meta']for c in accepted],rejected=rejected,ordered_candidate_ids=[c['meta']['candidate_id']for c in accepted],planning_cpu_s=time.process_time()-started,planning_wall_s=time.perf_counter()-wall,actual_attempts=s['attempt']-1,selection_reason='direct calibrated RGB chords, full IK and checked motion before expanded search'))
     return accepted,rejected
+
+
+def rank_contact_candidates(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,**kwargs):
+    """Keep executable plans when their bounded comparison slice is exhausted.
+
+    The physical state stays fixed during CPU search. Every restored snapshot
+    already passed the full original IK, approach, closure and lift preview.
+    An interrupted proposal is untested, never a geometry rejection.
+    """
+    previous=getattr(robot,'_planning_comparison',None)
+    guard=dict(active=True,choices={},first_verified_cpu_s=None,deadline_cpu_s=float('inf'),
+               started_cpu_s=time.process_time(),rejected=[])
+    robot._planning_comparison=guard
+    try:
+        return _rank_contact_candidates_search(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,**kwargs)
+    except _PlanningComparisonComplete:
+        guard['active']=False
+        choices=s12_order_candidates(list(guard['choices'].values()))
+        if choices:
+            meta=choices[0]['meta'];robot.select_pair(meta['contact_fingers'],meta['hand_contact_regions'])
+            apply_contact_geometry(robot,meta)
+        s5_note(s['ctx'],'planning_comparison_budget',dict(
+            process_cpu_s=time.process_time(),first_verified_cpu_s=guard['first_verified_cpu_s'],
+            deadline_cpu_s=guard['deadline_cpu_s'],comparison_slice_cpu_s=120.,
+            stopped_stage=guard.get('stopped_stage'),complete_plans=len(choices),
+            candidate_ids=[c['meta'].get('candidate_id')for c in choices],
+            unfinished_proposal_is_not_rejected=True,restored_only_fully_verified_snapshots=True,
+            physical_commands_sent_during_search=False))
+        return choices,guard['rejected']
+    finally:
+        robot._planning_comparison=previous
 
 
 def s5_plan(s, axis='short', height=None, shift=0.0):
@@ -4144,7 +4216,11 @@ def s5_stationary_rgb(s, phase, max_wait_steps=240):
                                     and exposure_base[:3].max() < .005
                                     and exposure_base[3:].max() < .05)
             if fresh:
-                report = s['volume'].carve(s['obs'], fuse=True)
+                if s.get('initial_observation_complete'):
+                    refined,report=register_rgb_rigid(s['volume'],s['obs'],s['info'])
+                    if refined is not None:s['pending_registered_info']=refined
+                else:
+                    report = s['volume'].carve(s['obs'], fuse=True)
                 if report.get('valid'):
                     s5_note(s['ctx'], 's5_stationary_rgb', dict(
                         phase=phase, entry_step=entry, step=s['obs']['step'],
@@ -4169,6 +4245,116 @@ def s5_stationary_rgb(s, phase, max_wait_steps=240):
         s5_step(s, s['last'], 6, phase, object_check=True)
 
 
+def _convex_polygon_distance(vertices, queries):
+    if len(vertices)<3:return np.full(len(queries),100.)
+    hull=ConvexHull(vertices);polygon=vertices[hull.vertices]
+    edge=np.roll(polygon,-1,axis=0)-polygon
+    offset=queries[:,None,:]-polygon[None,:,:]
+    fraction=np.clip(np.sum(offset*edge[None,:,:],axis=2)/np.maximum(np.sum(edge*edge,axis=1),1e-20),0.,1.)
+    nearest=polygon[None,:,:]+fraction[:,:,None]*edge[None,:,:]
+    distance=np.linalg.norm(queries[:,None,:]-nearest,axis=2).min(1)
+    inside=np.max(queries@hull.equations[:,:2].T+hull.equations[:,2],axis=1)<=1e-12
+    return np.where(inside,0.,distance)
+
+
+def _rgb_envelope_ray_distances(volume,name,frame,world,pixels):
+    """Exact convex angular coverage in a local perspective plane.
+
+    Convert calibrated fisheye pixels to rays BEFORE constructing the convex
+    perspective silhouette. Image-space convexification would distort curved
+    fisheye edges. A ray inside this cone intersects the finite observed hull;
+    it need not be close to one of a sparse set of interior samples.
+    """
+    camera=frame['camera'];calibration=volume.calibration[name]
+    local=(world-camera[:3,3])@camera[:3,:3]
+    view=local.mean(0);view/=np.linalg.norm(view)
+    side=np.cross(view,np.eye(3)[np.argmin(abs(view))]);side/=np.linalg.norm(side)
+    up=np.cross(view,side);basis=np.stack([side,up])
+    depth=local@view
+    if np.any(depth<=1e-8):return np.full(len(pixels),100.)
+    polygon=(local@basis.T)/depth[:,None]
+    def project_rays(uv):
+        rays=_s2v_rays(uv,calibration,volume.size)
+        z=rays@view
+        return (rays@basis.T)/np.maximum(z[:,None],1e-8),z
+    query,z=project_rays(pixels)
+    dx,_=project_rays(pixels+[1.,0.]);dy,_=project_rays(pixels+[0.,1.])
+    # Per-pixel angular metric follows this actual camera calibration.
+    scale=np.maximum(np.linalg.norm(dx-query,axis=1),np.linalg.norm(dy-query,axis=1))
+    distance=_convex_polygon_distance(polygon,query)/np.maximum(scale,1e-10)
+    distance[z<=0.]=100.
+    return distance
+
+
+def register_rgb_rigid(volume, obs, previous):
+    """Move an observed outer envelope only when fresh pixels contradict it.
+
+    Partial silhouettes may remove visible support but cannot reshape a rigid
+    object. Containment within two pixels is ambiguous about motion; retain
+    that hypothesis, not a freshly faceted hull. Contradicting pixels drive a
+    minimum-motion planar registration with exposure FK and robot occlusion.
+    """
+    _,frames=volume.frames(s9_exposure(obs))
+    if len(frames)<2:
+        return None,dict(valid=False,reason='insufficient_current_pose_views',usable_views=len(frames))
+    cloud=np.asarray(previous['collision_points']);hull=ConvexHull(cloud)
+    points=cloud[hull.vertices]
+    center=np.asarray(previous['center']);pixels={}
+    for name,f in frames.items():
+        pix=np.argwhere(f['mask'])[:,::-1].astype(float)
+        pixels[name]=pix[np.linspace(0,len(pix)-1,min(len(pix),240),dtype=int)]
+    def transform(x,p):
+        rot=Rotation.from_euler('z',x[2]).as_matrix()
+        return (p-center)@rot.T+center+np.r_[x[:2],0.]
+    def distances(x):
+        world=transform(x,points);out={}
+        for name,f in frames.items():
+            if hasattr(volume, 'calibration'):
+                out[name]=_rgb_envelope_ray_distances(volume,name,f,world,pixels[name])
+            else:
+                # Orthographic numerical fixtures use the same finite polygon.
+                uv,_,valid=volume.project(name,world,f['camera'])
+                out[name]=_convex_polygon_distance(uv[valid],pixels[name])
+        return out
+    def residual(x):
+        ds=distances(x)
+        return np.r_[np.concatenate([np.maximum(d-1.,0.)/np.sqrt(len(d)) for d in ds.values()]),
+                     .05*x/np.array([.003,.003,.15])]
+    def audit(x):
+        return {name:dict(explained_fraction=float((d<=2.).mean()),reverse_p90_px=float(np.quantile(d,.9)))for name,d in distances(x).items()}
+    minimum_explained=.9
+    # A pose that already meets admission needs no outlier-driven correction.
+    before=audit(np.zeros(3));consistent=all(v['explained_fraction']>=minimum_explained for v in before.values())
+    x=np.zeros(3);termination='prior envelope explains fresh pixels; pose remains within RGB uncertainty'
+    if not consistent:
+        lower=np.array([-.025,-.025,-.6]);upper=-lower
+        choices=[]
+        for yaw in [0.,-.2,.2]:
+            fit=_recover_geometry_least_squares(residual,np.array([0.,0.,yaw]),bounds=(lower,upper),
+                x_scale=[.003,.003,.15],diff_step=1e-3,max_nfev=35)
+            choices.append((float(residual(fit.x)@residual(fit.x)),fit))
+        _,fit=min(choices,key=lambda row:row[0]);x=fit.x
+        termination=str(fit.message)
+    after=audit(x);passed=all(v['explained_fraction']>=minimum_explained for v in after.values())
+    report=dict(valid=bool(passed),method='rigid_observed_envelope_calibrated_ray_containment',
+        step=int(obs['image_state']['step']),usable_views=len(frames),truth_inputs=False,
+        current_pose_from_fresh_RGB=True,shape_preserved=True,pose_ambiguous_within_envelope=consistent,
+        parameters=x.tolist(),views_before=before,views=after,termination=termination,
+        pixel_uncertainty=2.,minimum_explained_fraction=minimum_explained,
+        reason=None if passed else 'fresh_pixels_not_explained_by_bounded_rigid_registration')
+    if not passed:return None,report
+    rot=Rotation.from_euler('z',x[2]).as_matrix();newcloud=cloud if not np.any(x) else transform(x,cloud)
+    delta=np.eye(4);delta[:3,:3]=rot;delta[:3,3]=center-rot@center+np.r_[x[:2],0.]
+    pose=delta@np.asarray(previous.get('rgb_pose_matrix',np.eye(4)))
+    refined=dict(previous,center=center+np.r_[x[:2],0.],axes=rot[:2,:2]@previous['axes'],
+        collision_points=newcloud,rgb_pose_matrix=pose,rgb_incremental_rotation=rot,rgb_incremental_translation=np.r_[x[:2],0.],
+        rgb_previous_center=center.copy(),rgb_registration=report,
+        height_source='observed rigid RGB envelope; current exposure masks constrain pose, not shape')
+    volume.points=transform(x,points);volume.boundary=volume.points
+    volume.tree=cKDTree(volume.points);volume.center=refined['center'];volume.last_frames=frames;volume.last_report=report
+    return refined,report
+
+
 def s5_rgb_envelope(s, report):
     """The measured-exposure visual hull, retaining the public table frame."""
     if not report.get('valid'):
@@ -4176,6 +4362,11 @@ def s5_rgb_envelope(s, report):
     s['valid_rgb_model_epoch'] = int(s.get('actual_grasps',0))
     s['valid_rgb_model_step'] = int(s['obs']['image_state']['step'])
     info = s['info']
+    if 'pending_registered_info' in s:
+        refined=s.pop('pending_registered_info')
+        change=max(float(np.linalg.norm(refined['center']-info['center'])),
+            float(np.max(abs(refined['half']-info['half']))))
+        return refined,change
     points = np.asarray(s['volume'].points)
     local = points[:, :2] @ info['axes']
     lo, hi = local.min(0), local.max(0)
@@ -4189,17 +4380,6 @@ def s5_rgb_envelope(s, report):
         rgb_centroid_world_m=report.get('center_world_m',np.mean(points,axis=0).tolist()))
     change = max(float(np.linalg.norm(refined['center'] - info['center'])),
                  float(np.max(abs(refined['half'] - info['half']))))
-    if s.get('initial_rgb_geometry_applied') and not s.get('actual_grasps', 0):
-        # Controlled cross-hand comparison: the archived RGB envelope is a
-        # fixed experimental input until the first physical closure. Live RGB
-        # remains captured and validated, and still supplies motor/lift proof.
-        # After a closure, recovery uses the current observed geometry again.
-        s5_note(s['ctx'], 'fixed_rgb_preclose_geometry', dict(
-            step=s['obs']['step'], fixture_sha256=s['initial_rgb_geometry_applied'],
-            live_change_m=change, live_center_m=refined['center'].tolist(),
-            live_half_m=refined['half'].tolist(),
-            scope='fixed archived public RGB planning geometry before first actual closure; live observations retained'))
-        return info, 0.
     return refined, change
 
 
@@ -4230,8 +4410,15 @@ def _s5_selected_surface_change(s,refined,extent_change):
     robot=s['robot'];meta=s['c']['meta']
     robot.select_pair(meta['contact_fingers'],meta['hand_contact_regions']);apply_contact_geometry(robot,meta)
     targets=np.asarray(meta['targets']);inward=np.asarray(s['c']['inward'])
-    intent=ContactIntent(robot,targets,inward,refined)
-    updated=intent.goals(targets);normals=np.asarray(intent.normals)
+    if 'rgb_incremental_rotation' in refined:
+        pose=np.asarray(refined.get('rgb_pose_matrix',np.eye(4)))
+        reference=np.asarray(meta.get('rgb_contact_pose',np.eye(4)))
+        delta=pose@np.linalg.inv(reference);rot=delta[:3,:3]
+        updated=targets@rot.T+delta[:3,3]
+        normals=(-inward)@rot.T
+    else:
+        intent=ContactIntent(robot,targets,inward,refined)
+        updated=intent.goals(targets);normals=np.asarray(intent.normals)
     normal_change=np.arccos(np.clip(np.sum(normals*(-inward),axis=1),-1.,1.))
     shifts=np.linalg.norm(updated-targets,axis=1)
     material=bool(extent_change>=S6_UPDATE_MM or shifts.max()>=S6_UPDATE_MM or normal_change.max()>=.15)
@@ -4284,6 +4471,13 @@ def _s5_local_rgb_repair(s,update):
             _s12_candidate_identity(candidate)
             s['c']=candidate;s['candidate_pool']=[];s12_select_contacts(s,candidate)
             s['refined']=True;s.pop('approach_blocked',None)
+            old_points=robot.tips(np.asarray(old['q']))[0]
+            intent=ContactIntent(robot,targets,inward,s['info'])
+            s['pending_rgb_command_comparison']=dict(update=update,
+                previous_solution_q=np.asarray(old['q']).tolist(),new_solution_q=q.tolist(),
+                old_solution_error_on_new_surface_m=intent.errors(old_points).tolist(),
+                new_solution_error_m=meta['per_finger_error_m'],
+                previous_next_command_q=s.get('rgb_previous_next_command'))
             s5_note(s['ctx'],'local_rgb_repair',dict(passed=True,cpu_s=time.process_time()-started,
                 ik_target_error_m=meta['per_finger_error_m'],visual_update=update,
                 command_actual_joint_error=(np.asarray(s['last'])-actual).tolist(),
@@ -4435,6 +4629,7 @@ def s5_approach(s):
                 break
             if phase == 'descend' and not early_checked:
                 early_checked = True
+                s['rgb_previous_next_command']=np.asarray(q).tolist()
                 result = s5_early_rgb_checkpoint(s)
                 if result['status'] == 'blocked':
                     return False
@@ -4458,6 +4653,7 @@ def s5_approach(s):
                 if checked < 1 and descended >= .9 * total:
                     before = int(s['obs']['step'])
                     checked += 1
+                    s['rgb_previous_next_command']=np.asarray(prefix[index+1][0]if index+1<len(prefix)else q).tolist()
                     result = s5_refine(s)
                     s5_note(s['ctx'], 's5_approach_observation', dict(step=s['obs']['step'],
                         observation_step=before, descent_steps_completed=descended,
@@ -4526,6 +4722,7 @@ def s5_refine(s):
         if retained is not None:return retained
         return s5_vision_block(s, 'near_rgb_invalid', observation_timeout_steps=240)
     refined, change = s5_rgb_envelope(s, report)
+    if refined is None:return s5_vision_block(s,'near_rgb_registration_invalid',map=report)
     update=_s5_selected_surface_change(s,refined,change)
     s5_note(s['ctx'],'s6_target_change',update)
     if not update['material']:
@@ -4549,7 +4746,7 @@ def s5_refine(s):
 def s11_motor_snapshot(s):
     hand = s['hand']
     groups = {p.finger: [hand.index[n] for n in p.joint_names] for p in hand.pads}
-    return dict(actual_q=np.asarray(s['obs']['actual_q']), actual_qvel=np.asarray(s['obs']['actual_qvel']), groups=groups)
+    return dict(step=s['obs']['step'],actual_q=np.asarray(s['obs']['actual_q']), actual_qvel=np.asarray(s['obs']['actual_qvel']), groups=groups,prismatic_indices=[i for i,k in enumerate(hand.joint_types)if k=='prismatic'])
 
 def _s5_closure_motion_veto(evidence):
     return bool(evidence.get('object_observation', {}).get('registered_motion_veto', False)
@@ -4577,7 +4774,7 @@ def _s5_stationary_closure_evidence(s, evidence):
     # This is an observation phase, not another actual-closure ticket.
     s5_step(s, s['last'].copy(), 24, 's5_preload_hold')
     after = capture_preload_snapshot(s['obs'], s['robot'], s5_static(s))
-    fresh = compare_preload(before, after, commanded_delta=s['last'] - before['actual_q'])
+    fresh = compare_preload(before, after, commanded_delta=np.zeros_like(s['last']))
     s5_note(s['ctx'], 's5_stationary_closure_reobserve', dict(
         moving_evidence=evidence, stationary_evidence=fresh,
         target_q=s['last'].tolist(), actual_q=s['obs']['actual_q'],
@@ -4657,6 +4854,7 @@ def s5_close(s, mode='fixed', cap=0.0025):
     protected_idle_links=set()
     blocked_streak=np.zeros(len(c['points']),dtype=int)
     unsettled_probe_limit=np.full(len(c['points']),np.inf)
+    unchanged_command_rounds=0
     for i in range(15 if mode == 'servo' else 6):
         refreshed = False
         if mode in ('adaptive', 'servo'):
@@ -4664,6 +4862,10 @@ def s5_close(s, mode='fixed', cap=0.0025):
         previous_visual = evidence
         visual_round = refreshed or not fast or i % 2 == 0 or evidence is None or bool(evidence.get('moving_fingers')) or (not all((m.get('settled') for m in evidence.get('motor', {}).get('fingers', {}).values())))
         before = capture_preload_snapshot(s['obs'], robot, s5_static(s)) if visual_round else s11_motor_snapshot(s)
+        before['command_q']=s['last'].copy()
+        description=robot.description
+        before['prismatic_indices']=[j for _,_,_,_,kind,j in description.joints if j is not None and kind=='prismatic']
+        before['joint_lower']=robot.lo.tolist();before['joint_upper']=robot.hi.tolist()
         delta = np.full(len(c['points']), 0.00025 if i == 0 else 0.00035)
         reason = 'fixed_schedule'
         waiting_for_settle = False
@@ -4737,7 +4939,25 @@ def s5_close(s, mode='fixed', cap=0.0025):
         delta=np.minimum(delta,np.maximum(0.,unsettled_probe_limit-squeeze))
         if np.any(np.isfinite(unsettled_probe_limit) & (delta<1e-7)):
             waiting_for_settle=True
+        finger_decisions=[]
+        for k,finger in enumerate(robot.finger_names):
+            maximum=min(cap,unsettled_probe_limit[k])
+            why=('cumulative_probe_allowance_exhausted' if squeeze[k]>=maximum-1e-7 else
+                 'persistent_settled_resistance' if blocked_streak[k]>=2 and delta[k]<1e-7 else
+                 'tracking_or_object_motion_hold' if delta[k]<1e-7 else
+                 'bounded_following_probe')
+            finger_decisions.append(dict(finger=finger,action='hold'if delta[k]<1e-7 else 'probe',
+                reason=why,requested_increment_m=float(delta[k]),current_squeeze_m=float(squeeze[k]),
+                cumulative_limit_m=float(maximum),contact_confirmed=False))
+        s5_note(ctx,'s5_finger_control_decisions',dict(step=s['obs']['step'],round=i,fingers=finger_decisions))
         proposed = np.clip(squeeze + delta, initial_squeeze, cap)
+        unchanged_command_rounds=(unchanged_command_rounds+1 if np.all(proposed-squeeze<1e-7) else 0)
+        if unchanged_command_rounds>=2:
+            s5_note(ctx,'s5_probe_budget_complete',dict(step=s['obs']['step'],round=i,
+                reason='two stationary intervals without a new safe command; proceed to RGB proof',
+                squeeze_m=squeeze.tolist(),unsettled_probe_limit_m=[float(x)if np.isfinite(x)else None for x in unsettled_probe_limit],
+                force_known=False,contact_confirmed=False))
+            break
         reference = _s5_close_reference(robot,c['q'],s['last'])
         target = close_ik(robot, reference, c['points'] + c['inward'] * proposed[:, None])
         # Validate the WHOLE proposal before any of its nodes reaches physics.
@@ -4771,10 +4991,22 @@ def s5_close(s, mode='fixed', cap=0.0025):
         s5_move(s, target, 60, 's5_preload_hold')
         after = capture_preload_snapshot(s['obs'], robot, s5_static(s)) if visual_round else s11_motor_snapshot(s)
         if visual_round:
-            evidence = compare_preload(before, after, commanded_delta=target - before['actual_q'])
+            evidence = compare_preload(before, after, commanded_delta=target - before['command_q'])
         else:
-            evidence = dict(previous_visual, motor=_s2v_motor(before, after, target - before['actual_q']))
+            evidence = dict(previous_visual, motor=_s2v_motor(before, after, target - before['command_q']))
             evidence.update(confidence=0.0, moving_fingers=[], visual_evidence_reused_for_state_only=True)
+        for finger,motor in evidence.get('motor',{}).get('fingers',{}).items():
+            ids=np.asarray(motor['joint_indices'],dtype=int)
+            measured=np.asarray(s['obs']['actual_q']);command=target-before['command_q']
+            motor.update(command_q=target[ids].tolist(),actual_q=measured[ids].tolist(),
+                absolute_tracking_error=(target-measured)[ids].tolist(),
+                lower_limit_distance=(measured-robot.lo)[ids].tolist(),
+                upper_limit_distance=(robot.hi-measured)[ids].tolist(),
+                commanded_limit_clamp=bool(np.any(target[ids]<=robot.lo[ids]+1e-6)or np.any(target[ids]>=robot.hi[ids]-1e-6)),
+                interval_command_delta=command[ids].tolist(),raw_qvel=np.asarray(s['obs']['actual_qvel'])[ids].tolist(),
+                persistent_resistance_rounds=int(blocked_streak[list(robot.finger_names).index(finger)]),
+                drive_saturation_observed=False,drive_saturation_available=False,
+                action_reason=reason,geometry_checked=True,contact_confirmed=False)
         s5_note(ctx, 's11_probe_tracking', dict(step=s['obs']['step'], frame_id=s9_frame(s['obs']), visual_processed=visual_round, target_q=target.tolist(), actual_q=s['obs']['actual_q'], actual_qvel=s['obs']['actual_qvel'], tracking_error=(target - np.asarray(s['obs']['actual_q'])).tolist(), measured_tip_m=robot.tips(np.asarray(s['obs']['actual_q']))[0].tolist(), cap_m=cap, force_known=False))
         s5_note(ctx, 's5_closure_response', dict(step=s['obs']['step'], round=i, features=evidence))
         last_increment = proposed - squeeze
@@ -5192,106 +5424,17 @@ S9_MAX_FRAME_AGE = 0.1
 S9_EARLY_SETTLE = True
 S5_ATTEMPTS = 3
 
-def fit_shape(volume, obs, initial_info):
-    _, frames = volume.frames(obs)
-    if len(frames) < 3:
-        return (None, dict(valid=False, reason='insufficient_current_views'))
-    initial_center = np.asarray(initial_info['center'])
-    vertices = np.asarray(initial_info['collision_points'])
-    local = vertices - initial_center
-    hull = ConvexHull(local)
-    axes = [np.arange(a, b + 0.00035, 0.0007) for a, b in zip(local.min(0), local.max(0))]
-    grid = np.stack(np.meshgrid(*axes, indexing='ij'), -1).reshape(-1, 3)
-    points = grid[np.max(grid @ hull.equations[:, :3].T + hull.equations[:, 3], axis=1) < 1e-10]
-    points = np.r_[points, local]
-    if len(points) > 1800:
-        points = points[np.linspace(0, len(points) - 1, 1800, dtype=int)]
-    pixelsets = {name: np.argwhere(f['mask'])[:, ::-1].astype(float) for name, f in frames.items()}
-    pixelsets = {name: p[np.linspace(0, len(p) - 1, min(160, len(p)), dtype=int)] for name, p in pixelsets.items()}
-
-    def world(x):
-        p = points.copy()
-        p[:, 2] *= x[3]
-        rot = Rotation.from_euler('z', x[2]).as_matrix()
-        p = p @ rot.T
-        p[:, 2] += initial_info['table_z'] - p[:, 2].min() + 0.0001
-        p[:, :2] += x[:2]
-        return p
-
-    def residual(x):
-        p = world(x)
-        r = []
-        for name, f in frames.items():
-            uv, dist, valid = volume.project(name, p, f['camera'])
-            depth = map_coordinates(f['robot_depth'], uv[:, ::-1].T, order=0, mode='constant', cval=0.0)
-            visible = valid & (dist < depth - 0.0005) & color_projection_known(f, uv)
-            sdf = map_coordinates(f['sdf'], uv[:, ::-1].T, order=1, mode='constant', cval=20.0)
-            forward = np.maximum(sdf, 0.0) * visible
-            reverse = cKDTree(uv[visible]).query(pixelsets[name])[0] if visible.any() else np.full(len(pixelsets[name]), 20.0)
-            r.extend(forward / np.sqrt(len(points)))
-            r.extend(reverse / np.sqrt(len(reverse)))
-        return np.r_[r, (x[3] - 1.0) * 0.15]
-    base = np.r_[initial_center[:2], 0.0, 1.0]
-    lower = np.r_[initial_center[:2] - 0.025, -np.pi, 0.35]
-    upper = np.r_[initial_center[:2] + 0.025, np.pi, 0.085 / (initial_info['top_z'] - initial_info['table_z'])]
-    choices = []
-    for dx, dy, yaw, scale in [(0, 0, 0, 1), (-0.003, 0, 0, 1), (0.003, 0, 0, 1), (0, -0.003, 0, 1), (0, 0.003, 0, 1), (0, 0, 0.35, 1), (0, 0, -0.35, 1), (0, 0, 0, 0.6), (0, 0, 0, 1.5), (0, 0, 0, min(5.0, upper[3] - 0.01))]:
-        fit = least_squares(residual, base + [dx, dy, yaw, scale - 1], bounds=(lower, upper), diff_step=0.001, x_scale=[0.005, 0.005, 0.3, 0.5], max_nfev=70)
-        choices.append((float(np.sum(residual(fit.x) ** 2)), fit.x))
-    choices.sort(key=lambda x: x[0])
-    cost, x = choices[0]
-    p = world(x)
-    audits = {}
-    passed = True
-    for name, f in frames.items():
-        uv, dist, valid = volume.project(name, p, f['camera'])
-        depth = map_coordinates(f['robot_depth'], uv[:, ::-1].T, order=0, mode='constant', cval=0.0)
-        visible = valid & (dist < depth - 0.0005) & color_projection_known(f, uv)
-        reverse = cKDTree(uv[visible]).query(np.argwhere(f['mask'])[:, ::-1])[0] if visible.any() else np.full(int(f['mask'].sum()), 100.0)
-        sdf = map_coordinates(f['sdf'], uv[:, ::-1].T, order=1, mode='constant', cval=100.0)
-        explained = float((reverse <= 2.0).mean())
-        outside = float((sdf[visible] > 1.0).mean()) if visible.any() else 1.0
-        ok = explained >= 0.8 and outside <= 0.1
-        passed = passed and ok
-        audits[name] = dict(explained_fraction=explained, reverse_p90_px=float(np.quantile(reverse, 0.9)), visible_points=int(visible.sum()), outside_mask_fraction=outside, passed=bool(ok))
-    alternatives = [dict(cost=c, parameters=q.tolist()) for c, q in choices]
-    near = [q for c, q in choices if c <= cost + 0.2]
-    spread = float(np.ptp(np.array(near)[:, :2], axis=0).max())
-    passed = passed and spread < 0.002
-    rot = Rotation.from_euler('z', x[2]).as_matrix()
-    newverts = local.copy()
-    newverts[:, 2] *= x[3]
-    newverts = newverts @ rot.T
-    newverts[:, 2] += initial_info['table_z'] - newverts[:, 2].min() + 0.0001
-    newverts[:, :2] += x[:2]
-    planar_axes = rot[:2, :2] @ np.asarray(initial_info['axes'])
-    loc = newverts[:, :2] @ planar_axes
-    lo, hi = (loc.min(0), loc.max(0))
-    top = float(newverts[:, 2].max())
-    half = np.r_[(hi - lo) / 2, (top - initial_info['table_z']) / 2]
-    report = dict(valid=bool(passed), method='initial_RGB_shape_current_multiview_registration', step=int(obs['step']), shape_prior_only=True, current_pose_from_fresh_RGB=True, truth_inputs=False, parameters=x.tolist(), cost=cost, views=audits, alternatives=alternatives, near_solution_center_spread_m=spread, reason=None if passed else 'current_image_explanation_or_pose_ambiguity', extent_m=(half * 2).tolist(), current_center_m=x[:2].tolist())
-    if not passed:
-        return (None, report)
-    info = dict(initial_info, axes=planar_axes, center=np.r_[planar_axes @ ((lo + hi) / 2), initial_info['table_z'] + half[2]], half=half, top_z=top, collision_points=newverts)
-    volume.points = p
-    volume.boundary = p
-    volume.tree = cKDTree(p)
-    volume.center = p.mean(0)
-    volume.last_frames = frames
-    volume.last_report = report
-    return (info, report)
-_S14_INIT = initialize_state
-_S14_SHAPE_PRIOR = None
-
 def s5_init(ctx):
-    global _S14_SHAPE_PRIOR
-    s = _S14_INIT(ctx)
-    _S14_SHAPE_PRIOR = {k: np.array(v, copy=True) if isinstance(v, np.ndarray) else v for k, v in s['info'].items()}
-    return s
+    return initialize_state(ctx)
+
 
 def stage3_live_geometry(volume, obs, previous_info):
-    info, report = fit_shape(volume, s9_exposure(obs), _S14_SHAPE_PRIOR)
-    return (info, report)
+    """Recovery registers the already-observed rigid envelope, without rescaling."""
+    info, report = register_rgb_rigid(volume, obs, previous_info)
+    if info is not None:
+        volume.info = info
+    return info, report
+
 def _s3_candidates_on_axes(robot, info, prior, checker, initial, axes, heights, shift, geometry_source, retime=False, refinement=False, surface_hint=None):
     # First grasp and continuous regrasp share all surface families and checks.
     return axis_contact_candidates(robot, info, prior, checker, initial, axes, heights,
@@ -5370,7 +5513,7 @@ def s13_preload(s):
     before = capture_preload_snapshot(s['obs'], s['robot'], s5_static(s))
     s5_move(s, s['last'], 24, 's13_recovery_observe')
     after = capture_preload_snapshot(s['obs'], s['robot'], s5_static(s))
-    evidence = compare_preload(before, after, commanded_delta=s['last'] - before['actual_q'])
+    evidence = compare_preload(before, after, commanded_delta=np.zeros_like(s['last']))
     s['closure_evidence_step'] = evidence.get('step_after')
     proposal, reason = s13_preload_proposal(s, evidence)
     s13_log(s, 'fresh_preload_evidence', evidence=evidence)
@@ -5657,7 +5800,7 @@ def install_initial_rgb_geometry(s, live_info):
     payload=read_public_geometry(declaration,public,live_info['table_z'],s['obs']['initial_overhead'])
     geometry=payload['geometry']
     common=dict(live_info,**{k:np.asarray(v).copy() if isinstance(v,list) else v for k,v in geometry.items()},
-        height_source='explicit archived public RGB perception cache fixed before first actual closure; live observations retained')
+        height_source='initial archived public RGB shape; current pose updated with fresh measured-exposure RGB')
     s['initial_rgb_geometry_applied']=declaration['sha256']
     live={k:np.asarray(live_info[k]).tolist() for k in GEOMETRY_KEYS}
     s5_note(s['ctx'],'initial_rgb_geometry_installed',dict(
@@ -5666,7 +5809,7 @@ def install_initial_rgb_geometry(s, live_info):
         live_top_z_m=float(live_info['top_z']),common_top_z_m=float(common['top_z']),
         source_step=payload['provenance']['source_step'],
         current_exposure_step=s['obs']['image_state']['step'],
-        scope='fixed planning geometry before first actual closure; cached perception is not a current exposure; livevolume unchanged'))
+        scope='initial observed shape prior; fresh RGB updates rigid pose before closure; cached perception is not a current exposure'))
     return common
 
 
@@ -5712,6 +5855,7 @@ def s5_observe_initial(s):
         refined=install_initial_rgb_geometry(s,refined)
     s['info']=refined;s['checker']=SelfAwareGeometry(robot,refined)
     robot.ik_checker=s['checker']
+    s['initial_observation_complete']=True
     return s13_legal_start(s) is not None
 
 def policy_main(ctx):
@@ -5811,3 +5955,57 @@ def optimize(robot, prior, targets, inward, normal_weight=2.5, seed_index=0):
     meta['s16_numerics'].update(objective_phase=meta.get('objective_phase'),requested_normal_weight=requested, used_normal_weight=used, nfev=meta['nfev'], max_nfev=120, solver_success=meta['solver_success'], termination_detail_available=False, search_scope='final fixed-target IK only; region IK is a distinct preceding solver')
     return (q, meta)
 S17_COLOR_MODE = 'hs'
+
+
+
+
+def _slice_least_squares(robot,fun,x0,**kwargs):
+    from scipy.optimize import OptimizeResult
+    class SliceFinished(Exception):pass
+    last={}
+    def bounded(x):
+        if last and time.process_time()>=robot.ik_call_deadline:raise SliceFinished()
+        value=fun(x);last.update(x=np.asarray(x).copy(),fun=np.asarray(value).copy())
+        return value
+    try:return least_squares(bounded,x0,**kwargs)
+    except SliceFinished:
+        return OptimizeResult(x=last['x'],fun=last['fun'],cost=float(last['fun']@last['fun']/2),
+            optimality=None,nfev=0,success=False,status=0,message='per-candidate CPU slice exhausted; current iterate retained for unchanged strict admission')
+
+
+_UNBOUNDED_LEAST_SQUARES=least_squares
+
+def least_squares(fun,x0,*args,**kwargs):
+    """Every local basin shares a finite slice of the original worker budget."""
+    from scipy.optimize import OptimizeResult
+    deadline=time.process_time()+18.
+    class BasinFinished(Exception):pass
+    last={}
+    def bounded(x):
+        if last and time.process_time()>=deadline:raise BasinFinished()
+        value=fun(x);last.update(x=np.asarray(x).copy(),fun=np.asarray(value).copy())
+        return value
+    try:return _UNBOUNDED_LEAST_SQUARES(bounded,x0,*args,**kwargs)
+    except BasinFinished:
+        return OptimizeResult(x=last['x'],fun=last['fun'],cost=float(last['fun']@last['fun']/2),
+            optimality=None,nfev=0,success=False,status=0,message='finite local CPU budget; unchanged strict endpoint and whole-hand path still required')
+
+
+def _recover_geometry_least_squares(fun,x0,**kwargs):
+    lower,upper=kwargs.get('bounds',(-np.inf,np.inf))
+    relative_step=kwargs.pop('diff_step',1e-4)
+    def geometry_jacobian(x):
+        x=np.asarray(x);value=fun(x);columns=[]
+        lo=np.broadcast_to(lower,x.shape);hi=np.broadcast_to(upper,x.shape)
+        for j in range(len(x)):
+            step=max(abs(float(x[j]))*float(relative_step),1e-5)
+            plus=float(hi[j]-x[j]);minus=float(x[j]-lo[j])
+            if min(plus,minus)>=step:
+                ahead=x.copy();behind=x.copy();ahead[j]+=step;behind[j]-=step
+                columns.append((fun(ahead)-fun(behind))/(2.*step))
+            else:
+                h=min(step,plus)if plus>=min(step,minus)else -min(step,minus)
+                trial=x.copy();trial[j]+=h
+                columns.append((fun(trial)-value)/h)
+        return np.column_stack(columns)
+    return least_squares(fun,x0,jac=geometry_jacobian,**kwargs)

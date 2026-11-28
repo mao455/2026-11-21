@@ -1,0 +1,30 @@
+{
+  "rows": [
+    {
+      "path": "/tmp/fingereye-code-upload-20261121-n_8o1qrp",
+      "commit": "d5414e229e640f0bd4827d9dd83fe9e2d30c5115",
+      "retained_ref": "refs/heads/d111-retired-code-upload",
+      "uncommitted_status": "",
+      "allocated_bytes": 75980800,
+      "directories": 50
+    },
+    {
+      "path": "/tmp/fingereye-stage11-publish-qdgeidzt",
+      "commit": "c4ba655d9b3c62a569505be32a86d7ab48ac7b4e",
+      "retained_ref": "refs/heads/d111-retired-stage11-publish",
+      "uncommitted_status": "?? FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/round12_objects/r12_wedge.obj\n",
+      "allocated_bytes": 452481024,
+      "directories": 61,
+      "retired_generated_asset": {
+        "bytes": 318,
+        "sha256": "4af53285308128eac063b8f1856356303d4a6fd9c606138784e74755ee9644dc",
+        "basis": "318-byte retired r12_wedge export; current round12_objects.py retains exact wedge dimensions 0.0115/0.022/0.0225 and generator; no current normal input depends on it"
+      }
+    }
+  ],
+  "removed_directories": 111,
+  "allocated_bytes_removed": 528461824,
+  "available_after_bytes": 995313238016,
+  "open_files_before": [],
+  "worktrees_checked": true
+}

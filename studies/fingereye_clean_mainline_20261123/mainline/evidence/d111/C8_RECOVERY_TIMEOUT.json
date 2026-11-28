@@ -1,0 +1,1342 @@
+{
+  "source": "b8b0daf17b86034b9fff2e553b7e5f488ebc8f13",
+  "events": [
+    {
+      "s13_recovery": {
+        "event": "legal_command_seed",
+        "step": 24,
+        "frame_id": 6,
+        "actual_grasps": 0,
+        "candidate_id": null,
+        "actual_q": [
+          -0.18016743659973145,
+          -3.117017695331015e-05,
+          0.3000614643096924,
+          7.913752779131755e-05,
+          0.0019888789393007755,
+          -0.00011149406782351434,
+          0.010533156804740429,
+          0.01548138540238142,
+          -7.204057055787416e-06,
+          -2.0638683508877875e-06,
+          0.00137642165645957,
+          -4.475345122045837e-06,
+          0.0016952105797827244,
+          -0.003919368609786034,
+          0.007207597140222788,
+          -0.00023676081036683172,
+          -4.342334250395652e-06
+        ],
+        "legal_q": [
+          -0.18016743659973145,
+          -3.117017695331015e-05,
+          0.3000614643096924,
+          7.913752779131755e-05,
+          0.0019888789393007755,
+          -0.00011149406782351434,
+          0.010533156804740429,
+          0.01548138540238142,
+          1e-07,
+          1e-07,
+          0.00137642165645957,
+          1e-07,
+          0.0016952105797827244,
+          -0.003919368609786034,
+          0.007207597140222788,
+          -0.00023676081036683172,
+          -4.342334250395652e-06
+        ],
+        "projection": 7.304057055787416e-06
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "legal_command_seed",
+        "step": 3696,
+        "frame_id": 924,
+        "actual_grasps": 0,
+        "candidate_id": null,
+        "actual_q": [
+          -0.019672909751534462,
+          -0.0055826096795499325,
+          0.3237943947315216,
+          3.128525733947754,
+          0.07558838278055191,
+          3.141085386276245,
+          2.042038917541504,
+          1.4974701404571533,
+          1.020950436592102,
+          1.0210294723510742,
+          1.4974688291549683,
+          1.0209532976150513,
+          1.0210274457931519,
+          -1.0995616912841797,
+          1.4974613189697266,
+          -0.5497538447380066,
+          -0.5497853755950928
+        ],
+        "legal_q": [
+          -0.019672909751534462,
+          -0.0055826096795499325,
+          0.3237943947315216,
+          3.128525733947754,
+          0.07558838278055191,
+          3.141085386276245,
+          2.042038917541504,
+          1.4974701404571533,
+          1.020950436592102,
+          1.0210294723510742,
+          1.4974688291549683,
+          1.0209532976150513,
+          1.0210274457931519,
+          -1.0995616912841797,
+          1.4974613189697266,
+          -0.5497538447380066,
+          -0.5497853755950928
+        ],
+        "projection": 0.0
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "legal_command_seed",
+        "step": 3696,
+        "frame_id": 924,
+        "actual_grasps": 0,
+        "candidate_id": null,
+        "actual_q": [
+          -0.019672909751534462,
+          -0.0055826096795499325,
+          0.3237943947315216,
+          3.128525733947754,
+          0.07558838278055191,
+          3.141085386276245,
+          2.042038917541504,
+          1.4974701404571533,
+          1.020950436592102,
+          1.0210294723510742,
+          1.4974688291549683,
+          1.0209532976150513,
+          1.0210274457931519,
+          -1.0995616912841797,
+          1.4974613189697266,
+          -0.5497538447380066,
+          -0.5497853755950928
+        ],
+        "legal_q": [
+          -0.019672909751534462,
+          -0.0055826096795499325,
+          0.3237943947315216,
+          3.128525733947754,
+          0.07558838278055191,
+          3.141085386276245,
+          2.042038917541504,
+          1.4974701404571533,
+          1.020950436592102,
+          1.0210294723510742,
+          1.4974688291549683,
+          1.0209532976150513,
+          1.0210274457931519,
+          -1.0995616912841797,
+          1.4974613189697266,
+          -0.5497538447380066,
+          -0.5497853755950928
+        ],
+        "projection": 0.0
+      }
+    },
+    {
+      "planning_comparison_budget": {
+        "process_cpu_s": 210.192212133,
+        "first_verified_cpu_s": 90.061695382,
+        "deadline_cpu_s": 210.06169538199998,
+        "comparison_slice_cpu_s": 120.0,
+        "stopped_stage": "collision_objective",
+        "complete_plans": 1,
+        "candidate_ids": [
+          "1-direct-3"
+        ],
+        "unfinished_proposal_is_not_rejected": true,
+        "restored_only_fully_verified_snapshots": true,
+        "physical_commands_sent_during_search": false
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "legal_command_seed",
+        "step": 5676,
+        "frame_id": 1419,
+        "actual_grasps": 0,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "actual_q": [
+          -0.09584040194749832,
+          0.03950181603431702,
+          0.2873956859111786,
+          2.3150217533111572,
+          0.3676915168762207,
+          2.9639458656311035,
+          0.04034285619854927,
+          0.5942623615264893,
+          0.8447262048721313,
+          0.3261384069919586,
+          1.4974074363708496,
+          0.9379475712776184,
+          0.9927323460578918,
+          -0.3352130651473999,
+          0.6716669201850891,
+          -0.6731100678443909,
+          -0.6875298619270325
+        ],
+        "legal_q": [
+          -0.09584040194749832,
+          0.03950181603431702,
+          0.2873956859111786,
+          2.3150217533111572,
+          0.3676915168762207,
+          2.9639458656311035,
+          0.04034285619854927,
+          0.5942623615264893,
+          0.8447262048721313,
+          0.3261384069919586,
+          1.4974074363708496,
+          0.9379475712776184,
+          0.9927323460578918,
+          -0.3352130651473999,
+          0.6716669201850891,
+          -0.6731100678443909,
+          -0.6875298619270325
+        ],
+        "projection": 0.0
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "grasp_dispatched",
+        "step": 6066,
+        "frame_id": 1516,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "initial",
+        "started_step": 6060,
+        "target_q": [
+          -0.09584029886842096,
+          0.03949808926352172,
+          0.24236117047520958,
+          2.3150332234871476,
+          0.3677080894131455,
+          2.963943032874419,
+          0.04122840227602065,
+          0.5941590227640957,
+          0.8452919341256533,
+          0.32605372779890796,
+          1.497468833046797,
+          0.9388181906865432,
+          0.9929885967636237,
+          -0.3335614018770303,
+          0.671984797383024,
+          -0.6743535338323449,
+          -0.6868696864653673
+        ],
+        "actual_q": [
+          -0.09584010392427444,
+          0.039499588310718536,
+          0.2423631250858307,
+          2.3150439262390137,
+          0.36770617961883545,
+          2.963925361633301,
+          0.04069230332970619,
+          0.5942029356956482,
+          0.845268964767456,
+          0.3260895907878876,
+          1.4974662065505981,
+          0.9383721947669983,
+          0.9928417801856995,
+          -0.33457624912261963,
+          0.6717408895492554,
+          -0.6738156676292419,
+          -0.687279462814331
+        ],
+        "contact_count": 2,
+        "points": [
+          [
+            -0.008058004032333331,
+            -0.0076164876725310325,
+            0.01620590431939526
+          ],
+          [
+            0.0015571468889962643,
+            0.015759633403402792,
+            0.01625223612854865
+          ]
+        ],
+        "command_plan_sha256": "dd970f6fd6de074ab1d9d8f7150d3747dc5f42da4e5eba85ffca6c9cb92d7284",
+        "planned_q": [
+          -0.09704021028629865,
+          0.038301723765840096,
+          0.24116117047694,
+          2.3150332234871476,
+          0.3677080894131455,
+          2.963943032874419,
+          0.4789154087535849,
+          0.5261542074686879,
+          0.7799504674666683,
+          0.34274252734019134,
+          1.4974688291549683,
+          1.0209532976150513,
+          1.0210274457931519,
+          -0.024807951153630225,
+          0.7331150979684161,
+          -0.7916615123535036,
+          -0.6180058684202684
+        ],
+        "recovery_id": null
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "failure_decision",
+        "step": 7164,
+        "frame_id": 1791,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "decision": {
+          "action": "retry",
+          "reason": "confirmed_empty_from_current_grounded_RGB",
+          "support_state": "failure_evidence",
+          "attempt": 1,
+          "max_attempts": 3,
+          "phase": "middle",
+          "feedback": true,
+          "motor_contact_hypothesis": null,
+          "motor_contact_used": false,
+          "carrying_evidence": false,
+          "grounded_evidence": true,
+          "persistent_image_motion_risk": false,
+          "repeated_lift_image_risk": false,
+          "hold_consistent": false,
+          "use_active_lift_risk": true,
+          "remaining_steps": 16836,
+          "remaining_wall_s": 1958.794735332951,
+          "private_success_certified": false,
+          "native_object_omega_observable": false,
+          "confirmed_empty": true,
+          "confirmed_empty_source": "current_calibrated_grounded_excludes_carried",
+          "confirmed_empty_step": 7164,
+          "release_authorized": true
+        }
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "fresh_preload_evidence",
+        "step": 7188,
+        "frame_id": 1797,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "evidence": {
+          "schema": 1,
+          "step_before": 7164,
+          "step_after": 7188,
+          "wrist_fixed": true,
+          "wrist_joint_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "depth_bounds_m": [
+            0.002,
+            0.35
+          ],
+          "views": {
+            "CAM1": {
+              "finger": "palm",
+              "visible_before": true,
+              "visible_after": true,
+              "confidence": 0.0,
+              "registered": false,
+              "motion_evidence": false,
+              "signed_response_px": [
+                null,
+                null
+              ],
+              "status": "ok",
+              "area_before_px": 141,
+              "area_after_px": 137,
+              "area_ratio": 0.9716312056737588,
+              "centroid_shift_px": [
+                0.024952114717606833,
+                0.10912667598488923
+              ],
+              "track_count": 3,
+              "detected_tracks": 3,
+              "response_interval_px": null,
+              "uncertainty": "insufficient_tracked_texture; silhouette motion is not object motion",
+              "association_iou": 0.9716312056737588,
+              "centroid_displacement_px": 0.11194301872109583,
+              "exposure_camera_translation_m": 3.2782554626464844e-07,
+              "exposure_camera_rotation_rad": 2.1073424255447017e-08,
+              "bounded_probe_association": true,
+              "object_identity_association": true
+            },
+            "CAM2": {
+              "finger": "palm",
+              "visible_before": true,
+              "visible_after": true,
+              "confidence": 0.1655978622500388,
+              "registered": true,
+              "motion_evidence": false,
+              "signed_response_px": [
+                0.0,
+                0.0
+              ],
+              "status": "ok",
+              "area_before_px": 116,
+              "area_after_px": 115,
+              "area_ratio": 0.9913793103448276,
+              "centroid_shift_px": [
+                -0.05794602698651374,
+                -0.04400299850075129
+              ],
+              "track_count": 4,
+              "detected_tracks": 4,
+              "response_interval_px": [
+                [
+                  -1.2523275900886475,
+                  -1.2813188907779356
+                ],
+                [
+                  1.2535054639454941,
+                  1.220951157746395
+                ]
+              ],
+              "observed_flow_px": [
+                -0.001617431640625,
+                -0.029348373413085938
+              ],
+              "camera_translation_m": 3.2782554626464844e-07,
+              "track_dispersion_px": 0.0193004310131073,
+              "uncertainty": "conditional on color association, LK correspondences, calibration and stated depth bounds",
+              "association_iou": 0.9913793103448276,
+              "centroid_displacement_px": 0.07275991974005262,
+              "exposure_camera_translation_m": 3.2782554626464844e-07,
+              "exposure_camera_rotation_rad": 0.0,
+              "bounded_probe_association": true,
+              "object_identity_association": true
+            },
+            "CAM3": {
+              "finger": "hand_joint_1",
+              "visible_before": false,
+              "visible_after": false,
+              "confidence": 0.0,
+              "registered": false,
+              "motion_evidence": false,
+              "signed_response_px": [
+                null,
+                null
+              ],
+              "status": "ok",
+              "area_before_px": 0,
+              "area_after_px": 0,
+              "area_ratio": 0.0,
+              "centroid_shift_px": null,
+              "uncertainty": "not visible; absence is not zero contact"
+            },
+            "CAM4": {
+              "finger": "hand_joint_1",
+              "visible_before": false,
+              "visible_after": false,
+              "confidence": 0.0,
+              "registered": false,
+              "motion_evidence": false,
+              "signed_response_px": [
+                null,
+                null
+              ],
+              "status": "ok",
+              "area_before_px": 0,
+              "area_after_px": 0,
+              "area_ratio": 0.0,
+              "centroid_shift_px": null,
+              "uncertainty": "not visible; absence is not zero contact"
+            },
+            "CAM5": {
+              "finger": "hand_joint_5",
+              "visible_before": false,
+              "visible_after": false,
+              "confidence": 0.0,
+              "registered": false,
+              "motion_evidence": false,
+              "signed_response_px": [
+                null,
+                null
+              ],
+              "status": "ok",
+              "area_before_px": 0,
+              "area_after_px": 0,
+              "area_ratio": 0.0,
+              "centroid_shift_px": null,
+              "uncertainty": "not visible; absence is not zero contact"
+            },
+            "CAM6": {
+              "finger": "hand_joint_5",
+              "visible_before": false,
+              "visible_after": false,
+              "confidence": 0.0,
+              "registered": false,
+              "motion_evidence": false,
+              "signed_response_px": [
+                null,
+                null
+              ],
+              "status": "ok",
+              "area_before_px": 0,
+              "area_after_px": 0,
+              "area_ratio": 0.0,
+              "centroid_shift_px": null,
+              "uncertainty": "not visible; absence is not zero contact"
+            },
+            "CAM7": {
+              "finger": "hand_joint_8",
+              "visible_before": false,
+              "visible_after": false,
+              "confidence": 0.0,
+              "registered": false,
+              "motion_evidence": false,
+              "signed_response_px": [
+                null,
+                null
+              ],
+              "status": "ok",
+              "area_before_px": 0,
+              "area_after_px": 0,
+              "area_ratio": 0.0,
+              "centroid_shift_px": null,
+              "uncertainty": "not visible; absence is not zero contact"
+            },
+            "CAM8": {
+              "finger": "hand_joint_8",
+              "visible_before": false,
+              "visible_after": false,
+              "confidence": 0.0,
+              "registered": false,
+              "motion_evidence": false,
+              "signed_response_px": [
+                null,
+                null
+              ],
+              "status": "ok",
+              "area_before_px": 0,
+              "area_after_px": 0,
+              "area_ratio": 0.0,
+              "centroid_shift_px": null,
+              "uncertainty": "not visible; absence is not zero contact"
+            }
+          },
+          "fingers": {
+            "palm": {
+              "visible_before": 2,
+              "visible_after": 2,
+              "registered_views": 1,
+              "motion_views": 0,
+              "confidence": 0.1655978622500388,
+              "views": [
+                "CAM1",
+                "CAM2"
+              ]
+            },
+            "hand_joint_1": {
+              "visible_before": 0,
+              "visible_after": 0,
+              "registered_views": 0,
+              "motion_views": 0,
+              "confidence": 0.0,
+              "views": [
+                "CAM3",
+                "CAM4"
+              ]
+            },
+            "hand_joint_5": {
+              "visible_before": 0,
+              "visible_after": 0,
+              "registered_views": 0,
+              "motion_views": 0,
+              "confidence": 0.0,
+              "views": [
+                "CAM5",
+                "CAM6"
+              ]
+            },
+            "hand_joint_8": {
+              "visible_before": 0,
+              "visible_after": 0,
+              "registered_views": 0,
+              "motion_views": 0,
+              "confidence": 0.0,
+              "views": [
+                "CAM7",
+                "CAM8"
+              ]
+            }
+          },
+          "motor": {
+            "measured_delta": [
+              0.0,
+              0.0,
+              3.2782554626464844e-07,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              8.940696716308594e-08,
+              -1.6927719116210938e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              3.308372527044412e-07,
+              0.0,
+              1.0788440704345703e-05,
+              0.0
+            ],
+            "commanded_delta": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "tracking_residual": [
+              0.0,
+              0.0,
+              -3.2782554626464844e-07,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -8.940696716308594e-08,
+              1.6927719116210938e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -3.308372527044412e-07,
+              0.0,
+              -1.0788440704345703e-05,
+              0.0
+            ],
+            "fingers": {
+              "hand_joint_1": {
+                "joint_indices": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "active_joint_indices": [],
+                "tracking_ratio": null,
+                "drive_deficit": null,
+                "settled": true,
+                "max_abs_qvel": 9.480077278567478e-05,
+                "unit_groups": {
+                  "rad": {
+                    "indices": [
+                      6,
+                      7,
+                      8,
+                      9
+                    ],
+                    "active_indices": [],
+                    "command_increment": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "measured_increment": [
+                      0.0,
+                      8.940696716308594e-08,
+                      -1.6927719116210938e-05,
+                      0.0
+                    ],
+                    "qvel": [
+                      8.326270472025499e-05,
+                      3.6387009458849207e-05,
+                      -9.480077278567478e-05,
+                      -9.332651643489953e-06
+                    ],
+                    "max_abs_qvel": 9.480077278567478e-05,
+                    "settled": true,
+                    "tracking_ratio": null,
+                    "drive_deficit": null
+                  }
+                },
+                "evidence_state": "information_insufficient_zero_command",
+                "confidence": 0.0,
+                "contact_confirmed": false
+              },
+              "hand_joint_8": {
+                "joint_indices": [
+                  13,
+                  14,
+                  15,
+                  16
+                ],
+                "active_joint_indices": [],
+                "tracking_ratio": null,
+                "drive_deficit": null,
+                "settled": true,
+                "max_abs_qvel": 9.254013275494799e-05,
+                "unit_groups": {
+                  "rad": {
+                    "indices": [
+                      13,
+                      14,
+                      15,
+                      16
+                    ],
+                    "active_indices": [],
+                    "command_increment": [
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0
+                    ],
+                    "measured_increment": [
+                      3.308372527044412e-07,
+                      0.0,
+                      1.0788440704345703e-05,
+                      0.0
+                    ],
+                    "qvel": [
+                      -2.5670510694908444e-06,
+                      5.902810880797915e-05,
+                      9.254013275494799e-05,
+                      -1.237142896570731e-05
+                    ],
+                    "max_abs_qvel": 9.254013275494799e-05,
+                    "settled": true,
+                    "tracking_ratio": null,
+                    "drive_deficit": null
+                  }
+                },
+                "evidence_state": "information_insufficient_zero_command",
+                "confidence": 0.0,
+                "contact_confirmed": false
+              }
+            },
+            "force_observable": false,
+            "interval_steps": [
+              7164,
+              7188
+            ],
+            "uncertainty": "same-interval target increment and measured increment; static tracking error is separate; resistance proxy is not contact force"
+          },
+          "visible_fingers": [
+            "palm"
+          ],
+          "lost_fingers": [],
+          "moving_fingers": [],
+          "asymmetric_motion": false,
+          "confidence": 0.1655978622500388,
+          "rebalance_finger": null,
+          "advice": "reobserve",
+          "reason": "fewer than two finger groups see the object",
+          "uncertainty": [
+            "RGB is not force/contact sensing or success evidence"
+          ],
+          "classification": "insufficient_observability",
+          "object_displacement_m": null,
+          "force_estimate_n": null,
+          "exposure_steps": [
+            7164,
+            7188
+          ],
+          "bounded_probe_association": {
+            "palm": [
+              "CAM1",
+              "CAM2"
+            ]
+          },
+          "probe_association_thresholds": {
+            "min_area_px": 24,
+            "min_mask_iou": 0.8,
+            "max_centroid_displacement_px": 1.0,
+            "max_camera_translation_m": 0.0001,
+            "max_camera_rotation_rad": 0.002,
+            "evidence_scope": "same-color silhouette association; not contact"
+          },
+          "object_observation": {
+            "associated": true,
+            "associated_views": [
+              "CAM1",
+              "CAM2"
+            ],
+            "registered_motion_veto": false,
+            "motion_views": [],
+            "scope": "whole-object color association across named calibrated views; no contact-face or camera-owner requirement",
+            "contact_observable": false
+          }
+        }
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "considered",
+        "step": 7188,
+        "frame_id": 1797,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "preload",
+        "eligible": false,
+        "fresh": true,
+        "bilateral_association": false,
+        "settled": true,
+        "absolute_tracking_valid": true,
+        "grounded_evidence": true,
+        "max_abs_tracking_error_rad": {
+          "hand_joint_1": 1.021791088673396e-05,
+          "hand_joint_8": 1.019712624561464e-05
+        },
+        "max_abs_qvel_rad_s": {
+          "hand_joint_1": 9.480077278567478e-05,
+          "hand_joint_8": 9.254013275494799e-05
+        },
+        "squeeze_m": [
+          0.0025,
+          0.0025
+        ],
+        "cap_m": 0.0045,
+        "thresholds": {
+          "max_q_error_rad": 0.03,
+          "max_qvel_rad_s": 0.06,
+          "probe_increment_m": 0.00025,
+          "max_evidence_age_steps": 12
+        },
+        "force_observable": false,
+        "reason": "preload_disabled_for_paired_control"
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "considered",
+        "step": 7188,
+        "frame_id": 1797,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "local_pose",
+        "reason": "fresh_RGB_and_local_path_required",
+        "contact_count": 2
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "selected",
+        "step": 7188,
+        "frame_id": 1797,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "release_resample",
+        "recovery_id": 1,
+        "conditional_fallback": true
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "selected",
+        "step": 7572,
+        "frame_id": 1893,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "local_pose",
+        "recovery_id": 1,
+        "opening_already_executed": true
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "legal_command_seed",
+        "step": 7572,
+        "frame_id": 1893,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "actual_q": [
+          -0.09587002545595169,
+          0.03670766204595566,
+          0.2475287765264511,
+          2.3150532245635986,
+          0.3677102327346802,
+          2.9639406204223633,
+          0.6293191313743591,
+          0.5242234468460083,
+          0.7737154364585876,
+          0.33985358476638794,
+          1.4974850416183472,
+          1.0209391117095947,
+          1.0210288763046265,
+          -0.04719852656126022,
+          0.7815722227096558,
+          -0.9352754950523376,
+          -0.4530259668827057
+        ],
+        "legal_q": [
+          -0.09587002545595169,
+          0.03670766204595566,
+          0.2475287765264511,
+          2.3150532245635986,
+          0.3677102327346802,
+          2.9639406204223633,
+          0.6293191313743591,
+          0.5242234468460083,
+          0.7737154364585876,
+          0.33985358476638794,
+          1.4974850416183472,
+          1.0209391117095947,
+          1.0210288763046265,
+          -0.04719852656126022,
+          0.7815722227096558,
+          -0.9352754950523376,
+          -0.4530259668827057
+        ],
+        "projection": 0.0
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "guard_refused",
+        "step": 7572,
+        "frame_id": 1893,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "local_pose",
+        "recovery_id": 1,
+        "reason": "bounded_candidates_exhausted",
+        "rejected": [
+          {
+            "reason": "unresolved_all_pad_RGB_patch",
+            "dz": 0.002,
+            "shift": 0.0
+          },
+          {
+            "reason": "unresolved_all_pad_RGB_patch",
+            "dz": -0.002,
+            "shift": 0.0
+          },
+          {
+            "reason": "unresolved_all_pad_RGB_patch",
+            "dz": 0.0,
+            "shift": 0.0015
+          },
+          {
+            "reason": "unresolved_all_pad_RGB_patch",
+            "dz": 0.0,
+            "shift": -0.0015
+          }
+        ]
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "selected",
+        "step": 7620,
+        "frame_id": 1905,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "local_pose",
+        "recovery_id": 2,
+        "opening_already_executed": true
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "legal_command_seed",
+        "step": 7620,
+        "frame_id": 1905,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "actual_q": [
+          -0.0946693941950798,
+          0.03615894168615341,
+          0.24872912466526031,
+          2.315047025680542,
+          0.3677121698856354,
+          2.963939905166626,
+          0.5735862255096436,
+          0.5548577308654785,
+          0.7875269651412964,
+          0.3519881069660187,
+          1.4974859952926636,
+          1.0209341049194336,
+          1.0210316181182861,
+          -0.09360964596271515,
+          0.7904295325279236,
+          -0.9307120442390442,
+          -0.4531385004520416
+        ],
+        "legal_q": [
+          -0.0946693941950798,
+          0.03615894168615341,
+          0.24872912466526031,
+          2.315047025680542,
+          0.3677121698856354,
+          2.963939905166626,
+          0.5735862255096436,
+          0.5548577308654785,
+          0.7875269651412964,
+          0.3519881069660187,
+          1.4974859952926636,
+          1.0209341049194336,
+          1.0210316181182861,
+          -0.09360964596271515,
+          0.7904295325279236,
+          -0.9307120442390442,
+          -0.4531385004520416
+        ],
+        "projection": 0.0
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "guard_refused",
+        "step": 7620,
+        "frame_id": 1905,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "local_pose",
+        "recovery_id": 2,
+        "reason": "bounded_candidates_exhausted",
+        "rejected": [
+          {
+            "reason": "unresolved_all_pad_RGB_patch",
+            "dz": 0.002,
+            "shift": 0.0
+          },
+          {
+            "reason": "unresolved_all_pad_RGB_patch",
+            "dz": -0.002,
+            "shift": 0.0
+          },
+          {
+            "reason": "unresolved_all_pad_RGB_patch",
+            "dz": 0.0,
+            "shift": 0.0015
+          },
+          {
+            "reason": "unresolved_all_pad_RGB_patch",
+            "dz": 0.0,
+            "shift": -0.0015
+          }
+        ]
+      }
+    },
+    {
+      "stage3_release": {
+        "step": 7764,
+        "finger_opening_target_m": 0.006,
+        "actual_opening_projected_m": [
+          0.005958043481821032,
+          0.005863526787567373
+        ],
+        "opening_frame": "world_at_before_open",
+        "legacy_palm_relative_opening_projected_m": [
+          0.004020477194917956,
+          0.002625258693834866
+        ],
+        "actual_palm_translation_m": [
+          0.007104963064193726,
+          -0.004230335354804993,
+          0.0071327537298202515
+        ],
+        "minimum_measured_opening_m": 0.003,
+        "nominal_opening_passed": true,
+        "wrist_attitude_target_delta": 0.0,
+        "actual_object_separation_certified": false
+      }
+    },
+    {
+      "stage3_release_retreat_ticket": {
+        "ready": true,
+        "source_attempt": 1,
+        "opened_step": 7764,
+        "retreat_completed_step": 7956,
+        "fresh_map_step": 7956,
+        "actual_retreat_m": 0.00802910327911377,
+        "minimum_actual_retreat_m": 0.006,
+        "actual_opening_projected_m": [
+          0.005958043481821032,
+          0.005863526787567373
+        ],
+        "sampled_max_actual_wrist_attitude_delta_rad": 4.818992511692107e-05,
+        "settle": {
+          "settled": true,
+          "window_steps": 48,
+          "sample_stride_steps": 6,
+          "actual_q_range": [
+            0.0,
+            0.0,
+            0.00010770559310913086,
+            0.0,
+            1.5914440155029297e-05,
+            0.0,
+            0.0,
+            1.9252300262451172e-05,
+            0.00035309791564941406,
+            9.059906005859375e-06,
+            1.1801719665527344e-05,
+            9.059906005859375e-05,
+            0.0,
+            5.5730342864990234e-06,
+            4.1961669921875e-05,
+            0.0002745389938354492,
+            0.0
+          ],
+          "actual_qvel": [
+            6.807430054323049e-06,
+            4.570340934151318e-06,
+            4.6137483877828345e-05,
+            7.698472472839057e-05,
+            4.672506474889815e-05,
+            3.2565119909122586e-05,
+            6.288144760446812e-08,
+            9.745685383677483e-05,
+            9.627247345633805e-05,
+            5.211048119235784e-05,
+            0.00021206980454735458,
+            0.00020160891290288419,
+            7.048652332741767e-05,
+            4.9293394113192335e-05,
+            9.751965262694284e-05,
+            9.82334022410214e-05,
+            5.2201750804670155e-05
+          ],
+          "translation_range_limit_m": 0.0005,
+          "joint_range_limit_rad": 0.01
+        },
+        "object_separation_certified": false,
+        "reorientation_phase": "released_high_pregrasp_only"
+      }
+    },
+    {
+      "s7_release_clearance": {
+        "step": 7956,
+        "extra_retreat_m": 0.0,
+        "ready": true,
+        "measured": {
+          "table_clearance_m": 0.015487713634965115,
+          "table_clearance_link": "Empty_Link3",
+          "thresholds": {
+            "table_clearance_m": 0.00065,
+            "self_overlap_m": 0.0,
+            "object_overlap_m": 0.0
+          },
+          "self_collisions": [],
+          "object_collisions": [],
+          "passed": true
+        },
+        "commanded": {
+          "table_clearance_m": 0.01548917626306254,
+          "table_clearance_link": "Empty_Link3",
+          "thresholds": {
+            "table_clearance_m": 0.00065,
+            "self_overlap_m": 0.0,
+            "object_overlap_m": 0.0
+          },
+          "self_collisions": [],
+          "object_collisions": [],
+          "passed": true
+        },
+        "reason": "fresh_envelope_and_hand_clear"
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "executed",
+        "step": 7956,
+        "frame_id": 1989,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "branch": "release_resample",
+        "ticket": {
+          "ready": true,
+          "source_attempt": 1,
+          "opened_step": 7764,
+          "retreat_completed_step": 7956,
+          "fresh_map_step": 7956,
+          "actual_retreat_m": 0.008026773029301049,
+          "minimum_actual_retreat_m": 0.006,
+          "actual_opening_projected_m": [
+            0.005958043481821032,
+            0.005863526787567373
+          ],
+          "sampled_max_actual_wrist_attitude_delta_rad": 4.818992511692107e-05,
+          "settle": {
+            "settled": true,
+            "window_steps": 48,
+            "sample_stride_steps": 6,
+            "actual_q_range": [
+              0.0,
+              0.0,
+              0.00010770559310913086,
+              0.0,
+              1.5914440155029297e-05,
+              0.0,
+              0.0,
+              1.9252300262451172e-05,
+              0.00035309791564941406,
+              9.059906005859375e-06,
+              1.1801719665527344e-05,
+              9.059906005859375e-05,
+              0.0,
+              5.5730342864990234e-06,
+              4.1961669921875e-05,
+              0.0002745389938354492,
+              0.0
+            ],
+            "actual_qvel": [
+              6.807430054323049e-06,
+              4.570340934151318e-06,
+              4.6137483877828345e-05,
+              7.698472472839057e-05,
+              4.672506474889815e-05,
+              3.2565119909122586e-05,
+              6.288144760446812e-08,
+              9.745685383677483e-05,
+              9.627247345633805e-05,
+              5.211048119235784e-05,
+              0.00021206980454735458,
+              0.00020160891290288419,
+              7.048652332741767e-05,
+              4.9293394113192335e-05,
+              9.751965262694284e-05,
+              9.82334022410214e-05,
+              5.2201750804670155e-05
+            ],
+            "translation_range_limit_m": 0.0005,
+            "joint_range_limit_rad": 0.01
+          },
+          "object_separation_certified": false,
+          "reorientation_phase": "released_high_pregrasp_only",
+          "extra_clearance_retreat_m": 0.0
+        }
+      }
+    },
+    {
+      "s13_recovery": {
+        "event": "legal_command_seed",
+        "step": 7956,
+        "frame_id": 1989,
+        "actual_grasps": 1,
+        "candidate_id": "contacts2-dd970f6fd6de074ab1d9",
+        "actual_q": [
+          -0.09110738337039948,
+          0.03283911570906639,
+          0.2603588402271271,
+          2.315037727355957,
+          0.36771076917648315,
+          2.963944911956787,
+          0.46442046761512756,
+          0.6415846347808838,
+          0.8231130838394165,
+          0.38265737891197205,
+          1.497491717338562,
+          1.0209749937057495,
+          1.021035075187683,
+          -0.2598247528076172,
+          0.8353756666183472,
+          -0.9259785413742065,
+          -0.4615136981010437
+        ],
+        "legal_q": [
+          -0.09110738337039948,
+          0.03283911570906639,
+          0.2603588402271271,
+          2.315037727355957,
+          0.36771076917648315,
+          2.963944911956787,
+          0.46442046761512756,
+          0.6415846347808838,
+          0.8231130838394165,
+          0.38265737891197205,
+          1.497491717338562,
+          1.0209749937057495,
+          1.021035075187683,
+          -0.2598247528076172,
+          0.8353756666183472,
+          -0.9259785413742065,
+          -0.4615136981010437
+        ],
+        "projection": 0.0
+      }
+    }
+  ],
+  "error": "RuntimeError: Traceback (most recent call last):\n  File \"/home/CNS2025331827/miniconda3/envs/isaaclab/lib/python3.11/site-packages/scipy/_lib/_util.py\", line 1091, in __getattr__\n    return self[name]\n           ~~~~^^^^^^\nKeyError: 'optimality'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/workspace/worker.py\", line 56, in main\n    module.main(ctx)\n  File \"/workspace/controller.py\", line 5418, in main\n    return policy_main(_S9Context(ctx))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 5872, in policy_main\n    if not s99_prepare_grasp(s):return\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 4141, in s99_prepare_grasp\n    if not s5_plan(s,axis):\n           ^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 4047, in s5_plan\n    candidates, rejected = s11_contact_candidates(s, robot, info, np.asarray(s['obs']['actual_q']), s['checker'], initial, [direction], heights, shift, 's5_current_rgb' if s['attempt'] > 1 else 's5_initial_rgb', retime=True)\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 5445, in s11_contact_candidates\n    return rank_contact_candidates(s, *args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 4007, in rank_contact_candidates\n    return _rank_contact_candidates_search(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,**kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 3924, in _rank_contact_candidates_search\n    choices,failures=expanded_contact_candidates(s,robot,info,prior,checker,initial,axes,heights,shift,geometry_source,preferred_static=True,planning_deadline_cpu=min(search_ceiling,started+240.),**kwargs)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 3471, in expanded_contact_candidates\n    choices,failures=_s3_candidates_on_axes(robot,info,prior,checker,initial,axes,heights,shift,geometry_source,surface_hint=region_hints.get(tuple(region_ids)),**kwargs)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 5440, in _s3_candidates_on_axes\n    return axis_contact_candidates(robot, info, prior, checker, initial, axes, heights,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 2581, in axis_contact_candidates\n    q,meta=optimize(robot,seed,goals,inward)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 5937, in optimize\n    q, meta = _S16_ORIGINAL_OPTIMIZE(robot, prior, targets, inward, normal_weight=used, seed_index=seed_index)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 5391, in call\n    return fn(*a, **kw)\n           ^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 1433, in solve_target_ik\n    return solve_surface_ik(robot,prior,targets,inward,robot.ik_surface_info,12.)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/controller.py\", line 1368, in solve_surface_ik\n    geometry_optimality=float(fit.optimality);geometry_status=int(fit.status)\n                              ^^^^^^^^^^^^^^\n  File \"/home/CNS2025331827/miniconda3/envs/isaaclab/lib/python3.11/site-packages/scipy/_lib/_util.py\", line 1093, in __getattr__\n    raise AttributeError(name) from e\nAttributeError: optimality\n",
+  "geometry": {
+    "success": false,
+    "steps": 7956,
+    "required_hold_steps": 240,
+    "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+    "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+    "geometry_passed": true,
+    "first_invalid_step": null,
+    "hold_physics_passed": false,
+    "hold_min_table_clearance_m": -2.2625395096600696e-08,
+    "hold_min_lift_m": -0.00010000651673180982,
+    "hold_relative_translation_drift_m": 0.009373365490406639,
+    "hold_relative_rotation_drift_rad": 5.458453351085289e-05,
+    "hold_max_linear_speed_m_s": 2.5898538805411876e-05,
+    "hold_max_angular_speed_rad_s": 0.0015812044755106665,
+    "hold_min_contact_force_n": 0.0,
+    "commanded_lift_m": 0.011219263076782227,
+    "protocol_id": "lift30_no_drop_v1",
+    "target_lift_m": 0.03,
+    "lift_tolerance_m": 0.002,
+    "minimum_actual_lift_m": 0.027999999999999997,
+    "minimum_commanded_lift_m": 0.0295,
+    "legacy_strict": {
+      "success": false,
+      "steps": 7956,
+      "required_hold_steps": 240,
+      "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+      "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+      "geometry_passed": true,
+      "first_invalid_step": null,
+      "hold_physics_passed": false,
+      "hold_min_table_clearance_m": -2.2625395096600696e-08,
+      "hold_min_lift_m": -0.00010000651673180982,
+      "hold_relative_translation_drift_m": 0.009373365490406639,
+      "hold_relative_rotation_drift_rad": 5.458453351085289e-05,
+      "hold_max_linear_speed_m_s": 2.5898538805411876e-05,
+      "hold_max_angular_speed_rad_s": 0.0015812044755106665,
+      "hold_min_contact_force_n": 0.0,
+      "commanded_lift_m": 0.011219263076782227
+    },
+    "continuous_physics_evidence": true,
+    "hold_checks": {
+      "actual_lift": false,
+      "table_clearance": false,
+      "completed_commanded_lift": false
+    },
+    "hold_start_step": 7716,
+    "hold_end_step": 7955,
+    "hold_start_time_s": 64.3,
+    "hold_end_time_s": 66.3,
+    "hold_duration_s": 2.0,
+    "failure": "actual_lift"
+  },
+  "fix": "Unknown optional optimality is null; never interpreted as convergence; retained iterate still passes original physical admission",
+  "source_changed_during_run": false
+}
