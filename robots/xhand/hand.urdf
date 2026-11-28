@@ -1,0 +1,1153 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="xhand3camFE_left_floating">
+  <link name="world_base">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <link name="base_x_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <link name="base_y_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <link name="base_z_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <link name="base_yaw_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <link name="base_pitch_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <link name="base_roll_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.001" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <material name="CameraBlue">
+    <color rgba="0.1 0.55 1.0 0.45" />
+  </material>
+  <material name="CameraBody">
+    <color rgba="0.08 0.08 0.08 1.0" />
+  </material>
+  <link name="left_hand_palm_link">
+    <inertial>
+      <origin xyz="0.0034188 0.0071827 0.058484" rpy="0 0 0" />
+      <mass value="0.52986" />
+      <inertia ixx="0.00067785" ixy="5.6569E-06" ixz="-4.8467E-06" iyy="0.00048061" iyz="-4.059E-05" izz="0.00034692" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/0_left_hand_palm_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/0_left_hand_palm_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_link1">
+    <inertial>
+      <origin xyz="-0.0025862 -0.015136 -0.0074139" rpy="0 0 0" />
+      <mass value="0.0059099" />
+      <inertia ixx="1.0254E-06" ixy="-6.006E-08" ixz="1.3327E-09" iyy="3.7622E-07" iyz="3.1937E-09" izz="1.0318E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/1_left_hand_thumb_link1.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/1_left_hand_thumb_link1.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_link2">
+    <inertial>
+      <origin xyz="-0.00041342 -0.027872 -0.0017853" rpy="0 0 0" />
+      <mass value="0.091733" />
+      <inertia ixx="2.8471E-05" ixy="3.5606E-06" ixz="3.2124E-07" iyy="1.4339E-05" iyz="-1.3084E-06" izz="3.3569E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/2_left_hand_thumb_link2.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/2_left_hand_thumb_link2.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_link3">
+    <inertial>
+      <origin xyz="-0.00086873 -0.021391 0.0021776" rpy="0 0 0" />
+      <mass value="0.036208" />
+      <inertia ixx="1.1078E-05" ixy="6.3044E-07" ixz="-3.4071E-08" iyy="4.5196E-06" iyz="1.7772E-06" izz="1.33E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/3_left_hand_thumb_link3.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/3_left_hand_thumb_link3.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_camera_component1_link">
+    <inertial>
+      <origin xyz="-4.46059678738814E-07 -0.0399672126105621 -0.00839742860263462" rpy="0 0 0" />
+      <mass value="8.64727147811748E-05" />
+      <inertia ixx="3.49421828311595E-10" ixy="3.90972086402017E-25" ixz="1.35709319246981E-25" iyy="6.41644273171143E-10" iyz="1.21042499890651E-10" izz="3.99559273389848E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/4_left_hand_thumb_camera_component1_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/4_left_hand_thumb_camera_component1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_camera_component2_link">
+    <inertial>
+      <origin xyz="2.77555756156289E-17 -0.0470006808016343 0.0113499999999999" rpy="0 0 0" />
+      <mass value="0.000327963718494373" />
+      <inertia ixx="1.1901715256332E-08" ixy="-8.5303000669531E-24" ixz="3.30872245021211E-24" iyy="1.76078328594715E-09" iyz="-4.38793465565239E-24" izz="1.36275157456398E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/5_left_hand_thumb_camera_component2_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/5_left_hand_thumb_camera_component2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_camera_component3_link">
+    <inertial>
+      <origin xyz="1.13599152236389E-05 -0.0354850783456447 0.00935156587228423" rpy="0 0 0" />
+      <mass value="0.00523513199148827" />
+      <inertia ixx="1.1383658549499E-06" ixy="1.07405992031318E-09" ixz="2.44868897650694E-10" iyy="7.49004498292722E-07" iyz="1.44512586827505E-09" izz="1.72549194474419E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/6_left_hand_thumb_camera_component3_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/6_left_hand_thumb_camera_component3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_camera_component4_link">
+    <inertial>
+      <origin xyz="-4.56037500701223E-06 -0.0405592508915172 0.00677771075966407" rpy="0 0 0" />
+      <mass value="0.000687843028091177" />
+      <inertia ixx="2.77116667315235E-09" ixy="-1.9132046070104E-11" ixz="9.36666071273061E-13" iyy="9.32711872518051E-09" iyz="-1.10194217412154E-12" izz="1.15083905138145E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/7_left_hand_thumb_camera_component4_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.866666666666667 0.866666666666667 0.890196078431372 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/7_left_hand_thumb_camera_component4_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_camera_component5_link">
+    <inertial>
+      <origin xyz="-4.56665363113978E-06 -0.0488934964140164 0.00614159755343867" rpy="0 0 0" />
+      <mass value="0.000687842917457043" />
+      <inertia ixx="2.77116913085448E-09" ixy="-2.12146527947676E-11" ixz="-3.55122819665564E-12" iyy="9.42185292020864E-09" iyz="-4.44608582441857E-10" izz="1.14136503848105E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/8_left_hand_thumb_camera_component5_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.866666666666667 0.866666666666667 0.890196078431372 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/8_left_hand_thumb_camera_component5_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_thumb_camera_component6_link">
+    <inertial>
+      <origin xyz="-4.84653460891549E-06 -0.0357603504027284 -0.00665843553401723" rpy="0 0 0" />
+      <mass value="0.000710523346933881" />
+      <inertia ixx="2.86643186475621E-09" ixy="2.15370999959026E-13" ixz="-2.96017862675216E-12" iyy="1.28357953303406E-08" iyz="8.03733649021958E-10" izz="1.12314509168948E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/9_left_hand_thumb_camera_component6_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.866666666666667 0.866666666666667 0.890196078431372 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/9_left_hand_thumb_camera_component6_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_index_spread_link">
+    <inertial>
+      <origin xyz="0.016676 0.00013455 -0.0042085" rpy="0 0 0" />
+      <mass value="0.037427" />
+      <inertia ixx="1.1577E-05" ixy="6.4891E-09" ixz="3.6921E-07" iyy="1.1958E-05" iyz="-4.9182E-08" izz="1.8746E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/10_left_hand_index_spread_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/10_left_hand_index_spread_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_index_link1">
+    <inertial>
+      <origin xyz="0.0019959 0.0058604 0.035558" rpy="0 0 0" />
+      <mass value="0.03798" />
+      <inertia ixx="1.1517E-05" ixy="-1.5555E-08" ixz="-8.5796E-07" iyy="1.2365E-05" iyz="-2.5814E-07" izz="2.5803E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/11_left_hand_index_link1.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/11_left_hand_index_link1.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_index_link2">
+    <inertial>
+      <origin xyz="0.0018292 -0.0011477 0.022789" rpy="0 0 0" />
+      <mass value="0.022549" />
+      <inertia ixx="7.7516E-06" ixy="-1.1341E-07" ixz="-1.171E-06" iyy="7.2041E-06" iyz="-2.3467E-08" izz="2.0805E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/12_left_hand_index_link2.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/12_left_hand_index_link2.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_index_camera_component1_link">
+    <inertial>
+      <origin xyz="0.01135 4.46059677527977E-07 0.0470006808016342" rpy="0 0 0" />
+      <mass value="0.000327963718494373" />
+      <inertia ixx="1.36275157456398E-08" ixy="7.83297813365653E-26" ixz="9.56427583264438E-25" iyy="1.1901715256332E-08" iyz="-8.8016793911747E-26" izz="1.76078328594715E-09" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/13_left_hand_index_camera_component1_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/13_left_hand_index_camera_component1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_index_camera_component2_link">
+    <inertial>
+      <origin xyz="-0.00839742860263439 4.4605967756961E-07 0.039967212610562" rpy="0 0 0" />
+      <mass value="8.64727147811771E-05" />
+      <inertia ixx="3.9955927338986E-10" ixy="1.15128034688117E-25" ixz="-1.21042499890654E-10" iyy="3.49421828311606E-10" iyz="-3.73867787719017E-25" izz="6.41644273171163E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/14_left_hand_index_camera_component2_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/14_left_hand_index_camera_component2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_index_camera_component3_link">
+    <inertial>
+      <origin xyz="0.0103952338773318 4.11531396474207E-06 0.035595353733331" rpy="0 0 0" />
+      <mass value="0.00546421095332821" />
+      <inertia ixx="1.61995721449213E-06" ixy="-6.89438919369354E-11" ixz="1.78047373015076E-08" iyy="1.12348163464582E-06" iyz="-1.5940939734639E-10" izz="5.79874623577754E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/15_left_hand_index_camera_component3_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/15_left_hand_index_camera_component3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_middle_link1">
+    <inertial>
+      <origin xyz="0.0053948 0.0057398 0.035203" rpy="0 0 0" />
+      <mass value="0.03798" />
+      <inertia ixx="1.1271E-05" ixy="-4.0227E-08" ixz="-1.6948E-06" iyy="1.2365E-05" iyz="-2.5546E-07" izz="2.8261E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/16_left_hand_middle_link1.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/16_left_hand_middle_link1.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_middle_link2">
+    <inertial>
+      <origin xyz="0.0023202 5.4016E-05 0.024386" rpy="0 0 0" />
+      <mass value="0.018947" />
+      <inertia ixx="6.5842E-06" ixy="-2.6867E-11" ixz="-1.0779E-06" iyy="6.2551E-06" iyz="-6.376E-09" izz="1.621E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/17_left_hand_middle_link2.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/17_left_hand_middle_link2.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_middle_camera_component1_link">
+    <inertial>
+      <origin xyz="0.0122507130775738 0.000100057390060868 0.0363091884742349" rpy="0 0 0" />
+      <mass value="0.00263880663938207" />
+      <inertia ixx="7.9044128721546E-07" ixy="-4.35800934751729E-12" ixz="2.50842171577084E-08" iyy="6.76138981398608E-07" iyz="8.57877520590631E-11" izz="1.3233370336865E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/18_left_hand_middle_camera_component1_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/18_left_hand_middle_camera_component1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_middle_camera_component2_link">
+    <inertial>
+      <origin xyz="-0.0083974286026344 4.46059677538385E-07 0.039967212610562" rpy="0 0 0" />
+      <mass value="8.64727147811777E-05" />
+      <inertia ixx="3.99559273389863E-10" ixy="8.68756037518599E-27" ixz="-1.21042499890655E-10" iyy="3.49421828311609E-10" iyz="-4.36988922156083E-26" izz="6.41644273171168E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/19_left_hand_middle_camera_component2_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/19_left_hand_middle_camera_component2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_middle_camera_component3_link">
+    <inertial>
+      <origin xyz="0.01135 4.46059677532314E-07 0.0470006808016343" rpy="0 0 0" />
+      <mass value="0.000327963718494372" />
+      <inertia ixx="1.36275157456398E-08" ixy="-3.56470647864336E-25" ixz="-4.47194518661481E-24" iyy="1.1901715256332E-08" iyz="-3.74564705158301E-25" izz="1.76078328594714E-09" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/20_left_hand_middle_camera_component3_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/20_left_hand_middle_camera_component3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_ring_link1">
+    <inertial>
+      <origin xyz="0.0053948 0.0056495 0.035218" rpy="0 0 0" />
+      <mass value="0.03798" />
+      <inertia ixx="1.1271E-05" ixy="-3.5883E-08" ixz="-1.6949E-06" iyy="1.2366E-05" iyz="-2.31E-07" izz="2.8249E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/21_left_hand_ring_link1.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/21_left_hand_ring_link1.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_ring_link2">
+    <inertial>
+      <origin xyz="0.0023081 1.6236E-05 0.023972" rpy="0 0 0" />
+      <mass value="0.019135" />
+      <inertia ixx="6.8088E-06" ixy="-4.5409E-09" ixz="-1.1037E-06" iyy="6.4375E-06" iyz="1.5629E-08" izz="1.6665E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/22_left_hand_ring_link2.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/22_left_hand_ring_link2.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_ring_camera_component1_link">
+    <inertial>
+      <origin xyz="0.0122507130780974 -9.99426099803427E-05 0.0363091884742446" rpy="0 0 0" />
+      <mass value="0.00263880663935244" />
+      <inertia ixx="7.90441287225778E-07" ixy="-4.35802201123196E-12" ixz="2.50842171335266E-08" iyy="6.76138981405154E-07" iyz="8.57877489839506E-11" izz="1.32333703365437E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/23_left_hand_ring_camera_component1_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/23_left_hand_ring_camera_component1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_ring_camera_component2_link">
+    <inertial>
+      <origin xyz="0.01135 4.46059677576549E-07 0.0470006808016342" rpy="0 0 0" />
+      <mass value="0.000327963718494373" />
+      <inertia ixx="1.36275157456398E-08" ixy="-3.96326478750868E-25" ixz="2.016252743098E-24" iyy="1.1901715256332E-08" iyz="3.74254417718983E-24" izz="1.76078328594714E-09" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/24_left_hand_ring_camera_component2_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/24_left_hand_ring_camera_component2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_ring_camera_component3_link">
+    <inertial>
+      <origin xyz="-0.00839742860263442 4.46059677562671E-07 0.0399672126105621" rpy="0 0 0" />
+      <mass value="8.64727147811777E-05" />
+      <inertia ixx="3.99559273389863E-10" ixy="-4.45443214936242E-26" ixz="-1.21042499890655E-10" iyy="3.49421828311609E-10" iyz="1.27514811878745E-25" izz="6.41644273171168E-10" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/25_left_hand_ring_camera_component3_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/25_left_hand_ring_camera_component3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_pinky_link1">
+    <inertial>
+      <origin xyz="0.0053948 0.0057839 0.035216" rpy="0 0 0" />
+      <mass value="0.03798" />
+      <inertia ixx="1.1271E-05" ixy="-3.654E-08" ixz="-1.6949E-06" iyy="1.2366E-05" iyz="-2.3471E-07" izz="2.825E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/26_left_hand_pinky_link1.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/26_left_hand_pinky_link1.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hand_pinky_link2">
+    <inertial>
+      <origin xyz="0.0040466 0.0056554 0.022798" rpy="0 0 0" />
+      <mass value="0.018026" />
+      <inertia ixx="2.9425E-06" ixy="-1.5627E-08" ixz="-4.0603E-07" iyy="3.0235E-06" iyz="-8.8084E-08" izz="1.0718E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/27_left_hand_pinky_link2.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/27_left_hand_pinky_link2.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="thumb_fingereye_camera_front1">
+    <visual name="thumb_fingereye_camera_front1_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="thumb_fingereye_camera_front1_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="thumb_fingereye_camera_front2">
+    <visual name="thumb_fingereye_camera_front2_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="thumb_fingereye_camera_front2_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="thumb_fingereye_camera_back">
+    <visual name="thumb_fingereye_camera_back_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="thumb_fingereye_camera_back_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="index_fingereye_camera_front1">
+    <visual name="index_fingereye_camera_front1_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="index_fingereye_camera_front1_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="index_fingereye_camera_front2">
+    <visual name="index_fingereye_camera_front2_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="index_fingereye_camera_front2_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="index_fingereye_camera_back">
+    <visual name="index_fingereye_camera_back_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="index_fingereye_camera_back_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="middle_fingereye_camera_front1">
+    <visual name="middle_fingereye_camera_front1_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="middle_fingereye_camera_front1_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="middle_fingereye_camera_front2">
+    <visual name="middle_fingereye_camera_front2_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="middle_fingereye_camera_front2_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="middle_fingereye_camera_back">
+    <visual name="middle_fingereye_camera_back_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="middle_fingereye_camera_back_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="ring_fingereye_camera_front1">
+    <visual name="ring_fingereye_camera_front1_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="ring_fingereye_camera_front1_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="ring_fingereye_camera_front2">
+    <visual name="ring_fingereye_camera_front2_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="ring_fingereye_camera_front2_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <link name="ring_fingereye_camera_back">
+    <visual name="ring_fingereye_camera_back_body">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.012 0.006" />
+      </geometry>
+      <material name="CameraBody" />
+    </visual>
+    <visual name="ring_fingereye_camera_back_frustum">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/28_camera_frustum.obj" />
+      </geometry>
+      <material name="CameraBlue" />
+    </visual>
+  </link>
+  <joint name="left_hand_thumb_joint1" type="revolute">
+    <origin xyz="0.0095 -0.0228 0.038" rpy="0 0 0.10355" />
+    <parent link="left_hand_palm_link" />
+    <child link="left_hand_thumb_link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="1.832" effort="1.1" velocity="9.63" />
+  </joint>
+  <joint name="left_hand_thumb_joint2" type="revolute">
+    <origin xyz="0.0058126 -0.029097 -0.0091506" rpy="0 0.26191 0" />
+    <parent link="left_hand_thumb_link1" />
+    <child link="left_hand_thumb_link2" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.698" upper="1.745" effort="1.1" velocity="8.63" />
+  </joint>
+  <joint name="left_hand_thumb_joint3" type="revolute">
+    <origin xyz="-1.4232E-05 -0.055171 -0.0040756" rpy="-0.0047724 0 -0.028356" />
+    <parent link="left_hand_thumb_link2" />
+    <child link="left_hand_thumb_link3" />
+    <axis xyz="-1 0 0" />
+    <limit lower="0" upper="1.919" effort="0.4" velocity="14.38" />
+  </joint>
+  <joint name="left_hand_thumb_camera_component1_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="left_hand_thumb_camera_component1_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_thumb_camera_component2_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="left_hand_thumb_camera_component2_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_thumb_camera_component3_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="left_hand_thumb_camera_component3_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_thumb_camera_component4_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="left_hand_thumb_camera_component4_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_thumb_camera_component5_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="left_hand_thumb_camera_component5_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_thumb_camera_component6_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="left_hand_thumb_camera_component6_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_index_spread_joint" type="revolute">
+    <origin xyz="-0.0095 -0.026501 0.0899" rpy="0.034907 0 0" />
+    <parent link="left_hand_palm_link" />
+    <child link="left_hand_index_spread_link" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.174" upper="0.174" effort="0.4" velocity="14.38" />
+  </joint>
+  <joint name="left_hand_index_joint1" type="revolute">
+    <origin xyz="0.016 -0.006 0.0178" rpy="0 0 0" />
+    <parent link="left_hand_index_spread_link" />
+    <child link="left_hand_index_link1" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.919" effort="1.1" velocity="8.63" />
+  </joint>
+  <joint name="left_hand_index_joint2" type="revolute">
+    <origin xyz="0.004378 0.00255 0.055628" rpy="0 0.15708 0" />
+    <parent link="left_hand_index_link1" />
+    <child link="left_hand_index_link2" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.919" effort="0.4" velocity="14.38" />
+  </joint>
+  <joint name="left_hand_index_camera_component1_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_index_link2" />
+    <child link="left_hand_index_camera_component1_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_index_camera_component2_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_index_link2" />
+    <child link="left_hand_index_camera_component2_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_index_camera_component3_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_index_link2" />
+    <child link="left_hand_index_camera_component3_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_middle_joint1" type="revolute">
+    <origin xyz="0.0065 -0.01 0.1082" rpy="0 0 0" />
+    <parent link="left_hand_palm_link" />
+    <child link="left_hand_middle_link1" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.919" effort="1.1" velocity="8.63" />
+  </joint>
+  <joint name="left_hand_middle_joint2" type="revolute">
+    <origin xyz="0.0096896 0.0029294 0.054952" rpy="0 0.25307 0" />
+    <parent link="left_hand_middle_link1" />
+    <child link="left_hand_middle_link2" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.919" effort="0.4" velocity="14.38" />
+  </joint>
+  <joint name="left_hand_middle_camera_component1_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_middle_link2" />
+    <child link="left_hand_middle_camera_component1_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_middle_camera_component2_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_middle_link2" />
+    <child link="left_hand_middle_camera_component2_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_middle_camera_component3_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_middle_link2" />
+    <child link="left_hand_middle_camera_component3_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_ring_joint1" type="revolute">
+    <origin xyz="0.0065 0.0099999 0.1052" rpy="-0.0025642 0 0" />
+    <parent link="left_hand_palm_link" />
+    <child link="left_hand_ring_link1" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.919" effort="1.1" velocity="8.63" />
+  </joint>
+  <joint name="left_hand_ring_joint2" type="revolute">
+    <origin xyz="0.0096896 0.0057885 0.054967" rpy="0.0026485 0.25307 0.00066314" />
+    <parent link="left_hand_ring_link1" />
+    <child link="left_hand_ring_link2" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.919" effort="0.4" velocity="14.38" />
+  </joint>
+  <joint name="left_hand_ring_camera_component1_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_ring_link2" />
+    <child link="left_hand_ring_camera_component1_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_ring_camera_component2_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_ring_link2" />
+    <child link="left_hand_ring_camera_component2_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_ring_camera_component3_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_hand_ring_link2" />
+    <child link="left_hand_ring_camera_component3_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <joint name="left_hand_pinky_joint1" type="revolute">
+    <origin xyz="0.0065 0.03 0.1022" rpy="-0.0021757 0 0" />
+    <parent link="left_hand_palm_link" />
+    <child link="left_hand_pinky_link1" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.919" effort="1.1" velocity="8.63" />
+  </joint>
+  <joint name="left_hand_pinky_joint2" type="revolute">
+    <origin xyz="0.0096896 -0.00011941 0.054952" rpy="0.0022092 0.17453 0.00038363" />
+    <parent link="left_hand_pinky_link1" />
+    <child link="left_hand_pinky_link2" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.919" effort="0.4" velocity="14.38" />
+  </joint>
+  <joint name="thumb_fingereye_camera_front1_joint" type="fixed">
+    <origin xyz="-2.35588e-08 -0.040555858 0.009789" rpy="-3.141592654 1.110223025e-15 1.573286243" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="thumb_fingereye_camera_front1" />
+  </joint>
+  <joint name="thumb_fingereye_camera_front2_joint" type="fixed">
+    <origin xyz="-3.08436e-08 -0.049516258 0.009087789" rpy="3.140987083 -0.2094386477 1.573708963" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="thumb_fingereye_camera_front2" />
+  </joint>
+  <joint name="thumb_fingereye_camera_back_joint" type="fixed">
+    <origin xyz="-4.4606e-07 -0.038572155 -0.007819577" rpy="1.788305453e-06 -1.178097246 -1.570798262" />
+    <parent link="left_hand_thumb_link3" />
+    <child link="thumb_fingereye_camera_back" />
+  </joint>
+  <joint name="index_fingereye_camera_front1_joint" type="fixed">
+    <origin xyz="0.009789 7.28584e-17 0.040555857" rpy="3.141592654 1.570796327 0" />
+    <parent link="left_hand_index_link2" />
+    <child link="index_fingereye_camera_front1" />
+  </joint>
+  <joint name="index_fingereye_camera_front2_joint" type="fixed">
+    <origin xyz="0.009087789 1.38778e-17 0.049516257" rpy="3.141592654 1.361356817 4.218847494e-15" />
+    <parent link="left_hand_index_link2" />
+    <child link="index_fingereye_camera_front2" />
+  </joint>
+  <joint name="index_fingereye_camera_back_joint" type="fixed">
+    <origin xyz="-0.007819577 4.4606e-07 0.038572155" rpy="3.141592654 -0.3926990812 2.442490654e-15" />
+    <parent link="left_hand_index_link2" />
+    <child link="index_fingereye_camera_back" />
+  </joint>
+  <joint name="middle_fingereye_camera_front1_joint" type="fixed">
+    <origin xyz="0.009789 -1.73472e-18 0.040555857" rpy="-3.141592654 1.570796327 0" />
+    <parent link="left_hand_middle_link2" />
+    <child link="middle_fingereye_camera_front1" />
+  </joint>
+  <joint name="middle_fingereye_camera_front2_joint" type="fixed">
+    <origin xyz="0.009087789 -1.47451e-17 0.049516257" rpy="3.141592654 1.361356817 -2.220446049e-16" />
+    <parent link="left_hand_middle_link2" />
+    <child link="middle_fingereye_camera_front2" />
+  </joint>
+  <joint name="middle_fingereye_camera_back_joint" type="fixed">
+    <origin xyz="-0.007819577 4.4606e-07 0.038572155" rpy="3.141592654 -0.3926990812 -8.881784197e-16" />
+    <parent link="left_hand_middle_link2" />
+    <child link="middle_fingereye_camera_back" />
+  </joint>
+  <joint name="ring_fingereye_camera_front1_joint" type="fixed">
+    <origin xyz="0.009789 6.245e-17 0.040555857" rpy="3.141592654 1.570796327 0" />
+    <parent link="left_hand_ring_link2" />
+    <child link="ring_fingereye_camera_front1" />
+  </joint>
+  <joint name="ring_fingereye_camera_front2_joint" type="fixed">
+    <origin xyz="0.009087789 4.16334e-17 0.049516257" rpy="3.141592654 1.361356817 1.110223025e-15" />
+    <parent link="left_hand_ring_link2" />
+    <child link="ring_fingereye_camera_front2" />
+  </joint>
+  <joint name="ring_fingereye_camera_back_joint" type="fixed">
+    <origin xyz="-0.007819577 4.4606e-07 0.038572155" rpy="3.141592654 -0.3926990812 4.440892099e-16" />
+    <parent link="left_hand_ring_link2" />
+    <child link="ring_fingereye_camera_back" />
+  </joint>
+  <joint name="base_x" type="prismatic">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="world_base" />
+    <child link="base_x_link" />
+    <axis xyz="1 0 0" />
+    <limit lower="-2.0" upper="2.0" effort="1000" velocity="5" />
+    <dynamics damping="20" friction="0" />
+  </joint>
+  <joint name="base_y" type="prismatic">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_x_link" />
+    <child link="base_y_link" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.0" upper="2.0" effort="1000" velocity="5" />
+    <dynamics damping="20" friction="0" />
+  </joint>
+  <joint name="base_z" type="prismatic">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_y_link" />
+    <child link="base_z_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.0" upper="2.0" effort="1000" velocity="5" />
+    <dynamics damping="20" friction="0" />
+  </joint>
+  <joint name="base_yaw" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_z_link" />
+    <child link="base_yaw_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.283185" upper="6.283185" effort="1000" velocity="5" />
+    <dynamics damping="20" friction="0" />
+  </joint>
+  <joint name="base_pitch" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_yaw_link" />
+    <child link="base_pitch_link" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141593" upper="3.141593" effort="1000" velocity="5" />
+    <dynamics damping="20" friction="0" />
+  </joint>
+  <joint name="base_roll" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_pitch_link" />
+    <child link="base_roll_link" />
+    <axis xyz="1 0 0" />
+    <limit lower="-3.141593" upper="3.141593" effort="1000" velocity="5" />
+    <dynamics damping="20" friction="0" />
+  </joint>
+  <joint name="base_mount" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_roll_link" />
+    <child link="left_hand_palm_link" />
+  </joint>
+</robot>

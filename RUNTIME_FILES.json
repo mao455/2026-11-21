@@ -1,0 +1,217 @@
+[
+  {
+    "path": "contact_diagnostics.py",
+    "lines": 116,
+    "purpose": "原生接触诊断侧车，仅离线"
+  },
+  {
+    "path": "contact_intent.py",
+    "lines": 97,
+    "purpose": "有限物面目标与误差"
+  },
+  {
+    "path": "contact_regions.py",
+    "lines": 1286,
+    "purpose": "有限接触面与候选组合"
+  },
+  {
+    "path": "convex_geometry.py",
+    "lines": 54,
+    "purpose": "凸物体几何审计"
+  },
+  {
+    "path": "diagnostics.py",
+    "lines": 40,
+    "purpose": "原生接触读取，仅离线"
+  },
+  {
+    "path": "evaluator.py",
+    "lines": 153,
+    "purpose": "原评分器"
+  },
+  {
+    "path": "fingereye_camera_cfg.py",
+    "lines": 78,
+    "purpose": "共享镜头模块参数"
+  },
+  {
+    "path": "geometry.py",
+    "lines": 136,
+    "purpose": "原作者网格严格几何审计"
+  },
+  {
+    "path": "geometry_acceleration.py",
+    "lines": 75,
+    "purpose": "相同几何语义的加速"
+  },
+  {
+    "path": "grasp_mechanics.py",
+    "lines": 1021,
+    "purpose": "接触承重及抗扭评分"
+  },
+  {
+    "path": "gravity.py",
+    "lines": 30,
+    "purpose": "物体的世界重力"
+  },
+  {
+    "path": "hand_description.py",
+    "lines": 255,
+    "purpose": "运动链、FK、碰撞结构和关节语义"
+  },
+  {
+    "path": "hand_runtime.py",
+    "lines": 957,
+    "purpose": "URDF 规范化、表面候选、相机装配和物理驱动"
+  },
+  {
+    "path": "host.py",
+    "lines": 341,
+    "purpose": "子进程协议与原 evaluator 汇总"
+  },
+  {
+    "path": "initial_image.py",
+    "lines": 4,
+    "purpose": "实时初始俯视图接口，拒绝历史回放"
+  },
+  {
+    "path": "initial_rgb_geometry.py",
+    "lines": 127,
+    "purpose": "初始公共 RGB 几何接口"
+  },
+  {
+    "path": "joint_path.py",
+    "lines": 215,
+    "purpose": "整手关节路径与避碰"
+  },
+  {
+    "path": "kinematic_candidates.py",
+    "lines": 129,
+    "purpose": "按整手 FK 排名的种子"
+  },
+  {
+    "path": "lighting.py",
+    "lines": 26,
+    "purpose": "固定场景光照"
+  },
+  {
+    "path": "motor_feedback.py",
+    "lines": 68,
+    "purpose": "逐指命令/实测响应与阻滞反馈"
+  },
+  {
+    "path": "objects.py",
+    "lines": 13,
+    "purpose": "私有物体资源清单"
+  },
+  {
+    "path": "observation_guard.py",
+    "lines": 79,
+    "purpose": "维度自适应在线观测边界检查"
+  },
+  {
+    "path": "recording.py",
+    "lines": 5,
+    "purpose": "最小 RGB 记录模式接口"
+  },
+  {
+    "path": "resources.py",
+    "lines": 36,
+    "purpose": "仿真进程资源租约"
+  },
+  {
+    "path": "run_grasp.py",
+    "lines": 34,
+    "purpose": "唯一用户入口，选手与默认场景、自动输出"
+  },
+  {
+    "path": "sandbox.py",
+    "lines": 42,
+    "purpose": "观测隔离挂载"
+  },
+  {
+    "path": "self_contacts.py",
+    "lines": 52,
+    "purpose": "整手自接触记录，仅离线"
+  },
+  {
+    "path": "sim_backend.py",
+    "lines": 390,
+    "purpose": "固定的 120/20/30 Hz 物理与观测循环"
+  },
+  {
+    "path": "sim_env/__init__.py",
+    "lines": 0,
+    "purpose": "仿真环境包"
+  },
+  {
+    "path": "sim_env/base_config.py",
+    "lines": 279,
+    "purpose": "Isaac 基础配置"
+  },
+  {
+    "path": "sim_env/base_environment.py",
+    "lines": 1239,
+    "purpose": "Isaac 基础环境"
+  },
+  {
+    "path": "sim_env/camera_config.py",
+    "lines": 416,
+    "purpose": "镜头内参和装配元数据"
+  },
+  {
+    "path": "sim_env/camera_recorder.py",
+    "lines": 577,
+    "purpose": "相机采样工具"
+  },
+  {
+    "path": "sim_env/hand_config.py",
+    "lines": 23,
+    "purpose": "URDF 关节数量与初态驱动的场景配置"
+  },
+  {
+    "path": "sim_env/hand_environment.py",
+    "lines": 9,
+    "purpose": "公共掌手场景类"
+  },
+  {
+    "path": "sim_env/scene_config.py",
+    "lines": 104,
+    "purpose": "物体物理配置"
+  },
+  {
+    "path": "sim_env/scene_environment.py",
+    "lines": 810,
+    "purpose": "物体场景环境"
+  },
+  {
+    "path": "sim_env/scene_tools.py",
+    "lines": 381,
+    "purpose": "场景几何工具"
+  },
+  {
+    "path": "simulator.py",
+    "lines": 427,
+    "purpose": "Isaac 启动和关节名映射"
+  },
+  {
+    "path": "strategy.py",
+    "lines": 6056,
+    "purpose": "唯一共享抓取策略"
+  },
+  {
+    "path": "surface_repair.py",
+    "lines": 74,
+    "purpose": "同面修正和可执行替代接触"
+  },
+  {
+    "path": "visual_observation.py",
+    "lines": 14,
+    "purpose": "观测字段白名单"
+  },
+  {
+    "path": "worker.py",
+    "lines": 67,
+    "purpose": "策略 RPC 运行器"
+  }
+]

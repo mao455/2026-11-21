@@ -1,3 +1,0 @@
-episode,execution_valid,success,legacy_strict_success,first_grasp_success,first_failed_entered_recovery,subsequent_grasp_dispatched,recovered_after_first_failure,geometry_passed,final_single_lift_passed,actual_grasps,recovery_actions_dispatched,first_invalid_step,failure,physical_steps,physical_s,host_elapsed_s
-/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/first_A/episode,True,True,False,True,False,False,False,True,True,1,0,,success,4164,34.7,100.44973204704002
-/home/CNS2025331827/docs/fingereye_stage17/FingerEyeLab/outputs/clean_mainline/recovery_B/episode,True,True,True,False,True,True,True,True,True,2,1,,success,9396,78.3,227.21749964589253

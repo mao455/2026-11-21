@@ -1,0 +1,73 @@
+{
+  "syntax_files": 43,
+  "lines": 16335,
+  "core_strategy_lines": 6056,
+  "evaluator_sha256": "31ddc54031124d2f561a512edb96e0adce2da94c1cae174692e982034a93b22b",
+  "parameter_trace": {
+    "joint_limits": "hand_description XML limit -> lower/upper -> runtime joint_limits -> Robot bounds and backend canonical_limits; URDF converter reads current derivative",
+    "joint_origin_and_length": "XML origins and mesh scale -> HandDescription FK and collision meshes -> pad catalog and IK; same derivative -> UrdfConverter; cache signature includes source/mesh and kinematic data",
+    "camera_installation": "URDF fixed mount -> virtual optical link -> current FK at exposure q; capture_cameras and RGBVolume share metadata optics and optical links",
+    "joint_order": "source/runtime joint-name map; actual physics joint order remapped by name on each read/write; action length is declared joint_names length",
+    "cache": "source changes invalidate per-hand geometry signature and exact authored USD shortcut; lens selection has no whole-URDF digest key"
+  },
+  "unchanged_boundary": [
+    "initial overhead RGB",
+    "live hand RGB",
+    "exposure actual_q/qvel",
+    "static URDF/module calibration"
+  ],
+  "removed_runtime_source_rewriting": true,
+  "native_camera_projection_check": {
+    "step": 0,
+    "cameras": [
+      {
+        "name": "left_finger1_fingereye_link_front1",
+        "position_error_m": 8.158984791926442e-09,
+        "angle_error_rad": 7.948857870214211e-08
+      },
+      {
+        "name": "left_finger1_fingereye_link_front2",
+        "position_error_m": 7.60375095612978e-09,
+        "angle_error_rad": 5.6078021553390035e-08
+      },
+      {
+        "name": "left_finger1_fingereye_link_back",
+        "position_error_m": 3.363685608940288e-09,
+        "angle_error_rad": 1.4370665594683124e-07
+      },
+      {
+        "name": "left_finger2_fingereye_link_front1",
+        "position_error_m": 1.0461127178793778e-08,
+        "angle_error_rad": 2.151425413126884e-07
+      },
+      {
+        "name": "left_finger2_fingereye_link_front2",
+        "position_error_m": 2.3058922222690084e-08,
+        "angle_error_rad": 1.4765577838152352e-07
+      },
+      {
+        "name": "left_finger2_fingereye_link_back",
+        "position_error_m": 7.612406947111995e-09,
+        "angle_error_rad": 8.824746560639719e-08
+      },
+      {
+        "name": "left_finger3_fingereye_link_front1",
+        "position_error_m": 2.787752551436927e-08,
+        "angle_error_rad": 1.368239276183232e-07
+      },
+      {
+        "name": "left_finger3_fingereye_link_front2",
+        "position_error_m": 1.7834359524920325e-08,
+        "angle_error_rad": 7.074246402030492e-08
+      },
+      {
+        "name": "left_finger3_fingereye_link_back",
+        "position_error_m": 2.338696298457527e-08,
+        "angle_error_rad": 5.810479725389569e-08
+      }
+    ],
+    "max_position_error_m": 2.787752551436927e-08,
+    "max_angle_error_rad": 2.151425413126884e-07,
+    "native_optics": true
+  }
+}

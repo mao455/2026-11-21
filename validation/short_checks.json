@@ -1,0 +1,151 @@
+{
+  "scope": "short numerical RGB/IK replay, not a physical success claim",
+  "visual": {
+    "stationary": {
+      "valid": true,
+      "method": "bidirectional_visible_rgb_rigid_registration",
+      "step": 4,
+      "usable_views": 2,
+      "truth_inputs": false,
+      "current_pose_from_fresh_RGB": true,
+      "shape_preserved": true,
+      "pose_ambiguous_within_envelope": true,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views_before": {
+        "a": {
+          "explained_fraction": 1.0,
+          "foreground_p90_px": 0.0,
+          "visible_support_count": 218,
+          "background_fraction": 0.0,
+          "background_p90_px": 0.0
+        },
+        "b": {
+          "explained_fraction": 1.0,
+          "foreground_p90_px": 0.0,
+          "visible_support_count": 218,
+          "background_fraction": 0.0,
+          "background_p90_px": 0.0
+        }
+      },
+      "views": {
+        "a": {
+          "explained_fraction": 1.0,
+          "foreground_p90_px": 0.0,
+          "visible_support_count": 218,
+          "background_fraction": 0.0,
+          "background_p90_px": 0.0
+        },
+        "b": {
+          "explained_fraction": 1.0,
+          "foreground_p90_px": 0.0,
+          "visible_support_count": 218,
+          "background_fraction": 0.0,
+          "background_p90_px": 0.0
+        }
+      },
+      "termination": "prior envelope explains fresh pixels; pose remains within RGB uncertainty",
+      "background_used": true,
+      "occlusion_from_measured_q": true,
+      "pixel_uncertainty": 2.0,
+      "minimum_explained_fraction": 0.9,
+      "reason": null
+    },
+    "rotated": {
+      "valid": true,
+      "method": "bidirectional_visible_rgb_rigid_registration",
+      "step": 4,
+      "usable_views": 2,
+      "truth_inputs": false,
+      "current_pose_from_fresh_RGB": true,
+      "shape_preserved": true,
+      "pose_ambiguous_within_envelope": false,
+      "parameters": [
+        7.114673200992421e-14,
+        2.600113259721765e-14,
+        0.33327969107811295
+      ],
+      "views_before": {
+        "a": {
+          "explained_fraction": 0.75,
+          "foreground_p90_px": 8.0,
+          "visible_support_count": 218,
+          "background_fraction": 0.42201834862385323,
+          "background_p90_px": 11.661903789690601
+        },
+        "b": {
+          "explained_fraction": 0.75,
+          "foreground_p90_px": 8.0,
+          "visible_support_count": 218,
+          "background_fraction": 0.42201834862385323,
+          "background_p90_px": 11.661903789690601
+        }
+      },
+      "views": {
+        "a": {
+          "explained_fraction": 1.0,
+          "foreground_p90_px": 0.0,
+          "visible_support_count": 218,
+          "background_fraction": 0.0,
+          "background_p90_px": 0.0
+        },
+        "b": {
+          "explained_fraction": 1.0,
+          "foreground_p90_px": 0.0,
+          "visible_support_count": 218,
+          "background_fraction": 0.0,
+          "background_p90_px": 0.0
+        }
+      },
+      "termination": "`gtol` termination condition is satisfied.",
+      "background_used": true,
+      "occlusion_from_measured_q": true,
+      "pixel_uncertainty": 2.0,
+      "minimum_explained_fraction": 0.9,
+      "reason": null
+    }
+  },
+  "ik": {
+    "position_error_m": [
+      3.0746238922232266e-12,
+      3.0785842631415905e-12
+    ],
+    "normal_error_rad": [
+      0.0,
+      0.0
+    ],
+    "support_margin_m": [
+      0.0037999999999999996,
+      0.003799999999999999
+    ],
+    "selected_targets": [
+      [
+        -0.005299999999999999,
+        -1.446325698095663e-16,
+        0.005053011827545572
+      ],
+      [
+        0.0053,
+        -6.201636426617085e-17,
+        0.014946988172509498
+      ]
+    ],
+    "q": [
+      0.0,
+      -0.045486224842089286,
+      0.024192186108185458,
+      4.6308140704326666e-17,
+      9.691329248452104e-16,
+      -4.440629362323677e-14,
+      0.005053011824470948,
+      0.014946988175588082,
+      5.586463543796731e-16,
+      -4.594256441863902e-16
+    ],
+    "normal_sign": "finger outward points inward toward object; dot with object outward is -1",
+    "hard_joint_bounds": true
+  }
+}

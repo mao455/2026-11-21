@@ -1,9 +1,0 @@
-{
-  "source_commit": "0490e31df43f23349f8ca8c423035f3b2b8b265a",
-  "controller_sha256": "72c4c6f128d959b8e05160334a9f7f7775b55db720143c04ab25c6f424b3669d",
-  "configuration": "same preregistered D107 four cases and D108 nominal optics; extra route clearance preferred, source-mesh collision guard retained",
-  "panels": [
-    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/wuji_final_v5",
-    "/home/CNS2025331827/docs/fingereye_d106_recovery/FingerEyeLab/outputs/d109/regression_final_v5"
-  ]
-}

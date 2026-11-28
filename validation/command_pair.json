@@ -1,0 +1,79 @@
+{
+  "scope": "finite-face solver and actual shared command interpolation on a numerical kinematic fixture; no physical success claim",
+  "static_frame": {
+    "new_pose": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "replan_required": false,
+    "max_command_change": 0.0
+  },
+  "rotated_frame": {
+    "new_pose": [
+      7.114673200992421e-14,
+      2.600113259721765e-14,
+      0.33327969107811295
+    ],
+    "first_changed_command_index": 0,
+    "first_old_target_q": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.005,
+      0.015,
+      0.0,
+      0.0
+    ],
+    "first_new_target_q": [
+      -2.291142678466551e-11,
+      6.618123775707894e-11,
+      4.288117421706268e-09,
+      0.0005998124785204488,
+      2.5097696001079846e-17,
+      -2.287851968856714e-17,
+      0.004999957598370605,
+      0.01500004656452282,
+      0.00013947471807582544,
+      0.00013947471807579276
+    ],
+    "first_command_delta": [
+      -2.291142678466551e-11,
+      6.618123775707894e-11,
+      4.288117421706268e-09,
+      0.0005998124785204488,
+      2.5097696001079846e-17,
+      -2.287851968856714e-17,
+      -4.2401629395116824e-08,
+      4.656452282092438e-08,
+      0.00013947471807582544,
+      0.00013947471807579276
+    ],
+    "old_solution_position_error_on_new_targets_m": [
+      0.0017582186414990943,
+      0.0017582186414990943
+    ],
+    "new_solution_position_error_m": [
+      1.0474447055524676e-05,
+      1.047444698181881e-05
+    ],
+    "new_solution_normal_error_rad": [
+      4.1917313406691965e-06,
+      4.191704854560189e-06
+    ],
+    "new_support_margin_m": [
+      0.003466922327910692,
+      0.0034669854723078934
+    ],
+    "seed": "previous_solution",
+    "start": "measured fixture q",
+    "largest_first_command_delta": {
+      "fixture_joint_index": 3,
+      "value": 0.0005998124785204488,
+      "unit": "rad"
+    }
+  }
+}

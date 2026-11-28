@@ -1,0 +1,1384 @@
+{
+  "scope": "Cooking-only private asset; no simulation run and no success claim.",
+  "mode": "fine",
+  "collider_scope": "all",
+  "source": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/round7b_xhand_selfcollisions.usdc",
+  "source_sha256": "b11a4b83710fda89a3c8ef567289f4ca683258484bbe86f632e5a1ce0443ec58",
+  "output": "/home/CNS2025331827/docs/grasp_small_obj/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/round7b_xhand_allfine.usdc",
+  "output_sha256": "8e71b5d55604a26dd78bd7d75d79c8d699fc54edc50f6119b830a35c9dc72807",
+  "builder_sha256": "354df1295f5bfbcd89f8b1f00fd3c30c8de7897431e710c69d5bfbd25283a835",
+  "target_collision_paths": [
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions/left_hand_palm_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions/left_hand_index_spread_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions/left_hand_index_link1/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions/left_hand_index_link2/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions/left_hand_index_camera_component1_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions/left_hand_index_camera_component2_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions/left_hand_index_camera_component3_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions/left_hand_middle_link1/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions/left_hand_pinky_link1/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions/left_hand_pinky_link2/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions/left_hand_ring_link1/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions/left_hand_ring_link2/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions/left_hand_ring_camera_component1_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions/left_hand_ring_camera_component2_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions/left_hand_ring_camera_component3_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions/left_hand_thumb_link1/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions/left_hand_thumb_link2/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions/left_hand_thumb_link3/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions/left_hand_thumb_camera_component1_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions/left_hand_thumb_camera_component2_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions/left_hand_thumb_camera_component3_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions/left_hand_thumb_camera_component4_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions/left_hand_thumb_camera_component5_link/node_STL_BINARY_",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions/left_hand_thumb_camera_component6_link/node_STL_BINARY_"
+  ],
+  "source_cooking_attributes": {
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions/left_hand_palm_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions/left_hand_index_spread_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions/left_hand_index_link1/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions/left_hand_index_link2/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions/left_hand_index_camera_component1_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions/left_hand_index_camera_component2_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions/left_hand_index_camera_component3_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions/left_hand_middle_link1/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions/left_hand_pinky_link1/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions/left_hand_pinky_link2/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions/left_hand_ring_link1/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions/left_hand_ring_link2/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions/left_hand_ring_camera_component1_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions/left_hand_ring_camera_component2_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions/left_hand_ring_camera_component3_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions/left_hand_thumb_link1/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions/left_hand_thumb_link2/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions/left_hand_thumb_link3/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions/left_hand_thumb_camera_component1_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions/left_hand_thumb_camera_component2_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions/left_hand_thumb_camera_component3_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions/left_hand_thumb_camera_component4_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions/left_hand_thumb_camera_component5_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    },
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions/left_hand_thumb_camera_component6_link/node_STL_BINARY_": {
+      "hullVertexLimit": {
+        "value": null,
+        "authored": false
+      },
+      "maxConvexHulls": {
+        "value": null,
+        "authored": false
+      },
+      "minThickness": {
+        "value": null,
+        "authored": false
+      },
+      "voxelResolution": {
+        "value": null,
+        "authored": false
+      },
+      "errorPercentage": {
+        "value": null,
+        "authored": false
+      },
+      "shrinkWrap": {
+        "value": null,
+        "authored": false
+      }
+    }
+  },
+  "legacy_schema_defaults": {
+    "hullVertexLimit": 64,
+    "maxConvexHulls": 32,
+    "minThickness": 0.001,
+    "voxelResolution": 500000,
+    "errorPercentage": 10.0,
+    "shrinkWrap": false
+  },
+  "explicit_cooking_parameters": {
+    "hullVertexLimit": 64,
+    "maxConvexHulls": 64,
+    "minThickness": 0.0002,
+    "voxelResolution": 2000000,
+    "errorPercentage": 0.5,
+    "shrinkWrap": true
+  },
+  "source_defaults_caveat": "Legacy cooking API absent. Installed schema defaults are documented; actual old cooker input values are not directly observable.",
+  "all_non_cooking_authored_properties_unchanged": true,
+  "non_cooking_property_signature_sha256": "99c20471e6be1dc729cd1b7efc2caf554f9eb3dec7dcf38eeb12a39d32eed18c",
+  "non_cooking_property_signatures": {
+    "/xhand3camFE_left_floating": "3c297eeb79082553ff1f9d8ee4330a03a1fa0ab06d808c88f54c19c99e5eb2f9",
+    "/xhand3camFE_left_floating/world_base": "8a24af16037c5ca8bd1630fcb71f8e18d5e5d136b312d2bea37f173500831625",
+    "/xhand3camFE_left_floating/world_base/visuals": "78b6f46d5923f997ad58e87b763ddd54d435b99d74f0123a0dc3c9764c1e0dcc",
+    "/xhand3camFE_left_floating/world_base/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/base_x_link": "911bdc6abd5644953c9196aa746bddaf0b2edd7b1e85dd3c259e6b3c4416f5c2",
+    "/xhand3camFE_left_floating/base_x_link/visuals": "78b6f46d5923f997ad58e87b763ddd54d435b99d74f0123a0dc3c9764c1e0dcc",
+    "/xhand3camFE_left_floating/base_x_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/joints": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/joints/base_x": "93756cb01b0e2ebb3c34b27485407cfd1e3e6fe474df51ccdca524175daf9fad",
+    "/xhand3camFE_left_floating/joints/base_y": "98a21c321e10ce5fbf8bbf7dae7eb785ed44795b061f05ba6f6606d3fb0145a8",
+    "/xhand3camFE_left_floating/joints/base_z": "c7732da72509c0e50094a313d5e8550d5b4dd498d18d8118ccd6e19ffbec2208",
+    "/xhand3camFE_left_floating/joints/base_yaw": "68315f080b039f0ea93845a7f02f71139fa326adc8f13219c8482a256cc57b65",
+    "/xhand3camFE_left_floating/joints/base_pitch": "877220c2800e12a5995278b99d09e874f0f36c5d5fb01af521e4cad678bb9feb",
+    "/xhand3camFE_left_floating/joints/base_roll": "da1311f65da5fbc2c9e09480a6cce8c7408eed6c664c0e5b0ac365d913408ea0",
+    "/xhand3camFE_left_floating/joints/base_mount": "b670bee1d6049b87e915e13e9923398011f6710b0cc5112aa672f82b7f543623",
+    "/xhand3camFE_left_floating/joints/left_hand_index_spread_joint": "11180e93bb5c404cd25899f307f458cd686adf51ac4bea5ef3334196dff57555",
+    "/xhand3camFE_left_floating/joints/left_hand_index_joint1": "22d882c47fdafb5d70c4c25b0cee0c58921325b37b718c9f1588887b9133681f",
+    "/xhand3camFE_left_floating/joints/left_hand_index_joint2": "442a391ad2a4156853aec77febb41a8018b32115be130d33a732c8ebb644dd16",
+    "/xhand3camFE_left_floating/joints/left_hand_index_camera_component1_joint": "40ed83fbeafd21742ec8fbe8225eb0973fb0ddceec5e35494cf36a339ab81b2b",
+    "/xhand3camFE_left_floating/joints/left_hand_index_camera_component2_joint": "c9d1768278803406877b2f653f9341bed136487587aee590c3604d01e7b7486a",
+    "/xhand3camFE_left_floating/joints/left_hand_index_camera_component3_joint": "f0938f3836f4acee42b64f841d1cae2e20fc949ca693a9d114aebab1dda7c164",
+    "/xhand3camFE_left_floating/joints/left_hand_middle_joint1": "a35c57f796db972b9d4ca3e6ed69d9428c36dbf6687fa7fad7e823888de0f0d3",
+    "/xhand3camFE_left_floating/joints/left_hand_middle_joint2": "ea75044e55e7ffebd506d22ea6e9c56492c9922584f6a52f080c0d313bb012eb",
+    "/xhand3camFE_left_floating/joints/left_hand_middle_camera_component1_joint": "5a6d1fe6b2cdca0d6158bfa5e4af77d4ac196d9cd8e0ed14d697e4f381a97fda",
+    "/xhand3camFE_left_floating/joints/left_hand_middle_camera_component2_joint": "a84f7adb4137cc8210cd9050171813c425c6cd53ab38dcc8164a49a19cff543e",
+    "/xhand3camFE_left_floating/joints/left_hand_middle_camera_component3_joint": "e0c061636642fae8c9414e80fd508cfdf2c0579a9ceddd8e8742d71941884a64",
+    "/xhand3camFE_left_floating/joints/left_hand_pinky_joint1": "8fbba28271973b1b37a8fee7a78b087b7a61767511e449d41af705174e5a5e05",
+    "/xhand3camFE_left_floating/joints/left_hand_pinky_joint2": "5b985366fd4cf02668736238130b1c9c026ec4dc9dcbf5e2dba2afa08ade2cf0",
+    "/xhand3camFE_left_floating/joints/left_hand_ring_joint1": "a65540f2e9fb8153dc8ca8fe4600f0bd7a4f245a76503d9ecc3557bcac6b8c34",
+    "/xhand3camFE_left_floating/joints/left_hand_ring_joint2": "0dc247d5ea75086f5bfe05e38e7a212c0b62fc27af88d3647bf826c594cd6577",
+    "/xhand3camFE_left_floating/joints/left_hand_ring_camera_component1_joint": "bf7b3e66d8df24715605e53e2facd141623273be5ca73207c8e0366f00bfa91a",
+    "/xhand3camFE_left_floating/joints/left_hand_ring_camera_component2_joint": "c2fd7a8167ba0328aefdf4e5c16b95ffd1bc4725b58d7dd480d9e1c119cf7a1a",
+    "/xhand3camFE_left_floating/joints/left_hand_ring_camera_component3_joint": "ab256edd654417710d23474af3aaa54efcd40f29bd4b2c2414cc43370c1d0f0d",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_joint1": "3bf6c74601b30602fe48dd1f1ef72be31fb725932a6254177aea6ce283dbd3ad",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_joint2": "81d0e4f71dd6809716a65af10daa033ddc2976fa97c62da0cd95e7fe4945d9a0",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_joint3": "0c29100beed25d5d4bb18558e3c932f53ca589cf088e0a3b829ad52d2fcf748c",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_camera_component1_joint": "15a83795eced2c1dc18ab01a04cb76b4fbc73cc3a324c80f6327ca306394212a",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_camera_component2_joint": "1168176ddec3069cca28fbc1dc0d25483616789bdb86a96e19393e4485aa1dba",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_camera_component3_joint": "4c81fb1c3e9da60cdd40e0a9fab2634b6dd09b4fc418a4542d9133d9cc73a3e6",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_camera_component4_joint": "655b01e5302a9bf83160263c35402ed6e96e09ef84f8cd3fdf0dd044298d1480",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_camera_component5_joint": "e9b939a665449abc49b94495d2129ed9593e7b2d9dab5098d8056cb771709549",
+    "/xhand3camFE_left_floating/joints/left_hand_thumb_camera_component6_joint": "36b79ce890cf2ad04a262d4648a22b5dfb12e7d6cd62db602fd89d4185c091a3",
+    "/xhand3camFE_left_floating/base_y_link": "56ddb7d71c0de5d1b8dcfe35ab734caa6584837f6f548d406b00d675cf5d53d3",
+    "/xhand3camFE_left_floating/base_y_link/visuals": "78b6f46d5923f997ad58e87b763ddd54d435b99d74f0123a0dc3c9764c1e0dcc",
+    "/xhand3camFE_left_floating/base_y_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/base_z_link": "f2c7dea7dd3ff302ef0aa8e6d85695d0c3440dd0223d08a466f84ab0df62a6fa",
+    "/xhand3camFE_left_floating/base_z_link/visuals": "78b6f46d5923f997ad58e87b763ddd54d435b99d74f0123a0dc3c9764c1e0dcc",
+    "/xhand3camFE_left_floating/base_z_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/base_yaw_link": "d788ae650a0f813fda5706429f6631523ef228c6c3d24f8b945bc62bf0919628",
+    "/xhand3camFE_left_floating/base_yaw_link/visuals": "78b6f46d5923f997ad58e87b763ddd54d435b99d74f0123a0dc3c9764c1e0dcc",
+    "/xhand3camFE_left_floating/base_yaw_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/base_pitch_link": "93534336d24a5e775bb4bb820f6d0b7a3fb79302bbb5094e1f2ad623a60204ef",
+    "/xhand3camFE_left_floating/base_pitch_link/visuals": "78b6f46d5923f997ad58e87b763ddd54d435b99d74f0123a0dc3c9764c1e0dcc",
+    "/xhand3camFE_left_floating/base_pitch_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/base_roll_link": "bb25fba423156e39ea944486bbb2e9dfedf0471e94380db6be032ea101fa81dd",
+    "/xhand3camFE_left_floating/base_roll_link/visuals": "78b6f46d5923f997ad58e87b763ddd54d435b99d74f0123a0dc3c9764c1e0dcc",
+    "/xhand3camFE_left_floating/base_roll_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_palm_link": "57d6c6a27a7b235678986618fb67d86433647120e49b7c60a6039474b824752a",
+    "/xhand3camFE_left_floating/left_hand_palm_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_palm_link/visuals/left_hand_palm_link": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_palm_link/visuals/left_hand_palm_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_palm_link/visuals/left_hand_palm_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_palm_link/visuals/left_hand_palm_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_palm_link/visuals/left_hand_palm_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_palm_link/visuals/left_hand_palm_link/node_STL_BINARY_/mesh": "28d0356c32a033e54945e98d5393b8883be8434929875a78f99bc410b068ebb0",
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions/left_hand_palm_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions/left_hand_palm_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions/left_hand_palm_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions/left_hand_palm_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions/left_hand_palm_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_palm_link/collisions/left_hand_palm_link/node_STL_BINARY_/mesh": "8b740470ffe2e057923eec23b69b52360e9f7c8ab57b47e4d698e89d2c69469d",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link": "0f8f445a1d31a58ecc12ad13b29e1c530b8688c583d1026102e6825ef4b398fc",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/visuals/left_hand_index_spread_link": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/visuals/left_hand_index_spread_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/visuals/left_hand_index_spread_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/visuals/left_hand_index_spread_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/visuals/left_hand_index_spread_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/visuals/left_hand_index_spread_link/node_STL_BINARY_/mesh": "8dfc624dac3418a1e99601db623dd9567b2d4312f5eaa0c254f2d731b8d93093",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions/left_hand_index_spread_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions/left_hand_index_spread_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions/left_hand_index_spread_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions/left_hand_index_spread_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions/left_hand_index_spread_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_spread_link/collisions/left_hand_index_spread_link/node_STL_BINARY_/mesh": "cf579b83f35f8ab3cb065972f2cc92b4891e6d162fabb9cc739cf3ee1f57e0a9",
+    "/xhand3camFE_left_floating/left_hand_index_link1": "9ce6666ba4853aa76a1f864dff0fc22db7228768569fe5d2906b2504e497455d",
+    "/xhand3camFE_left_floating/left_hand_index_link1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link1/visuals/left_hand_index_link1": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_index_link1/visuals/left_hand_index_link1/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_link1/visuals/left_hand_index_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_link1/visuals/left_hand_index_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_link1/visuals/left_hand_index_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_link1/visuals/left_hand_index_link1/node_STL_BINARY_/mesh": "d03757a3782ab85b46e1f65e72bc235f9f9e2bb491e154167689d614c3953edf",
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions/left_hand_index_link1": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions/left_hand_index_link1/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions/left_hand_index_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions/left_hand_index_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions/left_hand_index_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_link1/collisions/left_hand_index_link1/node_STL_BINARY_/mesh": "8e4ef1628a65b91851085d84ac062057a2c5a182d0ad92bb2bbfe8197bd7d81d",
+    "/xhand3camFE_left_floating/left_hand_index_link2": "ca6bdb2d8273f5cad5c289d55a9cbb6e0784fe97d049bc3bf861756ae907141e",
+    "/xhand3camFE_left_floating/left_hand_index_link2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link2/visuals/left_hand_index_link2": "59c500616b8140c994f3d0806c03e31453c8da50a5186b6da1ef868243f905a7",
+    "/xhand3camFE_left_floating/left_hand_index_link2/visuals/left_hand_index_link2/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_link2/visuals/left_hand_index_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_link2/visuals/left_hand_index_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_link2/visuals/left_hand_index_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_link2/visuals/left_hand_index_link2/node_STL_BINARY_/mesh": "ff840038ed222632e8ae21dfca14f1aeec2620039e5afd492894d4efbc75f8bb",
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions/left_hand_index_link2": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions/left_hand_index_link2/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions/left_hand_index_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions/left_hand_index_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions/left_hand_index_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_link2/collisions/left_hand_index_link2/node_STL_BINARY_/mesh": "0d7d84309e16489784ea62a31752d596ae92f4e313ddbad5eb46e01e750068b3",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front1": "b53a00f0e5c18b53ff15b3f8d1b88cbd013c61b1f324fee5d912bd7b127d6dfb",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front1/visuals/index_fingereye_camera_front1_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front1/visuals/index_fingereye_camera_front1_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front1/visuals/index_fingereye_camera_front1_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front1/visuals/index_fingereye_camera_front1_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front1/visuals/index_fingereye_camera_front1_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front2": "11a2d8bab8edb5801e1af7ee779f8abf953a484ff13f970c1aa0ffce5b671514",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front2/visuals/index_fingereye_camera_front2_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front2/visuals/index_fingereye_camera_front2_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front2/visuals/index_fingereye_camera_front2_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front2/visuals/index_fingereye_camera_front2_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front2/visuals/index_fingereye_camera_front2_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_front2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_back": "6d9b63bfe256c9b49f838452fc060bdbba7ff1d58e0079c048a38f07f140fa40",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_back/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_back/visuals/index_fingereye_camera_back_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_back/visuals/index_fingereye_camera_back_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_back/visuals/index_fingereye_camera_back_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_back/visuals/index_fingereye_camera_back_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_back/visuals/index_fingereye_camera_back_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_index_link2/index_fingereye_camera_back/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link": "bae2c72f1802a336ee4c1a2c436a31caad0b8c2916d643603f6f6ec46eed4b4f",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/visuals/left_hand_index_camera_component1_link": "0dca04213ea01442b2abe28885e5e42d860369abc7710ce8d3b50096cf21bf95",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/visuals/left_hand_index_camera_component1_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/visuals/left_hand_index_camera_component1_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/visuals/left_hand_index_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/visuals/left_hand_index_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/visuals/left_hand_index_camera_component1_link/node_STL_BINARY_/mesh": "2aea814c7b4da8c464b79469520c02999f6fd3eaf2e0b0053518a06a104a9403",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions/left_hand_index_camera_component1_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions/left_hand_index_camera_component1_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions/left_hand_index_camera_component1_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions/left_hand_index_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions/left_hand_index_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component1_link/collisions/left_hand_index_camera_component1_link/node_STL_BINARY_/mesh": "8de8c29422f68a765d72d648e8ccec661249b85ccf120fefa4d2bd2bedfe65ce",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link": "c619f8b3954ab27e6efb8d634addaa030f560b704301d5a7c3e5c0186dbc05df",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/visuals/left_hand_index_camera_component2_link": "0dca04213ea01442b2abe28885e5e42d860369abc7710ce8d3b50096cf21bf95",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/visuals/left_hand_index_camera_component2_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/visuals/left_hand_index_camera_component2_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/visuals/left_hand_index_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/visuals/left_hand_index_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/visuals/left_hand_index_camera_component2_link/node_STL_BINARY_/mesh": "7e4140c9a07ae79a6d850a3afbae7e01cd3223acdd87090eb1b1a157eec20fd8",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions/left_hand_index_camera_component2_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions/left_hand_index_camera_component2_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions/left_hand_index_camera_component2_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions/left_hand_index_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions/left_hand_index_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component2_link/collisions/left_hand_index_camera_component2_link/node_STL_BINARY_/mesh": "a5a0de082b4bacff5d5d017f5f2b8035aa9b216f40755725e569a041f651bd3a",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link": "f02ef3316c9889b45281abd78814d2e1465d0f8df410ebe881fd21e449984d93",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/visuals/left_hand_index_camera_component3_link": "a5c15c36236ceafb64f416791d3f4a382c83cc3196884232e96738287c8c1fe5",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/visuals/left_hand_index_camera_component3_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/visuals/left_hand_index_camera_component3_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/visuals/left_hand_index_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/visuals/left_hand_index_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/visuals/left_hand_index_camera_component3_link/node_STL_BINARY_/mesh": "191497a1b405f1f967e5de10d74294d9763537946551224e6cd39570733eb571",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions/left_hand_index_camera_component3_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions/left_hand_index_camera_component3_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions/left_hand_index_camera_component3_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions/left_hand_index_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions/left_hand_index_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_index_camera_component3_link/collisions/left_hand_index_camera_component3_link/node_STL_BINARY_/mesh": "f6d804fd80367dfa4e1e48e2b262bc04e6be670b3b6d6eba77f146ca7feacb63",
+    "/xhand3camFE_left_floating/left_hand_middle_link1": "84ea946d1321c804e207daae0c4249d1df8664c1e17288cd9c9db7676747b062",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/visuals/left_hand_middle_link1": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/visuals/left_hand_middle_link1/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/visuals/left_hand_middle_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/visuals/left_hand_middle_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/visuals/left_hand_middle_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/visuals/left_hand_middle_link1/node_STL_BINARY_/mesh": "fce3839bc06f75aa15c7ff61604faf4a4c4f7eb9d88561f3cc67eaec1160657b",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions/left_hand_middle_link1": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions/left_hand_middle_link1/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions/left_hand_middle_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions/left_hand_middle_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions/left_hand_middle_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_link1/collisions/left_hand_middle_link1/node_STL_BINARY_/mesh": "218d72222946f4eff6800015fde797016f3f839f65ccc6f6db0aa58f5728409c",
+    "/xhand3camFE_left_floating/left_hand_middle_link2": "2647a7debd64f7d306b7739fd8dd9d63fced02eab17ad054a8c8d51e8ebafd9d",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/visuals/left_hand_middle_link2": "59c500616b8140c994f3d0806c03e31453c8da50a5186b6da1ef868243f905a7",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/visuals/left_hand_middle_link2/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/visuals/left_hand_middle_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/visuals/left_hand_middle_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/visuals/left_hand_middle_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/visuals/left_hand_middle_link2/node_STL_BINARY_/mesh": "8b22d7ac0096f00b47e2edb45d712d11e5728e549af47d73356134b2b7284b54",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/collisions/left_hand_middle_link2/node_STL_BINARY_/mesh": "ff6c0f4321142b217742da6018f1091c0875984278bef51ef866205fa6f56762",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front1": "898f06004332479568776d247ad1fa3e151c5111fc8f4318e3e423b97a47e83c",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front1/visuals/middle_fingereye_camera_front1_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front1/visuals/middle_fingereye_camera_front1_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front1/visuals/middle_fingereye_camera_front1_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front1/visuals/middle_fingereye_camera_front1_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front1/visuals/middle_fingereye_camera_front1_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front2": "cd1fedfb5fb87050ffaf6c9233620846160a365610404bebe5f03de5d7181f40",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front2/visuals/middle_fingereye_camera_front2_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front2/visuals/middle_fingereye_camera_front2_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front2/visuals/middle_fingereye_camera_front2_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front2/visuals/middle_fingereye_camera_front2_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front2/visuals/middle_fingereye_camera_front2_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_front2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_back": "9a34053096eeeff5d9f6b9de40adcae072ba0384ae22913018de970a234876ba",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_back/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_back/visuals/middle_fingereye_camera_back_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_back/visuals/middle_fingereye_camera_back_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_back/visuals/middle_fingereye_camera_back_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_back/visuals/middle_fingereye_camera_back_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_back/visuals/middle_fingereye_camera_back_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_middle_link2/middle_fingereye_camera_back/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link": "a2b62becb1b8606af3ef521d3da054ce83e3839b5fcd0050b4159d9f165c645f",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/visuals/left_hand_middle_camera_component1_link": "a5c15c36236ceafb64f416791d3f4a382c83cc3196884232e96738287c8c1fe5",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/visuals/left_hand_middle_camera_component1_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/visuals/left_hand_middle_camera_component1_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/visuals/left_hand_middle_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/visuals/left_hand_middle_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/visuals/left_hand_middle_camera_component1_link/node_STL_BINARY_/mesh": "37b84e05455231a7bc1ae57a1014f09be5a81868ea75d2580f6610883ea4c6b4",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component1_link/collisions/left_hand_middle_camera_component1_link/node_STL_BINARY_/mesh": "881afc470c70fd645cfa2602214f84081172e51deda0fcfb7d7c85b8a92ce4cc",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link": "a28e36535035cf8a1825393e1800a0cc1dffcb256c142758c9f1dfa5c0933b08",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/visuals/left_hand_middle_camera_component2_link": "0dca04213ea01442b2abe28885e5e42d860369abc7710ce8d3b50096cf21bf95",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/visuals/left_hand_middle_camera_component2_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/visuals/left_hand_middle_camera_component2_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/visuals/left_hand_middle_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/visuals/left_hand_middle_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/visuals/left_hand_middle_camera_component2_link/node_STL_BINARY_/mesh": "7f6a46ff68dbe1fac373768eca4bf87a0094923913ea12de9bdbd9d8031192ba",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component2_link/collisions/left_hand_middle_camera_component2_link/node_STL_BINARY_/mesh": "ae7a76dd7ca7f49e6ecdc11f92ba3679fc5ec2d015208db7382e2d5c11a6dbf3",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link": "4d37ff1547436397663f861c25d7f7423470ca351d5457339dae919b629ec454",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/visuals/left_hand_middle_camera_component3_link": "0dca04213ea01442b2abe28885e5e42d860369abc7710ce8d3b50096cf21bf95",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/visuals/left_hand_middle_camera_component3_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/visuals/left_hand_middle_camera_component3_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/visuals/left_hand_middle_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/visuals/left_hand_middle_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/visuals/left_hand_middle_camera_component3_link/node_STL_BINARY_/mesh": "58d956b0d13a9dce1f922fc581aa2ce48545d4de2ec61505fce1d0bf53c7ad21",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_middle_camera_component3_link/collisions/left_hand_middle_camera_component3_link/node_STL_BINARY_/mesh": "e7c047576ea9435dbe56b46c66c00e0f7971b0a283fbd1ad1a98ee154f55dbd9",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1": "ddb9989a2eaf2b359bd6f3c0b6d28be4f74cb44ba548c6d911f5b835eb0bab4c",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/visuals/left_hand_pinky_link1": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/visuals/left_hand_pinky_link1/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/visuals/left_hand_pinky_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/visuals/left_hand_pinky_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/visuals/left_hand_pinky_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/visuals/left_hand_pinky_link1/node_STL_BINARY_/mesh": "a52a691399fd5724401e53d401c49d5957232cd6ea1d40207d971b524d67a67e",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions/left_hand_pinky_link1": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions/left_hand_pinky_link1/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions/left_hand_pinky_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions/left_hand_pinky_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions/left_hand_pinky_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_pinky_link1/collisions/left_hand_pinky_link1/node_STL_BINARY_/mesh": "79f91768f0001ec1c7f46e5417b9aec6243f2930aa15c9556160236831325256",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2": "5c2123f984bcc04f42272e9647e3a526595e1d74595ecc9f55e9fc5e17f87048",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/visuals/left_hand_pinky_link2": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/visuals/left_hand_pinky_link2/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/visuals/left_hand_pinky_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/visuals/left_hand_pinky_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/visuals/left_hand_pinky_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/visuals/left_hand_pinky_link2/node_STL_BINARY_/mesh": "d73a62bdceb79edaaba8238383acb837ae6d0ea232d224594466fb09f18d10a5",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions/left_hand_pinky_link2": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions/left_hand_pinky_link2/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions/left_hand_pinky_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions/left_hand_pinky_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions/left_hand_pinky_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_pinky_link2/collisions/left_hand_pinky_link2/node_STL_BINARY_/mesh": "596465a25d8008b2db2eabab3507d0ae1da6a453f13d89d92f6e7a0698d09d3f",
+    "/xhand3camFE_left_floating/left_hand_ring_link1": "b278ba4fd1f5087783c5f761a9cbf678ee0e4f1b1e020e609df7c73924310073",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/visuals/left_hand_ring_link1": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/visuals/left_hand_ring_link1/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/visuals/left_hand_ring_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/visuals/left_hand_ring_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/visuals/left_hand_ring_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/visuals/left_hand_ring_link1/node_STL_BINARY_/mesh": "652d941a0e3e02b78e0a4151ca0d417ddda8cee009a542fbab7192226f9417dd",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions/left_hand_ring_link1": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions/left_hand_ring_link1/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions/left_hand_ring_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions/left_hand_ring_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions/left_hand_ring_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_link1/collisions/left_hand_ring_link1/node_STL_BINARY_/mesh": "89f951c16f2c3f07a6489721dbdbf813342f57015e47d694482966be74e22554",
+    "/xhand3camFE_left_floating/left_hand_ring_link2": "9205919f5bdfdc9ecfb2ecafb5031ec9ac723e5656074e156c809fccf4b9f9cd",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/visuals/left_hand_ring_link2": "59c500616b8140c994f3d0806c03e31453c8da50a5186b6da1ef868243f905a7",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/visuals/left_hand_ring_link2/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/visuals/left_hand_ring_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/visuals/left_hand_ring_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/visuals/left_hand_ring_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/visuals/left_hand_ring_link2/node_STL_BINARY_/mesh": "6dfa07476d3a4180332ca36ffd5c3bb69fab5da8a2523d54d0fa34e40df3cf65",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions/left_hand_ring_link2": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions/left_hand_ring_link2/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions/left_hand_ring_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions/left_hand_ring_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions/left_hand_ring_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/collisions/left_hand_ring_link2/node_STL_BINARY_/mesh": "d48ac81fdc0e7fb4e9b06e00d39d538a06e5adb0c89b4336a528981c14b6b786",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front1": "6f93514ebea73ed0b113722c6d8af400a4ef97500b864773ac1b7500a4d21773",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front1/visuals/ring_fingereye_camera_front1_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front1/visuals/ring_fingereye_camera_front1_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front1/visuals/ring_fingereye_camera_front1_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front1/visuals/ring_fingereye_camera_front1_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front1/visuals/ring_fingereye_camera_front1_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front2": "0605a0dda83f20fe75e4a53fb25e1733205dc308fa518e82de8d09fea0134995",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front2/visuals/ring_fingereye_camera_front2_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front2/visuals/ring_fingereye_camera_front2_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front2/visuals/ring_fingereye_camera_front2_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front2/visuals/ring_fingereye_camera_front2_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front2/visuals/ring_fingereye_camera_front2_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_front2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_back": "e3f41e10fabd4ffd152e3af83caa6e2c3568432944664b0d9b95c8b1780ff8b5",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_back/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_back/visuals/ring_fingereye_camera_back_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_back/visuals/ring_fingereye_camera_back_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_back/visuals/ring_fingereye_camera_back_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_back/visuals/ring_fingereye_camera_back_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_back/visuals/ring_fingereye_camera_back_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_ring_link2/ring_fingereye_camera_back/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link": "0b688c03ba7830a0985c39310ffeb4e7d76d3cc76cc03734d71c4147f6112700",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/visuals/left_hand_ring_camera_component1_link": "a5c15c36236ceafb64f416791d3f4a382c83cc3196884232e96738287c8c1fe5",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/visuals/left_hand_ring_camera_component1_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/visuals/left_hand_ring_camera_component1_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/visuals/left_hand_ring_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/visuals/left_hand_ring_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/visuals/left_hand_ring_camera_component1_link/node_STL_BINARY_/mesh": "058c19ee3312b7577ec83a6c487f65154e5881209499b095344021d61a262f65",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions/left_hand_ring_camera_component1_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions/left_hand_ring_camera_component1_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions/left_hand_ring_camera_component1_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions/left_hand_ring_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions/left_hand_ring_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component1_link/collisions/left_hand_ring_camera_component1_link/node_STL_BINARY_/mesh": "45e3470bc702bb8381de8b82195ab7007e93d1f2cc1321e30993c46b66b2a1d5",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link": "d7cd8eaafcbaac9004fa6f6fedf28ec91c3b7235633554b268dedf8031b16c92",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/visuals/left_hand_ring_camera_component2_link": "0dca04213ea01442b2abe28885e5e42d860369abc7710ce8d3b50096cf21bf95",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/visuals/left_hand_ring_camera_component2_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/visuals/left_hand_ring_camera_component2_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/visuals/left_hand_ring_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/visuals/left_hand_ring_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/visuals/left_hand_ring_camera_component2_link/node_STL_BINARY_/mesh": "18d4e261d26157bf6babbc2e2ac03927907da309f9536cdbd6a04fa96fc3c76b",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions/left_hand_ring_camera_component2_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions/left_hand_ring_camera_component2_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions/left_hand_ring_camera_component2_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions/left_hand_ring_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions/left_hand_ring_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component2_link/collisions/left_hand_ring_camera_component2_link/node_STL_BINARY_/mesh": "c59cdffaf017f0e7dd9f4bf922b8d1ccce99ac11eefa0480f4e0d99c9f05ff18",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link": "88e45fb32d75e79c35297a94d7fdecdc20fe9b7ac7a7a312408b8a0912a6bcbc",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/visuals/left_hand_ring_camera_component3_link": "0dca04213ea01442b2abe28885e5e42d860369abc7710ce8d3b50096cf21bf95",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/visuals/left_hand_ring_camera_component3_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/visuals/left_hand_ring_camera_component3_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/visuals/left_hand_ring_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/visuals/left_hand_ring_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/visuals/left_hand_ring_camera_component3_link/node_STL_BINARY_/mesh": "8145d913afe02da0c87c7bd6d40d31c6e7409cd86c70b2fb977a8dfa4518333b",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions/left_hand_ring_camera_component3_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions/left_hand_ring_camera_component3_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions/left_hand_ring_camera_component3_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions/left_hand_ring_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions/left_hand_ring_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_ring_camera_component3_link/collisions/left_hand_ring_camera_component3_link/node_STL_BINARY_/mesh": "ec00527d3cda4ed5a8cf2f060d09b239b15c4f1a1328fa4b377649bd3a117303",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1": "6bd6eaf901bf560035513bff49f3e87fa2fecfa2b03c2d70a57e57da659317d4",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/visuals/left_hand_thumb_link1": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/visuals/left_hand_thumb_link1/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/visuals/left_hand_thumb_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/visuals/left_hand_thumb_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/visuals/left_hand_thumb_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/visuals/left_hand_thumb_link1/node_STL_BINARY_/mesh": "528089df7fd0628731394508548f9579029b2fae5181ce109e56c2755af53d3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions/left_hand_thumb_link1": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions/left_hand_thumb_link1/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions/left_hand_thumb_link1/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions/left_hand_thumb_link1/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions/left_hand_thumb_link1/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_link1/collisions/left_hand_thumb_link1/node_STL_BINARY_/mesh": "a55718bd03f4b7a45b281787c99c5baa304bf31e3533dbd823a47a3b5829a6ff",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2": "2d4a880d743b198fd80ce51c37209df1c32a100bc241269fd9d1f3c47ee8ea3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/visuals/left_hand_thumb_link2": "5682604508c9123c2a20fc3207918392e91435038365e55cf66ff59628447ed8",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/visuals/left_hand_thumb_link2/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/visuals/left_hand_thumb_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/visuals/left_hand_thumb_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/visuals/left_hand_thumb_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/visuals/left_hand_thumb_link2/node_STL_BINARY_/mesh": "35fb7302d04d9d0d5b771907f7f390b692da31c75f8aebdf8e90a0ee0bdc33e2",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions/left_hand_thumb_link2": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions/left_hand_thumb_link2/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions/left_hand_thumb_link2/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions/left_hand_thumb_link2/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions/left_hand_thumb_link2/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_link2/collisions/left_hand_thumb_link2/node_STL_BINARY_/mesh": "329fdda6a44bff7b40cc208744659b2c89c308d1df91b59255233a4ef84d1f78",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3": "d1d064169e311503ee1f0dcc01fbe208752d7e420d4588d859bded2488092dae",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/visuals/left_hand_thumb_link3": "59c500616b8140c994f3d0806c03e31453c8da50a5186b6da1ef868243f905a7",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/visuals/left_hand_thumb_link3/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/visuals/left_hand_thumb_link3/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/visuals/left_hand_thumb_link3/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/visuals/left_hand_thumb_link3/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/visuals/left_hand_thumb_link3/node_STL_BINARY_/mesh": "8c0e488495b64195c99181af719eea8f5c80697ae5f4d09c6aae1f1e3f22cd33",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions/left_hand_thumb_link3": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions/left_hand_thumb_link3/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions/left_hand_thumb_link3/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions/left_hand_thumb_link3/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions/left_hand_thumb_link3/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/collisions/left_hand_thumb_link3/node_STL_BINARY_/mesh": "607adfdfde9d4a2d1bd1c0bcc107ee359f864e6d285e7049e7c90723a38e8a47",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front1": "c44bb2681ac890e08c2f9d993d697530f62a125fb3971145240c1b35885511d7",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front1/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front1/visuals/thumb_fingereye_camera_front1_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front1/visuals/thumb_fingereye_camera_front1_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front1/visuals/thumb_fingereye_camera_front1_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front1/visuals/thumb_fingereye_camera_front1_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front1/visuals/thumb_fingereye_camera_front1_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front1/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front2": "a7c163ca900792fde96fba5fc21e163c33df6aeb62e6dc15c69f5d7a7d73a20a",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front2/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front2/visuals/thumb_fingereye_camera_front2_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front2/visuals/thumb_fingereye_camera_front2_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front2/visuals/thumb_fingereye_camera_front2_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front2/visuals/thumb_fingereye_camera_front2_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front2/visuals/thumb_fingereye_camera_front2_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_front2/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_back": "ec3ca117f1bf499f3eae6dbcea0826070b539bca44b97df31a4e6412074dd9e3",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_back/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_back/visuals/thumb_fingereye_camera_back_body": "0a9a37036d94aeb4dbbf8b3f7cc70edeefdabeed100da182749272b35d5dcd75",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_back/visuals/thumb_fingereye_camera_back_body/box": "7971bb8f7764fecece69abf07dbbe67d772f52fb1cd4a34a8e6f742ca26a2cae",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_back/visuals/thumb_fingereye_camera_back_frustum": "b96714c38de673d20b25a517f7df6b224f1a6db4aadf83489ade0f53da56281c",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_back/visuals/thumb_fingereye_camera_back_frustum/World": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_back/visuals/thumb_fingereye_camera_back_frustum/World/mesh": "08c549b2454abcf1aa88271c6c428f5312bc6e692a531325c7d10fb7ceafcf16",
+    "/xhand3camFE_left_floating/left_hand_thumb_link3/thumb_fingereye_camera_back/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link": "5afffc817cea663669a96a5313361823d586fc867183fc20c58cb73964472fae",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/visuals/left_hand_thumb_camera_component1_link": "0dca04213ea01442b2abe28885e5e42d860369abc7710ce8d3b50096cf21bf95",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/visuals/left_hand_thumb_camera_component1_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/visuals/left_hand_thumb_camera_component1_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/visuals/left_hand_thumb_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/visuals/left_hand_thumb_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/visuals/left_hand_thumb_camera_component1_link/node_STL_BINARY_/mesh": "5f676712bd6d3c4793022fdc17dfcaf0c3c9989a230d42208e005973adcd5bc2",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions/left_hand_thumb_camera_component1_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions/left_hand_thumb_camera_component1_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions/left_hand_thumb_camera_component1_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions/left_hand_thumb_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions/left_hand_thumb_camera_component1_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component1_link/collisions/left_hand_thumb_camera_component1_link/node_STL_BINARY_/mesh": "66634c4689de6f63d5c43248317b4093d12f7109c0acbf5a9abf18b21a1615cb",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link": "4e52064d7d750ed02003af38a44859b70ae0d35bade705abbaa074f7f6021f35",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/visuals/left_hand_thumb_camera_component2_link": "0dca04213ea01442b2abe28885e5e42d860369abc7710ce8d3b50096cf21bf95",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/visuals/left_hand_thumb_camera_component2_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/visuals/left_hand_thumb_camera_component2_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/visuals/left_hand_thumb_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/visuals/left_hand_thumb_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/visuals/left_hand_thumb_camera_component2_link/node_STL_BINARY_/mesh": "386b88fc3b0c052fcaff5356782756db5b1569c19921a0a2d704be582248e3de",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions/left_hand_thumb_camera_component2_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions/left_hand_thumb_camera_component2_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions/left_hand_thumb_camera_component2_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions/left_hand_thumb_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions/left_hand_thumb_camera_component2_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component2_link/collisions/left_hand_thumb_camera_component2_link/node_STL_BINARY_/mesh": "3ccbb31c831f116567a5a4530cac987142ca23d80ab4671c4e7a4b576112cfb9",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link": "70bd79e5e7daecace0945846a8d86df1fe4e5ecb26100cb70f12a87c282749a9",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/visuals/left_hand_thumb_camera_component3_link": "a5c15c36236ceafb64f416791d3f4a382c83cc3196884232e96738287c8c1fe5",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/visuals/left_hand_thumb_camera_component3_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/visuals/left_hand_thumb_camera_component3_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/visuals/left_hand_thumb_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/visuals/left_hand_thumb_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/visuals/left_hand_thumb_camera_component3_link/node_STL_BINARY_/mesh": "69f01e9ee8aed8d5ca2ce636e45b1a1f44f87d4ba45997234744c8eeae44febd",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions/left_hand_thumb_camera_component3_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions/left_hand_thumb_camera_component3_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions/left_hand_thumb_camera_component3_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions/left_hand_thumb_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions/left_hand_thumb_camera_component3_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component3_link/collisions/left_hand_thumb_camera_component3_link/node_STL_BINARY_/mesh": "215cbe2c93b4246476a5625c494a490eefa8d867e88d8f250dca1a055a4b9cca",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link": "9aae4ae37be8ec5b032fc925d589d9787f2685fc516cc848d575a6cde19def47",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/visuals/left_hand_thumb_camera_component4_link": "59c500616b8140c994f3d0806c03e31453c8da50a5186b6da1ef868243f905a7",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/visuals/left_hand_thumb_camera_component4_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/visuals/left_hand_thumb_camera_component4_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/visuals/left_hand_thumb_camera_component4_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/visuals/left_hand_thumb_camera_component4_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/visuals/left_hand_thumb_camera_component4_link/node_STL_BINARY_/mesh": "e11249e8efd9a3667b4be496276205945ff5a2db417f1b737878ad0e6f000018",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions/left_hand_thumb_camera_component4_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions/left_hand_thumb_camera_component4_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions/left_hand_thumb_camera_component4_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions/left_hand_thumb_camera_component4_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions/left_hand_thumb_camera_component4_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component4_link/collisions/left_hand_thumb_camera_component4_link/node_STL_BINARY_/mesh": "77e8b02eea74bb6a2b83ac182863d6e9c9f620333c7f027b88e94cb661758c28",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link": "35a80ad38ea4adf962d8a7710c61ad27cf1581e0088026032d2f6fc411942187",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/visuals/left_hand_thumb_camera_component5_link": "59c500616b8140c994f3d0806c03e31453c8da50a5186b6da1ef868243f905a7",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/visuals/left_hand_thumb_camera_component5_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/visuals/left_hand_thumb_camera_component5_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/visuals/left_hand_thumb_camera_component5_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/visuals/left_hand_thumb_camera_component5_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/visuals/left_hand_thumb_camera_component5_link/node_STL_BINARY_/mesh": "445d2742d87850a8975358cc20945db947e5da6f710c2b320026face4bfafc2b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions/left_hand_thumb_camera_component5_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions/left_hand_thumb_camera_component5_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions/left_hand_thumb_camera_component5_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions/left_hand_thumb_camera_component5_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions/left_hand_thumb_camera_component5_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component5_link/collisions/left_hand_thumb_camera_component5_link/node_STL_BINARY_/mesh": "d6dfd41fa58db70137898f579b4050169a5b6296fe6dd9392f5e0b6300b75cd9",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link": "92f52100e7042ef1b2ebc52e7e6306b961a586941483cd794413b4305cad543b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/visuals": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/visuals/left_hand_thumb_camera_component6_link": "59c500616b8140c994f3d0806c03e31453c8da50a5186b6da1ef868243f905a7",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/visuals/left_hand_thumb_camera_component6_link/node_STL_BINARY_": "c14d6d0e6134db66ba04864eb193fa70d09e7499993c196c94956c3e1c8aee58",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/visuals/left_hand_thumb_camera_component6_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/visuals/left_hand_thumb_camera_component6_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/visuals/left_hand_thumb_camera_component6_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/visuals/left_hand_thumb_camera_component6_link/node_STL_BINARY_/mesh": "afd2148471abfd83388a90f9367b2404466c0b895d994cc0fe854c59343bbb20",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions": "554d4d1d6c81011a961c29b73f6f9d7a507588eaa3f1368727e29bc54e05f652",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions/left_hand_thumb_camera_component6_link": "4be2b07731be1e41aa9a4579384be356fc6bc8c05ec27893fcdc8b6f2a7d5174",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions/left_hand_thumb_camera_component6_link/node_STL_BINARY_": "750d363b7f38b2a65800d7461e965bd988d3d6f7af778b6bd04b19eda48eecfa",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions/left_hand_thumb_camera_component6_link/node_STL_BINARY_/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions/left_hand_thumb_camera_component6_link/node_STL_BINARY_/Looks/DefaultMaterial": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions/left_hand_thumb_camera_component6_link/node_STL_BINARY_/Looks/DefaultMaterial/DefaultMaterial": "6212dd6094b95d88438a0cc3c022fb37189de6da36f00d280fee3a4192fe8c3d",
+    "/xhand3camFE_left_floating/left_hand_thumb_camera_component6_link/collisions/left_hand_thumb_camera_component6_link/node_STL_BINARY_/mesh": "c10269556dd12d81a811f159f5fe3acdaeb19a95a9dcf1ac4c902b767006693b",
+    "/xhand3camFE_left_floating/Looks": "88de7e6de64f954c1129cc5a0bb56524b109b34dde27e534071fdfcd0e85f29b",
+    "/xhand3camFE_left_floating/Looks/material_CameraBlue": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/Looks/material_CameraBlue/Shader": "27bbdad0ac1e963a28006cd0857f74a9f8e84fa193c92592f07144cea3032bd4",
+    "/xhand3camFE_left_floating/Looks/material_CameraBody": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/Looks/material_CameraBody/Shader": "54ceef66f29183089469a9a858e3bd5eec94a1917b482d54430194ff67906ebb",
+    "/xhand3camFE_left_floating/Looks/material_B2B2B2": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/Looks/material_B2B2B2/Shader": "b030b02bcb35b38a483fbeb3bbaf414a12e3e644bfafd1bb542de8db1662bbed",
+    "/xhand3camFE_left_floating/Looks/material_DDDDE3": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/Looks/material_DDDDE3/Shader": "c5f32aa52d43d476734b546d826391fbad0b3a6f425768fed1002b7a0e20405f",
+    "/xhand3camFE_left_floating/Looks/material_100100100": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/Looks/material_100100100/Shader": "5ed6bdbe860b7d871a78b04313481ae41bfb9380b2cf981147e7a5fb7176cff5",
+    "/xhand3camFE_left_floating/Looks/material_10000": "a5be642526e80a638bdcb527e54c67b77a8b264647d1d82559810aafa51e05bf",
+    "/xhand3camFE_left_floating/Looks/material_10000/Shader": "72b9b8a0587f67c8f892d9cebc878acefb29451993f1cabe40e423a01394796f",
+    "/xhand3camFE_left_floating/root_joint": "3c7ea2c7280adf45beb1f8179286ba16d61dacbded8219f7a712a1146167cf6d"
+  },
+  "required_runtime_validation": [
+    "Resolve all six parameters on the spawned collision prims.",
+    "Compare same-body live ray hits against unchanged source mesh.",
+    "Verify mass, inertia, camera frames and self-collision policy.",
+    "Probe unloaded and contact behavior before a new physics freeze."
+  ]
+}

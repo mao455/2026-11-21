@@ -1,0 +1,5 @@
+{
+  "source_sha256": "789944063816015dde2dc1a6c41a33df724de440da18fa494396f226f48dc516",
+  "asset": "xhand_collision.usdc",
+  "scope": "exact source acceleration only; changed inputs automatically use URDF converter"
+}

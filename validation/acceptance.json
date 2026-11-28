@@ -1,0 +1,311 @@
+{
+  "baseline_code": "b0f59424c83",
+  "historical_score": "D111 8/10; not remeasured by this release",
+  "tested_code_commit": "4475bdfb4e46eb44b2b1f0b6f4b7b1d1995e59a9",
+  "clean_checkout": true,
+  "command": "python run_grasp.py --robot-urdf robots/wuji/hand.urdf",
+  "environment": {
+    "isaac_sim": "5.1",
+    "python": "3.11",
+    "physics_hz": 120,
+    "control_hz": 20,
+    "camera_hz": 30
+  },
+  "scope": "one normal-entry Wuji box_28 episode, maximum three closures; no ten-case panel or success-rate tuning",
+  "first_grasp_success": false,
+  "actual_closures": 1,
+  "selected_finger_count": 2,
+  "first_invalid": {
+    "step": 6312,
+    "phase": "s5_close_observe",
+    "geometry": {
+      "hand_object_intrusion_links": [
+        "left_finger3_link4"
+      ],
+      "tolerance_m": 0.0005,
+      "hand_table_min_z": 0.003275229712789235,
+      "object_min_z": 7.068093680355947e-07,
+      "passed": false
+    }
+  },
+  "physical_result": {
+    "controller_completed": true,
+    "error": null,
+    "requested_control_steps": 10470,
+    "elapsed_s": 583.6465966799296,
+    "evaluator_and_adapter_unchanged": true,
+    "controller_sha256": "86b9a394775859b658782f3a0f8554b2f5881772e2983b258b9cf7d0ee66a821",
+    "physics": {
+      "success": false,
+      "steps": 10470,
+      "required_hold_steps": 240,
+      "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+      "protocol": "final continuous 2 s at commanded 30mm lift, actual object lift >=28mm (2mm tolerance), clearance >=5mm; geometry valid throughout; speed/rotation/contact diagnostic only",
+      "geometry_passed": false,
+      "first_invalid_step": 6312,
+      "hold_physics_passed": true,
+      "hold_min_table_clearance_m": 0.029070129130375908,
+      "hold_min_lift_m": 0.030108917337202,
+      "hold_relative_translation_drift_m": 7.120900335488447e-08,
+      "hold_relative_rotation_drift_rad": 5.538836120845201e-06,
+      "hold_max_linear_speed_m_s": 0.011432171765356026,
+      "hold_max_angular_speed_rad_s": 0.4207989367970355,
+      "hold_min_contact_force_n": 0.8862337470054626,
+      "commanded_lift_m": 0.031999990344047546,
+      "protocol_id": "lift30_no_drop_v1",
+      "target_lift_m": 0.03,
+      "lift_tolerance_m": 0.002,
+      "minimum_actual_lift_m": 0.027999999999999997,
+      "minimum_commanded_lift_m": 0.0295,
+      "legacy_strict": {
+        "success": false,
+        "steps": 10470,
+        "required_hold_steps": 240,
+        "geometry_scope": "authored USD collision meshes; not internal cooked convex pieces",
+        "protocol": "final continuous 2 s, actual lift >=10mm, clearance >=5mm, stable relative pose, contact; geometry valid throughout",
+        "geometry_passed": false,
+        "first_invalid_step": 6312,
+        "hold_physics_passed": true,
+        "hold_min_table_clearance_m": 0.029070129130375908,
+        "hold_min_lift_m": 0.030108917337202,
+        "hold_relative_translation_drift_m": 7.120900335488447e-08,
+        "hold_relative_rotation_drift_rad": 5.538836120845201e-06,
+        "hold_max_linear_speed_m_s": 0.011432171765356026,
+        "hold_max_angular_speed_rad_s": 0.4207989367970355,
+        "hold_min_contact_force_n": 0.8862337470054626,
+        "commanded_lift_m": 0.031999990344047546
+      },
+      "continuous_physics_evidence": true,
+      "hold_checks": {
+        "actual_lift": true,
+        "table_clearance": true,
+        "completed_commanded_lift": true
+      },
+      "hold_start_step": 10230,
+      "hold_end_step": 10469,
+      "hold_start_time_s": 85.24999999999999,
+      "hold_end_time_s": 87.25,
+      "hold_duration_s": 2.0,
+      "failure": "invalid_episode_geometry"
+    },
+    "success": false,
+    "success_protocol": "lift30_no_drop_v1",
+    "legacy_strict_success": false
+  },
+  "selected_endpoint": {
+    "per_finger_error_m": [
+      0.0003521424044420372,
+      0.00011228355263679808
+    ],
+    "normal_error_rad": [
+      0.10384615015105335,
+      0.04795451594221259
+    ],
+    "contact_fingers": [
+      "left_finger2_joint1",
+      "left_finger3_joint1"
+    ],
+    "fingers": [
+      "left_finger2_joint1",
+      "left_finger3_joint1"
+    ],
+    "hand_contact_regions": [
+      10,
+      16
+    ],
+    "source_clearance": {
+      "table_clearance_m": 0.0030035241978145152,
+      "table_clearance_link": "left_finger2_fingereye_link",
+      "thresholds": {
+        "table_clearance_m": 0.00065,
+        "self_overlap_m": 0.0,
+        "object_overlap_m": 0.0
+      },
+      "self_collisions": [],
+      "object_collisions": [],
+      "passed": true
+    },
+    "task_posture": {
+      "passed": true,
+      "forward_world": [
+        0.11163046711294515,
+        -0.13624136578071977,
+        -0.9843662575801497
+      ],
+      "angle_from_down_rad": 0.17705732831605797,
+      "maximum_angle_rad": 0.7853981633974483,
+      "measured_tracking_allowance_rad": 0.0,
+      "source": "task: broadly vertical from above; 45deg interpretation; axis from all neutral finger roots and pads; measured allowance: .05rad/s settled wrist bound /20Hz control"
+    }
+  },
+  "packaging_startup_retries": [
+    {
+      "error": "RuntimeError: process exited without response: 2",
+      "control_steps": 0
+    },
+    {
+      "error": "RuntimeError: RuntimeError: Imported hand has no physical colliders",
+      "control_steps": 0
+    },
+    {
+      "error": "RuntimeError: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/fingereye-minimal-smoke/FingerEyeLab/experiments/rax_dexbin_tinyobj/assets/skybox'",
+      "control_steps": 0
+    }
+  ],
+  "syntax_files": 43,
+  "imports_passed": [
+    "host",
+    "strategy",
+    "hand_runtime",
+    "observation_guard",
+    "objects",
+    "geometry",
+    "convex_geometry",
+    "sandbox"
+  ],
+  "resources_checked": [
+    "bundled Wuji URDF and all referenced visual/collision meshes",
+    "bundled XHand URDF and all referenced meshes",
+    "default box manifest and mesh",
+    "shared module calibration pool"
+  ],
+  "original_three_finger_static_load": {
+    "joints": 17,
+    "cameras": 8,
+    "pad_groups": 3,
+    "assets": "external supplier package; not duplicated in public release"
+  },
+  "source_match_between_smoke_and_delivery": true,
+  "code_counts": {
+    "before_runtime_files": 91,
+    "before_runtime_lines": 40922,
+    "before_core_strategy_lines": 6011,
+    "after_runtime_files": 43,
+    "after_runtime_lines": 16335,
+    "after_core_strategy_lines": 6056
+  },
+  "visual_check_scope": "short numerical contour registration and kinematic command replay; not an extra physical trial",
+  "visual_command_replay": {
+    "scope": "finite-face solver and actual shared command interpolation on a numerical kinematic fixture; no physical success claim",
+    "static_frame": {
+      "new_pose": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "replan_required": false,
+      "max_command_change": 0.0
+    },
+    "rotated_frame": {
+      "new_pose": [
+        7.114673200992421e-14,
+        2.600113259721765e-14,
+        0.33327969107811295
+      ],
+      "first_changed_command_index": 0,
+      "first_old_target_q": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.005,
+        0.015,
+        0.0,
+        0.0
+      ],
+      "first_new_target_q": [
+        -2.291142678466551e-11,
+        6.618123775707894e-11,
+        4.288117421706268e-09,
+        0.0005998124785204488,
+        2.5097696001079846e-17,
+        -2.287851968856714e-17,
+        0.004999957598370605,
+        0.01500004656452282,
+        0.00013947471807582544,
+        0.00013947471807579276
+      ],
+      "first_command_delta": [
+        -2.291142678466551e-11,
+        6.618123775707894e-11,
+        4.288117421706268e-09,
+        0.0005998124785204488,
+        2.5097696001079846e-17,
+        -2.287851968856714e-17,
+        -4.2401629395116824e-08,
+        4.656452282092438e-08,
+        0.00013947471807582544,
+        0.00013947471807579276
+      ],
+      "old_solution_position_error_on_new_targets_m": [
+        0.0017582186414990943,
+        0.0017582186414990943
+      ],
+      "new_solution_position_error_m": [
+        1.0474447055524676e-05,
+        1.047444698181881e-05
+      ],
+      "new_solution_normal_error_rad": [
+        4.1917313406691965e-06,
+        4.191704854560189e-06
+      ],
+      "new_support_margin_m": [
+        0.003466922327910692,
+        0.0034669854723078934
+      ],
+      "seed": "previous_solution",
+      "start": "measured fixture q",
+      "largest_first_command_delta": {
+        "fixture_joint_index": 3,
+        "value": 0.0005998124785204488,
+        "unit": "rad"
+      }
+    }
+  },
+  "ik_check": {
+    "position_error_m": [
+      3.0746238922232266e-12,
+      3.0785842631415905e-12
+    ],
+    "normal_error_rad": [
+      0.0,
+      0.0
+    ],
+    "support_margin_m": [
+      0.0037999999999999996,
+      0.003799999999999999
+    ],
+    "selected_targets": [
+      [
+        -0.005299999999999999,
+        -1.446325698095663e-16,
+        0.005053011827545572
+      ],
+      [
+        0.0053,
+        -6.201636426617085e-17,
+        0.014946988172509498
+      ]
+    ],
+    "q": [
+      0.0,
+      -0.045486224842089286,
+      0.024192186108185458,
+      4.6308140704326666e-17,
+      9.691329248452104e-16,
+      -4.440629362323677e-14,
+      0.005053011824470948,
+      0.014946988175588082,
+      5.586463543796731e-16,
+      -4.594256441863902e-16
+    ],
+    "normal_sign": "finger outward points inward toward object; dot with object outward is -1",
+    "hard_joint_bounds": true
+  },
+  "selected_fingers": [
+    "left_finger2_joint1",
+    "left_finger3_joint1"
+  ]
+}

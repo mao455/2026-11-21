@@ -1,7 +1,0 @@
-Frozen policy 058c570113ba868b0213fed19f19d2e5c434789d
-59 relevant planner/closure/contact tests passed before frozen normal panel.
-Command: python -m unittest test_candidate_reserve test_closure_settle test_contact_feedback test_contact_intent test_general_grasp_contacts test_round2_source_domain_rank test_near_contact_retry
-15 publication tests passed after evidence/config updates. Command: python -m unittest test_github_publish
-All 10 terminal normal episodes audited: original evaluator readback, unchanged source receipts, continuous 120 Hz, geometry valid throughout, closures <= 3.
-Readback: source 058c570113b and primary worktree policy/runtime bytes identical.
-REPRODUCE.txt passes bash -n; git diff --check passes.
